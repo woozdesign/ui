@@ -1,0 +1,32 @@
+# Node modules and logs
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Storybook build
+storybook-static/
+
+# TypeScript build output
+
+*.tsbuildinfo
+
+
+# IDE - Visual Studio Code
+.vscode/
+
+# macOS system files
+.DS_Store
+
+# Temporary files
+*.tmp
+*.swp
+
+# Next.js
+.next/
+out/
+
+# End of .gitignore
+
+
+.cache
