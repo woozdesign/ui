@@ -3,12 +3,7 @@ const path = require('path');
 
 const config: StorybookConfig = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|mjs|ts|tsx)'],
-  addons: [
-    '@storybook/addon-links',
-    '@storybook/addon-essentials',
-    '@storybook/addon-onboarding',
-    '@storybook/addon-interactions',
-  ],
+  addons: ['@storybook/addon-links', '@storybook/addon-essentials', '@storybook/addon-onboarding', '@storybook/addon-interactions'],
   framework: {
     name: '@storybook/react-webpack5',
     options: {},
@@ -18,6 +13,11 @@ const config: StorybookConfig = {
   },
   webpackFinal: async (config) => {
     config.resolve.extensions.push('.ts', '.tsx');
+
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      '@': path.resolve(__dirname, '../src'),
+    };
 
     // SASS + Tailwdind CSS
     config.module.rules.push({
@@ -39,6 +39,7 @@ const config: StorybookConfig = {
           options: {
             // sourceMap: true,
             implementation: require('sass'), // dart sass
+            additionalData: `@import "@/styles/core.scss";`, // update the path to the correct location
           },
         },
       ],

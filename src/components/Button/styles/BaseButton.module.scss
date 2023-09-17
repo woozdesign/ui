@@ -1,0 +1,71 @@
+.button {
+  // Layout
+  padding: var(--medium-padding);
+  border: none;
+  vertical-align: middle;
+  border-radius: 0.5rem;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+
+  // Typography
+  font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
+  font-weight: 400;
+  font-size: var(--font-size-4);
+  line-height: 1.5;
+  text-align: center;
+  white-space: nowrap;
+
+  // Effects and transitions
+  cursor: pointer;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+  appearance: none;
+
+  // States and variations
+  &--block {
+    width: 100%;
+  }
+
+  &--large {
+    height: 40px;
+    font-size: var(--font-size-4);
+    padding: var(--large-padding);
+  }
+
+  &--xlarge {
+    height: 48px;
+    font-size: var(--font-size-4);
+    padding: 0 2rem;
+  }
+
+  &--small {
+    height: 28px;
+    font-size: var(--font-size-2);
+    padding: var(--small-padding);
+  }
+
+  &--disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  &--round {
+    border-radius: 1.25rem;
+  }
+
+  &--circle {
+    border-radius: 50%;
+    padding: var(--medium-padding);
+  }
+
+  // Pseudo-elements
+  &::before,
+  &:-webkit-details-marker {
+    display: none;
+  }
+}

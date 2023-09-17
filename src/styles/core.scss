@@ -1,0 +1,60 @@
+@import 'lib/breakpoints.scss';
+@import 'lib/typography.scss';
+@import 'lib/colors.scss';
+@import 'lib/common.scss';
+
+// Global Styles
+:root {
+  font-family: Inter;
+  --font-size-1: #{$font-size-1};
+  --font-size-2: #{$font-size-2};
+  --font-size-3: #{$font-size-3};
+  --font-size-4: #{$font-size-4};
+  --font-size-5: #{$font-size-5};
+  --font-size-6: #{$font-size-6};
+  --font-size-7: #{$font-size-7};
+  --font-size-8: #{$font-size-8};
+
+  --breakpoint-m: map-get($breakpoints, md);
+  --breakpoint-l: map-get($breakpoints, lg);
+
+  --small-padding: #{$small-padding};
+  --medium-padding: #{$medium-padding};
+  --large-padding: #{$large-padding};
+
+  --color-surface: #{$bg-dark};
+  --color-background: #{$bg-base};
+  --color-elevated: #{$bg-light};
+  --color-outline: #{$default-outline};
+  --color-primary: #{$primary-color};
+  --color-secondary: #{$secondary-color};
+  --color-default: #{$default-color};
+}
+
+// Medium Devices
+@media (min-width: map-get($breakpoints, md)) and (max-width: (map-get($breakpoints, lg) - 1px)) {
+  :root {
+    --font-size-1: #{$font-size-md-1};
+    --font-size-2: #{$font-size-md-2};
+    --font-size-3: #{$font-size-md-3};
+    --font-size-4: #{$font-size-md-4};
+    --font-size-5: #{$font-size-md-5};
+    --font-size-6: #{$font-size-md-6};
+    --font-size-7: #{$font-size-md-7};
+    --font-size-8: #{$font-size-md-8};
+  }
+}
+
+// Large Devices
+@media (min-width: map-get($breakpoints, lg)) {
+  :root {
+    --font-size-1: #{$font-size-lg-1};
+    --font-size-2: #{$font-size-lg-2};
+    --font-size-3: #{$font-size-lg-3};
+    --font-size-4: #{$font-size-lg-4};
+    --font-size-5: #{$font-size-lg-5};
+    --font-size-6: #{$font-size-lg-6};
+    --font-size-7: #{$font-size-lg-7};
+    --font-size-8: #{$font-size-lg-8};
+  }
+}
