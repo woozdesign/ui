@@ -1,0 +1,29 @@
+@import '@/styles/lib/colors';
+
+.button--secondary {
+  @each $variant, $colors in $color-variants {
+    &--color-#{$variant} {
+      color: map-get($colors, color);
+      background-color: rgba(map-get($colors, color), 0.2);
+
+      &:hover {
+        background-color: rgba(map-get($colors, hover), 0.2);
+      }
+
+      &:active {
+        background-color: rgba(map-get($colors, active), 0.2);
+        box-shadow: boxShadow(map-get($colors, color));
+      }
+
+      &:focus {
+      }
+      > .icon-prepend {
+        fill: map-get($colors, color);
+      }
+
+      > .icon-append {
+        fill: map-get($colors, color);
+      }
+    }
+  }
+}

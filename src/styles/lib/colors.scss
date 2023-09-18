@@ -1,0 +1,92 @@
+// Base Colors
+$primary-color: #915eff;
+$bg-base: black;
+
+// Derived Primary Colors
+$primary-hover: lighten($primary-color, 2%);
+$primary-active: darken($primary-color, 4%);
+
+// Secondary Colors
+$secondary-color: #b1fc03;
+$secondary-hover: lighten($secondary-color, 2%);
+$secondary-active: darken($secondary-color, 4%);
+
+// Background Colors
+$bg-dark: #111;
+$bg-light: #333;
+
+// Text Colors
+$text-base: #fff;
+$text-secondary: #aaa;
+$text-on-default: #000;
+$text-on-primary: #fff;
+$text-on-secondary: #fff;
+$text-on-success: #fff;
+$text-on-warning: #fff;
+$text-on-error: #fff;
+$text-on-bg: #eee;
+
+// Status Colors
+$success-color: #28a745;
+$warning-color: #ffc107;
+$error-color: #dc3545;
+
+// Derived Status Colors for Interactions
+$success-hover: darken($success-color, 10%);
+$warning-hover: darken($warning-color, 10%);
+$error-hover: darken($error-color, 10%);
+$success-active: darken($success-color, 15%);
+$warning-active: darken($warning-color, 15%);
+$error-active: darken($error-color, 15%);
+
+// Default Color
+$default-color: #fff;
+$default-hover: #fff;
+$default-outline: #555;
+$default-active: #fff;
+
+// Box-shadow Function
+@function boxShadow($color) {
+  @return rgba($color, 0.1) 0 0 0 1px inset, rgba($color, 0.2) 0 6px 15px 0, rgba($color, 0.3) 0 0 0 4px;
+}
+
+// Color Variants
+$color-variants: (
+  default: (
+    text: $text-on-default,
+    color: $default-color,
+    hover: $default-hover,
+    outline: $default-outline,
+    active: $default-active,
+  ),
+  primary: (
+    text: $text-on-primary,
+    color: $primary-color,
+    hover: $primary-hover,
+    active: $primary-active,
+  ),
+  secondary: (
+    text: $text-on-secondary,
+    color: $secondary-color,
+    hover: $secondary-hover,
+    active: $secondary-active,
+  ),
+  success: (
+    text: $text-on-success,
+    color: $success-color,
+    hover: $success-hover,
+    active: $success-active,
+  ),
+  error: (
+    text: $text-on-error,
+    color: $error-color,
+    hover: $error-hover,
+    active: $error-active,
+  ),
+  warning: (
+    text: $text-on-warning,
+    color: $warning-color,
+    hover: $warning-hover,
+    active: $warning-active,
+  ),
+);

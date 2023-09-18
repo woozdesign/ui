@@ -1,23 +1,8 @@
-.button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  background-color: #007bff;
-  color: white;
-  font-size: 1rem;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #0056b3;
-  }
-
-  &:active {
-    background-color: #004282;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    background-color: #c0c0c0;
-  }
-}
+@import '@/styles/lib/colors';
+@import '@/styles/lib/typography';
+@import './styles/BaseButton.module.scss';
+@import './styles/PrimaryButton.module.scss';
+@import './styles/SecondaryButton.module.scss';
+@import './styles/OutlinedButton.module.scss';
+@import './styles/TextButton.module.scss';
+@import './styles/IconButton.module.scss';
