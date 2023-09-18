@@ -1,0 +1,51 @@
+@import '@/styles/lib/colors';
+
+// Base settings
+$title-margin: 1rem 0;
+
+// Mixins
+@mixin titleStyles($fontSize, $color: $text-base) {
+  font-size: $fontSize;
+  margin: $title-margin;
+  color: $color;
+}
+
+@mixin textStyle($color, $fontSize) {
+  font-weight: 400;
+  &--small {
+    color: $color;
+    font-size: var(--font-size-3);
+  }
+  &--medium {
+    color: $color;
+    font-size: var(--font-size-4);
+  }
+  &--large {
+    color: $color;
+    font-size: var(--font-size-5);
+  }
+}
+
+// Titles
+@for $i from 1 through 6 {
+  .title-#{$i} {
+    @include titleStyles(var(--font-size-#{9 - $i}));
+  }
+  .subtitle-#{$i} {
+    @include titleStyles(var(--font-size-#{9 - $i}), $text-secondary);
+    font-weight: bold;
+  }
+}
+
+// Text styles
+.text {
+  &-primary {
+    @include textStyle($primary-color, var(--font-size-4));
+  }
+  &-secondary {
+    @include textStyle($text-secondary, var(--font-size-4));
+  }
+  &-default {
+    @include textStyle($text-base, var(--font-size-4));
+  }
+}

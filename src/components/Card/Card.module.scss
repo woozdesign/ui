@@ -1,0 +1,47 @@
+@import '@/styles/lib/colors';
+@import '@/styles/lib/typography';
+@import '@/styles/lib/common';
+
+.card {
+  overflow: hidden;
+  position: relative;
+  text-align: left;
+  background-color: $bg-dark;
+  color: $text-on-bg;
+  height: 100%;
+
+  border-radius: $default-border-radius;
+
+  img {
+    width: 100%;
+    object-fit: cover;
+  }
+  .title {
+    padding: 1rem;
+    // font-size: var(--font-size-5);
+    font-weight: bold;
+  }
+  .subtitle {
+    padding: 0 1rem;
+    font-size: var(--font-size-4);
+    color: $text-secondary;
+  }
+  .text {
+    padding: 1rem;
+    font-size: var(--font-size-4);
+  }
+
+  .actions {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+  &--outlined {
+    border: 1px solid $bg-light;
+  }
+}

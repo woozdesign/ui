@@ -1,0 +1,62 @@
+import React, { useState } from 'react';
+import { Story, Meta } from '@storybook/react';
+
+import Form from './Form';
+import TextField from '../TextField';
+import Button from '../Button';
+
+export default {
+  title: 'Components/Form',
+  component: Form,
+} as Meta;
+
+const Template: Story = (args) => {
+  const [inputValue, setInputValue] = useState('');
+  const [requiredValue, setRequiredValue] = useState('');
+
+  const [requiredValue2, setRequiredValue2] = useState('');
+
+  const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    alert('Form submitted with value: ' + inputValue);
+  };
+
+  const handleFormError = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    alert('Form error with value: ' + inputValue);
+  };
+
+  return (
+    <Form onSuccess={handleFormSubmit} onError={handleFormError} {...args}>
+      <TextField id="choose" label="Would you prefer a banana or cherry?" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+      <TextField id="choose" label="This is required" required value={requiredValue} onChange={(e) => setRequiredValue(e.target.value)} />
+      <TextField id="choose" label="This is required too" pattern="^[A-Za-z]+$" required value={requiredValue2} onChange={(e) => setRequiredValue2(e.target.value)} />
+      <Button buttonType={'submit'}>Submit</Button>
+    </Form>
+  );
+};
+
+export const Default = Template.bind({});
+Default.args = {};
+
+export const WithPrefilledValue = Template.bind({});
+WithPrefilledValue.args = {};
+WithPrefilledValue.decorators = [
+  (Story) => {
+    const [inputValue, setInputValue] = useState('banana');
+    return <Story inputValue={inputValue} setInputValue={setInputValue} />;
+  },
+];
+
+export const DisabledInput = Template.bind({});
+DisabledInput.args = {};
+DisabledInput.decorators = [
+  (Story) => {
+    return (
+      <Form onSuccess={handleFormSubmit} onError={handleFormError} {...args}>
+        <TextField id="choose" name="i-like" label="Would you prefer a banana or cherry?" required disabled />
+        <Button buttonType={'submit'}>Submit</Button>
+      </Form>
+    );
+  },
+];

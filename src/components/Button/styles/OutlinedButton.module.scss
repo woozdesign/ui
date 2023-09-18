@@ -1,0 +1,36 @@
+@import '@/styles/lib/colors';
+
+.button--outlined {
+  background-color: transparent;
+  transition:
+    all 0.2s,
+    box-shadow 0.08s ease-in;
+
+  @each $variant, $colors in $color-variants {
+    &--color-#{$variant} {
+      background-color: transparent;
+      color: map-get($colors, color);
+      border: 1px solid map-get($colors, outline) !important;
+
+      &:hover {
+        border-color: map-get($colors, hover);
+      }
+
+      &:active {
+        border-color: map-get($colors, active);
+        box-shadow: boxShadow(map-get($colors, color));
+      }
+
+      &:focus {
+      }
+
+      > .icon-prepend {
+        color: map-get($colors, color);
+      }
+
+      > .icon-append {
+        color: map-get($colors, color);
+      }
+    }
+  }
+}
