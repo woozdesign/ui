@@ -1,1 +1,2 @@
-export * from './src';
+import './dist/styles.css';
+export * from './dist';
