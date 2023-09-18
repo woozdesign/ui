@@ -1,3 +1,4 @@
+'use client';
 /* eslint-disable react/display-name */
 import React, { FC, ReactElement, ReactNode } from 'react';
 import styles from './Card.module.scss';

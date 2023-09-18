@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, ChangeEvent, useState } from 'react';
 import styles from './TextField.module.scss';
 import Typography from '../Typography/Typography';
