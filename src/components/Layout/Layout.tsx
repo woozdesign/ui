@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import styles from './Layout.module.scss';
 import { combineClassNames } from '@/utils/helper/combineClassNames';
