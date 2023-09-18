@@ -3,8 +3,8 @@ import React, { FC, MouseEvent, ButtonHTMLAttributes, AnchorHTMLAttributes } fro
 import styles from './Button.module.scss';
 import { combineClassNames } from '@/utils/helper/combineClassNames';
 
-type BaseButtonProps = ButtonHTMLAttributes<HTMLButtonElement>;
-type BaseAnchorProps = AnchorHTMLAttributes<HTMLAnchorElement>;
+type BaseButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+type BaseAnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
 
