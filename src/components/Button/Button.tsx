@@ -10,6 +10,7 @@ type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
 // type OverridableType = BaseAnchorProps;
 interface BaseProps {
   type?: 'primary' | 'outlined' | 'secondary' | 'text' | 'icon';
+  buttonType?: 'button' | 'submit' | 'reset';
   size?: 'xlarge' | 'large' | 'medium' | 'small';
   color?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning';
   block?: boolean;
@@ -34,6 +35,7 @@ type ButtonProps = ButtonSpecificProps | AnchorSpecificProps;
 
 const Button: FC<ButtonProps> = ({
   type = 'primary',
+  buttonType = 'button',
   size = 'medium',
   color = 'default',
   disabled = false,
@@ -73,7 +75,7 @@ const Button: FC<ButtonProps> = ({
   }
 
   return (
-    <button className={combineClassNames(classNameList)} disabled={disabled} onClick={handleButtonClick} {...other}>
+    <button className={combineClassNames(classNameList)} disabled={disabled} onClick={handleButtonClick} {...other} type={buttonType}>
       {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
       {children}
       {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}

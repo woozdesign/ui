@@ -18,9 +18,9 @@
   --breakpoint-m: map-get($breakpoints, md);
   --breakpoint-l: map-get($breakpoints, lg);
 
-  --small-padding: #{$small-padding};
-  --medium-padding: #{$medium-padding};
-  --large-padding: #{$large-padding};
+  --padding-small: #{$padding-small};
+  --padding-medium: #{$padding-medium};
+  --padding-large: #{$padding-large};
 
   --color-surface: #{$bg-dark};
   --color-background: #{$bg-base};
@@ -29,6 +29,9 @@
   --color-primary: #{$primary-color};
   --color-secondary: #{$secondary-color};
   --color-default: #{$default-color};
+  --color-error: #{$error-color};
+  --color-warning: #{$warning-color};
+  --color-success: #{$success-color};
 }
 
 // Medium Devices

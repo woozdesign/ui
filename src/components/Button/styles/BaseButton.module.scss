@@ -1,6 +1,6 @@
 .button {
   // Layout
-  padding: var(--medium-padding);
+  padding: var(--padding-medium);
   border: none;
   vertical-align: middle;
   border-radius: 0.5rem;
@@ -8,6 +8,7 @@
   display: inline-flex;
   align-items: center;
   text-decoration: none;
+  justify-content: center;
 
   // Typography
   font-family: -apple-system, system-ui, 'Segoe UI', Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
@@ -34,7 +35,7 @@
   &--large {
     height: 40px;
     font-size: var(--font-size-4);
-    padding: var(--large-padding);
+    padding: var(--padding-large);
   }
 
   &--xlarge {
@@ -46,7 +47,7 @@
   &--small {
     height: 28px;
     font-size: var(--font-size-2);
-    padding: var(--small-padding);
+    padding: var(--padding-small);
   }
 
   &--disabled {
@@ -60,7 +61,7 @@
 
   &--circle {
     border-radius: 50%;
-    padding: var(--medium-padding);
+    padding: var(--padding-medium);
   }
 
   // Pseudo-elements
