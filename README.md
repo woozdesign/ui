@@ -1,8 +1,5 @@
 ![header](https://capsule-render.vercel.app/api?type=rect&color=000&fontColor=fff&height=148&section=header&text=Wooz%20Design&fontSize=52)
 
-> [!WARNING]  
-> This project is very early-stage. Please be aware that the code structure changes frequently.
-
 ## 🖥 Environment Support
 
 - Modern browsers
@@ -14,6 +11,9 @@
 | Edge                                                                                                                                                                                                 | last 2 versions                                                                                                                                                                                                  | last 2 versions                                                                                                                                                                                              | last 2 versions                                                                                                                                                                                              | last 2 versions                                                                                                                                                                                                      |
 
 ## 📦 Install
+
+> [!WARNING]  
+> This project is very early-stage. Please be aware that the code structure changes frequently.
 
 ```bash
 npm install woozdesign-react
