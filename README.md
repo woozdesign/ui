@@ -16,22 +16,22 @@
 > This project is very early-stage. Please be aware that the code structure changes frequently.
 
 ```bash
-npm install woozdesign-react
+npm install woozdesign-ui
 ```
 
 ```bash
-yarn add woozdesign-react
+yarn add woozdesign-ui
 ```
 
 ```bash
-pnpm add woozdesign-react
+pnpm add woozdesign-ui
 ```
 
 ## 🔨 Usage
 
 ```jsx
 import React from 'react';
-import { Button, Layout } from 'woozdesign-react';
+import { Button, Layout } from 'woozdesign-ui';
 
 const App = () => (
   <Layout.Container>
@@ -53,8 +53,8 @@ const App = () => (
 Clone locally:
 
 ```bash
-$ git clone git@github.com:woozlabs/woozdesign-react.git
-$ cd woozdesign-react
+$ git clone git@github.com:woozdesign/woozdesign-ui.git
+$ cd woozdesign-ui
 $ npm install
 $ npm start
 ```
