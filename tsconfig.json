@@ -15,6 +15,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules", ".storybook", "**/*.spec.ts", "src/stories"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "types/styles.d.ts"],
+  "exclude": ["node_modules", ".storybook", "**/*.stories.tsx", "**/*.spec.ts", "src/stories"]
 }

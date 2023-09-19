@@ -4,13 +4,12 @@ declare module '*.css' {
   export default content;
 }
 
-declare module '*.module.scss' {
-  const classes: { [key: string]: string };
-  export default classes;
+declare module '*.scss' {
+  const content: { [key: string]: string };
+  export default content;
 }
 
-// For SCSS
-declare module '*.scss' {
-  const content: { [className: string]: string };
+declare module '*.module.scss' {
+  const content: { [key: string]: string };
   export default content;
 }

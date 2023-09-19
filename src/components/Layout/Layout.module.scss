@@ -1,16 +1,16 @@
 .container {
   max-width: 1200px;
   margin-left: auto;
-  width: 100%;
   margin-right: auto;
+  padding: 16px;
 }
 
 .row {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   margin-left: calc(-1 * var(--horizontal-gutter) / 2);
   margin-right: calc(-1 * var(--horizontal-gutter) / 2);
+  row-gap: var(--vertical-gutter);
 }
 
 .col {

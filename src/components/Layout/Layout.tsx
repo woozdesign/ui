@@ -1,7 +1,7 @@
 'use client';
+import { combineClassNames } from '@/utils/helper/combineClassNames';
 import React from 'react';
 import styles from './Layout.module.scss';
-import { combineClassNames } from '@/utils/helper/combineClassNames';
 
 interface ContainerProps extends React.HTMLProps<HTMLDivElement> {
   // className?: string;
@@ -9,11 +9,15 @@ interface ContainerProps extends React.HTMLProps<HTMLDivElement> {
   // style?: React.CSSProperties;
 }
 
-export const Container: React.FC<ContainerProps> = ({ children, ...other }) => (
-  <div {...other} className={`${other.className ?? ''} ${styles.container}`}>
-    {children}
-  </div>
-);
+export const Container: React.FC<ContainerProps> = ({ children, ...others }) => {
+  const classes = [styles.container, others.className ?? ''];
+  const combinedStyles = { ...others.style };
+  return (
+    <div {...others} className={combineClassNames(classes)} style={combinedStyles}>
+      {children}
+    </div>
+  );
+};
 
 interface RowProps extends React.HTMLProps<HTMLDivElement> {
   gutter?: [number, number]; // [horizontal, vertical]
@@ -21,37 +25,20 @@ interface RowProps extends React.HTMLProps<HTMLDivElement> {
   justify?: 'start' | 'center' | 'end' | 'space-between' | 'around' | 'space-evenly';
   children: React.ReactNode;
 }
-export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'center', justify = 'center', children, ...others }) => {
+export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'start', justify = 'start', children, ...others }) => {
   const classes = [styles.row, others.className ?? ''];
 
+  const combinedStyle = {
+    alignItems: align,
+    justifyContent: justify,
+    '--horizontal-gutter': `${gutter[0]}px`,
+    '--vertical-gutter': `${gutter[1]}px`,
+    ...others.style,
+  };
+
   return (
-    <div
-      {...others}
-      className={combineClassNames(classes)}
-      style={
-        {
-          ...others.style,
-          margin: `-${gutter[1] / 2}px -${gutter[0] / 2}px`,
-          alignItems: align,
-          justifyContent: justify,
-          '--horizontal-gutter': `${gutter[0]}px`,
-          '--vertical-gutter': `${gutter[1]}px`,
-        } as React.CSSProperties
-      }
-    >
-      {React.Children.map(children, (child) => {
-        return React.isValidElement(child)
-          ? React.cloneElement(child, {
-              style: {
-                ...child.props.style,
-                paddingLeft: `${gutter[0] / 2}px`,
-                paddingRight: `${gutter[0] / 2}px`,
-                paddingTop: `${gutter[1] / 2}px`,
-                paddingBottom: `${gutter[1] / 2}px`,
-              },
-            })
-          : child;
-      })}
+    <div {...others} className={combineClassNames(classes)} style={combinedStyle}>
+      {children}
     </div>
   );
 };
@@ -64,10 +51,10 @@ interface ColProps extends React.HTMLProps<HTMLDivElement> {
   xl?: number;
   children: React.ReactNode;
 }
-export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, style, ...other }) => {
+export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, ...others }) => {
   const classes = [
     styles.col,
-    other.className ?? '',
+    others.className ?? '',
     xs ? styles[`xs-${xs}`] : '',
     sm ? styles[`sm-${sm}`] : '',
     md ? styles[`md-${md}`] : '',
@@ -76,13 +63,11 @@ export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, style, .
   ];
 
   const combinedStyle = {
-    paddingLeft: 'var(--horizontal-gutter) / 2',
-    paddingRight: 'var(--horizontal-gutter) / 2',
-    ...style,
+    ...others.style,
   };
 
   return (
-    <div {...other} style={combinedStyle} className={combineClassNames(classes)}>
+    <div {...others} className={combineClassNames(classes)} style={combinedStyle}>
       {children}
     </div>
   );

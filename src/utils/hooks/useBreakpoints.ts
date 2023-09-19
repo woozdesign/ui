@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
-type Breakpoints = {
+export type Breakpoints = {
   xs: number;
   sm: number;
   md: number;
@@ -9,9 +9,9 @@ type Breakpoints = {
   xxl: number;
 };
 
-type BreakpointKeys = keyof Breakpoints;
+export type BreakpointKeys = keyof Breakpoints;
 
-const breakpoints: Breakpoints = {
+export const breakpoints: Breakpoints = {
   xs: 0,
   sm: 576,
   md: 768,
@@ -20,7 +20,7 @@ const breakpoints: Breakpoints = {
   xxl: 1600,
 };
 
-type CurrentBreakpoint = {
+export type CurrentBreakpoint = {
   breakpoint: BreakpointKeys;
   xs: boolean;
   sm: boolean;

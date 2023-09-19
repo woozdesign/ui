@@ -1,11 +1,11 @@
 'use client';
 /* eslint-disable react/display-name */
-import React, { FC, ReactElement, ReactNode } from 'react';
-import styles from './Card.module.scss';
-import Typography from '../Typography/Typography';
 import { combineClassNames } from '@/utils/helper/combineClassNames';
+import React, { FC, ReactNode } from 'react';
+import Typography from '../Typography/Typography';
+import styles from './Card.module.scss';
 
-interface CardProps extends React.HTMLProps<HTMLDivElement> {
+export interface CardProps extends React.HTMLProps<HTMLDivElement> {
   outlined?: boolean;
   backgroundColor?: string;
   children: ReactNode;
@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> & {
   );
 };
 
-interface TitleProps extends Omit<React.HTMLProps<HTMLDivElement>, 'type'> {
+export interface TitleProps extends Omit<React.HTMLProps<HTMLDivElement>, 'type'> {
   level?: number;
   children: ReactNode;
 }
@@ -50,7 +50,7 @@ Card.Title = ({ children, level = 4, ...others }: TitleProps) => {
   );
 };
 
-interface SubtitleProps extends React.HTMLProps<HTMLDivElement> {
+export interface SubtitleProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
 }
 
@@ -58,7 +58,7 @@ Card.Subtitle = ({ children }: SubtitleProps) => {
   return <div className={styles.subtitle}>{children}</div>;
 };
 
-interface TextProps extends React.HTMLProps<HTMLDivElement> {
+export interface TextProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
 }
 
@@ -66,7 +66,7 @@ Card.Text = ({ children }: TextProps) => {
   return <div className={styles.text}>{children}</div>;
 };
 
-interface ContentProps extends React.HTMLProps<HTMLDivElement> {
+export interface ContentProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
 }
 
@@ -74,7 +74,7 @@ Card.Content = ({ children }: ContentProps) => {
   return <div className={styles.content}>{children}</div>;
 };
 
-interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
+export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
 }
 
