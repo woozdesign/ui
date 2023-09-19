@@ -3,12 +3,8 @@ import React, { FC, MouseEvent, ButtonHTMLAttributes, AnchorHTMLAttributes } fro
 import styles from './Button.module.scss';
 import { combineClassNames } from '@/utils/helper/combineClassNames';
 
-type BaseButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
-type BaseAnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
-
-// type OverridableType = BaseAnchorProps;
 interface BaseProps {
   type?: 'primary' | 'outlined' | 'secondary' | 'text' | 'icon';
   buttonType?: 'button' | 'submit' | 'reset';
