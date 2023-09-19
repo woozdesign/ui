@@ -9,11 +9,11 @@ interface ContainerProps extends React.HTMLProps<HTMLDivElement> {
   // style?: React.CSSProperties;
 }
 
-export const Container: React.FC<ContainerProps> = ({ children, className, style, ...other }) => {
+export const Container: React.FC<ContainerProps> = ({ children, className, ...other }) => {
   const classes = [styles.container, className];
-  const combinedStyles = { ...style, ...other.style };
+  const combinedStyles = { ...other.style };
   return (
-    <div className={combineClassNames(classes)} style={combinedStyles} {...other}>
+    <div {...other} className={combineClassNames(classes)} style={combinedStyles}>
       {children}
     </div>
   );
@@ -25,18 +25,17 @@ interface RowProps extends React.HTMLProps<HTMLDivElement> {
   justify?: 'start' | 'center' | 'end' | 'space-between' | 'around' | 'space-evenly';
   children: React.ReactNode;
 }
-export const Row: React.FC<RowProps> = ({ gutter = [0, 0], children, className, style, ...others }) => {
+export const Row: React.FC<RowProps> = ({ gutter = [0, 0], children, className, ...others }) => {
   const classes = [styles.row, className];
 
   const combinedStyle = {
     '--horizontal-gutter': `${gutter[0]}px`,
     '--vertical-gutter': `${gutter[1]}px`,
-    ...style,
     ...others.style,
   };
 
   return (
-    <div className={combineClassNames(classes)} style={combinedStyle} {...others}>
+    <div {...others} className={combineClassNames(classes)} style={combinedStyle}>
       {children}
     </div>
   );
@@ -50,7 +49,7 @@ interface ColProps extends React.HTMLProps<HTMLDivElement> {
   xl?: number;
   children: React.ReactNode;
 }
-export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, className, style, ...other }) => {
+export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, className, ...other }) => {
   const classes = [
     styles.col,
     className,
@@ -62,12 +61,11 @@ export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, classNam
   ];
 
   const combinedStyle = {
-    ...style,
     ...other.style,
   };
 
   return (
-    <div className={combineClassNames(classes)} style={combinedStyle} {...other}>
+    <div {...other} className={combineClassNames(classes)} style={combinedStyle}>
       {children}
     </div>
   );
