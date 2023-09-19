@@ -1,9 +1,13 @@
 'use client';
 import React, { FC, FormEvent, ReactNode, useState } from 'react';
 import styles from './Form.module.scss';
+import { TextFieldProps } from '../TextField/TextField';
 
-interface FormProps {
-  children: ReactNode;
+export interface FormChildProps {
+  hasSubmitted?: boolean;
+}
+export interface FormProps {
+  children: React.ReactElement<FormChildProps> | React.ReactElement<FormChildProps>[];
   onSuccess: (e: FormEvent<HTMLFormElement>) => void;
   onError: () => void;
 }
@@ -25,7 +29,7 @@ const Form: FC<FormProps> = ({ children, onSuccess, onError }) => {
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
-          return React.cloneElement(child, { hasSubmitted });
+          return React.cloneElement<FormChildProps>(child, { hasSubmitted });
         }
         return child;
       })}

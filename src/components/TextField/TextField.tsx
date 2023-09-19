@@ -3,14 +3,15 @@ import { combineClassNames } from '@/utils/helper/combineClassNames';
 import React, { ChangeEvent, FC, useState } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './TextField.module.scss';
+import { FormChildProps } from '../Form/Form';
 
-export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'> {
+export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'>, FormChildProps {
   size?: 'large' | 'medium' | 'small';
   label?: string;
   iconPrepend?: JSX.Element;
   iconAppend?: JSX.Element;
   block?: boolean;
-  hasSubmitted?: boolean;
+
   pattern?: string;
   errorMessage?: string; // Custom error message prop
   onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
@@ -24,7 +25,7 @@ const TextField: FC<TextFieldProps> = ({ size = 'medium', label, iconPrepend, ic
   const [error, setError] = useState<string | null>(null);
 
   const handleInvalid = (e: React.FormEvent<HTMLInputElement>) => {
-    validateInput(e.target);
+    validateInput(e.target as HTMLInputElement);
   };
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (hasSubmitted || e.target.value) validateInput(e.target);
