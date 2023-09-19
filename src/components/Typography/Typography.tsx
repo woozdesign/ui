@@ -20,7 +20,7 @@ const Title: FC<TitleProps> = ({ level = 2, type = 'default', children, classNam
   const combinedClass = combineClassNames([titleStyle, className]);
 
   return (
-    <Tag {...other} className={combinedClass}>
+    <Tag className={combinedClass} {...other}>
       {children}
     </Tag>
   );
@@ -32,7 +32,7 @@ const Subtitle: FC<TitleProps> = ({ level = 6, type = 'default', children, class
   const combinedClass = combineClassNames([titleStyle, className]);
 
   return (
-    <Tag {...other} className={combinedClass}>
+    <Tag className={combinedClass} {...other}>
       {children}
     </Tag>
   );
@@ -49,7 +49,7 @@ const Text: FC<TextProps> = ({ children, type = 'default', size = 'medium', clas
   const combinedClass = combineClassNames([textStyle, className]);
 
   return (
-    <span {...other} className={combinedClass}>
+    <span className={combinedClass} {...other}>
       {children}
     </span>
   );
@@ -65,7 +65,7 @@ const Paragraph: FC<ParagraphProps> = ({ children, type = 'default', size = 'med
   const combinedClass = combineClassNames([textStyle, className]);
 
   return (
-    <p {...other} className={combinedClass}>
+    <p className={combinedClass} {...other}>
       {children}
     </p>
   );

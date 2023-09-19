@@ -37,7 +37,34 @@ export default {
 // Combined Story with Container, Row, and Col
 export const GridSystemStory: Story<ContainerProps> = (args) => (
   <Layout.Container {...args}>
-    <Layout.Row gutter={[32, 32]} justify="start">
+    <Layout.Row gutter={[32, 32]}>
+      <Layout.Col xs={24} md={8}>
+        <Card outlined>
+          <Card.Content>Column 1</Card.Content>
+        </Card>
+      </Layout.Col>
+      <Layout.Col xs={24} md={8}>
+        <Card outlined>
+          <Card.Content>Column 2</Card.Content>
+        </Card>
+      </Layout.Col>
+      <Layout.Col xs={12} md={8}>
+        <Card outlined>
+          <Card.Content>Column 3</Card.Content>
+        </Card>
+      </Layout.Col>
+      <Layout.Col xs={12} md={8}>
+        <Card outlined>
+          <Card.Content>Column 4</Card.Content>
+        </Card>
+      </Layout.Col>
+      <Layout.Col xs={16} md={8}>
+        <Card outlined>
+          <Card.Content>Column 5</Card.Content>
+        </Card>
+      </Layout.Col>
+    </Layout.Row>
+    <Layout.Row gutter={[32, 32]} style={{ marginTop: '4rem' }}>
       <Layout.Col xs={24} md={8}>
         <Card outlined>
           <Card.Content>Column 1</Card.Content>
