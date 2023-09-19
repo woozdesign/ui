@@ -9,8 +9,8 @@ interface ContainerProps extends React.HTMLProps<HTMLDivElement> {
   // style?: React.CSSProperties;
 }
 
-export const Container: React.FC<ContainerProps> = ({ children, ...other }) => (
-  <div {...other} className={combineClassNames([other.className ?? '', styles.container])} style={...other.style}>
+export const Container: React.FC<ContainerProps> = ({ children, className, style, ...other }) => (
+  <div {...other} className={combineClassNames([styles.container, className])} style={{ ...style, ...other.style }}>
     {children}
   </div>
 );
@@ -21,37 +21,22 @@ interface RowProps extends React.HTMLProps<HTMLDivElement> {
   justify?: 'start' | 'center' | 'end' | 'space-between' | 'around' | 'space-evenly';
   children: React.ReactNode;
 }
-export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'center', justify = 'center', children, ...others }) => {
-  const classes = [styles.row, others.className ?? ''];
+export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'center', justify = 'center', children, className, style, ...others }) => {
+  const classes = [styles.row, className];
+
+  const combinedStyle = {
+    margin: `-${gutter[1] / 2}px -${gutter[0] / 2}px`,
+    alignItems: align,
+    justifyContent: justify,
+    '--horizontal-gutter': `${gutter[0]}px`,
+    '--vertical-gutter': `${gutter[1]}px`,
+    ...style,
+    ...others.style,
+  };
 
   return (
-    <div
-      {...others}
-      className={combineClassNames(classes)}
-      style={
-        {
-          ...others.style,
-          margin: `-${gutter[1] / 2}px -${gutter[0] / 2}px`,
-          alignItems: align,
-          justifyContent: justify,
-          '--horizontal-gutter': `${gutter[0]}px`,
-          '--vertical-gutter': `${gutter[1]}px`,
-        } as React.CSSProperties
-      }
-    >
-      {React.Children.map(children, (child) => {
-        return React.isValidElement(child)
-          ? React.cloneElement(child, {
-              style: {
-                ...child.props.style,
-                paddingLeft: `${gutter[0] / 2}px`,
-                paddingRight: `${gutter[0] / 2}px`,
-                paddingTop: `${gutter[1] / 2}px`,
-                paddingBottom: `${gutter[1] / 2}px`,
-              },
-            })
-          : child;
-      })}
+    <div {...others} className={combineClassNames(classes)} style={combinedStyle}>
+      {/* ... */}
     </div>
   );
 };
@@ -64,10 +49,10 @@ interface ColProps extends React.HTMLProps<HTMLDivElement> {
   xl?: number;
   children: React.ReactNode;
 }
-export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, style, ...other }) => {
+export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, className, style, ...other }) => {
   const classes = [
     styles.col,
-    other.className ?? '',
+    className,
     xs ? styles[`xs-${xs}`] : '',
     sm ? styles[`sm-${sm}`] : '',
     md ? styles[`md-${md}`] : '',
@@ -79,6 +64,7 @@ export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, style, .
     paddingLeft: 'var(--horizontal-gutter) / 2',
     paddingRight: 'var(--horizontal-gutter) / 2',
     ...style,
+    ...other.style,
   };
 
   return (
