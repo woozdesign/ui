@@ -4,13 +4,16 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+# Build output
+dist/
+build/
+
+# TypeScript
+*.tsbuildinfo
+tsc-debug.log
+
 # Storybook build
 storybook-static/
-
-# TypeScript build output
-
-*.tsbuildinfo
-
 
 # IDE - Visual Studio Code
 .vscode/
@@ -21,12 +24,14 @@ storybook-static/
 # Temporary files
 *.tmp
 *.swp
+*.bak
 
-# Next.js
-.next/
-out/
+# Cache (babel, eslint, etc.)
+.cache/
+.eslintcache
+
+# Lock files (if you decide not to track them)
+#*-lock.json
+#yarn.lock
 
 # End of .gitignore
-
-
-.cache
