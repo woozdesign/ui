@@ -4,12 +4,12 @@ declare module '*.css' {
   export default content;
 }
 
-declare module '*.scss' {
+declare module '*.module.scss' {
   const content: { [key: string]: string };
   export default content;
 }
 
-declare module '*.module.scss' {
+declare module '*.scss' {
   const content: { [key: string]: string };
   export default content;
 }

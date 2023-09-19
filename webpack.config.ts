@@ -29,7 +29,7 @@ module.exports = {
             loader: 'css-loader',
             options: {
               modules: {
-                localIdentName: 'woozlabs-[hash:base64:5]',
+                localIdentName: 'woozdesign-[hash:base64:5]',
               },
             },
           },

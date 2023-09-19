@@ -1,6 +1,6 @@
 {
-  "name": "woozdesign-react",
-  "version": "1.0.0",
+  "name": "woozdesign-ui",
+  "version": "0.0.1",
   "description": "",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
