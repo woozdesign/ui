@@ -10,7 +10,7 @@ interface ContainerProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export const Container: React.FC<ContainerProps> = ({ children, ...other }) => (
-  <div {...other} className={`${other.className ?? ''} ${styles.container}`}>
+  <div {...other} className={combineClassNames([other.className ?? '', styles.container])} style={...other.style}>
     {children}
   </div>
 );
@@ -82,7 +82,7 @@ export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, style, .
   };
 
   return (
-    <div {...other} style={combinedStyle} className={combineClassNames(classes)}>
+    <div {...other} className={combineClassNames(classes)} style={combinedStyle}>
       {children}
     </div>
   );
