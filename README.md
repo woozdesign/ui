@@ -3,13 +3,6 @@
 > [!WARNING]  
 > This project is very early-stage. Please be aware that the code structure changes frequently.
 
-## ✨ Features
-
-- 🌈 Enterprise-class UI designed for web applications.
-- 📦 A set of high-quality React components out of the box.
-- 🛡 Written in TypeScript with predictable static types.
-- 🎨 Powerful theme customization based on CSS-in-JS.
-
 ## 🖥 Environment Support
 
 - Modern browsers
