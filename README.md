@@ -1,14 +1,4 @@
-# Wooz Design
-
-> [!WARNING]  
-> This project is very early-stage. Please be aware that the code structure changes frequently.
-
-## ✨ Features
-
-- 🌈 Enterprise-class UI designed for web applications.
-- 📦 A set of high-quality React components out of the box.
-- 🛡 Written in TypeScript with predictable static types.
-- 🎨 Powerful theme customization based on CSS-in-JS.
+![header](https://capsule-render.vercel.app/api?type=rect&color=000&fontColor=fff&height=148&section=header&text=Wooz%20Design&fontSize=52)
 
 ## 🖥 Environment Support
 
@@ -21,6 +11,9 @@
 | Edge                                                                                                                                                                                                 | last 2 versions                                                                                                                                                                                                  | last 2 versions                                                                                                                                                                                              | last 2 versions                                                                                                                                                                                              | last 2 versions                                                                                                                                                                                                      |
 
 ## 📦 Install
+
+> [!WARNING]  
+> This project is very early-stage. Please be aware that the code structure changes frequently.
 
 ```bash
 npm install woozdesign-react
