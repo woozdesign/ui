@@ -18,6 +18,9 @@
     "react-dom": "^18.2.0",
     "sass": "^1.67.0"
   },
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@babel/core": "^7.22.20",
     "@babel/preset-env": "^7.22.20",
