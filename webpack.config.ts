@@ -22,7 +22,7 @@ module.exports = {
         exclude: [/node_modules/, /\.stories\.tsx$/],
       },
       {
-        test: /\.module\.scss$/,
+        test: /\.scss$/,
         use: [
           MiniCssExtractPlugin.loader,
           {

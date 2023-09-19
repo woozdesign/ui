@@ -1,2 +1,2 @@
-// import './dist/styles.css';
+import './dist/styles.css';
 export * from './dist';
