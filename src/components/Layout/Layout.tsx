@@ -25,10 +25,12 @@ interface RowProps extends React.HTMLProps<HTMLDivElement> {
   justify?: 'start' | 'center' | 'end' | 'space-between' | 'around' | 'space-evenly';
   children: React.ReactNode;
 }
-export const Row: React.FC<RowProps> = ({ gutter = [0, 0], children, className, ...others }) => {
+export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'start', justify = 'start', children, className, ...others }) => {
   const classes = [styles.row, className];
 
   const combinedStyle = {
+    alignItems: align,
+    justifyContent: justify,
     '--horizontal-gutter': `${gutter[0]}px`,
     '--vertical-gutter': `${gutter[1]}px`,
     ...others.style,

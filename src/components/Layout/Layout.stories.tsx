@@ -64,7 +64,7 @@ export const GridSystemStory: Story<ContainerProps> = (args) => (
         </Card>
       </Layout.Col>
     </Layout.Row>
-    <Layout.Row gutter={[32, 32]} style={{ marginTop: '4rem' }}>
+    <Layout.Row gutter={[32, 32]} style={{ marginTop: '4rem' }} align="center" justify="center">
       <Layout.Col xs={24} md={8}>
         <Card outlined>
           <Card.Content>Column 1</Card.Content>
