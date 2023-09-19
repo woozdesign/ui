@@ -1,7 +1,7 @@
 'use client';
-import React, { FC, MouseEvent, ButtonHTMLAttributes, AnchorHTMLAttributes } from 'react';
-import styles from './Button.module.scss';
 import { combineClassNames } from '@/utils/helper/combineClassNames';
+import React, { FC } from 'react';
+import styles from './Button.module.scss';
 
 type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
@@ -28,7 +28,7 @@ interface AnchorSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButton
   onClick?: AnchorClickHandler;
 }
 
-type ButtonProps = ButtonSpecificProps | AnchorSpecificProps;
+export type ButtonProps = ButtonSpecificProps | AnchorSpecificProps;
 
 const Button: FC<ButtonProps> = ({
   type = 'primary',

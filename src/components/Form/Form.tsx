@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, ReactNode, FormEvent, useState } from 'react';
+import React, { FC, FormEvent, ReactNode, useState } from 'react';
 import styles from './Form.module.scss';
 
 interface FormProps {

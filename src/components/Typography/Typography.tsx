@@ -1,15 +1,15 @@
 'use client';
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import { combineClassNames } from '@/utils/helper/combineClassNames';
 import React, { FC } from 'react';
 import styles from './Typography.module.scss';
-import { combineClassNames } from '@/utils/helper/combineClassNames';
 
-interface TypographyProps {
+export interface TypographyProps {
   className?: string;
   children: React.ReactNode;
   style?: React.CSSProperties;
 }
-interface TitleProps extends TypographyProps {
+export interface TitleProps extends TypographyProps {
   level?: 1 | 2 | 3 | 4 | 5 | 6 | number;
   type?: 'default' | 'primary';
 }
@@ -38,7 +38,7 @@ const Subtitle: FC<TitleProps> = ({ level = 6, type = 'default', children, class
   );
 };
 
-interface TextProps extends Omit<React.HTMLProps<HTMLSpanElement>, 'size'> {
+export interface TextProps extends Omit<React.HTMLProps<HTMLSpanElement>, 'size'> {
   type?: 'default' | 'primary' | 'secondary';
   size?: 'small' | 'medium' | 'large';
 }
@@ -55,7 +55,7 @@ const Text: FC<TextProps> = ({ children, type = 'default', size = 'medium', clas
   );
 };
 
-interface ParagraphProps extends Omit<React.HTMLProps<HTMLParagraphElement>, 'size'> {
+export interface ParagraphProps extends Omit<React.HTMLProps<HTMLParagraphElement>, 'size'> {
   type?: 'default' | 'primary' | 'secondary';
   size?: 'small' | 'medium' | 'large';
 }

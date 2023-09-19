@@ -1,10 +1,10 @@
 'use client';
-import React, { FC, ChangeEvent, useState } from 'react';
-import styles from './TextField.module.scss';
-import Typography from '../Typography/Typography';
 import { combineClassNames } from '@/utils/helper/combineClassNames';
+import React, { ChangeEvent, FC, useState } from 'react';
+import Typography from '../Typography/Typography';
+import styles from './TextField.module.scss';
 
-interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'> {
+export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'> {
   size?: 'large' | 'medium' | 'small';
   label?: string;
   iconPrepend?: JSX.Element;

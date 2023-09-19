@@ -18,8 +18,8 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
+        use: ['babel-loader'],
+        exclude: [/node_modules/, /\.stories\.tsx$/],
       },
       {
         test: /\.module\.scss$/,
