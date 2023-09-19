@@ -6,11 +6,11 @@
 }
 
 .row {
-  width: 100%;
   display: flex;
   flex-wrap: wrap;
   margin-left: calc(-1 * var(--horizontal-gutter) / 2);
   margin-right: calc(-1 * var(--horizontal-gutter) / 2);
+  row-gap: var(--vertical-gutter);
 }
 
 .col {

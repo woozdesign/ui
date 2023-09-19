@@ -25,7 +25,6 @@ export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'center', jus
   const classes = [styles.row, className];
 
   const combinedStyle = {
-    margin: `-${gutter[1] / 2}px -${gutter[0] / 2}px`,
     alignItems: align,
     justifyContent: justify,
     '--horizontal-gutter': `${gutter[0]}px`,
@@ -36,7 +35,7 @@ export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'center', jus
 
   return (
     <div {...others} className={combineClassNames(classes)} style={combinedStyle}>
-      {/* ... */}
+      {children}
     </div>
   );
 };
@@ -61,8 +60,6 @@ export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, classNam
   ];
 
   const combinedStyle = {
-    paddingLeft: 'var(--horizontal-gutter) / 2',
-    paddingRight: 'var(--horizontal-gutter) / 2',
     ...style,
     ...other.style,
   };
