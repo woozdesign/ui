@@ -18,7 +18,7 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['babel-loader'],
+        use: ['babel-loader', 'ts-loader'],
         exclude: [/node_modules/, /\.stories\.tsx$/],
       },
       {
@@ -28,7 +28,9 @@ module.exports = {
           {
             loader: 'css-loader',
             options: {
-              modules: true,
+              modules: {
+                localIdentName: 'woozlabs-[hash:base64:5]',
+              },
             },
           },
           'sass-loader',
