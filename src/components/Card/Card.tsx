@@ -1,77 +1,81 @@
-'use client';
 /* eslint-disable react/display-name */
-import { combineClassNames } from '@/utils/helper/combineClassNames';
 import React, { FC, ReactNode } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
+import { combineClassNames } from '@/utils';
 
-export interface CardProps extends React.HTMLProps<HTMLDivElement> {
+export interface CardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
   outlined?: boolean;
-  backgroundColor?: string;
+  size?: 'small' | 'medium' | 'large';
   children: ReactNode;
 }
 
-const Card: React.FC<CardProps> & {
-  Title: FC<TitleProps>;
-  Subtitle: FC<SubtitleProps>;
-  Text: FC<TextProps>;
+const Card: FC<CardProps> & {
+  Heading: FC<HeadingProps>;
+  Body: FC<BodyProps>;
   Actions: FC<ActionsProps>;
-  Content: FC<ContentProps>;
-} = ({ outlined, backgroundColor, children, ...others }) => {
+} = ({ outlined = true, size = 'medium', children, ...others }) => {
   const cardClasses = [styles.card];
 
   if (outlined) {
     cardClasses.push(styles['card--outlined']);
   }
 
-  const cardStyle = {
-    backgroundColor: backgroundColor,
-  };
+  // if (size) {
+  //   cardClasses.push(styles[`card--${size}`]); // This will add classes like card--small, card--medium, etc.
+  // }
 
   return (
-    <div className={combineClassNames(cardClasses)} style={cardStyle} {...others}>
+    <div className={combineClassNames(cardClasses)} {...others}>
       {children}
     </div>
   );
 };
 
-export interface TitleProps extends Omit<React.HTMLProps<HTMLDivElement>, 'type'> {
-  level?: number;
-  children: ReactNode;
+export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'action'> {
+  title: ReactNode;
+  subtitle?: ReactNode;
+  action?: ReactNode;
 }
 
-Card.Title = ({ children, level = 4, ...others }: TitleProps) => {
+Card.Heading = ({ title, subtitle, action }: HeadingProps) => {
   return (
-    <div className={styles.title}>
-      <Typography.Title level={level} style={{ margin: '0' }} {...others}>
-        {children}
-      </Typography.Title>
+    <div className={styles.heading}>
+      <div>
+        <Typography.Title level={5} style={{ margin: '0' }}>
+          {title}
+        </Typography.Title>
+        {subtitle && (
+          <Typography.Text type={'secondary'} style={{ margin: '0' }}>
+            {subtitle}
+          </Typography.Text>
+        )}
+      </div>
+      {action && <div className={styles['heading-action']}>{action}</div>}
     </div>
   );
 };
 
-export interface SubtitleProps extends React.HTMLProps<HTMLDivElement> {
-  children: ReactNode;
+export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title'> {
+  title?: ReactNode;
+  description: ReactNode;
 }
 
-Card.Subtitle = ({ children }: SubtitleProps) => {
-  return <div className={styles.subtitle}>{children}</div>;
-};
-
-export interface TextProps extends React.HTMLProps<HTMLDivElement> {
-  children: ReactNode;
-}
-
-Card.Text = ({ children }: TextProps) => {
-  return <div className={styles.text}>{children}</div>;
-};
-
-export interface ContentProps extends React.HTMLProps<HTMLDivElement> {
-  children: ReactNode;
-}
-
-Card.Content = ({ children }: ContentProps) => {
-  return <div className={styles.content}>{children}</div>;
+Card.Body = ({ title, description }: BodyProps) => {
+  return (
+    <div className={styles.body}>
+      {title && (
+        <Typography.Title level={5} style={{ margin: '0' }}>
+          {title}
+        </Typography.Title>
+      )}
+      {description && (
+        <Typography.Text type={'secondary'} style={{ margin: '0' }}>
+          {description}
+        </Typography.Text>
+      )}
+    </div>
+  );
 };
 
 export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {

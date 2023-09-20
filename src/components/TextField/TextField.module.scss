@@ -10,7 +10,7 @@
   max-width: 190px;
   border: 1px solid transparent;
   border-radius: 8px;
-  border-color: rgba($bg-light, 1);
+  border-color: rgba($elevated-color, 1);
 
   &.block {
     width: 100%;
@@ -40,7 +40,7 @@
   border: 2px solid transparent;
   border-radius: 8px;
   outline: none;
-  background-color: $bg-dark;
+  background-color: $surface-color;
   color: $text-base;
   transition: 0.3s ease;
 
@@ -56,7 +56,7 @@
   &:hover {
     outline: none;
     border-color: rgba($primary-color, 1);
-    background-color: $bg-dark;
+    background-color: $surface-color;
     box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
   }
 
@@ -64,7 +64,7 @@
     // border: 2px solid var(--color-primary);
   }
   &:disabled {
-    background-color: lighten($bg-dark, 10%); // lightens the dark background slightly
+    background-color: lighten($surface-color, 10%); // lightens the dark background slightly
     color: darken($text-base, 10%); // darkens the text color slightly
     pointer-events: none;
     cursor: not-allowed; // shows a not-allowed cursor when hovered

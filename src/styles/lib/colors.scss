@@ -1,5 +1,7 @@
+@import '~@woozdesign/colors/dist/colors';
+
 // Base Colors
-$primary-color: #915eff;
+$primary-color: $color-purple-50;
 $bg-base: black;
 
 // Derived Primary Colors
@@ -12,10 +14,9 @@ $secondary-hover: lighten($secondary-color, 2%);
 $secondary-active: darken($secondary-color, 4%);
 
 // Background Colors
-$bg-dark: #111;
-$bg-light: #333;
+$surface-color: #111;
+$elevated-color: #333;
 
-// Text Colors
 $text-base: #fff;
 $text-secondary: #aaa;
 $text-on-default: #000;
