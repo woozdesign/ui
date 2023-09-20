@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, type PropsWithChildren } from 'react';
-import { useServerInsertedHTML } from 'next/navigation';
+import React from 'react';
 import { Theme } from '@woozdesign/ui';
-import '@woozdesign/ui/dist/styles.css';
+import '@woozdesign/ui/styles.css';
 
-export const RootStyleRegistry = ({ children }: PropsWithChildren) => {
+export const RootStyleRegistry = ({ children }: React.PropsWithChildren) => {
   return <Theme.ThemeProvider appearance="light">{children}</Theme.ThemeProvider>;
 };
