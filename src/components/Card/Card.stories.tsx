@@ -2,7 +2,8 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Card, { CardProps } from './Card';
 import Button from '../Button';
-import ThemeProvider from '../Theme/Theme';
+import Theme from '../Theme/Theme';
+import '@/styles/core.scss';
 
 export default {
   title: 'Components/Card',
@@ -19,9 +20,9 @@ export default {
 } as Meta;
 
 const Template: Story<CardProps> = (args) => (
-  <ThemeProvider>
+  <Theme.ThemeProvider>
     <Card {...args} />
-  </ThemeProvider>
+  </Theme.ThemeProvider>
 );
 
 export const Default = Template.bind({});

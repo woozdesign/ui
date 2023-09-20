@@ -1,6 +1,4 @@
-@import '@/styles/lib/colors';
-@import '@/styles/lib/typography';
-@import '@/styles/lib/common';
+@import '@/styles/lib/colors.scss';
 
 .card {
   overflow: hidden;
@@ -9,7 +7,7 @@
   background-color: var(--color-slate-100);
   color: var(--color-on-surface);
   height: 100%;
-  border-radius: $default-border-radius;
+  border-radius: var(--border-radius-medium);
   &--small {
     // font-size: var(--font-size-5); // Adjust as necessary
     padding: 0.5rem; // Adjust as necessary

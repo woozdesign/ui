@@ -1,6 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Typography, { TitleProps, TextProps, ParagraphProps, TitleProps as SubtitleProps } from './Typography';
+import '@/styles/core.scss';
+import Theme from '../Theme/Theme';
 
 export default {
   title: 'Components/Typography',
@@ -8,7 +10,11 @@ export default {
 } as Meta;
 
 // Title Story
-const TitleTemplate: Story<TitleProps> = (args) => <Typography.Title {...args} />;
+const TitleTemplate: Story<TitleProps> = (args) => (
+  <Theme.ThemeProvider>
+    <Typography.Title {...args} />
+  </Theme.ThemeProvider>
+);
 export const DefaultTitle = TitleTemplate.bind({});
 DefaultTitle.args = {
   children: 'Default Title',

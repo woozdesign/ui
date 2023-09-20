@@ -1,6 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Button, { ButtonProps } from './Button';
+import '@/styles/core.scss';
+import Theme from '../Theme/Theme';
 
 export default {
   title: 'Components/Button',
@@ -8,7 +10,11 @@ export default {
   args: { children: 'Button' }, // Default content for the button across stories
 } as Meta;
 
-const Template: Story<ButtonProps> = (args) => <Button {...args} />;
+const Template: Story<ButtonProps> = (args) => (
+  <Theme.ThemeProvider>
+    <Button {...args} />
+  </Theme.ThemeProvider>
+);
 
 export const Primary = Template.bind({});
 Primary.args = {
