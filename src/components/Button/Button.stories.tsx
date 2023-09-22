@@ -11,34 +11,35 @@ export default {
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => (
-  <Theme.ThemeProvider>
+  <Theme.ThemeProvider appearance="dark">
     <Button {...args} />
   </Theme.ThemeProvider>
 );
 
 export const Primary = Template.bind({});
+
 Primary.args = {
-  type: 'primary',
+  variant: 'primary',
 };
 
 export const Outlined = Template.bind({});
 Outlined.args = {
-  type: 'outlined',
+  variant: 'outlined',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  type: 'secondary',
+  variant: 'secondary',
 };
 
 export const Text = Template.bind({});
 Text.args = {
-  type: 'text',
+  variant: 'text',
 };
 
 export const Icon = Template.bind({});
 Icon.args = {
-  type: 'icon',
+  variant: 'icon',
   iconPrepend: <span>🚀</span>, // just as an example icon
 };
 

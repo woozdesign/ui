@@ -6,8 +6,7 @@ import styles from './Button.module.scss';
 type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
 interface BaseProps {
-  type?: 'primary' | 'outlined' | 'secondary' | 'text' | 'icon';
-  buttonType?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'outlined' | 'secondary' | 'text' | 'icon';
   size?: 'xlarge' | 'large' | 'medium' | 'small';
   color?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning';
   block?: boolean;
@@ -19,11 +18,11 @@ interface BaseProps {
   // onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
 }
 
-interface ButtonSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size' | 'type'> {
+interface ButtonSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size'> {
   onClick?: ButtonClickHandler;
 }
 
-interface AnchorSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size' | 'type'> {
+interface AnchorSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size'> {
   href: string;
   onClick?: AnchorClickHandler;
 }
@@ -31,8 +30,7 @@ interface AnchorSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButton
 export type ButtonProps = ButtonSpecificProps | AnchorSpecificProps;
 
 const Button: FC<ButtonProps> = ({
-  type = 'primary',
-  buttonType = 'button',
+  variant = 'primary',
   size = 'medium',
   color = 'default',
   disabled = false,
@@ -49,7 +47,7 @@ const Button: FC<ButtonProps> = ({
     other.className ?? '',
     styles.button,
     styles[`button--${size}`],
-    styles[`button--${type}--color-${color}`],
+    styles[`button--${variant}--color-${color}`],
     disabled ? styles[`button--disabled`] : '',
     block ? styles['button--block'] : '',
     styles[`button--${shape}`],
@@ -72,7 +70,7 @@ const Button: FC<ButtonProps> = ({
   }
 
   return (
-    <button className={combineClassNames(classNameList)} disabled={disabled} onClick={handleButtonClick} {...other} type={buttonType}>
+    <button className={combineClassNames(classNameList)} disabled={disabled} onClick={handleButtonClick} {...other}>
       {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
       {children}
       {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}

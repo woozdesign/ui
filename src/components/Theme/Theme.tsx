@@ -2,18 +2,11 @@
 
 import * as React from 'react';
 import { combineClassNames } from '@/utils';
+import { getMatchingGrayColor, ThemeOptions, themeDefaults } from './ThemeOptions';
 
-type ThemeAppearance = 'inherit' | 'light' | 'dark';
-type ThemeRadius = 'none' | 'small' | 'medium' | 'large' | 'full';
-const DEFAULT_APPEARANCE: ThemeAppearance = 'dark';
-const DEFAULT_RADIUS: ThemeRadius = 'medium';
-
-type ThemeOptions = {
-  appearance: ThemeAppearance;
-  radius: ThemeRadius;
-};
 interface ThemeChangeHandlers {
   onAppearanceChange: (appearance: ThemeOptions['appearance']) => void;
+  onAccentColorChange: (accentColor: ThemeOptions['accentColor']) => void;
   onRadiusChange: (radius: ThemeOptions['radius']) => void;
 }
 interface ThemeContextValue extends ThemeOptions, ThemeChangeHandlers {}
@@ -42,12 +35,19 @@ ThemeProvider.displayName = 'ThemeProvider';
 
 interface ThemeRootProps extends ThemeImplPublicProps {}
 const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, forwardedRef) => {
-  const { appearance: appearanceProp = DEFAULT_APPEARANCE, radius: radiusProp = DEFAULT_RADIUS, ...rootProps } = props;
+  const {
+    appearance: appearanceProp = themeDefaults.appearance,
+    radius: radiusProp = themeDefaults.radius,
+    accentColor: accentColorProp = themeDefaults.accentColor,
+    ...rootProps
+  } = props;
 
   const [appearance, setAppearance] = React.useState(appearanceProp);
   React.useEffect(() => setAppearance(appearanceProp), [appearanceProp]);
   const [radius, setRadius] = React.useState(radiusProp);
   React.useEffect(() => setRadius(radiusProp), [radiusProp]);
+  const [accentColor, setaccentColor] = React.useState(accentColorProp);
+  React.useEffect(() => setaccentColor(accentColorProp), [accentColorProp]);
 
   // Initial appearance on page load when `appearance` is explicitly set to `light` or `dark`
   const ExplicitRootAppearanceScript = React.memo(
@@ -65,6 +65,8 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   // Client-side only changes when `appearance` prop is changed while developing
   React.useEffect(() => updateThemeAppearanceClass(appearanceProp), [appearanceProp]);
 
+  // const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColorColor) : grayColor;
+
   return (
     <>
       {appearance !== 'inherit' && <ExplicitRootAppearanceScript appearance={appearance} />}
@@ -76,8 +78,10 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
         //
         appearance={appearance}
         radius={radius}
+        accentColor={accentColor}
         //
         onAppearanceChange={setAppearance}
+        onAccentColorChange={setaccentColor}
         onRadiusChange={setRadius}
       />
     </>
@@ -98,11 +102,13 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
   const {
     isRoot,
     //
-    appearance = context?.appearance ?? DEFAULT_APPEARANCE,
-    radius = context?.radius ?? DEFAULT_RADIUS,
+    appearance = context?.appearance ?? themeDefaults.appearance,
+    accentColor = context?.accentColor ?? themeDefaults.accentColor,
+    radius = context?.radius ?? themeDefaults.radius,
     //
     onAppearanceChange = () => {},
     onRadiusChange = () => {},
+    onAccentColorChange = () => {},
     //
     ...themeProps
   } = props;
@@ -115,6 +121,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         () => ({
           appearance,
           radius,
+          accentColor,
           //
           onAppearanceChange,
           onRadiusChange,
@@ -122,13 +129,15 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         [
           appearance,
           radius,
+          accentColor,
           //
           onAppearanceChange,
+          onAccentColorChange,
           onRadiusChange,
         ],
       )}
     >
-      <Comp data-is-root-theme={isRoot ? 'true' : 'false'} data-radius={radius} ref={forwardedRef} {...themeProps} className={classes} />
+      <Comp data-is-root-theme={isRoot ? 'true' : 'false'} data-radius={radius} data-accent-color={accentColor} ref={forwardedRef} {...themeProps} className={classes} />
     </ThemeContext.Provider>
   );
 });

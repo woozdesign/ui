@@ -1,7 +1,7 @@
 @import '@/styles/lib/colors';
 
 .button--icon {
-  @each $variant, $colors in $color-variants {
+  @each $variant, $colors in $color-button {
     &--color-#{$variant} {
       color: map-get($colors, color);
       background-color: transparent;

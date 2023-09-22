@@ -4,7 +4,7 @@
   overflow: hidden;
   position: relative;
   text-align: left;
-  background-color: var(--color-slate-100);
+  background-color: color-card(default, background);
   color: var(--color-on-surface);
   height: 100%;
   border-radius: var(--border-radius-medium);

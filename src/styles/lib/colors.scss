@@ -1,58 +1,20 @@
 @import '~@woozdesign/colors/dist/colors';
+@import './colors_deprecated.scss';
 
-// Base Colors
-$primary-color: $color-purple-50;
-$bg-base: black;
-
-// Derived Primary Colors
-$primary-hover: lighten($primary-color, 2%);
-$primary-active: darken($primary-color, 4%);
-
-// Secondary Colors
-$secondary-color: #b1fc03;
-$secondary-hover: lighten($secondary-color, 2%);
-$secondary-active: darken($secondary-color, 4%);
-
-// Background Colors
-$surface-color: #111;
-$elevated-color: #333;
-
-$text-base: #fff;
-$text-secondary: #aaa;
-$text-on-default: #000;
-$text-on-primary: #fff;
-$text-on-secondary: #fff;
-$text-on-success: #fff;
-$text-on-warning: #fff;
-$text-on-error: #fff;
-$text-on-bg: #eee;
-
-// Status Colors
-$success-color: #28a745;
-$warning-color: #ffc107;
-$error-color: #dc3545;
-
-// Derived Status Colors for Interactions
-$success-hover: darken($success-color, 10%);
-$warning-hover: darken($warning-color, 10%);
-$error-hover: darken($error-color, 10%);
-$success-active: darken($success-color, 15%);
-$warning-active: darken($warning-color, 15%);
-$error-active: darken($error-color, 15%);
-
-// Default Color
-$default-color: #fff;
-$default-hover: #fff;
-$default-outline: #555;
-$default-active: #fff;
+$color-primary: var(--color-primary);
+$color-secondary: var(--color-primary);
+$color-tertiary: var(--color-primary);
+$color-primary: var(--color-primary);
 
 // Box-shadow Function
 @function boxShadow($color) {
   @return rgba($color, 0.1) 0 0 0 1px inset, rgba($color, 0.2) 0 6px 15px 0, rgba($color, 0.3) 0 0 0 4px;
 }
 
-// Color Variants
-$color-variants: (
+$color-border: (
+  button: (),
+);
+$color-button: (
   default: (
     text: $text-on-default,
     color: $default-color,
@@ -91,3 +53,29 @@ $color-variants: (
     active: $warning-active,
   ),
 );
+
+$color-fill: ();
+
+$color-background: ();
+
+$color-card: (
+  default: (
+    background: var(--color-gray-40),
+  ),
+);
+
+$color-elevated: ();
+$color-text: ();
+
+// color-variant(primary, text);
+@function color-button($variant, $property) {
+  @return map-get(map-get($color-button, $variant), $property);
+}
+
+@function color-variants($variant, $property) {
+  @return map-get(map-get($color-variants, $variant), $property);
+}
+
+@function color-card($variant, $property) {
+  @return map-get(map-get($color-card, $variant), $property);
+}

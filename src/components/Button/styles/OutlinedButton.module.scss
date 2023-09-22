@@ -6,7 +6,7 @@
     all 0.2s,
     box-shadow 0.08s ease-in;
 
-  @each $variant, $colors in $color-variants {
+  @each $variant, $colors in $color-button {
     &--color-#{$variant} {
       background-color: transparent;
       color: map-get($colors, color);
