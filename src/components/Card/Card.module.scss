@@ -1,5 +1,3 @@
-@import '@/styles/lib/colors.scss';
-
 .card {
   overflow: hidden;
   position: relative;
@@ -40,7 +38,7 @@
       font-weight: bold;
     }
     .heading-subtitle {
-      color: $text-secondary;
+      color: var(--color-gray-80);
     }
     .heading-action {
       display: flex;

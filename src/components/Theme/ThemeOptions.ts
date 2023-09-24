@@ -1,4 +1,4 @@
-export const COLOR_SCALES = [
+const COLOR_SCALES: ThemeAccentColor[] = [
   'gray',
   'gold',
   'bronze',
@@ -21,6 +21,11 @@ export const COLOR_SCALES = [
   'teal',
   'jade',
   'green',
+  'mauve',
+  'slate',
+  'olive',
+  'sage',
+  'sand',
   'grass',
   'lime',
   'mint',
@@ -40,6 +45,11 @@ type ThemeAccentColor =
   | 'ruby'
   | 'crimson'
   | 'pink'
+  | 'mauve'
+  | 'slate'
+  | 'olive'
+  | 'sage'
+  | 'sand'
   | 'plum'
   | 'purple'
   | 'violet'
@@ -59,7 +69,7 @@ type ThemeRadius = 'none' | 'small' | 'medium' | 'large' | 'full';
 
 const DEFAULT_APPEARANCE: ThemeAppearance = 'dark';
 const DEFAULT_RADIUS: ThemeRadius = 'medium';
-const DEFAULT_ACCENT: ThemeRadius = 'purple';
+const DEFAULT_ACCENT: ThemeAccentColor = 'purple';
 
 type ThemeOptions = {
   accentColor: ThemeAccentColor;
@@ -67,7 +77,7 @@ type ThemeOptions = {
   radius: ThemeRadius;
 };
 function getMatchingGrayColor(accentColor: ThemeAccentColor): ThemeAccentColor {
-  if (accentColor === 'gray') return 'gray';
+  // if (accentColor === 'gray') return 'gray';
   switch (accentColor) {
     case 'tomato':
     case 'red':
@@ -100,6 +110,7 @@ function getMatchingGrayColor(accentColor: ThemeAccentColor): ThemeAccentColor {
     case 'bronze':
       return 'sand';
   }
+  return 'gray';
 }
 
 const themeDefaults: ThemeOptions = {

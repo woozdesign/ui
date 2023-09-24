@@ -25,6 +25,7 @@ Primary.args = {
 export const Outlined = Template.bind({});
 Outlined.args = {
   variant: 'outlined',
+  color: 'red',
 };
 
 export const Secondary = Template.bind({});
@@ -40,6 +41,7 @@ Text.args = {
 export const Icon = Template.bind({});
 Icon.args = {
   variant: 'icon',
+  children: undefined,
   iconPrepend: <span>🚀</span>, // just as an example icon
 };
 

@@ -1,32 +1,25 @@
 @import '@/styles/lib/colors';
 
 .button--primary {
-  @each $variant, $colors in $color-button {
-    &--color-#{$variant} {
-      color: map-get($colors, text);
-      background-color: map-get($colors, color);
-      border-color: map-get($colors, color);
+  color: var(--color-accent-90-contrast);
+  background-color: var(--color-accent-90);
+  &:hover {
+    background-color: var(--color-accent-100);
+  }
 
-      &:hover {
-        border-color: map-get($colors, hover);
-        background-color: map-get($colors, hover);
-      }
+  &:active {
+    // border-color: var(--color-accent-80);
+    background-color: var(--color-accent-80);
+    box-shadow: boxShadowAlpha(var(--color-accent-90));
+  }
 
-      &:active {
-        border-color: map-get($colors, active);
-        background-color: map-get($colors, active);
-        box-shadow: boxShadow(map-get($colors, color));
-      }
+  &:focus {
+  }
+  > .icon-prepend {
+    color: var(--color-accent-90);
+  }
 
-      &:focus {
-      }
-      > .icon-prepend {
-        fill: map-get($colors, text);
-      }
-
-      > .icon-append {
-        fill: map-get($colors, text);
-      }
-    }
+  > .icon-append {
+    color: var(--color-accent-90);
   }
 }

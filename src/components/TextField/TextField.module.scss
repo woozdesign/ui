@@ -1,5 +1,3 @@
-@import '@/styles/lib/colors';
-
 .wrapper {
   margin-bottom: 0.5rem;
 }
@@ -10,8 +8,7 @@
   max-width: 190px;
   border: 1px solid transparent;
   border-radius: 8px;
-  border-color: rgba($elevated-color, 1);
-
+  border-color: var(--color-accent-90);
   &.block {
     width: 100%;
     max-width: 100%;
@@ -40,8 +37,8 @@
   border: 2px solid transparent;
   border-radius: 8px;
   outline: none;
-  background-color: $surface-color;
-  color: $text-base;
+  background-color: var(--color-surface-accent);
+  color: black;
   transition: 0.3s ease;
 
   &.hasPrependIcon {
@@ -49,14 +46,14 @@
   }
 
   &::placeholder {
-    color: $text-secondary;
+    color: var(--color-gray-80);
   }
 
   &:focus,
   &:hover {
     outline: none;
-    border-color: rgba($primary-color, 1);
-    background-color: $surface-color;
+    border-color: var(--color-accent-90);
+    background-color: var(--color-surface-accent);
     box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
   }
 
@@ -64,8 +61,8 @@
     // border: 2px solid var(--color-primary);
   }
   &:disabled {
-    background-color: lighten($surface-color, 10%); // lightens the dark background slightly
-    color: darken($text-base, 10%); // darkens the text color slightly
+    background-color: var(--color-surface-accent); // lightens the dark background slightly
+    color: darken(black, 10%); // darkens the text color slightly
     pointer-events: none;
     cursor: not-allowed; // shows a not-allowed cursor when hovered
     opacity: 0.7; // reduces the opacity
@@ -79,7 +76,7 @@
 .iconPrepend {
   position: absolute;
   left: 1rem;
-  fill: $text-on-bg;
+  fill: var(--color-accent-90);
   width: 1rem;
   height: 1rem;
 }
@@ -87,7 +84,7 @@
 .iconAppend {
   position: absolute;
   right: 1rem;
-  fill: $text-on-bg;
+  fill: var(--color-accent-90);
   width: 1rem;
   height: 1rem;
 }

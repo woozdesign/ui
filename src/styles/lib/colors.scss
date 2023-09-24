@@ -1,81 +1,177 @@
 @import '~@woozdesign/colors/dist/colors';
-@import './colors_deprecated.scss';
 
-$color-primary: var(--color-primary);
-$color-secondary: var(--color-primary);
-$color-tertiary: var(--color-primary);
-$color-primary: var(--color-primary);
+// Box-shadow Function
+@function boxShadowAlpha($color) {
+  @return opacity($color, 10%) 0 0 0 1px inset, opacity($color, 20%) 0 6px 15px 0, opacity($color, 30%) 0 0 0 4px;
+}
 
 // Box-shadow Function
 @function boxShadow($color) {
   @return rgba($color, 0.1) 0 0 0 1px inset, rgba($color, 0.2) 0 6px 15px 0, rgba($color, 0.3) 0 0 0 4px;
 }
 
-$color-border: (
-  button: (),
-);
-$color-button: (
-  default: (
-    text: $text-on-default,
-    color: $default-color,
-    hover: $default-hover,
-    outline: $default-outline,
-    active: $default-active,
-  ),
-  primary: (
-    text: $text-on-primary,
-    color: $primary-color,
-    hover: $primary-hover,
-    active: $primary-active,
-  ),
-  secondary: (
-    text: $text-on-secondary,
-    color: $secondary-color,
-    hover: $secondary-hover,
-    active: $secondary-active,
-  ),
-  success: (
-    text: $text-on-success,
-    color: $success-color,
-    hover: $success-hover,
-    active: $success-active,
-  ),
-  error: (
-    text: $text-on-error,
-    color: $error-color,
-    hover: $error-hover,
-    active: $error-active,
-  ),
-  warning: (
-    text: $text-on-warning,
-    color: $warning-color,
-    hover: $warning-hover,
-    active: $warning-active,
-  ),
-);
-
-$color-fill: ();
-
-$color-background: ();
-
-$color-card: (
-  default: (
-    background: var(--color-gray-40),
-  ),
-);
-
-$color-elevated: ();
-$color-text: ();
-
-// color-variant(primary, text);
-@function color-button($variant, $property) {
-  @return map-get(map-get($color-button, $variant), $property);
+@function opacity($color, $opacity) {
+  @return color-mix(in srgb, $color $opacity, transparent);
 }
 
-@function color-variants($variant, $property) {
-  @return map-get(map-get($color-variants, $variant), $property);
+.woozdesign {
+  color: var(--color-gray-12); // text color
+
+  // Colors
+  --color-overlay: var(--color-gray-a8);
+  --color-panel-solid: white;
+  --color-panel-translucent: rgba(255, 255, 255, 0.8);
+  --color-surface: rgba(255, 255, 255, 0.9);
+  --color-transparent: rgb(0 0 0 / 0); // Because Chrome is buggy with box-shadow transitions
+
+  &::selection {
+    background-color: var(--color-accent-a060);
+  }
+
+  &:where(.light, .light-theme) {
+    color-scheme: light;
+  }
+
+  &:where(.dark, .dark-theme) {
+    color-scheme: dark;
+  }
+
+  &:is(.dark, .dark-theme),
+  &:is(.dark, .dark-theme) :where(.radix-themes:not(.light, .light-theme)) {
+    --color-overlay: rgba(0, 0, 0, 0.75);
+    --color-panel-solid: var(--color-gray-2);
+    --color-panel-translucent: var(--color-gray-2-translucent);
+    --color-surface: rgba(0, 0, 0, 0.25);
+  }
+
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --color-transparent: color(display-p3 0 0 0 / 0);
+    }
+  }
 }
 
-@function color-card($variant, $property) {
-  @return map-get(map-get($color-card, $variant), $property);
+:root {
+  --tomato-9-contrast: white;
+  --red-9-contrast: white;
+  --ruby-9-contrast: white;
+  --crimson-9-contrast: white;
+  --pink-9-contrast: white;
+  --plum-9-contrast: white;
+  --purple-9-contrast: white;
+  --violet-9-contrast: white;
+  --iris-9-contrast: white;
+  --indigo-9-contrast: white;
+  --blue-9-contrast: white;
+  --cyan-9-contrast: white;
+  --teal-9-contrast: white;
+  --jade-9-contrast: white;
+  --green-9-contrast: white;
+  --grass-9-contrast: white;
+  --orange-9-contrast: white;
+  --brown-9-contrast: white;
+  --sky-9-contrast: hsl(210, 12%, 12.5%); /* light mode slate 12 */
+  --mint-9-contrast: hsl(155, 12%, 11.5%); /* light mode sage 12 */
+  --lime-9-contrast: hsl(110, 8%, 12%); /* light mode olive 12 */
+  --yellow-9-contrast: hsl(50, 8%, 12%); /* light mode sand 12 */
+  --amber-9-contrast: hsl(50, 8%, 12%); /* light mode sand 12 */
+  --gold-9-contrast: white;
+  --bronze-9-contrast: white;
+  --gray-9-contrast: white;
+
+  --tomato-surface: var(--color-tomato-a2);
+  --red-surface: var(--color-red-a2);
+  --ruby-surface: var(--color-ruby-a2);
+  --crimson-surface: var(--color-crimson-a2);
+  --pink-surface: var(--color-pink-a2);
+  --plum-surface: var(--color-plum-a2);
+  --purple-surface: var(--color-purple-a2);
+  --violet-surface: var(--color-violet-a2);
+  --iris-surface: var(--color-iris-a2);
+  --indigo-surface: var(--color-indigo-a2);
+  --blue-surface: var(--color-blue-a2);
+  --cyan-surface: var(--color-cyan-a2);
+  --teal-surface: var(--color-teal-a2);
+  --jade-surface: var(--color-jade-a2);
+  --green-surface: var(--color-green-a2);
+  --grass-surface: var(--color-grass-a2);
+  --orange-surface: var(--color-orange-a2);
+  --brown-surface: var(--color-brown-a2);
+  --sky-surface: var(--color-sky-a2);
+  --mint-surface: var(--color-mint-a2);
+  --lime-surface: var(--color-lime-a2);
+  --yellow-surface: var(--color-yellow-a2);
+  --amber-surface: var(--color-amber-a2);
+  --gold-surface: var(--color-gold-a2);
+  --bronze-surface: var(--color-bronze-a2);
+  --gray-surface: white;
+}
+
+.light,
+.light-theme {
+  // Use :root defined surface colors
+  @extend :root;
+}
+
+.dark,
+.dark-theme {
+  --tomato-surface: var(--color-tomato-a2);
+  --red-surface: var(--color-red-a2);
+  --ruby-surface: var(--color-ruby-a2);
+  --crimson-surface: var(--color-crimson-a2);
+  --pink-surface: var(--color-pink-a2);
+  --plum-surface: var(--color-plum-a2);
+  --purple-surface: var(--color-purple-a2);
+  --violet-surface: var(--color-violet-a2);
+  --iris-surface: var(--color-iris-a2);
+  --indigo-surface: var(--color-indigo-a2);
+  --blue-surface: var(--color-blue-a2);
+  --cyan-surface: var(--color-cyan-a2);
+  --teal-surface: var(--color-teal-a2);
+  --jade-surface: var(--color-jade-a2);
+  --green-surface: var(--color-green-a2);
+  --grass-surface: var(--color-grass-a2);
+  --orange-surface: var(--color-orange-a2);
+  --brown-surface: var(--color-brown-a2);
+  --sky-surface: var(--color-sky-a2);
+  --mint-surface: var(--color-mint-a2);
+  --lime-surface: var(--color-lime-a2);
+  --yellow-surface: var(--color-yellow-a2);
+  --amber-surface: var(--color-amber-a2);
+  --gold-surface: var(--color-gold-a2);
+  --bronze-surface: var(--color-bronze-a2);
+  --gray-surface: var(--color-gray-a2);
+
+  --gray-2-translucent: rgba(29, 29, 29, 0.7);
+  --mauve-2-translucent: rgba(32, 27, 33, 0.7);
+  --slate-2-translucent: rgba(29, 29, 33, 0.7);
+  --sage-2-translucent: rgba(24, 30, 27, 0.7);
+  --olive-2-translucent: rgba(26, 30, 26, 0.7);
+  --sand-2-translucent: rgba(29, 29, 26, 0.7);
+}
+
+$colors: tomato, red, ruby, crimson, pink, plum, purple, violet, iris, indigo, blue, cyan, teal, jade, green, grass, orange, brown, sky, mint, lime, yellow, amber, gold, bronze,
+  gray; // your array of color names
+@mixin accentScales($colorName) {
+  [data-accent-color='#{$colorName}'] {
+    --color-surface-accent: var(--color-#{$colorName}-surface);
+
+    --color-accent-10: var(--color-#{$colorName}-10);
+    --color-accent-20: var(--color-#{$colorName}-20);
+    --color-accent-30: var(--color-#{$colorName}-30);
+    --color-accent-40: var(--color-#{$colorName}-40);
+    --color-accent-50: var(--color-#{$colorName}-50);
+    --color-accent-60: var(--color-#{$colorName}-60);
+    --color-accent-70: var(--color-#{$colorName}-70);
+    --color-accent-80: var(--color-#{$colorName}-80);
+    --color-accent-90: var(--color-#{$colorName}-90);
+    --color-accent-90-contrast: var(--color-#{$colorName}-90-contrast);
+    --color-accent-100: var(--color-#{$colorName}-100);
+    --color-accent-110: var(--color-#{$colorName}-110);
+    --color-accent-120: var(--color-#{$colorName}-120);
+  }
+}
+
+@each $color in $colors {
+  @include accentScales($color);
 }

@@ -124,6 +124,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           accentColor,
           //
           onAppearanceChange,
+          onAccentColorChange,
           onRadiusChange,
         }),
         [

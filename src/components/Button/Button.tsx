@@ -2,40 +2,18 @@
 import { combineClassNames } from '@/utils/helper/combineClassNames';
 import React, { FC } from 'react';
 import styles from './Button.module.scss';
-
-type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
-type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
-interface BaseProps {
-  variant?: 'primary' | 'outlined' | 'secondary' | 'text' | 'icon';
-  size?: 'xlarge' | 'large' | 'medium' | 'small';
-  color?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning';
-  block?: boolean;
-  disabled?: boolean;
-  shape?: 'round' | 'rect';
-  iconPrepend?: JSX.Element;
-  iconAppend?: JSX.Element;
-  children?: React.ReactNode;
-  // onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-}
-
-interface ButtonSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size'> {
-  onClick?: ButtonClickHandler;
-}
-
-interface AnchorSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size'> {
-  href: string;
-  onClick?: AnchorClickHandler;
-}
+import { ButtonSpecificProps, AnchorSpecificProps, AnchorClickHandler, ButtonClickHandler } from './Button.props';
 
 export type ButtonProps = ButtonSpecificProps | AnchorSpecificProps;
 
 const Button: FC<ButtonProps> = ({
   variant = 'primary',
   size = 'medium',
-  color = 'default',
+  color = 'purple',
   disabled = false,
   block = false,
   shape = 'rect',
+  buttonType = 'button',
   iconPrepend,
   iconAppend,
   children,
@@ -47,7 +25,7 @@ const Button: FC<ButtonProps> = ({
     other.className ?? '',
     styles.button,
     styles[`button--${size}`],
-    styles[`button--${variant}--color-${color}`],
+    styles[`button--${variant}`],
     disabled ? styles[`button--disabled`] : '',
     block ? styles['button--block'] : '',
     styles[`button--${shape}`],
@@ -70,7 +48,7 @@ const Button: FC<ButtonProps> = ({
   }
 
   return (
-    <button className={combineClassNames(classNameList)} disabled={disabled} onClick={handleButtonClick} {...other}>
+    <button className={combineClassNames(classNameList)} data-accent-color={color} disabled={disabled} onClick={handleButtonClick} type={buttonType} {...other}>
       {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
       {children}
       {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}
