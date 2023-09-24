@@ -1,19 +1,5 @@
 @import '~@woozdesign/colors/dist/colors';
 
-// Box-shadow Function
-@function boxShadowAlpha($color) {
-  @return opacity($color, 10%) 0 0 0 1px inset, opacity($color, 20%) 0 6px 15px 0, opacity($color, 30%) 0 0 0 4px;
-}
-
-// Box-shadow Function
-@function boxShadow($color) {
-  @return rgba($color, 0.1) 0 0 0 1px inset, rgba($color, 0.2) 0 6px 15px 0, rgba($color, 0.3) 0 0 0 4px;
-}
-
-@function opacity($color, $opacity) {
-  @return color-mix(in srgb, $color $opacity, transparent);
-}
-
 .woozdesign {
   color: var(--color-gray-12); // text color
 
@@ -52,59 +38,59 @@
 }
 
 :root {
-  --tomato-9-contrast: white;
-  --red-9-contrast: white;
-  --ruby-9-contrast: white;
-  --crimson-9-contrast: white;
-  --pink-9-contrast: white;
-  --plum-9-contrast: white;
-  --purple-9-contrast: white;
-  --violet-9-contrast: white;
-  --iris-9-contrast: white;
-  --indigo-9-contrast: white;
-  --blue-9-contrast: white;
-  --cyan-9-contrast: white;
-  --teal-9-contrast: white;
-  --jade-9-contrast: white;
-  --green-9-contrast: white;
-  --grass-9-contrast: white;
-  --orange-9-contrast: white;
-  --brown-9-contrast: white;
-  --sky-9-contrast: hsl(210, 12%, 12.5%); /* light mode slate 12 */
-  --mint-9-contrast: hsl(155, 12%, 11.5%); /* light mode sage 12 */
-  --lime-9-contrast: hsl(110, 8%, 12%); /* light mode olive 12 */
-  --yellow-9-contrast: hsl(50, 8%, 12%); /* light mode sand 12 */
-  --amber-9-contrast: hsl(50, 8%, 12%); /* light mode sand 12 */
-  --gold-9-contrast: white;
-  --bronze-9-contrast: white;
-  --gray-9-contrast: white;
+  --color-tomato-90-contrast: white;
+  --color-red-90-contrast: white;
+  --color-ruby-90-contrast: white;
+  --color-crimson-90-contrast: white;
+  --color-pink-90-contrast: white;
+  --color-plum-90-contrast: white;
+  --color-purple-90-contrast: white;
+  --color-violet-90-contrast: white;
+  --color-iris-90-contrast: white;
+  --color-indigo-90-contrast: white;
+  --color-blue-90-contrast: white;
+  --color-cyan-90-contrast: white;
+  --color-teal-90-contrast: white;
+  --color-jade-90-contrast: white;
+  --color-green-90-contrast: white;
+  --color-grass-90-contrast: white;
+  --color-orange-90-contrast: white;
+  --color-brown-90-contrast: white;
+  --color-sky-90-contrast: hsl(210, 12%, 12.5%); /* light mode slate 12 */
+  --color-mint-90-contrast: hsl(155, 12%, 11.5%); /* light mode sage 12 */
+  --color-lime-90-contrast: hsl(110, 8%, 12%); /* light mode olive 12 */
+  --color-yellow-90-contrast: hsl(50, 8%, 12%); /* light mode sand 12 */
+  --color-amber-90-contrast: hsl(50, 8%, 12%); /* light mode sand 12 */
+  --color-gold-90-contrast: white;
+  --color-bronze-90-contrast: white;
+  --color-gray-90-contrast: white;
 
-  --tomato-surface: var(--color-tomato-a2);
-  --red-surface: var(--color-red-a2);
-  --ruby-surface: var(--color-ruby-a2);
-  --crimson-surface: var(--color-crimson-a2);
-  --pink-surface: var(--color-pink-a2);
-  --plum-surface: var(--color-plum-a2);
-  --purple-surface: var(--color-purple-a2);
-  --violet-surface: var(--color-violet-a2);
-  --iris-surface: var(--color-iris-a2);
-  --indigo-surface: var(--color-indigo-a2);
-  --blue-surface: var(--color-blue-a2);
-  --cyan-surface: var(--color-cyan-a2);
-  --teal-surface: var(--color-teal-a2);
-  --jade-surface: var(--color-jade-a2);
-  --green-surface: var(--color-green-a2);
-  --grass-surface: var(--color-grass-a2);
-  --orange-surface: var(--color-orange-a2);
-  --brown-surface: var(--color-brown-a2);
-  --sky-surface: var(--color-sky-a2);
-  --mint-surface: var(--color-mint-a2);
-  --lime-surface: var(--color-lime-a2);
-  --yellow-surface: var(--color-yellow-a2);
-  --amber-surface: var(--color-amber-a2);
-  --gold-surface: var(--color-gold-a2);
-  --bronze-surface: var(--color-bronze-a2);
-  --gray-surface: white;
+  --color-tomato-surface: var(--color-tomato-20);
+  --color-red-surface: var(--color-red-20);
+  --color-ruby-surface: var(--color-ruby-20);
+  --color-crimson-surface: var(--color-crimson-20);
+  --color-pink-surface: var(--color-pink-20);
+  --color-plum-surface: var(--color-plum-20);
+  --color-purple-surface: var(--color-purple-20);
+  --color-violet-surface: var(--color-violet-20);
+  --color-iris-surface: var(--color-iris-20);
+  --color-indigo-surface: var(--color-indigo-20);
+  --color-blue-surface: var(--color-blue-20);
+  --color-cyan-surface: var(--color-cyan-20);
+  --color-teal-surface: var(--color-teal-20);
+  --color-jade-surface: var(--color-jade-20);
+  --color-green-surface: var(--color-green-20);
+  --color-grass-surface: var(--color-grass-20);
+  --color-orange-surface: var(--color-orange-20);
+  --color-brown-surface: var(--color-brown-20);
+  --color-sky-surface: var(--color-sky-20);
+  --color-mint-surface: var(--color-mint-20);
+  --color-lime-surface: var(--color-lime-20);
+  --color-yellow-surface: var(--color-yellow-20);
+  --color-amber-surface: var(--color-amber-20);
+  --color-gold-surface: var(--color-gold-20);
+  --color-bronze-surface: var(--color-bronze-20);
+  --color-gray-surface: white;
 }
 
 .light,
@@ -115,32 +101,32 @@
 
 .dark,
 .dark-theme {
-  --tomato-surface: var(--color-tomato-a2);
-  --red-surface: var(--color-red-a2);
-  --ruby-surface: var(--color-ruby-a2);
-  --crimson-surface: var(--color-crimson-a2);
-  --pink-surface: var(--color-pink-a2);
-  --plum-surface: var(--color-plum-a2);
-  --purple-surface: var(--color-purple-a2);
-  --violet-surface: var(--color-violet-a2);
-  --iris-surface: var(--color-iris-a2);
-  --indigo-surface: var(--color-indigo-a2);
-  --blue-surface: var(--color-blue-a2);
-  --cyan-surface: var(--color-cyan-a2);
-  --teal-surface: var(--color-teal-a2);
-  --jade-surface: var(--color-jade-a2);
-  --green-surface: var(--color-green-a2);
-  --grass-surface: var(--color-grass-a2);
-  --orange-surface: var(--color-orange-a2);
-  --brown-surface: var(--color-brown-a2);
-  --sky-surface: var(--color-sky-a2);
-  --mint-surface: var(--color-mint-a2);
-  --lime-surface: var(--color-lime-a2);
-  --yellow-surface: var(--color-yellow-a2);
-  --amber-surface: var(--color-amber-a2);
-  --gold-surface: var(--color-gold-a2);
-  --bronze-surface: var(--color-bronze-a2);
-  --gray-surface: var(--color-gray-a2);
+  --color-tomato-surface: var(--color-tomato-20);
+  --color-red-surface: var(--color-red-20);
+  --color-ruby-surface: var(--color-ruby-20);
+  --color-crimson-surface: var(--color-crimson-20);
+  --color-pink-surface: var(--color-pink-20);
+  --color-plum-surface: var(--color-plum-20);
+  --color-purple-surface: var(--color-purple-20);
+  --color-violet-surface: var(--color-violet-20);
+  --color-iris-surface: var(--color-iris-20);
+  --color-indigo-surface: var(--color-indigo-20);
+  --color-blue-surface: var(--color-blue-20);
+  --color-cyan-surface: var(--color-cyan-20);
+  --color-teal-surface: var(--color-teal-20);
+  --color-jade-surface: var(--color-jade-20);
+  --color-green-surface: var(--color-green-20);
+  --color-grass-surface: var(--color-grass-20);
+  --color-orange-surface: var(--color-orange-20);
+  --color-brown-surface: var(--color-brown-20);
+  --color-sky-surface: var(--color-sky-20);
+  --color-mint-surface: var(--color-mint-20);
+  --color-lime-surface: var(--color-lime-20);
+  --color-yellow-surface: var(--color-yellow-20);
+  --color-amber-surface: var(--color-amber-20);
+  --color-gold-surface: var(--color-gold-20);
+  --color-bronze-surface: var(--color-bronze-20);
+  --color-gray-surface: var(--color-gray-20);
 
   --gray-2-translucent: rgba(29, 29, 29, 0.7);
   --mauve-2-translucent: rgba(32, 27, 33, 0.7);

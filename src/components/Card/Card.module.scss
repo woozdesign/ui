@@ -2,8 +2,8 @@
   overflow: hidden;
   position: relative;
   text-align: left;
-  background-color: color-card(default, background);
-  color: var(--color-on-surface);
+  background-color: var(--color-surface-gray);
+  color: var(--color-accent-90-contrast);
   height: 100%;
   border-radius: var(--border-radius-medium);
   &--small {
@@ -30,9 +30,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
-    background-color: var(--color-surface);
 
-    border-bottom: 1px solid var(--color-outline);
+    border-bottom: 1px solid var(--color-gray-40);
 
     .heading-title {
       font-weight: bold;
@@ -59,10 +58,10 @@
     flex-direction: row;
     gap: 1rem;
     padding: 1rem;
-    border-top: 1px solid var(--color-outline);
+    border-top: 1px solid var(--color-gray-40);
   }
 
   &--outlined {
-    border: 1px solid var(--color-outline);
+    border: 1px solid var(--color-gray-40);
   }
 }

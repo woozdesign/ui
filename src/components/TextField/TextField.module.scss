@@ -6,9 +6,8 @@
   align-items: center;
   position: relative;
   max-width: 190px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 8px;
-  border-color: var(--color-accent-90);
   &.block {
     width: 100%;
     max-width: 100%;
@@ -37,9 +36,11 @@
   border: 2px solid transparent;
   border-radius: 8px;
   outline: none;
-  background-color: var(--color-surface-accent);
-  color: black;
-  transition: 0.3s ease;
+  background-color: transparent;
+  border-color: var(--color-gray-60);
+  color: var(--color-accent-90-contrast);
+  transition: border 0.3s ease;
+  margin-bottom: 20px;
 
   &.hasPrependIcon {
     padding-left: 3.5rem;
@@ -70,7 +71,9 @@
 }
 
 .input[data-has-value='true']:invalid {
-  border: 2px solid var(--color-error);
+  border: 2px solid var(--color-red-90);
+  background-color: var(--color-red-surface);
+  margin-bottom: 0;
 }
 
 .iconPrepend {
@@ -90,8 +93,10 @@
 }
 
 .error {
-  color: var(--color-error);
-  margin-top: 0.5rem;
+  color: var(--color-red-90);
+  height: 16px;
+  margin-top: 4px;
+  margin-left: 4px;
   font-size: 0.8rem;
 }
 

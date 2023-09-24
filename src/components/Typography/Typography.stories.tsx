@@ -29,7 +29,11 @@ SecondaryTitle.args = {
 };
 
 // Subtitle Story
-const SubtitleTemplate: Story<SubtitleProps> = (args) => <Typography.Subtitle {...args} />;
+const SubtitleTemplate: Story<SubtitleProps> = (args) => (
+  <Theme.ThemeProvider>
+    <Typography.Subtitle {...args} />
+  </Theme.ThemeProvider>
+);
 export const DefaultSubtitle = SubtitleTemplate.bind({});
 DefaultSubtitle.args = {
   children: 'Default Subtitle',
@@ -44,7 +48,11 @@ PrimarySubtitle.args = {
 };
 
 // Text Story
-const TextTemplate: Story<TextProps> = (args) => <Typography.Text {...args} />;
+const TextTemplate: Story<TextProps> = (args) => (
+  <Theme.ThemeProvider>
+    <Typography.Text {...args} />
+  </Theme.ThemeProvider>
+);
 export const DefaultText = TextTemplate.bind({});
 DefaultText.args = {
   children: 'Default Text',
@@ -58,7 +66,11 @@ PrimaryText.args = {
 };
 
 // Paragraph Story
-const ParagraphTemplate: Story<ParagraphProps> = (args) => <Typography.Paragraph {...args} />;
+const ParagraphTemplate: Story<ParagraphProps> = (args) => (
+  <Theme.ThemeProvider>
+    <Typography.Paragraph {...args} />
+  </Theme.ThemeProvider>
+);
 export const DefaultParagraph = ParagraphTemplate.bind({});
 DefaultParagraph.args = {
   children: 'Default Paragraph',

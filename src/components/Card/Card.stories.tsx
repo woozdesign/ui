@@ -3,7 +3,6 @@ import { Meta, Story } from '@storybook/react';
 import Card, { CardProps } from './Card';
 import Button from '../Button';
 import Theme from '../Theme/Theme';
-import '@/styles/core.scss';
 
 export default {
   title: 'Components/Card',
