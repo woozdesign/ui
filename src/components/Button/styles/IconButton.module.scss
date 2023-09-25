@@ -1,30 +1,30 @@
 .button--icon {
-  color: var(--color-accent-90);
+  color: var(--color-accent-9);
   background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1/1;
   box-sizing: border-box;
-  // background-color: var(--color-accent-40);
+  // background-color: var(--color-accent-4);
 
   &:hover {
-    background-color: var(--color-accent-50);
+    background-color: var(--color-accent-5);
   }
 
   &:active {
     // background-color: rgba(var(--color-accent-80), 0.2);
-    box-shadow: boxShadowAlpha(var(--color-accent-90));
+    box-shadow: boxShadowAlpha(var(--color-accent-9));
   }
 
   &:focus {
     // box-shadow: boxShadow(var(--color-accent-90));
   }
   > .icon-prepend {
-    fill: var(--color-accent-90);
+    fill: var(--color-accent-9);
   }
 
   > .icon-append {
-    fill: var(--color-accent-90);
+    fill: var(--color-accent-9);
   }
 }

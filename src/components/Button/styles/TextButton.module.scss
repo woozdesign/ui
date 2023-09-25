@@ -1,25 +1,25 @@
 .button--text {
-  color: var(--color-accent-90);
+  color: var(--color-accent-9);
   background-color: transparent;
   // background-color: rgba(var(--color-accent-90), 0.2);
 
   &:hover {
-    background-color: var(--color-accent-40);
+    background-color: var(--color-accent-4);
   }
 
   &:active {
     // background-color: rgba(var(--color-accent-80), 0.2);
-    box-shadow: boxShadowAlpha(var(--color-accent-90));
+    box-shadow: boxShadowAlpha(var(--color-accent-9));
   }
 
   &:focus {
     // box-shadow: boxShadow(var(--color-accent-90));
   }
   > .icon-prepend {
-    fill: var(--color-accent-90);
+    fill: var(--color-accent-9);
   }
 
   > .icon-append {
-    fill: var(--color-accent-90);
+    fill: var(--color-accent-9);
   }
 }

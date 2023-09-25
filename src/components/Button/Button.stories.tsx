@@ -3,6 +3,8 @@ import { Meta, Story } from '@storybook/react';
 import Button, { ButtonProps } from './Button';
 import Theme from '../Theme/Theme';
 
+import '@/styles/core.scss';
+
 export default {
   title: 'Components/Button',
   component: Button,

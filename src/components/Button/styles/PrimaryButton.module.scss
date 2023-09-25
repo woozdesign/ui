@@ -1,23 +1,23 @@
 .button--primary {
-  color: var(--color-accent-90-contrast);
-  background-color: var(--color-accent-90);
+  color: var(--color-accent-9-contrast);
+  background-color: var(--color-accent-9);
   &:hover {
-    background-color: var(--color-accent-100);
+    background-color: var(--color-accent-10);
   }
 
   &:active {
     // border-color: var(--color-accent-80);
-    background-color: var(--color-accent-80);
-    box-shadow: boxShadowAlpha(var(--color-accent-90));
+    background-color: var(--color-accent-8);
+    box-shadow: boxShadowAlpha(var(--color-accent-9));
   }
 
   &:focus {
   }
   > .icon-prepend {
-    color: var(--color-accent-90);
+    color: var(--color-accent-9);
   }
 
   > .icon-append {
-    color: var(--color-accent-90);
+    color: var(--color-accent-9);
   }
 }

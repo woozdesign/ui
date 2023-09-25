@@ -11,26 +11,18 @@ export default {
   title: 'Theme/Color',
   args: {
     outlined: true,
-    children: (
-      <>
-        <Layout.Container>
-          <Layout.Row>
-            <Layout.Col>asdf</Layout.Col>
-          </Layout.Row>
-        </Layout.Container>
-      </>
-    ),
   },
 } as Meta;
 
 const Template: Story = () => {
   const colors: string[] = COLOR_SCALES;
+
   return (
     <Theme.ThemeProvider>
       <Layout.Container>
         <Layout.Row>
           {colors.map((color) => {
-            return [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120].map((shade) => {
+            return [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8', 'a9', 'a10', 'a11', 'a12'].map((shade) => {
               return (
                 <Layout.Col key={`${color}-${shade}`} xs={2}>
                   <div
@@ -40,7 +32,7 @@ const Template: Story = () => {
                       display: 'flex',
                       justifyContent: 'center',
                       alignItems: 'center',
-                      color: `var(--color-${color}-${130 - shade})`,
+                      color: `var(--color-${color}-${13 - shade})`,
                       fontSize: 'var(--font-size-2)',
                     }}
                   >

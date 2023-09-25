@@ -1,4 +1,4 @@
-const COLOR_SCALES: ThemeAccentColor[] = [
+export const COLOR_SCALES: ThemeAccentColor[] = [
   'gray',
   'gold',
   'bronze',
@@ -71,7 +71,7 @@ const DEFAULT_APPEARANCE: ThemeAppearance = 'dark';
 const DEFAULT_RADIUS: ThemeRadius = 'medium';
 const DEFAULT_ACCENT: ThemeAccentColor = 'purple';
 
-type ThemeOptions = {
+export type ThemeOptions = {
   accentColor: ThemeAccentColor;
   appearance: ThemeAppearance;
   radius: ThemeRadius;
@@ -119,4 +119,4 @@ const themeDefaults: ThemeOptions = {
   accentColor: 'purple',
 };
 
-export { ThemeOptions, getMatchingGrayColor, themeDefaults };
+export { getMatchingGrayColor, themeDefaults };

@@ -5,26 +5,26 @@
     box-shadow 0.08s ease-in;
 
   background-color: transparent;
-  color: var(--color-accent-100);
-  border: 1px solid var(--color-accent-70);
+  color: var(--color-accent-10);
+  border: 1px solid var(--color-accent-7);
 
   &:hover {
-    border-color: var(--color-accent-100);
+    border-color: var(--color-accent-10);
   }
 
   &:active {
-    border-color: var(--color-accent-80);
-    box-shadow: boxShadowAlpha(var(--color-accent-80));
+    border-color: var(--color-accent-8);
+    box-shadow: boxShadowAlpha(var(--color-accent-8));
   }
 
   &:focus {
   }
 
   > .icon-prepend {
-    color: var(--color-accent-110);
+    color: var(--color-accent-11);
   }
 
   > .icon-append {
-    color: var(--color-accent-110);
+    color: var(--color-accent-11);
   }
 }

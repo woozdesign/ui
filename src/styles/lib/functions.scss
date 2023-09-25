@@ -9,5 +9,5 @@
 }
 
 @function opacity($color, $opacity) {
-  @return color-mix(in srgb, $color $opacity, transparent);
+  @return color-mix(in oklab, $color $opacity, transparent);
 }

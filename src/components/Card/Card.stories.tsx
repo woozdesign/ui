@@ -40,15 +40,15 @@ FullContent.args = {
         title="Card Title"
         subtitle="Subtitle here"
         action={
-          <Button type="text" color="secondary">
+          <Button variant={'text'} color={'lime'}>
             more
           </Button>
         }
       />
       <Card.Body title="Body Title" description="This is the main content of the card." />
       <Card.Actions>
-        <Button>Action 1</Button>
-        <Button>Action 2</Button>
+        <Button> Action 1</Button>
+        <Button color={'blue'}>Action 2</Button>
       </Card.Actions>
     </>
   ),

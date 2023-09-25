@@ -37,8 +37,8 @@
   border-radius: 8px;
   outline: none;
   background-color: transparent;
-  border-color: var(--color-gray-60);
-  color: var(--color-accent-90-contrast);
+  border-color: var(--color-gray-6);
+  color: var(--color-accent-9-contrast);
   transition: border 0.3s ease;
   margin-bottom: 20px;
 
@@ -47,13 +47,13 @@
   }
 
   &::placeholder {
-    color: var(--color-gray-80);
+    color: var(--color-gray-8);
   }
 
   &:focus,
   &:hover {
     outline: none;
-    border-color: var(--color-accent-90);
+    border-color: var(--color-accent-9);
     background-color: var(--color-surface-accent);
     box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
   }
@@ -71,7 +71,7 @@
 }
 
 .input[data-has-value='true']:invalid {
-  border: 2px solid var(--color-red-90);
+  border: 2px solid var(--color-red-9);
   background-color: var(--color-red-surface);
   margin-bottom: 0;
 }
@@ -79,7 +79,7 @@
 .iconPrepend {
   position: absolute;
   left: 1rem;
-  fill: var(--color-accent-90);
+  fill: var(--color-accent-9);
   width: 1rem;
   height: 1rem;
 }
@@ -87,13 +87,13 @@
 .iconAppend {
   position: absolute;
   right: 1rem;
-  fill: var(--color-accent-90);
+  fill: var(--color-accent-9);
   width: 1rem;
   height: 1rem;
 }
 
 .error {
-  color: var(--color-red-90);
+  color: var(--color-red-9);
   height: 16px;
   margin-top: 4px;
   margin-left: 4px;
