@@ -25,11 +25,15 @@ Default.args = {};
 
 export const Small = Template.bind({});
 Small.args = {
+  iconPrepend: <span>🔍</span>,
+  iconAppend: <span>❌</span>,
   size: 'small',
 };
 
 export const Large = Template.bind({});
 Large.args = {
+  iconPrepend: <span>🔍</span>,
+  iconAppend: <span>❌</span>,
   size: 'large',
 };
 
