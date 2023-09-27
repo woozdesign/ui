@@ -4,7 +4,6 @@ export type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) =>
 export type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
 export interface BaseProps extends ColorProp, SizeProp {
   variant?: 'primary' | 'outlined' | 'secondary' | 'text' | 'icon';
-
   buttonType: 'button' | 'reset' | 'submit';
   block?: boolean;
   disabled?: boolean;

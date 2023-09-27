@@ -41,7 +41,7 @@ const Button: FC<ButtonProps> = ({
   };
   if (href) {
     return (
-      <a {...other} className={combineClassNames(classNameList)} href={href} onClick={handleAnchorClick}>
+      <a className={combineClassNames(classNameList)} data-accent-color={color} href={href} onClick={handleAnchorClick} {...other}>
         {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
         {children}
         {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}
