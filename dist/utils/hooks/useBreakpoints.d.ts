@@ -1,0 +1,30 @@
+export type Breakpoints = {
+    xs: number;
+    sm: number;
+    md: number;
+    lg: number;
+    xl: number;
+    xxl: number;
+};
+export type BreakpointKeys = keyof Breakpoints;
+export declare const breakpoints: Breakpoints;
+export type CurrentBreakpoint = {
+    breakpoint: BreakpointKeys;
+    xs: boolean;
+    sm: boolean;
+    md: boolean;
+    lg: boolean;
+    xl: boolean;
+    xxl: boolean;
+    xsAndUp: boolean;
+    smAndDown: boolean;
+    smAndUp: boolean;
+    mdAndDown: boolean;
+    mdAndUp: boolean;
+    lgAndDown: boolean;
+    lgAndUp: boolean;
+    xlAndDown: boolean;
+    xlAndUp: boolean;
+    xxlAndDown: boolean;
+};
+export declare const useBreakpoint: () => CurrentBreakpoint;
