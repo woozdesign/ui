@@ -1,5 +1,5 @@
 /* eslint-disable react/display-name */
-import React, { FC, ReactNode } from 'react';
+import React, { CSSProperties, FC, ReactNode } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
 import { combineClassNames } from '@/utils';
@@ -79,11 +79,16 @@ Card.Body = ({ title, description }: BodyProps) => {
 };
 
 export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
+  justify?: CSSProperties['justifyContent'];
   children: ReactNode;
 }
 
-Card.Actions = ({ children }: ActionsProps) => {
-  return <div className={styles.actions}>{children}</div>;
+Card.Actions = ({ children, justify = 'start' }: ActionsProps) => {
+  return (
+    <div className={styles.actions} style={{ justifyContent: justify }}>
+      {children}
+    </div>
+  );
 };
 
 export default Card;

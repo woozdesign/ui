@@ -46,8 +46,22 @@ FullContent.args = {
         }
       />
       <Card.Body title="Body Title" description="This is the main content of the card." />
+      <Card.Actions justify={'space-between'}>
+        <Button highContrast color={'gray'}>
+          Action 1
+        </Button>
+        <Button color={'red'}>Action 2</Button>
+      </Card.Actions>
+    </>
+  ),
+};
+export const OnlyContent = Template.bind({});
+OnlyContent.args = {
+  children: (
+    <>
+      <Card.Body title="Body Title" description="This is the main content of the card." />
       <Card.Actions>
-        <Button> Action 1</Button>
+        <Button href="/"> Action 1</Button>
         <Button color={'blue'}>Action 2</Button>
       </Card.Actions>
     </>
