@@ -34,17 +34,18 @@ const Card: FC<CardProps> & {
 
 export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'action'> {
   title: ReactNode;
+  titleLevel?: 6 | 5 | 4 | 3 | 2 | 1;
   subtitle?: ReactNode;
   action?: ReactNode;
   outlined?: boolean;
 }
 
-Card.Heading = ({ title, subtitle, action, outlined = true }: HeadingProps) => {
+Card.Heading = ({ title, subtitle, action, titleLevel = 5, outlined = true }: HeadingProps) => {
   const classes = [styles.heading, outlined ? styles[`heading--outlined`] : ''];
   return (
     <div className={combineClassNames(classes)}>
       <div>
-        <Typography.Title level={5} style={{ margin: '0' }}>
+        <Typography.Title level={titleLevel} style={{ margin: '0' }}>
           {title}
         </Typography.Title>
         {subtitle && (
@@ -60,14 +61,15 @@ Card.Heading = ({ title, subtitle, action, outlined = true }: HeadingProps) => {
 
 export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title'> {
   title?: ReactNode;
+  titleLevel?: 6 | 5 | 4 | 3 | 2 | 1;
   description: ReactNode;
 }
 
-Card.Body = ({ title, description }: BodyProps) => {
+Card.Body = ({ title, description, titleLevel = 5 }: BodyProps) => {
   return (
     <div className={styles.body}>
       {title && (
-        <Typography.Title level={5} style={{ margin: '0' }}>
+        <Typography.Title level={titleLevel} style={{ margin: '0' }}>
           {title}
         </Typography.Title>
       )}

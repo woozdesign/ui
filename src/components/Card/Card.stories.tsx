@@ -38,6 +38,7 @@ FullContent.args = {
     <>
       <Card.Heading
         title="Card Title"
+        titleLevel={3}
         subtitle="Subtitle here"
         action={
           <Button variant={'text'} color={'lime'}>
