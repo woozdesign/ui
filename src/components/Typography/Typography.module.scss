@@ -2,7 +2,7 @@
 $title-margin: 1rem 0;
 
 // Mixins
-@mixin titleStyles($fontSize, $color: var(--color-accent-9-contrast)) {
+@mixin titleStyles($fontSize, $color: var(--color-accent-12)) {
   font-size: $fontSize;
   margin: $title-margin;
   color: $color;
@@ -28,22 +28,16 @@ $title-margin: 1rem 0;
 @for $i from 1 through 6 {
   .title-#{$i} {
     @include titleStyles(var(--font-size-#{9 - $i}));
+    font-weight: bold;
   }
   .subtitle-#{$i} {
-    @include titleStyles(var(--font-size-#{9 - $i}), var(--color-gray-8));
-    font-weight: bold;
+    @include titleStyles(var(--font-size-#{9 - $i}), var(--color-accent-a11));
+
+    font-weight: 500;
   }
 }
 
 // Text styles
 .text {
-  &-primary {
-    @include textStyle(var(--color-accent-9), var(--font-size-4));
-  }
-  &-secondary {
-    @include textStyle(var(--color-gray-8), var(--font-size-4));
-  }
-  &-default {
-    @include textStyle(var(--color-accent-90-contrast), var(--font-size-4));
-  }
+  @include textStyle(var(--color-accent-12), var(--font-size-4));
 }

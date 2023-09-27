@@ -3,69 +3,50 @@
 import { combineClassNames } from '@/utils/helper/combineClassNames';
 import React, { FC } from 'react';
 import styles from './Typography.module.scss';
+import { ParagraphProps, TextProps, TitleProps } from './Typography.props';
 
-export interface TypographyProps {
-  className?: string;
-  children: React.ReactNode;
-  style?: React.CSSProperties;
-}
-export interface TitleProps extends TypographyProps {
-  level?: 1 | 2 | 3 | 4 | 5 | 6 | number;
-  type?: 'default' | 'primary';
-}
-
-const Title: FC<TitleProps> = ({ level = 2, type = 'default', children, className = '', ...other }) => {
+const Title: FC<TitleProps> = ({ level = 2, color = 'gray', children, className = '', ...other }) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   const titleStyle = styles[`title-${level}`];
   const combinedClass = combineClassNames([titleStyle, className]);
 
   return (
-    <Tag className={combinedClass} {...other}>
+    <Tag className={combinedClass} data-accent-color={color} {...other}>
       {children}
     </Tag>
   );
 };
 
-const Subtitle: FC<TitleProps> = ({ level = 6, type = 'default', children, className = '', ...other }) => {
+const Subtitle: FC<TitleProps> = ({ level = 6, color = 'gray', children, className = '', ...other }) => {
   const Tag = `h${level}` as keyof JSX.IntrinsicElements;
   const titleStyle = styles[`subtitle-${level}`];
   const combinedClass = combineClassNames([titleStyle, className]);
 
   return (
-    <Tag className={combinedClass} {...other}>
+    <Tag className={combinedClass} data-accent-color={color} {...other}>
       {children}
     </Tag>
   );
 };
 
-export interface TextProps extends Omit<React.HTMLProps<HTMLSpanElement>, 'size'> {
-  type?: 'default' | 'primary' | 'secondary';
-  size?: 'small' | 'medium' | 'large';
-}
-
-const Text: FC<TextProps> = ({ children, type = 'default', size = 'medium', className = '', ...other }) => {
-  const textStyle = styles[`text-${type}--${size}`];
+const Text: FC<TextProps> = ({ children, size = 'medium', color = 'gray', className = '', ...other }) => {
+  const textStyle = styles[`text--${size}`];
 
   const combinedClass = combineClassNames([textStyle, className]);
 
   return (
-    <span className={combinedClass} {...other}>
+    <span className={combinedClass} data-accent-color={color} {...other}>
       {children}
     </span>
   );
 };
 
-export interface ParagraphProps extends Omit<React.HTMLProps<HTMLParagraphElement>, 'size'> {
-  type?: 'default' | 'primary' | 'secondary';
-  size?: 'small' | 'medium' | 'large';
-}
-
-const Paragraph: FC<ParagraphProps> = ({ children, type = 'default', size = 'medium', className = '', ...other }) => {
-  const textStyle = styles[`text-${type}--${size}`];
+const Paragraph: FC<ParagraphProps> = ({ children, color = 'gray', size = 'medium', className = '', ...other }) => {
+  const textStyle = styles[`text--${size}`];
   const combinedClass = combineClassNames([textStyle, className]);
 
   return (
-    <p className={combinedClass} {...other}>
+    <p className={combinedClass} data-accent-color={color} {...other}>
       {children}
     </p>
   );

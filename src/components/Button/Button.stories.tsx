@@ -26,7 +26,6 @@ Primary.args = {
 export const Outlined = Template.bind({});
 Outlined.args = {
   variant: 'outlined',
-  color: 'red',
 };
 
 export const Secondary = Template.bind({});

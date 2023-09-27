@@ -48,11 +48,7 @@ Card.Heading = ({ title, subtitle, action, titleLevel = 5, outlined = true }: He
         <Typography.Title level={titleLevel} style={{ margin: '0' }}>
           {title}
         </Typography.Title>
-        {subtitle && (
-          <Typography.Text type={'secondary'} style={{ margin: '0' }}>
-            {subtitle}
-          </Typography.Text>
-        )}
+        {subtitle && <Typography.Subtitle style={{ margin: '0' }}>{subtitle}</Typography.Subtitle>}
       </div>
       {action && <div className={styles['heading-action']}>{action}</div>}
     </div>
