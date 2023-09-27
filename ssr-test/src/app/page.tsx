@@ -16,7 +16,7 @@ export default function Home() {
             By <Image src="/vercel.svg" alt="Vercel Logo" className={styles.vercelLogo} width={100} height={24} priority />
           </a>
 
-          <Button href="/" color={'gray'}>
+          <Button href="/" color={'gray'} variant={'outlined'} highContrast>
             asdf
           </Button>
         </div>
