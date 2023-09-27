@@ -1,36 +1,61 @@
-@import '@/styles/lib/colors';
-
 .button--outlined {
   background-color: transparent;
   transition:
     all 0.2s,
     box-shadow 0.08s ease-in;
 
-  @each $variant, $colors in $color-variants {
-    &--color-#{$variant} {
-      background-color: transparent;
-      color: map-get($colors, color);
-      border: 1px solid map-get($colors, outline) !important;
+  background-color: transparent;
+  color: var(--color-accent-11);
+  border: 1px solid var(--color-accent-a10);
 
-      &:hover {
-        border-color: map-get($colors, hover);
-      }
+  &:hover {
+    border-color: var(--color-accent-a11);
+  }
 
-      &:active {
-        border-color: map-get($colors, active);
-        box-shadow: boxShadow(map-get($colors, color));
-      }
+  &:active {
+    border-color: var(--color-accent-a9);
+    box-shadow: boxShadowAlpha(var(--color-accent-11));
+  }
 
-      &:focus {
-      }
+  &:focus {
+  }
 
-      > .icon-prepend {
-        color: map-get($colors, color);
-      }
+  > .icon-prepend {
+    color: var(--color-accent-11);
+  }
 
-      > .icon-append {
-        color: map-get($colors, color);
-      }
+  > .icon-append {
+    color: var(--color-accent-11);
+  }
+
+  &.button--high-contrast {
+    background-color: transparent;
+    transition:
+      all 0.2s,
+      box-shadow 0.08s ease-in;
+
+    background-color: transparent;
+    color: var(--color-accent-12);
+    border: 1px solid var(--color-accent-a9);
+
+    &:hover {
+      border-color: var(--color-accent-a10);
+    }
+
+    &:active {
+      border-color: var(--color-accent-a8);
+      box-shadow: boxShadowAlpha(var(--color-accent-12));
+    }
+
+    &:focus {
+    }
+
+    > .icon-prepend {
+      color: var(--color-accent-12);
+    }
+
+    > .icon-append {
+      color: var(--color-accent-12);
     }
   }
 }

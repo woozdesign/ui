@@ -1,0 +1,13 @@
+// Box-shadow Function
+@function boxShadowAlpha($color) {
+  @return opacity($color, 10%) 0 0 0 1px inset, opacity($color, 20%) 0 6px 15px 0, opacity($color, 30%) 0 0 0 4px;
+}
+
+// Box-shadow Function
+@function boxShadow($color) {
+  @return rgba($color, 0.1) 0 0 0 1px inset, rgba($color, 0.2) 0 6px 15px 0, rgba($color, 0.3) 0 0 0 4px;
+}
+
+@function opacity($color, $opacity) {
+  @return color-mix(in oklab, $color $opacity, transparent);
+}

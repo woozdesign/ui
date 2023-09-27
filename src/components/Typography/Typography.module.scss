@@ -1,10 +1,8 @@
-@import '@/styles/lib/colors';
-
 // Base settings
 $title-margin: 1rem 0;
 
 // Mixins
-@mixin titleStyles($fontSize, $color: $text-base) {
+@mixin titleStyles($fontSize, $color: var(--color-accent-9-contrast)) {
   font-size: $fontSize;
   margin: $title-margin;
   color: $color;
@@ -32,7 +30,7 @@ $title-margin: 1rem 0;
     @include titleStyles(var(--font-size-#{9 - $i}));
   }
   .subtitle-#{$i} {
-    @include titleStyles(var(--font-size-#{9 - $i}), $text-secondary);
+    @include titleStyles(var(--font-size-#{9 - $i}), var(--color-gray-8));
     font-weight: bold;
   }
 }
@@ -40,12 +38,12 @@ $title-margin: 1rem 0;
 // Text styles
 .text {
   &-primary {
-    @include textStyle($primary-color, var(--font-size-4));
+    @include textStyle(var(--color-accent-9), var(--font-size-4));
   }
   &-secondary {
-    @include textStyle($text-secondary, var(--font-size-4));
+    @include textStyle(var(--color-gray-8), var(--font-size-4));
   }
   &-default {
-    @include textStyle($text-base, var(--font-size-4));
+    @include textStyle(var(--color-accent-90-contrast), var(--font-size-4));
   }
 }

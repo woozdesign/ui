@@ -4,6 +4,8 @@ import { Story, Meta } from '@storybook/react';
 import Form from './Form';
 import TextField from '../TextField';
 import Button from '../Button';
+import '@/styles/core.scss';
+import Theme from '../Theme/Theme';
 
 export default {
   title: 'Components/Form',
@@ -27,12 +29,14 @@ const Template: Story = (args) => {
   };
 
   return (
-    <Form onSuccess={handleFormSubmit} onError={handleFormError} {...args}>
-      <TextField id="choose" label="Would you prefer a banana or cherry?" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-      <TextField id="choose" label="This is required" required value={requiredValue} onChange={(e) => setRequiredValue(e.target.value)} />
-      <TextField id="choose" label="This is required too" pattern="^[A-Za-z]+$" required value={requiredValue2} onChange={(e) => setRequiredValue2(e.target.value)} />
-      <Button buttonType={'submit'}>Submit</Button>
-    </Form>
+    <Theme.ThemeProvider>
+      <Form onSuccess={handleFormSubmit} onError={handleFormError} {...args}>
+        <TextField id="choose" label="Would you prefer a banana or cherry?" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+        <TextField id="choose" label="This is required" required value={requiredValue} onChange={(e) => setRequiredValue(e.target.value)} />
+        <TextField id="choose" label="This is required too" pattern="^[A-Za-z]+$" required value={requiredValue2} onChange={(e) => setRequiredValue2(e.target.value)} />
+        <Button buttonType={'submit'}>Submit</Button>
+      </Form>
+    </Theme.ThemeProvider>
   );
 };
 

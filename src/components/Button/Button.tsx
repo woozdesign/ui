@@ -2,42 +2,19 @@
 import { combineClassNames } from '@/utils/helper/combineClassNames';
 import React, { FC } from 'react';
 import styles from './Button.module.scss';
-
-type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
-type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
-interface BaseProps {
-  type?: 'primary' | 'outlined' | 'secondary' | 'text' | 'icon';
-  buttonType?: 'button' | 'submit' | 'reset';
-  size?: 'xlarge' | 'large' | 'medium' | 'small';
-  color?: 'default' | 'primary' | 'secondary' | 'success' | 'error' | 'warning';
-  block?: boolean;
-  disabled?: boolean;
-  shape?: 'round' | 'rect';
-  iconPrepend?: JSX.Element;
-  iconAppend?: JSX.Element;
-  children?: React.ReactNode;
-  // onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent> | React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void;
-}
-
-interface ButtonSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size' | 'type'> {
-  onClick?: ButtonClickHandler;
-}
-
-interface AnchorSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size' | 'type'> {
-  href: string;
-  onClick?: AnchorClickHandler;
-}
+import { ButtonSpecificProps, AnchorSpecificProps, AnchorClickHandler, ButtonClickHandler } from './Button.props';
 
 export type ButtonProps = ButtonSpecificProps | AnchorSpecificProps;
 
 const Button: FC<ButtonProps> = ({
-  type = 'primary',
-  buttonType = 'button',
+  variant = 'primary',
   size = 'medium',
-  color = 'default',
+  color = 'purple',
   disabled = false,
   block = false,
+  highContrast = false,
   shape = 'rect',
+  buttonType = 'button',
   iconPrepend,
   iconAppend,
   children,
@@ -49,9 +26,10 @@ const Button: FC<ButtonProps> = ({
     other.className ?? '',
     styles.button,
     styles[`button--${size}`],
-    styles[`button--${type}--color-${color}`],
+    styles[`button--${variant}`],
     disabled ? styles[`button--disabled`] : '',
     block ? styles['button--block'] : '',
+    highContrast ? styles['button--high-contrast'] : '',
     styles[`button--${shape}`],
   ];
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -72,7 +50,7 @@ const Button: FC<ButtonProps> = ({
   }
 
   return (
-    <button className={combineClassNames(classNameList)} disabled={disabled} onClick={handleButtonClick} {...other} type={buttonType}>
+    <button className={combineClassNames(classNameList)} data-accent-color={color} disabled={disabled} onClick={handleButtonClick} type={buttonType} {...other}>
       {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
       {children}
       {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}

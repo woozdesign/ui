@@ -34,14 +34,7 @@ const config: StorybookConfig = {
             },
           },
         },
-        {
-          loader: 'sass-loader',
-          options: {
-            // sourceMap: true,
-            implementation: require('sass'), // dart sass
-            additionalData: `@import "@/styles/core.scss";`, // update the path to the correct location
-          },
-        },
+        'sass-loader',
       ],
     });
 
