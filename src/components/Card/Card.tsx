@@ -3,10 +3,10 @@ import React, { CSSProperties, FC, ReactNode } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
 import { combineClassNames } from '@/utils';
+import { SizeProp } from '@/utils/helper/props';
 
-export interface CardProps extends Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
+export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
   outlined?: boolean;
-  size?: 'small' | 'medium' | 'large';
   children: ReactNode;
 }
 
@@ -15,7 +15,7 @@ const Card: FC<CardProps> & {
   Body: FC<BodyProps>;
   Actions: FC<ActionsProps>;
 } = ({ outlined = true, size = 'medium', children, ...others }) => {
-  const cardClasses = [styles.card];
+  const cardClasses = [styles.card, styles[`card--${size}`]];
 
   if (outlined) {
     cardClasses.push(styles['card--outlined']);
