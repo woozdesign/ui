@@ -7,6 +7,63 @@ $breakpoints: (
   xxl: 1600px,
 );
 
+// AndUp Mixins
+@mixin --xsAndUp {
+  @media (min-width: #{map-get($breakpoints, xs)}) {
+    @content;
+  }
+}
+
+@mixin --smAndUp {
+  @media (min-width: #{map-get($breakpoints, sm)}) {
+    @content;
+  }
+}
+
+@mixin --mdAndUp {
+  @media (min-width: #{map-get($breakpoints, md)}) {
+    @content;
+  }
+}
+
+@mixin --lgAndUp {
+  @media (min-width: #{map-get($breakpoints, lg)}) {
+    @content;
+  }
+}
+
+@mixin --xlAndUp {
+  @media (min-width: #{map-get($breakpoints, xl)}) {
+    @content;
+  }
+}
+
+// AndDown Mixins
+@mixin --smAndDown {
+  @media (max-width: #{map-get($breakpoints, sm) - 1px}) {
+    @content;
+  }
+}
+
+@mixin --mdAndDown {
+  @media (max-width: #{map-get($breakpoints, md) - 1px}) {
+    @content;
+  }
+}
+
+@mixin --lgAndDown {
+  @media (max-width: #{map-get($breakpoints, lg) - 1px}) {
+    @content;
+  }
+}
+
+@mixin --xlAndDown {
+  @media (max-width: #{map-get($breakpoints, xl) - 1px}) {
+    @content;
+  }
+}
+
+// Specific Range Mixins
 @mixin --xs {
   @media (min-width: #{map-get($breakpoints, xs)}) and (max-width: #{map-get($breakpoints, sm) - 1px}) {
     @content;
