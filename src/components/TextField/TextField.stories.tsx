@@ -1,6 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import TextField, { TextFieldProps } from './TextField';
+import '@/styles/core.scss';
+import Theme from '../Theme/Theme';
 
 export default {
   title: 'Components/TextField',
@@ -12,18 +14,26 @@ export default {
   },
 } as Meta;
 
-const Template: Story<TextFieldProps> = (args) => <TextField {...args} />;
+const Template: Story<TextFieldProps> = (args) => (
+  <Theme.ThemeProvider>
+    <TextField {...args} />
+  </Theme.ThemeProvider>
+);
 
 export const Default = Template.bind({});
 Default.args = {};
 
 export const Small = Template.bind({});
 Small.args = {
+  iconPrepend: <span>🔍</span>,
+  iconAppend: <span>❌</span>,
   size: 'small',
 };
 
 export const Large = Template.bind({});
 Large.args = {
+  iconPrepend: <span>🔍</span>,
+  iconAppend: <span>❌</span>,
   size: 'large',
 };
 

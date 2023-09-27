@@ -1,6 +1,24 @@
-$default-border-radius: 1rem;
+$border-radius-medium: 1rem;
 
 // Padding
 $padding-medium: 0 0.75rem;
 $padding-large: 0 1rem;
 $padding-small: 0 0.5rem;
+
+.woozdesign {
+  --border-radius-medium: #{$border-radius-medium};
+  --padding-small: #{$padding-small};
+  --padding-medium: #{$padding-medium};
+  --padding-large: #{$padding-large};
+}
+
+.woozdesign-dark {
+  --padding-small: #{$padding-small};
+  --padding-medium: #{$padding-medium};
+  --padding-large: #{$padding-large};
+}
+.woozdesign-light {
+  --padding-small: #{$padding-small};
+  --padding-medium: #{$padding-medium};
+  --padding-large: #{$padding-large};
+}

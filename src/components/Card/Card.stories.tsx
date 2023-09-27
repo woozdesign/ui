@@ -2,23 +2,27 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Card, { CardProps } from './Card';
 import Button from '../Button';
+import Theme from '../Theme/Theme';
 
 export default {
   title: 'Components/Card',
   component: Card,
   args: {
-    outlined: false,
-    backgroundColor: '',
+    outlined: true,
     children: (
       <>
-        <Card.Title>Default Title</Card.Title>
-        <Card.Text>Default card content.</Card.Text>
+        <Card.Heading title="Default Title" />
+        <Card.Body description="Default card content." />
       </>
     ),
   },
 } as Meta;
 
-const Template: Story<CardProps> = (args) => <Card {...args} />;
+const Template: Story<CardProps> = (args) => (
+  <Theme.ThemeProvider>
+    <Card {...args} />
+  </Theme.ThemeProvider>
+);
 
 export const Default = Template.bind({});
 Default.args = {};
@@ -28,21 +32,38 @@ Outlined.args = {
   outlined: true,
 };
 
-export const WithBackgroundColor = Template.bind({});
-WithBackgroundColor.args = {
-  backgroundColor: 'lightblue',
-};
-
 export const FullContent = Template.bind({});
 FullContent.args = {
   children: (
     <>
-      <Card.Title level={3}>Card Title</Card.Title>
-      <Card.Subtitle>Subtitle here</Card.Subtitle>
-      <Card.Text>This is the main content of the card.</Card.Text>
-      <Card.Actions>
-        <Button>Action 1</Button>
-        <Button>Action 2</Button>
+      <Card.Heading
+        title="Card Title"
+        titleLevel={3}
+        subtitle="Subtitle here"
+        action={
+          <Button variant={'text'} color={'lime'}>
+            more
+          </Button>
+        }
+      />
+      <Card.Body title="Body Title" description="This is the main content of the card." />
+      <Card.Actions justify={'space-between'}>
+        <Button highContrast color={'gray'}>
+          Action 1
+        </Button>
+        <Button color={'red'}>Action 2</Button>
+      </Card.Actions>
+    </>
+  ),
+};
+export const OnlyContent = Template.bind({});
+OnlyContent.args = {
+  children: (
+    <>
+      <Card.Body title="Body Title" description="This is the main content of the card." />
+      <Card.Actions outlined={true}>
+        <Button href="/"> Action 1</Button>
+        <Button color={'blue'}>Action 2</Button>
       </Card.Actions>
     </>
   ),

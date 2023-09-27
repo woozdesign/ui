@@ -1,17 +1,27 @@
-@import '@/styles/lib/colors';
-
 .wrapper {
   margin-bottom: 0.5rem;
+
+  &.large {
+    .label {
+      font-size: var(--font-size-4);
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  &.small {
+    .label {
+      font-size: var(--font-size-2);
+      margin-bottom: 0.25rem;
+    }
+  }
 }
 .group {
   display: flex;
   align-items: center;
   position: relative;
   max-width: 190px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   border-radius: 8px;
-  border-color: rgba($bg-light, 1);
-
   &.block {
     width: 100%;
     max-width: 100%;
@@ -20,17 +30,21 @@
   &.large {
     .input {
       height: 50px;
+      padding: 0 1rem;
     }
   }
 
   &.small {
     .input {
       height: 30px;
+      padding: 0 0.5rem;
     }
   }
 }
 .label {
+  font-size: var(--font-size-3);
   margin-bottom: 0.25rem;
+  padding-left: 0.25rem;
 }
 .input {
   width: 100%;
@@ -40,23 +54,26 @@
   border: 2px solid transparent;
   border-radius: 8px;
   outline: none;
-  background-color: $bg-dark;
-  color: $text-base;
-  transition: 0.3s ease;
+  background-color: transparent;
+  border-color: var(--color-gray-6);
+  color: var(--color-accent-9-contrast);
+  transition: border 0.3s ease;
+  margin-bottom: 20px;
 
   &.hasPrependIcon {
-    padding-left: 3.5rem;
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
   }
 
   &::placeholder {
-    color: $text-secondary;
+    color: var(--color-gray-8);
   }
 
   &:focus,
   &:hover {
     outline: none;
-    border-color: rgba($primary-color, 1);
-    background-color: $bg-dark;
+    border-color: var(--color-accent-9);
+    background-color: var(--color-surface-accent);
     box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
   }
 
@@ -64,8 +81,8 @@
     // border: 2px solid var(--color-primary);
   }
   &:disabled {
-    background-color: lighten($bg-dark, 10%); // lightens the dark background slightly
-    color: darken($text-base, 10%); // darkens the text color slightly
+    background-color: var(--color-surface-accent); // lightens the dark background slightly
+    color: darken(black, 10%); // darkens the text color slightly
     pointer-events: none;
     cursor: not-allowed; // shows a not-allowed cursor when hovered
     opacity: 0.7; // reduces the opacity
@@ -73,28 +90,34 @@
 }
 
 .input[data-has-value='true']:invalid {
-  border: 2px solid var(--color-error);
+  border: 2px solid var(--color-red-9);
+  background-color: var(--color-red-surface);
+  margin-bottom: 0;
 }
 
 .iconPrepend {
   position: absolute;
   left: 1rem;
-  fill: $text-on-bg;
+  fill: var(--color-accent-9);
   width: 1rem;
   height: 1rem;
+  margin-bottom: 20px;
 }
 
 .iconAppend {
   position: absolute;
   right: 1rem;
-  fill: $text-on-bg;
+  fill: var(--color-accent-9);
   width: 1rem;
   height: 1rem;
+  margin-bottom: 20px;
 }
 
 .error {
-  color: var(--color-error);
-  margin-top: 0.5rem;
+  color: var(--color-red-9);
+  height: 16px;
+  margin-top: 4px;
+  margin-left: 4px;
   font-size: 0.8rem;
 }
 

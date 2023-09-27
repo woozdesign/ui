@@ -10,15 +10,15 @@ const preview: Preview = {
       },
     },
     backgrounds: {
-      default: 'twitter',
+      default: 'black',
       values: [
         {
           name: 'black',
           value: '#000',
         },
         {
-          name: 'facebook',
-          value: '#3b5998',
+          name: 'white',
+          value: '#fff',
         },
       ],
     },

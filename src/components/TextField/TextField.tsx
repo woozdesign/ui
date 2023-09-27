@@ -55,12 +55,14 @@ const TextField: FC<TextFieldProps> = ({ size = 'medium', label, iconPrepend, ic
   };
 
   return (
-    <div className={styles.wrapper}>
+    <div className={combineClassNames([styles.wrapper, styles[size]])}>
       {label && (
-        <Typography.Paragraph type={'secondary'} size={'small'} className={styles.label}>
-          {others.required && <span style={{ color: 'var(--color-error)', marginRight: '4px' }}>*</span>}
-          {label}
-        </Typography.Paragraph>
+        <div>
+          <Typography.Paragraph type={'secondary'} size={'small'} className={styles.label}>
+            {others.required && <span style={{ color: 'var(--color-error)', marginRight: '4px' }}>*</span>}
+            {label}
+          </Typography.Paragraph>
+        </div>
       )}
       <div className={combineClassNames(groupClasses)}>
         {iconPrepend && <span className={styles.iconPrepend}>{iconPrepend}</span>}
@@ -72,7 +74,6 @@ const TextField: FC<TextFieldProps> = ({ size = 'medium', label, iconPrepend, ic
           onInvalid={handleInvalid}
           className={combineClassNames([...inputClasses, error ? styles.inputError : ''])}
         />
-
         {iconAppend && <span className={styles.iconAppend}>{iconAppend}</span>}
       </div>
 

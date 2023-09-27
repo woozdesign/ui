@@ -1,6 +1,8 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Typography, { TitleProps, TextProps, ParagraphProps, TitleProps as SubtitleProps } from './Typography';
+import '@/styles/core.scss';
+import Theme from '../Theme/Theme';
 
 export default {
   title: 'Components/Typography',
@@ -8,7 +10,11 @@ export default {
 } as Meta;
 
 // Title Story
-const TitleTemplate: Story<TitleProps> = (args) => <Typography.Title {...args} />;
+const TitleTemplate: Story<TitleProps> = (args) => (
+  <Theme.ThemeProvider>
+    <Typography.Title {...args} />
+  </Theme.ThemeProvider>
+);
 export const DefaultTitle = TitleTemplate.bind({});
 DefaultTitle.args = {
   children: 'Default Title',
@@ -23,7 +29,11 @@ SecondaryTitle.args = {
 };
 
 // Subtitle Story
-const SubtitleTemplate: Story<SubtitleProps> = (args) => <Typography.Subtitle {...args} />;
+const SubtitleTemplate: Story<SubtitleProps> = (args) => (
+  <Theme.ThemeProvider>
+    <Typography.Subtitle {...args} />
+  </Theme.ThemeProvider>
+);
 export const DefaultSubtitle = SubtitleTemplate.bind({});
 DefaultSubtitle.args = {
   children: 'Default Subtitle',
@@ -38,7 +48,11 @@ PrimarySubtitle.args = {
 };
 
 // Text Story
-const TextTemplate: Story<TextProps> = (args) => <Typography.Text {...args} />;
+const TextTemplate: Story<TextProps> = (args) => (
+  <Theme.ThemeProvider>
+    <Typography.Text {...args} />
+  </Theme.ThemeProvider>
+);
 export const DefaultText = TextTemplate.bind({});
 DefaultText.args = {
   children: 'Default Text',
@@ -52,7 +66,11 @@ PrimaryText.args = {
 };
 
 // Paragraph Story
-const ParagraphTemplate: Story<ParagraphProps> = (args) => <Typography.Paragraph {...args} />;
+const ParagraphTemplate: Story<ParagraphProps> = (args) => (
+  <Theme.ThemeProvider>
+    <Typography.Paragraph {...args} />
+  </Theme.ThemeProvider>
+);
 export const DefaultParagraph = ParagraphTemplate.bind({});
 DefaultParagraph.args = {
   children: 'Default Paragraph',

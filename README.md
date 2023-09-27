@@ -31,6 +31,7 @@ pnpm add woozdesign-ui
 
 ```jsx
 import React from 'react';
+import '@woozdesign/ui/styles.css';
 import { Button, Layout } from 'woozdesign-ui';
 
 const App = () => (
@@ -42,6 +43,20 @@ const App = () => (
     </Layout.Row>
   </Layout.Container>
 );
+```
+
+## 💻 SSR
+
+```jsx
+'use client';
+
+import React from 'react';
+import { Theme } from '@woozdesign/ui';
+import '@woozdesign/ui/styles.css';
+
+export const RootStyleRegistry = ({ children }: React.PropsWithChildren) => {
+  return <Theme.ThemeProvider appearance="light">{children}</Theme.ThemeProvider>;
+};
 ```
 
 ### TypeScript

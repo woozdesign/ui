@@ -1,36 +1,30 @@
-@import '@/styles/lib/colors';
-
 .button--icon {
-  @each $variant, $colors in $color-variants {
-    &--color-#{$variant} {
-      color: map-get($colors, color);
-      background-color: transparent;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      aspect-ratio: 1/1;
-      box-sizing: border-box;
-      // background-color: rgba(map-get($colors, color), 0.2);
+  color: var(--color-accent-9);
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1/1;
+  box-sizing: border-box;
+  // background-color: var(--color-accent-4);
 
-      &:hover {
-        background-color: rgba(map-get($colors, hover), 0.2);
-      }
+  &:hover {
+    background-color: var(--color-accent-5);
+  }
 
-      &:active {
-        // background-color: rgba(map-get($colors, active), 0.2);
-        box-shadow: boxShadow(map-get($colors, color));
-      }
+  &:active {
+    // background-color: rgba(var(--color-accent-80), 0.2);
+    box-shadow: boxShadowAlpha(var(--color-accent-9));
+  }
 
-      &:focus {
-        // box-shadow: boxShadow(map-get($colors, color));
-      }
-      > .icon-prepend {
-        fill: map-get($colors, color);
-      }
+  &:focus {
+    // box-shadow: boxShadow(var(--color-accent-90));
+  }
+  > .icon-prepend {
+    fill: var(--color-accent-9);
+  }
 
-      > .icon-append {
-        fill: map-get($colors, color);
-      }
-    }
+  > .icon-append {
+    fill: var(--color-accent-9);
   }
 }
