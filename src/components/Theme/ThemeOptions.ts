@@ -32,7 +32,7 @@ export const COLOR_SCALES: ThemeAccentColor[] = [
   'sky',
 ];
 
-type ThemeAccentColor =
+export type ThemeAccentColor =
   | 'gray'
   | 'gold'
   | 'bronze'
