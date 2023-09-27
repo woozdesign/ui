@@ -8,6 +8,7 @@ export interface BaseProps extends ColorProp, SizeProp {
   buttonType: 'button' | 'reset' | 'submit';
   block?: boolean;
   disabled?: boolean;
+  highContrast?: boolean;
   shape?: 'round' | 'rect';
   iconPrepend?: JSX.Element;
   iconAppend?: JSX.Element;

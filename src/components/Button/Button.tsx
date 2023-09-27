@@ -12,6 +12,7 @@ const Button: FC<ButtonProps> = ({
   color = 'purple',
   disabled = false,
   block = false,
+  highContrast = false,
   shape = 'rect',
   buttonType = 'button',
   iconPrepend,
@@ -28,6 +29,7 @@ const Button: FC<ButtonProps> = ({
     styles[`button--${variant}`],
     disabled ? styles[`button--disabled`] : '',
     block ? styles['button--block'] : '',
+    highContrast ? styles['button--high-contrast'] : '',
     styles[`button--${shape}`],
   ];
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {

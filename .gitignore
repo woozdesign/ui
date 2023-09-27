@@ -34,4 +34,7 @@ storybook-static/
 *-lock.json
 yarn.lock
 
+*.log
+
+
 # End of .gitignore

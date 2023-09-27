@@ -21,4 +21,26 @@
   > .icon-append {
     fill: var(--color-accent-9);
   }
+
+  &.button--high-contrast {
+    color: var(--color-accent-12);
+    background-color: var(--color-accent-4);
+
+    &:hover {
+      background-color: var(--color-accent-5);
+    }
+
+    &:active {
+      background-color: var(--color-accent-3);
+
+      box-shadow: boxShadowAlpha(var(--color-accent-11));
+    }
+
+    &:focus {
+    }
+    > .icon-prepend,
+    > .icon-append {
+      color: var(--color-accent-12);
+    }
+  }
 }

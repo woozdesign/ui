@@ -20,4 +20,23 @@
   > .icon-append {
     color: var(--color-accent-9);
   }
+
+  &.button--high-contrast {
+    color: var(--color-gray-1);
+    background-color: var(--color-accent-12);
+
+    &:hover {
+      background-color: var(--color-accent-12);
+    }
+
+    &:active {
+      background-color: var(--color-accent-12);
+      box-shadow: boxShadowAlpha(var(--color-accent-11));
+    }
+
+    > .icon-prepend,
+    > .icon-append {
+      color: var(--color-gray-1);
+    }
+  }
 }
