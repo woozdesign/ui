@@ -60,7 +60,7 @@ OnlyContent.args = {
   children: (
     <>
       <Card.Body title="Body Title" description="This is the main content of the card." />
-      <Card.Actions>
+      <Card.Actions outlined={true}>
         <Button href="/"> Action 1</Button>
         <Button color={'blue'}>Action 2</Button>
       </Card.Actions>

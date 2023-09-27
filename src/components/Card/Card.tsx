@@ -36,11 +36,13 @@ export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'tit
   title: ReactNode;
   subtitle?: ReactNode;
   action?: ReactNode;
+  outlined?: boolean;
 }
 
-Card.Heading = ({ title, subtitle, action }: HeadingProps) => {
+Card.Heading = ({ title, subtitle, action, outlined = true }: HeadingProps) => {
+  const classes = [styles.heading, outlined ? styles[`heading--outlined`] : ''];
   return (
-    <div className={styles.heading}>
+    <div className={combineClassNames(classes)}>
       <div>
         <Typography.Title level={5} style={{ margin: '0' }}>
           {title}
@@ -80,12 +82,14 @@ Card.Body = ({ title, description }: BodyProps) => {
 
 export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
   justify?: CSSProperties['justifyContent'];
+  outlined?: boolean;
   children: ReactNode;
 }
 
-Card.Actions = ({ children, justify = 'start' }: ActionsProps) => {
+Card.Actions = ({ children, justify = 'start', outlined = true }: ActionsProps) => {
+  const classes = [styles.actions, outlined ? styles[`actions--outlined`] : ''];
   return (
-    <div className={styles.actions} style={{ justifyContent: justify }}>
+    <div className={combineClassNames(classes)} style={{ justifyContent: justify }}>
       {children}
     </div>
   );
