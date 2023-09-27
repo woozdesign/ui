@@ -142,8 +142,10 @@
   --color-sand-2-translucent: rgba(29, 29, 26, 0.7);
 }
 
-$colors: tomato, red, ruby, crimson, pink, plum, purple, violet, iris, indigo, blue, cyan, teal, jade, green, grass, orange, brown, sky, mint, lime, yellow, amber, gold, bronze,
-  gray; // your array of color names
+// $colors: tomato, red, ruby, crimson, pink, plum, purple, violet, iris, indigo, blue, cyan, teal, jade, green, grass, orange, brown, sky, mint, lime, yellow, amber, gold, bronze,
+
+$colors: 'tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet', 'iris', 'indigo', 'blue', 'cyan', 'teal', 'jade', 'green', 'grass', 'orange', 'brown', 'sky',
+  'mint', 'lime', 'yellow', 'amber', 'gold', 'bronze', 'gray'; // your array of color names
 @mixin accentScales($colorName) {
   [data-accent-color='#{$colorName}'] {
     --color-surface-accent: var(--color-#{$colorName}-surface);
