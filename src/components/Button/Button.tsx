@@ -2,9 +2,7 @@
 import { combineClassNames } from '@/utils/helper/combineClassNames';
 import React, { FC } from 'react';
 import styles from './Button.module.scss';
-import { ButtonSpecificProps, AnchorSpecificProps, AnchorClickHandler, ButtonClickHandler } from './Button.props';
-
-export type ButtonProps = ButtonSpecificProps | AnchorSpecificProps;
+import { AnchorClickHandler, ButtonClickHandler, ButtonProps } from './Button.props';
 
 const Button: FC<ButtonProps> = ({
   variant = 'primary',
