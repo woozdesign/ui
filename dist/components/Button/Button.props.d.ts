@@ -17,6 +17,6 @@ export interface ButtonSpecificProps extends BaseProps, Omit<React.HTMLProps<HTM
     onClick?: ButtonClickHandler;
 }
 export interface AnchorSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size' | 'type'> {
-    href: string;
+    href?: string;
     onClick?: AnchorClickHandler;
 }
