@@ -1,8 +1,6 @@
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-const isProduction = process.env.NODE_ENV === 'production';
-
 module.exports = {
   entry: './src/index.ts', // This should be your library's entry point
   output: {
@@ -13,7 +11,7 @@ module.exports = {
   resolve: {
     extensions: ['.ts', '.tsx', '.js', '.jsx'],
     alias: {
-      '@': isProduction ? path.resolve(__dirname, 'dist/') : path.resolve(__dirname, 'src/'),
+      '@': path.resolve(__dirname, 'src'),
     },
   },
   module: {

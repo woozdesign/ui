@@ -1,5 +1,5 @@
 import React, { CSSProperties, FC, ReactNode } from 'react';
-import { SizeProp } from '@/utils/helper/props';
+import { SizeProp } from '../../utils/helper/props';
 export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
     outlined?: boolean;
     children: ReactNode;

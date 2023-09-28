@@ -1,6 +1,6 @@
 'use client';
-import { combineClassNames } from '@/utils/helper/combineClassNames';
 import React, { FC } from 'react';
+import { combineClassNames } from '../../utils/helper/combineClassNames';
 import styles from './Button.module.scss';
 import { AnchorClickHandler, ButtonClickHandler, ButtonProps } from './Button.props';
 

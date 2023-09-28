@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { combineClassNames } from '@/utils';
+import { combineClassNames } from '../../utils';
 import { getMatchingGrayColor, ThemeOptions, themeDefaults } from './ThemeOptions';
 
 interface ThemeChangeHandlers {

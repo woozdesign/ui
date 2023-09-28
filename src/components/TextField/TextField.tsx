@@ -1,5 +1,5 @@
 'use client';
-import { combineClassNames } from '@/utils/helper/combineClassNames';
+import { combineClassNames } from '../../utils/helper/combineClassNames';
 import React, { ChangeEvent, FC, useState } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './TextField.module.scss';
