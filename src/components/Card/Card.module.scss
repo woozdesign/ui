@@ -68,9 +68,12 @@
       border-bottom: 1px solid var(--color-gray-a6);
     }
 
-    .heading-title {
+    .title {
+      margin: 0;
     }
-    .heading-subtitle {
+    .subtitle {
+      margin: 0;
+      margin-top: 0.5rem;
     }
     .heading-action {
       display: flex;
@@ -79,8 +82,11 @@
   }
 
   .body {
+    .title {
+      margin: 0;
+    }
     .description {
-      font-size: var(--font-size-4);
+      margin: 0;
     }
   }
 

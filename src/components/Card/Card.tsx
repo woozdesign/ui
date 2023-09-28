@@ -45,10 +45,10 @@ Card.Heading = ({ title, subtitle, action, titleLevel = 5, outlined = true }: He
   return (
     <div className={combineClassNames(classes)}>
       <div>
-        <Typography.Title level={titleLevel} style={{ margin: '0' }}>
+        <Typography.Title className={styles.title} level={titleLevel}>
           {title}
         </Typography.Title>
-        {subtitle && <Typography.Subtitle style={{ margin: '0' }}>{subtitle}</Typography.Subtitle>}
+        {subtitle && <Typography.Subtitle className={styles.subtitle}>{subtitle}</Typography.Subtitle>}
       </div>
       {action && <div className={styles['heading-action']}>{action}</div>}
     </div>
@@ -65,15 +65,11 @@ Card.Body = ({ title, description, titleLevel = 5 }: BodyProps) => {
   return (
     <div className={styles.body}>
       {title && (
-        <Typography.Title level={titleLevel} style={{ margin: '0' }}>
+        <Typography.Title className={styles.title} level={titleLevel}>
           {title}
         </Typography.Title>
       )}
-      {description && (
-        <Typography.Text type={'secondary'} style={{ margin: '0' }}>
-          {description}
-        </Typography.Text>
-      )}
+      {description && <Typography.Text className={styles.description}>{description}</Typography.Text>}
     </div>
   );
 };
