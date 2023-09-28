@@ -33,7 +33,7 @@ $title-margin: 1rem 0;
   .subtitle-#{$i} {
     @include titleStyles(var(--font-size-#{9 - $i}), var(--color-accent-a11));
 
-    font-weight: 500;
+    font-weight: 400;
   }
 }
 
