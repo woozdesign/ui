@@ -1,8 +1,7 @@
-import { ThemeAccentColor } from '@/components/Theme/ThemeOptions';
-interface ColorProp {
+import { ThemeAccentColor } from '../../components/Theme/ThemeOptions';
+export interface ColorProp {
     color?: ThemeAccentColor;
 }
-interface SizeProp {
+export interface SizeProp {
     size?: 'xlarge' | 'large' | 'medium' | 'small';
 }
-export { ColorProp, SizeProp };

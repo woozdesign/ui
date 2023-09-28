@@ -1,6 +1,6 @@
 'use client';
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { combineClassNames } from '@/utils/helper/combineClassNames';
+import { combineClassNames } from '../../utils/helper/combineClassNames';
 import React, { FC } from 'react';
 import styles from './Typography.module.scss';
 import { ParagraphProps, TextProps, TitleProps } from './Typography.props';
