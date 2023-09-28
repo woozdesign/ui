@@ -12,7 +12,7 @@ export default {
     children: (
       <>
         <Card.Heading title="Default Title" />
-        <Card.Body content="Default card content." />
+        <Card.Body description="Default card content." />
       </>
     ),
   },
@@ -56,7 +56,7 @@ FullContent.args = {
           </Button>
         }
       />
-      <Card.Body title="Body Title" content="This is the main content of the card." />
+      <Card.Body title="Body Title" description="This is the main content of the card." />
       <Card.Actions justify={'space-between'}>
         <Button highContrast color={'gray'}>
           Action 1
@@ -70,7 +70,7 @@ export const OnlyContent = Template.bind({});
 OnlyContent.args = {
   children: (
     <>
-      <Card.Body title="Body Title" content="This is the main content of the card." />
+      <Card.Body title="Body Title" description="This is the main content of the card." />
       <Card.Actions outlined={true}>
         <Button href="/"> Action 1</Button>
         <Button color={'blue'}>Action 2</Button>
