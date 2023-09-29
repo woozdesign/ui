@@ -11,15 +11,15 @@ const config: StorybookConfig = {
   docs: {
     autodocs: 'tag',
   },
-  typescript: {
-    reactDocgen: 'react-docgen-typescript',
-    reactDocgenTypescriptOptions: {
-      compilerOptions: {
-        allowSyntheticDefaultImports: false,
-        esModuleInterop: false,
-      },
-    },
-  },
+  // typescript: {
+  //   reactDocgen: 'react-docgen-typescript',
+  //   reactDocgenTypescriptOptions: {
+  //     compilerOptions: {
+  //       allowSyntheticDefaultImports: false,
+  //       esModuleInterop: false,
+  //     },
+  //   },
+  // },
   webpackFinal: async (config) => {
     config.resolve.extensions.push('.ts', '.tsx');
 

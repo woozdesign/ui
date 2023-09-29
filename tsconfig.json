@@ -8,13 +8,14 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "lib": ["dom", "es6"],
-    "declaration": true,
     "strict": true,
+    "declaration": true,
+    "rootDir": "./src",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"]
     }
   },
   "include": ["src/**/*.ts", "src/**/*.tsx", "types/styles.d.ts"],
-  "exclude": ["node_modules", ".storybook", "**/*.stories.tsx", "**/*.spec.ts", "src/stories"]
+  "exclude": ["node_modules", ".storybook", "**/*.stories.tsx", "**/*.spec.ts", "src/stories", "dist"]
 }

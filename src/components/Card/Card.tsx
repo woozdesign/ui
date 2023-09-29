@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import React, { CSSProperties, FC, ReactNode } from 'react';
-import { combineClassNames } from '../../utils';
-import { SizeProp } from '../../utils/helper/props';
+import { combineClassNames } from '@/utils';
+import { SizeProp } from '@/utils/helper/props';
 import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
 

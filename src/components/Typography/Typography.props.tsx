@@ -1,4 +1,4 @@
-import { ColorProp, SizeProp } from '../../utils/helper/props';
+import { ColorProp, SizeProp } from '@/utils/helper/props';
 
 export interface TypographyProps {
   className?: string;
