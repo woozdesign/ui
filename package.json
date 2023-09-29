@@ -7,8 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "build:webpack": "webpack --config webpack.config.ts --mode production",
-    "build": "tsc --build && tsc-alias && webpack --config webpack.config.ts --mode production"
+    "build:webpack": "webpack --config webpack.config.ts --mode production  && tsc-alias",
+    "build:tsc": "tsc --build && tsc-alias && webpack --config webpack.config.ts --mode production",
+    "build": "build:webpack"
   },
   "keywords": [],
   "author": "Leo Kim <kim.kw8012@gmail.com> (http://woozlabs.com/)",
@@ -58,6 +59,7 @@
     "style-loader": "^3.3.3",
     "ts-loader": "^9.4.4",
     "tsc-alias": "^1.8.8",
+    "tsconfig-paths-webpack-plugin": "^4.1.0",
     "typescript": "^5.2.2",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4",

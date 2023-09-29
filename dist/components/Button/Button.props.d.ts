@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { ColorProp, SizeProp } from '@/utils';
+import { ColorProp, SizeProp } from '../../utils';
 export type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 export type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
 export interface BaseProps extends ColorProp, SizeProp {
