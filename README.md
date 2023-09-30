@@ -16,15 +16,15 @@
 > This project is very early-stage. Please be aware that the code structure changes frequently.
 
 ```bash
-npm install woozdesign-ui
+npm install @woozdesign/ui
 ```
 
 ```bash
-yarn add woozdesign-ui
+yarn add @woozdesign/ui
 ```
 
 ```bash
-pnpm add woozdesign-ui
+pnpm add @woozdesign/ui
 ```
 
 ## 🔨 Usage
@@ -32,7 +32,7 @@ pnpm add woozdesign-ui
 ```jsx
 import React from 'react';
 import '@woozdesign/ui/styles.css';
-import { Button, Layout } from 'woozdesign-ui';
+import { Button, Layout } from '@woozdesign/ui';
 
 const App = () => (
   <Layout.Container>
@@ -59,7 +59,14 @@ export const RootStyleRegistry = ({ children }: React.PropsWithChildren) => {
 };
 ```
 
-### TypeScript
+It seems like you want to create a table or list indicating that only Layout, Button, Card, TextField, Form, Theme, and Typography are supported, while the other components are still in development. Here’s how you might structure that information:
+
+## Supported Components
+
+Wooz Design offers a robust and diverse set of components to aid in creating interactive and dynamic user interfaces. Our library is continuously evolving, and we are committed to enhancing and expanding our component offerings.
+For more in-depth information on the supported components, their properties, and usage examples, please refer to our detailed [documentation](./docs/supports/README.md).
+
+## TypeScript
 
 `woozdesign` is written in TypeScript with complete definitions, check [Use in TypeScript] to get started.
 
@@ -69,7 +76,7 @@ Clone locally:
 
 ```bash
 $ git clone git@github.com:woozdesign/woozdesign-ui.git
-$ cd woozdesign-ui
+$ cd @woozdesign/ui
 $ npm install
 $ npm start
 ```

@@ -67,10 +67,6 @@ export type ThemeAccentColor =
 type ThemeAppearance = 'inherit' | 'light' | 'dark';
 type ThemeRadius = 'none' | 'small' | 'medium' | 'large' | 'full';
 
-const DEFAULT_APPEARANCE: ThemeAppearance = 'dark';
-const DEFAULT_RADIUS: ThemeRadius = 'medium';
-const DEFAULT_ACCENT: ThemeAccentColor = 'purple';
-
 export type ThemeOptions = {
   accentColor: ThemeAccentColor;
   appearance: ThemeAppearance;
