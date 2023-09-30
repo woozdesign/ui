@@ -15,7 +15,7 @@
   "author": "Leo Kim <kim.kw8012@gmail.com> (http://woozlabs.com/)",
   "license": "MIT",
   "dependencies": {
-    "@woozdesign/colors": "github:woozlabs/woozdesign-colors",
+    "@woozdesign/colors": "^1.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.67.0"
