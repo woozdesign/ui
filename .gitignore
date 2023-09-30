@@ -31,7 +31,6 @@ storybook-static/
 .eslintcache
 
 # Lock files (if you decide not to track them)
-*-lock.json
 yarn.lock
 
 *.log
