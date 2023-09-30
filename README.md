@@ -64,9 +64,9 @@ It seems like you want to create a table or list indicating that only Layout, Bu
 ## Supported Components
 
 Wooz Design offers a robust and diverse set of components to aid in creating interactive and dynamic user interfaces. Our library is continuously evolving, and we are committed to enhancing and expanding our component offerings.
-For more in-depth information on the supported components, their properties, and usage examples, please refer to our detailed [documentation](./docs/Support.md).
+For more in-depth information on the supported components, their properties, and usage examples, please refer to our detailed [documentation](./docs/supports/README.md).
 
-### TypeScript
+## TypeScript
 
 `woozdesign` is written in TypeScript with complete definitions, check [Use in TypeScript] to get started.
 

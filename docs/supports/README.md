@@ -1,5 +1,3 @@
-Certainly! Below is a structured table format for the components you've listed, categorized by their respective types:
-
 ## Containment Components
 
 | Components       | Supported | Notes |
