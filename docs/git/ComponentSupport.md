@@ -1,8 +1,6 @@
 > [!WARNING]  
 > This project is very early-stage. Please be aware that the code structure changes frequently.
 
-Certainly! Here’s how you can modify the titles to be plural and the other components to be singular:
-
 ### Containments
 
 | Component       | Supported | Notes |
