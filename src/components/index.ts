@@ -8,3 +8,4 @@ export { default as Theme } from './Theme';
 
 export { default as Badge } from './Badge';
 export { default as Divider } from './Divider';
+export { default as Slider } from './Slider';
