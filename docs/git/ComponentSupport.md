@@ -54,7 +54,7 @@
 
 | Component        | Supported | Notes |
 | ---------------- | --------- | ----- |
-| Table            | 🚧        |       |
+| Table            | ✅        |       |
 | Virtual Scroller | 🚧        |       |
 | iframe           | 🚧        |       |
 | Code             | 🚧        |       |
