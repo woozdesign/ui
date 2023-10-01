@@ -59,8 +59,6 @@ export const RootStyleRegistry = ({ children }: React.PropsWithChildren) => {
 };
 ```
 
-It seems like you want to create a table or list indicating that only Layout, Button, Card, TextField, Form, Theme, and Typography are supported, while the other components are still in development. Here’s how you might structure that information:
-
 ## Supported Components
 
 Wooz Design offers a robust and diverse set of components to aid in creating interactive and dynamic user interfaces. Our library is continuously evolving, and we are committed to enhancing and expanding our component offerings.
