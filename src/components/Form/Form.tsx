@@ -12,7 +12,7 @@ export interface FormProps {
   onError: () => void;
 }
 
-const Form: FC<FormProps> = ({ children, onSuccess, onError }) => {
+const Form: FC<FormProps> = ({ children, onSuccess, onError, ...others }) => {
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -26,7 +26,7 @@ const Form: FC<FormProps> = ({ children, onSuccess, onError }) => {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} noValidate>
+    <form className={styles.form} onSubmit={handleSubmit} noValidate {...others}>
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
           return React.cloneElement<FormChildProps>(child, { hasSubmitted });

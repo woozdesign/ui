@@ -18,6 +18,8 @@
   border-color: var(--color-gray-6);
   color: var(--color-accent-9-contrast);
   transition: border 0.3s ease;
+  margin-bottom: 20px;
+
   resize: none;
   &--primary {
     &:focus,
@@ -48,6 +50,11 @@
   }
 }
 
+.textArea[data-has-value='true']:invalid {
+  border: 2px solid var(--color-red-9);
+  background-color: var(--color-red-surface);
+  margin-bottom: 0;
+}
 .error {
   color: var(--color-red-9);
   height: 16px;

@@ -57,7 +57,9 @@ const TextArea: FC<TextAreaProps> = ({ variant = 'primary', size = 2, label, res
       <textarea
         {...others}
         rows={size}
+        data-has-value={hasSubmitted}
         onChange={handleInput}
+        onInvalid={handleInvalid}
         onKeyPress={handleKeyPress} // Add the handleKeyPress method here
         className={combineClassNames(classes)}
       />

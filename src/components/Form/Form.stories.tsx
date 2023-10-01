@@ -31,11 +31,12 @@ const Template: Story = (args) => {
 
   return (
     <Theme.ThemeProvider>
-      <Form onSuccess={handleFormSubmit} onError={handleFormError} {...args}>
-        <TextField id="choose" label="Would you prefer a banana or cherry?" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
-        <TextField id="choose" label="This is required" required value={requiredValue} onChange={(e) => setRequiredValue(e.target.value)} />
-        <TextField id="choose" label="This is required too" pattern="^[A-Za-z]+$" required value={requiredValue2} onChange={(e) => setRequiredValue2(e.target.value)} />
-        <TextArea id="choose" label="This is Text Area" required value={requiredValue3} onChange={(e) => setRequiredValue3(e.target.value)} />
+      <Form id="form1" onSuccess={handleFormSubmit} onError={handleFormError} {...args}>
+        <TextField id="1" label="Would you prefer a banana or cherry?" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+        <TextField id="2" label="This is required" required value={requiredValue} onChange={(e) => setRequiredValue(e.target.value)} />
+        <TextField id="3" label="This is required too" pattern="^[A-Za-z]+$" required value={requiredValue2} onChange={(e) => setRequiredValue2(e.target.value)} />
+        <TextArea id="4" label="This is Text Area" required value={requiredValue3} onChange={(e) => setRequiredValue3(e.target.value)} />
+
         <Button buttonType={'submit'}>Submit</Button>
       </Form>
     </Theme.ThemeProvider>
