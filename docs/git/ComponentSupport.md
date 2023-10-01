@@ -45,7 +45,7 @@
 | Custom Input | 🚧        |       |
 | Radio Button | 🚧        |       |
 | Select       | 🚧        |       |
-| Slider       | 🚧        |       |
+| Slider       | ✅        |       |
 | Switch       | 🚧        |       |
 | Text Field   | ✅        |       |
 | Textarea     | 🚧        |       |
