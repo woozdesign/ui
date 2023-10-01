@@ -3,7 +3,7 @@ import { ColorProp, SizeProp } from '@/utils';
 export type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 export type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
 export interface BaseProps extends ColorProp, SizeProp {
-  variant?: 'primary' | 'outlined' | 'secondary' | 'text' | 'icon';
+  variant?: 'primary' | 'outlined' | 'secondary';
   buttonType?: 'button' | 'reset' | 'submit';
   block?: boolean;
   disabled?: boolean;

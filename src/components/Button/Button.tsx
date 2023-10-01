@@ -7,7 +7,7 @@ import { AnchorClickHandler, ButtonClickHandler, ButtonProps } from './Button.pr
 const Button: FC<ButtonProps> = ({
   variant = 'primary',
   size = 'medium',
-  color = 'purple',
+  color,
   disabled = false,
   block = false,
   highContrast = false,

@@ -1,4 +1,4 @@
-import { ThemeAccentColor } from '@/components/Theme/ThemeOptions';
+import { ThemeAccentColor, ThemeRadius } from '@/components/Theme/ThemeOptions';
 
 export interface ColorProp {
   color?: ThemeAccentColor;
@@ -6,4 +6,8 @@ export interface ColorProp {
 
 export interface SizeProp {
   size?: 'xlarge' | 'large' | 'medium' | 'small';
+}
+
+export interface RadiusProp {
+  radius?: ThemeRadius;
 }

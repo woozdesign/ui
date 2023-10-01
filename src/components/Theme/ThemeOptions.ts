@@ -65,7 +65,7 @@ export type ThemeAccentColor =
   | 'mint'
   | 'sky';
 type ThemeAppearance = 'inherit' | 'light' | 'dark';
-type ThemeRadius = 'none' | 'small' | 'medium' | 'large' | 'full';
+export type ThemeRadius = 'none' | 'small' | 'medium' | 'large' | 'full';
 
 export type ThemeOptions = {
   accentColor: ThemeAccentColor;
