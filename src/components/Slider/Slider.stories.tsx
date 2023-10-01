@@ -9,7 +9,7 @@ export default {
 } as Meta;
 
 const Template: Story<SliderProps> = (args) => (
-  <Theme.ThemeProvider>
+  <Theme.ThemeProvider appearance={'dark'}>
     <div style={{ height: '200px' }}>
       <Slider {...args} />
     </div>

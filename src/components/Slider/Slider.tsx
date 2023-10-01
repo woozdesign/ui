@@ -1,15 +1,35 @@
 import React, { FC, useState, useRef, useCallback, useEffect } from 'react';
 import styles from './Slider.module.scss';
+import { ColorProp, combineClassNames } from '@/utils';
+import Range from './Range';
+import Thumb from './Thumb';
 
-interface SliderProps {
+interface SliderProps extends ColorProp {
   defaultValue: number[];
   radius?: 'full' | 'default';
+  trackSize?: number;
+  thumbSize?: number;
+  reverse?: boolean;
   orientation?: 'horizontal' | 'vertical';
   onPointerDown?: (value: number[]) => void;
   onChange?: (value: number[]) => void;
   onPointerUp?: (value: number[]) => void;
 }
-const Slider: FC<SliderProps> = ({ defaultValue, radius = 'default', orientation = 'horizontal', onPointerDown, onChange, onPointerUp }) => {
+const Slider: FC<SliderProps> = ({
+  defaultValue,
+  radius = 'default',
+  color,
+  reverse = false,
+  orientation = 'horizontal',
+  trackSize = 4,
+  thumbSize = 16,
+  onPointerDown,
+  onChange,
+  onPointerUp,
+}) => {
+  if (trackSize > thumbSize) thumbSize = trackSize * 1.2;
+
+  const classes = [styles.slider, styles[`slider--${orientation}`], styles[`slider--${radius}`]];
   const [minValue, setMinValue] = useState(defaultValue.length > 1 ? defaultValue[0] : 0);
   const [maxValue, setMaxValue] = useState(defaultValue.length > 1 ? defaultValue[1] : defaultValue[0]);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -25,24 +45,33 @@ const Slider: FC<SliderProps> = ({ defaultValue, radius = 'default', orientation
     valueRef.current = [minValue, maxValue];
   }, [minValue, maxValue]);
 
-  const calculateValue = useCallback((clientX: number) => {
-    if (!sliderRef.current) return 0;
-    const { left, width } = sliderRef.current.getBoundingClientRect();
-    let percentage = ((clientX - left) / width) * 100;
-    percentage = Math.max(0, Math.min(100, percentage)); // Clamp the value between 0 and 100
-    return Math.round(percentage);
-  }, []);
+  const calculateValue = useCallback(
+    (clientX: number, clientY: number) => {
+      if (!sliderRef.current) return 0;
+      const { top, left, height, width } = sliderRef.current.getBoundingClientRect();
+      let percentage;
+      if (orientation === 'vertical') {
+        percentage = reverse ? ((clientY - top) / height) * 100 : 100 - ((clientY - top) / height) * 100;
+      } else {
+        percentage = reverse ? 100 - ((clientX - left) / width) * 100 : ((clientX - left) / width) * 100;
+      }
+      percentage = Math.max(0, Math.min(100, percentage)); // Clamp the value between 0 and 100
+      return Math.round(percentage);
+    },
+    [orientation, reverse],
+  );
 
   const handleThumbMove = useCallback(
     (event: React.PointerEvent<HTMLDivElement>, isMinThumb: boolean) => {
       event.preventDefault();
       onPointerDown?.([minValue, maxValue]);
       const move = (e: PointerEvent) => {
-        const value = calculateValue(e.clientX);
+        const value = calculateValue(e.clientX, e.clientY);
         if (isMinThumb ? value < maxValue : value >= minValue) {
           isMinThumb ? setMinValue(value) : setMaxValue(value);
         }
       };
+
       const endMove = () => {
         window.removeEventListener('pointermove', move);
         window.removeEventListener('pointerup', endMove);
@@ -58,17 +87,22 @@ const Slider: FC<SliderProps> = ({ defaultValue, radius = 'default', orientation
   );
 
   return (
-    <div className={`${styles.slider} ${styles[`slider--${orientation}`]} ${styles[`slider--${radius}`]}`} ref={sliderRef}>
+    <div
+      className={combineClassNames(classes)}
+      style={orientation === 'vertical' ? { width: `${trackSize}px`, height: '100%' } : { height: `${trackSize}px`, width: '100%' }}
+      data-accent-color={color}
+      ref={sliderRef}
+    >
       <div className={styles.track}>
-        <div className={styles.range} style={{ left: `${minValue}%`, width: `${maxValue - minValue}%` }}></div>
+        <Range orientation={orientation} reverse={reverse} minValue={minValue} maxValue={maxValue} />
       </div>
       {defaultValue.length === 2 && (
         <>
-          <div className={styles.thumb} style={{ left: `${minValue}%` }} onPointerDown={(e) => handleThumbMove(e, true)}></div>
-          <div className={styles.thumb} style={{ left: `${maxValue}%` }} onPointerDown={(e) => handleThumbMove(e, false)}></div>
+          <Thumb orientation={orientation} reverse={reverse} value={minValue} thumbSize={thumbSize} isMinThumb onPointerDown={handleThumbMove} />
+          <Thumb orientation={orientation} reverse={reverse} value={maxValue} thumbSize={thumbSize} onPointerDown={handleThumbMove} />
         </>
       )}
-      {defaultValue.length === 1 && <div className={styles.thumb} style={{ left: `${maxValue}%` }} onPointerDown={(e) => handleThumbMove(e, false)}></div>}
+      {defaultValue.length === 1 && <Thumb orientation={orientation} reverse={reverse} value={maxValue} thumbSize={thumbSize} onPointerDown={handleThumbMove} />}
     </div>
   );
 };

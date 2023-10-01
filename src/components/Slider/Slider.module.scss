@@ -1,21 +1,20 @@
 .slider {
   position: relative;
-  height: 8px;
+  height: 4px;
   background-color: transparent;
   cursor: pointer;
   user-select: none;
-
-  //   &--vertical {
-  //     width: 30px;
-  //     height: 100%;
-  //     // Other styles for vertical orientation...
-  //   }
+  &--vertical {
+    width: 4px;
+    height: 100%;
+    // Adjust other styles as needed for vertical orientation...
+  }
 
   .track {
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 15px;
+    border-radius: 50rem;
     background-color: var(--color-gray-6);
     overflow: hidden;
   }
@@ -23,16 +22,18 @@
   .range {
     position: absolute;
     height: 100%;
+    width: 100%;
+    border-radius: 50rem;
     background-color: var(--color-accent-9);
   }
 
   .thumb {
     position: absolute;
-    height: 150%;
+    height: 16px;
     aspect-ratio: 1/1;
     background-color: var(--color-accent-9-contrast);
     border-radius: 50%;
-    top: 50%;
+    box-shadow: 0 0 0 1px var(--color-gray-a5);
     transform: translate(-50%, -50%);
     cursor: grab;
   }
