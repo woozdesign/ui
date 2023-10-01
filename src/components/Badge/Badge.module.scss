@@ -1,0 +1,26 @@
+.badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 0.75rem;
+  text-align: center;
+  white-space: nowrap;
+  background-color: var(--color-accent-9);
+  color: var(--color-accent-9-contrast);
+}
+
+.badge--primary {
+  background-color: var(--color-accent-9);
+  color: var(--color-accent-9-contrast);
+}
+
+.badge--secondary {
+  color: var(--color-accent-11);
+  background-color: var(--color-accent-4);
+}
+
+.badge--outlined {
+  background-color: transparent;
+  color: var(--color-accent-11);
+  border: 1px solid var(--color-accent-a10);
+}

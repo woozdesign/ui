@@ -6,10 +6,10 @@
 | Component       | Supported | Notes |
 | --------------- | --------- | ----- |
 | Button          | ✅        |       |
+| Badge           | ✅        |       |
 | Card            | ✅        |       |
-| Chip            | 🚧        |       |
 | Dialog          | 🚧        |       |
-| Divider         | 🚧        |       |
+| Divider         | ✅        |       |
 | Expansion Panel | 🚧        |       |
 | List            | 🚧        |       |
 | Dropdown Menu   | 🚧        |       |
@@ -86,7 +86,6 @@
 | Component         | Supported | Notes |
 | ----------------- | --------- | ----- |
 | Alert             | 🚧        |       |
-| Badge             | 🚧        |       |
 | Callout           | 🚧        |       |
 | Banner            | 🚧        |       |
 | Hover             | 🚧        |       |
