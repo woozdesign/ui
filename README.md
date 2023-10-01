@@ -38,7 +38,9 @@ const App = () => (
   <Layout.Container>
     <Layout.Row>
       <Layout.Col xs={24}>
-        <Button type="primary">PRESS ME</Button>
+        <Button variant="primary" color="purple">
+          Button
+        </Button>
       </Layout.Col>
     </Layout.Row>
   </Layout.Container>
