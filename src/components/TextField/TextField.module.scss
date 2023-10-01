@@ -60,6 +60,25 @@
   transition: border 0.3s ease;
   margin-bottom: 20px;
 
+  &--primary {
+    &:focus,
+    &:hover {
+      outline: none;
+      border-color: var(--color-accent-9);
+      // background-color: var(--color-surface-accent);
+      box-shadow: 0 0 0 4px var(--color-accent-9a);
+    }
+  }
+
+  &--secondary {
+    &:focus,
+    &:hover {
+      outline: none;
+      border-color: var(--color-accent-9);
+      background-color: var(--color-surface-accent);
+      box-shadow: 0 0 0 4px var(--color-accent-9a);
+    }
+  }
   &.hasPrependIcon {
     padding-left: 2.5rem !important;
     padding-right: 2.5rem !important;
@@ -67,14 +86,6 @@
 
   &::placeholder {
     color: var(--color-gray-8);
-  }
-
-  &:focus,
-  &:hover {
-    outline: none;
-    border-color: var(--color-accent-9);
-    background-color: var(--color-surface-accent);
-    box-shadow: 0 0 0 4px rgb(234 76 137 / 10%);
   }
 
   &:valid {

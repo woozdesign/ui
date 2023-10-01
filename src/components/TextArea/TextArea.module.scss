@@ -1,0 +1,57 @@
+.wrapper {
+  margin-bottom: 0.5rem;
+}
+
+.label {
+  font-size: var(--font-size-3);
+  margin-bottom: 0.25rem;
+  padding-left: 0.25rem;
+}
+
+.textArea {
+  width: calc(100% - 1rem);
+  padding: 0.5rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  outline: none;
+  background-color: transparent;
+  border-color: var(--color-gray-6);
+  color: var(--color-accent-9-contrast);
+  transition: border 0.3s ease;
+  resize: none;
+  &--primary {
+    &:focus,
+    &:hover {
+      outline: none;
+      border-color: var(--color-accent-9);
+      box-shadow: 0 0 0 4px var(--color-accent-9a);
+    }
+  }
+
+  &--secondary {
+    &:focus,
+    &:hover {
+      outline: none;
+      border-color: var(--color-accent-9);
+      background-color: var(--color-surface-accent);
+      box-shadow: 0 0 0 4px var(--color-accent-9a);
+    }
+  }
+
+  &.textAreaError {
+    border: 2px solid var(--color-red-9);
+    background-color: var(--color-red-surface);
+  }
+
+  &.resizable {
+    resize: vertical; // Allows vertical resizing
+  }
+}
+
+.error {
+  color: var(--color-red-9);
+  height: 16px;
+  margin-top: 4px;
+  margin-left: 4px;
+  font-size: 0.8rem;
+}
