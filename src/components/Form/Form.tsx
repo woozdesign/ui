@@ -28,7 +28,7 @@ const Form: FC<FormProps> = ({ children, onSuccess, onError, ...others }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate {...others}>
       {React.Children.map(children, (child) => {
-        if (React.isValidElement(child)) {
+        if (React.isValidElement(child) && !child.props['buttonType']) {
           return React.cloneElement<FormChildProps>(child, { hasSubmitted });
         }
         return child;
