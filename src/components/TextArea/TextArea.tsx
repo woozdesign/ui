@@ -29,7 +29,7 @@ const TextArea: FC<TextAreaProps> = ({ variant = 'primary', size = 2, label, res
 
   const handleKeyPress = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     if (event.key === 'Enter' || onSubmit) {
-      if (hasSubmitted) validateInput(event.currentTarget) as HTMLTextAreaElement; // Validate input when Enter is pressed
+      if (hasSubmitted) validateInput(event.currentTarget as HTMLTextAreaElement); // Validate input when Enter is pressed
       onSubmit && onSubmit();
     }
   };

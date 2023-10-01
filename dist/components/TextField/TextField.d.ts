@@ -1,6 +1,7 @@
 import React, { ChangeEvent, FC } from 'react';
 import { FormChildProps } from '../Form/Form';
 export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'>, FormChildProps {
+    variant?: 'primary' | 'secondary';
     size?: 'large' | 'medium' | 'small';
     label?: string;
     iconPrepend?: JSX.Element;

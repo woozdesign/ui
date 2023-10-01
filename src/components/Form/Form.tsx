@@ -2,6 +2,7 @@
 import React, { FC, FormEvent, ReactNode, useState } from 'react';
 import styles from './Form.module.scss';
 import { TextFieldProps } from '../TextField/TextField';
+import Button from '../Button';
 
 export interface FormChildProps {
   hasSubmitted?: boolean;
@@ -28,7 +29,7 @@ const Form: FC<FormProps> = ({ children, onSuccess, onError, ...others }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate {...others}>
       {React.Children.map(children, (child) => {
-        if (React.isValidElement(child) && !child.props['buttonType']) {
+        if (React.isValidElement(child) && child.type !== Button) {
           return React.cloneElement<FormChildProps>(child, { hasSubmitted });
         }
         return child;

@@ -1,4 +1,4 @@
-export const getErrorBasedOnValidity = (input: HTMLInputElement | HTMLTextAreaElement, errorMessage: string) => {
+export const getErrorBasedOnValidity = (input: HTMLInputElement | HTMLTextAreaElement, errorMessage: string | undefined) => {
   if (errorMessage) return errorMessage;
   if (input.validity.valueMissing) return 'This field is required';
   if (input.validity.typeMismatch) return 'Invalid format';
