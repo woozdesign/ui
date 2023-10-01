@@ -1,0 +1,36 @@
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.root {
+  width: 100%;
+  display: table;
+  overflow-x: auto;
+}
+
+.header,
+.body {
+  border-bottom: 1px solid var(--color-gray-a6);
+}
+
+.row {
+  &:hover {
+    background-color: var(--color-gray-a5);
+  }
+}
+
+.columnHeaderCell,
+.rowHeaderCell,
+.cell {
+  padding: 8px;
+  font-weight: normal;
+  text-align: left;
+  //   font-size: var(--font-size-3);
+  border-bottom: 1px solid var(--color-gray-a5);
+}
+
+.columnHeaderCell {
+  font-weight: 600;
+  //   background-color: var(--color-gray-a3);
+}

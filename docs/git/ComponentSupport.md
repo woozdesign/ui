@@ -46,15 +46,15 @@
 | Radio Button | 🚧        |       |
 | Select       | 🚧        |       |
 | Slider       | ✅        |       |
-| Switch       | 🚧        |       |
+| Switch       | ✅        |       |
 | Text Field   | ✅        |       |
-| Textarea     | 🚧        |       |
+| Textarea     | ✅        |       |
 
 ### Data & Displays
 
 | Component        | Supported | Notes |
 | ---------------- | --------- | ----- |
-| Table            | 🚧        |       |
+| Table            | ✅        |       |
 | Virtual Scroller | 🚧        |       |
 | iframe           | 🚧        |       |
 | Code             | 🚧        |       |

@@ -1,0 +1,76 @@
+$padding: 4px;
+
+$slider-before-width-percentage: 62.5%; //Should be ratio of width base and height base
+
+@mixin switch-size($width, $height) {
+  width: $width;
+  height: $height;
+
+  .input:checked + .slider::before {
+    transform: translateX(calc(#{$slider-before-width-percentage} + $padding));
+  }
+
+  .slider::before {
+    width: calc(#{$slider-before-width-percentage} - #{$padding * 2});
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+
+  @include switch-size(48px, 30px);
+  &--small {
+    @include switch-size(32px, 20px);
+  }
+
+  &--large {
+    @include switch-size(64px, 40px);
+  }
+
+  &--xlarge {
+    @include switch-size(80px, 50px);
+  }
+}
+
+.input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+
+  &:checked + .slider {
+    background-color: var(--color-accent-9);
+  }
+
+  &:focus + .slider {
+    // box-shadow: 0 0 1px var(--color-accent-9);
+  }
+  &:checked + .slider::before {
+    transform: translateX(calc(100% + #{$padding * 2})); // Will be overridden by specific sizes
+  }
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50rem;
+  background-color: var(--color-gray-a8);
+  transition: 0.2s;
+
+  &::before {
+    position: absolute;
+    // box-shadow: 0 0 1px var(--color-accent-9-contrast);
+    content: '';
+    height: calc(100% - #{$padding * 2});
+    width: calc(#{$slider-before-width-percentage} - #{$padding * 2});
+    left: $padding;
+    bottom: $padding;
+    border-radius: 50rem;
+    background-color: var(--color-accent-9-contrast);
+    transition: 0.2s;
+  }
+}
