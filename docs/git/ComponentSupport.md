@@ -46,9 +46,9 @@
 | Radio Button | 🚧        |       |
 | Select       | 🚧        |       |
 | Slider       | ✅        |       |
-| Switch       | 🚧        |       |
+| Switch       | ✅        |       |
 | Text Field   | ✅        |       |
-| Textarea     | 🚧        |       |
+| Textarea     | ✅        |       |
 
 ### Data & Displays
 
