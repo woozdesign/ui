@@ -1,8 +1,6 @@
 .button--outlined {
   background-color: transparent;
-  transition:
-    all 0.2s,
-    box-shadow 0.08s ease-in;
+  transition: box-shadow 0.08s ease-in;
 
   background-color: transparent;
   color: var(--color-accent-11);
@@ -30,9 +28,7 @@
 
   &.button--high-contrast {
     background-color: transparent;
-    transition:
-      all 0.2s,
-      box-shadow 0.08s ease-in;
+    transition: box-shadow 0.08s ease-in;
 
     background-color: transparent;
     color: var(--color-accent-12);

@@ -16,10 +16,10 @@ export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'tit
     action?: ReactNode;
     outlined?: boolean;
 }
-export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title'> {
+export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'content'> {
     title?: ReactNode;
     titleLevel?: 6 | 5 | 4 | 3 | 2 | 1;
-    description: ReactNode;
+    content: ReactNode;
 }
 export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
     justify?: CSSProperties['justifyContent'];

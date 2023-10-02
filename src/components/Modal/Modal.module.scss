@@ -1,0 +1,48 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
+  &.open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  height: 100%;
+  transition: opacity 0.2s ease-in-out;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  &.open {
+    opacity: 1;
+  }
+}
+.content {
+  padding: 20px;
+  max-width: 450px;
+  width: 100%;
+  overflow: hidden;
+  cursor: default;
+}
+
+.trigger {
+  cursor: pointer; // To indicate that the trigger is clickable
+  // You can add more styles for the trigger here
+}
