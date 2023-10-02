@@ -15,9 +15,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org/'
           scope: '@woozlabs'
 
-      - name: Build 🔧
-        run: npm run build:webpack
-
       - name: Install dependencies 🔧
         run: npm ci
 
