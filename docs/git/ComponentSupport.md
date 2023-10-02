@@ -8,7 +8,7 @@
 | Button          | ✅        |       |
 | Badge           | ✅        |       |
 | Card            | ✅        |       |
-| Dialog          | 🚧        |       |
+| Modal           | ✅        |       |
 | Divider         | ✅        |       |
 | Expansion Panel | 🚧        |       |
 | List            | 🚧        |       |
@@ -17,7 +17,7 @@
 | Overlay         | 🚧        |       |
 | Sheet           | 🚧        |       |
 | Toolbar         | 🚧        |       |
-| Tooltip         | 🚧        |       |
+| Tooltip         | ✅        |       |
 | Typography      | ✅        |       |
 
 ### Navigations

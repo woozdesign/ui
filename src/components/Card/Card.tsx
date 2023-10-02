@@ -55,13 +55,13 @@ Card.Heading = ({ title, subtitle, action, titleLevel = 5, outlined = true }: He
   );
 };
 
-export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title'> {
+export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'content'> {
   title?: ReactNode;
   titleLevel?: 6 | 5 | 4 | 3 | 2 | 1;
-  description: ReactNode;
+  content: ReactNode;
 }
 
-Card.Body = ({ title, description, titleLevel = 5 }: BodyProps) => {
+Card.Body = ({ title, content, titleLevel = 5 }: BodyProps) => {
   return (
     <div className={styles.body}>
       {title && (
@@ -69,7 +69,7 @@ Card.Body = ({ title, description, titleLevel = 5 }: BodyProps) => {
           {title}
         </Typography.Title>
       )}
-      {description && <Typography.Text className={styles.description}>{description}</Typography.Text>}
+      {content && <Typography.Text className={styles.content}>{content}</Typography.Text>}
     </div>
   );
 };

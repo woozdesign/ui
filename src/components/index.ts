@@ -14,3 +14,5 @@ export { default as Slider } from './Slider';
 
 export { default as Table } from './Table';
 export { default as Switch } from './Switch';
+
+export { default as Tooltip } from './Tooltip';
