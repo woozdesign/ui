@@ -8,7 +8,7 @@
 | Button          | ✅        |       |
 | Badge           | ✅        |       |
 | Card            | ✅        |       |
-| Dialog          | 🚧        |       |
+| Modal           | ✅        |       |
 | Divider         | ✅        |       |
 | Expansion Panel | 🚧        |       |
 | List            | 🚧        |       |
