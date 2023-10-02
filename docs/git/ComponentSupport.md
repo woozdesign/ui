@@ -17,7 +17,7 @@
 | Overlay         | 🚧        |       |
 | Sheet           | 🚧        |       |
 | Toolbar         | 🚧        |       |
-| Tooltip         | 🚧        |       |
+| Tooltip         | ✅        |       |
 | Typography      | ✅        |       |
 
 ### Navigations
