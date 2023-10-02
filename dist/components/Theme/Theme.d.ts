@@ -17,7 +17,7 @@ interface ThemeImplPublicProps extends Omit<React.ComponentPropsWithoutRef<'div'
 declare const _default: {
     ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
     useThemeContext: () => ThemeContextValue;
-    updateThemeAppearanceClass: (appearance: "inherit" | "light" | "dark") => void;
+    updateThemeAppearanceClass: (appearance: "inherit" | "dark" | "light") => void;
 };
 export default _default;
 export type { ThemeProviderProps };
