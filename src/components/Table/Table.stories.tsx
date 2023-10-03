@@ -10,7 +10,7 @@ export default {
 } as Meta;
 
 const Template: Story = (args) => (
-  <Theme.ThemeProvider appearance="light">
+  <Theme.ThemeProvider>
     <Table.Root {...args}>
       <Table.Header>
         <Table.Row>
