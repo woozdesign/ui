@@ -1,9 +1,9 @@
 .button {
   // Layout
-  padding: var(--padding-medium);
+  padding: var(--space-0) var(--space-3);
   border: none;
   vertical-align: middle;
-  border-radius: 0.5rem;
+  border-radius: max(var(--radius-3), var(--radius-full));
   height: 34px;
   display: inline-flex;
   align-items: center;
@@ -34,33 +34,27 @@
   &--large {
     height: 40px;
     font-size: var(--font-size-4);
-    padding: var(--padding-large);
+    padding: var(--space-0) var(--space-4);
+    border-radius: max(var(--radius-4), var(--radius-full));
   }
 
   &--xlarge {
     height: 48px;
+    border-radius: max(var(--radius-5), var(--radius-full));
     font-size: var(--font-size-4);
-    padding: 0 2rem;
+    padding: var(--space-0) var(--space-6);
   }
 
   &--small {
     height: 28px;
     font-size: var(--font-size-2);
-    padding: var(--padding-small);
+    border-radius: max(var(--radius-3), var(--radius-full));
+    padding: var(--space-0) var(--space-2);
   }
 
   &--disabled {
     opacity: 0.4;
     cursor: not-allowed;
-  }
-
-  &--round {
-    border-radius: 1.25rem;
-  }
-
-  &--circle {
-    border-radius: 50%;
-    padding: var(--padding-medium);
   }
 
   // Pseudo-elements

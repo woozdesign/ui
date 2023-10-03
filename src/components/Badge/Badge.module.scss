@@ -1,7 +1,7 @@
 .badge {
   display: inline-block;
-  padding: 0.25rem 0.5rem;
-  border-radius: 0.5rem;
+  padding: var(--space-1) var(--space-2);
+  border-radius: max(var(--radius-2), var(--radius-full));
   font-size: 0.75rem;
   text-align: center;
   white-space: nowrap;

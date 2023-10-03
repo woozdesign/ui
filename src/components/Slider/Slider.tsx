@@ -1,12 +1,11 @@
 import React, { FC, useState, useRef, useCallback, useEffect } from 'react';
 import styles from './Slider.module.scss';
-import { ColorProp, combineClassNames } from '@/utils';
+import { ColorProp, RadiusProp, combineClassNames } from '@/utils';
 import Range from './Range';
 import Thumb from './Thumb';
 
-interface SliderProps extends ColorProp {
+interface SliderProps extends ColorProp, RadiusProp {
   defaultValue: number[];
-  radius?: 'full' | 'default';
   trackSize?: number;
   thumbSize?: number;
   reverse?: boolean;
@@ -17,7 +16,7 @@ interface SliderProps extends ColorProp {
 }
 const Slider: FC<SliderProps> = ({
   defaultValue,
-  radius = 'default',
+  radius,
   color,
   reverse = false,
   orientation = 'horizontal',
@@ -29,7 +28,7 @@ const Slider: FC<SliderProps> = ({
 }) => {
   if (trackSize > thumbSize) thumbSize = trackSize * 1.2;
 
-  const classes = [styles.slider, styles[`slider--${orientation}`], styles[`slider--${radius}`]];
+  const classes = [styles.slider, styles[`slider--${orientation}`]];
   const [minValue, setMinValue] = useState(defaultValue.length > 1 ? defaultValue[0] : 0);
   const [maxValue, setMaxValue] = useState(defaultValue.length > 1 ? defaultValue[1] : defaultValue[0]);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -91,6 +90,7 @@ const Slider: FC<SliderProps> = ({
       className={combineClassNames(classes)}
       style={orientation === 'vertical' ? { width: `${trackSize}px`, height: '100%' } : { height: `${trackSize}px`, width: '100%' }}
       data-accent-color={color}
+      data-radius={radius}
       ref={sliderRef}
     >
       <div className={styles.track}>

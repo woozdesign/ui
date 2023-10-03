@@ -11,7 +11,7 @@ const Button: FC<ButtonProps> = ({
   disabled = false,
   block = false,
   highContrast = false,
-  shape = 'rect',
+  radius = 'medium',
   buttonType = 'button',
   iconPrepend,
   iconAppend,
@@ -28,7 +28,6 @@ const Button: FC<ButtonProps> = ({
     disabled ? styles[`button--disabled`] : '',
     block ? styles['button--block'] : '',
     highContrast ? styles['button--high-contrast'] : '',
-    styles[`button--${shape}`],
   ];
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     if (onClick) (onClick as AnchorClickHandler)(e);
@@ -39,7 +38,7 @@ const Button: FC<ButtonProps> = ({
   };
   if (href) {
     return (
-      <a className={combineClassNames(classNameList)} data-accent-color={color} href={href} onClick={handleAnchorClick} {...other}>
+      <a className={combineClassNames(classNameList)} data-radius={radius} data-accent-color={color} href={href} onClick={handleAnchorClick} {...other}>
         {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
         {children}
         {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}
@@ -48,7 +47,15 @@ const Button: FC<ButtonProps> = ({
   }
 
   return (
-    <button className={combineClassNames(classNameList)} data-accent-color={color} disabled={disabled} onClick={handleButtonClick} type={buttonType} {...other}>
+    <button
+      className={combineClassNames(classNameList)}
+      data-radius={radius}
+      data-accent-color={color}
+      disabled={disabled}
+      onClick={handleButtonClick}
+      type={buttonType}
+      {...other}
+    >
       {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
       {children}
       {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}

@@ -8,11 +8,11 @@ interface BadgeProps extends ColorProp, SizeProp, RadiusProp {
   label: string | number;
 }
 
-const Badge: FC<BadgeProps> = ({ variant = 'secondary', label, color }) => {
+const Badge: FC<BadgeProps> = ({ variant = 'secondary', label, color, radius }) => {
   const classNameList = [styles.badge, styles[`badge--${variant}`]];
 
   return (
-    <div className={combineClassNames(classNameList)} data-accent-color={color}>
+    <div className={combineClassNames(classNameList)} data-accent-color={color} data-radius={radius}>
       {label}
     </div>
   );

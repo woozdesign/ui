@@ -1,14 +1,13 @@
 /// <reference types="react" />
-import { ColorProp, SizeProp } from '../../utils';
+import { ColorProp, RadiusProp, SizeProp } from '../../utils';
 export type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 export type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
-export interface BaseProps extends ColorProp, SizeProp {
+export interface BaseProps extends ColorProp, SizeProp, RadiusProp {
     variant?: 'primary' | 'outlined' | 'secondary' | 'icon';
     buttonType?: 'button' | 'reset' | 'submit';
     block?: boolean;
     disabled?: boolean;
     highContrast?: boolean;
-    shape?: 'round' | 'rect';
     iconPrepend?: JSX.Element;
     iconAppend?: JSX.Element;
     children?: React.ReactNode;

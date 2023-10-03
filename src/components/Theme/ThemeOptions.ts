@@ -66,11 +66,13 @@ export type ThemeAccentColor =
   | 'sky';
 type ThemeAppearance = 'inherit' | 'light' | 'dark';
 export type ThemeRadius = 'none' | 'small' | 'medium' | 'large' | 'full';
+export type ThemeScaling = '90%' | '95%' | '100%' | '105%' | '110%';
 
 export type ThemeOptions = {
   accentColor: ThemeAccentColor;
   appearance: ThemeAppearance;
   radius: ThemeRadius;
+  scaling: ThemeScaling;
 };
 function getMatchingGrayColor(accentColor: ThemeAccentColor): ThemeAccentColor {
   // if (accentColor === 'gray') return 'gray';
@@ -113,6 +115,7 @@ const themeDefaults: ThemeOptions = {
   appearance: 'dark',
   radius: 'medium',
   accentColor: 'purple',
+  scaling: '100%',
 };
 
 export { getMatchingGrayColor, themeDefaults };

@@ -1,8 +1,7 @@
 import { FC } from 'react';
-import { ColorProp } from '../../utils';
-interface SliderProps extends ColorProp {
+import { ColorProp, RadiusProp } from '../../utils';
+interface SliderProps extends ColorProp, RadiusProp {
     defaultValue: number[];
-    radius?: 'full' | 'default';
     trackSize?: number;
     thumbSize?: number;
     reverse?: boolean;

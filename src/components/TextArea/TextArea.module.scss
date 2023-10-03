@@ -1,25 +1,32 @@
 .wrapper {
-  margin-bottom: 0.5rem;
+  margin-bottom: var(--space-2);
 }
 
 .label {
   font-size: var(--font-size-3);
-  margin-bottom: 0.25rem;
-  padding-left: 0.25rem;
+  margin-bottom: var(--space-1);
+  padding-left: var(--space-1);
 }
 
 .textArea {
   width: calc(100% - 1rem);
-  padding: 0.5rem;
+  padding: var(--space-0) var(--space-2);
   border: 2px solid transparent;
-  border-radius: 8px;
+  border-radius: var(--radius-4);
   outline: none;
   background-color: transparent;
   border-color: var(--color-gray-6);
   color: var(--color-accent-9-contrast);
   transition: border 0.3s ease;
   margin-bottom: 20px;
+  min-height: 32px;
 
+  &.large {
+    min-height: 48px;
+  }
+  &.small {
+    min-height: 28px;
+  }
   resize: none;
   &--primary {
     &:focus,

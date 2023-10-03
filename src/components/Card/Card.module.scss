@@ -5,53 +5,53 @@
   background-color: var(--color-panel);
   color: var(--color-accent-9-contrast);
   height: 100%;
-  border-radius: var(--border-radius-medium);
+  border-radius: var(--radius-4);
   &--small {
     // font-size: var(--font-size-5); // Adjust as necessary
 
     .heading {
-      padding: 0.5rem;
+      padding: var(--space-0) var(--space-2);
     }
     .body {
-      padding: 0.5rem;
+      padding: var(--space-0) var(--space-2);
     }
     .actions {
-      padding: 0.5rem;
+      padding: var(--space-0) var(--space-2);
     }
   }
 
   &--medium {
     .heading {
-      padding: 1rem;
+      padding: var(--space-4);
     }
     .body {
-      padding: 1rem;
+      padding: var(--space-4);
     }
     .actions {
-      padding: 1rem;
+      padding: var(--space-4);
     }
   }
 
   &--large {
     .heading {
-      padding: 1.5rem;
+      padding: var(--space-5);
     }
     .body {
-      padding: 1.5rem;
+      padding: var(--space-5);
     }
     .actions {
-      padding: 1.5rem;
+      padding: var(--space-5);
     }
   }
   &--xlarge {
     .heading {
-      padding: 2rem;
+      padding: var(--space-6);
     }
     .body {
-      padding: 2rem;
+      padding: var(--space-6);
     }
     .actions {
-      padding: 2rem;
+      padding: var(--space-6);
     }
   }
   img {
@@ -73,7 +73,7 @@
     }
     .subtitle {
       margin: 0;
-      margin-top: 0.5rem;
+      margin-top: var(--space-2);
     }
     .heading-action {
       display: flex;
@@ -93,7 +93,7 @@
   .actions {
     display: flex;
     flex-direction: row;
-    gap: 1rem;
+    gap: var(--space-4);
     &--outlined {
       border-top: 1px solid var(--color-gray-a6);
     }

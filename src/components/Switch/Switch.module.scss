@@ -57,7 +57,7 @@ $slider-before-width-percentage: 62.5%; //Should be ratio of width base and heig
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 50rem;
+  border-radius: max(var(--radius-4), var(--radius-full));
   background-color: var(--color-gray-a8);
   transition: 0.2s;
 
@@ -69,7 +69,7 @@ $slider-before-width-percentage: 62.5%; //Should be ratio of width base and heig
     width: calc(#{$slider-before-width-percentage} - #{$padding * 2});
     left: $padding;
     bottom: $padding;
-    border-radius: 50rem;
+    border-radius: max(var(--radius-3), var(--radius-full));
     background-color: var(--color-accent-9-contrast);
     transition: 0.2s;
   }

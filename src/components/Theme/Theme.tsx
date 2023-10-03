@@ -8,6 +8,7 @@ interface ThemeChangeHandlers {
   onAppearanceChange: (appearance: ThemeOptions['appearance']) => void;
   onAccentColorChange: (accentColor: ThemeOptions['accentColor']) => void;
   onRadiusChange: (radius: ThemeOptions['radius']) => void;
+  onScalingChange: (scaling: ThemeOptions['scaling']) => void;
 }
 interface ThemeContextValue extends ThemeOptions, ThemeChangeHandlers {}
 
@@ -39,15 +40,21 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     appearance: appearanceProp = themeDefaults.appearance,
     radius: radiusProp = themeDefaults.radius,
     accentColor: accentColorProp = themeDefaults.accentColor,
+    scaling: scalingProp = themeDefaults.scaling,
     ...rootProps
   } = props;
 
   const [appearance, setAppearance] = React.useState(appearanceProp);
   React.useEffect(() => setAppearance(appearanceProp), [appearanceProp]);
+
   const [radius, setRadius] = React.useState(radiusProp);
   React.useEffect(() => setRadius(radiusProp), [radiusProp]);
-  const [accentColor, setaccentColor] = React.useState(accentColorProp);
-  React.useEffect(() => setaccentColor(accentColorProp), [accentColorProp]);
+
+  const [accentColor, setAccentColor] = React.useState(accentColorProp);
+  React.useEffect(() => setAccentColor(accentColorProp), [accentColorProp]);
+
+  const [scaling, setScaling] = React.useState(scalingProp);
+  React.useEffect(() => setScaling(scalingProp), [scalingProp]);
 
   // Initial appearance on page load when `appearance` is explicitly set to `light` or `dark`
   const ExplicitRootAppearanceScript = React.memo(
@@ -79,10 +86,12 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
         appearance={appearance}
         radius={radius}
         accentColor={accentColor}
+        scaling={scaling}
         //
         onAppearanceChange={setAppearance}
-        onAccentColorChange={setaccentColor}
+        onAccentColorChange={setAccentColor}
         onRadiusChange={setRadius}
+        onScalingChange={setScaling}
       />
     </>
   );
@@ -105,10 +114,12 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     appearance = context?.appearance ?? themeDefaults.appearance,
     accentColor = context?.accentColor ?? themeDefaults.accentColor,
     radius = context?.radius ?? themeDefaults.radius,
+    scaling = context?.scaling ?? themeDefaults.scaling,
     //
     onAppearanceChange = () => {},
     onRadiusChange = () => {},
     onAccentColorChange = () => {},
+    onScalingChange = () => {},
     //
     ...themeProps
   } = props;
@@ -122,23 +133,35 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           appearance,
           radius,
           accentColor,
+          scaling,
           //
           onAppearanceChange,
           onAccentColorChange,
           onRadiusChange,
+          onScalingChange,
         }),
         [
           appearance,
           radius,
           accentColor,
+          scaling,
           //
           onAppearanceChange,
           onAccentColorChange,
           onRadiusChange,
+          onScalingChange,
         ],
       )}
     >
-      <Comp data-is-root-theme={isRoot ? 'true' : 'false'} data-radius={radius} data-accent-color={accentColor} ref={forwardedRef} {...themeProps} className={classes} />
+      <Comp
+        data-is-root-theme={isRoot ? 'true' : 'false'}
+        data-radius={radius}
+        data-scaling={scaling}
+        data-accent-color={accentColor}
+        ref={forwardedRef}
+        {...themeProps}
+        className={classes}
+      />
     </ThemeContext.Provider>
   );
 });

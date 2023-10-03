@@ -14,7 +14,7 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    border-radius: 50rem;
+    border-radius: max(var(--radius-3), var(--radius-full));
     background-color: var(--color-gray-6);
     overflow: hidden;
   }
@@ -23,7 +23,7 @@
     position: absolute;
     height: 100%;
     width: 100%;
-    border-radius: 50rem;
+    border-radius: max(var(--radius-3), var(--radius-full));
     background-color: var(--color-accent-9);
   }
 
@@ -32,7 +32,8 @@
     height: 16px;
     aspect-ratio: 1/1;
     background-color: var(--color-accent-9-contrast);
-    border-radius: 50%;
+
+    border-radius: max(var(--radius-3), var(--radius-full));
     box-shadow: 0 0 0 1px var(--color-gray-a5);
     transform: translate(-50%, -50%);
     cursor: grab;
