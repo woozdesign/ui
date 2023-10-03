@@ -13,10 +13,6 @@
 | Expansion Panel | 🚧        |       |
 | List            | 🚧        |       |
 | Dropdown Menu   | 🚧        |       |
-| Context Menu    | 🚧        |       |
-| Overlay         | 🚧        |       |
-| Sheet           | 🚧        |       |
-| Toolbar         | 🚧        |       |
 | Tooltip         | ✅        |       |
 | Typography      | ✅        |       |
 
