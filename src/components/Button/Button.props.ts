@@ -9,8 +9,8 @@ export interface BaseProps extends ColorProp, SizeProp, RadiusProp {
   block?: boolean;
   disabled?: boolean;
   highContrast?: boolean;
-  iconPrepend?: JSX.Element;
-  iconAppend?: JSX.Element;
+  iconPrepend?: React.ReactNode;
+  iconAppend?: React.ReactNode;
   children?: React.ReactNode;
   href?: string;
 }
