@@ -17,3 +17,4 @@ export { default as Table } from './Table';
 
 export { default as Menu } from './Menu';
 export { default as Tooltip } from './Tooltip';
+export { default as Kbd } from './Kbd';
