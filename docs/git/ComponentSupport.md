@@ -11,7 +11,7 @@
 | Modal           | ✅        |       |
 | Divider         | ✅        |       |
 | Expansion Panel | 🚧        |       |
-| List            | ✅        |       |
+| Menu (List)     | ✅        |       |
 | Dropdown Menu   | ✅        |       |
 | Tooltip         | ✅        |       |
 | Typography      | ✅        |       |
@@ -52,6 +52,7 @@
 | ---------------- | --------- | ----- |
 | Kbds             | ✅        |       |
 | Table            | ✅        |       |
+| Anchor           | ✅        |       |
 | Virtual Scroller | 🚧        |       |
 | iframe           | 🚧        |       |
 | Code             | 🚧        |       |
