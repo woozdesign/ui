@@ -11,8 +11,8 @@
 | Modal           | ✅        |       |
 | Divider         | ✅        |       |
 | Expansion Panel | 🚧        |       |
-| List            | 🚧        |       |
-| Dropdown Menu   | 🚧        |       |
+| List            | ✅        |       |
+| Dropdown Menu   | ✅        |       |
 | Tooltip         | ✅        |       |
 | Typography      | ✅        |       |
 
@@ -50,6 +50,7 @@
 
 | Component        | Supported | Notes |
 | ---------------- | --------- | ----- |
+| Kbds             | ✅        |       |
 | Table            | ✅        |       |
 | Virtual Scroller | 🚧        |       |
 | iframe           | 🚧        |       |
@@ -112,5 +113,6 @@
 | Component         | Supported | Notes |
 | ----------------- | --------- | ----- |
 | Defaults Provider | 🚧        |       |
+| Shortcut Provider | ✅        |       |
 | Locale Provider   | 🚧        |       |
 | Theme Provider    | ✅        |       |
