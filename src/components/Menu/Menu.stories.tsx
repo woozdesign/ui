@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Menu, { MenuProps } from './Menu';
 import Theme from '../Theme/Theme';
+import '@/styles/core.scss';
 
 export default {
   title: 'Components/Menu',
