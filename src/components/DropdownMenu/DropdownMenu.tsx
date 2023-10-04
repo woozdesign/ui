@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useState, useContext, useRef, useEffect } from 'react';
+import React, { FC, ReactNode, useState, useContext, useRef, useEffect, RefObject } from 'react';
 import styles from './DropdownMenu.module.scss';
 import Divider from '../Divider';
 import Kbd from '../Kbd';
@@ -9,11 +9,10 @@ import { WoozCommandCode } from '@/utils/contexts/Shortcut/Shortcut.props';
 interface DropdownMenuContextProps {
   onToggle: () => void;
 }
-
-const useOutsideClick = (ref, callback) => {
+const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void) => {
   useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (ref.current && !ref.current.contains(event.target)) {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (ref.current && !ref.current.contains(event.target as Node)) {
         callback();
       }
     };
@@ -27,8 +26,12 @@ const useOutsideClick = (ref, callback) => {
 
 const DropdownMenuContext = React.createContext<DropdownMenuContextProps | undefined>(undefined);
 
-interface DropdownMenuProps {
+interface DropdownMenuProps extends ChildProps {
   children: ReactNode;
+}
+
+interface ChildProps {
+  isOpen?: boolean;
 }
 
 const Root: FC<DropdownMenuProps> = ({ children }) => {
@@ -45,7 +48,14 @@ const Root: FC<DropdownMenuProps> = ({ children }) => {
     <ShortcutProvider>
       <div ref={rootRef} className={styles.root}>
         <DropdownMenuContext.Provider value={{ onToggle: handleToggle }}>
-          {React.Children.map(children, (child) => React.cloneElement(child as React.ReactElement, { isOpen }))}
+          {React.Children.map(children, (child) => {
+            // Check if child is a valid React element
+            if (React.isValidElement<DropdownMenuProps>(child)) {
+              // Spread the isOpen prop onto the child element
+              return React.cloneElement(child, { isOpen });
+            }
+            return child;
+          })}
         </DropdownMenuContext.Provider>
       </div>
     </ShortcutProvider>
@@ -113,7 +123,7 @@ interface SubProps {
 const Sub: FC<SubProps> = ({ children }) => {
   const [isSubOpen, setIsSubOpen] = useState(false);
   const subRef = useRef(null);
-  const closeTimeout = useRef(null); // Store the timeout ID
+  const closeTimeout = useRef<number | null>(null); // Store the timeout ID
 
   const handleMouseEnter = () => {
     if (closeTimeout.current) {
@@ -123,11 +133,10 @@ const Sub: FC<SubProps> = ({ children }) => {
   };
 
   const handleMouseLeave = () => {
-    closeTimeout.current = setTimeout(() => {
+    closeTimeout.current = window.setTimeout(() => {
       setIsSubOpen(false);
     }, 300); // 300ms delay before closing
   };
-
   return (
     <div ref={subRef} className={styles.sub} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <DropdownMenuContext.Provider value={{ onToggle: () => {} }}>

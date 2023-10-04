@@ -1,8 +1,9 @@
-import React, { useState, useCallback, useEffect, FC, createContext, useRef } from 'react';
+import React, { useState, useCallback, useEffect, FC, createContext, useRef, useContext } from 'react';
 import { Shortcut, ShortcutContext } from './ShortcutContext';
 import { KEY_CODES, WoozCommandCode } from './Shortcut.props';
 
-const isSetsEqual = (a: Set<T>, b: Set<T>) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const isSetsEqual = (a: Set<any>, b: Set<any>) => {
   if (a.size !== b.size) return false;
   for (const item of a) if (!b.has(item)) return false;
   return true;
@@ -10,7 +11,7 @@ const isSetsEqual = (a: Set<T>, b: Set<T>) => {
 
 const isMac = navigator.platform.toUpperCase().includes('MAC');
 
-export const ShortcutProvider: FC = ({ children }) => {
+export const ShortcutProvider: FC<React.PropsWithChildren> = ({ children }) => {
   const [shortcuts, setShortcuts] = useState<Shortcut[]>([]);
   const currentlyPressedKeysRef = useRef<Set<WoozCommandCode>>(new Set());
 

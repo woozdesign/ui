@@ -1,11 +1,12 @@
 import React from 'react';
 import { useShortcuts } from '../contexts/Shortcut/ShortcutContext';
+import { WoozCommandCode } from '../contexts/Shortcut/Shortcut.props';
 
-export const useShortcut = (keys: string[], action: () => void) => {
+export const useShortcut = (keys: WoozCommandCode[], action: () => void) => {
   const { registerShortcut, unregisterShortcut } = useShortcuts();
 
   // Use refs to track the previous values of keys and action
-  const prevKeysRef = React.useRef<string[]>();
+  const prevKeysRef = React.useRef<WoozCommandCode[]>();
   const prevActionRef = React.useRef<() => void>();
 
   React.useEffect(() => {

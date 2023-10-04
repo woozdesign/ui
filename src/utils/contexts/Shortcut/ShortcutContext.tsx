@@ -7,8 +7,8 @@ export type Shortcut = {
 };
 
 type ShortcutContextType = {
-  registerShortcut: (shortcut: WoozCommandCode[]) => void;
-  unregisterShortcut: (keys: string[]) => void;
+  registerShortcut: (shortcut: Shortcut) => void;
+  unregisterShortcut: (keys: WoozCommandCode[]) => void;
 };
 
 export const ShortcutContext = createContext<ShortcutContextType | undefined>(undefined);
