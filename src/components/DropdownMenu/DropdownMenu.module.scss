@@ -1,0 +1,62 @@
+// Styling for the dropdown content
+
+.content {
+  position: absolute;
+  background-color: var(--color-gray-2);
+  z-index: 1;
+  border-radius: var(--radius-4);
+  box-shadow: 0 0 0 1px var(--color-gray-a6);
+  // 0 12px 32px -16px var(--color-black-a12);
+  margin-top: 5px;
+  min-width: 200px;
+}
+
+.item {
+  margin: var(--space-1);
+  border-radius: var(--radius-4);
+  padding: var(--space-2);
+  cursor: pointer;
+  display: flex;
+  font-size: var(--font-size-2);
+  height: 18px;
+  justify-content: space-between;
+  align-items: center;
+
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-accent-9);
+  }
+}
+.sub {
+  position: relative;
+}
+
+.subTrigger {
+  margin: var(--space-1);
+  border-radius: var(--radius-4);
+  padding: var(--space-2);
+  height: 18px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-2);
+  align-items: center;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: var(--color-accent-9);
+  }
+}
+
+.subContent {
+  position: absolute;
+  left: calc(100% + var(--space-2));
+
+  top: 0;
+  background-color: var(--color-gray-2);
+  z-index: 1;
+  border-radius: var(--radius-4);
+  box-shadow: 0 0 0 1px var(--color-gray-a6);
+  min-width: 200px;
+}

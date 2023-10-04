@@ -10,6 +10,12 @@
   text-decoration: none;
   justify-content: center;
 
+  &--start {
+    justify-content: start;
+  }
+  &--end {
+    justify-content: end;
+  }
   // Typography
   font-weight: 400;
   font-size: var(--font-size-4);
@@ -62,4 +68,8 @@
   &:-webkit-details-marker {
     display: none;
   }
+}
+
+a {
+  box-sizing: border-box;
 }
