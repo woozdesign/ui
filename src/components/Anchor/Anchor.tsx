@@ -11,7 +11,7 @@ type LinkItem = {
 type AnchorProps = {
   items: LinkItem[];
   offset?: number;
-  behavior?: 'smooth' | 'auto' | 'unset';
+  behavior?: ScrollBehavior;
   onChange?: (selectedKey: string) => void;
 };
 
@@ -58,10 +58,10 @@ const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onCha
         const linkElement = document.querySelector(`a[href="${item.href}"]`);
         if (linkElement) {
           const rect = linkElement.getBoundingClientRect();
-          const firstRect = firstLinkRef.current.getBoundingClientRect();
+          const firstRect = firstLinkRef?.current?.getBoundingClientRect();
 
           setIndicatorPosition({
-            top: rect.top - firstRect.top,
+            top: rect.top - firstRect!.top ?? 0,
             height: rect.height,
           });
         }
@@ -87,6 +87,7 @@ const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onCha
       });
     }
   };
+
   return (
     <div className={styles.anchor}>
       <div
