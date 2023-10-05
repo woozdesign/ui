@@ -20,6 +20,7 @@
 
 | Component         | Supported | Notes |
 | ----------------- | --------- | ----- |
+| Anchor            | ✅        |       |
 | App Bar           | 🚧        |       |
 | Bottom Navigation | 🚧        |       |
 | Breadcrumb        | 🚧        |       |
@@ -52,7 +53,6 @@
 | ---------------- | --------- | ----- |
 | Kbds             | ✅        |       |
 | Table            | ✅        |       |
-| Anchor           | ✅        |       |
 | Virtual Scroller | 🚧        |       |
 | iframe           | 🚧        |       |
 | Code             | 🚧        |       |
