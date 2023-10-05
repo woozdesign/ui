@@ -10,7 +10,7 @@ export default {
 
 const Template: Story<KbdProps> = (args) => (
   <Theme.ThemeProvider appearance={'dark'}>
-    <Kbd {...args}>Shift + ⌘</Kbd>
+    <Kbd shortcut={['Ctrl', 'Command']}></Kbd>
   </Theme.ThemeProvider>
 );
 
