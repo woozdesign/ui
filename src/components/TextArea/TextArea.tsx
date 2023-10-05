@@ -3,7 +3,7 @@ import styles from './TextArea.module.scss';
 import { combineClassNames } from '@/utils/helper/combineClassNames';
 import Typography from '../Typography/Typography';
 import { FormChildProps } from '../Form/Form';
-import { getErrorBasedOnValidity } from '@/utils/helper/validateInpuy';
+import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
 
 interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size'> {
   variant?: 'primary' | 'secondary';

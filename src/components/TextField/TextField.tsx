@@ -4,7 +4,7 @@ import React, { ChangeEvent, FC, useState } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './TextField.module.scss';
 import { FormChildProps } from '../Form/Form';
-import { getErrorBasedOnValidity } from '@/utils/helper/validateInpuy';
+import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
 
 export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'>, FormChildProps {
   variant?: 'primary' | 'secondary';
