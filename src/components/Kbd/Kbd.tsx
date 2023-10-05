@@ -4,7 +4,7 @@ import { ColorProp, combineClassNames } from '@/utils';
 import { WoozCommandCode } from '@/utils/contexts/Shortcut/Shortcut.props';
 
 interface KbdProps extends ColorProp {
-  variant: 'primary' | 'secondary';
+  variant?: 'primary' | 'secondary';
   shortcut: WoozCommandCode[];
 }
 
