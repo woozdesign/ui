@@ -11,7 +11,7 @@
 | Modal           | ✅        |       |
 | Divider         | ✅        |       |
 | Expansion Panel | 🚧        |       |
-| List            | ✅        |       |
+| Menu (List)     | ✅        |       |
 | Dropdown Menu   | ✅        |       |
 | Tooltip         | ✅        |       |
 | Typography      | ✅        |       |
@@ -20,6 +20,7 @@
 
 | Component         | Supported | Notes |
 | ----------------- | --------- | ----- |
+| Anchor            | ✅        |       |
 | App Bar           | 🚧        |       |
 | Bottom Navigation | 🚧        |       |
 | Breadcrumb        | 🚧        |       |

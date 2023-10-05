@@ -1,0 +1,48 @@
+.anchor {
+  padding: 0 10px;
+  width: 200px;
+  border-left: 3px solid var(--color-accent-a4);
+
+  position: relative;
+  .indicator {
+    position: absolute;
+    top: 0;
+    left: -3px;
+    width: 3px;
+    background-color: var(--color-accent-9);
+    transition: top 0.3s;
+  }
+
+  .anchor-section {
+    // margin-bottom: 10px;
+
+    a {
+      display: block;
+      color: var(--color-accent-4);
+      text-decoration: none;
+      padding: 5px;
+      top: 0;
+      transition: background-color 0.2s;
+      border-radius: var(--radius-4);
+      font-size: var(--font-size-3);
+
+      &:hover {
+        // background-color: var(--color-accent-);
+        color: var(--color-accent-9);
+      }
+
+      &.active {
+        // background-color: var(--color-accent-9);
+        color: var(--color-accent-9-contrast);
+      }
+    }
+
+    .anchor-subsection {
+      margin-left: 20px;
+
+      a {
+        font-size: 0.9em;
+      }
+    }
+  }
+}
