@@ -1,10 +1,8 @@
-.kbdStyle {
+.kbd {
   box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-gray-12);
-  background-color: var(--color-gray-3);
   padding: var(--space-0) var(--space-2);
   border-radius: var(--radius-2);
   letter-spacing: -0.025em;
@@ -12,11 +10,26 @@
   font-size: var(--font-size-2);
   font-weight: 400;
   font-family: 'Inter';
-  box-shadow:
-    inset 0 -0.05em 0.5em var(--color-gray-a2),
-    inset 0 0.05em var(--color-gray-6),
-    inset 0 0.25em 0.5em var(--color-gray-a2),
-    inset 0 -0.05em var(--color-gray-a6),
-    0 0 0 0.05em var(--color-gray-a5),
-    0 0.08em 0.17em var(--color-gray-a7);
+
+  &--primary {
+    color: var(--color-gray-12);
+    background-color: var(--color-gray-3);
+    box-shadow:
+      inset 0 -0.05em 0.5em var(--color-gray-a2),
+      inset 0 0.05em var(--color-gray-6),
+      inset 0 0.25em 0.5em var(--color-gray-a2),
+      inset 0 -0.05em var(--color-gray-a6),
+      0 0 0 0.05em var(--color-gray-a5),
+      0 0.08em 0.17em var(--color-gray-a7);
+  }
+  &--secondary {
+    color: var(--color-gray-12);
+    background-color: var(--color-gray-3);
+  }
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-1);
 }

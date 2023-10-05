@@ -7,6 +7,7 @@ interface ChildProps {
     isOpen?: boolean;
 }
 interface TriggerProps {
+    shortcut?: WoozCommandCode[];
     children: ReactNode;
 }
 interface ContentProps {
@@ -23,8 +24,7 @@ interface ItemProps {
 interface SubProps {
     children: ReactNode;
 }
-interface SubTriggerProps {
-    children: ReactNode;
+interface SubTriggerProps extends TriggerProps {
 }
 interface SubContentProps {
     children: ReactNode;

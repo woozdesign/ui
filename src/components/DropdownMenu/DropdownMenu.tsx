@@ -1,10 +1,11 @@
-import React, { FC, ReactNode, useState, useContext, useRef, useEffect, RefObject } from 'react';
+import React, { FC, ReactNode, useState, useContext, useRef, useEffect, RefObject, useCallback } from 'react';
 import styles from './DropdownMenu.module.scss';
 import Divider from '../Divider';
 import Kbd from '../Kbd';
 import { useShortcut } from '@/utils/hooks/useShortcut';
 import { ShortcutProvider } from '@/utils/contexts/Shortcut/ShortcutProvider';
 import { WoozCommandCode } from '@/utils/contexts/Shortcut/Shortcut.props';
+import Button from '../Button';
 
 interface DropdownMenuContextProps {
   onToggle: () => void;
@@ -38,9 +39,9 @@ const Root: FC<DropdownMenuProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef(null);
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
+  const handleToggle = useCallback(() => {
+    setIsOpen((prevIsOpen) => !prevIsOpen);
+  }, []);
 
   useOutsideClick(rootRef, () => setIsOpen(false));
 
@@ -63,13 +64,15 @@ const Root: FC<DropdownMenuProps> = ({ children }) => {
 };
 
 interface TriggerProps {
+  shortcut?: WoozCommandCode[];
   children: ReactNode;
 }
 
-const Trigger: FC<TriggerProps> = ({ children }) => {
+const Trigger: FC<TriggerProps> = ({ children, shortcut }) => {
   const context = useContext(DropdownMenuContext);
-
   if (!context) throw new Error('Trigger must be used within Root');
+
+  useShortcut(shortcut ?? [], context.onToggle);
 
   return (
     <div className={styles.trigger} onClick={context.onToggle}>
@@ -108,7 +111,7 @@ const Item: FC<ItemProps> = ({ children, shortcut, color, disabled, onClick }) =
   return (
     <div className={`${styles.item} ${disabled ? styles.disabled : ''}`} data-accent-color={color} onClick={handleClick}>
       {children}
-      {shortcut && <Kbd>{shortcut.join('+').toString()}</Kbd>}
+      {shortcut && <Kbd shortcut={shortcut}></Kbd>}
     </div>
   );
 };
@@ -137,26 +140,32 @@ const Sub: FC<SubProps> = ({ children }) => {
       setIsSubOpen(false);
     }, 300); // 300ms delay before closing
   };
+
+  const handleToggle = useCallback(() => {
+    setIsSubOpen((prevIsOpen) => !prevIsOpen);
+  }, []);
+
   return (
     <div ref={subRef} className={styles.sub} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <DropdownMenuContext.Provider value={{ onToggle: () => {} }}>
+      <DropdownMenuContext.Provider value={{ onToggle: handleToggle }}>
         {React.Children.map(children, (child) => React.cloneElement(child as React.ReactElement, { isSubOpen }))}
       </DropdownMenuContext.Provider>
     </div>
   );
 };
 
-interface SubTriggerProps {
-  children: ReactNode;
-}
-const SubTrigger: FC<SubTriggerProps> = ({ children }) => {
+interface SubTriggerProps extends TriggerProps {}
+const SubTrigger: FC<SubTriggerProps> = ({ children, shortcut }) => {
   const context = useContext(DropdownMenuContext);
 
   if (!context) throw new Error('SubTrigger must be used within Sub');
 
+  useShortcut(shortcut ?? [], context.onToggle);
+
   return (
-    <div className={styles.subTrigger} onMouseEnter={context.onToggle} onMouseLeave={context.onToggle}>
+    <div className={styles.subTrigger}>
       {children}
+      <span>{'>'}</span>
     </div>
   );
 };

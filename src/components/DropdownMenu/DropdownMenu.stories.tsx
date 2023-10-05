@@ -1,8 +1,7 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import DropdownMenu from './DropdownMenu';
+import React from 'react';
 import Theme from '../Theme/Theme';
-import Button from '../Button';
+import DropdownMenu from './DropdownMenu';
 
 export default {
   title: 'Components/DropdownMenu',
@@ -13,9 +12,7 @@ export default {
 const Template: Story = (args) => (
   <Theme.ThemeProvider>
     <DropdownMenu.Root {...args}>
-      <DropdownMenu.Trigger>
-        <Button>Options</Button>
-      </DropdownMenu.Trigger>
+      <DropdownMenu.Trigger shortcut={['Ctrl', 'O']}>Options</DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Sub>
           <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
@@ -46,7 +43,7 @@ const Template: Story = (args) => (
         <DropdownMenu.Item>Add to favorites</DropdownMenu.Item>
 
         <DropdownMenu.Sub>
-          <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
+          <DropdownMenu.SubTrigger shortcut={['Ctrl', 'M']}>More</DropdownMenu.SubTrigger>
           <DropdownMenu.SubContent>
             <DropdownMenu.Item shortcut={['Ctrl', 'M']} onClick={() => console.log('Move to project…')}>
               Move to project…
