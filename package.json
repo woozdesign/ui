@@ -9,7 +9,7 @@
     "build-storybook": "storybook build",
     "build:webpack": "webpack --config webpack.config.ts --mode production  && tsc-alias",
     "build:tsc": "tsc --build && tsc-alias && webpack --config webpack.config.ts --mode production",
-    "build": "build:webpack"
+    "build": "npm run build:webpack"
   },
   "keywords": [
     "woozdesign",

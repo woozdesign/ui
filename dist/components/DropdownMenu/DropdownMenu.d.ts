@@ -1,5 +1,6 @@
 import React, { ReactNode } from 'react';
 import { WoozCommandCode } from '../../utils/contexts/Shortcut/Shortcut.props';
+import '@woozdesign/icons/dist/styles.css';
 interface DropdownMenuProps extends ChildProps {
     children: ReactNode;
 }
