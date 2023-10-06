@@ -54,16 +54,3 @@ WithPrefilledValue.decorators = [
     return <Story inputValue={inputValue} setInputValue={setInputValue} />;
   },
 ];
-
-export const DisabledInput = Template.bind({});
-DisabledInput.args = {};
-DisabledInput.decorators = [
-  (Story) => {
-    return (
-      <Form onSuccess={handleFormSubmit} onError={handleFormError} {...args}>
-        <TextField id="choose" name="i-like" label="Would you prefer a banana or cherry?" required disabled />
-        <Button buttonType={'submit'}>Submit</Button>
-      </Form>
-    );
-  },
-];

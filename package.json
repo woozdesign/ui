@@ -19,6 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@woozdesign/colors": "^1.0.31",
+    "@woozdesign/icons": "^1.0.11",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sass": "^1.67.0"

@@ -2,7 +2,9 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import TextField, { TextFieldProps } from './TextField';
 import '@/styles/core.scss';
+
 import Theme from '../Theme/Theme';
+import { Icon } from '@woozdesign/icons';
 
 export default {
   title: 'Components/TextField',
@@ -25,22 +27,22 @@ Default.args = {};
 
 export const Small = Template.bind({});
 Small.args = {
-  iconPrepend: <span>🔍</span>,
-  iconAppend: <span>❌</span>,
+  iconPrepend: <Icon type={'Search'} color={'blue'} size={'medium'} />,
+  iconAppend: <Icon type={'X'} color={'amber'} size={'medium'} />,
   size: 'small',
 };
 
 export const Large = Template.bind({});
 Large.args = {
-  iconPrepend: <span>🔍</span>,
-  iconAppend: <span>❌</span>,
+  iconPrepend: <Icon type={'Search'} size={'dynamic'} />,
+  iconAppend: <Icon type={'X'} color={'amber'} size={'dynamic'} />,
   size: 'large',
 };
 
 export const WithIcons = Template.bind({});
 WithIcons.args = {
-  iconPrepend: <span>🔍</span>,
-  iconAppend: <span>❌</span>,
+  iconPrepend: <Icon type={'Search'} />,
+  iconAppend: <Icon type={'X'} color={'amber'} size={'dynamic'} />,
 };
 
 export const Block = Template.bind({});

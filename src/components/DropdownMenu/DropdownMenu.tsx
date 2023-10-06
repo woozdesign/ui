@@ -6,6 +6,8 @@ import { useShortcut } from '@/utils/hooks/useShortcut';
 import { ShortcutProvider } from '@/utils/contexts/Shortcut/ShortcutProvider';
 import { WoozCommandCode } from '@/utils/contexts/Shortcut/Shortcut.props';
 import Button from '../Button';
+import { Icon } from '@woozdesign/icons';
+import '@woozdesign/icons/dist/styles.css';
 
 interface DropdownMenuContextProps {
   onToggle: () => void;
@@ -165,7 +167,8 @@ const SubTrigger: FC<SubTriggerProps> = ({ children, shortcut }) => {
   return (
     <div className={styles.subTrigger}>
       {children}
-      <span>{'>'}</span>
+
+      <Icon type={'ChevronRight'} color={'gray'} />
     </div>
   );
 };
