@@ -1,9 +1,8 @@
 import React from 'react';
-import { ParagraphProps, TextProps, TitleProps } from './Typography.props';
+import { TextProps, HeadingProps, StrongProps } from './Typography.props';
 declare const Typography: {
-    Title: React.FC<TitleProps>;
+    Heading: React.FC<HeadingProps>;
     Text: React.FC<TextProps>;
-    Subtitle: React.FC<TitleProps>;
-    Paragraph: React.FC<ParagraphProps>;
+    Strong: React.FC<StrongProps>;
 };
 export default Typography;

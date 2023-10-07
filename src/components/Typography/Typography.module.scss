@@ -2,46 +2,79 @@
 $title-margin: 1rem 0;
 
 // Mixins
-@mixin titleStyles($fontSize, $color: var(--color-accent-12)) {
+@mixin headingStyles($fontSize) {
+  font-weight: 400;
+  margin: 0;
   font-size: $fontSize;
-  margin: $title-margin;
-  color: $color;
+  color: var(--color-accent-9);
+
+  &.heading--highContrast {
+    color: var(--color-accent-12);
+  }
+
+  &.heading--light {
+    font-weight: light;
+  }
+
+  &.heading--normal {
+    font-weight: normal;
+  }
+
+  &.heading--bold {
+    font-weight: bold;
+  }
+
+  &.heading--bolder {
+    font-weight: bolder;
+  }
+
+  &.heading--start {
+    text-align: start;
+  }
+  &.heading--center {
+    text-align: center;
+  }
+  &.heading--end {
+    text-align: end;
+  }
 }
 
-@mixin textStyle($color, $fontSize) {
+@mixin textStyle($fontSize) {
   font-weight: 400;
-  &--small {
-    color: $color;
-    font-size: var(--font-size-3);
+  font-size: $fontSize;
+  color: var(--color-accent-9);
+  &.text--highContrast {
+    color: var(--color-accent-12);
   }
-  &--medium {
-    color: $color;
-    font-size: var(--font-size-4);
+
+  &.text--light {
+    font-weight: light;
   }
-  &--large {
-    color: $color;
-    font-size: var(--font-size-5);
+
+  &.text--normal {
+    font-weight: normal;
   }
-  &--xlarge {
-    color: $color;
-    font-size: var(--font-size-6);
+
+  &.text--bold {
+    font-weight: bold;
+  }
+
+  &.text--bolder {
+    font-weight: bolder;
   }
 }
 
 // Titles
-@for $i from 1 through 6 {
-  .title-#{$i} {
-    @include titleStyles(var(--font-size-#{11 - $i}));
+@for $i from 1 through 12 {
+  .heading--#{$i} {
+    @include headingStyles(var(--font-size-#{$i}));
     font-weight: bold;
-  }
-  .subtitle-#{$i} {
-    @include titleStyles(var(--font-size-#{9 - $i}), var(--color-accent-a11));
-
-    font-weight: 400;
   }
 }
 
-// Text styles
-.text {
-  @include textStyle(var(--color-accent-12), var(--font-size-4));
+// Text
+@for $i from 1 through 12 {
+  .text--#{$i} {
+    @include textStyle(var(--font-size-#{$i}));
+  }
 }

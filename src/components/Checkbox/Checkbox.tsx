@@ -54,7 +54,7 @@ const Checkbox: FC<CheckboxProps> = ({ color, radius, size = 'medium', onChange,
         <input type="checkbox" {...props} className={styles.input} onChange={handleChange} onInvalid={handleInvalid} disabled={isDisabled} checked={isChecked} />
         <span className={combineClassNames([styles.checkmark, error ? styles['error'] : ''])}>{isChecked && <Icon type={'Check'} size={size} />}</span>
         {label && (
-          <Typography.Text className={combineClassNames([styles.label])} size={size}>
+          <Typography.Text className={combineClassNames([styles.label])}>
             {props.required && <span style={{ color: 'var(--color-red-9)', marginRight: '4px' }}>*</span>}
             {label}
           </Typography.Text>

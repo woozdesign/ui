@@ -48,10 +48,10 @@ const TextArea: FC<TextAreaProps> = ({ variant = 'primary', size = 2, label, res
     <div className={combineClassNames([styles.wrapper, styles[`size${size}`]])}>
       {label && (
         <div>
-          <Typography.Paragraph type={'secondary'} size={'small'} className={styles.label}>
+          <Typography.Text variant={'label'} className={styles.label}>
             {others.required && <span style={{ color: 'var(--color-red-9)', marginRight: '4px' }}>*</span>}
             {label}
-          </Typography.Paragraph>
+          </Typography.Text>
         </div>
       )}
       <textarea

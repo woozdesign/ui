@@ -23,7 +23,7 @@ interface RowProps extends React.HTMLProps<HTMLDivElement> {
   gutter?: [number, number]; // [horizontal, vertical]
   align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
   justify?: 'start' | 'center' | 'end' | 'space-between' | 'around' | 'space-evenly';
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'start', justify = 'start', children, ...others }) => {
   const classes = [styles.row, others.className ?? ''];
@@ -49,7 +49,7 @@ interface ColProps extends React.HTMLProps<HTMLDivElement> {
   md?: number;
   lg?: number;
   xl?: number;
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, ...others }) => {
   const classes = [

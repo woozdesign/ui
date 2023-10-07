@@ -38,7 +38,7 @@ FullContent.args = {
   children: (
     <>
       <Card.Heading
-        title={<Typography.Title level={1}>test</Typography.Title>}
+        title={'test'}
         action={
           <Button variant={'text'} color={'lime'}>
             more
@@ -47,7 +47,6 @@ FullContent.args = {
       />
       <Card.Heading
         title="Card Title"
-        titleLevel={5}
         subtitle="Subtitle here"
         action={
           <Button variant={'text'} color={'lime'}>

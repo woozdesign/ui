@@ -1,14 +1,21 @@
-import { ColorProp, SizeProp } from '@/utils/helper/props';
+import { ColorProp, SizeProp, TextSizeProp } from '@/utils/helper/props';
 
-export interface TypographyProps {
+export interface TypographyProps extends TextSizeProp {
   className?: string;
-  children: React.ReactNode;
+  children?: React.ReactNode;
   style?: React.CSSProperties;
+  highContrast?: boolean;
+  weight?: 'light' | 'normal' | 'bold' | 'bolder';
 }
-export interface TitleProps extends ColorProp, TypographyProps {
-  level?: 1 | 2 | 3 | 4 | 5 | 6 | number;
+export interface HeadingProps extends ColorProp, TypographyProps {
+  variant?: Extract<keyof JSX.IntrinsicElements, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
+  align?: 'start' | 'center' | 'end';
 }
 
-export interface TextProps extends ColorProp, SizeProp, Omit<React.HTMLProps<HTMLSpanElement>, 'size' | 'color'> {}
+export interface TextProps extends ColorProp, TypographyProps {
+  variant?: Extract<keyof JSX.IntrinsicElements, 'p' | 'label' | 'div' | 'span'>;
+}
 
-export interface ParagraphProps extends Omit<React.HTMLProps<HTMLParagraphElement>, 'size' | 'color'>, ColorProp, SizeProp {}
+export interface StrongProps {
+  children?: React.ReactNode;
+}

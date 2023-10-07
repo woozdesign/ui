@@ -11,9 +11,11 @@ export default {
 
 const Template: Story<{ content: string; multiline?: boolean }> = (args) => (
   <Theme.ThemeProvider appearance="dark">
-    <Tooltip {...args}>
-      <Button>button</Button>
-    </Tooltip>
+    <div style={{ height: '320px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <Tooltip {...args}>
+        <Button>button</Button>
+      </Tooltip>
+    </div>
   </Theme.ThemeProvider>
 );
 
