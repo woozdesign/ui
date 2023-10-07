@@ -26,6 +26,7 @@ interface ThemeProviderProps extends ThemeRootProps {}
 const ThemeProvider = React.forwardRef<ThemeImplElement, ThemeProviderProps>((props, forwardedRef) => {
   const context = React.useContext(ThemeContext);
   const isRoot = context === undefined;
+
   // Avoid rendering until we have a theme to avoid mismatches between server and client render
   if (isRoot) {
     return <ThemeRoot {...props} ref={forwardedRef} />;
@@ -43,10 +44,6 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     scaling: scalingProp = themeDefaults.scaling,
     ...rootProps
   } = props;
-
-  React.useEffect(() =>
-    console.log('%cDesigned with WoozDesign', 'font-size: 12px;font-family: monospace;background: black;display: inline-block;color: white;padding: 15px;border: 2px solid white;'),
-  );
 
   const [appearance, setAppearance] = React.useState(appearanceProp);
   React.useEffect(() => setAppearance(appearanceProp), [appearanceProp]);
