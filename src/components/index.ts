@@ -1,9 +1,12 @@
 export { default as Anchor } from './Anchor';
+export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
+export { default as Checkbox } from './Checkbox';
 export { default as Divider } from './Divider';
 export { default as Form } from './Form';
+export { default as Image } from './Image';
 export { default as Kbd } from './Kbd';
 export { default as Layout } from './Layout';
 export { default as Menu } from './Menu';
@@ -15,5 +18,3 @@ export { default as TextField } from './TextField';
 export { default as Theme } from './Theme';
 export { default as Tooltip } from './Tooltip';
 export { default as Typography } from './Typography';
-export { default as Image } from './Image';
-export { default as Avatar } from './Avatar';

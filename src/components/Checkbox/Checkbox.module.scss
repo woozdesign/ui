@@ -1,0 +1,81 @@
+// Checkbox.module.scss
+.wrapper {
+  margin-bottom: var(--space-2);
+}
+.checkbox {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+  height: 24px;
+  vertical-align: middle;
+
+  &--small {
+    height: 16px;
+  }
+
+  &--large {
+    height: 32px;
+  }
+
+  &--xlarge {
+    height: 36px;
+  }
+  &--disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+
+  .input {
+    position: absolute;
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+    &:checked + .checkmark {
+      background-color: var(--color-accent-9); // fallback to #2196F3 if no accent color set
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  .checkmark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/ 1;
+    height: 100%;
+
+    background-color: transparent;
+    box-shadow: inset 0 0 0 1px var(--color-gray-a7);
+    border-radius: max(var(--radius-3), var(--radius-full));
+    transition: background-color 0.2s;
+  }
+  &--checked .checkmark {
+    transition: background-color 0.2s;
+    box-shadow: inset 0 0 0 1px var(--color-accent-9);
+    // ... and any other styles you want when the custom checkbox is checked
+  }
+
+  .error {
+    box-shadow: inset 0 0 0 1px var(--color-red-9);
+    background-color: var(--color-red-surface);
+  }
+}
+
+.label {
+  padding-left: var(--space-2);
+  &--error {
+    color: var(--color-red-9);
+  }
+}
+
+.error {
+  color: var(--color-red-9);
+  height: 16px;
+  margin-top: 4px;
+  font-size: 0.8rem;
+}

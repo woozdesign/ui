@@ -22,6 +22,10 @@ $title-margin: 1rem 0;
     color: $color;
     font-size: var(--font-size-5);
   }
+  &--xlarge {
+    color: $color;
+    font-size: var(--font-size-6);
+  }
 }
 
 // Titles

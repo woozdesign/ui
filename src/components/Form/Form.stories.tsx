@@ -7,6 +7,8 @@ import Button from '../Button';
 import '@/styles/core.scss';
 import Theme from '../Theme/Theme';
 import TextArea from '../TextArea/TextArea';
+import Checkbox from '../Checkbox/Checkbox';
+import Switch from '../Switch';
 
 export default {
   title: 'Components/Form',
@@ -36,6 +38,8 @@ const Template: Story = (args) => {
         <TextField id="2" label="This is required" required value={requiredValue} onChange={(e) => setRequiredValue(e.target.value)} />
         <TextField id="3" label="This is required too" pattern="^[A-Za-z]+$" required value={requiredValue2} onChange={(e) => setRequiredValue2(e.target.value)} />
         <TextArea id="4" label="This is Text Area" required value={requiredValue3} onChange={(e) => setRequiredValue3(e.target.value)} />
+
+        <Checkbox id="5" label="This is Checkbox" required />
 
         <Button buttonType={'submit'}>Submit</Button>
       </Form>
