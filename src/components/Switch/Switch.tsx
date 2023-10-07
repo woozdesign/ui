@@ -1,8 +1,9 @@
 import React, { FC, HTMLProps, ChangeEvent } from 'react';
 import styles from './Switch.module.scss';
 import { ColorProp, RadiusProp, SizeProp, combineClassNames } from '@/utils';
+import { FormChildProps } from '../Form/Form';
 
-interface SwitchProps extends Omit<HTMLProps<HTMLInputElement>, 'type' | 'color' | 'size' | 'onChange'>, ColorProp, SizeProp, RadiusProp {
+interface SwitchProps extends Omit<HTMLProps<HTMLInputElement>, 'type' | 'color' | 'size' | 'onChange'>, ColorProp, SizeProp, RadiusProp, FormChildProps {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 

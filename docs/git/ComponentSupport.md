@@ -35,7 +35,7 @@
 | Component    | Supported | Notes |
 | ------------ | --------- | ----- |
 | Autocomplete | 🚧        |       |
-| Checkbox     | 🚧        |       |
+| Checkbox     | ✅        |       |
 | Combobox     | 🚧        |       |
 | File Input   | 🚧        |       |
 | Form         | ✅        |       |
@@ -56,7 +56,6 @@
 | Virtual Scroller | 🚧        |       |
 | iframe           | 🚧        |       |
 | Code             | 🚧        |       |
-| Video            | 🚧        |       |
 | Cover            | 🚧        |       |
 | Equation         | 🚧        |       |
 
@@ -95,13 +94,13 @@
 
 ### Images & Icons
 
-| Component    | Supported | Notes |
-| ------------ | --------- | ----- |
-| Aspect Ratio | 🚧        |       |
-| Avatar       | 🚧        |       |
-| Icon         | 🚧        |       |
-| Image        | 🚧        |       |
-| Parallax     | 🚧        |       |
+| Component | Supported | Notes |
+| --------- | --------- | ----- |
+| Avatar    | ✅        |       |
+| Video     | 🚧        |       |
+| Icon      | ✅        |       |
+| Image     | ✅        |       |
+| Parallax  | 🚧        |       |
 
 ### Pickers
 

@@ -1,6 +1,7 @@
 .anchor {
   padding: 0 10px;
   width: 200px;
+  font-size: var(--font-size-4);
   border-left: 3px solid var(--color-accent-a4);
 
   position: relative;
@@ -18,21 +19,25 @@
 
     a {
       display: block;
-      color: var(--color-accent-4);
+      color: var(--color-accent-9-contrast);
+      opacity: 0.5;
       text-decoration: none;
       padding: 5px;
       top: 0;
-      transition: background-color 0.2s;
+      transition:
+        background-color 0.2s,
+        opacity 0.2s;
       border-radius: var(--radius-4);
-      font-size: var(--font-size-3);
 
       &:hover {
         // background-color: var(--color-accent-);
-        color: var(--color-accent-9);
+        opacity: 1;
+        color: var(--color-accent-9-contrast);
       }
 
       &.active {
         // background-color: var(--color-accent-9);
+        opacity: 1;
         color: var(--color-accent-9-contrast);
       }
     }

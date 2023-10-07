@@ -22,12 +22,16 @@ $title-margin: 1rem 0;
     color: $color;
     font-size: var(--font-size-5);
   }
+  &--xlarge {
+    color: $color;
+    font-size: var(--font-size-6);
+  }
 }
 
 // Titles
 @for $i from 1 through 6 {
   .title-#{$i} {
-    @include titleStyles(var(--font-size-#{9 - $i}));
+    @include titleStyles(var(--font-size-#{11 - $i}));
     font-weight: bold;
   }
   .subtitle-#{$i} {

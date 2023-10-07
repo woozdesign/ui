@@ -32,18 +32,20 @@
 
 .woozdesign {
   font-family: 'Inter';
-  --font-size-1: calc(12px * var(--scaling));
-  --font-size-2: calc(14px * var(--scaling));
-  --font-size-3: calc(16px * var(--scaling));
-  --font-size-4: calc(18px * var(--scaling));
-  --font-size-5: calc(20px * var(--scaling));
-  --font-size-6: calc(24px * var(--scaling));
-  --font-size-7: calc(28px * var(--scaling));
-  --font-size-8: calc(35px * var(--scaling));
-  --font-size-9: calc(60px * var(--scaling));
-  --font-size-10: calc(72px * var(--scaling));
-  --font-size-11: calc(81px * var(--scaling));
-  --font-size-12: calc(128px * var(--scaling));
+  --font-size-0: calc(8px * var(--scaling));
+  --font-size-1: calc(10px * var(--scaling));
+  --font-size-2: calc(12px * var(--scaling));
+  --font-size-3: calc(14px * var(--scaling));
+  --font-size-4: calc(16px * var(--scaling));
+  --font-size-5: calc(18px * var(--scaling));
+  --font-size-6: calc(20px * var(--scaling));
+  --font-size-7: calc(24px * var(--scaling));
+  --font-size-8: calc(28px * var(--scaling));
+  --font-size-9: calc(35px * var(--scaling));
+  --font-size-10: calc(60px * var(--scaling));
+  --font-size-11: calc(72px * var(--scaling));
+  --font-size-12: calc(81px * var(--scaling));
+  --font-size-13: calc(128px * var(--scaling));
 }
 
 // // Medium Devices

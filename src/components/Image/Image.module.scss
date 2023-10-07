@@ -1,0 +1,33 @@
+// Image.module.scss
+
+.imageContainer {
+  position: relative;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    visibility: hidden;
+    height: 100%;
+    transition: opacity 0.3s;
+  }
+
+  .mainImage {
+    opacity: 0;
+
+    &.loaded {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  .placeholderImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 1;
+
+    &.hidden {
+      opacity: 0;
+    }
+  }
+}

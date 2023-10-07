@@ -7,6 +7,8 @@ import Button from '../Button';
 import '@/styles/core.scss';
 import Theme from '../Theme/Theme';
 import TextArea from '../TextArea/TextArea';
+import Checkbox from '../Checkbox/Checkbox';
+import Switch from '../Switch';
 
 export default {
   title: 'Components/Form',
@@ -37,6 +39,8 @@ const Template: Story = (args) => {
         <TextField id="3" label="This is required too" pattern="^[A-Za-z]+$" required value={requiredValue2} onChange={(e) => setRequiredValue2(e.target.value)} />
         <TextArea id="4" label="This is Text Area" required value={requiredValue3} onChange={(e) => setRequiredValue3(e.target.value)} />
 
+        <Checkbox id="5" label="This is Checkbox" required />
+
         <Button buttonType={'submit'}>Submit</Button>
       </Form>
     </Theme.ThemeProvider>
@@ -52,18 +56,5 @@ WithPrefilledValue.decorators = [
   (Story) => {
     const [inputValue, setInputValue] = useState('banana');
     return <Story inputValue={inputValue} setInputValue={setInputValue} />;
-  },
-];
-
-export const DisabledInput = Template.bind({});
-DisabledInput.args = {};
-DisabledInput.decorators = [
-  (Story) => {
-    return (
-      <Form onSuccess={handleFormSubmit} onError={handleFormError} {...args}>
-        <TextField id="choose" name="i-like" label="Would you prefer a banana or cherry?" required disabled />
-        <Button buttonType={'submit'}>Submit</Button>
-      </Form>
-    );
   },
 ];
