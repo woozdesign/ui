@@ -44,6 +44,10 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     ...rootProps
   } = props;
 
+  React.useEffect(() =>
+    console.log('%cDesigned with WoozDesign', 'font-size: 12px;font-family: monospace;background: black;display: inline-block;color: white;padding: 15px;border: 2px solid white;'),
+  );
+
   const [appearance, setAppearance] = React.useState(appearanceProp);
   React.useEffect(() => setAppearance(appearanceProp), [appearanceProp]);
 

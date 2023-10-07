@@ -6,6 +6,7 @@ import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
 
 export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
+  variant?: 'solid' | 'translucent' | 'transparent';
   outlined?: boolean;
   children: ReactNode;
 }
@@ -14,16 +15,8 @@ const Card: FC<CardProps> & {
   Heading: FC<HeadingProps>;
   Body: FC<BodyProps>;
   Actions: FC<ActionsProps>;
-} = ({ outlined = true, size = 'medium', children, ...others }) => {
-  const cardClasses = [styles.card, styles[`card--${size}`]];
-
-  if (outlined) {
-    cardClasses.push(styles['card--outlined']);
-  }
-
-  // if (size) {
-  //   cardClasses.push(styles[`card--${size}`]); // This will add classes like card--small, card--medium, etc.
-  // }
+} = ({ variant = 'solid', outlined = true, size = 'medium', children, className, ...others }) => {
+  const cardClasses = [styles.card, styles[`card--${variant}`], styles[`card--${size}`], outlined ? styles['card--outlined'] : '', className ?? ''];
 
   return (
     <div className={combineClassNames(cardClasses)} {...others}>

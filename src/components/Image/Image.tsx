@@ -25,7 +25,6 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoa
 
   useEffect(() => {
     if (lazyLoad) {
-      console.log('lazyLoad: ', lazyLoad);
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -87,7 +86,6 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoa
             loading={'lazy'}
             style={style}
             onLoad={() => {
-              console.log('true');
               setLoaded(true);
             }}
             onError={handleImageLoadError}
