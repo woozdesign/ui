@@ -69,7 +69,7 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, width, 
             onError={handleImageLoadError}
             className={`${styles.mainImage} ${loaded ? styles.loaded : ''}`}
           />
-          {!loaded && <img src={placeholder || src} alt="" aria-hidden="true" style={style} className={styles.placeholderImage} onError={handleImageLoadError} />}
+          {!loaded && placeholder && <img src={placeholder} alt="" aria-hidden="true" style={style} className={styles.placeholderImage} onError={handleImageLoadError} />}
         </>
       )}
       {/* {error && <div className={styles.error}>Image failed to load</div>} */}
