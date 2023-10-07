@@ -2,10 +2,21 @@
   overflow: hidden;
   position: relative;
   text-align: left;
-  background-color: var(--color-panel);
   color: var(--color-accent-9-contrast);
   height: 100%;
   border-radius: var(--radius-4);
+
+  &--solid {
+    background-color: var(--color-panel);
+  }
+
+  &--translucent {
+    background-color: var(--color-panel-translucent);
+  }
+  &--transparent {
+    background-color: transparent;
+  }
+
   &--small {
     // font-size: var(--font-size-5); // Adjust as necessary
 
