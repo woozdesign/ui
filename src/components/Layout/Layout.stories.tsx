@@ -16,12 +16,12 @@ export const GridSystemStory: Story<ContainerProps> = (args) => (
   <Theme.ThemeProvider>
     <Layout.Container {...args}>
       <Layout.Row gutter={[32, 32]}>
-        <Layout.Col xs={24} md={8}>
+        <Layout.Col xs={24} sm={3} md={0}>
           <Card outlined>
             <Card.Body title={'Column 1'}></Card.Body>
           </Card>
         </Layout.Col>
-        <Layout.Col xs={24} md={8}>
+        <Layout.Col xs={24} sm={21} md={8}>
           <Card outlined>
             <Card.Body title={'Column 2'}></Card.Body>
           </Card>

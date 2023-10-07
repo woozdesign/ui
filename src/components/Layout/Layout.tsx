@@ -55,11 +55,12 @@ export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, ...other
   const classes = [
     styles.col,
     others.className ?? '',
-    xs ? styles[`xs-${xs}`] : '',
-    sm ? styles[`sm-${sm}`] : '',
-    md ? styles[`md-${md}`] : '',
-    lg ? styles[`lg-${lg}`] : '',
-    xl ? styles[`xl-${xl}`] : '',
+    typeof xs == 'number' ? styles[`xs-${xs}`] : '',
+    typeof sm == 'number' ? styles[`sm-${sm}`] : '',
+    typeof md == 'number' ? styles[`md-${md}`] : '',
+
+    typeof lg == 'number' ? styles[`lg-${lg}`] : '',
+    typeof xl == 'number' ? styles[`xl-${xl}`] : '',
   ];
 
   const combinedStyle = {
