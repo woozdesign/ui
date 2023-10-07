@@ -36,6 +36,7 @@ $gutter-vertical: var(--vertical-gutter);
           }
         } @else {
           .col.#{$break}-#{$i} {
+            display: block;
             flex: 0 0 calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
             max-width: calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
           }
@@ -52,6 +53,7 @@ $gutter-vertical: var(--vertical-gutter);
         }
       } @else {
         .col.#{$break}-#{$i} {
+          display: block;
           flex: 0 0 calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
           max-width: calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
         }

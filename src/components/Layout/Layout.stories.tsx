@@ -21,7 +21,7 @@ export const GridSystemStory: Story<ContainerProps> = (args) => (
             <Card.Body title={'Column 1'}></Card.Body>
           </Card>
         </Layout.Col>
-        <Layout.Col xs={24} sm={21} md={8}>
+        <Layout.Col xs={0} sm={21} md={8}>
           <Card outlined>
             <Card.Body title={'Column 2'}></Card.Body>
           </Card>
