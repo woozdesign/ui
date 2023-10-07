@@ -16,11 +16,11 @@
     // box-shadow: boxShadow(var(--color-accent-90));
   }
   > .icon-prepend {
-    fill: var(--color-accent-9);
+    color: var(--color-accent-9);
   }
 
   > .icon-append {
-    fill: var(--color-accent-9);
+    color: var(--color-accent-9);
   }
 
   &.button--high-contrast {
@@ -41,11 +41,11 @@
       // box-shadow: boxShadow(var(--color-accent-90));
     }
     > .icon-prepend {
-      fill: var(--color-accent-12);
+      color: var(--color-accent-12);
     }
 
     > .icon-append {
-      fill: var(--color-accent-12);
+      color: var(--color-accent-12);
     }
   }
 }
