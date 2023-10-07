@@ -1,5 +1,5 @@
 import React, { CSSProperties, FC, ReactNode } from 'react';
-import { SizeProp } from '../../utils/helper/props';
+import { SizeProp, TextSizeProp } from '../../utils/helper/props';
 export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
     outlined?: boolean;
     children: ReactNode;
@@ -11,14 +11,15 @@ declare const Card: FC<CardProps> & {
 };
 export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'action'> {
     title: ReactNode;
-    titleLevel?: 6 | 5 | 4 | 3 | 2 | 1;
     subtitle?: ReactNode;
+    titleSize?: TextSizeProp['size'];
+    subtitleSize?: TextSizeProp['size'];
     action?: ReactNode;
     outlined?: boolean;
 }
 export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'content'> {
     title?: ReactNode;
-    titleLevel?: 6 | 5 | 4 | 3 | 2 | 1;
+    titleSize?: TextSizeProp['size'];
     content: ReactNode;
 }
 export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {

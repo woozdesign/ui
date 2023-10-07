@@ -4,6 +4,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Avatar, { AvatarProps } from './Avatar';
 import Theme from '../Theme';
+import { Icon } from '@woozdesign/icons';
 
 export default {
   title: 'Components/Avatar',
@@ -42,5 +43,5 @@ LargeWithFallback.args = {
 export const ImageErrorFallback = Template.bind({});
 ImageErrorFallback.args = {
   src: 'https://invalid-url.com/invalid-image.jpg',
-  fallback: 'E',
+  fallback: <Icon type={'AlertCircle'} />,
 };

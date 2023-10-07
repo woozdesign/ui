@@ -18,24 +18,24 @@
   &.small {
     width: 40px;
     height: 40px;
-    font-size: 16px;
+    font-size: var(--font-size-4);
   }
 
   &.medium {
     width: 60px;
     height: 60px;
-    font-size: 24px;
+    font-size: var(--font-size-6);
   }
 
   &.large {
     width: 81px;
     height: 81px;
-    font-size: 81px;
+    font-size: var(--font-size-8);
   }
 
   &.xlarge {
     width: 100px;
     height: 100px;
-    font-size: 40px;
+    font-size: var(--font-size-8);
   }
 }

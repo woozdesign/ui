@@ -20,7 +20,7 @@
 
     a {
       display: block;
-      color: var(--color-accent-9-contrast);
+      color: var(--color-gray-12);
       opacity: 0.5;
       text-decoration: none;
       padding: 5px;
@@ -35,15 +35,15 @@
       text-overflow: ellipsis;
 
       &:hover {
-        // background-color: var(--color-accent-);
+        // background-color: var(--color-gray-12;
         opacity: 1;
-        color: var(--color-accent-9-contrast);
+        color: var(--color-gray-12);
       }
 
       &.active {
-        // background-color: var(--color-accent-9);
+        // background-color: var(--color-gray-12);
         opacity: 1;
-        color: var(--color-accent-9-contrast);
+        color: var(--color-gray-12);
       }
     }
 

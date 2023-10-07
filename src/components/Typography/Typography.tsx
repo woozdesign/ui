@@ -3,24 +3,13 @@
 import { combineClassNames } from '@/utils/helper/combineClassNames';
 import React, { FC } from 'react';
 import styles from './Typography.module.scss';
-import { ParagraphProps, TextProps, TitleProps } from './Typography.props';
+import { TextProps, HeadingProps, StrongProps } from './Typography.props';
 
-const Title: FC<TitleProps> = ({ level = 2, color = 'gray', children, className = '', ...other }) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
-  const titleStyle = styles[`title-${level}`];
-  const combinedClass = combineClassNames([titleStyle, className]);
+const Heading: FC<HeadingProps> = ({ variant = 'h1', size = 8, align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other }) => {
+  const Tag = variant as keyof JSX.IntrinsicElements;
 
-  return (
-    <Tag className={combinedClass} data-accent-color={color} {...other}>
-      {children}
-    </Tag>
-  );
-};
-
-const Subtitle: FC<TitleProps> = ({ level = 6, color = 'gray', children, className = '', ...other }) => {
-  const Tag = `h${level}` as keyof JSX.IntrinsicElements;
-  const titleStyle = styles[`subtitle-${level}`];
-  const combinedClass = combineClassNames([titleStyle, className]);
+  const headingStyle = [styles[`heading--${size}`], styles[`heading--${weight}`], styles[`heading--${align}`], highContrast ? styles[`heading--highContrast`] : ''];
+  const combinedClass = combineClassNames([...headingStyle, className]);
 
   return (
     <Tag className={combinedClass} data-accent-color={color} {...other}>
@@ -29,34 +18,27 @@ const Subtitle: FC<TitleProps> = ({ level = 6, color = 'gray', children, classNa
   );
 };
 
-const Text: FC<TextProps> = ({ children, size = 'medium', color = 'gray', className = '', ...other }) => {
-  const textStyle = styles[`text--${size}`];
+const Text: FC<TextProps> = ({ children, size = 4, color = 'gray', weight = 'normal', variant = 'span', highContrast = true, className = '', ...other }) => {
+  const textStyle = [styles[`text--${size}`], styles[`text--${weight}`], highContrast ? styles[`text--highContrast`] : ''];
+  const Tag = variant as keyof JSX.IntrinsicElements;
 
-  const combinedClass = combineClassNames([textStyle, className]);
+  const combinedClass = combineClassNames([...textStyle, className]);
 
   return (
-    <span className={combinedClass} data-accent-color={color} {...other}>
+    <Tag className={combinedClass} data-accent-color={color} {...other}>
       {children}
-    </span>
+    </Tag>
   );
 };
 
-const Paragraph: FC<ParagraphProps> = ({ children, color = 'gray', size = 'medium', className = '', ...other }) => {
-  const textStyle = styles[`text--${size}`];
-  const combinedClass = combineClassNames([textStyle, className]);
-
-  return (
-    <p className={combinedClass} data-accent-color={color} {...other}>
-      {children}
-    </p>
-  );
+const Strong: FC<StrongProps> = ({ children, ...other }) => {
+  return <strong>{children}</strong>;
 };
 
 const Typography = {
-  Title,
+  Heading,
   Text,
-  Subtitle,
-  Paragraph,
+  Strong,
 };
 
 export default Typography;

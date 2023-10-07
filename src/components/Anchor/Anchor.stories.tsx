@@ -12,7 +12,7 @@ export default {
 
 const Template: Story<AnchorProps> = (args) => {
   return (
-    <Theme.ThemeProvider>
+    <Theme.ThemeProvider appearance="light">
       <Layout.Container>
         <Layout.Row>
           <Layout.Col xs={12}>

@@ -7,15 +7,12 @@ interface TooltipProps {
   position?: 'top' | 'bottom';
   children: ReactNode;
 }
-
 const Tooltip: FC<TooltipProps> = ({ content, position: positionProp = 'top', children }) => {
   return (
-    <div className={styles.tooltipContainer}>
+    <div className={styles.tooltip}>
       {children}
-      <div className={`${styles.tooltip}`} style={{ [positionProp == 'top' ? 'bottom' : 'top']: '125%' }}>
-        <Typography.Text size="small" color={'gray'}>
-          {content}
-        </Typography.Text>
+      <div className={`${styles.tooltiptext}`}>
+        <div className={styles.ellipsisContent}>{content}</div>
       </div>
     </div>
   );

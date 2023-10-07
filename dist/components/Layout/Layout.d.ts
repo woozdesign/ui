@@ -7,7 +7,7 @@ interface RowProps extends React.HTMLProps<HTMLDivElement> {
     gutter?: [number, number];
     align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
     justify?: 'start' | 'center' | 'end' | 'space-between' | 'around' | 'space-evenly';
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 export declare const Row: React.FC<RowProps>;
 interface ColProps extends React.HTMLProps<HTMLDivElement> {
@@ -16,7 +16,7 @@ interface ColProps extends React.HTMLProps<HTMLDivElement> {
     md?: number;
     lg?: number;
     xl?: number;
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 export declare const Col: React.FC<ColProps>;
 declare const Layout: {

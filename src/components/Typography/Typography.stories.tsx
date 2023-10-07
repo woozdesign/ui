@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Typography from './Typography';
-import { TitleProps, TextProps, ParagraphProps, TitleProps as SubtitleProps } from './Typography.props';
+import { TextProps, HeadingProps } from './Typography.props';
 import '@/styles/core.scss';
 import Theme from '../Theme/Theme';
 
@@ -10,35 +10,40 @@ export default {
   component: Typography,
 } as Meta;
 
-// Title Story
-const TitleTemplate: Story<TitleProps> = (args) => (
+// Typography Story
+const TypographyTemplate: Story = (args) => (
   <Theme.ThemeProvider appearance={'dark'}>
-    <Typography.Title {...args} />
+    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((level) => {
+      return (
+        <Typography.Heading key={level} size={level}>
+          Heading
+        </Typography.Heading>
+      );
+    })}
+
+    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((size) => {
+      return (
+        <Typography.Text key={size} size={size} variant={'div'}>
+          Text
+        </Typography.Text>
+      );
+    })}
   </Theme.ThemeProvider>
 );
+export const TypographyFull = TypographyTemplate.bind({});
+TypographyFull.args = {};
+
+// Title Story
+const TitleTemplate: Story<HeadingProps> = (args) => (
+  <Theme.ThemeProvider appearance={'dark'}>
+    <Typography.Heading {...args} />
+  </Theme.ThemeProvider>
+);
+
 export const DefaultTitle = TitleTemplate.bind({});
 DefaultTitle.args = {
   children: 'Default Title',
-  level: 1,
-};
-
-// Subtitle Story
-const SubtitleTemplate: Story<SubtitleProps> = (args) => (
-  <Theme.ThemeProvider appearance={'dark'}>
-    <Typography.Subtitle {...args} />
-  </Theme.ThemeProvider>
-);
-
-export const DefaultSubtitle = SubtitleTemplate.bind({});
-DefaultSubtitle.args = {
-  children: 'Default Subtitle',
-  level: 6,
-};
-
-export const PrimarySubtitle = SubtitleTemplate.bind({});
-PrimarySubtitle.args = {
-  children: 'Primary Subtitle',
-  level: 6,
+  size: 6,
 };
 
 // Text Story
@@ -52,23 +57,18 @@ DefaultText.args = {
   children: 'Default Text',
 };
 
-export const PrimaryText = TextTemplate.bind({});
-PrimaryText.args = {
-  children: 'Primary Text',
-};
-
-// Paragraph Story
-const ParagraphTemplate: Story<ParagraphProps> = (args) => (
+// Text Card Story
+const TextCardTemplate: Story<TextProps> = (args) => (
   <Theme.ThemeProvider appearance={'dark'}>
-    <Typography.Paragraph {...args} />
+    <Typography.Text size="3" variant="p" weight={'bolder'}>
+      Get started
+    </Typography.Text>
+    <Typography.Text color="gray" size="2" variant="div" highContrast={false}>
+      Start your next project in minutes
+    </Typography.Text>
   </Theme.ThemeProvider>
 );
-export const DefaultParagraph = ParagraphTemplate.bind({});
-DefaultParagraph.args = {
-  children: 'Default Paragraph',
-};
-
-export const PrimaryParagraph = ParagraphTemplate.bind({});
-PrimaryParagraph.args = {
-  children: 'Primary Paragraph',
+export const TextCard = TextCardTemplate.bind({});
+TextCard.args = {
+  children: 'Default Text',
 };

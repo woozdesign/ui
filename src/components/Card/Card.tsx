@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 import React, { CSSProperties, FC, ReactNode } from 'react';
 import { combineClassNames } from '@/utils';
-import { SizeProp } from '@/utils/helper/props';
+import { SizeProp, TextSizeProp } from '@/utils/helper/props';
 import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
 
@@ -34,25 +34,32 @@ const Card: FC<CardProps> & {
 
 export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'action'> {
   title: ReactNode;
-  titleLevel?: 6 | 5 | 4 | 3 | 2 | 1;
   subtitle?: ReactNode;
+  titleSize?: TextSizeProp['size'];
+  subtitleSize?: TextSizeProp['size'];
   action?: ReactNode;
   outlined?: boolean;
 }
 
-Card.Heading = ({ title, subtitle, action, titleLevel = 5, outlined = true }: HeadingProps) => {
+Card.Heading = ({ title, titleSize = 5, subtitle, subtitleSize = 4, action, outlined = true }: HeadingProps) => {
   const classes = [styles.heading, outlined ? styles[`heading--outlined`] : ''];
   return (
     <div className={combineClassNames(classes)}>
       <div>
         {typeof title == 'string' ? (
-          <Typography.Title className={styles.title} level={titleLevel}>
+          <Typography.Heading variant={'h3'} size={titleSize} className={styles.title}>
             {title}
-          </Typography.Title>
+          </Typography.Heading>
         ) : (
           title
         )}
-        {typeof subtitle == 'string' ? <Typography.Subtitle className={styles.subtitle}>{subtitle}</Typography.Subtitle> : subtitle}
+        {typeof subtitle == 'string' ? (
+          <Typography.Text variant={'div'} size={subtitleSize} highContrast={false}>
+            {subtitle}
+          </Typography.Text>
+        ) : (
+          subtitle
+        )}
       </div>
       {action && <div className={styles['heading-action']}>{action}</div>}
     </div>
@@ -61,21 +68,27 @@ Card.Heading = ({ title, subtitle, action, titleLevel = 5, outlined = true }: He
 
 export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'content'> {
   title?: ReactNode;
-  titleLevel?: 6 | 5 | 4 | 3 | 2 | 1;
+  titleSize?: TextSizeProp['size'];
   content: ReactNode;
 }
 
-Card.Body = ({ title, content, titleLevel = 5 }: BodyProps) => {
+Card.Body = ({ title, content, titleSize = 5 }: BodyProps) => {
   return (
     <div className={styles.body}>
       {typeof title == 'string' ? (
-        <Typography.Title className={styles.title} level={titleLevel}>
+        <Typography.Heading variant="h5" size={titleSize} className={styles.title}>
           {title}
-        </Typography.Title>
+        </Typography.Heading>
       ) : (
         title
       )}
-      {typeof content == 'string' ? <Typography.Text className={styles.content}>{content}</Typography.Text> : content}
+      {typeof content == 'string' ? (
+        <Typography.Text size={4} className={styles.content}>
+          {content}
+        </Typography.Text>
+      ) : (
+        content
+      )}
     </div>
   );
 };
