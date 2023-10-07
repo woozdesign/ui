@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useRef, useState } from 'react';
 import styles from './Anchor.module.scss';
+import { isElementInViewport } from '@/utils';
 
 type LinkItem = {
   key: string;
@@ -33,8 +34,8 @@ const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onCha
     const handleScroll = () => {
       for (const item of items) {
         // Check parent items
-        let section = document.querySelector(item.href);
-        if (section && isElementInViewport(section)) {
+        let section = document.getElementById(item.href.slice(1));
+        if (section && isElementInViewport(section, ['top'])) {
           updateActiveKeyAndIndicator(item);
           return;
         }
@@ -42,8 +43,8 @@ const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onCha
         // Check child items if they exist
         if (item.children) {
           for (const child of item.children) {
-            section = document.querySelector(child.href);
-            if (section && isElementInViewport(section)) {
+            section = document.getElementById(child.href.slice(1));
+            if (section && isElementInViewport(section, ['top'])) {
               updateActiveKeyAndIndicator(child);
               return;
             }
@@ -74,11 +75,11 @@ const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onCha
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [items, activeKey, onChange]);
+  }, [items, activeKey, setActiveKey, onChange]);
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const target = document.querySelector(href);
+    const target = document.getElementById(href.slice(1));
     if (target) {
       const rect = target.getBoundingClientRect();
       window.scrollTo({
@@ -118,16 +119,5 @@ const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onCha
     </div>
   );
 };
-
-// Utility function to determine if an element is in viewport
-function isElementInViewport(el: Element) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
 
 export default Anchor;

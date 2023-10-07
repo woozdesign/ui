@@ -54,3 +54,20 @@ ImageSize.args = {
   height: '200px',
   objectFit: 'cover',
 };
+
+const LazyTemplate: Story<ImageProps> = (args) => (
+  <Theme.ThemeProvider>
+    <div style={{ width: '320px', height: '150vh' }}>
+      <Image src={'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=800&q=80'} lazyLoad={args.lazyLoad} />
+    </div>
+    <div style={{ width: '320px', height: '150vh' }}>
+      <Image src="https://images.unsplash.com/photo-1633332755192-727a05c4013d" lazyLoad={args.lazyLoad} />
+    </div>
+    <div style={{ width: '320px', height: '150vh' }}>
+      <Image src="https://plus.unsplash.com/premium_photo-1664541336896-b3d5f7dec9a3" lazyLoad={args.lazyLoad} />
+    </div>
+  </Theme.ThemeProvider>
+);
+
+export const LazyImage = LazyTemplate.bind({});
+LazyImage.args = {};

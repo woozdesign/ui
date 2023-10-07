@@ -16,18 +16,18 @@ const Template: Story<AnchorProps> = (args) => {
         <Anchor {...args} />
       </div>
       <div style={{ height: '150vh', padding: '20px' }}>
-        <section id="components-anchor-demo-basic" style={{ height: '50vh' }}>
+        <section id="1components-anchor-demo-basic" style={{ height: '50vh' }}>
           <h2>Basic demo</h2>
           <p>Some content here...</p>
         </section>
-        <section id="components-anchor-demo-static" style={{ height: '50vh' }}>
+        <section id="1components-anchor-demo-static" style={{ height: '50vh' }}>
           <h2>Static demo</h2>
           <p>More content here...</p>
         </section>
-        <section id="api" style={{ height: '100vh' }}>
+        <section id="aaapi" style={{ height: '200vh' }}>
           <h2>API</h2>
           <p>API content...</p>
-          <section id="anchor-props" style={{ height: '50vh' }}>
+          <section id="anchor-props" style={{ height: '100vh' }}>
             <h3>Anchor Props</h3>
             <p>Details about Anchor Props...</p>
           </section>
@@ -46,17 +46,17 @@ Default.args = {
   items: [
     {
       key: '1',
-      href: '#components-anchor-demo-basic',
+      href: '#1components-anchor-demo-basic',
       title: 'Basic demo',
     },
     {
       key: '2',
-      href: '#components-anchor-demo-static',
+      href: '#1components-anchor-demo-static',
       title: 'Static demo',
     },
     {
-      key: '3',
-      href: '#api',
+      key: 'aaapi',
+      href: '#aaapi',
       title: 'API',
       children: [
         {
