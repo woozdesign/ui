@@ -2,9 +2,9 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './Image.module.scss';
-import { combineClassNames } from '@/utils';
+import { RadiusProp, combineClassNames } from '@/utils';
 
-export interface ImageProps {
+export interface ImageProps extends RadiusProp {
   src: string;
   alt: string;
   placeholder?: string; // A smaller, quickly loading version or a solid color
@@ -14,8 +14,9 @@ export interface ImageProps {
   objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'; // CSS object-fit values
 }
 
-const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, width, height, objectFit = 'cover' }) => {
+const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, radius = 'none', width, height, objectFit = 'cover' }) => {
   const [loaded, setLoaded] = useState(false);
+  const [placeHolderLoaded, setPlaceHolderLoaded] = useState(false);
   const [error, setError] = useState(false);
   const [visible, setVisible] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -55,7 +56,7 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, width, 
   };
 
   return (
-    <div className={combineClassNames([styles.imageContainer, className || ''])} style={{ width, height }}>
+    <div className={combineClassNames([styles.imageContainer, className || ''])} style={{ width, height }} data-radius={radius}>
       {!error && (
         <>
           <img
@@ -64,12 +65,26 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, width, 
             alt={alt}
             style={style}
             onLoad={() => {
-              setLoaded(true);
+              setTimeout(() => {
+                setLoaded(true);
+              }, 100);
             }}
             onError={handleImageLoadError}
-            className={`${styles.mainImage} ${loaded ? styles.loaded : ''}`}
+            className={`${styles.mainImage} ${loaded ? styles.loaded : ''} ${!placeholder ? styles.noPlaceholder : ''}`}
           />
-          {!loaded && placeholder && <img src={placeholder} alt="" aria-hidden="true" style={style} className={styles.placeholderImage} onError={handleImageLoadError} />}
+          {!loaded && placeholder && (
+            <img
+              src={placeholder}
+              alt=""
+              aria-hidden="true"
+              style={style}
+              onLoad={() => {
+                setPlaceHolderLoaded(true);
+              }}
+              className={`${styles.placeholderImage} ${placeHolderLoaded ? styles.loaded : ''}`}
+              onError={handleImageLoadError}
+            />
+          )}
         </>
       )}
       {/* {error && <div className={styles.error}>Image failed to load</div>} */}

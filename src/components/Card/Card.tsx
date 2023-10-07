@@ -45,10 +45,14 @@ Card.Heading = ({ title, subtitle, action, titleLevel = 5, outlined = true }: He
   return (
     <div className={combineClassNames(classes)}>
       <div>
-        <Typography.Title className={styles.title} level={titleLevel}>
-          {title}
-        </Typography.Title>
-        {subtitle && <Typography.Subtitle className={styles.subtitle}>{subtitle}</Typography.Subtitle>}
+        {typeof title == 'string' ? (
+          <Typography.Title className={styles.title} level={titleLevel}>
+            {title}
+          </Typography.Title>
+        ) : (
+          title
+        )}
+        {typeof subtitle == 'string' ? <Typography.Subtitle className={styles.subtitle}>{subtitle}</Typography.Subtitle> : subtitle}
       </div>
       {action && <div className={styles['heading-action']}>{action}</div>}
     </div>
@@ -64,12 +68,14 @@ export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title'
 Card.Body = ({ title, content, titleLevel = 5 }: BodyProps) => {
   return (
     <div className={styles.body}>
-      {title && (
+      {typeof title == 'string' ? (
         <Typography.Title className={styles.title} level={titleLevel}>
           {title}
         </Typography.Title>
+      ) : (
+        title
       )}
-      {content && <Typography.Text className={styles.content}>{content}</Typography.Text>}
+      {typeof content == 'string' ? <Typography.Text className={styles.content}>{content}</Typography.Text> : content}
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import Card, { CardProps } from './Card';
 import Button from '../Button';
 import Theme from '../Theme/Theme';
+import Typography from '../Typography/Typography';
 
 export default {
   title: 'Components/Card',
@@ -37,8 +38,7 @@ FullContent.args = {
   children: (
     <>
       <Card.Heading
-        title="Card Title"
-        subtitle="Subtitle here"
+        title={<Typography.Title level={1}>test</Typography.Title>}
         action={
           <Button variant={'text'} color={'lime'}>
             more
