@@ -25,18 +25,35 @@ $gutter-vertical: var(--vertical-gutter);
 @each $break, $size in (xs: 0px, sm: 576px, md: 768px, lg: 992px, xl: 1200px) {
   @if $size != 0 {
     @media (min-width: $size) {
-      @for $i from 1 through 24 {
-        .col.#{$break}-#{$i} {
-          flex: 0 0 calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
-          max-width: calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
+      @for $i from 0 through 24 {
+        // Starts from 0 now
+        @if $i == 0 {
+          .col.#{$break}-#{$i} {
+            display: none;
+            flex: 0 0 0;
+            max-width: 0;
+          }
+        } @else {
+          .col.#{$break}-#{$i} {
+            flex: 0 0 calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
+            max-width: calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
+          }
         }
       }
     }
   } @else {
-    @for $i from 1 through 24 {
-      .col.#{$break}-#{$i} {
-        flex: 0 0 calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
-        max-width: calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
+    @for $i from 0 through 24 {
+      @if $i == 0 {
+        .col.#{$break}-#{$i} {
+          display: none;
+          flex: 0 0 0;
+          max-width: 0;
+        }
+      } @else {
+        .col.#{$break}-#{$i} {
+          flex: 0 0 calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
+          max-width: calc((100% / 24 * #{$i}) - #{$gutter-horizontal});
+        }
       }
     }
   }
