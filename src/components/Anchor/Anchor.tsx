@@ -56,15 +56,16 @@ const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onCha
     // Utility function to update the active key and position of the indicator
     const updateActiveKeyAndIndicator = (item: LinkItem) => {
       if (activeKey !== item.key) {
-        const linkElement = document.querySelector(`a[href="${item.href}"]`);
+        const linkElement = document.querySelector(`a[data-anchor-key="${item.key}"]`);
         if (linkElement) {
           const rect = linkElement.getBoundingClientRect();
-          const firstRect = firstLinkRef?.current?.getBoundingClientRect();
-
-          setIndicatorPosition({
-            top: rect.top - firstRect!.top ?? 0,
-            height: rect.height,
-          });
+          const firstRect = firstLinkRef.current;
+          if (firstRect) {
+            setIndicatorPosition({
+              top: rect.top - firstRect.getBoundingClientRect().top ?? 0,
+              height: rect.height,
+            });
+          }
         }
         setActiveKey(item.key);
         onChange?.(item.key);
@@ -83,7 +84,7 @@ const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onCha
     if (target) {
       const rect = target.getBoundingClientRect();
       window.scrollTo({
-        top: rect.top + window.pageYOffset - offset,
+        top: rect.top + window.pageYOffset - offset - 1,
         behavior: behavior,
       });
     }
@@ -101,14 +102,26 @@ const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onCha
       {items.map((item, index) => (
         <div key={item.key} className={styles['anchor-section']}>
           {/* Assign ref to the first link */}
-          <a href={item.href} className={activeKey === item.key ? styles.active : ''} ref={index === 0 ? firstLinkRef : null} onClick={(e) => handleAnchorClick(e, item.href)}>
+          <a
+            data-anchor-key={item.key}
+            href={item.href}
+            className={activeKey === item.key ? styles.active : ''}
+            ref={index === 0 ? firstLinkRef : null}
+            onClick={(e) => handleAnchorClick(e, item.href)}
+          >
             {item.title}
           </a>
 
           {item.children && (
             <div className={styles['anchor-subsection']}>
               {item.children.map((subItem) => (
-                <a key={subItem.key} href={subItem.href} className={activeKey === subItem.key ? styles.active : ''} onClick={(e) => handleAnchorClick(e, subItem.href)}>
+                <a
+                  key={subItem.key}
+                  data-anchor-key={subItem.key}
+                  href={subItem.href}
+                  className={activeKey === subItem.key ? styles.active : ''}
+                  onClick={(e) => handleAnchorClick(e, subItem.href)}
+                >
                   {subItem.title}
                 </a>
               ))}

@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import Anchor, { AnchorProps } from './Anchor';
 import Theme from '../Theme';
 import '@/styles/core.scss';
+import Layout from '../Layout/Layout';
 
 export default {
   title: 'Components/Anchor',
@@ -12,39 +13,47 @@ export default {
 const Template: Story<AnchorProps> = (args) => {
   return (
     <Theme.ThemeProvider>
-      <div
-        style={{
-          top: '128px',
-          position: 'sticky',
-          overflowY: 'auto',
-          height: `calc(100vh - ${top})`,
-          textAlign: top === '128px' ? 'end' : 'start',
-        }}
-      >
-        <Anchor {...args} />
-      </div>
-      <div style={{ height: '150vh', padding: '20px' }}>
-        <section id="1components-anchor-demo-basic" style={{ height: '50vh' }}>
-          <h2>Basic demo</h2>
-          <p>Some content here...</p>
-        </section>
-        <section id="1components-anchor-demo-static" style={{ height: '50vh' }}>
-          <h2>Static demo</h2>
-          <p>More content here...</p>
-        </section>
-        <section id="aaapi" style={{ height: '200vh' }}>
-          <h2>API</h2>
-          <p>API content...</p>
-          <section id="anchor-props" style={{ height: '100vh' }}>
-            <h3>Anchor Props</h3>
-            <p>Details about Anchor Props...</p>
-          </section>
-          <section id="link-props" style={{ height: '50vh' }}>
-            <h3>Link Props</h3>
-            <p>Details about Link Props...</p>
-          </section>
-        </section>
-      </div>
+      <Layout.Container>
+        <Layout.Row>
+          <Layout.Col xs={12}>
+            <div
+              style={{
+                top: '128px',
+                position: 'fixed',
+                overflowY: 'auto',
+                height: '100%',
+                textAlign: top === '128px' ? 'end' : 'start',
+              }}
+            >
+              <Anchor {...args} />
+            </div>
+          </Layout.Col>
+          <Layout.Col xs={12}>
+            <div style={{ height: '150vh', padding: '20px' }}>
+              <section id="1components-anchor-demo-basic" style={{ height: '50vh' }}>
+                <h2>Basic demo</h2>
+                <p>Some content here...</p>
+              </section>
+              <section id="1components-anchor-demo-static" style={{ height: '50vh' }}>
+                <h2>Static demo</h2>
+                <p>More content here...</p>
+              </section>
+              <section id="aaapi" style={{ height: '200vh' }}>
+                <h2>API</h2>
+                <p>API content...</p>
+                <section id="anchor-props" style={{ height: '100vh' }}>
+                  <h3>Anchor Props</h3>
+                  <p>Details about Anchor Props...</p>
+                </section>
+                <section id="link-props" style={{ height: '50vh' }}>
+                  <h3>Link Props</h3>
+                  <p>Details about Link Props...</p>
+                </section>
+              </section>
+            </div>
+          </Layout.Col>
+        </Layout.Row>
+      </Layout.Container>
     </Theme.ThemeProvider>
   );
 };
