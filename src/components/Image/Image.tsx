@@ -20,34 +20,40 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, radius 
   const [error, setError] = useState(false);
   const [visible, setVisible] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
+  const placeHolderRef = useRef<HTMLImageElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setVisible(true);
-            observer.disconnect();
-          }
-        });
-      },
-      {
-        rootMargin: '100px',
-      },
-    );
+  // useEffect(() => {
+  //   const observer = new IntersectionObserver(
+  //     (entries) => {
+  //       entries.forEach((entry) => {
+  //         if (entry.isIntersecting) {
+  //           setVisible(true);
+  //           observer.disconnect();
+  //         }
+  //       });
+  //     },
+  //     {
+  //       rootMargin: '100px',
+  //     },
+  //   );
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-    }
+  //   if (imgRef.current) {
+  //     observer.observe(imgRef.current);
+  //   }
 
-    return () => {
-      observer.disconnect();
-    };
-  }, []);
+  //   return () => {
+  //     observer.disconnect();
+  //   };
+  // }, []);
 
   const handleImageLoadError = () => {
     setError(true);
   };
+
+  useEffect(() => {
+    if (imgRef?.current?.complete) setLoaded(true);
+    if (placeHolderRef?.current?.complete) setLoaded(true);
+  }, []);
 
   const style = {
     width: width || '100%',
@@ -60,14 +66,13 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, radius 
       {!error && (
         <>
           <img
+            id={src}
             ref={imgRef}
             src={src}
             alt={alt}
             style={style}
             onLoad={() => {
-              setTimeout(() => {
-                setLoaded(true);
-              }, 100);
+              setLoaded(true);
             }}
             onError={handleImageLoadError}
             className={`${styles.mainImage} ${loaded ? styles.loaded : ''} ${!placeholder ? styles.noPlaceholder : ''}`}
@@ -75,6 +80,7 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, radius 
           {!loaded && placeholder && (
             <img
               src={placeholder}
+              ref={placeHolderRef}
               alt=""
               aria-hidden="true"
               style={style}
@@ -87,7 +93,7 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, radius 
           )}
         </>
       )}
-      {/* {error && <div className={styles.error}>Image failed to load</div>} */}
+      {error && <div className={styles.error}>Image failed to load</div>}
     </div>
   );
 };
