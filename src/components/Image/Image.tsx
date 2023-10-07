@@ -2,7 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './Image.module.scss';
-import { RadiusProp, combineClassNames } from '@/utils';
+import { RadiusProp, combineClassNames, isElementInViewport } from '@/utils';
 
 export interface ImageProps extends RadiusProp {
   src: string;
@@ -11,49 +11,62 @@ export interface ImageProps extends RadiusProp {
   className?: string;
   width?: string | number; // Width of the image container
   height?: string | number; // Height of the image container
+  lazyLoad?: boolean;
   objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'; // CSS object-fit values
 }
 
-const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, radius = 'none', width, height, objectFit = 'cover' }) => {
+const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoad = true, radius = 'none', width, height, objectFit = 'cover' }) => {
   const [loaded, setLoaded] = useState(false);
   const [placeHolderLoaded, setPlaceHolderLoaded] = useState(false);
   const [error, setError] = useState(false);
-  const [visible, setVisible] = useState(false);
+
   const imgRef = useRef<HTMLImageElement>(null);
   const placeHolderRef = useRef<HTMLImageElement>(null);
 
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver(
-  //     (entries) => {
-  //       entries.forEach((entry) => {
-  //         if (entry.isIntersecting) {
-  //           setVisible(true);
-  //           observer.disconnect();
-  //         }
-  //       });
-  //     },
-  //     {
-  //       rootMargin: '100px',
-  //     },
-  //   );
+  useEffect(() => {
+    if (lazyLoad) {
+      console.log('lazyLoad: ', lazyLoad);
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (imgRef.current) {
+                imgRef.current.src = imgRef.current.getAttribute('data-src') || '';
+              }
+              observer.disconnect();
+            }
+          });
+        },
+        {
+          rootMargin: '0px',
+        },
+      );
 
-  //   if (imgRef.current) {
-  //     observer.observe(imgRef.current);
-  //   }
+      if (imgRef.current) {
+        // Check if the image is already inside the viewport
+        const isAlreadyVisible = isElementInViewport(imgRef.current);
+        if (isAlreadyVisible) {
+          if (imgRef.current) {
+            imgRef.current.src = imgRef.current.getAttribute('data-src') || '';
+          }
+        } else {
+          observer.observe(imgRef.current);
+        }
+      }
 
-  //   return () => {
-  //     observer.disconnect();
-  //   };
-  // }, []);
+      return () => {
+        observer.disconnect();
+      };
+    } else {
+      if (imgRef.current) {
+        imgRef.current.src = imgRef.current.getAttribute('data-src') || '';
+      }
+    }
+  }, [lazyLoad]);
 
   const handleImageLoadError = () => {
     setError(true);
   };
-
-  useEffect(() => {
-    if (imgRef?.current?.complete) setLoaded(true);
-    if (placeHolderRef?.current?.complete) setLoaded(true);
-  }, []);
 
   const style = {
     width: width || '100%',
@@ -68,10 +81,13 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, radius 
           <img
             id={src}
             ref={imgRef}
-            src={src}
+            src={lazyLoad ? undefined : src} // If not lazyLoad, set the src immediately
+            data-src={src}
             alt={alt}
+            loading={'lazy'}
             style={style}
             onLoad={() => {
+              console.log('true');
               setLoaded(true);
             }}
             onError={handleImageLoadError}
