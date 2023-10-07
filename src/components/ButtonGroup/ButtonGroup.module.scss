@@ -1,0 +1,19 @@
+// ButtonGroup.module.scss
+
+.buttonGroup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonGroup--small {
+  gap: 8px; // Adjust based on your design needs
+}
+
+.buttonGroup--medium {
+  gap: 16px; // Adjust based on your design needs
+}
+
+.buttonGroup--large {
+  gap: 24px; // Adjust based on your design needs
+}

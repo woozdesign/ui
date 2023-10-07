@@ -16,22 +16,22 @@ const Template: Story<AnchorProps> = (args) => {
         <Anchor {...args} />
       </div>
       <div style={{ height: '150vh', padding: '20px' }}>
-        <section id="components-anchor-demo-basic">
+        <section id="components-anchor-demo-basic" style={{ height: '50vh' }}>
           <h2>Basic demo</h2>
           <p>Some content here...</p>
         </section>
-        <section id="components-anchor-demo-static">
+        <section id="components-anchor-demo-static" style={{ height: '50vh' }}>
           <h2>Static demo</h2>
           <p>More content here...</p>
         </section>
-        <section id="api">
+        <section id="api" style={{ height: '100vh' }}>
           <h2>API</h2>
           <p>API content...</p>
-          <section id="anchor-props">
+          <section id="anchor-props" style={{ height: '50vh' }}>
             <h3>Anchor Props</h3>
             <p>Details about Anchor Props...</p>
           </section>
-          <section id="link-props">
+          <section id="link-props" style={{ height: '50vh' }}>
             <h3>Link Props</h3>
             <p>Details about Link Props...</p>
           </section>
