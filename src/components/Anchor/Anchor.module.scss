@@ -1,6 +1,7 @@
 .anchor {
   padding: 0 10px;
   width: 100%;
+
   font-size: var(--font-size-4);
   border-left: 3px solid var(--color-accent-a4);
 
@@ -28,6 +29,10 @@
         background-color 0.2s,
         opacity 0.2s;
       border-radius: var(--radius-4);
+
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
 
       &:hover {
         // background-color: var(--color-accent-);

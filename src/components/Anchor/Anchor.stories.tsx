@@ -12,7 +12,15 @@ export default {
 const Template: Story<AnchorProps> = (args) => {
   return (
     <Theme.ThemeProvider>
-      <div style={{ position: 'fixed', right: 0 }}>
+      <div
+        style={{
+          top: '128px',
+          position: 'sticky',
+          overflowY: 'auto',
+          height: `calc(100vh - ${top})`,
+          textAlign: top === '128px' ? 'end' : 'start',
+        }}
+      >
         <Anchor {...args} />
       </div>
       <div style={{ height: '150vh', padding: '20px' }}>
@@ -52,7 +60,7 @@ Default.args = {
     {
       key: '2',
       href: '#1components-anchor-demo-static',
-      title: 'Static demo',
+      title: 'Static demo LONG TITLE',
     },
     {
       key: 'aaapi',
