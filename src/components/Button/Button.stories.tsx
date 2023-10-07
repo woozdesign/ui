@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Button, { ButtonProps } from './Button';
 import Theme from '../Theme/Theme';
+import { Icon } from '@woozdesign/icons';
 
 import '@/styles/core.scss';
 
@@ -21,28 +22,32 @@ export const Primary = Template.bind({});
 
 Primary.args = {
   variant: 'primary',
+  iconPrepend: <Icon type={'Search'} />,
 };
 
 export const Outlined = Template.bind({});
 Outlined.args = {
   variant: 'outlined',
+  iconPrepend: <Icon type={'Search'} />,
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
   variant: 'secondary',
+  iconPrepend: <Icon type={'Search'} />,
 };
 
 export const Text = Template.bind({});
 Text.args = {
   variant: 'text',
+  iconPrepend: <Icon type={'Search'} />,
 };
 
-export const Icon = Template.bind({});
-Icon.args = {
+export const IconButton = Template.bind({});
+IconButton.args = {
   variant: 'icon',
   children: undefined,
-  iconPrepend: <span>🚀</span>, // just as an example icon
+  iconPrepend: <Icon type={'Search'} />, // just as an example icon
 };
 
 export const Link = Template.bind({});

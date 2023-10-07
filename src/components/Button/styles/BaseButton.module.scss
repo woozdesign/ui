@@ -7,6 +7,7 @@
   height: 34px;
   display: inline-flex;
   align-items: center;
+  gap: var(--space-2);
   text-decoration: none;
   justify-content: center;
 
@@ -61,6 +62,17 @@
   &--disabled {
     opacity: 0.4;
     cursor: not-allowed;
+  }
+
+  > .icon-append {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  > .icon-prepend {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   // Pseudo-elements
