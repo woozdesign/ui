@@ -84,7 +84,7 @@
     }
     .subtitle {
       margin: 0;
-      margin-top: var(--space-2);
+      margin-top: var(--space-1);
     }
     .heading-action {
       display: flex;
@@ -95,6 +95,7 @@
   .body {
     .title {
       margin: 0;
+      margin-bottom: var(--space-1);
     }
     .content {
       margin: 0;

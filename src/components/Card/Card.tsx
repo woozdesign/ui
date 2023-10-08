@@ -40,14 +40,14 @@ Card.Heading = ({ title, titleSize = 5, subtitle, subtitleSize = 4, action, outl
     <div className={combineClassNames(classes)}>
       <div>
         {typeof title == 'string' ? (
-          <Typography.Heading variant={'h3'} size={titleSize} className={styles.title}>
+          <Typography.Heading className={styles.title} variant={'h3'} size={titleSize}>
             {title}
           </Typography.Heading>
         ) : (
           title
         )}
         {typeof subtitle == 'string' ? (
-          <Typography.Text variant={'div'} size={subtitleSize} highContrast={false}>
+          <Typography.Text className={styles.subtitle} variant={'div'} size={subtitleSize} highContrast={false}>
             {subtitle}
           </Typography.Text>
         ) : (
@@ -76,7 +76,7 @@ Card.Body = ({ title, content, titleSize = 5 }: BodyProps) => {
         title
       )}
       {typeof content == 'string' ? (
-        <Typography.Text size={4} className={styles.content}>
+        <Typography.Text variant="div" size={4} className={styles.content}>
           {content}
         </Typography.Text>
       ) : (

@@ -18,11 +18,11 @@ const Heading: FC<HeadingProps> = ({ variant = 'h1', size = 8, align = 'start', 
   );
 };
 
-const Text: FC<TextProps> = ({ children, size = 4, color = 'gray', weight = 'normal', variant = 'span', highContrast = true, className = '', ...other }) => {
-  const textStyle = [styles[`text--${size}`], styles[`text--${weight}`], highContrast ? styles[`text--highContrast`] : ''];
+const Text: FC<TextProps> = ({ children, size = 4, color = 'gray', weight = 'normal', variant = 'span', highContrast = true, className, ...other }) => {
+  const textStyle = [styles[`text--${size}`], styles[`text--${weight}`], highContrast ? styles[`text--highContrast`] : '', className ?? ''];
   const Tag = variant as keyof JSX.IntrinsicElements;
 
-  const combinedClass = combineClassNames([...textStyle, className]);
+  const combinedClass = combineClassNames([...textStyle]);
 
   return (
     <Tag className={combinedClass} data-accent-color={color} {...other}>

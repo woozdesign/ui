@@ -20,7 +20,7 @@ export default {
 } as Meta;
 
 const Template: Story<CardProps> = (args) => (
-  <Theme.ThemeProvider scaling="110%">
+  <Theme.ThemeProvider scaling="100%">
     <Card {...args} />
   </Theme.ThemeProvider>
 );
