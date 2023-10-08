@@ -18,7 +18,7 @@
 }
 
 // Medium Devices
-@include --md {
+@include --smAndUp {
   .woozdesign {
     --font-size-0: calc(8px * var(--scaling));
     --font-size-1: calc(10px * var(--scaling));
