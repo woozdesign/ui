@@ -21,9 +21,9 @@
 | Component         | Supported | Notes |
 | ----------------- | --------- | ----- |
 | Anchor            | ✅        |       |
-| App Bar           | 🚧        |       |
+| App Bar           | ✅        |       |
 | Bottom Navigation | 🚧        |       |
-| Breadcrumb        | 🚧        |       |
+| Breadcrumb        | ✅        |       |
 | Footer            | 🚧        |       |
 | Navigation Drawer | 🚧        |       |
 | Pagination        | 🚧        |       |
