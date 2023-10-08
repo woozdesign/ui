@@ -1,5 +1,7 @@
 import { FC, ReactNode } from 'react';
 interface AppBarProps {
+    variant?: 'solid' | 'transparent' | 'translucent';
+    position?: 'block' | 'absolute' | 'fixed';
     children: ReactNode;
 }
 declare const AppBar: FC<AppBarProps> & {

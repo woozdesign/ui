@@ -1,8 +1,11 @@
 /* eslint-disable react/display-name */
 import React, { FC, ReactNode } from 'react';
 import styles from './AppBar.module.scss';
+import { combineClassNames } from '@/utils';
 
 interface AppBarProps {
+  variant?: 'solid' | 'transparent' | 'translucent';
+  position?: 'block' | 'absolute' | 'fixed';
   children: ReactNode;
 }
 
@@ -10,8 +13,9 @@ const AppBar: FC<AppBarProps> & {
   Heading: FC<HeadingProps>;
   Body: FC<BodyProps>;
   Action: FC<ActionProps>;
-} = ({ children }) => {
-  return <div className={styles.appBar}>{children}</div>;
+} = ({ children, variant = 'solid', position = 'block' }) => {
+  const classes = [styles[`wrapper`], styles[`wrapper--${variant}`], styles[`wrapper--${position}`]];
+  return <div className={combineClassNames(classes)}>{children}</div>;
 };
 
 interface HeadingProps {
