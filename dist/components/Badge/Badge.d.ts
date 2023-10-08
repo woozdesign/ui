@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { ColorProp, RadiusProp, SizeProp } from '../../utils';
 interface BadgeProps extends ColorProp, SizeProp, RadiusProp {
-    variant?: 'primary' | 'secondary' | 'outlined';
+    variant?: 'solid' | 'soft' | 'outlined';
     label: string | number;
     highContrast?: boolean;
 }

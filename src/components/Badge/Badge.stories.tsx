@@ -14,16 +14,16 @@ const Template: Story<BadgeProps> = (args) => (
   </Theme.ThemeProvider>
 );
 
-export const Primary = Template.bind({});
-Primary.args = {
-  variant: 'primary',
-  label: 'Primary',
+export const Solid = Template.bind({});
+Solid.args = {
+  variant: 'solid',
+  label: 'Solid',
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  variant: 'secondary',
-  label: 'Secondary',
+export const Soft = Template.bind({});
+Soft.args = {
+  variant: 'soft',
+  label: 'Soft',
 };
 
 export const Outlined = Template.bind({});

@@ -4,11 +4,11 @@ import { ColorProp, SizeProp, combineClassNames } from '@/utils';
 import { WoozCommandCode } from '@/utils/contexts/Shortcut/Shortcut.props';
 
 interface KbdProps extends ColorProp, SizeProp {
-  variant?: 'primary' | 'secondary';
+  variant?: 'solid' | 'soft';
   shortcut: WoozCommandCode[];
 }
 
-const Kbd: React.FC<KbdProps> = ({ shortcut, variant = 'primary', size = 'medium', color }) => {
+const Kbd: React.FC<KbdProps> = ({ shortcut, variant = 'solid', size = 'medium', color }) => {
   const classes = [styles.kbd, styles[`kbd--${variant}`], styles[`kbd--${size}`]];
   return (
     <div className={styles.wrapper}>

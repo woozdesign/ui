@@ -118,7 +118,7 @@ const Content: FC<ContentProps> = ({ title, subtitle, confirmText = 'Confirm', c
           <Button variant={'outlined'} color={'gray'} highContrast onClick={handleCancel}>
             {cancelText}
           </Button>
-          <Button variant={'primary'} onClick={handleConfirm}>
+          <Button variant={'solid'} onClick={handleConfirm}>
             {confirmText}
           </Button>
         </Card.Actions>

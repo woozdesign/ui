@@ -15,8 +15,8 @@ export default {
 const Template: Story<ButtonGroupProps> = (args) => (
   <Theme.ThemeProvider>
     <ButtonGroup {...args}>
-      <Button variant="primary">Primary</Button>
-      <Button variant="secondary">Secondary</Button>
+      <Button variant="solid">Solid</Button>
+      <Button variant="soft">Soft</Button>
       <Button variant="text">Tertiary</Button>
     </ButtonGroup>
   </Theme.ThemeProvider>

@@ -1,0 +1,33 @@
+.appBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  box-sizing: border-box;
+  height: 64px;
+  padding: var(--space-2) var(--space-6);
+}
+
+.heading {
+  height: 100%;
+}
+
+.body {
+  height: 100%;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.action {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  justify-content: flex-end;
+}

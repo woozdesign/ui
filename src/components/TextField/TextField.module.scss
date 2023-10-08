@@ -59,7 +59,7 @@
   transition: border 0.3s ease;
   margin-bottom: 20px;
 
-  &--primary {
+  &--solid {
     &:focus,
     &:hover {
       outline: none;
@@ -69,7 +69,7 @@
     }
   }
 
-  &--secondary {
+  &--soft {
     &:focus,
     &:hover {
       outline: none;
@@ -88,7 +88,7 @@
   }
 
   &:valid {
-    // border: 2px solid var(--color-primary);
+    // border: 2px solid var(--color-solid);
   }
   &:disabled {
     background-color: var(--color-surface-accent); // lightens the dark background slightly

@@ -18,10 +18,10 @@ const Template: Story<ButtonProps> = (args) => (
   </Theme.ThemeProvider>
 );
 
-export const Primary = Template.bind({});
+export const Solid = Template.bind({});
 
-Primary.args = {
-  variant: 'primary',
+Solid.args = {
+  variant: 'solid',
   iconPrepend: <Icon type={'Search'} />,
 };
 
@@ -31,9 +31,9 @@ Outlined.args = {
   iconPrepend: <Icon type={'Search'} />,
 };
 
-export const Secondary = Template.bind({});
-Secondary.args = {
-  variant: 'secondary',
+export const Soft = Template.bind({});
+Soft.args = {
+  variant: 'soft',
   iconPrepend: <Icon type={'Search'} />,
 };
 
