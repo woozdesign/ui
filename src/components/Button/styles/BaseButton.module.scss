@@ -40,7 +40,7 @@
 
   &--large {
     height: 40px;
-    font-size: var(--font-size-4);
+    font-size: var(--font-size-5);
     padding: var(--space-0) var(--space-4);
     border-radius: max(var(--radius-4), var(--radius-full));
   }
@@ -48,13 +48,13 @@
   &--xlarge {
     height: 48px;
     border-radius: max(var(--radius-5), var(--radius-full));
-    font-size: var(--font-size-4);
-    padding: var(--space-0) var(--space-6);
+    font-size: var(--font-size-5);
+    padding: var(--space-2) var(--space-4);
   }
 
   &--small {
     height: 28px;
-    font-size: var(--font-size-2);
+    font-size: var(--font-size-3);
     border-radius: max(var(--radius-3), var(--radius-full));
     padding: var(--space-0) var(--space-2);
   }

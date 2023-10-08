@@ -14,12 +14,9 @@
 
   &:focus {
   }
-  > .icon-prepend {
-    color: var(--color-accent-9);
-  }
-
+  > .icon-prepend,
   > .icon-append {
-    color: var(--color-accent-9);
+    color: var(--color-accent-11);
   }
 
   &.button--high-contrast {

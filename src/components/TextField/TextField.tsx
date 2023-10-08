@@ -64,7 +64,7 @@ const TextField: FC<TextFieldProps> = ({
     <div className={combineClassNames([styles.wrapper, styles[size]])}>
       {label && (
         <div>
-          <Typography.Text variant={'label'} className={styles.label}>
+          <Typography.Text variant={'div'} className={styles.label}>
             {others.required && <span style={{ color: 'var(--color-red-9)', marginRight: '4px' }}>*</span>}
             {label}
           </Typography.Text>

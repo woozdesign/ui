@@ -34,7 +34,7 @@ export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'tit
   outlined?: boolean;
 }
 
-Card.Heading = ({ title, titleSize = 5, subtitle, subtitleSize = 4, action, outlined = true }: HeadingProps) => {
+Card.Heading = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outlined = true }: HeadingProps) => {
   const classes = [styles.heading, outlined ? styles[`heading--outlined`] : ''];
   return (
     <div className={combineClassNames(classes)}>
@@ -65,7 +65,7 @@ export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title'
   content: ReactNode;
 }
 
-Card.Body = ({ title, content, titleSize = 5 }: BodyProps) => {
+Card.Body = ({ title, content, titleSize = 4 }: BodyProps) => {
   return (
     <div className={styles.body}>
       {typeof title == 'string' ? (
@@ -76,7 +76,7 @@ Card.Body = ({ title, content, titleSize = 5 }: BodyProps) => {
         title
       )}
       {typeof content == 'string' ? (
-        <Typography.Text variant="div" size={4} className={styles.content}>
+        <Typography.Text variant="div" className={styles.content}>
           {content}
         </Typography.Text>
       ) : (
