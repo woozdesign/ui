@@ -29,6 +29,8 @@
   }
 
   &.button--high-contrast {
+    color: var(--color-accent-12);
+
     &:hover {
       aspect-ratio: 1/ 1;
       background-color: var(--color-accent-4);
