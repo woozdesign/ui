@@ -22,7 +22,7 @@
   }
 
   &.button--high-contrast {
-    color: var(--color-gray-1);
+    color: var(--color-accent-1);
     background-color: var(--color-accent-12);
 
     &:hover {
@@ -36,7 +36,7 @@
 
     > .icon-prepend,
     > .icon-append {
-      color: var(--color-gray-1);
+      color: var(--color-accent-1);
     }
   }
 }
