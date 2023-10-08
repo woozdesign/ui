@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
-import styles from './CircularProgress.module.scss';
+import styles from './ProgressCircular.module.scss';
 import { ColorProp, SizeProp } from '@/utils';
 
-interface CircularProgressProps extends ColorProp, SizeProp {
+interface ProgressCircularProps extends ColorProp, SizeProp {
   value?: number; // Progress from 0 to 100
   indeterminate?: boolean;
   rounded?: boolean;
 }
 
-const CircularProgress: FC<CircularProgressProps> = ({ value, indeterminate, color, size, rounded = false }) => {
+const ProgressCircular: FC<ProgressCircularProps> = ({ value = 0, indeterminate, color, size, rounded = false }) => {
   if (value > 100) value = 100;
   if (value < 0) value = 0;
 
@@ -29,7 +29,7 @@ const CircularProgress: FC<CircularProgressProps> = ({ value, indeterminate, col
   const progress = value && value > 0 ? ((100 - value) / 100) * circumference : 0;
 
   return (
-    <div data-accent-color={color} className={`${styles.circularProgress} ${indeterminate ? styles.indeterminate : ''} ${size ? styles[size] : ''}`}>
+    <div data-accent-color={color} className={`${styles.progressCircular} ${indeterminate ? styles.indeterminate : ''} ${size ? styles[size] : ''}`}>
       <svg viewBox="0 0 64 64">
         <circle cx="32" cy="32" r={radius} strokeWidth={4 * sizeMultiplier} fill="none" className={styles.circularBackground} />
         {(value && value > 0) || indeterminate ? (
@@ -50,4 +50,4 @@ const CircularProgress: FC<CircularProgressProps> = ({ value, indeterminate, col
   );
 };
 
-export default CircularProgress;
+export default ProgressCircular;

@@ -18,6 +18,7 @@ export { default as TextField } from './TextField';
 export { default as Theme } from './Theme';
 export { default as Tooltip } from './Tooltip';
 export { default as Typography } from './Typography';
-export { default as CircularProgress } from './CircularProgress';
+export { default as ProgressCircular } from './ProgressCircular';
+export { default as ProgressLinear } from './ProgressLinear';
 
 console.log('%cDesigned with WoozDesign', 'font-size: 12px;font-family: monospace;background: black;display: inline-block;color: white;padding: 15px;border: 2px solid white;');
