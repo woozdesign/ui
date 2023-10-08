@@ -3,6 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import Menu, { MenuProps } from './Menu';
 import Theme from '../Theme/Theme';
 import '@/styles/core.scss';
+import { Icon } from '@woozdesign/icons';
 
 export default {
   title: 'Components/Menu',
@@ -27,8 +28,8 @@ Default.args = {
 export const WithIcons = Template.bind({});
 WithIcons.args = {
   items: [
-    { label: 'Item 1', iconPrepend: <span>🔍</span>, onClick: () => console.log('Item 1 with icon clicked') },
-    { label: 'Item 2', iconAppend: <span>➡️</span>, onClick: () => console.log('Item 2 with icon clicked') },
+    { label: 'Item 1', iconPrepend: <Icon type={'Feather'} />, onClick: () => console.log('Item 1 with icon clicked') },
+    { label: 'Item 2', iconAppend: <Icon type={'Zap'} />, onClick: () => console.log('Item 2 with icon clicked') },
   ],
 };
 

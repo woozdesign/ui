@@ -1,11 +1,24 @@
 .horizontal {
   height: 1px;
-  background-color: var(--color-gray-5);
+  background-color: var(--color-accent-a6);
   width: 100%;
 }
 
 .vertical {
   width: 1px;
-  background-color: var(--color-gray-5);
+  background-color: var(--color-accent-a6);
   height: 100%;
+}
+
+@for $i from 0 through 6 {
+  .horizontal {
+    &.divider--#{$i} {
+      margin: var(--space-#{$i}) 0;
+    }
+  }
+  .vertical {
+    &.divider--#{$i} {
+      margin: 0 var(--space-#{$i});
+    }
+  }
 }

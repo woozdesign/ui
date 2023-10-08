@@ -1,15 +1,15 @@
 import React from 'react';
 import styles from './Kbd.module.scss';
-import { ColorProp, combineClassNames } from '@/utils';
+import { ColorProp, SizeProp, combineClassNames } from '@/utils';
 import { WoozCommandCode } from '@/utils/contexts/Shortcut/Shortcut.props';
 
-interface KbdProps extends ColorProp {
+interface KbdProps extends ColorProp, SizeProp {
   variant?: 'primary' | 'secondary';
   shortcut: WoozCommandCode[];
 }
 
-const Kbd: React.FC<KbdProps> = ({ shortcut, variant = 'primary', color }) => {
-  const classes = [styles.kbd, styles[`kbd--${variant}`]];
+const Kbd: React.FC<KbdProps> = ({ shortcut, variant = 'primary', size = 'medium', color }) => {
+  const classes = [styles.kbd, styles[`kbd--${variant}`], styles[`kbd--${size}`]];
   return (
     <div className={styles.wrapper}>
       {shortcut.map((code) => {

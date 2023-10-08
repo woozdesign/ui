@@ -2,6 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Divider, { DividerProps } from './Divider';
 import Theme from '../Theme/Theme';
+import '@/styles/core.scss';
 
 export default {
   title: 'Components/Divider',

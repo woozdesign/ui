@@ -60,10 +60,10 @@ DefaultText.args = {
 // Text Card Story
 const TextCardTemplate: Story<TextProps> = (args) => (
   <Theme.ThemeProvider appearance={'dark'}>
-    <Typography.Text size="3" variant="p" weight={'bolder'}>
+    <Typography.Text variant="div" weight={'bolder'}>
       Get started
     </Typography.Text>
-    <Typography.Text color="gray" size="2" variant="div" highContrast={false}>
+    <Typography.Text color="gray" highContrast={false}>
       Start your next project in minutes
     </Typography.Text>
   </Theme.ThemeProvider>

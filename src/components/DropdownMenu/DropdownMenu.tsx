@@ -119,7 +119,7 @@ const Item: FC<ItemProps> = ({ children, shortcut, color, disabled, onClick }) =
 };
 
 const Separator: FC = () => {
-  return <Divider></Divider>;
+  return <Divider space={0}></Divider>;
 };
 
 interface SubProps {

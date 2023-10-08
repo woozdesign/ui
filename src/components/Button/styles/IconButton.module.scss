@@ -4,15 +4,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  aspect-ratio: 1/1;
+  aspect-ratio: 1/ 1;
+  padding: var(--space-0);
   box-sizing: border-box;
   // background-color: var(--color-accent-4);
 
   &:hover {
+    aspect-ratio: 1/ 1;
     background-color: var(--color-accent-5);
   }
 
   &:active {
+    aspect-ratio: 1/ 1;
     // background-color: rgba(var(--color-accent-80), 0.2);
     box-shadow: boxShadowAlpha(var(--color-accent-9));
   }
@@ -20,11 +23,28 @@
   &:focus {
     // box-shadow: boxShadow(var(--color-accent-90));
   }
-  > .icon-prepend {
+  > .icon-prepend,
+  > .icon-append {
     color: var(--color-accent-9);
   }
 
-  > .icon-append {
-    color: var(--color-accent-9);
+  &.button--high-contrast {
+    &:hover {
+      aspect-ratio: 1/ 1;
+      background-color: var(--color-accent-4);
+    }
+
+    &:active {
+      aspect-ratio: 1/ 1;
+      background-color: var(--color-accent-3);
+      box-shadow: boxShadowAlpha(var(--color-accent-9));
+    }
+
+    &:focus {
+    }
+    > .icon-prepend,
+    > .icon-append {
+      color: var(--color-accent-12);
+    }
   }
 }

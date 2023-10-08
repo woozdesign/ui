@@ -13,14 +13,38 @@
 
   &--small {
     height: 16px;
+
+    .label {
+      font-size: var(--font-size-3);
+      padding-left: var(--space-2);
+      &--error {
+        color: var(--color-red-9);
+      }
+    }
   }
 
   &--large {
     height: 32px;
+
+    .label {
+      font-size: var(--font-size-5);
+      padding-left: var(--space-2);
+      &--error {
+        color: var(--color-red-9);
+      }
+    }
   }
 
   &--xlarge {
     height: 36px;
+
+    .label {
+      font-size: var(--font-size-5);
+      padding-left: var(--space-2);
+      &--error {
+        color: var(--color-red-9);
+      }
+    }
   }
   &--disabled {
     opacity: 0.7;
@@ -67,6 +91,7 @@
 }
 
 .label {
+  font-size: var(--font-size-4);
   padding-left: var(--space-2);
   &--error {
     color: var(--color-red-9);
