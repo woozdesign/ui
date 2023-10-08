@@ -1,5 +1,21 @@
-import { FC } from 'react';
-interface AppbarProps {
+import { FC, ReactNode } from 'react';
+interface AppBarProps {
+    variant?: 'solid' | 'transparent' | 'translucent';
+    position?: 'block' | 'absolute' | 'fixed';
+    children: ReactNode;
 }
-declare const Appbar: FC<AppbarProps>;
-export default Appbar;
+declare const AppBar: FC<AppBarProps> & {
+    Heading: FC<HeadingProps>;
+    Body: FC<BodyProps>;
+    Action: FC<ActionProps>;
+};
+interface HeadingProps {
+    children: ReactNode;
+}
+interface BodyProps {
+    children?: ReactNode;
+}
+interface ActionProps {
+    children?: ReactNode;
+}
+export default AppBar;

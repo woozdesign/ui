@@ -40,25 +40,25 @@ $breakpoints: (
 
 // AndDown Mixins
 @mixin --smAndDown {
-  @media (max-width: #{map-get($breakpoints, sm) - 1px}) {
-    @content;
-  }
-}
-
-@mixin --mdAndDown {
   @media (max-width: #{map-get($breakpoints, md) - 1px}) {
     @content;
   }
 }
 
-@mixin --lgAndDown {
+@mixin --mdAndDown {
   @media (max-width: #{map-get($breakpoints, lg) - 1px}) {
     @content;
   }
 }
 
-@mixin --xlAndDown {
+@mixin --lgAndDown {
   @media (max-width: #{map-get($breakpoints, xl) - 1px}) {
+    @content;
+  }
+}
+
+@mixin --xlAndDown {
+  @media (max-width: #{map-get($breakpoints, xxl) - 1px}) {
     @content;
   }
 }

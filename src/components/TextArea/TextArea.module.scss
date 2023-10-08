@@ -28,7 +28,7 @@
     min-height: 28px;
   }
   resize: none;
-  &--primary {
+  &--solid {
     &:focus,
     &:hover {
       outline: none;
@@ -37,7 +37,7 @@
     }
   }
 
-  &--secondary {
+  &--soft {
     &:focus,
     &:hover {
       outline: none;

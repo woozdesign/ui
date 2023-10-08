@@ -1,5 +1,5 @@
 import { FC } from 'react';
-type LinkItem = {
+export type LinkItem = {
     key: string;
     href: string;
     title: string;

@@ -5,7 +5,7 @@ import styles from './Button.module.scss';
 import { AnchorClickHandler, ButtonClickHandler, ButtonProps } from './Button.props';
 
 const Button: FC<ButtonProps> = ({
-  variant = 'primary',
+  variant = 'solid',
   size = 'medium',
   color,
   disabled = false,

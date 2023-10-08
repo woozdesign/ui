@@ -7,7 +7,7 @@ import { FormChildProps } from '../Form/Form';
 import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
 
 export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'>, FormChildProps {
-  variant?: 'primary' | 'secondary';
+  variant?: 'solid' | 'soft';
   size?: 'large' | 'medium' | 'small';
   label?: string;
   iconPrepend?: JSX.Element;
@@ -20,7 +20,7 @@ export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 
 }
 
 const TextField: FC<TextFieldProps> = ({
-  variant = 'primary',
+  variant = 'solid',
   size = 'medium',
   label,
   iconPrepend,

@@ -1,7 +1,7 @@
 import { FC, HTMLProps, ChangeEvent } from 'react';
 import { FormChildProps } from '../Form/Form';
 interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size'> {
-    variant?: 'primary' | 'secondary';
+    variant?: 'solid' | 'soft';
     size?: 1 | 2 | 3 | 4 | 5;
     label?: string;
     resizable?: boolean;

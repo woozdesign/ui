@@ -6,7 +6,7 @@ import { FormChildProps } from '../Form/Form';
 import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
 
 interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size'> {
-  variant?: 'primary' | 'secondary';
+  variant?: 'solid' | 'soft';
   size?: 1 | 2 | 3 | 4 | 5; // Number of visible lines
   label?: string;
   resizable?: boolean;
@@ -15,7 +15,7 @@ interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaEleme
   onSubmit?: () => void;
 }
 
-const TextArea: FC<TextAreaProps> = ({ variant = 'primary', size = 2, label, resizable = false, errorMessage, hasSubmitted = false, onChange, onSubmit, ...others }) => {
+const TextArea: FC<TextAreaProps> = ({ variant = 'solid', size = 2, label, resizable = false, errorMessage, hasSubmitted = false, onChange, onSubmit, ...others }) => {
   const [error, setError] = useState<string | null>(null);
 
   const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) => {

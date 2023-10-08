@@ -2,7 +2,7 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import styles from './Anchor.module.scss';
 import { isElementInViewport } from '@/utils';
 
-type LinkItem = {
+export type LinkItem = {
   key: string;
   href: string;
   title: string;

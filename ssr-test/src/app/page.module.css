@@ -84,7 +84,7 @@
 }
 
 .center::before {
-  background: var(--secondary-glow);
+  background: var(--soft-glow);
   border-radius: var(--radius-full);
   width: 480px;
   height: 360px;
@@ -92,7 +92,7 @@
 }
 
 .center::after {
-  background: var(--primary-glow);
+  background: var(--solid-glow);
   width: 240px;
   height: 180px;
   z-index: -1;
