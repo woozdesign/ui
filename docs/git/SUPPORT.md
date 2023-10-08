@@ -28,7 +28,7 @@
 | Navigation Drawer | 🚧        |       |
 | Pagination        | 🚧        |       |
 | System Bar        | 🚧        |       |
-| Tab               | 🚧        |       |
+| Tab               | ✅        |       |
 
 ### Form Inputs & Control
 
