@@ -86,8 +86,8 @@
 | Callout           | 🚧        |       |
 | Banner            | 🚧        |       |
 | Hover             | 🚧        |       |
-| Progress Circular | 🚧        |       |
-| Progress Linear   | 🚧        |       |
+| Progress Circular | ✅        |       |
+| Progress Linear   | ✅        |       |
 | Rating            | 🚧        |       |
 | Snackbar          | 🚧        |       |
 | Timeline          | 🚧        |       |
