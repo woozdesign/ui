@@ -1,0 +1,44 @@
+@keyframes rotate {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+.circularProgress {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  stroke: var(--color-accent-9);
+  border-radius: 50%;
+
+  &.indeterminate {
+    animation: rotate 1s linear infinite;
+
+    .circularPath {
+      /* Clear the animations related to the old indeterminate state */
+      animation: none;
+      stroke-dasharray: 30, 100; /* Keeping this so the style remains consistent */
+      stroke-dashoffset: 0;
+      transform-origin: center;
+    }
+  }
+
+  .circularBackground {
+    stroke: var(--color-accent-a5);
+  }
+
+  .circularPath {
+    transform-origin: center;
+    transform: rotate(-90deg); /* This keeps the starting point at the top */
+    transition: stroke-dashoffset 0.35s;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
