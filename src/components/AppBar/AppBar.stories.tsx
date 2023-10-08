@@ -6,6 +6,8 @@ import '@/styles/core.scss';
 import Layout from '../Layout/Layout';
 import Button from '../Button';
 import Image from '../Image';
+import Tab from '../Tab/Tab';
+import { Icon } from '@woozdesign/icons';
 
 export default {
   title: 'Components/AppBar',
@@ -15,15 +17,35 @@ export default {
 const Template: Story<AppBarProps> = (args) => {
   return (
     <Theme.ThemeProvider>
-      <AppBar {...args}>
-        <AppBar.Heading>
-          <Image src="https://blog.woozlabs.com/favicon.png" width={'100%'} height={'100%'} />
-        </AppBar.Heading>
-        <AppBar.Body>Welcome to the app! You can perform various tasks here.</AppBar.Body>
+      <AppBar position={'absolute'}>
+        <AppBar.Body>
+          <Tab.Root defaultValue="components">
+            <Tab.List>
+              <Tab.Trigger highContrast value="components">
+                Components
+              </Tab.Trigger>
+              <Tab.Trigger highContrast value="icons">
+                Icons
+              </Tab.Trigger>
+              <Tab.Trigger highContrast value="colors">
+                Colors
+              </Tab.Trigger>
+            </Tab.List>
+          </Tab.Root>
+        </AppBar.Body>
         <AppBar.Action>
-          <Button>Action 1</Button>
-          <Button>Action 2</Button>
-          <Button>Action 3</Button>
+          <Button variant={'text'} highContrast>
+            Documentation
+          </Button>
+          <Button variant={'text'} highContrast>
+            Playground
+          </Button>
+          <Button variant={'icon'} highContrast>
+            <Icon type={'Github'} />
+          </Button>
+          <Button variant={'icon'} highContrast>
+            <Icon type={'Sun'} />
+          </Button>
         </AppBar.Action>
       </AppBar>
 

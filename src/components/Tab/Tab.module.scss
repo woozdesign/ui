@@ -58,16 +58,15 @@
   }
 
   &.trigger--high-contrast {
-    color: var(--color-gray-a12);
-
-    &.active {
-      color: var(--color-gray-1);
-      background-color: var(--color-accent-12);
+    color: var(--color-accent-12);
+    &:hover {
+      background-color: var(--color-accent-5);
     }
 
-    > .icon-prepend,
-    > .icon-append {
-      color: var(--color-gray-1);
+    &.active {
+      color: var(--color-accent-1);
+      background-color: var(--color-accent-12);
+      box-shadow: boxShadowAlpha(var(--color-accent-11));
     }
   }
 }

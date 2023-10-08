@@ -13,7 +13,7 @@ export default {
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => (
-  <Theme.ThemeProvider appearance="light">
+  <Theme.ThemeProvider appearance="dark">
     <Button {...args} />
   </Theme.ThemeProvider>
 );
