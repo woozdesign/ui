@@ -1,0 +1,35 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: var(--space-4);
+}
+
+.item {
+  text-decoration: none;
+  color: var(--color-accent-a6);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  &--active {
+    color: var(--color-accent-9);
+
+    &.item--highContrast {
+      // Corrected the nesting here
+      color: var(--color-accent-12);
+    }
+  }
+
+  &--highContrast:not(&--active) {
+    // Apply high contrast to non-active items
+    color: var(--color-accent-a7);
+  }
+}
+
+.divider {
+  color: var(--color-accent-a9);
+
+  &--highContrast {
+    color: var(--color-accent-12);
+  }
+}
