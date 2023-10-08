@@ -1,10 +1,9 @@
 import React from 'react';
 import styles from './Divider.module.scss';
-import { ColorProp, combineClassNames } from '@/utils';
+import { ColorProp, SpaceSizeProp, combineClassNames } from '@/utils';
 
-interface DividerProps extends ColorProp {
+interface DividerProps extends ColorProp, SpaceSizeProp {
   orientation?: 'horizontal' | 'vertical';
-  space?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 const Divider: React.FC<DividerProps> = ({ orientation = 'horizontal', space = 4, color = 'gray' }) => {

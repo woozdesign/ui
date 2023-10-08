@@ -67,6 +67,7 @@
 | Layout    | ✅        |       |
 | Column    | ✅        |       |
 | Row       | ✅        |       |
+| Box       | ✅        |       |
 
 ### Selections
 

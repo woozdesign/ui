@@ -1,0 +1,17 @@
+.box {
+  display: flex;
+  width: fit-content;
+
+  &--row {
+    flex-direction: row;
+  }
+  &--col {
+    flex-direction: column;
+  }
+}
+
+@for $i from 0 through 9 {
+  .box--#{$i} {
+    gap: var(--space-#{$i});
+  }
+}
