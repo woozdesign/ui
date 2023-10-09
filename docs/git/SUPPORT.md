@@ -8,7 +8,6 @@
 | Button          | ✅        |       |
 | Badge           | ✅        |       |
 | Card            | ✅        |       |
-| Modal           | ✅        |       |
 | Divider         | ✅        |       |
 | Expansion Panel | 🚧        |       |
 | Menu (List)     | ✅        |       |
@@ -49,15 +48,15 @@
 
 ### Data & Displays
 
-| Component        | Supported | Notes |
-| ---------------- | --------- | ----- |
-| Kbds             | ✅        |       |
-| Table            | ✅        |       |
-| Virtual Scroller | 🚧        |       |
-| iframe           | 🚧        |       |
-| Code             | 🚧        |       |
-| Cover            | 🚧        |       |
-| Equation         | 🚧        |       |
+| Component     | Supported | Notes |
+| ------------- | --------- | ----- |
+| Kbds          | ✅        |       |
+| Table         | ✅        |       |
+| Scroller Area | ✅        |       |
+| iframe        | 🚧        |       |
+| Code          | 🚧        |       |
+| Cover         | 🚧        |       |
+| Equation      | 🚧        |       |
 
 ### Layouts
 
@@ -87,8 +86,10 @@
 | Callout           | 🚧        |       |
 | Banner            | 🚧        |       |
 | Hover             | 🚧        |       |
+| Modal             | ✅        |       |
 | Progress Circular | ✅        |       |
 | Progress Linear   | ✅        |       |
+| Toast             | ✅        |       |
 | Rating            | 🚧        |       |
 | Snackbar          | 🚧        |       |
 | Timeline          | 🚧        |       |
