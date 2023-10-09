@@ -4,86 +4,114 @@ import Card from '../Card';
 import Button from '../Button';
 import { Icon } from '@woozdesign/icons';
 import { combineClassNames } from '@/utils';
+import Typography from '../Typography';
+// ... (your imports remain unchanged)
 
 type ToastProps = {
+  id: number; // Added id to identify each toast
   message: string;
-  description: string;
+  // description: string;
   duration?: number;
   placement?: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
 };
 
 interface ToastDisplayProps {
-  toast: ToastProps | null;
-  isOpen: boolean;
-  handleClose: () => void;
+  toast: ToastProps;
+  handleClose: (id: number) => void;
 }
 
-const ToastDisplay = React.forwardRef<HTMLDivElement, ToastDisplayProps>((props, ref) => {
-  const { toast, isOpen, handleClose } = props;
-  const classes = [styles.toast, styles[toast?.placement || 'topLeft'], isOpen ? styles.open : ''];
-
-  return (
-    <div className={combineClassNames(classes)} ref={ref}>
-      {toast && (
-        <Card>
-          <Card.Heading
-            outlined={false}
-            title={toast.message}
-            subtitle={toast.description}
-            action={
-              <Button variant="icon" onClick={handleClose}>
-                <Icon type="X" />
-              </Button>
-            }
-          />
-        </Card>
-      )}
-    </div>
-  );
-});
-ToastDisplay.displayName = 'ToastDisplay';
-export const useToast = () => {
-  const [toast, setToast] = useState<ToastProps | null>(null);
+const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isRendered, setIsRendered] = useState(false);
-
   const toastRef = useRef<HTMLDivElement>(null);
 
-  const open = (props: ToastProps) => {
-    setToast(props);
-    setIsRendered(true);
-  };
-
   useEffect(() => {
-    if (toastRef.current && isRendered) {
+    if (toastRef.current) {
       const timer = setTimeout(() => {
         setIsOpen(true);
       }, 50);
-
       return () => clearTimeout(timer);
     }
-  }, [isRendered]);
+  }, []);
 
   useEffect(() => {
-    if (!isOpen && isRendered) {
+    if (toastRef.current) {
       const timer = setTimeout(() => {
-        setIsRendered(false);
-        setToast(null);
-      }, 400); // Give the toast time to "fadeOut"
+        handleSelfClose();
+      }, toast.duration ?? 500);
       return () => clearTimeout(timer);
     }
-  }, [isOpen, isRendered]);
+  }, []);
 
-  const handleClose = () => {
-    if (isOpen) {
-      setIsOpen(false);
-    } else {
-      setIsRendered(true);
-      setTimeout(() => {
-        setIsOpen(true);
-      }, 50); // delay to allow the modal to render before applying the transition
-    }
+  const handleSelfClose = () => {
+    setIsOpen(false);
+    setTimeout(() => {
+      handleClose(toast.id);
+    }, 400); // delay to allow the toast to fade out before removal
   };
 
-  return [open, <ToastDisplay key="toast-display" ref={toastRef} toast={toast} isOpen={isOpen} handleClose={handleClose} />];
+  const classes = [styles.toast, styles[toast.placement || 'topLeft'], isOpen ? styles.open : ''];
+
+  return (
+    <div className={combineClassNames(classes)} ref={toastRef}>
+      <Card size={'small'}>
+        <Card.Heading
+          outlined={false}
+          titleSize={3}
+          title={<Typography.Text>{toast.message}</Typography.Text>}
+          // subtitle={toast.description}
+          action={
+            <Button variant="icon" onClick={handleSelfClose}>
+              <Icon type="X" />
+            </Button>
+          }
+        />
+      </Card>
+    </div>
+  );
+};
+const ToastList: React.FC<{ toasts: ToastProps[]; handleClose: (id: number) => void }> = ({ toasts, handleClose }) => {
+  const groupedToasts = toasts.reduce<{ [key in ToastProps['placement']]: ToastProps[] }>(
+    (acc, toast) => {
+      const placement = toast.placement || 'topLeft';
+      if (!acc[placement]) acc[placement] = [];
+      acc[placement].push(toast);
+      return acc;
+    },
+    {
+      topLeft: [],
+      topRight: [],
+      bottomLeft: [],
+      bottomRight: [],
+    },
+  );
+
+  return (
+    <>
+      {['topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((placement) => (
+        <div key={placement} className={`${styles.toastContainer} ${styles[placement]}`}>
+          {groupedToasts[placement].map((toast) => (
+            <ToastDisplay key={toast.id} toast={toast} handleClose={handleClose} />
+          ))}
+        </div>
+      ))}
+    </>
+  );
+};
+
+export const useToast = () => {
+  const [toasts, setToasts] = useState<ToastProps[]>([]);
+
+  const open = (props: Omit<ToastProps, 'id'>) => {
+    const newToast = {
+      ...props,
+      id: Date.now(), // using timestamp for simplicity
+    };
+    setToasts([...toasts, newToast]);
+  };
+
+  const handleClose = (id: number) => {
+    setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
+  };
+
+  return [open, <ToastList key="toast-list" toasts={toasts} handleClose={handleClose} />];
 };
