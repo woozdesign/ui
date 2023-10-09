@@ -16,19 +16,6 @@ const Template: Story<AnchorProps> = (args) => {
       <Layout.Container>
         <Layout.Row>
           <Layout.Col xs={12}>
-            <div
-              style={{
-                top: '128px',
-                position: 'fixed',
-                overflowY: 'auto',
-                height: '100%',
-                textAlign: top === '128px' ? 'end' : 'start',
-              }}
-            >
-              <Anchor {...args} />
-            </div>
-          </Layout.Col>
-          <Layout.Col xs={12}>
             <div style={{ height: '150vh', padding: '20px' }}>
               <section id="1components-anchor-demo-basic" style={{ height: '50vh' }}>
                 <h2>Basic demo</h2>
@@ -50,6 +37,19 @@ const Template: Story<AnchorProps> = (args) => {
                   <p>Details about Link Props...</p>
                 </section>
               </section>
+            </div>
+          </Layout.Col>
+          <Layout.Col xs={12}>
+            <div
+              style={{
+                top: '128px',
+                position: 'fixed',
+                overflowY: 'auto',
+                height: '100%',
+                textAlign: top === '128px' ? 'end' : 'start',
+              }}
+            >
+              <Anchor {...args} />
             </div>
           </Layout.Col>
         </Layout.Row>

@@ -67,7 +67,7 @@
 | Layout    | ✅        |       |
 | Column    | ✅        |       |
 | Row       | ✅        |       |
-| Box       | ✅        |       |
+| Flex      | ✅        |       |
 
 ### Selections
 

@@ -37,7 +37,7 @@
   &--large {
     height: 40px;
     font-size: var(--font-size-5);
-    padding: var(--space-0) var(--space-4);
+    padding: var(--space-1) var(--space-4);
     border-radius: max(var(--radius-4), var(--radius-full));
   }
 
@@ -49,7 +49,7 @@
   }
   &--medium {
     font-size: var(--font-size-4);
-    padding: var(--space-0) var(--space-3);
+    padding: var(--space-1) var(--space-3);
     border-radius: max(var(--radius-3), var(--radius-full));
     height: 34px;
   }
@@ -57,7 +57,7 @@
     height: 28px;
     font-size: var(--font-size-3);
     border-radius: max(var(--radius-3), var(--radius-full));
-    padding: var(--space-0) var(--space-2);
+    padding: var(--space-1) var(--space-2);
   }
 
   &--disabled {

@@ -1,0 +1,35 @@
+.scrollArea {
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  &.alwaysVertical {
+    overflow-y: scroll;
+  }
+
+  &.alwaysHorizontal {
+    overflow-y: hidden;
+    overflow-x: scroll;
+  }
+
+  /* Customize the scrollbar appearance (This is for webkit browsers) */
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    border-radius: max(var(--radius-3), var(--radius-full));
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-gray-a3);
+    border-radius: max(var(--radius-3), var(--radius-full));
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gray-a8);
+    border-radius: max(var(--radius-3), var(--radius-full));
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-a9);
+    border-radius: max(var(--radius-3), var(--radius-full));
+  }
+}

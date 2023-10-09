@@ -1,26 +1,26 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import Box, { BoxProps } from './Box';
+import Flex, { FlexProps } from './Flex';
 import Theme from '../Theme';
 import '@/styles/core.scss';
 import Layout from '../Layout/Layout';
 import Button from '../Button';
 
 export default {
-  title: 'Components/Box',
-  component: Box,
+  title: 'Components/Flex',
+  component: Flex,
 } as Meta;
 
-const Template: Story<BoxProps> = (args) => {
+const Template: Story<FlexProps> = (args) => {
   return (
     <Theme.ThemeProvider>
       <Layout.Container>
         <Layout.Row>
           <Layout.Col xs={12}>
-            <Box {...args}>
+            <Flex {...args}>
               <Button>Test</Button>
               <Button>Test2</Button>
-            </Box>
+            </Flex>
           </Layout.Col>
         </Layout.Row>
       </Layout.Container>

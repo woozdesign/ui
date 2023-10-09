@@ -17,11 +17,14 @@
   padding: var(--space-2);
   cursor: pointer;
   display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: var(--font-size-3);
   height: 18px;
   justify-content: space-between;
   align-items: center;
-
+  gap: var(--space-4);
   transition: background-color 0.3s ease;
 
   &:hover {

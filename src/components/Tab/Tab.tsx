@@ -41,20 +41,21 @@ export const List: FC<ListProps> = ({ children, justify = 'center' }) => {
 
 export interface TriggerProps extends ColorProp, SizeProp, RadiusProp {
   value: string;
+  href?: string;
   highContrast?: boolean;
   children: ReactNode;
 }
 
-export const Trigger: FC<TriggerProps> = ({ value, children, color, size = 'small', radius, highContrast = false }) => {
+export const Trigger: FC<TriggerProps> = ({ value, href, children, color, size = 'small', radius, highContrast = false }) => {
   const context = useContext(TabContext);
   if (!context) throw new Error('Trigger must be used within Root');
   const { activeTab, setActiveTab } = context;
   const classes = [styles.trigger, value === activeTab ? styles.active : '', styles[`trigger--${size}`], highContrast ? styles['trigger--high-contrast'] : ''];
 
   return (
-    <button data-accent-color={color} data-radius={radius} className={combineClassNames(classes)} onClick={() => setActiveTab(value)}>
+    <a href={href} data-accent-color={color} data-radius={radius} className={combineClassNames(classes)} onClick={() => setActiveTab(value)}>
       {children}
-    </button>
+    </a>
   );
 };
 

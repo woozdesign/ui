@@ -2,6 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import React from 'react';
 import Theme from '../Theme/Theme';
 import DropdownMenu from './DropdownMenu';
+import Button from '../Button';
 
 export default {
   title: 'Components/DropdownMenu',
@@ -12,10 +13,12 @@ export default {
 const Template: Story = (args) => (
   <Theme.ThemeProvider>
     <DropdownMenu.Root {...args}>
-      <DropdownMenu.Trigger shortcut={['Ctrl', 'O']}>Options</DropdownMenu.Trigger>
+      <DropdownMenu.Trigger shortcut={['Ctrl', 'O']}>
+        <Button>Trigger</Button>
+      </DropdownMenu.Trigger>
       <DropdownMenu.Content>
         <DropdownMenu.Sub>
-          <DropdownMenu.SubTrigger>More</DropdownMenu.SubTrigger>
+          <DropdownMenu.SubTrigger>Trigger</DropdownMenu.SubTrigger>
           <DropdownMenu.SubContent>
             <DropdownMenu.Item onClick={() => console.log('Clicked!')} shortcut={['Ctrl', 'Shift', 'A']}>
               Item with Shortcut

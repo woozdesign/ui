@@ -23,4 +23,6 @@ export { default as Theme } from './Theme';
 export { default as Tooltip } from './Tooltip';
 export { default as Typography } from './Typography';
 export { default as Tab } from './Tab';
-export { default as Box } from './Box';
+export { default as Flex } from './Flex';
+export { default as ScrollArea } from './ScrollArea';
+export * from './Toast';
