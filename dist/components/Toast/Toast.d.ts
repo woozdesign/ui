@@ -1,9 +1,13 @@
 import React from 'react';
-type ToastProps = {
+import { ColorProp, RadiusProp } from '../../utils';
+export interface ToastProps extends ColorProp, RadiusProp {
+    id: number;
+    iconPrepend?: React.ReactNode;
     message: string;
-    description: string;
     duration?: number;
-    placement?: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
-};
-export declare const useToast: () => (React.JSX.Element | ((props: ToastProps) => void))[];
+    placement: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
+}
+type ToastFunction = (props: Omit<ToastProps, 'id'>) => void;
+type ToastHookReturnType = [ToastFunction, JSX.Element];
+export declare const useToast: () => ToastHookReturnType;
 export {};

@@ -12,7 +12,7 @@ export interface ToastProps extends ColorProp, RadiusProp {
   iconPrepend?: React.ReactNode;
   message: string;
   duration?: number;
-  placement?: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
+  placement: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
 }
 
 interface ToastDisplayProps {
@@ -66,7 +66,8 @@ const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
 const ToastList: React.FC<{ toasts: ToastProps[]; handleClose: (id: number) => void }> = ({ toasts, handleClose }) => {
   const groupedToasts = toasts.reduce<{ [key in ToastProps['placement']]: ToastProps[] }>(
     (acc, toast) => {
-      const placement = toast.placement || 'topLeft';
+      const placement: ToastProps['placement'] = toast.placement || 'topLeft';
+
       if (!acc[placement]) acc[placement] = [];
       acc[placement].push(toast);
       return acc;
@@ -83,7 +84,7 @@ const ToastList: React.FC<{ toasts: ToastProps[]; handleClose: (id: number) => v
     <>
       {['topLeft', 'topRight', 'bottomLeft', 'bottomRight'].map((placement) => (
         <div key={placement} className={`${styles.toastContainer} ${styles[placement]}`}>
-          {groupedToasts[placement].map((toast) => (
+          {((groupedToasts[placement as keyof typeof groupedToasts] as ToastProps[]) ?? []).map((toast) => (
             <ToastDisplay key={toast.id} toast={toast} handleClose={handleClose} />
           ))}
         </div>
