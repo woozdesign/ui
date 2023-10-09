@@ -29,14 +29,14 @@
   &.large {
     .input {
       height: 48px;
-      padding: var(--space-0) var(--space-4);
+      padding: var(--space-1) var(--space-4);
     }
   }
 
   &.small {
     .input {
       height: 28px;
-      padding: var(--space-0) var(--space-2);
+      padding: var(--space-1) var(--space-2);
     }
   }
 }
@@ -49,7 +49,7 @@
   width: 100%;
   height: 32px;
   line-height: 28px;
-  padding: var(--space-0) var(--space-2);
+  padding: var(--space-1) var(--space-2);
   border: 2px solid transparent;
   border-radius: var(--radius-4);
   outline: none;

@@ -168,7 +168,7 @@ const SubTrigger: FC<SubTriggerProps> = ({ children, shortcut }) => {
     <div className={styles.subTrigger}>
       {children}
 
-      <Icon type={'ChevronRight'} color={'gray'} />
+      <Icon type={'ChevronRight'} />
     </div>
   );
 };

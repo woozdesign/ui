@@ -16,8 +16,8 @@ export default {
 
 const Template: Story<AppBarProps> = (args) => {
   return (
-    <Theme.ThemeProvider>
-      <AppBar position={'absolute'}>
+    <Theme.ThemeProvider radius={'full'}>
+      <AppBar {...args}>
         <AppBar.Body>
           <Tab.Root defaultValue="components">
             <Tab.List>

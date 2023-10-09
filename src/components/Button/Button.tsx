@@ -11,7 +11,7 @@ const Button: FC<ButtonProps> = ({
   disabled = false,
   block = false,
   highContrast = false,
-  radius = 'medium',
+  radius,
   buttonType = 'button',
   justify = 'center',
   iconPrepend,
