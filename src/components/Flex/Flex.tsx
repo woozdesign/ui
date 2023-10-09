@@ -1,3 +1,4 @@
+'use client';
 import React, { FC } from 'react';
 import styles from './Flex.module.scss';
 import { SpaceSizeProp, combineClassNames } from '@/utils';

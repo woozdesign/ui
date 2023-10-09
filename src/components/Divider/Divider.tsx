@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import styles from './Divider.module.scss';
 import { ColorProp, SpaceSizeProp, combineClassNames } from '@/utils';

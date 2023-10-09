@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, useMemo } from 'react';
 import styles from './Slider.module.scss';
 interface ThumbProps {

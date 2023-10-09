@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, HTMLProps, ChangeEvent } from 'react';
 import styles from './Switch.module.scss';
 import { ColorProp, RadiusProp, SizeProp, combineClassNames } from '@/utils';

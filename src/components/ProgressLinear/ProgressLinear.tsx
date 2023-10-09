@@ -1,3 +1,4 @@
+'use client';
 import React, { FC } from 'react';
 import styles from './ProgressLinear.module.scss';
 import { ColorProp, RadiusProp, SizeProp } from '@/utils';

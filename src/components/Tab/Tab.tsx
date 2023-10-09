@@ -1,4 +1,4 @@
-// Tab.tsx
+'use client';
 import React, { useState, useContext, ReactNode, FC } from 'react';
 import styles from './Tab.module.scss';
 import Button from '../Button';

@@ -1,3 +1,4 @@
+'use client';
 import React, { FC } from 'react';
 import { combineClassNames } from '@/utils/helper/combineClassNames';
 import styles from './Badge.module.scss';

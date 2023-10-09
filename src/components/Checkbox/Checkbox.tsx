@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, HTMLProps, ChangeEvent, useState, useEffect, useCallback } from 'react';
 import styles from './Checkbox.module.scss';
 import { ColorProp, RadiusProp, SizeProp, combineClassNames } from '@/utils';

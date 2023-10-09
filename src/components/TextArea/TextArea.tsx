@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, HTMLProps, ChangeEvent, useState } from 'react';
 import styles from './TextArea.module.scss';
 import { combineClassNames } from '@/utils/helper/combineClassNames';

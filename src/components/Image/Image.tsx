@@ -1,5 +1,4 @@
-// Image.tsx
-
+'use client';
 import React, { useState, useRef, useEffect } from 'react';
 import styles from './Image.module.scss';
 import { RadiusProp, combineClassNames, isElementInViewport } from '@/utils';

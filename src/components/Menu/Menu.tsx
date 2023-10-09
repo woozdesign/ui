@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, useContext, useState } from 'react';
 
 import styles from './Menu.module.scss';

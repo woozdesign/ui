@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, ReactNode, useState, useContext, useRef, useEffect, RefObject, useCallback } from 'react';
 import styles from './DropdownMenu.module.scss';
 import Divider from '../Divider';

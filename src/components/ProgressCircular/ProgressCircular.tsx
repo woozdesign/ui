@@ -1,3 +1,4 @@
+'use client';
 import React, { FC } from 'react';
 import styles from './ProgressCircular.module.scss';
 import { ColorProp, SizeProp } from '@/utils';

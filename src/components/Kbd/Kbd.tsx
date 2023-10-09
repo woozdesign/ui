@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import styles from './Kbd.module.scss';
 import { ColorProp, SizeProp, combineClassNames } from '@/utils';

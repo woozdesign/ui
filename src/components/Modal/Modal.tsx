@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, ReactNode, useState, useContext, useEffect } from 'react';
 import styles from './Modal.module.scss';
 import Card from '../Card';

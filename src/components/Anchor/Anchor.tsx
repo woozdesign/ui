@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import styles from './Anchor.module.scss';
 import { isElementInViewport } from '@/utils';
