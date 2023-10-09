@@ -10,18 +10,20 @@ export default {
   component: Modal,
 } as Meta;
 
-const Template: Story = () => (
-  <Theme.ThemeProvider>
-    <Modal.Root onClose={() => console.log('Modal Closed')} onConfirm={() => console.log('Modal Confirmed')} onCancel={() => console.log('Modal Cancled')}>
-      <Modal.Trigger>
-        <Button>Trigger</Button>
-      </Modal.Trigger>
-      <Modal.Content title={'title'} subtitle={'subtitle'}>
-        <Typography.Text>This is the content</Typography.Text>
-      </Modal.Content>
-    </Modal.Root>
-  </Theme.ThemeProvider>
-);
+const Template: Story = () => {
+  return (
+    <Theme.ThemeProvider>
+      <Modal.Root onClose={() => console.log('Modal Closed')} onConfirm={() => console.log('Modal Confirmed')} onCancel={() => console.log('Modal Cancled')}>
+        <Modal.Trigger>
+          <Button>Trigger</Button>
+        </Modal.Trigger>
+        <Modal.Content title={'title'} subtitle={'subtitle'}>
+          <Typography.Text>This is the content</Typography.Text>
+        </Modal.Content>
+      </Modal.Root>
+    </Theme.ThemeProvider>
+  );
+};
 
 export const Default = Template.bind({});
 const NestedTemplate: Story = () => (

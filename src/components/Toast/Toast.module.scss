@@ -1,0 +1,34 @@
+.toast {
+  position: fixed;
+  z-index: 9999;
+  max-width: 300px;
+  opacity: 0;
+  transform: translateY(8px);
+  transition:
+    opacity 0.2s ease-in-out,
+    transform 0.2s ease-in-out;
+  &.open {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.topLeft {
+  top: var(--space-4);
+  left: var(--space-4);
+}
+
+.topRight {
+  top: var(--space-4);
+  right: var(--space-4);
+}
+
+.bottomLeft {
+  bottom: var(--space-4);
+  left: var(--space-4);
+}
+
+.bottomRight {
+  bottom: var(--space-4);
+  right: var(--space-4);
+}

@@ -26,4 +26,5 @@ export { default as Tab } from './Tab';
 export { default as Flex } from './Flex';
 export { default as ScrollArea } from './ScrollArea';
 
+export * from './Toast';
 console.log('%cDesigned with WoozDesign', 'font-size: 12px;font-family: monospace;background: black;display: inline-block;color: white;padding: 15px;border: 2px solid white;');

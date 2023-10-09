@@ -53,6 +53,7 @@ const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant 
   return (
     <ModalContext.Provider value={{ onClose: handleClose, onCancel, onConfirm }}>
       {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))}
+
       {isRendered && (
         <div className={combineClassNames(overlayClasses)} onClick={handleOverlayClick}>
           <div className={combineClassNames(modalClasses)}>
