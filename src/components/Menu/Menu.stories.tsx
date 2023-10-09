@@ -19,27 +19,29 @@ const Template: Story<MenuProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { label: 'Item 1', onClick: () => console.log('Item 1 clicked') },
-    { label: 'Item 2', onClick: () => console.log('Item 2 clicked') },
-    { label: 'Item 3', href: 'https://example.com' },
+    { label: 'Item 1', value: 'item1', onClick: () => console.log('Item 1 clicked') },
+    { label: 'Item 2', value: 'item2', onClick: () => console.log('Item 2 clicked') },
+    { label: 'Item 3', value: 'item3', href: 'https://example.com' },
   ],
+  defaultValue: 'item2', // Setting Item 2 as active for demonstration
 };
 
 export const WithIcons = Template.bind({});
 WithIcons.args = {
   items: [
-    { label: 'Item 1', iconPrepend: <Icon type={'Feather'} />, onClick: () => console.log('Item 1 with icon clicked') },
-    { label: 'Item 2', iconAppend: <Icon type={'Zap'} />, onClick: () => console.log('Item 2 with icon clicked') },
+    { label: 'Item 1', value: 'item1', iconPrepend: <Icon type={'Feather'} />, onClick: () => console.log('Item 1 with icon clicked') },
+    { label: 'Item 2', value: 'item2', iconAppend: <Icon type={'Zap'} />, onClick: () => console.log('Item 2 with icon clicked') },
   ],
+  defaultValue: 'item1', // Setting Item 1 as active for demonstration
 };
 
 export const Horizontal = Template.bind({});
 Horizontal.args = {
   items: [
-    { label: 'Vertical Item 1', onClick: () => console.log('Vertical Item 1 clicked') },
-    { label: 'Vertical Item 2', onClick: () => console.log('Vertical Item 2 clicked') },
-    { label: 'Vertical Item 3', href: 'https://example.com' },
+    { label: 'Horizontal Item 1', value: 'hitem1', onClick: () => console.log('Horizontal Item 1 clicked') },
+    { label: 'Horizontal Item 2', value: 'hitem2', onClick: () => console.log('Horizontal Item 2 clicked') },
+    { label: 'Horizontal Item 3', value: 'hitem3', href: 'https://example.com' },
   ],
-  // You might want to add a prop in your Menu component to handle vertical orientation
   orientation: 'horizontal',
+  defaultValue: 'hitem3', // Setting Horizontal Item 3 as active for demonstration
 };

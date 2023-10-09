@@ -1,5 +1,7 @@
 .menu {
+  font-family: Arial, sans-serif;
   display: flex;
+  gap: var(--space-4); // Adjust the gap between buttons as needed
 
   &--vertical {
     flex-direction: column;
@@ -7,5 +9,72 @@
   &--horizontal {
     flex-direction: row;
   }
-  gap: var(--space-4); // Adjust the gap between buttons as needed
+
+  // Menu Item styles
+  &--item {
+    display: flex;
+    align-items: center;
+    appearance: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-decoration: none;
+    box-sizing: border-box;
+    color: var(--color-accent-9);
+    background-color: transparent;
+
+    &:hover {
+      background-color: var(--color-accent-4);
+    }
+
+    &.active {
+      background-color: var(--color-accent-9);
+      color: var(--color-accent-9-contrast);
+      &:hover {
+        background-color: var(--color-accent-10);
+      }
+    }
+
+    &--large {
+      height: 40px;
+      font-size: var(--font-size-5);
+      padding: var(--space-1) var(--space-4);
+      border-radius: max(var(--radius-4), var(--radius-full));
+    }
+
+    &--medium {
+      font-size: var(--font-size-4);
+      padding: var(--space-1) var(--space-3);
+      border-radius: max(var(--radius-3), var(--radius-full));
+      height: 34px;
+    }
+
+    &--xlarge {
+      height: 48px;
+      border-radius: max(var(--radius-5), var(--radius-full));
+      font-size: var(--font-size-5);
+      padding: var(--space-2) var(--space-4);
+    }
+
+    &--small {
+      height: 28px;
+      font-size: var(--font-size-3);
+      border-radius: max(var(--radius-3), var(--radius-full));
+      padding: var(--space-1) var(--space-2);
+    }
+
+    &.high-contrast {
+      color: var(--color-accent-12);
+
+      &:hover {
+        background-color: var(--color-accent-5);
+      }
+
+      &.active {
+        color: var(--color-accent-1);
+        background-color: var(--color-accent-12);
+        box-shadow: boxShadowAlpha(var(--color-accent-11));
+      }
+    }
+  }
 }

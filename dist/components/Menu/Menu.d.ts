@@ -1,13 +1,19 @@
 import React, { FC } from 'react';
-export interface MenuItem {
+import { ColorProp, RadiusProp, SizeProp } from '../../utils';
+export interface MenuItem extends SizeProp, ColorProp, RadiusProp {
     label: string;
     onClick?: () => void;
     href?: string;
     iconPrepend?: React.ReactNode;
     iconAppend?: React.ReactNode;
+    highContrast?: boolean;
 }
-export interface MenuProps {
-    items: MenuItem[];
+export interface MenuItemProps extends Omit<MenuItem, 'value'> {
+    value: string;
+}
+export interface MenuProps extends SizeProp, ColorProp, RadiusProp {
+    items: MenuItemProps[];
+    defaultValue: string;
     highContrast?: boolean;
     orientation?: 'vertical' | 'horizontal';
     justify?: 'start' | 'center' | 'end';
