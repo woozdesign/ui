@@ -1,16 +1,15 @@
 'use client';
 
 import styles from './page.module.css';
-import { Button, Image, useNotification } from '@woozdesign/ui';
+import { Button, Image, useNotification, useToast } from '@woozdesign/ui';
 
 export default function Home() {
-  const [openNotification, NotificationProvider] = useNotification();
+  const [openNotification, NotificationProvider] = useToast();
   const triggerNotification = () => {
     openNotification({
+      id: '1',
       message: 'Notification Title',
-      description: 'I will never close automatically. This is a purposely very very long description that has many many characters and words.',
       duration: 0,
-      placement: 'bottomRight',
     });
   };
   return (

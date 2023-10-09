@@ -22,7 +22,7 @@
     transform 0.2s ease-in-out,
     height 0.2s ease-in-out;
 
-  .icon {
+  > .icon {
     width: 32px;
     display: flex;
     flex-direction: row;
@@ -31,14 +31,14 @@
     color: var(--color-accent-9-contrast);
   }
 
-  .text {
+  > .text {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     color: var(--color-accent-9-contrast);
   }
 
-  .action {
+  > .action {
     width: 32px;
     height: 32px;
     display: flex;
@@ -50,7 +50,7 @@
     aspect-ratio: 1/ 1;
 
     &:hover {
-      background-color: var(--color-accent-12);
+      background-color: var(--color-accent-a4);
       padding: var(--space-2);
       box-sizing: border-box;
       border-radius: max(var(--radius-3), var(--radius-full));
@@ -60,6 +60,25 @@
     height: 48px;
     opacity: 1;
     // transform: translateY(0);
+  }
+
+  &--highContrast {
+    color: var(--color-accent-1);
+    background-color: var(--color-accent-12);
+
+    > .icon {
+      color: var(--color-accent-1);
+    }
+    > .text {
+      color: var(--color-accent-1);
+    }
+    > .action {
+      color: var(--color-accent-1);
+      &:hover {
+        color: var(--color-accent-1);
+        background-color: var(--color-accent-a4);
+      }
+    }
   }
 }
 

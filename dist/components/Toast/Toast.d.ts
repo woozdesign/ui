@@ -1,10 +1,11 @@
-import React from 'react';
 import { ColorProp, RadiusProp } from '../../utils';
-export interface ToastProps extends ColorProp, RadiusProp {
+import React from 'react';
+interface ToastProps extends ColorProp, RadiusProp {
     id: number;
     iconPrepend?: React.ReactNode;
     message: string;
     duration?: number;
+    highContrast?: boolean;
     placement: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
 }
 type ToastFunction = (props: Omit<ToastProps, 'id'>) => void;

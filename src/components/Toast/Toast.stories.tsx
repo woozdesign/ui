@@ -17,9 +17,8 @@ const Template: Story<NotificationProps> = (args) => {
   const triggerNotification = (placement: string) => {
     openToast({
       iconPrepend: <Icon type={'AlertCircle'} size={'medium'} />,
-      color: 'grass',
-      message: 'Toast TitleToast TitleToast TitleToast TitleToast TitleToast TitleToast TitleTitleToast TitleToast TitleToast TitleToast TitleToast Title',
-      // description: 'I will never close automatically. This is a purposely very very long description that has many many characters and words.',
+      color: 'blue',
+      message: 'This is Looooooooong Looooooooong toast title.',
       duration: args.duration,
       placement: placement,
     });

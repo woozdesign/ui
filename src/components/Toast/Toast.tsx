@@ -1,17 +1,16 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styles from './Toast.module.scss';
-import Card from '../Card';
-import Button from '../Button';
-import { Icon } from '@woozdesign/icons';
 import { ColorProp, RadiusProp, combineClassNames } from '@/utils';
+import { Icon } from '@woozdesign/icons';
+import React, { useEffect, useRef, useState } from 'react';
 import Typography from '../Typography';
+import styles from './Toast.module.scss';
 // ... (your imports remain unchanged)
 
-export interface ToastProps extends ColorProp, RadiusProp {
+interface ToastProps extends ColorProp, RadiusProp {
   id: number; // Added id to identify each toast
   iconPrepend?: React.ReactNode;
   message: string;
   duration?: number;
+  highContrast?: boolean;
   placement: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
 }
 
@@ -49,7 +48,7 @@ const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
     }, 400); // delay to allow the toast to fade out before removal
   };
 
-  const classes = [styles.toast, styles[toast.placement || 'topLeft'], isOpen ? styles.open : ''];
+  const classes = [styles.toast, styles[toast.placement || 'topLeft'], isOpen ? styles.open : '', toast.highContrast ? styles[`toast--highContrast`] : ''];
 
   return (
     <div data-accent-color={toast.color} data-radius={toast.radius} className={combineClassNames(classes)} ref={toastRef}>
@@ -98,7 +97,7 @@ type ToastHookReturnType = [ToastFunction, JSX.Element];
 export const useToast = (): ToastHookReturnType => {
   const [toasts, setToasts] = useState<ToastProps[]>([]);
 
-  const openToast = (props: Omit<ToastProps, 'id'>) => {
+  const openToast: ToastFunction = (props) => {
     const newToast = {
       ...props,
       id: Date.now(), // using timestamp for simplicity
