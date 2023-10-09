@@ -1,39 +1,90 @@
 .toast {
   z-index: 9999;
-  max-width: 300px;
+  max-width: 480px;
+  position: relative;
+  margin: var(--space-2);
+  padding: 0 var(--space-4);
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-3);
+
   opacity: 0;
+  background-color: var(--color-accent-9);
+  border-radius: max(var(--radius-3), var(--radius-full));
+  color: var(--color-accent-9-contrast);
+  height: 0;
+  // transform: translateY(8px);
+
   transition:
     opacity 0.2s ease-in-out,
-    transform 0.2s ease-in-out;
-  margin: var(--space-4);
+    transform 0.2s ease-in-out,
+    height 0.2s ease-in-out;
 
+  .icon {
+    width: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-accent-9-contrast);
+  }
+
+  .text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--color-accent-9-contrast);
+  }
+
+  .action {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-accent-9-contrast);
+    cursor: pointer;
+    aspect-ratio: 1/ 1;
+
+    &:hover {
+      background-color: var(--color-accent-12);
+      padding: var(--space-2);
+      box-sizing: border-box;
+      border-radius: max(var(--radius-3), var(--radius-full));
+    }
+  }
   &.open {
+    height: 48px;
     opacity: 1;
-    transform: translateY(0);
+    // transform: translateY(0);
   }
 }
 
 .toastContainer {
   position: fixed;
   z-index: 9999;
+
   &.topLeft {
     top: var(--space-4);
     left: var(--space-4);
-    transform: translateY(8px);
+    bottom: auto;
   }
   &.topRight {
     top: var(--space-4);
     right: var(--space-4);
-    transform: translateY(8px);
+    bottom: auto;
   }
   &.bottomLeft {
     bottom: var(--space-4);
+    top: auto;
     left: var(--space-4);
-    transform: translateY(8px);
   }
   &.bottomRight {
     bottom: var(--space-4);
-    transform: translateY(8px);
+    top: auto;
     right: var(--space-4);
   }
 }

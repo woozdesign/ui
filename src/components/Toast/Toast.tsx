@@ -3,17 +3,17 @@ import styles from './Toast.module.scss';
 import Card from '../Card';
 import Button from '../Button';
 import { Icon } from '@woozdesign/icons';
-import { combineClassNames } from '@/utils';
+import { ColorProp, RadiusProp, combineClassNames } from '@/utils';
 import Typography from '../Typography';
 // ... (your imports remain unchanged)
 
-type ToastProps = {
+export interface ToastProps extends ColorProp, RadiusProp {
   id: number; // Added id to identify each toast
+  iconPrepend?: React.ReactNode;
   message: string;
-  // description: string;
   duration?: number;
   placement?: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
-};
+}
 
 interface ToastDisplayProps {
   toast: ToastProps;
@@ -37,7 +37,7 @@ const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
     if (toastRef.current) {
       const timer = setTimeout(() => {
         handleSelfClose();
-      }, toast.duration ?? 500);
+      }, toast.duration ?? 3000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -52,20 +52,14 @@ const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
   const classes = [styles.toast, styles[toast.placement || 'topLeft'], isOpen ? styles.open : ''];
 
   return (
-    <div className={combineClassNames(classes)} ref={toastRef}>
-      <Card size={'small'}>
-        <Card.Heading
-          outlined={false}
-          titleSize={3}
-          title={<Typography.Text>{toast.message}</Typography.Text>}
-          // subtitle={toast.description}
-          action={
-            <Button variant="icon" onClick={handleSelfClose}>
-              <Icon type="X" />
-            </Button>
-          }
-        />
-      </Card>
+    <div data-accent-color={toast.color} data-radius={toast.radius} className={combineClassNames(classes)} ref={toastRef}>
+      {toast.iconPrepend && <span className={styles.icon}>{toast.iconPrepend}</span>}
+      <Typography.Text color={toast.color} className={styles.text} size={4}>
+        {toast.message}
+      </Typography.Text>
+      <div className={styles.action} onClick={handleSelfClose}>
+        <Icon type="X" />
+      </div>
     </div>
   );
 };
@@ -98,10 +92,12 @@ const ToastList: React.FC<{ toasts: ToastProps[]; handleClose: (id: number) => v
   );
 };
 
-export const useToast = () => {
+type ToastFunction = (props: Omit<ToastProps, 'id'>) => void;
+type ToastHookReturnType = [ToastFunction, JSX.Element];
+export const useToast = (): ToastHookReturnType => {
   const [toasts, setToasts] = useState<ToastProps[]>([]);
 
-  const open = (props: Omit<ToastProps, 'id'>) => {
+  const openToast = (props: Omit<ToastProps, 'id'>) => {
     const newToast = {
       ...props,
       id: Date.now(), // using timestamp for simplicity
@@ -113,5 +109,5 @@ export const useToast = () => {
     setToasts((prevToasts) => prevToasts.filter((toast) => toast.id !== id));
   };
 
-  return [open, <ToastList key="toast-list" toasts={toasts} handleClose={handleClose} />];
+  return [openToast, <ToastList key="toast-list" toasts={toasts} handleClose={handleClose} />];
 };

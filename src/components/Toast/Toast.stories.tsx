@@ -6,6 +6,7 @@ import Layout from '../Layout/Layout';
 import Theme from '../Theme';
 import Flex from '../Flex';
 import { useToast } from './Toast';
+import { Icon } from '@woozdesign/icons';
 
 export default {
   title: 'Components/Toast',
@@ -15,7 +16,9 @@ const Template: Story<NotificationProps> = (args) => {
   const [openToast, ToastProvider] = useToast();
   const triggerNotification = (placement: string) => {
     openToast({
-      message: 'Toast Title',
+      iconPrepend: <Icon type={'AlertCircle'} size={'medium'} />,
+      color: 'grass',
+      message: 'Toast TitleToast TitleToast TitleToast TitleToast TitleToast TitleToast TitleTitleToast TitleToast TitleToast TitleToast TitleToast Title',
       // description: 'I will never close automatically. This is a purposely very very long description that has many many characters and words.',
       duration: args.duration,
       placement: placement,
