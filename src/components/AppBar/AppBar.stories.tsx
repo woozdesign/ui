@@ -18,6 +18,11 @@ const Template: Story<AppBarProps> = (args) => {
   return (
     <Theme.ThemeProvider radius={'full'}>
       <AppBar {...args}>
+        <AppBar.Heading>
+          <a href="/">
+            <Image src="https://blog.woozlabs.com/assets/icons/logo.svg" width={120}></Image>
+          </a>
+        </AppBar.Heading>
         <AppBar.Body>
           <Tab.Root defaultValue="components">
             <Tab.List>
@@ -47,6 +52,51 @@ const Template: Story<AppBarProps> = (args) => {
             <Icon type={'Sun'} />
           </Button>
         </AppBar.Action>
+      </AppBar>
+
+      <AppBar {...args}>
+        <AppBar.Heading>
+          <a href="/">
+            <Image src="https://blog.woozlabs.com/assets/icons/logo.svg" width={120}></Image>
+          </a>
+        </AppBar.Heading>
+        <AppBar.Action>
+          <Button variant={'text'} highContrast>
+            Documentation
+          </Button>
+          <Button variant={'text'} highContrast>
+            Playground
+          </Button>
+          <Button variant={'icon'} highContrast>
+            <Icon type={'Github'} />
+          </Button>
+          <Button variant={'icon'} highContrast>
+            <Icon type={'Sun'} />
+          </Button>
+        </AppBar.Action>
+      </AppBar>
+
+      <AppBar {...args}>
+        <AppBar.Heading>
+          <a href="/">
+            <Image src="https://blog.woozlabs.com/assets/icons/logo.svg" width={120}></Image>
+          </a>
+        </AppBar.Heading>
+        <AppBar.Body>
+          <Tab.Root defaultValue="components">
+            <Tab.List>
+              <Tab.Trigger highContrast value="components">
+                Components
+              </Tab.Trigger>
+              <Tab.Trigger highContrast value="icons">
+                Icons
+              </Tab.Trigger>
+              <Tab.Trigger highContrast value="colors">
+                Colors
+              </Tab.Trigger>
+            </Tab.List>
+          </Tab.Root>
+        </AppBar.Body>
       </AppBar>
 
       <Layout.Container>
