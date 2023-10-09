@@ -4,6 +4,9 @@
   position: relative;
   overflow: hidden;
   border-radius: max(var(--radius-3), var(--radius-full));
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   img {
     width: 100%;
