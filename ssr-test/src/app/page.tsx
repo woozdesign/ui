@@ -7,9 +7,8 @@ export default function Home() {
   const [openNotification, NotificationProvider] = useToast();
   const triggerNotification = () => {
     openNotification({
-      id: '1',
       message: 'Notification Title',
-      duration: 0,
+      highContrast: true,
     });
   };
   return (
