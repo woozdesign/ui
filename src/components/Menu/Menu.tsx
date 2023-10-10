@@ -5,6 +5,7 @@ import styles from './Menu.module.scss';
 import Button from '../Button';
 import { ColorProp, RadiusProp, SizeProp, combineClassNames } from '@/utils';
 import { Icon } from '@woozdesign/icons';
+import Typography from '../Typography';
 
 interface MenuContextProps {
   activeItem: string;
@@ -23,7 +24,7 @@ export interface MenuItem extends SizeProp, ColorProp, RadiusProp {
 }
 
 export interface MenuItemProps extends Omit<MenuItem, 'value'> {
-  value: string;
+  value?: string;
 }
 
 export interface MenuProps extends SizeProp, ColorProp, RadiusProp {
@@ -46,13 +47,13 @@ const Menu: FC<MenuProps> = ({
 }) => {
   const [activeItem, setActiveItem] = useState<string>(defaultValue);
 
-  const classes = [styles.menu, styles[`menu--${orientation}`]];
+  const classes = [styles.menu, styles[`menu--vertical`]];
 
   return (
     <MenuContext.Provider value={{ activeItem, setActiveItem }}>
       <ul data-accent-color={color} data-radius={radius} className={combineClassNames(classes)}>
         {items.map((item, index) => (
-          <MenuItemComponent key={index} {...item} highContrast={highContrast} />
+          <MenuItemComponent key={index} {...item} highContrast={highContrast} size={size} />
         ))}
       </ul>
     </MenuContext.Provider>
@@ -71,24 +72,29 @@ const MenuItemComponent: FC<MenuItemProps> = ({ value, label, onClick, href, ico
   // Maybe some special styles or classes for active state
   const itemClasses = [styles[`menu--item`], styles[`menu--item--${size}`], isActive ? styles.active : '', highContrast ? styles[`high-contrast`] : ''];
 
-  return (
-    <li>
-      <a
-        data-accent-color={color}
-        data-radius={radius}
-        href={href}
-        onClick={() => {
-          if (onClick) onClick();
-          setActiveItem(value);
-        }}
-        className={combineClassNames(itemClasses)}
-      >
-        {iconPrepend}
-        {label}
-        {iconAppend}
-      </a>
-    </li>
-  );
+  if (value)
+    return (
+      <li>
+        <a
+          data-accent-color={color}
+          data-radius={radius}
+          href={href}
+          onClick={() => {
+            if (onClick) onClick();
+            setActiveItem(value);
+          }}
+          className={combineClassNames(itemClasses)}
+        >
+          <span className={styles.iconPrepend}>{iconPrepend}</span>
+          {label}
+          <span className={styles.iconAppend}>{iconAppend}</span>
+        </a>
+      </li>
+    );
+
+  const labelClasses = [styles[`menu--label`], highContrast ? styles[`high-contrast`] : ''];
+
+  return <div className={combineClassNames(labelClasses)}>{label}</div>;
 };
 
 export default Menu;

@@ -20,10 +20,10 @@ Solid.args = {
   label: 'Solid',
 };
 
-export const Soft = Template.bind({});
-Soft.args = {
-  variant: 'soft',
-  label: 'Soft',
+export const Ghost = Template.bind({});
+Ghost.args = {
+  variant: 'ghost',
+  label: 'Ghost',
 };
 
 export const Outlined = Template.bind({});
