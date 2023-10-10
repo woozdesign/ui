@@ -1,7 +1,7 @@
 /* eslint-disable react/display-name */
 'use client';
 import React, { CSSProperties, FC, ReactNode } from 'react';
-import { combineClassNames } from '@/utils';
+import classNames from 'classnames';
 import { SizeProp, TextSizeProp } from '@/utils/helper/props';
 import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
@@ -17,10 +17,10 @@ const Card: FC<CardProps> & {
   Body: FC<BodyProps>;
   Actions: FC<ActionsProps>;
 } = ({ variant = 'solid', outlined = true, size = 'medium', children, className, ...others }) => {
-  const cardClasses = [styles.card, styles[`card--${variant}`], styles[`card--${size}`], outlined ? styles['card--outlined'] : '', className ?? ''];
+  const cardClasses = classNames(styles.card, styles[`card--${variant}`], styles[`card--${size}`], { [styles['card--outlined']]: outlined }, className);
 
   return (
-    <div className={combineClassNames(cardClasses)} {...others}>
+    <div className={cardClasses} {...others}>
       {children}
     </div>
   );
@@ -36,9 +36,10 @@ export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'tit
 }
 
 Card.Heading = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outlined = true }: HeadingProps) => {
-  const classes = [styles.heading, outlined ? styles[`heading--outlined`] : ''];
+  const classes = classNames(styles.heading, { [styles[`heading--outlined`]]: outlined });
+
   return (
-    <div className={combineClassNames(classes)}>
+    <div className={classes}>
       <div>
         {typeof title == 'string' ? (
           <Typography.Heading className={styles.title} variant={'h3'} size={titleSize}>
@@ -94,9 +95,10 @@ export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 Card.Actions = ({ children, justify = 'start', outlined = true }: ActionsProps) => {
-  const classes = [styles.actions, outlined ? styles[`actions--outlined`] : ''];
+  const classes = classNames(styles.actions, { [styles[`actions--outlined`]]: outlined });
+
   return (
-    <div className={combineClassNames(classes)} style={{ justifyContent: justify }}>
+    <div className={classes} style={{ justifyContent: justify }}>
       {children}
     </div>
   );

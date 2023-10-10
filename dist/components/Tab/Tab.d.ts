@@ -1,5 +1,5 @@
-import React, { ReactNode, FC } from 'react';
 import { ColorProp, RadiusProp, SizeProp } from '../../utils';
+import React, { FC, ReactNode } from 'react';
 interface RootProps {
     children: ReactNode;
     defaultValue: string;

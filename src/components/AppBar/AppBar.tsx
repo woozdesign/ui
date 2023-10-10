@@ -1,8 +1,8 @@
 'use client';
 /* eslint-disable react/display-name */
+import classNames from 'classnames';
 import React, { FC, ReactNode } from 'react';
 import styles from './AppBar.module.scss';
-import { combineClassNames } from '@/utils';
 
 interface AppBarProps {
   variant?: 'solid' | 'transparent' | 'translucent';
@@ -15,8 +15,8 @@ const AppBar: FC<AppBarProps> & {
   Body: FC<BodyProps>;
   Action: FC<ActionProps>;
 } = ({ children, variant = 'solid', position = 'fixed' }) => {
-  const classes = [styles[`wrapper`], styles[`wrapper--${variant}`], styles[`wrapper--${position}`]];
-  return <div className={combineClassNames(classes)}>{children}</div>;
+  const classes = classNames(styles[`wrapper`], styles[`wrapper--${variant}`], styles[`wrapper--${position}`]);
+  return <div className={classes}>{children}</div>;
 };
 
 interface HeadingProps {

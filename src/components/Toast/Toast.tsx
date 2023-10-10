@@ -1,5 +1,6 @@
-import { ColorProp, RadiusProp, combineClassNames } from '@/utils';
+import { ColorProp, RadiusProp } from '@/utils';
 import { Icon } from '@woozdesign/icons';
+import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import Typography from '../Typography';
 import styles from './Toast.module.scss';
@@ -48,10 +49,10 @@ const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
     }, 400); // delay to allow the toast to fade out before removal
   };
 
-  const classes = [styles.toast, styles[toast.placement || 'topLeft'], isOpen ? styles.open : '', toast.highContrast ? styles[`toast--highContrast`] : ''];
+  const classes = classNames(styles.toast, styles[toast.placement || 'topLeft'], { [styles.open]: isOpen, [styles[`toast--highContrast`]]: toast.highContrast });
 
   return (
-    <div data-accent-color={toast.color} data-radius={toast.radius} className={combineClassNames(classes)} ref={toastRef}>
+    <div data-accent-color={toast.color} data-radius={toast.radius} className={classes} ref={toastRef}>
       {toast.iconPrepend && <span className={styles.icon}>{toast.iconPrepend}</span>}
       <Typography.Text color={toast.color} className={styles.text} size={4}>
         {toast.message}

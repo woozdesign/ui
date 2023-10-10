@@ -1,11 +1,9 @@
 'use client';
 import React, { FC, useContext, useState } from 'react';
 
+import { ColorProp, RadiusProp, SizeProp } from '@/utils';
+import classNames from 'classnames';
 import styles from './Menu.module.scss';
-import Button from '../Button';
-import { ColorProp, RadiusProp, SizeProp, combineClassNames } from '@/utils';
-import { Icon } from '@woozdesign/icons';
-import Typography from '../Typography';
 
 interface MenuContextProps {
   activeItem: string;
@@ -37,11 +35,11 @@ export interface MenuProps extends SizeProp, ColorProp, RadiusProp {
 const Menu: FC<MenuProps> = ({ items, defaultValue, highContrast = false, color, radius, size = 'medium', justify = 'start' }) => {
   const [activeItem, setActiveItem] = useState<string>(defaultValue);
 
-  const classes = [styles.menu, styles[`menu--vertical`], styles[`menu--${justify}`]];
+  const classes = classNames(styles.menu, styles[`menu--vertical`], styles[`menu--${justify}`]);
 
   return (
     <MenuContext.Provider value={{ activeItem, setActiveItem }}>
-      <ul data-accent-color={color} data-radius={radius} className={combineClassNames(classes)}>
+      <ul data-accent-color={color} data-radius={radius} className={classes}>
         {items.map((item, index) => (
           <MenuItemComponent key={index} {...item} highContrast={highContrast} size={size} />
         ))}
@@ -60,7 +58,7 @@ const MenuItemComponent: FC<MenuItemProps> = ({ value, label, onClick, href, ico
   const isActive = activeItem === value;
 
   // Maybe some special styles or classes for active state
-  const itemClasses = [styles[`menu--item`], styles[`menu--item--${size}`], isActive ? styles.active : '', highContrast ? styles[`high-contrast`] : ''];
+  const itemClasses = classNames(styles[`menu--item`], styles[`menu--item--${size}`], { [styles.active]: isActive }, { [styles[`high-contrast`]]: highContrast });
 
   if (value)
     return (
@@ -73,7 +71,7 @@ const MenuItemComponent: FC<MenuItemProps> = ({ value, label, onClick, href, ico
             if (onClick) onClick();
             setActiveItem(value);
           }}
-          className={combineClassNames(itemClasses)}
+          className={itemClasses}
         >
           <span className={styles.iconPrepend}>{iconPrepend}</span>
           {label}
@@ -82,9 +80,9 @@ const MenuItemComponent: FC<MenuItemProps> = ({ value, label, onClick, href, ico
       </li>
     );
 
-  const labelClasses = [styles[`menu--label`], styles[`menu--label--${size}`], highContrast ? styles[`high-contrast`] : ''];
+  const labelClasses = classNames(styles[`menu--label`], styles[`menu--label--${size}`], { [styles[`high-contrast`]]: highContrast });
 
-  return <div className={combineClassNames(labelClasses)}>{label}</div>;
+  return <div className={labelClasses}>{label}</div>;
 };
 
 export default Menu;

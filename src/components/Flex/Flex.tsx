@@ -1,7 +1,8 @@
 'use client';
+import { SpaceSizeProp } from '@/utils';
+import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Flex.module.scss';
-import { SpaceSizeProp, combineClassNames } from '@/utils';
 
 interface FlexProps extends SpaceSizeProp {
   width: React.CSSProperties['width'];
@@ -13,10 +14,11 @@ interface FlexProps extends SpaceSizeProp {
 }
 
 const Flex: FC<FlexProps> = ({ children, direction, space = 2, width = 'fit-content', height = '100%', align = 'start', justify = 'start' }) => {
-  const classes = [styles[`box`], styles[`box--${direction}`], styles[`box--${space}`]];
+  const classes = classNames(styles[`box`], styles[`box--${direction}`], styles[`box--${space}`]);
+
   return (
     <div
-      className={combineClassNames(classes)}
+      className={classes}
       style={{
         width: width,
         height: height,

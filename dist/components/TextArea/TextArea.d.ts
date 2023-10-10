@@ -1,4 +1,4 @@
-import { FC, HTMLProps, ChangeEvent } from 'react';
+import { ChangeEvent, FC, HTMLProps } from 'react';
 import { FormChildProps } from '../Form/Form';
 interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size'> {
     variant?: 'solid' | 'ghost';
