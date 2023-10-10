@@ -9,7 +9,7 @@ export interface MenuItem extends SizeProp, ColorProp, RadiusProp {
     highContrast?: boolean;
 }
 export interface MenuItemProps extends Omit<MenuItem, 'value'> {
-    value: string;
+    value?: string;
 }
 export interface MenuProps extends SizeProp, ColorProp, RadiusProp {
     items: MenuItemProps[];

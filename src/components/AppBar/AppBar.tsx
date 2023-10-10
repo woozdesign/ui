@@ -1,3 +1,4 @@
+'use client';
 /* eslint-disable react/display-name */
 import React, { FC, ReactNode } from 'react';
 import styles from './AppBar.module.scss';
@@ -13,7 +14,7 @@ const AppBar: FC<AppBarProps> & {
   Heading: FC<HeadingProps>;
   Body: FC<BodyProps>;
   Action: FC<ActionProps>;
-} = ({ children, variant = 'solid', position = 'block' }) => {
+} = ({ children, variant = 'solid', position = 'fixed' }) => {
   const classes = [styles[`wrapper`], styles[`wrapper--${variant}`], styles[`wrapper--${position}`]];
   return <div className={combineClassNames(classes)}>{children}</div>;
 };

@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, ReactNode } from 'react';
 import styles from './Tooltip.module.scss';
 import Typography from '../Typography';

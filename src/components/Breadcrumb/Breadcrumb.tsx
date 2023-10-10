@@ -1,3 +1,4 @@
+'use client';
 import React, { FC } from 'react';
 import styles from './Breadcrumb.module.scss';
 import Button from '../Button';

@@ -1,3 +1,4 @@
+'use client';
 /* eslint-disable react/display-name */
 import React, { FC, ReactNode, HTMLProps } from 'react';
 import { combineClassNames } from '@/utils';

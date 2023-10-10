@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, HTMLProps, ChangeEvent, useState } from 'react';
 import styles from './TextArea.module.scss';
 import { combineClassNames } from '@/utils/helper/combineClassNames';
@@ -6,7 +7,7 @@ import { FormChildProps } from '../Form/Form';
 import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
 
 interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size'> {
-  variant?: 'solid' | 'soft';
+  variant?: 'solid' | 'ghost';
   size?: 1 | 2 | 3 | 4 | 5; // Number of visible lines
   label?: string;
   resizable?: boolean;

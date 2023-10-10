@@ -1,4 +1,5 @@
 /* eslint-disable react/display-name */
+'use client';
 import React, { CSSProperties, FC, ReactNode } from 'react';
 import { combineClassNames } from '@/utils';
 import { SizeProp, TextSizeProp } from '@/utils/helper/props';

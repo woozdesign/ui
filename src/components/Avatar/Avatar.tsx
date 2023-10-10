@@ -1,5 +1,4 @@
-// Avatar.tsx
-
+'use client';
 import React, { useState, FC } from 'react';
 import styles from './Avatar.module.scss';
 import { ColorProp, RadiusProp, SizeProp } from '@/utils';

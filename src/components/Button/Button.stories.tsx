@@ -31,9 +31,9 @@ Outlined.args = {
   iconPrepend: <Icon type={'Search'} />,
 };
 
-export const Soft = Template.bind({});
-Soft.args = {
-  variant: 'soft',
+export const Ghost = Template.bind({});
+Ghost.args = {
+  variant: 'ghost',
   iconPrepend: <Icon type={'Search'} />,
 };
 

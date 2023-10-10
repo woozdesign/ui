@@ -1,3 +1,4 @@
+'use client';
 import React, { FC, useState, useRef, useCallback, useEffect } from 'react';
 import styles from './Slider.module.scss';
 import { ColorProp, RadiusProp, combineClassNames } from '@/utils';
