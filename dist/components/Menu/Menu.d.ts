@@ -15,7 +15,6 @@ export interface MenuProps extends SizeProp, ColorProp, RadiusProp {
     items: MenuItemProps[];
     defaultValue: string;
     highContrast?: boolean;
-    orientation?: 'vertical' | 'horizontal';
     justify?: 'start' | 'center' | 'end';
 }
 declare const Menu: FC<MenuProps>;

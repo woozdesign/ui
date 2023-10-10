@@ -31,23 +31,13 @@ export interface MenuProps extends SizeProp, ColorProp, RadiusProp {
   items: MenuItemProps[];
   defaultValue: string;
   highContrast?: boolean;
-  orientation?: 'vertical' | 'horizontal';
   justify?: 'start' | 'center' | 'end';
 }
 
-const Menu: FC<MenuProps> = ({
-  items,
-  defaultValue,
-  highContrast = false,
-  color,
-  radius,
-  size = 'medium',
-  orientation = 'vertical',
-  justify = orientation == 'vertical' ? 'start' : 'center',
-}) => {
+const Menu: FC<MenuProps> = ({ items, defaultValue, highContrast = false, color, radius, size = 'medium', justify = 'start' }) => {
   const [activeItem, setActiveItem] = useState<string>(defaultValue);
 
-  const classes = [styles.menu, styles[`menu--vertical`]];
+  const classes = [styles.menu, styles[`menu--vertical`], styles[`menu--${justify}`]];
 
   return (
     <MenuContext.Provider value={{ activeItem, setActiveItem }}>
@@ -92,7 +82,7 @@ const MenuItemComponent: FC<MenuItemProps> = ({ value, label, onClick, href, ico
       </li>
     );
 
-  const labelClasses = [styles[`menu--label`], highContrast ? styles[`high-contrast`] : ''];
+  const labelClasses = [styles[`menu--label`], styles[`menu--label--${size}`], highContrast ? styles[`high-contrast`] : ''];
 
   return <div className={combineClassNames(labelClasses)}>{label}</div>;
 };

@@ -1,6 +1,33 @@
 .scrollArea {
   overflow-y: auto;
   overflow-x: hidden;
+  &.alwaysVertical {
+    overflow-y: scroll;
+    padding-right: 3px;
+    margin-right: -3px; // Compensate with negative margin
+  }
+
+  &.alwaysHorizontal {
+    overflow-y: hidden;
+    overflow-x: scroll;
+
+    padding-bottom: 3px; // Reserve space for horizontal scrollbar (if needed)
+    margin-bottom: -3px; // Compensate with negative margin
+  }
+  /* Initially hide the scrollbar */
+  &::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+  }
+
+  &:hover {
+    /* Show the scrollbar on hover */
+    &::-webkit-scrollbar {
+      width: 3px;
+      height: 3px;
+    }
+  }
 
   &.alwaysVertical {
     overflow-y: scroll;
@@ -12,12 +39,6 @@
   }
 
   /* Customize the scrollbar appearance (This is for webkit browsers) */
-  &::-webkit-scrollbar {
-    width: 3px;
-    height: 3px;
-    border-radius: max(var(--radius-3), var(--radius-full));
-  }
-
   &::-webkit-scrollbar-track {
     background: var(--color-gray-a3);
     border-radius: max(var(--radius-3), var(--radius-full));
