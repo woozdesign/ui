@@ -1,5 +1,5 @@
-import React from 'react';
 import { RadiusProp } from '../../utils';
+import React from 'react';
 export interface ImageProps extends RadiusProp {
     src: string;
     alt: string;

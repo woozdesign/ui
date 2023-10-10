@@ -1,5 +1,5 @@
-import React from 'react';
 import { ColorProp, SpaceSizeProp } from '../../utils';
+import React from 'react';
 interface DividerProps extends ColorProp, SpaceSizeProp {
     orientation?: 'horizontal' | 'vertical';
 }

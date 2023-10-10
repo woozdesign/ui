@@ -1,5 +1,5 @@
-import { FC } from 'react';
 import { ColorProp, RadiusProp } from '../../utils';
+import { FC } from 'react';
 interface SliderProps extends ColorProp, RadiusProp {
     defaultValue: number[];
     trackSize?: number;

@@ -1,9 +1,9 @@
 'use client';
-import React, { FC, HTMLProps, ChangeEvent } from 'react';
-import styles from './Switch.module.scss';
-import { ColorProp, RadiusProp, SizeProp, combineClassNames } from '@/utils';
-import { FormChildProps } from '../Form/Form';
+import { ColorProp, RadiusProp, SizeProp } from '@/utils';
 import classNames from 'classnames';
+import React, { ChangeEvent, FC, HTMLProps } from 'react';
+import { FormChildProps } from '../Form/Form';
+import styles from './Switch.module.scss';
 
 interface SwitchProps extends Omit<HTMLProps<HTMLInputElement>, 'type' | 'color' | 'size' | 'onChange'>, ColorProp, SizeProp, RadiusProp, FormChildProps {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;

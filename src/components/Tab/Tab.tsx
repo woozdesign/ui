@@ -1,9 +1,8 @@
 'use client';
-import React, { useState, useContext, ReactNode, FC } from 'react';
-import styles from './Tab.module.scss';
-import Button from '../Button';
-import { ColorProp, RadiusProp, SizeProp, combineClassNames } from '@/utils';
+import { ColorProp, RadiusProp, SizeProp } from '@/utils';
 import classNames from 'classnames';
+import React, { FC, ReactNode, useContext, useState } from 'react';
+import styles from './Tab.module.scss';
 
 interface TabContextProps {
   activeTab: string;
