@@ -21,7 +21,7 @@
     width: 100%;
     text-decoration: none;
     box-sizing: border-box;
-    color: var(--color-accent-9);
+    color: var(--color-accent-12);
     background-color: transparent;
 
     > .iconPrepend,
@@ -31,14 +31,13 @@
       justify-content: center;
     }
     &:hover {
-      background-color: var(--color-accent-4);
+      background-color: var(--color-accent-a4);
     }
 
     &.active {
-      background-color: var(--color-accent-9);
-      color: var(--color-accent-9-contrast);
+      background-color: var(--color-accent-4);
       &:hover {
-        background-color: var(--color-accent-10);
+        background-color: var(--color-accent-5);
       }
     }
 
@@ -87,11 +86,27 @@
 
   &--label {
     font-size: var(--font-size-3);
-    color: var(--color-accent-11);
+    color: var(--color-accent-12);
     font-weight: bold;
-    padding: 0 var(--space-2);
+
     &.high-contrast {
-      color: var(--color-accent-10);
+      color: var(--color-accent-12);
+    }
+
+    &--large {
+      padding: var(--space-0) var(--space-5);
+    }
+
+    &--medium {
+      padding: var(--space-0) var(--space-4);
+    }
+
+    &--xlarge {
+      padding: var(--space-0) var(--space-5);
+    }
+
+    &--small {
+      padding: var(--space-0) var(--space-3);
     }
   }
 }

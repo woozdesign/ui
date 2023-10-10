@@ -22,11 +22,11 @@ Default.args = {
     { label: 'Only Label' },
     { label: 'Item 1', value: 'item1', onClick: () => console.log('Item 1 clicked') },
     { label: 'Item 2', value: 'item2', onClick: () => console.log('Item 2 clicked') },
-    { label: 'Item 3', value: 'item3', href: 'https://example.com' },
+    { label: 'Item 3', value: 'item3', onClick: () => console.log('Clicked') },
     { label: 'Only Label2' },
     { label: 'Item 4', value: 'item4', onClick: () => console.log('Item 1 clicked') },
     { label: 'Item 5', value: 'item5', onClick: () => console.log('Item 2 clicked') },
-    { label: 'Item 6', value: 'item6', href: 'https://example.com' },
+    { label: 'Item 6', value: 'item6', onClick: () => console.log('Clicked') },
   ],
   defaultValue: 'item2', // Setting Item 2 as active for demonstration
 };
@@ -39,16 +39,4 @@ WithIcons.args = {
     { label: 'Item 2', value: 'item2', iconAppend: <Icon type={'Zap'} />, onClick: () => console.log('Item 2 with icon clicked') },
   ],
   defaultValue: 'item1', // Setting Item 1 as active for demonstration
-};
-
-export const Horizontal = Template.bind({});
-Horizontal.args = {
-  items: [
-    { label: 'Only Label' },
-    { label: 'Horizontal Item 1', value: 'hitem1', onClick: () => console.log('Horizontal Item 1 clicked') },
-    { label: 'Horizontal Item 2', value: 'hitem2', onClick: () => console.log('Horizontal Item 2 clicked') },
-    { label: 'Horizontal Item 3', value: 'hitem3', href: 'https://example.com' },
-  ],
-  orientation: 'horizontal',
-  defaultValue: 'hitem3', // Setting Horizontal Item 3 as active for demonstration
 };
