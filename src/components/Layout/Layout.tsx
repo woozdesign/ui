@@ -1,5 +1,5 @@
 'use client';
-import { combineClassNames } from '@/utils/helper/combineClassNames';
+import classNames from 'classnames';
 import React from 'react';
 import styles from './Layout.module.scss';
 
@@ -10,10 +10,11 @@ interface ContainerProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 export const Container: React.FC<ContainerProps> = ({ children, ...others }) => {
-  const classes = [styles.container, others.className ?? ''];
+  const classes = classNames(styles.container, others.className);
+
   const combinedStyles = { ...others.style };
   return (
-    <div {...others} className={combineClassNames(classes)} style={combinedStyles}>
+    <div {...others} className={classes} style={combinedStyles}>
       {children}
     </div>
   );
@@ -26,8 +27,6 @@ interface RowProps extends React.HTMLProps<HTMLDivElement> {
   children?: React.ReactNode;
 }
 export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'start', justify = 'start', children, ...others }) => {
-  const classes = [styles.row, others.className ?? ''];
-
   const combinedStyle = {
     alignItems: align,
     justifyContent: justify,
@@ -36,8 +35,10 @@ export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'start', just
     ...others.style,
   };
 
+  const classes = classNames(styles.row, others.className);
+
   return (
-    <div {...others} className={combineClassNames(classes)} style={combinedStyle}>
+    <div {...others} className={classes} style={combinedStyle}>
       {children}
     </div>
   );
@@ -52,7 +53,7 @@ interface ColProps extends React.HTMLProps<HTMLDivElement> {
   children?: React.ReactNode;
 }
 export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, ...others }) => {
-  const classes = [
+  const classes = classNames(
     styles.col,
     others.className ?? '',
     typeof xs == 'number' ? styles[`xs-${xs}`] : '',
@@ -61,14 +62,14 @@ export const Col: React.FC<ColProps> = ({ xs, sm, md, lg, xl, children, ...other
 
     typeof lg == 'number' ? styles[`lg-${lg}`] : '',
     typeof xl == 'number' ? styles[`xl-${xl}`] : '',
-  ];
+  );
 
   const combinedStyle = {
     ...others.style,
   };
 
   return (
-    <div {...others} className={combineClassNames(classes)} style={combinedStyle}>
+    <div {...others} className={classes} style={combinedStyle}>
       {children}
     </div>
   );

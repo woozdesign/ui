@@ -1,11 +1,12 @@
 'use client';
 import React, { FC, HTMLProps, ChangeEvent, useState, useEffect, useCallback } from 'react';
 import styles from './Checkbox.module.scss';
-import { ColorProp, RadiusProp, SizeProp, combineClassNames } from '@/utils';
+import { ColorProp, RadiusProp, SizeProp } from '@/utils';
 import { FormChildProps } from '../Form/Form';
 import Typography from '../Typography';
 import { Icon } from '@woozdesign/icons';
 import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
+import classNames from 'classnames';
 
 interface CheckboxProps extends Omit<HTMLProps<HTMLInputElement>, 'type' | 'color' | 'size' | 'onChange'>, ColorProp, SizeProp, RadiusProp, FormChildProps {
   onChange?: () => void;
@@ -47,15 +48,15 @@ const Checkbox: FC<CheckboxProps> = ({ color, radius, size = 'medium', onChange,
     }
   };
 
-  const classNameList = [styles.checkbox, styles[`checkbox--${size}`], isChecked ? styles['checkbox--checked'] : '', isDisabled ? styles['checkbox--disabled'] : ''];
+  const classNameList = classNames(styles.checkbox, styles[`checkbox--${size}`], isChecked && styles['checkbox--checked'], isDisabled && styles['checkbox--disabled']);
 
   return (
     <div className={styles.wrapper}>
-      <div className={combineClassNames(classNameList)} data-accent-color={color} data-radius={radius} onClick={handleCheckboxClick}>
+      <div className={classNameList} data-accent-color={color} data-radius={radius} onClick={handleCheckboxClick}>
         <input type="checkbox" {...props} className={styles.input} onChange={handleChange} onInvalid={handleInvalid} disabled={isDisabled} checked={isChecked} />
-        <span className={combineClassNames([styles.checkmark, error ? styles['error'] : ''])}>{isChecked && <Icon type={'Check'} size={size} />}</span>
+        <span className={classNames(styles.checkmark, error && styles['error'])}>{isChecked && <Icon type={'Check'} size={size} />}</span>
         {label && (
-          <Typography.Text className={combineClassNames([styles.label])}>
+          <Typography.Text className={styles.label}>
             {props.required && <span style={{ color: 'var(--color-red-9)', marginRight: '4px' }}>*</span>}
             {label}
           </Typography.Text>

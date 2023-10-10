@@ -1,31 +1,34 @@
 'use client';
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { combineClassNames } from '@/utils/helper/combineClassNames';
+import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Typography.module.scss';
-import { TextProps, HeadingProps, StrongProps } from './Typography.props';
+import { HeadingProps, StrongProps, TextProps } from './Typography.props';
 
 const Heading: FC<HeadingProps> = ({ variant = 'h1', size = 8, align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other }) => {
   const Tag = variant as keyof JSX.IntrinsicElements;
 
-  const headingStyle = [styles[`heading--${size}`], styles[`heading--${weight}`], styles[`heading--${align}`], highContrast ? styles[`heading--highContrast`] : ''];
-  const combinedClass = combineClassNames([...headingStyle, className]);
+  const headingStyle = classNames(
+    styles[`heading--${size}`],
+    styles[`heading--${weight}`],
+    styles[`heading--${align}`],
+    { [styles[`heading--highContrast`]]: highContrast },
+    className,
+  );
 
   return (
-    <Tag className={combinedClass} data-accent-color={color} {...other}>
+    <Tag className={headingStyle} data-accent-color={color} {...other}>
       {children}
     </Tag>
   );
 };
 
 const Text: FC<TextProps> = ({ children, size = 4, color = 'gray', weight = 'normal', variant = 'span', highContrast = true, className, ...other }) => {
-  const textStyle = [styles[`text--${size}`], styles[`text--${weight}`], highContrast ? styles[`text--highContrast`] : '', className ?? ''];
+  const textStyle = classNames(styles[`text--${size}`], styles[`text--${weight}`], { [styles[`text--highContrast`]]: highContrast }, className);
   const Tag = variant as keyof JSX.IntrinsicElements;
 
-  const combinedClass = combineClassNames([...textStyle]);
-
   return (
-    <Tag className={combinedClass} data-accent-color={color} {...other}>
+    <Tag className={textStyle} data-accent-color={color} {...other}>
       {children}
     </Tag>
   );

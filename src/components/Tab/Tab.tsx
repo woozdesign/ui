@@ -3,6 +3,7 @@ import React, { useState, useContext, ReactNode, FC } from 'react';
 import styles from './Tab.module.scss';
 import Button from '../Button';
 import { ColorProp, RadiusProp, SizeProp, combineClassNames } from '@/utils';
+import classNames from 'classnames';
 
 interface TabContextProps {
   activeTab: string;
@@ -50,10 +51,13 @@ export const Trigger: FC<TriggerProps> = ({ value, href, children, color, size =
   const context = useContext(TabContext);
   if (!context) throw new Error('Trigger must be used within Root');
   const { activeTab, setActiveTab } = context;
-  const classes = [styles.trigger, value === activeTab ? styles.active : '', styles[`trigger--${size}`], highContrast ? styles['trigger--high-contrast'] : ''];
+  const classes = classNames(styles.trigger, styles[`trigger--${size}`], {
+    [styles['trigger--high-contrast']]: highContrast,
+    [styles['active']]: value === activeTab,
+  });
 
   return (
-    <a href={href} data-accent-color={color} data-radius={radius} className={combineClassNames(classes)} onClick={() => setActiveTab(value)}>
+    <a href={href} data-accent-color={color} data-radius={radius} className={classes} onClick={() => setActiveTab(value)}>
       {children}
     </a>
   );

@@ -1,9 +1,9 @@
 'use client';
-import React, { FC, ReactNode, useState, useContext, useEffect } from 'react';
-import styles from './Modal.module.scss';
-import Card from '../Card';
+import classNames from 'classnames';
+import React, { FC, ReactNode, useContext, useEffect, useState } from 'react';
 import Button from '../Button';
-import { combineClassNames } from '@/utils';
+import Card from '../Card';
+import styles from './Modal.module.scss';
 
 interface ModalContextProps {
   onClose: () => void;
@@ -23,9 +23,8 @@ const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant 
   const [isOpen, setIsOpen] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
 
-  const overlayClasses = [styles.overlay, isOpen ? `${styles.open}` : ''];
-
-  const modalClasses = [styles.modal, isOpen ? `${styles.open}` : ''];
+  const overlayClasses = classNames(styles.overlay, { [styles.open]: isOpen });
+  const modalClasses = classNames(styles.modal, { [styles.open]: isOpen });
   const handleOverlayClick = () => {
     if (variant === 'default') handleClose();
   };
@@ -56,10 +55,8 @@ const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant 
       {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))}
 
       {isRendered && (
-        <div className={combineClassNames(overlayClasses)} onClick={handleOverlayClick}>
-          <div className={combineClassNames(modalClasses)}>
-            {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
-          </div>
+        <div className={overlayClasses} onClick={handleOverlayClick}>
+          <div className={modalClasses}>{React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}</div>
         </div>
       )}
     </ModalContext.Provider>

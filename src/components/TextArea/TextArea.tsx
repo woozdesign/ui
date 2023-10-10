@@ -1,10 +1,10 @@
 'use client';
-import React, { FC, HTMLProps, ChangeEvent, useState } from 'react';
-import styles from './TextArea.module.scss';
-import { combineClassNames } from '@/utils/helper/combineClassNames';
-import Typography from '../Typography/Typography';
-import { FormChildProps } from '../Form/Form';
 import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
+import classNames from 'classnames';
+import React, { ChangeEvent, FC, HTMLProps, useState } from 'react';
+import { FormChildProps } from '../Form/Form';
+import Typography from '../Typography/Typography';
+import styles from './TextArea.module.scss';
 
 interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size'> {
   variant?: 'solid' | 'ghost';
@@ -43,10 +43,10 @@ const TextArea: FC<TextAreaProps> = ({ variant = 'solid', size = 2, label, resiz
     }
   };
 
-  const classes = [styles.textArea, error ? styles.textAreaError : '', resizable ? styles.resizable : '', styles[`textArea--${variant}`]];
+  const classes = classNames(styles.textArea, styles[`textArea--${variant}`], { [styles.textAreaError]: error, [styles.resizable]: resizable });
 
   return (
-    <div className={combineClassNames([styles.wrapper, styles[`size${size}`]])}>
+    <div className={classNames(styles.wrapper, styles[`size${size}`])}>
       {label && (
         <div>
           <Typography.Text variant={'div'} className={styles.label}>
@@ -62,7 +62,7 @@ const TextArea: FC<TextAreaProps> = ({ variant = 'solid', size = 2, label, resiz
         onChange={handleInput}
         onInvalid={handleInvalid}
         onKeyPress={handleKeyPress} // Add the handleKeyPress method here
-        className={combineClassNames(classes)}
+        className={classes}
       />
       {error && <div className={styles.error}>{error}</div>}
     </div>

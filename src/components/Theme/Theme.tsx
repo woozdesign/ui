@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { combineClassNames } from '@/utils';
+import classNames from 'classnames';
 import { getMatchingGrayColor, ThemeOptions, themeDefaults } from './ThemeOptions';
 
 interface ThemeChangeHandlers {
@@ -126,7 +126,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
   } = props;
   const Comp = 'div';
 
-  const classes = combineClassNames([`woozdesign`, `woozdesign-${appearance}`, `${appearance}`, `${appearance}-theme`, themeProps.className ?? '']);
+  const classes = classNames(`woozdesign`, `woozdesign-${appearance}`, `${appearance}`, `${appearance}-theme`, themeProps.className);
   return (
     <ThemeContext.Provider
       value={React.useMemo(

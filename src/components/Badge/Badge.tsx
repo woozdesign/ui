@@ -1,6 +1,6 @@
 'use client';
 import React, { FC } from 'react';
-import { combineClassNames } from '@/utils/helper/combineClassNames';
+import classNames from 'classnames';
 import styles from './Badge.module.scss';
 import { ColorProp, RadiusProp, SizeProp } from '@/utils';
 
@@ -11,10 +11,10 @@ interface BadgeProps extends ColorProp, SizeProp, RadiusProp {
 }
 
 const Badge: FC<BadgeProps> = ({ variant = 'ghost', label, color, highContrast = false, radius }) => {
-  const classNameList = [styles.badge, styles[`badge--${variant}`], highContrast ? styles[`badge--high-contrast`] : ''];
+  const classes = classNames(styles.badge, styles[`badge--${variant}`], { [styles['badge--high-contrast']]: highContrast });
 
   return (
-    <div className={combineClassNames(classNameList)} data-accent-color={color} data-radius={radius}>
+    <div className={classes} data-accent-color={color} data-radius={radius}>
       {label}
     </div>
   );

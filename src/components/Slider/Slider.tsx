@@ -1,8 +1,9 @@
 'use client';
-import React, { FC, useState, useRef, useCallback, useEffect } from 'react';
-import styles from './Slider.module.scss';
-import { ColorProp, RadiusProp, combineClassNames } from '@/utils';
+import { ColorProp, RadiusProp } from '@/utils';
+import classNames from 'classnames';
+import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import Range from './Range';
+import styles from './Slider.module.scss';
 import Thumb from './Thumb';
 
 interface SliderProps extends ColorProp, RadiusProp {
@@ -29,7 +30,7 @@ const Slider: FC<SliderProps> = ({
 }) => {
   if (trackSize > thumbSize) thumbSize = trackSize * 1.2;
 
-  const classes = [styles.slider, styles[`slider--${orientation}`]];
+  const classes = classNames(styles.slider, styles[`slider--${orientation}`]);
   const [minValue, setMinValue] = useState(defaultValue.length > 1 ? defaultValue[0] : 0);
   const [maxValue, setMaxValue] = useState(defaultValue.length > 1 ? defaultValue[1] : defaultValue[0]);
   const sliderRef = useRef<HTMLDivElement>(null);
@@ -88,7 +89,7 @@ const Slider: FC<SliderProps> = ({
 
   return (
     <div
-      className={combineClassNames(classes)}
+      className={classes}
       style={orientation === 'vertical' ? { width: `${trackSize}px`, height: '100%' } : { height: `${trackSize}px`, width: '100%' }}
       data-accent-color={color}
       data-radius={radius}

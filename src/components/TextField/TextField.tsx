@@ -1,10 +1,10 @@
 'use client';
-import { combineClassNames } from '@/utils/helper/combineClassNames';
+import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
+import classNames from 'classnames';
 import React, { ChangeEvent, FC, useState } from 'react';
+import { FormChildProps } from '../Form/Form';
 import Typography from '../Typography/Typography';
 import styles from './TextField.module.scss';
-import { FormChildProps } from '../Form/Form';
-import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
 
 export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'>, FormChildProps {
   variant?: 'solid' | 'ghost';
@@ -32,8 +32,8 @@ const TextField: FC<TextFieldProps> = ({
   hasSubmitted = false,
   ...others
 }) => {
-  const groupClasses = [styles.group, styles[size], block ? styles.block : ''];
-  const inputClasses = [styles.input, iconPrepend ? styles.hasPrependIcon : ''];
+  const groupClasses = classNames(styles.group, styles[size], block && styles.block);
+  const inputClasses = classNames(styles.input, iconPrepend && styles.hasPrependIcon);
 
   const [error, setError] = useState<string | null>(null);
 
@@ -61,7 +61,7 @@ const TextField: FC<TextFieldProps> = ({
   };
 
   return (
-    <div className={combineClassNames([styles.wrapper, styles[size]])}>
+    <div className={classNames(styles.wrapper, styles[size])}>
       {label && (
         <div>
           <Typography.Text variant={'div'} className={styles.label}>
@@ -70,7 +70,7 @@ const TextField: FC<TextFieldProps> = ({
           </Typography.Text>
         </div>
       )}
-      <div className={combineClassNames(groupClasses)}>
+      <div className={groupClasses}>
         {iconPrepend && <span className={styles.iconPrepend}>{iconPrepend}</span>}
         <input
           {...others}
@@ -78,7 +78,7 @@ const TextField: FC<TextFieldProps> = ({
           onChange={handleInput}
           onKeyPress={handleKeyPress}
           onInvalid={handleInvalid}
-          className={combineClassNames([...inputClasses, error ? styles.inputError : '', styles[`input--${variant}`]])}
+          className={classNames(inputClasses, error && styles.inputError, styles[`input--${variant}`])}
         />
         {iconAppend && <span className={styles.iconAppend}>{iconAppend}</span>}
       </div>

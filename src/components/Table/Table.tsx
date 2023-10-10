@@ -1,7 +1,7 @@
 'use client';
 /* eslint-disable react/display-name */
 import React, { FC, ReactNode, HTMLProps } from 'react';
-import { combineClassNames } from '@/utils';
+import classNames from 'classnames';
 import styles from './Table.module.scss';
 
 interface TableProps extends HTMLProps<HTMLTableElement> {

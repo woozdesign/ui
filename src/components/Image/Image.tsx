@@ -1,7 +1,8 @@
 'use client';
-import React, { useState, useRef, useEffect } from 'react';
+import { RadiusProp, isElementInViewport } from '@/utils';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './Image.module.scss';
-import { RadiusProp, combineClassNames, isElementInViewport } from '@/utils';
+import classNames from 'classnames';
 
 export interface ImageProps extends RadiusProp {
   src: string;
@@ -72,8 +73,9 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoa
     objectFit,
   };
 
+  const classes = classNames(styles.imageContainer, className);
   return (
-    <div className={combineClassNames([styles.imageContainer, className || ''])} style={{ width, height }} data-radius={radius}>
+    <div className={classes} style={{ width, height }} data-radius={radius}>
       {!error && (
         <>
           <img
@@ -88,7 +90,7 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoa
               setLoaded(true);
             }}
             onError={handleImageLoadError}
-            className={`${styles.mainImage} ${loaded ? styles.loaded : ''} ${!placeholder ? styles.noPlaceholder : ''}`}
+            className={classNames(styles.mainImage, { [styles.loaded]: loaded, [styles.noPlaceholder]: !placeholder })}
           />
           {!loaded && placeholder && (
             <img
@@ -100,7 +102,7 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoa
               onLoad={() => {
                 setPlaceHolderLoaded(true);
               }}
-              className={`${styles.placeholderImage} ${placeHolderLoaded ? styles.loaded : ''}`}
+              className={classNames(styles.placeholderImage, { [styles.loaded]: placeHolderLoaded })}
               onError={handleImageLoadError}
             />
           )}

@@ -1,8 +1,8 @@
 'use client';
+import { ColorProp } from '@/utils';
+import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Breadcrumb.module.scss';
-import Button from '../Button';
-import { ColorProp, combineClassNames } from '@/utils';
 
 export type BreadcrumbItem = {
   key: string;
@@ -18,18 +18,22 @@ interface BreadcrumbProps extends ColorProp {
 }
 
 const Breadcrumb: FC<BreadcrumbProps> = ({ items, divider = '/', color = 'gray', highContrast = true }) => {
-  const classes = [styles[`wrapper`]];
+  const classes = classNames(styles.wrapper);
+
   return (
-    <div data-accent-color={color} className={combineClassNames(classes)}>
+    <div data-accent-color={color} className={classes}>
       {items.map((item, index) => {
-        const itemClasses = [styles[`item`], item.active ? styles[`item--active`] : '', highContrast ? styles[`item--highContrast`] : ''];
+        const itemClasses = classNames(styles.item, { [styles[`item--active`]]: item.active }, { [styles[`item--highContrast`]]: highContrast });
+
+        const dividerClasses = classNames(styles.divider, { [styles[`divider--highContrast`]]: highContrast });
+
         return (
-          <>
-            <a className={combineClassNames(itemClasses)} key={item.key} href={item.href}>
+          <React.Fragment key={item.key}>
+            <a className={itemClasses} href={item.href}>
               {item.title}
             </a>
-            {index < items.length - 1 && <span className={combineClassNames([styles.divider, highContrast ? styles[`divider--highContrast`] : ''])}>{divider}</span>}
-          </>
+            {index < items.length - 1 && <span className={dividerClasses}>{divider}</span>}
+          </React.Fragment>
         );
       })}
     </div>
