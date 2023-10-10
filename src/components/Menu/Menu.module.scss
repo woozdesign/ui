@@ -31,13 +31,13 @@
       justify-content: center;
     }
     &:hover {
-      background-color: var(--color-accent-a4);
+      background-color: var(--color-accent-a5);
     }
 
     &.active {
-      background-color: var(--color-accent-4);
+      background-color: var(--color-accent-5);
       &:hover {
-        background-color: var(--color-accent-5);
+        background-color: var(--color-accent-6);
       }
     }
 
@@ -85,7 +85,6 @@
   }
 
   &--label {
-    font-size: var(--font-size-3);
     color: var(--color-accent-12);
     font-weight: bold;
 
@@ -94,18 +93,21 @@
     }
 
     &--large {
+      font-size: var(--font-size-5);
       padding: var(--space-0) var(--space-5);
-    }
-
-    &--medium {
-      padding: var(--space-0) var(--space-4);
     }
 
     &--xlarge {
+      font-size: var(--font-size-5);
       padding: var(--space-0) var(--space-5);
+    }
+    &--medium {
+      font-size: var(--font-size-4);
+      padding: var(--space-0) var(--space-4);
     }
 
     &--small {
+      font-size: var(--font-size-3);
       padding: var(--space-0) var(--space-3);
     }
   }
