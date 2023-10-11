@@ -1,0 +1,51 @@
+.button--text {
+  color: var(--color-accent-9);
+  background-color: transparent;
+  // background-color: rgba(var(--color-accent-90), 0.2);
+
+  &:hover {
+    background-color: var(--color-accent-a4);
+  }
+
+  &:active {
+    // background-color: rgba(var(--color-accent-80), 0.2);
+    box-shadow: boxShadowAlpha(var(--color-accent-9));
+  }
+
+  &:focus {
+    // box-shadow: boxShadow(var(--color-accent-90));
+  }
+  > .icon-prepend {
+    color: var(--color-accent-9);
+  }
+
+  > .icon-append {
+    color: var(--color-accent-9);
+  }
+
+  &.button--high-contrast {
+    color: var(--color-accent-12);
+    background-color: transparent;
+    // background-color: rgba(var(--color-accent-90), 0.2);
+
+    &:hover {
+      background-color: var(--color-accent-a4);
+    }
+
+    &:active {
+      // background-color: rgba(var(--color-accent-80), 0.2);
+      box-shadow: boxShadowAlpha(var(--color-accent-12));
+    }
+
+    &:focus {
+      // box-shadow: boxShadow(var(--color-accent-90));
+    }
+    > .icon-prepend {
+      color: var(--color-accent-12);
+    }
+
+    > .icon-append {
+      color: var(--color-accent-12);
+    }
+  }
+}

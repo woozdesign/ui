@@ -1,10 +1,9 @@
 /// <reference types="react" />
-import { ColorProp, TextSizeProp } from '../../utils/helper/props';
-export interface TypographyProps extends TextSizeProp {
+import { ColorProp, HighContrastProp, TextSizeProp } from '../../utils/helper/props';
+export interface TypographyProps extends TextSizeProp, HighContrastProp {
     className?: string;
     children?: React.ReactNode;
     style?: React.CSSProperties;
-    highContrast?: boolean;
     weight?: 'light' | 'normal' | 'bold' | 'bolder';
     align?: 'start' | 'center' | 'end';
 }
