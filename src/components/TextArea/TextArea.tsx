@@ -7,7 +7,7 @@ import Typography from '../Typography/Typography';
 import styles from './TextArea.module.scss';
 import { ColorProp, RadiusProp } from '@/utils';
 
-interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size'>, RadiusProp, ColorProp {
+interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size' | 'color'>, RadiusProp, ColorProp {
   variant?: 'solid' | 'ghost';
   size?: 1 | 2 | 3 | 4 | 5; // Number of visible lines
   label?: string;

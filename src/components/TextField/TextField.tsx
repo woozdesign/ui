@@ -7,7 +7,7 @@ import Typography from '../Typography/Typography';
 import styles from './TextField.module.scss';
 import { ColorProp, RadiusProp, SizeProp } from '@/utils';
 
-export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'>, FormChildProps, RadiusProp, SizeProp, ColorProp {
+export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size' | 'color'>, FormChildProps, RadiusProp, SizeProp, ColorProp {
   variant?: 'solid' | 'ghost';
   label?: string;
   iconPrepend?: JSX.Element;

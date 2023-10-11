@@ -6,10 +6,10 @@ export interface TypographyProps extends TextSizeProp {
     style?: React.CSSProperties;
     highContrast?: boolean;
     weight?: 'light' | 'normal' | 'bold' | 'bolder';
+    align?: 'start' | 'center' | 'end';
 }
 export interface HeadingProps extends ColorProp, TypographyProps {
     variant?: Extract<keyof JSX.IntrinsicElements, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
-    align?: 'start' | 'center' | 'end';
 }
 export interface TextProps extends ColorProp, TypographyProps {
     variant?: Extract<keyof JSX.IntrinsicElements, 'p' | 'label' | 'div' | 'span'>;

@@ -1,8 +1,8 @@
 import React, { ChangeEvent, FC } from 'react';
 import { FormChildProps } from '../Form/Form';
-export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'>, FormChildProps {
+import { ColorProp, RadiusProp, SizeProp } from '../../utils';
+export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size' | 'color'>, FormChildProps, RadiusProp, SizeProp, ColorProp {
     variant?: 'solid' | 'ghost';
-    size?: 'large' | 'medium' | 'small';
     label?: string;
     iconPrepend?: JSX.Element;
     iconAppend?: JSX.Element;
