@@ -1,12 +1,11 @@
-import { ColorProp, RadiusProp, SizeProp } from '@/utils';
+import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '@/utils';
 
 export type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 export type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
-export interface BaseProps extends ColorProp, SizeProp, RadiusProp {
+export interface BaseProps extends ColorProp, SizeProp, RadiusProp, HighContrastProp {
   variant?: 'solid' | 'outlined' | 'ghost' | 'text';
   buttonType?: 'button' | 'reset' | 'submit';
   disabled?: boolean;
-  highContrast?: boolean;
   children?: React.ReactNode;
   href?: string;
 }

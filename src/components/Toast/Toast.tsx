@@ -1,4 +1,4 @@
-import { ColorProp, RadiusProp } from '@/utils';
+import { ColorProp, HighContrastProp, RadiusProp } from '@/utils';
 import { Icon } from '@woozdesign/icons';
 import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
@@ -6,12 +6,11 @@ import Typography from '../Typography';
 import styles from './Toast.module.scss';
 // ... (your imports remain unchanged)
 
-interface ToastProps extends ColorProp, RadiusProp {
+interface ToastProps extends ColorProp, RadiusProp, HighContrastProp {
   id: number; // Added id to identify each toast
   iconPrepend?: React.ReactNode;
   message: string;
   duration?: number;
-  highContrast?: boolean;
   placement: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
 }
 
@@ -49,7 +48,7 @@ const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
     }, 400); // delay to allow the toast to fade out before removal
   };
 
-  const classes = classNames(styles.toast, styles[toast.placement || 'topLeft'], { [styles.open]: isOpen, [styles[`toast--highContrast`]]: toast.highContrast });
+  const classes = classNames(styles.toast, styles[toast.placement || 'bottomRight'], { [styles.open]: isOpen, [styles[`toast--highContrast`]]: toast.highContrast });
 
   return (
     <div data-accent-color={toast.color} data-radius={toast.radius} className={classes} ref={toastRef}>
@@ -66,7 +65,7 @@ const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
 const ToastList: React.FC<{ toasts: ToastProps[]; handleClose: (id: number) => void }> = ({ toasts, handleClose }) => {
   const groupedToasts = toasts.reduce<{ [key in ToastProps['placement']]: ToastProps[] }>(
     (acc, toast) => {
-      const placement: ToastProps['placement'] = toast.placement || 'topLeft';
+      const placement: ToastProps['placement'] = toast.placement || 'bottomRight';
 
       if (!acc[placement]) acc[placement] = [];
       acc[placement].push(toast);

@@ -1,5 +1,5 @@
 'use client';
-import { ColorProp } from '@/utils';
+import { ColorProp, HighContrastProp } from '@/utils';
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Breadcrumb.module.scss';
@@ -11,10 +11,9 @@ export type BreadcrumbItem = {
   active: boolean;
 };
 
-interface BreadcrumbProps extends ColorProp {
+interface BreadcrumbProps extends ColorProp, HighContrastProp {
   items: BreadcrumbItem[];
   divider?: React.ReactNode;
-  highContrast?: boolean;
 }
 
 const Breadcrumb: FC<BreadcrumbProps> = ({ items, divider = '/', color = 'gray', highContrast = true }) => {
