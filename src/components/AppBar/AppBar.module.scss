@@ -1,13 +1,14 @@
 @import '@/styles/lib/breakpoints.scss';
 
 .wrapper {
+  --appbar-height: calc(64px * var(--scaling));
   width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  height: calc(64px * var(--scaling));
+  height: var(--appbar-height);
   padding: var(--space-2) var(--space-6);
 
   &--solid {
