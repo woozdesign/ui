@@ -1,4 +1,4 @@
-import { ColorProp } from '../../utils';
+import { ColorProp, HighContrastProp } from '../../utils';
 import React, { FC } from 'react';
 export type BreadcrumbItem = {
     key: string;
@@ -6,10 +6,9 @@ export type BreadcrumbItem = {
     title: string;
     active: boolean;
 };
-interface BreadcrumbProps extends ColorProp {
+interface BreadcrumbProps extends ColorProp, HighContrastProp {
     items: BreadcrumbItem[];
     divider?: React.ReactNode;
-    highContrast?: boolean;
 }
 declare const Breadcrumb: FC<BreadcrumbProps>;
 export default Breadcrumb;

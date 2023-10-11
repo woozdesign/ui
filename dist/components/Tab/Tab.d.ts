@@ -1,4 +1,4 @@
-import { ColorProp, RadiusProp, SizeProp } from '../../utils';
+import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '../../utils';
 import React, { FC, ReactNode } from 'react';
 interface RootProps {
     children: ReactNode;
@@ -10,10 +10,9 @@ export interface ListProps {
     children: ReactNode;
 }
 export declare const List: FC<ListProps>;
-export interface TriggerProps extends ColorProp, SizeProp, RadiusProp {
+export interface TriggerProps extends ColorProp, SizeProp, RadiusProp, HighContrastProp {
     value: string;
     href?: string;
-    highContrast?: boolean;
     children: ReactNode;
 }
 export declare const Trigger: FC<TriggerProps>;
