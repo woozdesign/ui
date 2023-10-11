@@ -16,7 +16,7 @@ const AppBar: FC<AppBarProps> & {
   Action: FC<ActionProps>;
 } = ({ children, variant = 'solid', position = 'fixed' }) => {
   const classes = classNames(styles[`wrapper`], styles[`wrapper--${variant}`], styles[`wrapper--${position}`]);
-  return <header className={classes}>{children}</header>;
+  return <div className={classes}>{children}</div>;
 };
 
 interface HeadingProps {

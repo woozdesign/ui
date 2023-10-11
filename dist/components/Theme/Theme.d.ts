@@ -8,17 +8,15 @@ interface ThemeChangeHandlers {
 }
 interface ThemeContextValue extends ThemeOptions, ThemeChangeHandlers {
 }
+declare const useThemeContext: () => ThemeContextValue;
 interface ThemeProviderProps extends ThemeRootProps {
 }
+declare const ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
 interface ThemeRootProps extends ThemeImplPublicProps {
 }
 interface ThemeImplPublicProps extends Omit<React.ComponentPropsWithoutRef<'div'>, 'dir'>, Partial<ThemeOptions> {
     isRoot?: boolean;
 }
-declare const _default: {
-    ThemeProvider: React.ForwardRefExoticComponent<ThemeProviderProps & React.RefAttributes<HTMLDivElement>>;
-    useThemeContext: () => ThemeContextValue;
-    updateThemeAppearanceClass: (appearance: "inherit" | "dark" | "light") => void;
-};
-export default _default;
+declare const updateThemeAppearanceClass: (appearance: ThemeOptions['appearance']) => void;
+export { ThemeProvider, useThemeContext, updateThemeAppearanceClass };
 export type { ThemeProviderProps };

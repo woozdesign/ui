@@ -22,9 +22,10 @@ export { default as Tab } from './Tab';
 export { default as Table } from './Table';
 export { default as TextArea } from './TextArea';
 export { default as TextField } from './TextField';
-export { default as Theme } from './Theme';
+
 export { default as Tooltip } from './Tooltip';
 export { default as Typography } from './Typography';
 
+export * from './Theme';
 export * from './Toast';
 console.log('%cDesigned with WoozDesign', 'font-size: 12px;font-family: monospace;background: black;display: inline-block;color: white;padding: 15px;border: 2px solid white;');
