@@ -144,8 +144,6 @@
 
 // $colors: tomato, red, ruby, crimson, pink, plum, purple, violet, iris, indigo, blue, cyan, teal, jade, green, grass, orange, brown, sky, mint, lime, yellow, amber, gold, bronze,
 
-$colors: 'tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet', 'iris', 'indigo', 'blue', 'cyan', 'teal', 'jade', 'green', 'grass', 'orange', 'brown', 'sky',
-  'mint', 'lime', 'yellow', 'amber', 'gold', 'bronze', 'gray'; // your array of color names
 @mixin accentScales($colorName) {
   [data-accent-color='#{$colorName}'] {
     --color-surface-accent: var(--color-#{$colorName}-surface);
@@ -178,6 +176,8 @@ $colors: 'tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet',
     --color-accent-a12: var(--color-#{$colorName}-a12);
   }
 }
+$colors: 'tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet', 'iris', 'indigo', 'blue', 'cyan', 'teal', 'jade', 'green', 'grass', 'orange', 'brown', 'sky',
+  'mint', 'lime', 'yellow', 'amber', 'gold', 'bronze', 'gray'; // your array of color names
 
 @each $color in $colors {
   @include accentScales($color);

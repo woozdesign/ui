@@ -3,6 +3,8 @@ export type ThemeAccentColor = 'gray' | 'gold' | 'bronze' | 'brown' | 'yellow' |
 type ThemeAppearance = 'inherit' | 'light' | 'dark';
 export type ThemeRadius = 'none' | 'small' | 'medium' | 'large' | 'full';
 export type ThemeScaling = '90%' | '95%' | '100%' | '105%' | '110%';
+export type ThemeHighContrast = true | false;
+export type ThemeShadow = 'none' | 'small' | 'medium' | 'large' | 'full';
 export type ThemeOptions = {
     accentColor: ThemeAccentColor;
     appearance: ThemeAppearance;

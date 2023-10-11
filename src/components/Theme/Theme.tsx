@@ -126,7 +126,14 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
   } = props;
   const Comp = 'div';
 
-  const classes = classNames(`woozdesign`, `woozdesign-${appearance}`, `${appearance}`, `${appearance}-theme`, themeProps.className);
+  const classes = classNames(
+    `woozdesign`,
+    {
+      light: !isRoot && appearance == 'light',
+      dark: !isRoot && appearance == 'dark',
+    },
+    themeProps.className,
+  );
   return (
     <ThemeContext.Provider
       value={React.useMemo(
@@ -184,5 +191,5 @@ const updateThemeAppearanceClass = (appearance: ThemeOptions['appearance']) => {
   }
 };
 
-export default { ThemeProvider, useThemeContext, updateThemeAppearanceClass };
+export { ThemeProvider, useThemeContext, updateThemeAppearanceClass };
 export type { ThemeProviderProps };
