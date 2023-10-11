@@ -6,8 +6,8 @@ import '@woozdesign/ui/styles.css';
 
 export const RootStyleRegistry = ({ children }: React.PropsWithChildren) => {
   return (
-    <Theme.ThemeProvider appearance="dark" accentColor={'blue'} radius={'full'}>
+    <ThemeProvider appearance="dark" accentColor={'blue'} radius={'full'}>
       {children}
-    </Theme.ThemeProvider>
+    </ThemeProvider>
   );
 };

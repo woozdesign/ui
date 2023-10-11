@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import ProgressCircular from './ProgressCircular';
 import '@/styles/core.scss';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 
 export default {
   title: 'Components/ProgressCircular',
@@ -11,10 +11,10 @@ export default {
 
 // ProgressCircular Story
 const ProgressCircularTemplate: Story = (args) => (
-  <Theme.ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'dark'}>
     <ProgressCircular {...args} />
     <ProgressCircular indeterminate color="red" />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 export const Default = ProgressCircularTemplate.bind({});
 Default.args = {};

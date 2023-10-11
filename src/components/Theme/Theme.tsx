@@ -192,4 +192,4 @@ const updateThemeAppearanceClass = (appearance: ThemeOptions['appearance']) => {
 };
 
 export { ThemeProvider, useThemeContext, updateThemeAppearanceClass };
-export type { ThemeProviderProps };
+export type { ThemeProviderProps, ThemeOptions };

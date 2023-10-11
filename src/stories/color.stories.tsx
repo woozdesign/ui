@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 
 import '@/styles/core.scss';
 import Layout from '../components/Layout/Layout';
-import Theme from '../components/Theme/Theme';
+import { ThemeProvider } from '../components/Theme/Theme';
 import { COLOR_SCALES } from '../components/Theme/ThemeOptions';
 import Card from '../components/Card';
 
@@ -18,7 +18,7 @@ const Template: Story = () => {
   const colors: string[] = COLOR_SCALES;
 
   return (
-    <Theme.ThemeProvider>
+    <ThemeProvider>
       <Layout.Container>
         <Layout.Row>
           {colors.map((color) => {
@@ -44,7 +44,7 @@ const Template: Story = () => {
           })}
         </Layout.Row>
       </Layout.Container>
-    </Theme.ThemeProvider>
+    </ThemeProvider>
   );
 };
 

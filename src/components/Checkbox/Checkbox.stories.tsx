@@ -1,7 +1,7 @@
 import React from 'react';
 import { Story, Meta } from '@storybook/react/types-6-0';
 import Checkbox, { CheckboxProps } from './Checkbox';
-import Theme from '../Theme';
+import { ThemeProvider } from '../Theme';
 
 export default {
   title: 'Components/Checkbox',
@@ -13,9 +13,9 @@ export default {
 } as Meta;
 
 const Template: Story<CheckboxProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <Checkbox {...args} />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

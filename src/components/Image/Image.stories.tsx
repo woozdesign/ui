@@ -3,7 +3,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Image, { ImageProps } from './Image';
-import Theme from '../Theme';
+import { ThemeProvider } from '../Theme';
 
 export default {
   title: 'Components/Image',
@@ -11,11 +11,11 @@ export default {
 } as Meta;
 
 const Template: Story<ImageProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <div style={{ width: '320px', height: '320px' }}>
       <Image {...args} />
     </div>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});
@@ -56,7 +56,7 @@ ImageSize.args = {
 };
 
 const LazyTemplate: Story<ImageProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <div style={{ width: '320px', height: '150vh' }}>
       <Image src={'https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?&w=800&q=80'} lazyLoad={args.lazyLoad} />
     </div>
@@ -66,7 +66,7 @@ const LazyTemplate: Story<ImageProps> = (args) => (
     <div style={{ width: '320px', height: '150vh' }}>
       <Image src="https://plus.unsplash.com/premium_photo-1664541336896-b3d5f7dec9a3" lazyLoad={args.lazyLoad} />
     </div>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const LazyImage = LazyTemplate.bind({});

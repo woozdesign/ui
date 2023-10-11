@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import TextField, { TextFieldProps } from './TextField';
 import '@/styles/core.scss';
 
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 import { Icon } from '@woozdesign/icons';
 
 export default {
@@ -17,9 +17,9 @@ export default {
 } as Meta;
 
 const Template: Story<TextFieldProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <TextField {...args} />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

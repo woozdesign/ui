@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Menu, { MenuProps } from './Menu';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 import '@/styles/core.scss';
 import { Icon } from '@woozdesign/icons';
 
@@ -11,9 +11,9 @@ export default {
 } as Meta;
 
 const Template: Story<MenuProps> = (args) => (
-  <Theme.ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'dark'}>
     <Menu {...args} />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

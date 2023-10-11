@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Tooltip from './Tooltip';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 import Button from '../Button';
 
 export default {
@@ -10,13 +10,13 @@ export default {
 } as Meta;
 
 const Template: Story<{ content: string; multiline?: boolean }> = (args) => (
-  <Theme.ThemeProvider appearance="dark">
+  <ThemeProvider appearance="dark">
     <div style={{ height: '320px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
       <Tooltip {...args}>
         <Button>button</Button>
       </Tooltip>
     </div>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

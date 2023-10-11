@@ -19,4 +19,4 @@ interface ThemeImplPublicProps extends Omit<React.ComponentPropsWithoutRef<'div'
 }
 declare const updateThemeAppearanceClass: (appearance: ThemeOptions['appearance']) => void;
 export { ThemeProvider, useThemeContext, updateThemeAppearanceClass };
-export type { ThemeProviderProps };
+export type { ThemeProviderProps, ThemeOptions };

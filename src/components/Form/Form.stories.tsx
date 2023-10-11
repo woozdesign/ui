@@ -5,7 +5,7 @@ import Form from './Form';
 import TextField from '../TextField';
 import Button from '../Button';
 import '@/styles/core.scss';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 import TextArea from '../TextArea/TextArea';
 import Checkbox from '../Checkbox/Checkbox';
 import Switch from '../Switch';
@@ -32,7 +32,7 @@ const Template: Story = (args) => {
   };
 
   return (
-    <Theme.ThemeProvider>
+    <ThemeProvider>
       <Form id="form1" onSuccess={handleFormSubmit} onError={handleFormError} {...args}>
         <TextField id="1" label="Would you prefer a banana or cherry?" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
         <TextField id="2" label="This is required" required value={requiredValue} onChange={(e) => setRequiredValue(e.target.value)} />
@@ -43,7 +43,7 @@ const Template: Story = (args) => {
 
         <Button buttonType={'submit'}>Submit</Button>
       </Form>
-    </Theme.ThemeProvider>
+    </ThemeProvider>
   );
 };
 

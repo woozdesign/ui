@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Badge, { BadgeProps } from './Badge';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 
 export default {
   title: 'Components/Badge',
@@ -9,9 +9,9 @@ export default {
 } as Meta;
 
 const Template: Story<BadgeProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <Badge {...args} />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Solid = Template.bind({});

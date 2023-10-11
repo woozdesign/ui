@@ -21,7 +21,7 @@
   // background-color: rgba(var(--color-accent-90), 0.2);
 
   &:hover {
-    background-color: var(--color-accent-4);
+    background-color: var(--color-accent-a4);
   }
 
   &.active {
@@ -60,7 +60,7 @@
   &.trigger--high-contrast {
     color: var(--color-accent-12);
     &:hover {
-      background-color: var(--color-accent-5);
+      background-color: var(--color-accent-a5);
     }
 
     &.active {

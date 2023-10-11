@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import AppBar, { AppBarProps } from './AppBar';
-import Theme from '../Theme';
+import { ThemeProvider } from '../Theme';
 import '@/styles/core.scss';
 import Layout from '../Layout/Layout';
 import Button from '../Button';
@@ -16,7 +16,7 @@ export default {
 
 const Template: Story<AppBarProps> = (args) => {
   return (
-    <Theme.ThemeProvider radius={'full'} scaling="90%">
+    <ThemeProvider radius={'full'} scaling="90%">
       <AppBar {...args}>
         <AppBar.Heading>
           <a href="/">
@@ -104,7 +104,7 @@ const Template: Story<AppBarProps> = (args) => {
           <Layout.Col xs={12}>Test</Layout.Col>
         </Layout.Row>
       </Layout.Container>
-    </Theme.ThemeProvider>
+    </ThemeProvider>
   );
 };
 

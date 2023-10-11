@@ -4,7 +4,7 @@ import { Meta, Story } from '@storybook/react';
 import Layout, { ContainerProps, RowProps, ColProps } from './Layout';
 import Card from '../Card';
 import '@/styles/core.scss';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 
 export default {
   title: 'Layout/Layout',
@@ -13,7 +13,7 @@ export default {
 
 // Combined Story with Container, Row, and Col
 export const GridSystemStory: Story<ContainerProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <Layout.Container {...args}>
       <Layout.Row gutter={[32, 32]}>
         <Layout.Col xs={24} sm={3} md={0}>
@@ -70,5 +70,5 @@ export const GridSystemStory: Story<ContainerProps> = (args) => (
         </Layout.Col>
       </Layout.Row>
     </Layout.Container>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Anchor, { AnchorProps } from './Anchor';
-import Theme from '../Theme';
+import { ThemeProvider } from '../Theme';
 import '@/styles/core.scss';
 import Layout from '../Layout/Layout';
 
@@ -12,7 +12,7 @@ export default {
 
 const Template: Story<AnchorProps> = (args) => {
   return (
-    <Theme.ThemeProvider>
+    <ThemeProvider>
       <Layout.Container>
         <Layout.Row>
           <Layout.Col xs={12}>
@@ -54,7 +54,7 @@ const Template: Story<AnchorProps> = (args) => {
           </Layout.Col>
         </Layout.Row>
       </Layout.Container>
-    </Theme.ThemeProvider>
+    </ThemeProvider>
   );
 };
 

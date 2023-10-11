@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Modal from './Modal';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 import Button from '../Button';
 import Typography from '../Typography';
 
@@ -12,7 +12,7 @@ export default {
 
 const Template: Story = () => {
   return (
-    <Theme.ThemeProvider>
+    <ThemeProvider>
       <Modal.Root onClose={() => console.log('Modal Closed')} onConfirm={() => console.log('Modal Confirmed')} onCancel={() => console.log('Modal Cancled')}>
         <Modal.Trigger>
           <Button>Trigger</Button>
@@ -21,13 +21,13 @@ const Template: Story = () => {
           <Typography.Text>This is the content</Typography.Text>
         </Modal.Content>
       </Modal.Root>
-    </Theme.ThemeProvider>
+    </ThemeProvider>
   );
 };
 
 export const Default = Template.bind({});
 const NestedTemplate: Story = () => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <Modal.Root onClose={() => console.log('Modal Closed')} onCancel={() => console.log('Modal Cancled')} onConfirm={() => console.log('Modal Confirmed')}>
       <Modal.Trigger>
         <Button>Open First Modal</Button>
@@ -46,12 +46,12 @@ const NestedTemplate: Story = () => (
         </Modal.Root>
       </Modal.Content>
     </Modal.Root>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const NestedModals = NestedTemplate.bind({});
 const ConfirmTemplate: Story = () => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <Modal.Root onClose={() => console.log('Modal Closed')} onConfirm={() => console.log('Modal Confirmed')} onCancel={() => console.log('Modal Cancled')}>
       <Modal.Trigger>
         <Button>Open First Modal</Button>
@@ -75,7 +75,7 @@ const ConfirmTemplate: Story = () => (
         </Modal.Root>
       </Modal.Content>
     </Modal.Root>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const ConfirmModals = ConfirmTemplate.bind({});
