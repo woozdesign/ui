@@ -16,7 +16,7 @@ export default {
 
 const Template: Story<AppBarProps> = (args) => {
   return (
-    <Theme.ThemeProvider radius={'full'}>
+    <Theme.ThemeProvider radius={'full'} scaling="90%">
       <AppBar {...args}>
         <AppBar.Heading>
           <a href="/">
