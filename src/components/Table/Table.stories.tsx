@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Table from './Table';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 import './Table.module.scss';
 
 export default {
@@ -10,7 +10,7 @@ export default {
 } as Meta;
 
 const Template: Story = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <Table.Root {...args}>
       <Table.Header>
         <Table.Row>
@@ -37,7 +37,7 @@ const Template: Story = (args) => (
         </Table.Row>
       </Table.Body>
     </Table.Root>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

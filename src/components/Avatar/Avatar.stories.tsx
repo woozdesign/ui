@@ -3,7 +3,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Avatar, { AvatarProps } from './Avatar';
-import Theme from '../Theme';
+import { ThemeProvider } from '../Theme';
 import { Icon } from '@woozdesign/icons';
 
 export default {
@@ -12,9 +12,9 @@ export default {
 } as Meta;
 
 const Template: Story<AvatarProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <Avatar {...args} />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const DefaultWithImage = Template.bind({});

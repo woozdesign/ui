@@ -1,6 +1,6 @@
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 import DropdownMenu from './DropdownMenu';
 import Button from '../Button';
 
@@ -11,7 +11,7 @@ export default {
 } as Meta;
 
 const Template: Story = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <DropdownMenu.Root {...args}>
       <DropdownMenu.Trigger shortcut={['Ctrl', 'O']}>
         <Button>Trigger</Button>
@@ -67,7 +67,7 @@ const Template: Story = (args) => (
         </DropdownMenu.Item>
       </DropdownMenu.Content>
     </DropdownMenu.Root>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

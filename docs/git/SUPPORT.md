@@ -6,6 +6,7 @@
 | Component       | Supported | Notes |
 | --------------- | --------- | ----- |
 | Button          | ✅        |       |
+| Icon Button     | ✅        |       |
 | Badge           | ✅        |       |
 | Card            | ✅        |       |
 | Divider         | ✅        |       |

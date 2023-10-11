@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Slider, { SliderProps } from './Slider';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 
 export default {
   title: 'Components/Slider',
@@ -9,11 +9,11 @@ export default {
 } as Meta;
 
 const Template: Story<SliderProps> = (args) => (
-  <Theme.ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'dark'}>
     <div style={{ height: '200px' }}>
       <Slider {...args} />
     </div>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

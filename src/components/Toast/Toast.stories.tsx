@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import React from 'react';
 import Button from '../Button';
 import Layout from '../Layout/Layout';
-import Theme from '../Theme';
+import { ThemeProvider } from '../Theme';
 import Flex from '../Flex';
 import { useToast } from './Toast';
 import { Icon } from '@woozdesign/icons';
@@ -25,7 +25,7 @@ const Template: Story<NotificationProps> = (args) => {
   };
 
   return (
-    <Theme.ThemeProvider>
+    <ThemeProvider>
       {ToastProvider}
 
       <Flex direction={'col'} space={4} width={'100%'} align={'center'} justify={'center'} height={'100%'}>
@@ -38,7 +38,7 @@ const Template: Story<NotificationProps> = (args) => {
           <Button onClick={() => triggerNotification('bottomRight')}>Bottom Right</Button>
         </Flex>
       </Flex>
-    </Theme.ThemeProvider>
+    </ThemeProvider>
   );
 };
 

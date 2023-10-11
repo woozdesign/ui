@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Divider, { DividerProps } from './Divider';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 import '@/styles/core.scss';
 
 export default {
@@ -10,10 +10,10 @@ export default {
 } as Meta;
 
 const Template: Story<DividerProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     {' '}
     <Divider {...args} />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Horizontal = Template.bind({});

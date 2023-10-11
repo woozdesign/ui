@@ -9,6 +9,7 @@ export { default as Checkbox } from './Checkbox';
 export { default as Divider } from './Divider';
 export { default as Flex } from './Flex';
 export { default as Form } from './Form';
+export { default as IconButton } from './IconButton';
 export { default as Image } from './Image';
 export { default as Kbd } from './Kbd';
 export { default as Layout } from './Layout';

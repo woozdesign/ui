@@ -3,13 +3,9 @@ import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '@/utils';
 export type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 export type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
 export interface BaseProps extends ColorProp, SizeProp, RadiusProp, HighContrastProp {
-  variant?: 'solid' | 'outlined' | 'ghost' | 'icon' | 'text';
+  variant?: 'solid' | 'outlined' | 'ghost' | 'text';
   buttonType?: 'button' | 'reset' | 'submit';
-  justify?: 'start' | 'center' | 'end';
-  block?: boolean;
   disabled?: boolean;
-  iconPrepend?: React.ReactNode;
-  iconAppend?: React.ReactNode;
   children?: React.ReactNode;
   href?: string;
 }
@@ -23,4 +19,4 @@ export interface AnchorSpecificProps extends BaseProps, Omit<React.HTMLProps<HTM
   onClick?: AnchorClickHandler;
 }
 
-export type ButtonProps = ButtonSpecificProps | AnchorSpecificProps;
+export type IconButtonProps = ButtonSpecificProps | AnchorSpecificProps;

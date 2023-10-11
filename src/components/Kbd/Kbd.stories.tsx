@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Kbd, { KbdProps } from './Kbd';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 
 export default {
   title: 'Components/Kbd',
@@ -9,9 +9,9 @@ export default {
 } as Meta;
 
 const Template: Story<KbdProps> = (args) => (
-  <Theme.ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'dark'}>
     <Kbd shortcut={['Ctrl', 'Command']} {...args}></Kbd>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

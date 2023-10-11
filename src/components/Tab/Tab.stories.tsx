@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Tab, { RootProps as TabProps, TriggerProps } from './Tab';
 import '@/styles/core.scss';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 
 export default {
   title: 'Components/Tab',
@@ -16,7 +16,7 @@ interface StoryProps extends TabProps {
 }
 
 const Template: Story<StoryProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <Tab.Root defaultValue="account" {...args}>
       <Tab.List>
         <Tab.Trigger color={'gray'} highContrast={args.triggerHighContrast} size={args.triggerSize} value="account">
@@ -42,7 +42,7 @@ const Template: Story<StoryProps> = (args) => (
         </Tab.Content>
       </div>
     </Tab.Root>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

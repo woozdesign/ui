@@ -1,7 +1,7 @@
 'use client';
 import React, { FC, useContext, useState } from 'react';
 
-import { ColorProp, RadiusProp, SizeProp } from '@/utils';
+import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '@/utils';
 import classNames from 'classnames';
 import styles from './Menu.module.scss';
 
@@ -12,23 +12,21 @@ interface MenuContextProps {
 
 const MenuContext = React.createContext<MenuContextProps | undefined>(undefined);
 
-export interface MenuItem extends SizeProp, ColorProp, RadiusProp {
+export interface MenuItem extends SizeProp, ColorProp, RadiusProp, HighContrastProp {
   label: string;
   onClick?: () => void;
   href?: string;
   iconPrepend?: React.ReactNode;
   iconAppend?: React.ReactNode;
-  highContrast?: boolean;
 }
 
 export interface MenuItemProps extends Omit<MenuItem, 'value'> {
   value?: string;
 }
 
-export interface MenuProps extends SizeProp, ColorProp, RadiusProp {
+export interface MenuProps extends SizeProp, ColorProp, RadiusProp, HighContrastProp {
   items: MenuItemProps[];
   defaultValue: string;
-  highContrast?: boolean;
   justify?: 'start' | 'center' | 'end';
 }
 

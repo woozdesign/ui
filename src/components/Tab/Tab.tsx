@@ -1,5 +1,5 @@
 'use client';
-import { ColorProp, RadiusProp, SizeProp } from '@/utils';
+import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '@/utils';
 import classNames from 'classnames';
 import React, { FC, ReactNode, useContext, useState } from 'react';
 import styles from './Tab.module.scss';
@@ -39,10 +39,9 @@ export const List: FC<ListProps> = ({ children, justify = 'center' }) => {
   );
 };
 
-export interface TriggerProps extends ColorProp, SizeProp, RadiusProp {
+export interface TriggerProps extends ColorProp, SizeProp, RadiusProp, HighContrastProp {
   value: string;
   href?: string;
-  highContrast?: boolean;
   children: ReactNode;
 }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import TextArea, { TextAreaProps } from './TextArea';
 import '@/styles/core.scss';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 
 export default {
   title: 'Components/TextArea',
@@ -14,9 +14,9 @@ export default {
 } as Meta;
 
 const Template: Story<TextAreaProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <TextArea {...args} />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

@@ -2,12 +2,11 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
 import styles from './Badge.module.scss';
-import { ColorProp, RadiusProp, SizeProp } from '@/utils';
+import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '@/utils';
 
-interface BadgeProps extends ColorProp, SizeProp, RadiusProp {
+interface BadgeProps extends ColorProp, SizeProp, RadiusProp, HighContrastProp {
   variant?: 'solid' | 'ghost' | 'outlined';
   label: string | number;
-  highContrast?: boolean;
 }
 
 const Badge: FC<BadgeProps> = ({ variant = 'ghost', label, color, highContrast = false, radius }) => {

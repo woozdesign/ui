@@ -2,7 +2,7 @@ import { Meta, Story } from '@storybook/react';
 import React from 'react';
 
 import '@/styles/core.scss';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 import ProgressLinear from './ProgressLinear';
 
 export default {
@@ -12,11 +12,11 @@ export default {
 
 // ProgressLinear Story
 const ProgressLinearTemplate: Story = (args) => (
-  <Theme.ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'dark'}>
     <ProgressLinear {...args} />
 
     {/* <ProgressLinear indeterminate color="red" /> */}
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 export const Default = ProgressLinearTemplate.bind({});
 Default.args = {};

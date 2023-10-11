@@ -2,7 +2,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Switch, { SwitchProps } from './Switch';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 
 export default {
   title: 'Components/Switch',
@@ -10,9 +10,9 @@ export default {
 } as Meta;
 
 const Template: Story<SwitchProps> = (args) => (
-  <Theme.ThemeProvider>
+  <ThemeProvider>
     <Switch {...args} />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const Default = Template.bind({});

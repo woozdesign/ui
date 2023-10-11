@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import Typography from './Typography';
 import { TextProps, HeadingProps } from './Typography.props';
 import '@/styles/core.scss';
-import Theme from '../Theme/Theme';
+import { ThemeProvider } from '../Theme/Theme';
 
 export default {
   title: 'Components/Typography',
@@ -12,7 +12,7 @@ export default {
 
 // Typography Story
 const TypographyTemplate: Story = (args) => (
-  <Theme.ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'dark'}>
     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((level) => {
       return (
         <Typography.Heading key={level} size={level}>
@@ -28,16 +28,16 @@ const TypographyTemplate: Story = (args) => (
         </Typography.Text>
       );
     })}
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 export const TypographyFull = TypographyTemplate.bind({});
 TypographyFull.args = {};
 
 // Title Story
 const TitleTemplate: Story<HeadingProps> = (args) => (
-  <Theme.ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'dark'}>
     <Typography.Heading {...args} />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 
 export const DefaultTitle = TitleTemplate.bind({});
@@ -48,9 +48,9 @@ DefaultTitle.args = {
 
 // Text Story
 const TextTemplate: Story<TextProps> = (args) => (
-  <Theme.ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'dark'}>
     <Typography.Text {...args} />
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 export const DefaultText = TextTemplate.bind({});
 DefaultText.args = {
@@ -59,14 +59,14 @@ DefaultText.args = {
 
 // Text Card Story
 const TextCardTemplate: Story<TextProps> = (args) => (
-  <Theme.ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'dark'}>
     <Typography.Text variant="div" weight={'bolder'}>
       Get started
     </Typography.Text>
     <Typography.Text color="gray" highContrast={false}>
       Start your next project in minutes
     </Typography.Text>
-  </Theme.ThemeProvider>
+  </ThemeProvider>
 );
 export const TextCard = TextCardTemplate.bind({});
 TextCard.args = {
