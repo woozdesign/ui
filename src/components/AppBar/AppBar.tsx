@@ -16,29 +16,47 @@ const AppBar: FC<AppBarProps> & {
   Action: FC<ActionProps>;
 } = ({ children, variant = 'solid', position = 'fixed' }) => {
   const classes = classNames(styles[`wrapper`], styles[`wrapper--${variant}`], styles[`wrapper--${position}`]);
-  return <div className={classes}>{children}</div>;
+  return <header className={classes}>{children}</header>;
 };
 
 interface HeadingProps {
   children: ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
-AppBar.Heading = ({ children }: HeadingProps): JSX.Element => {
-  return <div className={styles.heading}>{children}</div>;
+AppBar.Heading = ({ children, className, style }: HeadingProps): JSX.Element => {
+  return (
+    <div className={classNames(styles.heading, className)} style={style}>
+      {children}
+    </div>
+  );
 };
 
 interface BodyProps {
   children?: ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 }
-AppBar.Body = ({ children }: BodyProps): JSX.Element => {
-  return <div className={styles.body}>{children}</div>;
+AppBar.Body = ({ children, style, className }: BodyProps): JSX.Element => {
+  return (
+    <div className={classNames(styles.body, className)} style={style}>
+      {children}
+    </div>
+  );
 };
 
 interface ActionProps {
   children?: ReactNode;
+  className?: string;
+  style?: React.CSSProperties;
 }
-AppBar.Action = ({ children }: ActionProps): JSX.Element => {
-  return <div className={styles.action}>{children}</div>;
+AppBar.Action = ({ children, style, className }: ActionProps): JSX.Element => {
+  return (
+    <div className={classNames(styles.action, className)} style={style}>
+      {children}
+    </div>
+  );
 };
 
 export default AppBar;

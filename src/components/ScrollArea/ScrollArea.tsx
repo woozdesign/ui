@@ -1,7 +1,8 @@
 'use client';
+import { ColorProp, RadiusProp } from '@/utils';
 import React from 'react';
 import styles from './ScrollArea.module.scss';
-import { ColorProp, RadiusProp } from '@/utils';
+import classNames from 'classnames';
 
 interface ScrollAreaProps extends RadiusProp, ColorProp {
   type?: 'always' | 'auto';
@@ -10,19 +11,14 @@ interface ScrollAreaProps extends RadiusProp, ColorProp {
   children?: React.ReactNode;
 }
 
-const ScrollArea: React.FC<ScrollAreaProps> = ({ color, radius, type = 'auto', scrollbars, style, children }) => {
-  const classNames = [styles.scrollArea];
-
-  if (type === 'always') {
-    if (scrollbars === 'vertical') {
-      classNames.push(styles.alwaysVertical);
-    } else if (scrollbars === 'horizontal') {
-      classNames.push(styles.alwaysHorizontal);
-    }
-  }
+const ScrollArea: React.FC<ScrollAreaProps> = ({ color, radius, type = 'auto', scrollbars = 'vertical', style, children }) => {
+  const classes = classNames(styles.scrollArea, {
+    [styles.vertical]: scrollbars == 'vertical' && type == 'always',
+    [styles.horizontal]: scrollbars == 'horizontal' && type == 'always',
+  });
 
   return (
-    <div data-accent-color={color} data-radius={radius} className={classNames.join(' ')} style={style}>
+    <div data-accent-color={color} data-radius={radius} className={classes} style={style}>
       {children}
     </div>
   );

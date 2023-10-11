@@ -23,8 +23,8 @@ const Heading: FC<HeadingProps> = ({ variant = 'h1', size = 8, align = 'start', 
   );
 };
 
-const Text: FC<TextProps> = ({ children, size = 4, color = 'gray', weight = 'normal', variant = 'span', highContrast = true, className, ...other }) => {
-  const textStyle = classNames(styles[`text--${size}`], styles[`text--${weight}`], { [styles[`text--highContrast`]]: highContrast }, className);
+const Text: FC<TextProps> = ({ children, size = 4, color = 'gray', align = 'start', weight = 'normal', variant = 'span', highContrast = true, className, ...other }) => {
+  const textStyle = classNames(styles[`text--${size}`], styles[`text--${weight}`], styles[`heading--${align}`], { [styles[`text--highContrast`]]: highContrast }, className);
   const Tag = variant as keyof JSX.IntrinsicElements;
 
   return (

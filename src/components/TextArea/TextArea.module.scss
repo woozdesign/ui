@@ -9,14 +9,15 @@
 }
 
 .textArea {
-  width: calc(100% - 1rem);
-  padding: var(--space-1) var(--space-2);
+  font-family: 'Inter';
+  width: calc(100% - var(--space-4) * 2);
+  padding: var(--space-2) var(--space-4);
   border: 2px solid transparent;
-  border-radius: var(--radius-4);
+  border-radius: max(var(--radius-3), var(--radius-full));
   outline: none;
   background-color: transparent;
   border-color: var(--color-gray-6);
-  color: var(--color-accent-9-contrast);
+  color: var(--color-gray-12);
   transition: border 0.3s ease;
   margin-bottom: 20px;
   min-height: 32px;

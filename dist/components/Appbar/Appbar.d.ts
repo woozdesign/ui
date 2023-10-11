@@ -1,4 +1,4 @@
-import { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react';
 interface AppBarProps {
     variant?: 'solid' | 'transparent' | 'translucent';
     position?: 'block' | 'absolute' | 'fixed';
@@ -11,11 +11,17 @@ declare const AppBar: FC<AppBarProps> & {
 };
 interface HeadingProps {
     children: ReactNode;
+    className?: string;
+    style?: React.CSSProperties;
 }
 interface BodyProps {
     children?: ReactNode;
+    className?: string;
+    style?: React.CSSProperties;
 }
 interface ActionProps {
     children?: ReactNode;
+    className?: string;
+    style?: React.CSSProperties;
 }
 export default AppBar;

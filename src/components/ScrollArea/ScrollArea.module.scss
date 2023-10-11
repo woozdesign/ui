@@ -1,13 +1,11 @@
 .scrollArea {
-  overflow-y: auto;
-  overflow-x: hidden;
-  &.alwaysVertical {
+  &.vertical {
     overflow-y: scroll;
     padding-right: 3px;
     margin-right: -3px; // Compensate with negative margin
   }
 
-  &.alwaysHorizontal {
+  &.horizontal {
     overflow-y: hidden;
     overflow-x: scroll;
 
@@ -16,41 +14,43 @@
   }
   /* Initially hide the scrollbar */
   &::-webkit-scrollbar {
-    width: 0px;
-    height: 0px;
-    opacity: 0;
+    width: 3px;
+    height: 3px;
+    transition: background-color-color 0.3s ease-in-out;
   }
 
   &:hover {
-    /* Show the scrollbar on hover */
-    &::-webkit-scrollbar {
-      width: 3px;
-      height: 3px;
+    /* Customize the scrollbar appearance (This is for webkit browsers) */
+    &::-webkit-scrollbar-track {
+      background-color: var(--color-gray-a3);
+      border-radius: max(var(--radius-3), var(--radius-full));
     }
-  }
 
-  &.alwaysVertical {
-    overflow-y: scroll;
-  }
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-gray-a8);
+      border-radius: max(var(--radius-3), var(--radius-full));
+    }
 
-  &.alwaysHorizontal {
-    overflow-y: hidden;
-    overflow-x: scroll;
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--color-gray-a9);
+      border-radius: max(var(--radius-3), var(--radius-full));
+    }
   }
 
   /* Customize the scrollbar appearance (This is for webkit browsers) */
   &::-webkit-scrollbar-track {
-    background: var(--color-gray-a3);
+    background-color: transparent;
     border-radius: max(var(--radius-3), var(--radius-full));
+    transition: background-color-color 0.3s ease-in-out;
   }
 
   &::-webkit-scrollbar-thumb {
-    background: var(--color-gray-a8);
+    background-color: transparent;
     border-radius: max(var(--radius-3), var(--radius-full));
   }
 
   &::-webkit-scrollbar-thumb:hover {
-    background: var(--color-gray-a9);
+    background-color: transparent;
     border-radius: max(var(--radius-3), var(--radius-full));
   }
 }

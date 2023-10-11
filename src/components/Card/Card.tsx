@@ -35,7 +35,7 @@ export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'tit
   outlined?: boolean;
 }
 
-Card.Heading = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outlined = true }: HeadingProps) => {
+Card.Heading = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outlined = false }: HeadingProps) => {
   const classes = classNames(styles.heading, { [styles[`heading--outlined`]]: outlined });
 
   return (
@@ -94,7 +94,7 @@ export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
 }
 
-Card.Actions = ({ children, justify = 'start', outlined = true }: ActionsProps) => {
+Card.Actions = ({ children, justify = 'start', outlined = false }: ActionsProps) => {
   const classes = classNames(styles.actions, { [styles[`actions--outlined`]]: outlined });
 
   return (

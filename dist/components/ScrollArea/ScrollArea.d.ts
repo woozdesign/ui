@@ -1,5 +1,5 @@
-import React from 'react';
 import { ColorProp, RadiusProp } from '../../utils';
+import React from 'react';
 interface ScrollAreaProps extends RadiusProp, ColorProp {
     type?: 'always' | 'auto';
     scrollbars?: 'vertical' | 'horizontal';

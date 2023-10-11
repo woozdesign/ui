@@ -26,13 +26,18 @@ const ScrollAreaTemplate: Story = (args) => (
               </Typography.Text>
 
               <Typography.Text size="2">
-                {`Legibility describes how easily individual characters can be distinguished from one another. It is described by Walter Tracy as "the quality of being decipherable
+                {`Legibility describes how easily individual ch aracters can be distinguished from one another. It is described by Walter Tracy as "the quality of being decipherable
                 and recognisable". For instance, if a "b" and an "h", or a "3" and an "8", are difficult to distinguish at small sizes, this is a problem of legibility.`}
               </Typography.Text>
 
               <Typography.Text size="2">
                 {`Legibility describes how easily individual characters can be distinguished from one another. It is described by Walter Tracy as "the quality of being decipherable
-                and recognisable". For instance, if a "b" and an "h", or a "3" and an "8", are difficult to distinguish at small sizes, this is a problem of legibility.`}
+  and recognisable". For instance, if a "b" and an "h", or a "3" and an "8", are difficult to distinguish at small sizes, this is a problem of legibility.`}
+              </Typography.Text>
+
+              <Typography.Text size="4">
+                {`Legibility describes how easily individual characters can be distinguished from one another. It is described by Walter Tracy as "the quality of being decipherable
+  and recognisable". For instance, if a "b" and an "h", or a "3" and an "8", are difficult to distinguish at small sizes, this is a problem of legibility.`}
               </Typography.Text>
 
               <Typography.Text size="2">
@@ -45,7 +50,7 @@ const ScrollAreaTemplate: Story = (args) => (
         <Layout.Col xs={24} sm={12}>
           <ScrollArea type="always" scrollbars="horizontal" style={{ height: 150 }}>
             <Flex width={1200}>
-              <Typography.Text size="2">
+              <Typography.Text size="12">
                 {`Three fundamental aspects of typography are legibility, readability, and aesthetics. Although in a non-technical sense "legible" and "readable" are often used
                 synonymously, typographically they are separate but related concepts.`}
               </Typography.Text>
