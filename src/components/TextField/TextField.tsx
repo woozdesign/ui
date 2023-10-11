@@ -5,10 +5,10 @@ import React, { ChangeEvent, FC, useState } from 'react';
 import { FormChildProps } from '../Form/Form';
 import Typography from '../Typography/Typography';
 import styles from './TextField.module.scss';
+import { ColorProp, RadiusProp, SizeProp } from '@/utils';
 
-export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'>, FormChildProps {
+export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size'>, FormChildProps, RadiusProp, SizeProp, ColorProp {
   variant?: 'solid' | 'ghost';
-  size?: 'large' | 'medium' | 'small';
   label?: string;
   iconPrepend?: JSX.Element;
   iconAppend?: JSX.Element;
@@ -29,6 +29,8 @@ const TextField: FC<TextFieldProps> = ({
   errorMessage,
   onChange,
   onSubmit,
+  color,
+  radius,
   hasSubmitted = false,
   ...others
 }) => {
@@ -61,7 +63,7 @@ const TextField: FC<TextFieldProps> = ({
   };
 
   return (
-    <div className={classNames(styles.wrapper, styles[size])}>
+    <div data-accent-color={color} data-radius={radius} className={classNames(styles.wrapper, styles[size])}>
       {label && (
         <div>
           <Typography.Text variant={'div'} className={styles.label}>

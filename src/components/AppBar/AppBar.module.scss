@@ -7,7 +7,7 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  height: 64px;
+  height: calc(64px * var(--scaling));
   padding: var(--space-2) var(--space-6);
 
   &--solid {

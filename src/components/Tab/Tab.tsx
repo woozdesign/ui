@@ -46,7 +46,7 @@ export interface TriggerProps extends ColorProp, SizeProp, RadiusProp {
   children: ReactNode;
 }
 
-export const Trigger: FC<TriggerProps> = ({ value, href, children, color, size = 'small', radius, highContrast = false }) => {
+export const Trigger: FC<TriggerProps> = ({ value, href, children, color, size = 'medium', radius, highContrast = false }) => {
   const context = useContext(TabContext);
   if (!context) throw new Error('Trigger must be used within Root');
   const { activeTab, setActiveTab } = context;

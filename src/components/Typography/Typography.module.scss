@@ -62,6 +62,15 @@ $title-margin: 1rem 0;
   &.text--bolder {
     font-weight: bolder;
   }
+  &.text--start {
+    text-align: start;
+  }
+  &.text--center {
+    text-align: center;
+  }
+  &.text--end {
+    text-align: end;
+  }
 }
 
 // Titles

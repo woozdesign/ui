@@ -5,18 +5,32 @@ import React, { ChangeEvent, FC, HTMLProps, useState } from 'react';
 import { FormChildProps } from '../Form/Form';
 import Typography from '../Typography/Typography';
 import styles from './TextArea.module.scss';
+import { ColorProp, RadiusProp } from '@/utils';
 
-interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size'> {
+interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size'>, RadiusProp, ColorProp {
   variant?: 'solid' | 'ghost';
   size?: 1 | 2 | 3 | 4 | 5; // Number of visible lines
   label?: string;
   resizable?: boolean;
+
   errorMessage?: string;
   onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
   onSubmit?: () => void;
 }
 
-const TextArea: FC<TextAreaProps> = ({ variant = 'solid', size = 2, label, resizable = false, errorMessage, hasSubmitted = false, onChange, onSubmit, ...others }) => {
+const TextArea: FC<TextAreaProps> = ({
+  variant = 'solid',
+  size = 2,
+  label,
+  color,
+  radius,
+  resizable = false,
+  errorMessage,
+  hasSubmitted = false,
+  onChange,
+  onSubmit,
+  ...others
+}) => {
   const [error, setError] = useState<string | null>(null);
 
   const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
@@ -46,7 +60,7 @@ const TextArea: FC<TextAreaProps> = ({ variant = 'solid', size = 2, label, resiz
   const classes = classNames(styles.textArea, styles[`textArea--${variant}`], { [styles.textAreaError]: error, [styles.resizable]: resizable });
 
   return (
-    <div className={classNames(styles.wrapper, styles[`size${size}`])}>
+    <div data-accent-color={color} data-radius={radius} className={classNames(styles.wrapper, styles[`size${size}`])}>
       {label && (
         <div>
           <Typography.Text variant={'div'} className={styles.label}>
