@@ -1,42 +1,5 @@
 @import '~@woozdesign/colors/colors';
 
-.woozdesign {
-  color: var(--color-gray-12); // text color
-
-  // Colors
-  --color-overlay: var(--color-gray-a8);
-  --color-panel-solid: white;
-  --color-panel-translucent: rgba(255, 255, 255, 0.8);
-  --color-surface: rgba(255, 255, 255, 0.9);
-  --color-transparent: rgb(0 0 0 /); // Because Chrome is buggy with box-shadow transitions
-
-  &::selection {
-    background-color: var(--color-accent-a6);
-  }
-
-  &:where(.light, .light-theme) {
-    color-scheme: light;
-  }
-
-  &:where(.dark, .dark-theme) {
-    color-scheme: dark;
-  }
-
-  &:is(.dark, .dark-theme),
-  &:is(.dark, .dark-theme) :where(.woozdesign:not(.light, .light-theme)) {
-    --color-overlay: rgba(0, 0, 0, 0.75);
-    --color-panel-solid: var(--color-gray-2);
-    --color-panel-translucent: var(--color-gray-2-translucent);
-    --color-surface: rgba(0, 0, 0, 0.25);
-  }
-
-  @supports (color: color(display-p3 1 1 1)) {
-    @media (color-gamut: p3) {
-      --color-transparent: color(display-p3 0 0 0 /);
-    }
-  }
-}
-
 :root {
   --color-tomato-9-contrast: white;
   --color-red-9-contrast: white;
@@ -181,6 +144,42 @@ $colors: 'tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet',
 
 @each $color in $colors {
   @include accentScales($color);
+}
+.woozdesign {
+  color: var(--color-gray-12); // text color
+
+  // Colors
+  --color-overlay: var(--color-gray-a8);
+  --color-panel-solid: var(--color-gray-2);
+  --color-panel-translucent: rgba(255, 255, 255, 0.8);
+  --color-surface: rgba(255, 255, 255, 0.9);
+  --color-transparent: rgb(0 0 0 /); // Because Chrome is buggy with box-shadow transitions
+
+  &::selection {
+    background-color: var(--color-accent-a6);
+  }
+
+  &:where(.light, .light-theme) {
+    color-scheme: light;
+  }
+
+  &:where(.dark, .dark-theme) {
+    color-scheme: dark;
+  }
+
+  &:is(.dark, .dark-theme),
+  &:is(.dark, .dark-theme) :where(.woozdesign:not(.light, .light-theme)) {
+    --color-overlay: rgba(0, 0, 0, 0.75);
+    --color-panel-solid: var(--color-gray-2);
+    --color-panel-translucent: var(--color-gray-2-translucent);
+    --color-surface: rgba(0, 0, 0, 0.25);
+  }
+
+  @supports (color: color(display-p3 1 1 1)) {
+    @media (color-gamut: p3) {
+      --color-transparent: color(display-p3 0 0 0 /);
+    }
+  }
 }
 
 .woozdesign {

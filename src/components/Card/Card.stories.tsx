@@ -26,7 +26,12 @@ const Template: Story<CardProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  onClick: () => {
+    console.log('called');
+  },
+  textAlign: 'end',
+};
 
 export const Outlined = Template.bind({});
 Outlined.args = {
@@ -44,6 +49,7 @@ FullContent.args = {
             more
           </Button>
         }
+        align={'end'}
       />
       <Card.Heading
         title="Card Title"
