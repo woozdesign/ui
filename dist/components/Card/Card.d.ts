@@ -1,9 +1,10 @@
 import React, { CSSProperties, FC, ReactNode } from 'react';
 import { SizeProp, TextSizeProp } from '../../utils/helper/props';
 export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
-    variant?: 'solid' | 'translucent' | 'transparent';
+    variant?: 'solid' | 'transparent';
     outlined?: boolean;
     children: ReactNode;
+    textAlign?: 'start' | 'center' | 'end';
 }
 declare const Card: FC<CardProps> & {
     Heading: FC<HeadingProps>;

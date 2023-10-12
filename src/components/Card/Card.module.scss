@@ -6,6 +6,22 @@
   height: 100%;
   border-radius: var(--radius-4);
 
+  &--start {
+    text-align: start;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--end {
+    text-align: end;
+  }
+
+  &--clickable {
+    cursor: pointer;
+  }
+
   &--solid {
     background-color: var(--color-panel);
   }
