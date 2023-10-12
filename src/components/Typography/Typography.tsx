@@ -24,7 +24,7 @@ const Heading: FC<HeadingProps> = ({ variant = 'h1', size = 8, align = 'start', 
 };
 
 const Text: FC<TextProps> = ({ children, size = 4, color = 'gray', align = 'start', weight = 'normal', variant = 'span', highContrast = true, className, ...other }) => {
-  const textStyle = classNames(styles[`text--${size}`], styles[`text--${weight}`], styles[`heading--${align}`], { [styles[`text--highContrast`]]: highContrast }, className);
+  const textStyle = classNames(styles[`text--${size}`], styles[`text--${weight}`], styles[`text--${align}`], { [styles[`text--highContrast`]]: highContrast }, className);
   const Tag = variant as keyof JSX.IntrinsicElements;
 
   return (
@@ -38,19 +38,20 @@ const Strong: FC<StrongProps> = ({ children, ...other }) => {
   return <strong>{children}</strong>;
 };
 
-const Link: FC<LinkProps> = ({ children, href, color, size, highContrast, ...other }) => {
-  const classes = classNames(styles[`link--${size}`], { [styles[`link--highContrast`]]: highContrast });
+const Link: FC<LinkProps> = ({ children, href, color, size = 4, highContrast = false, className, ...other }) => {
+  const classes = classNames(styles[`link--${size}`], { [styles[`link--highContrast`]]: highContrast }, className);
   return (
-    <a href={href} data-accent-color={color} className={classes}>
+    <a href={href} data-accent-color={color} className={classes} {...other}>
       {children}
     </a>
   );
 };
 
-const Code: FC<CodeProps> = ({ children, color, size, radius, highContrast, ...other }) => {
-  const codeClasses = classNames(styles[`code--${size}`], { [styles[`code--highContrast`]]: highContrast });
+const Code: FC<CodeProps> = ({ children, color, size = 4, radius, highContrast = false, className, ...other }) => {
+  const classes = classNames(styles[`code--${size}`], { [styles[`code--highContrast`]]: highContrast }, className);
+
   return (
-    <code data-accent-color={color} data-radius={radius} className={codeClasses}>
+    <code data-accent-color={color} data-radius={radius} className={classes} {...other}>
       {children}
     </code>
   );

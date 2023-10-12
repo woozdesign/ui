@@ -1,7 +1,7 @@
 'use client';
 
 import styles from './page.module.css';
-import { Button, Image, useNotification, useToast } from '@woozdesign/ui';
+import { Button, Image, Typography, useNotification, useToast } from '@woozdesign/ui';
 
 export default function Home() {
   const [openNotification, NotificationProvider] = useToast();
@@ -15,6 +15,9 @@ export default function Home() {
     <main className={styles.main}>
       {NotificationProvider}
       <div className={styles.description}>
+        <Typography.Link>Link</Typography.Link>
+        <Typography.Code children={'Code'}></Typography.Code>
+        <Typography.Text>Code</Typography.Text>
         <p>
           Get started by editing&nbsp;
           <code className={styles.code}>src/app/page.tsx</code>
