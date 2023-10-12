@@ -38,10 +38,10 @@ const Strong: FC<StrongProps> = ({ children, ...other }) => {
   return <strong>{children}</strong>;
 };
 
-const Link: FC<CodeProps> = ({ children, href, color, size, radius, highContrast, ...other }) => {
+const Link: FC<LinkProps> = ({ children, href, color, size, highContrast, ...other }) => {
   const classes = classNames(styles[`link--${size}`], { [styles[`link--highContrast`]]: highContrast });
   return (
-    <a href={href} data-accent-color={color} data-radius={radius} className={classes}>
+    <a href={href} data-accent-color={color} className={classes}>
       {children}
     </a>
   );
