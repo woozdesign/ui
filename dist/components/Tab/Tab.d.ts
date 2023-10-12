@@ -12,7 +12,7 @@ export interface ListProps {
 export declare const List: FC<ListProps>;
 export interface TriggerProps extends ColorProp, SizeProp, RadiusProp, HighContrastProp {
     value: string;
-    href?: string;
+    onClick?: () => void;
     children: ReactNode;
 }
 export declare const Trigger: FC<TriggerProps>;
