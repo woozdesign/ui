@@ -1,9 +1,9 @@
 .button--ghost {
   color: var(--color-accent-11);
-  background-color: var(--color-accent-a4);
+  background-color: var(--color-accent-4);
 
   &:hover {
-    background-color: var(--color-accent-a5);
+    background-color: var(--color-accent-5);
   }
 
   &:active {
@@ -20,10 +20,10 @@
 
   &.button--high-contrast {
     color: var(--color-accent-12);
-    background-color: var(--color-accent-a4);
+    background-color: var(--color-accent-4);
 
     &:hover {
-      background-color: var(--color-accent-a5);
+      background-color: var(--color-accent-5);
     }
 
     &:active {

@@ -32,11 +32,11 @@
       justify-content: center;
     }
     &:hover {
-      background-color: var(--color-accent-a5);
+      background-color: var(--color-accent-5);
     }
 
     &.active {
-      background-color: var(--color-accent-a5);
+      background-color: var(--color-accent-5);
       &:hover {
         background-color: var(--color-accent-6);
       }
@@ -74,7 +74,7 @@
       color: var(--color-accent-12);
 
       &:hover {
-        background-color: var(--color-accent-a5);
+        background-color: var(--color-accent-5);
       }
 
       &.active {
