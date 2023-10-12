@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Typography.module.scss';
-import { HeadingProps, StrongProps, TextProps } from './Typography.props';
+import { CodeProps, HeadingProps, LinkProps, StrongProps, TextProps } from './Typography.props';
 
 const Heading: FC<HeadingProps> = ({ variant = 'h1', size = 8, align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other }) => {
   const Tag = variant as keyof JSX.IntrinsicElements;
@@ -38,10 +38,30 @@ const Strong: FC<StrongProps> = ({ children, ...other }) => {
   return <strong>{children}</strong>;
 };
 
+const Link: FC<CodeProps> = ({ children, href, color, size, radius, highContrast, ...other }) => {
+  const classes = classNames(styles[`link--${size}`], { [styles[`link--highContrast`]]: highContrast });
+  return (
+    <a href={href} data-accent-color={color} data-radius={radius} className={classes}>
+      {children}
+    </a>
+  );
+};
+
+const Code: FC<CodeProps> = ({ children, color, size, radius, highContrast, ...other }) => {
+  const codeClasses = classNames(styles[`code--${size}`], { [styles[`code--highContrast`]]: highContrast });
+  return (
+    <code data-accent-color={color} data-radius={radius} className={codeClasses}>
+      {children}
+    </code>
+  );
+};
+
 const Typography = {
   Heading,
   Text,
   Strong,
+  Code,
+  Link,
 };
 
 export default Typography;
