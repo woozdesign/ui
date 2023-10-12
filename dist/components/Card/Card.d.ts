@@ -4,7 +4,6 @@ export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement
     variant?: 'solid' | 'transparent';
     outlined?: boolean;
     children: ReactNode;
-    textAlign?: 'start' | 'center' | 'end';
 }
 declare const Card: FC<CardProps> & {
     Heading: FC<HeadingProps>;
@@ -23,6 +22,7 @@ export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title'
     title?: ReactNode;
     titleSize?: TextSizeProp['size'];
     content: ReactNode;
+    textAlign?: 'start' | 'center' | 'end';
 }
 export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
     justify?: CSSProperties['justifyContent'];

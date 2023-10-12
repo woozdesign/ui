@@ -10,19 +10,17 @@ export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement
   variant?: 'solid' | 'transparent';
   outlined?: boolean;
   children: ReactNode;
-  textAlign?: 'start' | 'center' | 'end';
 }
 
 const Card: FC<CardProps> & {
   Heading: FC<HeadingProps>;
   Body: FC<BodyProps>;
   Actions: FC<ActionsProps>;
-} = ({ variant = 'solid', textAlign = 'start', outlined = true, size = 'medium', children, className, onClick, ...others }) => {
+} = ({ variant = 'solid', outlined = true, size = 'medium', children, className, onClick, ...others }) => {
   const cardClasses = classNames(
     styles.card,
     styles[`card--${variant}`],
     styles[`card--${size}`],
-    styles[`card--${textAlign}`],
     { [styles['card--outlined']]: outlined, [styles['card--clickable']]: onClick },
     className,
   );
@@ -73,20 +71,21 @@ export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title'
   title?: ReactNode;
   titleSize?: TextSizeProp['size'];
   content: ReactNode;
+  textAlign?: 'start' | 'center' | 'end';
 }
 
-Card.Body = ({ title, content, titleSize = 4 }: BodyProps) => {
+Card.Body = ({ title, content, titleSize = 4, textAlign = 'start' }: BodyProps) => {
   return (
     <div className={styles.body}>
       {typeof title == 'string' ? (
-        <Typography.Text variant="div" size={titleSize} className={styles.title} weight={'bold'}>
+        <Typography.Text align={textAlign} variant="div" size={titleSize} className={styles.title} weight={'bold'}>
           {title}
         </Typography.Text>
       ) : (
         title
       )}
       {typeof content == 'string' ? (
-        <Typography.Text variant="div" className={styles.content}>
+        <Typography.Text variant="div" className={styles.content} align={textAlign}>
           {content}
         </Typography.Text>
       ) : (
