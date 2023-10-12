@@ -39,7 +39,7 @@ const Strong: FC<StrongProps> = ({ children, ...other }) => {
 };
 
 const Link: FC<LinkProps> = ({ children, href, color, size = 4, highContrast = false, className, ...other }) => {
-  const classes = classNames(styles[`link--${size}`], { [styles[`link--highContrast`]]: highContrast });
+  const classes = classNames(styles[`link--${size}`], { [styles[`link--highContrast`]]: highContrast }, className);
   return (
     <a href={href} data-accent-color={color} className={classes} {...other}>
       {children}
@@ -49,10 +49,6 @@ const Link: FC<LinkProps> = ({ children, href, color, size = 4, highContrast = f
 
 const Code: FC<CodeProps> = ({ children, color, size = 4, radius, highContrast = false, className, ...other }) => {
   const classes = classNames(styles[`code--${size}`], { [styles[`code--highContrast`]]: highContrast }, className);
-  console.log('className: ', className);
-  console.log('styles[`code--${size}`]: ', styles[`code--${size}`]);
-
-  console.log('classes: ', classes);
 
   return (
     <code data-accent-color={color} data-radius={radius} className={classes} {...other}>
