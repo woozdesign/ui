@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { ColorProp, HighContrastProp, TextSizeProp } from '../../utils/helper/props';
+import { ColorProp, HighContrastProp, RadiusProp, TextSizeProp } from '../../utils/helper/props';
 export interface TypographyProps extends TextSizeProp, HighContrastProp {
     className?: string;
     children?: React.ReactNode;
@@ -14,5 +14,12 @@ export interface TextProps extends ColorProp, TypographyProps {
     variant?: Extract<keyof JSX.IntrinsicElements, 'p' | 'label' | 'div' | 'span'>;
 }
 export interface StrongProps {
+    children?: React.ReactNode;
+}
+export interface LinkProps extends ColorProp, TypographyProps {
+    href?: string;
+    children?: React.ReactNode;
+}
+export interface CodeProps extends ColorProp, RadiusProp, TypographyProps {
     children?: React.ReactNode;
 }

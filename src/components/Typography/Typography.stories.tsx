@@ -28,6 +28,20 @@ const TypographyTemplate: Story = (args) => (
         </Typography.Text>
       );
     })}
+    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((size) => {
+      return (
+        <Typography.Code key={size} size={size}>
+          Code
+        </Typography.Code>
+      );
+    })}
+    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((size) => {
+      return (
+        <Typography.Link key={size} size={size}>
+          Link
+        </Typography.Link>
+      );
+    })}
   </ThemeProvider>
 );
 export const TypographyFull = TypographyTemplate.bind({});
