@@ -1,5 +1,6 @@
 .scrollArea {
   &.vertical {
+    overflow-x: hidden;
     overflow-y: scroll;
     padding-right: 3px;
     margin-right: -3px; // Compensate with negative margin
