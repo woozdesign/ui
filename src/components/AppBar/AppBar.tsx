@@ -50,10 +50,12 @@ interface ActionProps {
   children?: ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  mobile?: boolean;
 }
-AppBar.Action = ({ children, style, className }: ActionProps): JSX.Element => {
+AppBar.Action = ({ children, style, className, mobile }: ActionProps): JSX.Element => {
+  const classes = classNames(styles.action, className, { [styles[`action--mobile`]]: mobile });
   return (
-    <div className={classNames(styles.action, className)} style={style}>
+    <div className={classes} style={style}>
       {children}
     </div>
   );

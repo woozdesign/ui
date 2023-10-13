@@ -88,10 +88,11 @@ const Trigger: FC<TriggerProps> = ({ children }) => {
 
 interface ContentProps {
   title?: ReactNode;
+  action?: ReactNode;
   children: ReactNode;
 }
 
-const Content: FC<ContentProps> = ({ title, children }) => {
+const Content: FC<ContentProps> = ({ title, children, action }) => {
   const context = useContext(DrawerContext);
 
   if (!context) throw new Error('Content must be used within Root');
@@ -111,9 +112,11 @@ const Content: FC<ContentProps> = ({ title, children }) => {
       <div className={styles[`content--header`]}>
         <div className={styles[`header-title`]}>{title}</div>
         <div className={styles[`header-action`]}>
-          <IconButton variant={'outlined'} color={'gray'} onClick={handleClose}>
-            <Icon type={'X'} />
-          </IconButton>
+          {action ?? (
+            <IconButton variant={'outlined'} color={'gray'} onClick={handleClose}>
+              <Icon type={'X'} />
+            </IconButton>
+          )}
         </div>
       </div>
       <div className={styles[`content--body`]}>{children}</div>

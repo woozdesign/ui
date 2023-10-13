@@ -23,5 +23,6 @@ interface ActionProps {
     children?: ReactNode;
     className?: string;
     style?: React.CSSProperties;
+    mobile?: boolean;
 }
 export default AppBar;

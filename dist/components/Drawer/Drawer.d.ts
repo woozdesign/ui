@@ -13,6 +13,7 @@ interface TriggerProps {
 }
 interface ContentProps {
     title?: ReactNode;
+    action?: ReactNode;
     children: ReactNode;
 }
 declare const Drawer: {
