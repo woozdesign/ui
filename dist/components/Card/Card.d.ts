@@ -1,7 +1,7 @@
 import React, { CSSProperties, FC, ReactNode } from 'react';
 import { SizeProp, TextSizeProp } from '../../utils/helper/props';
 export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
-    variant?: 'solid' | 'transparent';
+    variant?: 'solid' | 'transparent' | 'translucent';
     outlined?: boolean;
     children: ReactNode;
 }
