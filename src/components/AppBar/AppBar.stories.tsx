@@ -8,6 +8,8 @@ import Button from '../Button';
 import Image from '../Image';
 import Tab from '../Tab/Tab';
 import { Icon } from '@woozdesign/icons';
+import IconButton from '../IconButton';
+import Drawer from '../Drawer/Drawer';
 
 export default {
   title: 'Components/AppBar',
@@ -16,11 +18,11 @@ export default {
 
 const Template: Story<AppBarProps> = (args) => {
   return (
-    <ThemeProvider radius={'full'} scaling="90%">
+    <ThemeProvider scaling="90%">
       <AppBar {...args}>
         <AppBar.Heading>
           <a href="/">
-            <Image src="https://blog.woozlabs.com/assets/icons/logo.svg" width={120}></Image>
+            <Image src="https://woozdesign-website.vercel.app/favicon.svg" width={36}></Image>
           </a>
         </AppBar.Heading>
         <AppBar.Body>
@@ -45,65 +47,25 @@ const Template: Story<AppBarProps> = (args) => {
           <Button variant={'text'} highContrast>
             Playground
           </Button>
-          <Button variant={'icon'} highContrast>
+
+          <IconButton variant={'text'} highContrast>
             <Icon type={'Github'} />
-          </Button>
-          <Button variant={'icon'} highContrast>
+          </IconButton>
+          <IconButton variant={'text'} highContrast>
             <Icon type={'Sun'} />
-          </Button>
+          </IconButton>
+        </AppBar.Action>
+        <AppBar.Action mobile>
+          <Drawer.Root overlayVariant={'translucent'}>
+            <Drawer.Trigger>
+              <IconButton variant={'outlined'}>
+                <Icon type={'Menu'} />
+              </IconButton>
+            </Drawer.Trigger>
+            <Drawer.Content title="Header">Content</Drawer.Content>
+          </Drawer.Root>
         </AppBar.Action>
       </AppBar>
-
-      <AppBar {...args}>
-        <AppBar.Heading>
-          <a href="/">
-            <Image src="https://blog.woozlabs.com/assets/icons/logo.svg" width={120}></Image>
-          </a>
-        </AppBar.Heading>
-        <AppBar.Action>
-          <Button variant={'text'} highContrast>
-            Documentation
-          </Button>
-          <Button variant={'text'} highContrast>
-            Playground
-          </Button>
-          <Button variant={'icon'} highContrast>
-            <Icon type={'Github'} />
-          </Button>
-          <Button variant={'icon'} highContrast>
-            <Icon type={'Sun'} />
-          </Button>
-        </AppBar.Action>
-      </AppBar>
-
-      <AppBar {...args}>
-        <AppBar.Heading>
-          <a href="/">
-            <Image src="https://blog.woozlabs.com/assets/icons/logo.svg" width={120}></Image>
-          </a>
-        </AppBar.Heading>
-        <AppBar.Body>
-          <Tab.Root defaultValue="components">
-            <Tab.List>
-              <Tab.Trigger highContrast value="components">
-                Components
-              </Tab.Trigger>
-              <Tab.Trigger highContrast value="icons">
-                Icons
-              </Tab.Trigger>
-              <Tab.Trigger highContrast value="colors">
-                Colors
-              </Tab.Trigger>
-            </Tab.List>
-          </Tab.Root>
-        </AppBar.Body>
-      </AppBar>
-
-      <Layout.Container>
-        <Layout.Row>
-          <Layout.Col xs={12}>Test</Layout.Col>
-        </Layout.Row>
-      </Layout.Container>
     </ThemeProvider>
   );
 };
