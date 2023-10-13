@@ -11,7 +11,7 @@ export default {
 } as Meta;
 
 const Template: Story<MenuProps> = (args) => (
-  <ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'light'}>
     <Menu {...args} />
   </ThemeProvider>
 );

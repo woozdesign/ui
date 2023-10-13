@@ -12,7 +12,7 @@ export default {
 
 // ProgressLinear Story
 const ProgressLinearTemplate: Story = (args) => (
-  <ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'light'}>
     <ProgressLinear {...args} />
 
     {/* <ProgressLinear indeterminate color="red" /> */}

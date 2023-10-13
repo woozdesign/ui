@@ -12,7 +12,7 @@ export default {
 
 // Typography Story
 const TypographyTemplate: Story = (args) => (
-  <ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'light'}>
     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((level) => {
       return (
         <Typography.Heading key={level} size={level}>
@@ -49,7 +49,7 @@ TypographyFull.args = {};
 
 // Title Story
 const TitleTemplate: Story<HeadingProps> = (args) => (
-  <ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'light'}>
     <Typography.Heading {...args} />
   </ThemeProvider>
 );
@@ -62,7 +62,7 @@ DefaultTitle.args = {
 
 // Text Story
 const TextTemplate: Story<TextProps> = (args) => (
-  <ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'light'}>
     <Typography.Text {...args} />
   </ThemeProvider>
 );
@@ -73,7 +73,7 @@ DefaultText.args = {
 
 // Text Card Story
 const TextCardTemplate: Story<TextProps> = (args) => (
-  <ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'light'}>
     <Typography.Text variant="div" weight={'bolder'}>
       Get started
     </Typography.Text>

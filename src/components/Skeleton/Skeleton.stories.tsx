@@ -14,7 +14,7 @@ export default {
 
 // Skeleton Story
 const SkeletonTemplate: Story = (args) => (
-  <ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'light'}>
     <Layout.Container>
       <Layout.Row gutter={[32, 32]}>
         <Layout.Col xs={24} sm={12}>

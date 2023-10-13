@@ -55,7 +55,7 @@
 | Table         | ✅        |       |
 | Scroller Area | ✅        |       |
 | iframe        | 🚧        |       |
-| Code          | 🚧        |       |
+| Code          | ✅        |       |
 | Cover         | 🚧        |       |
 | Equation      | 🚧        |       |
 

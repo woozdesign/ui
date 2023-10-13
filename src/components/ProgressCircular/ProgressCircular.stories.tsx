@@ -11,7 +11,7 @@ export default {
 
 // ProgressCircular Story
 const ProgressCircularTemplate: Story = (args) => (
-  <ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'light'}>
     <ProgressCircular {...args} />
     <ProgressCircular indeterminate color="red" />
   </ThemeProvider>
