@@ -30,7 +30,7 @@ const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transp
   const overlayClasses = classNames(styles.overlay, styles[`overlay--${placement}`], styles[`overlay--${overlayVariant}`], { [styles.open]: isOpen, [styles.outlined]: outlined });
   const drawerClasses = classNames(styles.drawer, styles[`drawer--${placement}`], { [styles.open]: isOpen, [styles.outlined]: outlined });
 
-  const targetElement = document.querySelector('.woozdesign') || document.body;
+  const targetElement = document.querySelector('.woozdesign');
 
   const handleOverlayClick = () => {
     if (variant === 'default') handleClose();
@@ -62,16 +62,24 @@ const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transp
       {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))}
 
       {isRendered &&
-        ReactDom.createPortal(
-          <>
-            <div className={overlayClasses} onClick={handleOverlayClick}>
-              <div className={drawerClasses} style={{ width: width }}>
-                {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
+        (targetElement ? (
+          ReactDom.createPortal(
+            <>
+              <div className={overlayClasses} onClick={handleOverlayClick}>
+                <div className={drawerClasses} style={{ width: width }}>
+                  {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
+                </div>
               </div>
+            </>,
+            targetElement,
+          )
+        ) : (
+          <div className={overlayClasses} onClick={handleOverlayClick}>
+            <div className={drawerClasses} style={{ width: width }}>
+              {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
             </div>
-          </>,
-          targetElement,
-        )}
+          </div>
+        ))}
     </DrawerContext.Provider>
   );
 };

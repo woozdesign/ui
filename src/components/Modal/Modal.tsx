@@ -29,7 +29,7 @@ const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant 
   const handleOverlayClick = () => {
     if (variant === 'default') handleClose();
   };
-  const targetElement = document.querySelector('.woozdesign') || document.body;
+  const targetElement = document.querySelector('.woozdesign');
 
   const handleClose = () => {
     if (isOpen) {
@@ -57,16 +57,24 @@ const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant 
       {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))}
 
       {isRendered &&
-        ReactDom.createPortal(
-          <>
-            <div className={overlayClasses} onClick={handleOverlayClick}>
-              <div className={modalClasses}>
-                {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
+        (targetElement ? (
+          ReactDom.createPortal(
+            <>
+              <div className={overlayClasses} onClick={handleOverlayClick}>
+                <div className={modalClasses}>
+                  {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
+                </div>
               </div>
+            </>,
+            targetElement,
+          )
+        ) : (
+          <div className={overlayClasses} onClick={handleOverlayClick}>
+            <div className={modalClasses}>
+              {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
             </div>
-          </>,
-          targetElement,
-        )}
+          </div>
+        ))}
     </ModalContext.Provider>
   );
 };
