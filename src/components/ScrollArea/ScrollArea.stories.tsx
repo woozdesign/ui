@@ -18,7 +18,7 @@ const ScrollAreaTemplate: Story = (args) => (
     <Layout.Container>
       <Layout.Row gutter={[32, 32]}>
         <Layout.Col xs={24} sm={12}>
-          <ScrollArea id={'test1'} type="always" persistant scrollbars="vertical" style={{ height: 150 }}>
+          <ScrollArea id={'test1'} type="always" persistent scrollbars="vertical" style={{ height: 150 }}>
             <Layout.Container>
               <Typography.Text size="2">
                 {`Three fundamental aspects of typography are legibility, readability, and aesthetics. Although in a non-technical sense "legible" and "readable" are often used
@@ -48,7 +48,7 @@ const ScrollAreaTemplate: Story = (args) => (
           </ScrollArea>
         </Layout.Col>
         <Layout.Col xs={24} sm={12}>
-          <ScrollArea id={'test_2'} persistant type="always" scrollbars="vertical" style={{ height: 150 }}>
+          <ScrollArea id={'test_2'} persistent type="always" scrollbars="vertical" style={{ height: 150 }}>
             <Flex width={1200}>
               <Typography.Text size="12">
                 {`Three fundamental aspects of typography are legibility, readability, and aesthetics. Although in a non-technical sense "legible" and "readable" are often used
