@@ -46,7 +46,7 @@ Card.Heading = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outl
 
   return (
     <div className={classes}>
-      <div>
+      <div className={styles[`heading-title-wrapper`]}>
         {typeof title == 'string' ? (
           <Typography.Heading className={styles.title} variant={'h3'} size={titleSize}>
             {title}
