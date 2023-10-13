@@ -1,6 +1,7 @@
 @import '@/styles/lib/functions';
 @import './styles/BaseButton.module.scss';
-@import './styles/SolidButton.module.scss';
-@import './styles/GhostButton.module.scss';
-@import './styles/OutlinedButton.module.scss';
-@import './styles/TextButton.module.scss';
+@import '@/components/Button/styles/SolidButton.module.scss';
+@import '@/components/Button/styles/GhostButton.module.scss';
+@import '@/components/Button/styles/OutlinedButton.module.scss';
+@import '@/components/Button/styles/TransparentButton.module.scss';
+@import '@/components/Button/styles/TranslucentButton.module.scss';
