@@ -1,0 +1,86 @@
+// Drawer.module.scss
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; // Place the drawer on the right side
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  &--transparent {
+    background-color: transparent;
+  }
+  &--translucent {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+
+  &--right {
+    justify-content: flex-end; // Place the drawer on the right side
+  }
+  &--left {
+    justify-content: flex-start; // Place the drawer on the right side
+  }
+  &.open {
+    // You can add a transition effect when the drawer opens
+    opacity: 1;
+  }
+}
+
+.drawer {
+  position: relative;
+  max-width: 100%;
+  height: 100%;
+  background-color: var(--color-panel);
+  overflow-y: scroll;
+
+  transition: transform 0.3s ease;
+  transform: translateX(100%); // Start offscreen to the right
+
+  &--right {
+    transform: translateX(100%); // Start offscreen to the right
+    &.outlined {
+      border-left: 1px solid var(--color-gray-a7);
+    }
+  }
+  &--left {
+    transform: translateX(-100%); // Start offscreen to the right
+    &.outlined {
+      border-right: 1px solid var(--color-gray-a7);
+    }
+  }
+  &.open {
+    transform: translateX(0); // Move into view
+  }
+}
+
+.trigger {
+  cursor: pointer;
+  // Add styling for the drawer trigger as needed
+}
+
+.content {
+  padding: var(--space-4);
+
+  &--header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2);
+    > .header-title {
+      width: 100%;
+      height: 100%;
+    }
+
+    > .header-action {
+    }
+  }
+  &--body {
+    margin: var(--space-4) var(--space-0);
+  }
+}

@@ -9,7 +9,7 @@ export default {
 } as Meta;
 
 const Template: Story<KbdProps> = (args) => (
-  <ThemeProvider appearance={'dark'}>
+  <ThemeProvider appearance={'light'}>
     <Kbd shortcut={['Ctrl', 'Command']} {...args}></Kbd>
   </ThemeProvider>
 );

@@ -22,12 +22,9 @@
 | ----------------- | --------- | ----- |
 | Anchor            | ✅        |       |
 | App Bar           | ✅        |       |
-| Bottom Navigation | 🚧        |       |
 | Breadcrumb        | ✅        |       |
-| Footer            | 🚧        |       |
-| Navigation Drawer | 🚧        |       |
+| Navigation Drawer | ✅        |       |
 | Pagination        | 🚧        |       |
-| System Bar        | 🚧        |       |
 | Tab               | ✅        |       |
 
 ### Form Inputs & Control
@@ -55,7 +52,7 @@
 | Table         | ✅        |       |
 | Scroller Area | ✅        |       |
 | iframe        | 🚧        |       |
-| Code          | 🚧        |       |
+| Code          | ✅        |       |
 | Cover         | 🚧        |       |
 | Equation      | 🚧        |       |
 
@@ -103,7 +100,6 @@
 | Video     | 🚧        |       |
 | Icon      | ✅        |       |
 | Image     | ✅        |       |
-| Parallax  | 🚧        |       |
 
 ### Pickers
 
