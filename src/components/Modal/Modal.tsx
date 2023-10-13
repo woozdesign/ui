@@ -23,13 +23,18 @@ interface ModalProps {
 const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant = 'default' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
+  const [targetElement, setTargetElement] = useState<Element | null>(null);
 
   const overlayClasses = classNames(styles.overlay, { [styles.open]: isOpen });
   const modalClasses = classNames(styles.modal, { [styles.open]: isOpen });
   const handleOverlayClick = () => {
     if (variant === 'default') handleClose();
   };
-  const targetElement = document.querySelector('.woozdesign');
+  useEffect(() => {
+    // Instead of querying the DOM directly during the render,
+    // move this to a useEffect to ensure it's only done client-side.
+    setTargetElement(document.querySelector('.woozdesign'));
+  }, [setTargetElement]);
 
   const handleClose = () => {
     if (isOpen) {
