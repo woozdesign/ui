@@ -115,12 +115,9 @@ $title-margin: 1rem 0;
   font-weight: bold;
   font-size: $fontSize;
   color: var(--color-accent-11);
-  text-decoration: none;
+  text-decoration: underline;
   cursor: pointer;
-  padding: var(--space-1) var(--space-2);
-  border-radius: max(var(--radius-3), var(--radius-full));
   &:hover {
-    text-decoration: underline;
   }
   &.link--highContrast {
     color: var(--color-accent-12);

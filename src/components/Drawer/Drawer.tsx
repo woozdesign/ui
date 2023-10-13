@@ -1,12 +1,10 @@
 'use client';
+import { Icon } from '@woozdesign/icons';
 import classNames from 'classnames';
 import React, { FC, ReactNode, useContext, useEffect, useState } from 'react';
-import Button from '../Button';
-import styles from './Drawer.module.scss';
-import IconButton from '../IconButton';
-import { Icon } from '@woozdesign/icons';
-import Divider from '../Divider';
 import ReactDom from 'react-dom';
+import IconButton from '../IconButton';
+import styles from './Drawer.module.scss';
 interface DrawerContextProps {
   onClose: () => void;
 }
@@ -33,8 +31,7 @@ const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transp
   const hasHeader = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === Header);
 
   const hasFooter = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === Footer);
-  console.log('hasHeader: ', hasHeader);
-  console.log('hasFooter: ', hasFooter);
+
   const drawerClasses = classNames(styles.drawer, styles[`drawer--${placement}`], {
     [styles.open]: isOpen,
     [styles.outlined]: outlined,
