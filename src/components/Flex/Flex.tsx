@@ -9,13 +9,13 @@ interface FlexProps extends SpaceSizeProp {
   height?: React.CSSProperties['height'];
   align?: React.CSSProperties['alignItems'];
   justify?: React.CSSProperties['justifyContent'];
-  direction?: 'rows' | 'col';
+  direction?: 'row' | 'column';
   className?: string;
   style?: React.CSSProperties;
   children: React.ReactNode;
 }
 
-const Flex: FC<FlexProps> = ({ className, style, children, direction, space = 2, width = '100%', height = '100%', align = 'start', justify = 'start' }) => {
+const Flex: FC<FlexProps> = ({ className, style, children, direction = 'column', space = 2, width = '100%', height = '100%', align = 'start', justify = 'start' }) => {
   const classes = classNames(styles[`box`], styles[`box--${direction}`], styles[`box--${space}`], className);
 
   return (

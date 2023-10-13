@@ -5,7 +5,7 @@ interface FlexProps extends SpaceSizeProp {
     height?: React.CSSProperties['height'];
     align?: React.CSSProperties['alignItems'];
     justify?: React.CSSProperties['justifyContent'];
-    direction?: 'rows' | 'col';
+    direction?: 'row' | 'column';
     className?: string;
     style?: React.CSSProperties;
     children: React.ReactNode;
