@@ -29,7 +29,8 @@ const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistant = false, color, 
         }
       }
 
-      window.onbeforeunload = () => {
+      const saveScrollState = () => {
+        console.log('scrollRef.current: ', scrollRef.current);
         if (scrollRef.current) {
           if (scrollbars === 'vertical') {
             sessionStorage.setItem(key, String(scrollRef.current.scrollTop));
@@ -39,12 +40,19 @@ const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistant = false, color, 
         }
       };
 
-      // Cleanup listener on unmount
+      // Add event listener to the scrollRef's scroll event
+      if (scrollRef.current) {
+        scrollRef.current.addEventListener('scroll', saveScrollState);
+      }
+
+      // Cleanup event listener on unmount
       return () => {
-        window.onbeforeunload = null;
+        if (scrollRef.current) {
+          scrollRef.current.removeEventListener('scroll', saveScrollState);
+        }
       };
     }
-  }, [scrollRef, scrollbars, id, persistant]);
+  }, [scrollRef.current, scrollbars, id, persistant]);
 
   const classes = classNames(styles.scrollArea, {
     [styles.vertical]: scrollbars == 'vertical' && type == 'always',
