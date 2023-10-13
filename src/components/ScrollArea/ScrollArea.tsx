@@ -7,17 +7,17 @@ interface ScrollAreaProps extends RadiusProp, ColorProp {
   id: string; // Add this line
   type?: 'always' | 'auto';
   scrollbars?: 'vertical' | 'horizontal';
-  persistant?: boolean;
+  persistent?: boolean;
   style?: React.CSSProperties;
   children?: React.ReactNode;
 }
 
-const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistant = false, color, radius, type = 'auto', scrollbars = 'vertical', style, children }) => {
+const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistent = false, color, radius, type = 'auto', scrollbars = 'vertical', style, children }) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const key = 'scrollPosition' + '_' + id; // Combine path and id
   useEffect(() => {
     // Only execute if id is provided
-    if (id && persistant) {
+    if (id && persistent) {
       if (scrollRef.current && sessionStorage[key]) {
         const savedScroll = sessionStorage.getItem(key);
         if (savedScroll) {
@@ -30,7 +30,6 @@ const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistant = false, color, 
       }
 
       const saveScrollState = () => {
-        console.log('scrollRef.current: ', scrollRef.current);
         if (scrollRef.current) {
           if (scrollbars === 'vertical') {
             sessionStorage.setItem(key, String(scrollRef.current.scrollTop));
@@ -52,7 +51,7 @@ const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistant = false, color, 
         }
       };
     }
-  }, [scrollRef.current, scrollbars, id, persistant]);
+  }, [scrollRef.current, scrollbars, id, persistent]);
 
   const classes = classNames(styles.scrollArea, {
     [styles.vertical]: scrollbars == 'vertical' && type == 'always',
