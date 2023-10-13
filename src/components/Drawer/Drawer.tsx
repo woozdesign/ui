@@ -29,7 +29,18 @@ const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transp
   const [targetElement, setTargetElement] = useState<Element | null>(null);
 
   const overlayClasses = classNames(styles.overlay, styles[`overlay--${placement}`], styles[`overlay--${overlayVariant}`], { [styles.open]: isOpen, [styles.outlined]: outlined });
-  const drawerClasses = classNames(styles.drawer, styles[`drawer--${placement}`], { [styles.open]: isOpen, [styles.outlined]: outlined });
+
+  const hasHeader = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === Header);
+
+  const hasFooter = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === Footer);
+  console.log('hasHeader: ', hasHeader);
+  console.log('hasFooter: ', hasFooter);
+  const drawerClasses = classNames(styles.drawer, styles[`drawer--${placement}`], {
+    [styles.open]: isOpen,
+    [styles.outlined]: outlined,
+    [styles['has-header']]: hasHeader,
+    [styles['has-footer']]: hasFooter,
+  });
 
   const handleOverlayClick = () => {
     if (variant === 'default') handleClose();
@@ -106,12 +117,26 @@ const Trigger: FC<TriggerProps> = ({ children }) => {
 };
 
 interface ContentProps {
-  title?: ReactNode;
-  action?: ReactNode;
   children: ReactNode;
 }
 
-const Content: FC<ContentProps> = ({ title, children, action }) => {
+const Content: FC<ContentProps> = ({ children }) => {
+  const stopPropagation = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
+  return (
+    <div className={styles.content} onClick={stopPropagation}>
+      {children}
+    </div>
+  );
+};
+
+interface HeaderProps {
+  title?: ReactNode;
+  action?: ReactNode;
+}
+const Header: FC<HeaderProps> = ({ title, action }) => {
   const context = useContext(DrawerContext);
 
   if (!context) throw new Error('Content must be used within Root');
@@ -127,26 +152,39 @@ const Content: FC<ContentProps> = ({ title, children, action }) => {
   };
 
   return (
-    <div className={styles.content} onClick={stopPropagation}>
-      <div className={styles[`content--header`]}>
-        <div className={styles[`header-title`]}>{title}</div>
-        <div className={styles[`header-action`]}>
-          {action ?? (
-            <IconButton variant={'outlined'} color={'gray'} onClick={handleClose}>
-              <Icon type={'X'} />
-            </IconButton>
-          )}
-        </div>
+    <div className={styles.header} onClick={stopPropagation}>
+      <div className={styles[`header-title`]}>{title}</div>
+      <div className={styles[`header-action`]}>
+        {action ?? (
+          <IconButton variant={'outlined'} color={'gray'} onClick={handleClose}>
+            <Icon type={'X'} />
+          </IconButton>
+        )}
       </div>
-      <div className={styles[`content--body`]}>{children}</div>
     </div>
   );
 };
 
+interface FooterProps {
+  children: ReactNode;
+}
+const Footer: FC<FooterProps> = ({ children }) => {
+  const stopPropagation = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
+  return (
+    <div className={styles.footer} onClick={stopPropagation}>
+      {children}
+    </div>
+  );
+};
 const Drawer = {
   Root: Root,
   Trigger: Trigger,
   Content: Content,
+  Header: Header,
+  Footer: Footer,
 };
 
 export default Drawer;

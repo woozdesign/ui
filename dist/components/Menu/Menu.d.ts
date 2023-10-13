@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '../../utils';
 export interface MenuItem extends SizeProp, ColorProp, RadiusProp, HighContrastProp {
-    label: string;
+    label: React.ReactNode;
     onClick?: () => void;
     href?: string;
     iconPrepend?: React.ReactNode;

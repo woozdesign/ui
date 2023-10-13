@@ -14,11 +14,14 @@ export default {
 const Template: Story<DrawerProps> = ({ children }) => {
   return (
     <ThemeProvider scaling="100%">
-      <Drawer.Root placement="left" overlayVariant={'translucent'}>
+      <Drawer.Root placement="right" overlayVariant={'translucent'}>
         <Drawer.Trigger>
           <Button variant="outlined">Open Detailed Drawer</Button>
         </Drawer.Trigger>
-        <Drawer.Content title="Drawer Header">
+
+        <Drawer.Header title="Drawer Header" />
+        <Drawer.Footer>Test</Drawer.Footer>
+        <Drawer.Content>
           <Menu
             items={[
               { label: 'Only Label' },
