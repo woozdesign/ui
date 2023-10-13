@@ -8,7 +8,7 @@
 
   &:active {
     background-color: var(--color-accent-3);
-    box-shadow: boxShadowAlpha(var(--color-accent-11));
+    // box-shadow: boxShadowAlpha(var(--color-accent-11));
   }
 
   &:focus {
@@ -29,7 +29,7 @@
     &:active {
       background-color: var(--color-accent-3);
 
-      box-shadow: boxShadowAlpha(var(--color-accent-11));
+      // box-shadow: boxShadowAlpha(var(--color-accent-11));
     }
 
     &:focus {

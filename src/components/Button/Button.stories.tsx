@@ -37,9 +37,14 @@ Ghost.args = {
   iconPrepend: <Icon type={'Search'} />,
 };
 
-export const Text = Template.bind({});
+export const Transparent = Template.bind({});
 Text.args = {
-  variant: 'text',
+  variant: 'transparent',
+  iconPrepend: <Icon type={'Search'} />,
+};
+export const Translucent = Template.bind({});
+Text.args = {
+  variant: 'translucent',
   iconPrepend: <Icon type={'Search'} />,
 };
 

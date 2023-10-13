@@ -12,7 +12,7 @@
 
   &:active {
     border-color: var(--color-accent-a6);
-    box-shadow: boxShadowAlpha(var(--color-accent-11));
+    // box-shadow: boxShadowAlpha(var(--color-accent-11));
   }
 
   &:focus {
@@ -40,7 +40,7 @@
 
     &:active {
       border-color: var(--color-accent-a9);
-      box-shadow: boxShadowAlpha(var(--color-accent-12));
+      // box-shadow: boxShadowAlpha(var(--color-accent-12));
     }
 
     &:focus {

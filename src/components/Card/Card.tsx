@@ -7,7 +7,7 @@ import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
 
 export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
-  variant?: 'solid' | 'transparent';
+  variant?: 'solid' | 'transparent' | 'translucent';
   outlined?: boolean;
   children: ReactNode;
 }

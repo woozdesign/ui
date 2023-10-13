@@ -6,9 +6,8 @@
   }
 
   &:active {
-    // border-color: var(--color-accent-80);
     background-color: var(--color-accent-8);
-    box-shadow: boxShadowAlpha(var(--color-accent-9));
+    // box-shadow: boxShadowAlpha(var(--color-accent-9));
   }
 
   &:focus {
@@ -31,7 +30,7 @@
 
     &:active {
       background-color: var(--color-accent-12);
-      box-shadow: boxShadowAlpha(var(--color-accent-11));
+      // box-shadow: boxShadowAlpha(var(--color-accent-11));
     }
 
     > .icon-prepend,

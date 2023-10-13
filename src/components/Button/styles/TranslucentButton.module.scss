@@ -1,0 +1,49 @@
+@import '@/styles/lib/functions';
+.button--translucent {
+  color: var(--color-accent-12);
+  background-color: opacity(var(--color-accent-12), 95%);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+
+  &:hover {
+    background-color: opacity(var(--color-accent-12), 90%);
+  }
+
+  &:active {
+    background-color: opacity(var(--color-accent-11), 95%);
+    // box-shadow: boxShadowAlpha(var(--color-accent-9));
+  }
+
+  &:focus {
+  }
+  > .icon-prepend {
+    color: var(--color-accent-9);
+  }
+
+  > .icon-append {
+    color: var(--color-accent-9);
+  }
+
+  &.button--high-contrast {
+    color: var(--color-accent-12);
+    background-color: transparent;
+
+    &:hover {
+      background-color: var(--color-accent-4);
+    }
+
+    &:active {
+      // box-shadow: boxShadowAlpha(var(--color-accent-12));
+    }
+
+    &:focus {
+    }
+    > .icon-prepend {
+      color: var(--color-accent-12);
+    }
+
+    > .icon-append {
+      color: var(--color-accent-12);
+    }
+  }
+}

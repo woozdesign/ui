@@ -7,6 +7,8 @@ import styles from './Toast.module.scss';
 
 interface ToastProps extends ColorProp, RadiusProp, HighContrastProp {
   id: number; // Added id to identify each toast
+
+  variant?: 'solid' | 'ghost' | 'outlined' | 'translucent';
   iconPrepend?: React.ReactNode;
   message: string;
   duration?: number;
@@ -47,7 +49,10 @@ const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
     }, 400); // delay to allow the toast to fade out before removal
   };
 
-  const classes = classNames(styles.toast, styles[toast.placement || 'bottomRight'], { [styles.open]: isOpen, [styles[`toast--highContrast`]]: toast.highContrast });
+  const classes = classNames(styles.toast, styles[`toast--${toast.variant || 'ghost'}`], styles[toast.placement || 'bottomRight'], {
+    [styles.open]: isOpen,
+    [styles[`toast--highContrast`]]: toast.highContrast,
+  });
 
   return (
     <div data-accent-color={toast.color} data-radius={toast.radius} className={classes} ref={toastRef}>
