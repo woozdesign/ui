@@ -6,7 +6,7 @@ import styles from './Drawer.module.scss';
 import IconButton from '../IconButton';
 import { Icon } from '@woozdesign/icons';
 import Divider from '../Divider';
-
+import ReactDom from 'react-dom';
 interface DrawerContextProps {
   onClose: () => void;
 }
@@ -29,6 +29,8 @@ const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transp
 
   const overlayClasses = classNames(styles.overlay, styles[`overlay--${placement}`], styles[`overlay--${overlayVariant}`], { [styles.open]: isOpen, [styles.outlined]: outlined });
   const drawerClasses = classNames(styles.drawer, styles[`drawer--${placement}`], { [styles.open]: isOpen, [styles.outlined]: outlined });
+
+  const targetElement = document.querySelector('.woozdesign') || document.body;
 
   const handleOverlayClick = () => {
     if (variant === 'default') handleClose();
@@ -59,13 +61,17 @@ const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transp
     <DrawerContext.Provider value={{ onClose: handleClose }}>
       {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))}
 
-      {isRendered && (
-        <div className={overlayClasses} onClick={handleOverlayClick}>
-          <div className={drawerClasses} style={{ width: width }}>
-            {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
-          </div>
-        </div>
-      )}
+      {isRendered &&
+        ReactDom.createPortal(
+          <>
+            <div className={overlayClasses} onClick={handleOverlayClick}>
+              <div className={drawerClasses} style={{ width: width }}>
+                {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
+              </div>
+            </div>
+          </>,
+          targetElement,
+        )}
     </DrawerContext.Provider>
   );
 };

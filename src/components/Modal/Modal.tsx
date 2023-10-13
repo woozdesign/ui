@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import React, { FC, ReactNode, useContext, useEffect, useState } from 'react';
 import Button from '../Button';
 import Card from '../Card';
+import ReactDom from 'react-dom';
 import styles from './Modal.module.scss';
 
 interface ModalContextProps {
@@ -28,6 +29,7 @@ const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant 
   const handleOverlayClick = () => {
     if (variant === 'default') handleClose();
   };
+  const targetElement = document.querySelector('.woozdesign') || document.body;
 
   const handleClose = () => {
     if (isOpen) {
@@ -54,11 +56,17 @@ const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant 
     <ModalContext.Provider value={{ onClose: handleClose, onCancel, onConfirm }}>
       {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))}
 
-      {isRendered && (
-        <div className={overlayClasses} onClick={handleOverlayClick}>
-          <div className={modalClasses}>{React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}</div>
-        </div>
-      )}
+      {isRendered &&
+        ReactDom.createPortal(
+          <>
+            <div className={overlayClasses} onClick={handleOverlayClick}>
+              <div className={modalClasses}>
+                {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
+              </div>
+            </div>
+          </>,
+          targetElement,
+        )}
     </ModalContext.Provider>
   );
 };

@@ -1,5 +1,23 @@
 @import '@/styles/lib/breakpoints.scss';
 
+.header {
+  --appbar-height: calc(64px * var(--scaling));
+  width: 100%;
+
+  &--absolute {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+  &--fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+  }
+}
 .wrapper {
   --appbar-height: calc(64px * var(--scaling));
   width: 100%;
@@ -8,7 +26,6 @@
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
-  height: var(--appbar-height);
   padding: var(--space-2) var(--space-6);
 
   &--solid {
@@ -23,20 +40,6 @@
   }
   &--transparent {
     background-color: transparent;
-  }
-
-  &--absolute {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  &--fixed {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 999;
   }
 }
 

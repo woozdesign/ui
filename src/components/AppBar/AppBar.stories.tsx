@@ -10,6 +10,7 @@ import Tab from '../Tab/Tab';
 import { Icon } from '@woozdesign/icons';
 import IconButton from '../IconButton';
 import Drawer from '../Drawer/Drawer';
+import Card from '../Card';
 
 export default {
   title: 'Components/AppBar',
@@ -19,7 +20,7 @@ export default {
 const Template: Story<AppBarProps> = (args) => {
   return (
     <ThemeProvider scaling="90%">
-      <AppBar {...args}>
+      <AppBar {...args} variant={'translucent'}>
         <AppBar.Heading>
           <a href="/">
             <Image src="https://woozdesign-website.vercel.app/favicon.svg" width={36}></Image>
@@ -66,6 +67,17 @@ const Template: Story<AppBarProps> = (args) => {
           </Drawer.Root>
         </AppBar.Action>
       </AppBar>
+      <main>
+        <Layout.Container>
+          <Layout.Row>
+            <Layout.Col xs={12}>
+              <Card>
+                <Card.Heading title={'Title'} />
+              </Card>
+            </Layout.Col>
+          </Layout.Row>
+        </Layout.Container>
+      </main>
     </ThemeProvider>
   );
 };

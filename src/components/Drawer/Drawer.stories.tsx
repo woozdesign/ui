@@ -14,7 +14,7 @@ export default {
 const Template: Story<DrawerProps> = ({ children }) => {
   return (
     <ThemeProvider scaling="100%">
-      <Drawer.Root placement="left" overlayVariant="transparent">
+      <Drawer.Root placement="left" overlayVariant={'translucent'}>
         <Drawer.Trigger>
           <Button variant="outlined">Open Detailed Drawer</Button>
         </Drawer.Trigger>
