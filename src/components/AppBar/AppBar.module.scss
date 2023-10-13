@@ -1,7 +1,9 @@
 @import '@/styles/lib/breakpoints.scss';
+:root {
+  --appbar-height: calc(64px * var(--scaling));
+}
 
 .header {
-  --appbar-height: calc(64px * var(--scaling));
   width: 100%;
 
   &--absolute {

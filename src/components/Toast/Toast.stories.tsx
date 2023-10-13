@@ -16,8 +16,8 @@ const Template: Story<NotificationProps> = (args) => {
   const [openToast, ToastProvider] = useToast();
   const triggerNotification = (placement: string) => {
     openToast({
+      variant: 'translucent',
       iconPrepend: <Icon type={'AlertCircle'} size={'medium'} />,
-      color: 'blue',
       message: 'This is Looooooooong Looooooooong toast title.',
       duration: args.duration,
       placement: placement,

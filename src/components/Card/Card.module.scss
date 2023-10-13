@@ -1,3 +1,5 @@
+@import '@/styles/lib/functions';
+
 .card {
   overflow: hidden;
   position: relative;
@@ -27,7 +29,9 @@
   }
 
   &--translucent {
-    background-color: var(--color-panel-translucent);
+    background-color: opacity(var(--color-panel), 90%);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
   }
   &--transparent {
     background-color: transparent;
