@@ -37,8 +37,14 @@ Ghost.args = {
   children: <Icon type={'Search'} />,
 };
 
-export const Text = Template.bind({});
-Text.args = {
-  variant: 'text',
+export const Transparent = Template.bind({});
+Transparent.args = {
+  variant: 'transparent',
+  children: <Icon type={'Search'} />,
+};
+
+export const Translucent = Template.bind({});
+Translucent.args = {
+  variant: 'translucent',
   children: <Icon type={'Search'} />,
 };
