@@ -13,7 +13,7 @@ interface MenuContextProps {
 const MenuContext = React.createContext<MenuContextProps | undefined>(undefined);
 
 export interface MenuItem extends SizeProp, ColorProp, RadiusProp, HighContrastProp {
-  label: string;
+  label: React.ReactNode;
   onClick?: () => void;
   href?: string;
   iconPrepend?: React.ReactNode;

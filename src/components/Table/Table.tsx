@@ -1,95 +1,106 @@
 'use client';
-/* eslint-disable react/display-name */
+
 import React, { FC, ReactNode, HTMLProps } from 'react';
 import classNames from 'classnames';
 import styles from './Table.module.scss';
 
-interface TableProps extends HTMLProps<HTMLTableElement> {
+interface RootProps extends HTMLProps<HTMLTableElement> {
   children: ReactNode;
 }
 
-const Table: FC<TableProps> & {
-  Root: FC<RootProps>;
-  Header: FC<HeaderProps>;
-  Body: FC<BodyProps>;
-  Row: FC<RowProps>;
-  ColumnHeaderCell: FC<ColumnHeaderCellProps>;
-  RowHeaderCell: FC<RowHeaderCellProps>;
-  Cell: FC<CellProps>;
-} = ({ children, ...others }) => (
-  <table {...others} className={styles.table}>
-    {children}
-  </table>
-);
-
-interface RootProps extends HTMLProps<HTMLDivElement> {
-  children: ReactNode;
-}
-
-Table.Root = ({ children, ...others }: RootProps) => (
-  <div {...others} className={styles.root}>
-    {children}
-  </div>
-);
+const Root: React.FC<RootProps> = ({ children, className, ...others }: RootProps) => {
+  const classes = classNames(styles.table, className);
+  return (
+    <table {...others} className={classes}>
+      {children}
+    </table>
+  );
+};
 
 interface HeaderProps extends HTMLProps<HTMLTableSectionElement> {
   children: ReactNode;
 }
 
-Table.Header = ({ children, ...others }: HeaderProps) => (
-  <thead {...others} className={styles.header}>
-    {children}
-  </thead>
-);
+const Header: React.FC<HeaderProps> = ({ className, children, ...others }: HeaderProps) => {
+  const classes = classNames(styles.header, className);
+  return (
+    <thead {...others} className={classes}>
+      {children}
+    </thead>
+  );
+};
 
 interface BodyProps extends HTMLProps<HTMLTableSectionElement> {
   children: ReactNode;
 }
 
-Table.Body = ({ children, ...others }: BodyProps) => (
-  <tbody {...others} className={styles.body}>
-    {children}
-  </tbody>
-);
+const Body: React.FC<BodyProps> = ({ className, children, ...others }: BodyProps) => {
+  const classes = classNames(styles.body, className);
+  return (
+    <tbody {...others} className={classes}>
+      {children}
+    </tbody>
+  );
+};
 
 interface RowProps extends HTMLProps<HTMLTableRowElement> {
   children: ReactNode;
 }
 
-Table.Row = ({ children, ...others }: RowProps) => (
-  <tr {...others} className={styles.row}>
-    {children}
-  </tr>
-);
+const Row: React.FC<RowProps> = ({ className, children, ...others }: RowProps) => {
+  const classes = classNames(styles.row, className);
+  return (
+    <tr {...others} className={classes}>
+      {children}
+    </tr>
+  );
+};
 
 interface ColumnHeaderCellProps extends HTMLProps<HTMLTableHeaderCellElement> {
   children: ReactNode;
 }
 
-Table.ColumnHeaderCell = ({ children, ...others }: ColumnHeaderCellProps) => (
-  <th {...others} className={styles.columnHeaderCell}>
-    {children}
-  </th>
-);
+const ColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({ className, children, ...others }: ColumnHeaderCellProps) => {
+  const classes = classNames(styles.columnHeaderCell, className);
+  return (
+    <th {...others} className={classes}>
+      {children}
+    </th>
+  );
+};
 
 interface RowHeaderCellProps extends HTMLProps<HTMLTableHeaderCellElement> {
   children: ReactNode;
 }
 
-Table.RowHeaderCell = ({ children, ...others }: RowHeaderCellProps) => (
-  <th {...others} className={styles.rowHeaderCell}>
-    {children}
-  </th>
-);
-
+const RowHeaderCell: React.FC<RowHeaderCellProps> = ({ className, children, ...others }: RowHeaderCellProps) => {
+  const classes = classNames(styles.rowHeaderCell, className);
+  return (
+    <th {...others} className={classes}>
+      {children}
+    </th>
+  );
+};
 interface CellProps extends HTMLProps<HTMLTableCellElement> {
   children: ReactNode;
 }
 
-Table.Cell = ({ children, ...others }: CellProps) => (
-  <td {...others} className={styles.cell}>
-    {children}
-  </td>
-);
+const Cell: React.FC<CellProps> = ({ className, children, ...others }: CellProps) => {
+  const classes = classNames(styles.cell, className);
+  return (
+    <td {...others} className={classes}>
+      {children}
+    </td>
+  );
+};
 
+const Table = {
+  Root,
+  Header,
+  Body,
+  Row,
+  ColumnHeaderCell,
+  RowHeaderCell,
+  Cell,
+};
 export default Table;

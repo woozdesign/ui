@@ -33,11 +33,13 @@
 }
 
 .drawer {
+  --drawer-header-height: calc(64px * var(--scaling));
+  --drawer-footer-height: calc(64px * var(--scaling));
   position: relative;
   max-width: 100%;
   height: 100%;
+  display: flex;
   background-color: var(--color-panel);
-  overflow-y: scroll;
 
   transition: transform 0.3s ease;
   transform: translateX(100%); // Start offscreen to the right
@@ -45,17 +47,24 @@
   &--right {
     transform: translateX(100%); // Start offscreen to the right
     &.outlined {
-      border-left: 1px solid var(--color-gray-a7);
+      border-left: 1px solid var(--color-gray-a6);
     }
   }
   &--left {
     transform: translateX(-100%); // Start offscreen to the right
     &.outlined {
-      border-right: 1px solid var(--color-gray-a7);
+      border-right: 1px solid var(--color-gray-a6);
     }
   }
   &.open {
     transform: translateX(0); // Move into view
+  }
+  &.has-header .content {
+    top: var(--drawer-header-height);
+  }
+
+  &.has-footer .content {
+    bottom: var(--drawer-footer-height);
   }
 }
 
@@ -64,23 +73,94 @@
   // Add styling for the drawer trigger as needed
 }
 
-.content {
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  box-sizing: border-box;
+  height: var(--drawer-header-height);
   padding: var(--space-4);
 
-  &--header {
+  background-color: var(--color-panel);
+  border-bottom: 1px solid var(--color-gray-a6);
+  gap: var(--space-2);
+  > .header-title {
+    width: 100%;
+    height: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: var(--space-2);
-    > .header-title {
-      width: 100%;
-      height: 100%;
+  }
+
+  > .header-action {
+  }
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: var(--drawer-header-height);
+  padding: var(--space-4);
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-panel);
+  border-top: 1px solid var(--color-gray-a6);
+  bottom: 0;
+}
+
+.content {
+  padding: var(--space-4);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  overflow-y: scroll;
+
+  /* Initially hide the scrollbar */
+  &::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+    transition: background-color-color 0.3s ease-in-out;
+  }
+
+  &:hover {
+    /* Customize the scrollbar appearance (This is for webkit browsers) */
+    &::-webkit-scrollbar-track {
+      background-color: var(--color-gray-a3);
+      border-radius: max(var(--radius-3), var(--radius-full));
     }
 
-    > .header-action {
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--color-gray-a8);
+      border-radius: max(var(--radius-3), var(--radius-full));
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background-color: var(--color-gray-a9);
+      border-radius: max(var(--radius-3), var(--radius-full));
     }
   }
-  &--body {
-    margin: var(--space-4) var(--space-0);
+
+  /* Customize the scrollbar appearance (This is for webkit browsers) */
+  &::-webkit-scrollbar-track {
+    background-color: transparent;
+    border-radius: max(var(--radius-3), var(--radius-full));
+    transition: background-color-color 0.3s ease-in-out;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: max(var(--radius-3), var(--radius-full));
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: transparent;
+    border-radius: max(var(--radius-3), var(--radius-full));
   }
 }

@@ -12,7 +12,7 @@ interface ScrollAreaProps extends RadiusProp, ColorProp {
   children?: React.ReactNode;
 }
 
-const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistent = false, color, radius, type = 'auto', scrollbars = 'vertical', style, children }) => {
+const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistent = false, color, radius, type = 'always', scrollbars = 'vertical', style, children }) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const key = 'scrollPosition' + '_' + id; // Combine path and id
   useEffect(() => {

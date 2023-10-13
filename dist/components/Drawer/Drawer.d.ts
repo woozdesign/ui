@@ -12,13 +12,20 @@ interface TriggerProps {
     children: ReactNode;
 }
 interface ContentProps {
+    children: ReactNode;
+}
+interface HeaderProps {
     title?: ReactNode;
     action?: ReactNode;
+}
+interface FooterProps {
     children: ReactNode;
 }
 declare const Drawer: {
     Root: React.FC<DrawerProps>;
     Trigger: React.FC<TriggerProps>;
     Content: React.FC<ContentProps>;
+    Header: React.FC<HeaderProps>;
+    Footer: React.FC<FooterProps>;
 };
 export default Drawer;
