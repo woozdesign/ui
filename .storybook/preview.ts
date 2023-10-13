@@ -21,8 +21,6 @@ const preview: Preview = {
         },
       ],
     },
-    // Add this line to disable keyboard shortcuts
-    keyboardShortcuts: false,
   },
 };
 
