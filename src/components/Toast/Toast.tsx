@@ -4,7 +4,6 @@ import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import Typography from '../Typography';
 import styles from './Toast.module.scss';
-// ... (your imports remain unchanged)
 
 interface ToastProps extends ColorProp, RadiusProp, HighContrastProp {
   id: number; // Added id to identify each toast

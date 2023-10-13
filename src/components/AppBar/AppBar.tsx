@@ -15,8 +15,13 @@ const AppBar: FC<AppBarProps> & {
   Body: FC<BodyProps>;
   Action: FC<ActionProps>;
 } = ({ children, variant = 'solid', position = 'fixed' }) => {
-  const classes = classNames(styles[`wrapper`], styles[`wrapper--${variant}`], styles[`wrapper--${position}`]);
-  return <div className={classes}>{children}</div>;
+  const header = classNames(styles[`header`], styles[`header--${position}`]);
+  const wrapper = classNames(styles[`wrapper`], styles[`wrapper--${variant}`]);
+  return (
+    <header className={header}>
+      <div className={wrapper}>{children}</div>
+    </header>
+  );
 };
 
 interface HeadingProps {
