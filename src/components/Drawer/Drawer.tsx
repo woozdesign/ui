@@ -26,15 +26,20 @@ interface DrawerProps {
 const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
+  const [targetElement, setTargetElement] = useState<Element | null>(null);
 
   const overlayClasses = classNames(styles.overlay, styles[`overlay--${placement}`], styles[`overlay--${overlayVariant}`], { [styles.open]: isOpen, [styles.outlined]: outlined });
   const drawerClasses = classNames(styles.drawer, styles[`drawer--${placement}`], { [styles.open]: isOpen, [styles.outlined]: outlined });
 
-  const targetElement = document.querySelector('.woozdesign');
-
   const handleOverlayClick = () => {
     if (variant === 'default') handleClose();
   };
+
+  useEffect(() => {
+    // Instead of querying the DOM directly during the render,
+    // move this to a useEffect to ensure it's only done client-side.
+    setTargetElement(document.querySelector('.woozdesign'));
+  }, [setTargetElement]);
 
   const handleClose = () => {
     if (isOpen) {
