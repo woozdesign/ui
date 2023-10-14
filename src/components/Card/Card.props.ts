@@ -6,7 +6,7 @@ export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement
   children: React.ReactNode;
 }
 
-export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'action'> {
+export interface HeaderProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'action'> {
   title: React.ReactNode;
   subtitle?: React.ReactNode;
   titleSize?: TextSizeProp['size'];

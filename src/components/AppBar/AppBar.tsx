@@ -3,10 +3,10 @@
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './AppBar.module.scss';
-import { ActionProps, AppBarProps, BodyProps, HeadingProps } from './Appbar.props';
+import { ActionProps, AppBarProps, BodyProps, HeaderProps } from './Appbar.props';
 
 const AppBar: FC<AppBarProps> & {
-  Heading: FC<HeadingProps>;
+  Header: FC<HeaderProps>;
   Body: FC<BodyProps>;
   Action: FC<ActionProps>;
 } = ({ children, variant = 'solid', position = 'fixed' }) => {
@@ -18,7 +18,7 @@ const AppBar: FC<AppBarProps> & {
     </header>
   );
 };
-AppBar.Heading = ({ children, className, style }: HeadingProps): React.ReactNode => {
+AppBar.Header = ({ children, className, style }: HeaderProps): React.ReactNode => {
   return (
     <div className={classNames(styles.heading, className)} style={style}>
       {children}

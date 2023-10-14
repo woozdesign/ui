@@ -4,7 +4,7 @@ export interface AppBarProps {
     position?: 'block' | 'absolute' | 'fixed';
     children: React.ReactNode;
 }
-export interface HeadingProps {
+export interface HeaderProps {
     children: React.ReactNode;
     className?: string;
     style?: React.CSSProperties;

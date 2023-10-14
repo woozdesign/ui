@@ -4,10 +4,10 @@ import classNames from 'classnames';
 import React, { FC } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
-import { ActionsProps, BodyProps, CardProps, HeadingProps } from './Card.props';
+import { ActionsProps, BodyProps, CardProps, HeaderProps } from './Card.props';
 
 const Card: FC<CardProps> & {
-  Heading: FC<HeadingProps>;
+  Header: FC<HeaderProps>;
   Body: FC<BodyProps>;
   Actions: FC<ActionsProps>;
 } = ({ variant = 'solid', outlined = true, size = 'medium', children, className, onClick, ...others }) => {
@@ -26,16 +26,16 @@ const Card: FC<CardProps> & {
   );
 };
 
-Card.Heading = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outlined = false }: HeadingProps) => {
+Card.Header = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outlined = false }: HeaderProps) => {
   const classes = classNames(styles.heading, { [styles[`heading--outlined`]]: outlined });
 
   return (
     <div className={classes}>
       <div className={styles[`heading-title-wrapper`]}>
         {typeof title == 'string' ? (
-          <Typography.Heading className={styles.title} variant={'h3'} size={titleSize}>
+          <Typography.Header className={styles.title} variant={'h3'} size={titleSize}>
             {title}
-          </Typography.Heading>
+          </Typography.Header>
         ) : (
           title
         )}

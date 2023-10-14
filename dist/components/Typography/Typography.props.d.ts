@@ -7,7 +7,7 @@ export interface TypographyProps extends TextSizeProp, HighContrastProp {
     weight?: 'light' | 'normal' | 'bold' | 'bolder';
     align?: 'start' | 'center' | 'end';
 }
-export interface HeadingProps extends ColorProp, TypographyProps {
+export interface HeaderProps extends ColorProp, TypographyProps {
     variant?: Extract<keyof JSX.IntrinsicElements, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
 }
 export interface TextProps extends ColorProp, TypographyProps {

@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { ActionProps, AppBarProps, BodyProps, HeadingProps } from './Appbar.props';
+import { ActionProps, AppBarProps, BodyProps, HeaderProps } from './Appbar.props';
 declare const AppBar: FC<AppBarProps> & {
-    Heading: FC<HeadingProps>;
+    Header: FC<HeaderProps>;
     Body: FC<BodyProps>;
     Action: FC<ActionProps>;
 };

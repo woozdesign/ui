@@ -12,7 +12,7 @@ export default {
     outlined: true,
     children: (
       <>
-        <Card.Heading title="Default Title" />
+        <Card.Header title="Default Title" />
         <Card.Body content="Default card content." />
       </>
     ),
@@ -42,7 +42,7 @@ export const FullContent = Template.bind({});
 FullContent.args = {
   children: (
     <>
-      <Card.Heading
+      <Card.Header
         title={'test'}
         action={
           <Button variant={'text'} color={'lime'}>
@@ -51,7 +51,7 @@ FullContent.args = {
         }
         align={'end'}
       />
-      <Card.Heading
+      <Card.Header
         title="Card Title"
         subtitle="Subtitle here"
         action={
