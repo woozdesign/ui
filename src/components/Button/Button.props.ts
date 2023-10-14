@@ -3,7 +3,7 @@ import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '@/utils';
 export type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 export type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
 export interface BaseProps extends ColorProp, SizeProp, RadiusProp, HighContrastProp {
-  variant?: 'solid' | 'outlined' | 'ghost' | 'icon' | 'transparent' | 'translucent';
+  variant?: 'solid' | 'outlined' | 'ghost' | 'transparent' | 'translucent';
   buttonType?: 'button' | 'reset' | 'submit';
   justify?: 'start' | 'center' | 'end';
   block?: boolean;

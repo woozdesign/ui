@@ -3,11 +3,11 @@
   background-color: transparent;
 
   &:hover {
-    background-color: var(--color-accent-4);
+    background-color: var(--color-accent-a4);
   }
 
   &:active {
-    background-color: var(--color-accent-3);
+    background-color: var(--color-accent-a5);
     // box-shadow: boxShadowAlpha(var(--color-accent-9));
   }
 
@@ -26,10 +26,11 @@
     background-color: transparent;
 
     &:hover {
-      background-color: var(--color-accent-4);
+      background-color: var(--color-accent-a4);
     }
 
     &:active {
+      background-color: var(--color-accent-a5);
       // // box-shadow: boxShadowAlpha(var(--color-accent-12));
     }
 
