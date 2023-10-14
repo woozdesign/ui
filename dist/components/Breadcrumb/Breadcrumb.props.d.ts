@@ -8,5 +8,6 @@ export type BreadcrumbItem = {
 };
 export interface BreadcrumbProps extends ColorProp, HighContrastProp {
     items: BreadcrumbItem[];
+    variant?: 'normal' | 'inverse';
     divider?: React.ReactNode;
 }

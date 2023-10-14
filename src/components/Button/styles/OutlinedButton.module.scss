@@ -7,10 +7,12 @@
   border: 1px solid var(--color-accent-a7);
 
   &:hover {
+    background-color: var(--color-accent-a2);
     border-color: var(--color-accent-a8);
   }
 
   &:active {
+    background-color: var(--color-accent-a3);
     border-color: var(--color-accent-a6);
     // box-shadow: boxShadowAlpha(var(--color-accent-11));
   }
@@ -29,17 +31,21 @@
   &.button--high-contrast {
     background-color: transparent;
     transition: box-shadow 0.08s ease-in;
-
-    background-color: transparent;
     color: var(--color-accent-12);
     border: 1px solid var(--color-accent-a10);
 
     &:hover {
+      background-color: var(--color-accent-a3);
       border-color: var(--color-accent-a11);
+      // filter: contrast(0.88) saturate(1.3) brightness(1.18);
+      // -webkit-filter: contrast(0.88) saturate(1.3) brightness(1.18);
     }
 
     &:active {
+      background-color: var(--color-accent-a4);
       border-color: var(--color-accent-a9);
+      // filter: brightness(0.95) saturate(1.2);
+      // -webkit-filter: brightness(0.95) saturate(1.2);
       // box-shadow: boxShadowAlpha(var(--color-accent-12));
     }
 
