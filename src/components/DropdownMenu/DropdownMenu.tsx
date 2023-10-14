@@ -8,8 +8,12 @@ import Kbd from '../Kbd';
 import styles from './DropdownMenu.module.scss';
 import { ContentProps, DropdownMenuContextProps, DropdownMenuProps, ItemProps, SubContentProps, SubProps, SubTriggerProps, TriggerProps } from './DropdownMenu.props';
 
+const isBrowser = typeof window !== 'undefined';
+
 const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void) => {
   useEffect(() => {
+    if (!isBrowser) return;
+
     const handleClickOutside = (event: MouseEvent) => {
       if (ref.current && !ref.current.contains(event.target as Node)) {
         callback();
@@ -55,6 +59,7 @@ const Root: FC<DropdownMenuProps> = ({ children }) => {
 
 const Trigger: FC<TriggerProps> = ({ children, shortcut }) => {
   const context = useContext(DropdownMenuContext);
+
   if (!context) throw new Error('Trigger must be used within Root');
 
   useShortcut(shortcut ?? [], context.onToggle);

@@ -182,13 +182,19 @@ const updateThemeAppearanceClass = (appearance: ThemeOptions['appearance']) => {
     root.classList.remove('light-theme', 'dark-theme');
     root.style.colorScheme = appearance;
     root.classList.add(`${appearance}-theme`);
+    return;
   }
 
   if (root.classList.contains('light') || root.classList.contains('dark')) {
     root.classList.remove('light', 'dark');
     root.style.colorScheme = appearance;
     root.classList.add(appearance);
+    return;
   }
+
+  root.style.colorScheme = appearance;
+  root.classList.add(appearance);
+  return;
 };
 
 export { ThemeProvider, useThemeContext, updateThemeAppearanceClass };

@@ -10,6 +10,10 @@ export const useShortcut = (keys: WoozCommandCode[], action: () => void) => {
   const prevActionRef = React.useRef<() => void>();
 
   React.useEffect(() => {
+    if (typeof window === 'undefined' || typeof document === 'undefined') {
+      return; // If not, just exit from the effect
+    }
+
     // Check if keys or action have changed
     const keysChanged = JSON.stringify(prevKeysRef.current) !== JSON.stringify(keys);
     const actionChanged = prevActionRef.current !== action;

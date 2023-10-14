@@ -9,49 +9,56 @@ const isSetsEqual = (a: Set<any>, b: Set<any>) => {
   return true;
 };
 
-const isMac = navigator.platform.toUpperCase().includes('MAC');
-
 export const ShortcutProvider: FC<React.PropsWithChildren> = ({ children }) => {
   const [shortcuts, setShortcuts] = useState<Shortcut[]>([]);
   const currentlyPressedKeysRef = useRef<Set<WoozCommandCode>>(new Set());
 
-  const registerShortcut = useCallback((shortcut: Shortcut) => {
-    setShortcuts((prev) => {
-      return [...prev, shortcut];
-    });
-  }, []);
+  const shortcutsRef = useRef<Shortcut[]>([]);
+  useEffect(() => {
+    shortcutsRef.current = shortcuts;
+  }, [shortcuts]);
 
-  const unregisterShortcut = useCallback((keys: WoozCommandCode[]) => {
-    setShortcuts((prev) => {
-      // Find the last (top) shortcut with the matching keys
-      for (let i = prev.length - 1; i >= 0; i--) {
-        if (isSetsEqual(new Set(prev[i].keys), new Set(keys))) {
-          // Remove the top shortcut with the matching keys
-          const updatedShortcuts = [...prev];
-          updatedShortcuts.splice(i, 1);
-          return updatedShortcuts;
-        }
-      }
-      return prev;
-    });
-  }, []);
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent) => {
-      if (!event.metaKey) {
-        const key = keyboardEventToWoozCommand(event);
-        if (key) {
-          currentlyPressedKeysRef.current.add(key);
+  const registerShortcut = useCallback(
+    (shortcut: Shortcut) => {
+      setShortcuts((prev) => {
+        const newShortcut = [...prev, shortcut];
+        return newShortcut;
+      });
+    },
+    [setShortcuts],
+  );
 
-          const matchingShortcut = [...shortcuts].reverse().find((s) => isSetsEqual(new Set(s.keys), currentlyPressedKeysRef.current));
-          if (matchingShortcut) {
-            matchingShortcut.action();
-            event.preventDefault();
+  const unregisterShortcut = useCallback(
+    (keys: WoozCommandCode[]) => {
+      setShortcuts((prev) => {
+        // Find the last (top) shortcut with the matching keys
+        for (let i = prev.length - 1; i >= 0; i--) {
+          if (isSetsEqual(new Set(prev[i].keys), new Set(keys))) {
+            // Remove the top shortcut with the matching keys
+            const updatedShortcuts = [...prev];
+            updatedShortcuts.splice(i, 1);
+            return updatedShortcuts;
           }
         }
-      }
+        return prev;
+      });
     },
-    [shortcuts],
+    [setShortcuts],
   );
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
+    if (!event.metaKey) {
+      const key = keyboardEventToWoozCommand(event);
+      if (key) {
+        currentlyPressedKeysRef.current.add(key);
+        const matchingShortcut = [...shortcutsRef.current].reverse().find((s) => isSetsEqual(new Set(s.keys), currentlyPressedKeysRef.current));
+
+        if (matchingShortcut) {
+          matchingShortcut.action();
+          event.preventDefault();
+        }
+      }
+    }
+  }, []);
 
   const handleKeyUp = useCallback((event: KeyboardEvent) => {
     const key = keyboardEventToWoozCommand(event);

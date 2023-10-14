@@ -114,7 +114,7 @@ function getMatchingGrayColor(accentColor: ThemeAccentColor): ThemeAccentColor {
 }
 
 const themeDefaults: ThemeOptions = {
-  appearance: 'dark',
+  appearance: 'light',
   radius: 'medium',
   accentColor: 'violet',
   scaling: '100%',
