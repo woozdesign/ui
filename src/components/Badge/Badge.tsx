@@ -1,13 +1,8 @@
 'use client';
-import React, { FC } from 'react';
 import classNames from 'classnames';
+import React, { FC } from 'react';
 import styles from './Badge.module.scss';
-import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '@/utils';
-
-interface BadgeProps extends ColorProp, SizeProp, RadiusProp, HighContrastProp {
-  variant?: 'solid' | 'ghost' | 'outlined';
-  label: string | number;
-}
+import { BadgeProps } from './Badge.props';
 
 const Badge: FC<BadgeProps> = ({ variant = 'ghost', label, color, highContrast = false, radius }) => {
   const classes = classNames(styles.badge, styles[`badge--${variant}`], { [styles['badge--high-contrast']]: highContrast });

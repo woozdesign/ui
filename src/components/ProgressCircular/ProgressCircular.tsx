@@ -1,13 +1,7 @@
 'use client';
 import React, { FC } from 'react';
 import styles from './ProgressCircular.module.scss';
-import { ColorProp, SizeProp } from '@/utils';
-
-interface ProgressCircularProps extends ColorProp, SizeProp {
-  value?: number; // Progress from 0 to 100
-  indeterminate?: boolean;
-  rounded?: boolean;
-}
+import { ProgressCircularProps } from './ProgressCircular.props';
 
 const ProgressCircular: FC<ProgressCircularProps> = ({ value = 0, indeterminate, color, size, rounded = false }) => {
   if (value > 100) value = 100;

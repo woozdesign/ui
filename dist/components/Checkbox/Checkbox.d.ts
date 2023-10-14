@@ -1,9 +1,4 @@
-import { FC, HTMLProps } from 'react';
-import { ColorProp, RadiusProp, SizeProp } from '../../utils';
-import { FormChildProps } from '../Form/Form';
-interface CheckboxProps extends Omit<HTMLProps<HTMLInputElement>, 'type' | 'color' | 'size' | 'onChange'>, ColorProp, SizeProp, RadiusProp, FormChildProps {
-    onChange?: () => void;
-    label?: string;
-}
+import { FC } from 'react';
+import { CheckboxProps } from './Checkbox.props';
 declare const Checkbox: FC<CheckboxProps>;
 export default Checkbox;

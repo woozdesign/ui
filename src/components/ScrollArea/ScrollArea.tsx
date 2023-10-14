@@ -1,16 +1,8 @@
 'use client';
-import { ColorProp, RadiusProp } from '@/utils';
+import classNames from 'classnames';
 import React, { useEffect, useRef } from 'react';
 import styles from './ScrollArea.module.scss';
-import classNames from 'classnames';
-interface ScrollAreaProps extends RadiusProp, ColorProp {
-  id: string; // Add this line
-  type?: 'always' | 'auto';
-  scrollbars?: 'vertical' | 'horizontal';
-  persistent?: boolean;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
-}
+import { ScrollAreaProps } from './ScrollArea.props';
 
 const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistent = false, color, radius, type = 'always', scrollbars = 'vertical', style, children }) => {
   const scrollRef = useRef<HTMLDivElement | null>(null);

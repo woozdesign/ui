@@ -1,13 +1,8 @@
 'use client';
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import styles from './Tooltip.module.scss';
-import Typography from '../Typography';
+import { TooltipProps } from './Tooltip.props';
 
-interface TooltipProps {
-  content: string;
-  position?: 'top' | 'bottom';
-  children: ReactNode;
-}
 const Tooltip: FC<TooltipProps> = ({ content, position: positionProp = 'top', children }) => {
   return (
     <div className={styles.tooltip}>

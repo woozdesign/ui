@@ -1,26 +1,5 @@
-import React, { ReactNode } from 'react';
-interface DrawerProps {
-    children: ReactNode;
-    width?: React.CSSProperties['width'];
-    placement?: 'left' | 'right';
-    variant?: 'default' | 'confirm';
-    outlined?: boolean;
-    overlayVariant?: 'transparent' | 'translucent';
-    onClose?: () => void;
-}
-interface TriggerProps {
-    children: ReactNode;
-}
-interface ContentProps {
-    children: ReactNode;
-}
-interface HeaderProps {
-    title?: ReactNode;
-    action?: ReactNode;
-}
-interface FooterProps {
-    children: ReactNode;
-}
+import React from 'react';
+import { ContentProps, DrawerProps, FooterProps, HeaderProps, TriggerProps } from './Drawer.props';
 declare const Drawer: {
     Root: React.FC<DrawerProps>;
     Trigger: React.FC<TriggerProps>;

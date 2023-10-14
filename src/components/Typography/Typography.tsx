@@ -3,9 +3,9 @@
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Typography.module.scss';
-import { CodeProps, HeadingProps, LinkProps, StrongProps, TextProps } from './Typography.props';
+import { CodeProps, HeaderProps, LinkProps, StrongProps, TextProps } from './Typography.props';
 
-const Heading: FC<HeadingProps> = ({ variant = 'h1', size = 8, align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other }) => {
+const Header: FC<HeaderProps> = ({ variant = 'h1', size = 8, align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other }) => {
   const Tag = variant as keyof JSX.IntrinsicElements;
 
   const headingStyle = classNames(
@@ -58,7 +58,7 @@ const Code: FC<CodeProps> = ({ children, color, size = 4, radius, highContrast =
 };
 
 const Typography = {
-  Heading,
+  Header,
   Text,
   Strong,
   Code,

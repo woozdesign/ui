@@ -1,8 +1,4 @@
-import { FC, ReactNode } from 'react';
-interface TooltipProps {
-    content: string;
-    position?: 'top' | 'bottom';
-    children: ReactNode;
-}
+import { FC } from 'react';
+import { TooltipProps } from './Tooltip.props';
 declare const Tooltip: FC<TooltipProps>;
 export default Tooltip;

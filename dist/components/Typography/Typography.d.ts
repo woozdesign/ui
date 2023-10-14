@@ -1,7 +1,7 @@
 import React from 'react';
-import { CodeProps, HeadingProps, LinkProps, StrongProps, TextProps } from './Typography.props';
+import { CodeProps, HeaderProps, LinkProps, StrongProps, TextProps } from './Typography.props';
 declare const Typography: {
-    Heading: React.FC<HeadingProps>;
+    Header: React.FC<HeaderProps>;
     Text: React.FC<TextProps>;
     Strong: React.FC<StrongProps>;
     Code: React.FC<CodeProps>;

@@ -21,11 +21,11 @@ const Template: Story<AppBarProps> = (args) => {
   return (
     <ThemeProvider scaling="90%">
       <AppBar {...args} variant={'translucent'}>
-        {/* <AppBar.Heading>
+        {/* <AppBar.Header>
           <a href="/">
             <Image src="https://woozdesign-website.vercel.app/favicon.svg" width={36}></Image>
           </a>
-        </AppBar.Heading> */}
+        </AppBar.Header> */}
         <AppBar.Body>
           <Tab.Root defaultValue="components">
             <Tab.List>
@@ -72,7 +72,7 @@ const Template: Story<AppBarProps> = (args) => {
           <Layout.Row>
             <Layout.Col xs={12}>
               <Card>
-                <Card.Heading title={'Title'} />
+                <Card.Header title={'Title'} />
               </Card>
             </Layout.Col>
           </Layout.Row>

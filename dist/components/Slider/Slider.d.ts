@@ -1,14 +1,4 @@
-import { ColorProp, RadiusProp } from '../../utils';
 import { FC } from 'react';
-interface SliderProps extends ColorProp, RadiusProp {
-    defaultValue: number[];
-    trackSize?: number;
-    thumbSize?: number;
-    reverse?: boolean;
-    orientation?: 'horizontal' | 'vertical';
-    onPointerDown?: (value: number[]) => void;
-    onChange?: (value: number[]) => void;
-    onPointerUp?: (value: number[]) => void;
-}
+import { SliderProps } from './Slider.props';
 declare const Slider: FC<SliderProps>;
 export default Slider;

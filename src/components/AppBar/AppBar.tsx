@@ -1,17 +1,12 @@
 'use client';
 /* eslint-disable react/display-name */
 import classNames from 'classnames';
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import styles from './AppBar.module.scss';
-
-interface AppBarProps {
-  variant?: 'solid' | 'transparent' | 'translucent';
-  position?: 'block' | 'absolute' | 'fixed';
-  children: ReactNode;
-}
+import { ActionProps, AppBarProps, BodyProps, HeaderProps } from './Appbar.props';
 
 const AppBar: FC<AppBarProps> & {
-  Heading: FC<HeadingProps>;
+  Header: FC<HeaderProps>;
   Body: FC<BodyProps>;
   Action: FC<ActionProps>;
 } = ({ children, variant = 'solid', position = 'fixed' }) => {
@@ -23,14 +18,7 @@ const AppBar: FC<AppBarProps> & {
     </header>
   );
 };
-
-interface HeadingProps {
-  children: ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-}
-
-AppBar.Heading = ({ children, className, style }: HeadingProps): JSX.Element => {
+AppBar.Header = ({ children, className, style }: HeaderProps): React.ReactNode => {
   return (
     <div className={classNames(styles.heading, className)} style={style}>
       {children}
@@ -38,12 +26,7 @@ AppBar.Heading = ({ children, className, style }: HeadingProps): JSX.Element => 
   );
 };
 
-interface BodyProps {
-  children?: ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-}
-AppBar.Body = ({ children, style, className }: BodyProps): JSX.Element => {
+AppBar.Body = ({ children, style, className }: BodyProps): React.ReactNode => {
   return (
     <div className={classNames(styles.body, className)} style={style}>
       {children}
@@ -51,13 +34,7 @@ AppBar.Body = ({ children, style, className }: BodyProps): JSX.Element => {
   );
 };
 
-interface ActionProps {
-  children?: ReactNode;
-  className?: string;
-  style?: React.CSSProperties;
-  mobile?: boolean;
-}
-AppBar.Action = ({ children, style, className, mobile }: ActionProps): JSX.Element => {
+AppBar.Action = ({ children, style, className, mobile }: ActionProps): React.ReactNode => {
   const classes = classNames(styles.action, className, { [styles[`action--mobile`]]: mobile });
   return (
     <div className={classes} style={style}>

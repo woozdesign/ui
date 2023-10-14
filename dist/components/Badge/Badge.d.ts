@@ -1,8 +1,4 @@
 import { FC } from 'react';
-import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '../../utils';
-interface BadgeProps extends ColorProp, SizeProp, RadiusProp, HighContrastProp {
-    variant?: 'solid' | 'ghost' | 'outlined';
-    label: string | number;
-}
+import { BadgeProps } from './Badge.props';
 declare const Badge: FC<BadgeProps>;
 export default Badge;

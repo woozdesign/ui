@@ -78,7 +78,7 @@
       outline: none;
       border-color: var(--color-accent-9);
       // background-color: var(--color-surface-accent);
-      box-shadow: 0 0 0 4px var(--color-accent-9a);
+      box-shadow: 0 0 0 4px var(--color-accent-9a9);
     }
   }
 
@@ -88,7 +88,7 @@
       outline: none;
       border-color: var(--color-accent-9);
       background-color: var(--color-surface-accent);
-      box-shadow: 0 0 0 4px var(--color-accent-9a);
+      box-shadow: 0 0 0 4px var(--color-accent-a9);
     }
   }
   &.hasPrependIcon {
@@ -121,7 +121,7 @@
 .iconPrepend {
   position: absolute;
   left: var(--space-4);
-  fill: var(--color-accent-9);
+  color: var(--color-accent-9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -131,7 +131,7 @@
 .iconAppend {
   position: absolute;
   right: var(--space-4);
-  fill: var(--color-accent-9);
+  color: var(--color-accent-9);
   display: flex;
   align-items: center;
   justify-content: center;

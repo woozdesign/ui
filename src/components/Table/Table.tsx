@@ -1,12 +1,9 @@
 'use client';
 
-import React, { FC, ReactNode, HTMLProps } from 'react';
 import classNames from 'classnames';
+import React from 'react';
 import styles from './Table.module.scss';
-
-interface RootProps extends HTMLProps<HTMLTableElement> {
-  children: ReactNode;
-}
+import { BodyProps, CellProps, ColumnHeaderCellProps, HeaderProps, RootProps, RowHeaderCellProps, RowProps } from './Table.props';
 
 const Root: React.FC<RootProps> = ({ children, className, ...others }: RootProps) => {
   const classes = classNames(styles.table, className);
@@ -17,10 +14,6 @@ const Root: React.FC<RootProps> = ({ children, className, ...others }: RootProps
   );
 };
 
-interface HeaderProps extends HTMLProps<HTMLTableSectionElement> {
-  children: ReactNode;
-}
-
 const Header: React.FC<HeaderProps> = ({ className, children, ...others }: HeaderProps) => {
   const classes = classNames(styles.header, className);
   return (
@@ -29,10 +22,6 @@ const Header: React.FC<HeaderProps> = ({ className, children, ...others }: Heade
     </thead>
   );
 };
-
-interface BodyProps extends HTMLProps<HTMLTableSectionElement> {
-  children: ReactNode;
-}
 
 const Body: React.FC<BodyProps> = ({ className, children, ...others }: BodyProps) => {
   const classes = classNames(styles.body, className);
@@ -43,10 +32,6 @@ const Body: React.FC<BodyProps> = ({ className, children, ...others }: BodyProps
   );
 };
 
-interface RowProps extends HTMLProps<HTMLTableRowElement> {
-  children: ReactNode;
-}
-
 const Row: React.FC<RowProps> = ({ className, children, ...others }: RowProps) => {
   const classes = classNames(styles.row, className);
   return (
@@ -55,11 +40,6 @@ const Row: React.FC<RowProps> = ({ className, children, ...others }: RowProps) =
     </tr>
   );
 };
-
-interface ColumnHeaderCellProps extends HTMLProps<HTMLTableHeaderCellElement> {
-  children: ReactNode;
-}
-
 const ColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({ className, children, ...others }: ColumnHeaderCellProps) => {
   const classes = classNames(styles.columnHeaderCell, className);
   return (
@@ -69,10 +49,6 @@ const ColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({ className, children
   );
 };
 
-interface RowHeaderCellProps extends HTMLProps<HTMLTableHeaderCellElement> {
-  children: ReactNode;
-}
-
 const RowHeaderCell: React.FC<RowHeaderCellProps> = ({ className, children, ...others }: RowHeaderCellProps) => {
   const classes = classNames(styles.rowHeaderCell, className);
   return (
@@ -81,10 +57,6 @@ const RowHeaderCell: React.FC<RowHeaderCellProps> = ({ className, children, ...o
     </th>
   );
 };
-interface CellProps extends HTMLProps<HTMLTableCellElement> {
-  children: ReactNode;
-}
-
 const Cell: React.FC<CellProps> = ({ className, children, ...others }: CellProps) => {
   const classes = classNames(styles.cell, className);
   return (

@@ -2,15 +2,7 @@
 import React, { FC, FormEvent, useState } from 'react';
 import Button from '../Button';
 import styles from './Form.module.scss';
-
-export interface FormChildProps {
-  hasSubmitted?: boolean;
-}
-export interface FormProps {
-  children: React.ReactElement<FormChildProps> | React.ReactElement<FormChildProps>[];
-  onSuccess: (e: FormEvent<HTMLFormElement>) => void;
-  onError: () => void;
-}
+import { FormChildProps, FormProps } from './Form.props';
 
 const Form: FC<FormProps> = ({ children, onSuccess, onError, ...others }) => {
   const [hasSubmitted, setHasSubmitted] = useState(false);

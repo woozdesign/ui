@@ -1,25 +1,5 @@
-import React, { ReactNode, HTMLProps } from 'react';
-interface RootProps extends HTMLProps<HTMLTableElement> {
-    children: ReactNode;
-}
-interface HeaderProps extends HTMLProps<HTMLTableSectionElement> {
-    children: ReactNode;
-}
-interface BodyProps extends HTMLProps<HTMLTableSectionElement> {
-    children: ReactNode;
-}
-interface RowProps extends HTMLProps<HTMLTableRowElement> {
-    children: ReactNode;
-}
-interface ColumnHeaderCellProps extends HTMLProps<HTMLTableHeaderCellElement> {
-    children: ReactNode;
-}
-interface RowHeaderCellProps extends HTMLProps<HTMLTableHeaderCellElement> {
-    children: ReactNode;
-}
-interface CellProps extends HTMLProps<HTMLTableCellElement> {
-    children: ReactNode;
-}
+import React from 'react';
+import { BodyProps, CellProps, ColumnHeaderCellProps, HeaderProps, RootProps, RowHeaderCellProps, RowProps } from './Table.props';
 declare const Table: {
     Root: React.FC<RootProps>;
     Header: React.FC<HeaderProps>;

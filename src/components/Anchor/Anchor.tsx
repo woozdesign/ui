@@ -1,21 +1,8 @@
 'use client';
+import { isElementInViewport } from '@/utils';
 import React, { FC, useEffect, useRef, useState } from 'react';
 import styles from './Anchor.module.scss';
-import { isElementInViewport } from '@/utils';
-
-export type LinkItem = {
-  key: string;
-  href: string;
-  title: string;
-  children?: LinkItem[];
-};
-
-type AnchorProps = {
-  items: LinkItem[];
-  offset?: number;
-  behavior?: ScrollBehavior;
-  onChange?: (selectedKey: string) => void;
-};
+import { AnchorProps, LinkItem } from './Anchor.props';
 
 const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onChange }) => {
   const [activeKey, setActiveKey] = useState<string | null>(items[0]?.key);

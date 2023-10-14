@@ -1,22 +1,10 @@
 'use client';
 import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
 import classNames from 'classnames';
-import React, { ChangeEvent, FC, HTMLProps, useState } from 'react';
-import { FormChildProps } from '../Form/Form';
+import React, { ChangeEvent, FC, useState } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './TextArea.module.scss';
-import { ColorProp, RadiusProp } from '@/utils';
-
-interface TextAreaProps extends FormChildProps, Omit<HTMLProps<HTMLTextAreaElement>, 'size' | 'color'>, RadiusProp, ColorProp {
-  variant?: 'solid' | 'ghost';
-  size?: 1 | 2 | 3 | 4 | 5; // Number of visible lines
-  label?: string;
-  resizable?: boolean;
-
-  errorMessage?: string;
-  onChange?: (e: ChangeEvent<HTMLTextAreaElement>) => void;
-  onSubmit?: () => void;
-}
+import { TextAreaProps } from './TextArea.props';
 
 const TextArea: FC<TextAreaProps> = ({
   variant = 'solid',

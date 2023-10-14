@@ -114,7 +114,7 @@ $title-margin: 1rem 0;
 @mixin linkStyles($fontSize) {
   font-weight: bold;
   font-size: $fontSize;
-  color: var(--color-accent-11);
+  color: var(--color-accent-12);
   text-decoration: underline;
   cursor: pointer;
   &:hover {

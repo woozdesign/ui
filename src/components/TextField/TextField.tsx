@@ -2,22 +2,9 @@
 import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
 import classNames from 'classnames';
 import React, { ChangeEvent, FC, useState } from 'react';
-import { FormChildProps } from '../Form/Form';
 import Typography from '../Typography/Typography';
 import styles from './TextField.module.scss';
-import { ColorProp, RadiusProp, SizeProp } from '@/utils';
-
-export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size' | 'color'>, FormChildProps, RadiusProp, SizeProp, ColorProp {
-  variant?: 'solid' | 'ghost';
-  label?: string;
-  iconPrepend?: JSX.Element;
-  iconAppend?: JSX.Element;
-  block?: boolean;
-  pattern?: string;
-  errorMessage?: string; // Custom error message prop
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
-  onSubmit?: () => void;
-}
+import { TextFieldProps } from './TextField.props';
 
 const TextField: FC<TextFieldProps> = ({
   variant = 'solid',

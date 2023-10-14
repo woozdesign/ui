@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <AppBar position={'fixed'} variant={'translucent'}>
-        <AppBar.Heading></AppBar.Heading>
+        <AppBar.Header></AppBar.Header>
         <AppBar.Body>
           <Tab.Root defaultValue={''}>
             <Tab.List>

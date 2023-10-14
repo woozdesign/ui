@@ -1,19 +1,9 @@
 'use client';
-import { RadiusProp, isElementInViewport } from '@/utils';
+import { isElementInViewport } from '@/utils';
+import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Image.module.scss';
-import classNames from 'classnames';
-
-export interface ImageProps extends RadiusProp {
-  src: string;
-  alt: string;
-  placeholder?: string; // A smaller, quickly loading version or a solid color
-  className?: string;
-  width?: string | number; // Width of the image container
-  height?: string | number; // Height of the image container
-  lazyLoad?: boolean;
-  objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down'; // CSS object-fit values
-}
+import { ImageProps } from './Image.props';
 
 const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoad = true, radius = 'none', width, height, objectFit = 'cover' }) => {
   const [loaded, setLoaded] = useState(false);

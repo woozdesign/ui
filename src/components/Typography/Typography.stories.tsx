@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Typography from './Typography';
-import { TextProps, HeadingProps } from './Typography.props';
+import { TextProps, HeaderProps } from './Typography.props';
 import '@/styles/core.scss';
 import { ThemeProvider } from '../Theme/Theme';
 
@@ -15,9 +15,9 @@ const TypographyTemplate: Story = (args) => (
   <ThemeProvider appearance={'light'}>
     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((level) => {
       return (
-        <Typography.Heading key={level} size={level}>
-          Heading
-        </Typography.Heading>
+        <Typography.Header key={level} size={level}>
+          Header
+        </Typography.Header>
       );
     })}
 
@@ -48,9 +48,9 @@ export const TypographyFull = TypographyTemplate.bind({});
 TypographyFull.args = {};
 
 // Title Story
-const TitleTemplate: Story<HeadingProps> = (args) => (
+const TitleTemplate: Story<HeaderProps> = (args) => (
   <ThemeProvider appearance={'light'}>
-    <Typography.Heading {...args} />
+    <Typography.Header {...args} />
   </ThemeProvider>
 );
 

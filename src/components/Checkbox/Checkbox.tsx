@@ -1,17 +1,11 @@
 'use client';
-import React, { FC, HTMLProps, ChangeEvent, useState, useEffect, useCallback } from 'react';
-import styles from './Checkbox.module.scss';
-import { ColorProp, RadiusProp, SizeProp } from '@/utils';
-import { FormChildProps } from '../Form/Form';
-import Typography from '../Typography';
-import { Icon } from '@woozdesign/icons';
 import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
+import { Icon } from '@woozdesign/icons';
 import classNames from 'classnames';
-
-interface CheckboxProps extends Omit<HTMLProps<HTMLInputElement>, 'type' | 'color' | 'size' | 'onChange'>, ColorProp, SizeProp, RadiusProp, FormChildProps {
-  onChange?: () => void;
-  label?: string;
-}
+import React, { FC, useCallback, useState } from 'react';
+import Typography from '../Typography';
+import styles from './Checkbox.module.scss';
+import { CheckboxProps } from './Checkbox.props';
 
 const Checkbox: FC<CheckboxProps> = ({ color, radius, size = 'medium', onChange, label, hasSubmitted, ...props }) => {
   const [isChecked, setIsChecked] = useState(props.checked || false);

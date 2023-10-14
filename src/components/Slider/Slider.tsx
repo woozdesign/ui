@@ -1,21 +1,11 @@
 'use client';
-import { ColorProp, RadiusProp } from '@/utils';
 import classNames from 'classnames';
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 import Range from './Range';
 import styles from './Slider.module.scss';
+import { SliderProps } from './Slider.props';
 import Thumb from './Thumb';
 
-interface SliderProps extends ColorProp, RadiusProp {
-  defaultValue: number[];
-  trackSize?: number;
-  thumbSize?: number;
-  reverse?: boolean;
-  orientation?: 'horizontal' | 'vertical';
-  onPointerDown?: (value: number[]) => void;
-  onChange?: (value: number[]) => void;
-  onPointerUp?: (value: number[]) => void;
-}
 const Slider: FC<SliderProps> = ({
   defaultValue,
   radius,

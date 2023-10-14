@@ -1,8 +1,4 @@
 import { FC } from 'react';
-import { ColorProp, RadiusProp, SizeProp } from '../../utils';
-export interface AvatarProps extends SizeProp, ColorProp, RadiusProp {
-    src?: string;
-    fallback: string;
-}
+import { AvatarProps } from './Avatar.props';
 declare const Avatar: FC<AvatarProps>;
 export default Avatar;
