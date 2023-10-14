@@ -2,7 +2,8 @@
 
 .content {
   position: absolute;
-  background-color: var(--color-gray-2);
+  background-color: var(--color-gray-1);
+  color: var(--color-gray-12);
   z-index: 1;
   border-radius: var(--radius-4);
   box-shadow: 0 0 0 1px var(--color-gray-a6);
@@ -26,9 +27,10 @@
   align-items: center;
   gap: var(--space-4);
   transition: background-color 0.3s ease;
+  color: var(--color-gray-12);
 
   &:hover {
-    background-color: var(--color-accent-9);
+    background-color: var(--color-accent-a5);
   }
 }
 .sub {
@@ -46,18 +48,19 @@
   font-size: var(--font-size-3);
   align-items: center;
   transition: background-color 0.3s ease;
+  color: var(--color-gray-12);
 
   &:hover {
-    background-color: var(--color-accent-9);
+    // color: var(--color-accent-9-contrast);
+    background-color: var(--color-accent-a5);
   }
 }
 
 .subContent {
   position: absolute;
   left: calc(100% + var(--space-2));
-
-  top: 0;
-  background-color: var(--color-gray-2);
+  top: calc(var(--space-1) * -1);
+  background-color: var(--color-gray-1);
   z-index: 1;
   border-radius: var(--radius-4);
   box-shadow: 0 0 0 1px var(--color-gray-a6);
