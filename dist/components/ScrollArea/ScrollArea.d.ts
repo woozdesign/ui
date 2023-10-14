@@ -1,12 +1,4 @@
-import { ColorProp, RadiusProp } from '../../utils';
 import React from 'react';
-interface ScrollAreaProps extends RadiusProp, ColorProp {
-    id: string;
-    type?: 'always' | 'auto';
-    scrollbars?: 'vertical' | 'horizontal';
-    persistent?: boolean;
-    style?: React.CSSProperties;
-    children?: React.ReactNode;
-}
+import { ScrollAreaProps } from './ScrollArea.props';
 declare const ScrollArea: React.FC<ScrollAreaProps>;
 export default ScrollArea;

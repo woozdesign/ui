@@ -1,16 +1,10 @@
 /* eslint-disable react/display-name */
 'use client';
-import React, { CSSProperties, FC, ReactNode } from 'react';
 import classNames from 'classnames';
-import { SizeProp, TextSizeProp } from '@/utils/helper/props';
+import React, { FC } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
-
-export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
-  variant?: 'solid' | 'transparent' | 'translucent';
-  outlined?: boolean;
-  children: ReactNode;
-}
+import { ActionsProps, BodyProps, CardProps, HeadingProps } from './Card.props';
 
 const Card: FC<CardProps> & {
   Heading: FC<HeadingProps>;
@@ -31,15 +25,6 @@ const Card: FC<CardProps> & {
     </div>
   );
 };
-
-export interface HeadingProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'action'> {
-  title: ReactNode;
-  subtitle?: ReactNode;
-  titleSize?: TextSizeProp['size'];
-  subtitleSize?: TextSizeProp['size'];
-  action?: ReactNode;
-  outlined?: boolean;
-}
 
 Card.Heading = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outlined = false }: HeadingProps) => {
   const classes = classNames(styles.heading, { [styles[`heading--outlined`]]: outlined });
@@ -67,13 +52,6 @@ Card.Heading = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outl
   );
 };
 
-export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title' | 'content'> {
-  title?: ReactNode;
-  titleSize?: TextSizeProp['size'];
-  content: ReactNode;
-  textAlign?: 'start' | 'center' | 'end';
-}
-
 Card.Body = ({ title, content, titleSize = 4, textAlign = 'start' }: BodyProps) => {
   return (
     <div className={styles.body}>
@@ -94,12 +72,6 @@ Card.Body = ({ title, content, titleSize = 4, textAlign = 'start' }: BodyProps) 
     </div>
   );
 };
-
-export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
-  justify?: CSSProperties['justifyContent'];
-  outlined?: boolean;
-  children: ReactNode;
-}
 
 Card.Actions = ({ children, justify = 'start', outlined = false }: ActionsProps) => {
   const classes = classNames(styles.actions, { [styles[`actions--outlined`]]: outlined });

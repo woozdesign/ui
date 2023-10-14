@@ -1,4 +1,6 @@
 .scrollArea {
+  width: inherit;
+  height: inherit;
   &.vertical {
     overflow-x: hidden;
     overflow-y: scroll;

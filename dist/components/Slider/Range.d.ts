@@ -1,9 +1,4 @@
 import { FC } from 'react';
-interface RangeProps {
-    orientation: 'horizontal' | 'vertical';
-    reverse: boolean;
-    minValue: number;
-    maxValue: number;
-}
+import { RangeProps } from './Slider.props';
 declare const Range: FC<RangeProps>;
 export default Range;

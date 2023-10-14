@@ -1,18 +1,14 @@
 'use client';
-import React, { FC, ReactNode, useState, useContext, useRef, useEffect, RefObject, useCallback } from 'react';
-import styles from './DropdownMenu.module.scss';
-import Divider from '../Divider';
-import Kbd from '../Kbd';
-import { useShortcut } from '@/utils/hooks/useShortcut';
 import { ShortcutProvider } from '@/utils/contexts/Shortcut/ShortcutProvider';
-import { WoozCommandCode } from '@/utils/contexts/Shortcut/Shortcut.props';
-import Button from '../Button';
+import { useShortcut } from '@/utils/hooks/useShortcut';
 import { Icon } from '@woozdesign/icons';
 import '@woozdesign/icons/dist/styles.css';
+import React, { FC, RefObject, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import Divider from '../Divider';
+import Kbd from '../Kbd';
+import styles from './DropdownMenu.module.scss';
+import { ContentProps, DropdownMenuContextProps, DropdownMenuProps, ItemProps, SubContentProps, SubProps, SubTriggerProps, TriggerProps } from './DropdownMenu.props';
 
-interface DropdownMenuContextProps {
-  onToggle: () => void;
-}
 const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void) => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -29,14 +25,6 @@ const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void) => {
 };
 
 const DropdownMenuContext = React.createContext<DropdownMenuContextProps | undefined>(undefined);
-
-interface DropdownMenuProps extends ChildProps {
-  children: ReactNode;
-}
-
-interface ChildProps {
-  isOpen?: boolean;
-}
 
 const Root: FC<DropdownMenuProps> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -66,11 +54,6 @@ const Root: FC<DropdownMenuProps> = ({ children }) => {
   );
 };
 
-interface TriggerProps {
-  shortcut?: WoozCommandCode[];
-  children: ReactNode;
-}
-
 const Trigger: FC<TriggerProps> = ({ children, shortcut }) => {
   const context = useContext(DropdownMenuContext);
   if (!context) throw new Error('Trigger must be used within Root');
@@ -84,24 +67,11 @@ const Trigger: FC<TriggerProps> = ({ children, shortcut }) => {
   );
 };
 
-interface ContentProps {
-  children: ReactNode;
-  isOpen: boolean;
-}
-
 const Content: FC<ContentProps> = ({ children, isOpen }) => {
   if (!isOpen) return null;
 
   return <div className={styles.content}>{children}</div>;
 };
-
-interface ItemProps {
-  children: ReactNode;
-  shortcut?: WoozCommandCode[];
-  color?: string;
-  onClick?: () => void; // Add onClick prop
-  disabled?: boolean; // Add disabled prop
-}
 
 const Item: FC<ItemProps> = ({ children, shortcut, color, disabled, onClick }) => {
   const handleClick = () => {
@@ -123,9 +93,6 @@ const Separator: FC = () => {
   return <Divider space={0}></Divider>;
 };
 
-interface SubProps {
-  children: ReactNode;
-}
 const Sub: FC<SubProps> = ({ children }) => {
   const [isSubOpen, setIsSubOpen] = useState(false);
   const subRef = useRef(null);
@@ -156,8 +123,6 @@ const Sub: FC<SubProps> = ({ children }) => {
     </div>
   );
 };
-
-interface SubTriggerProps extends TriggerProps {}
 const SubTrigger: FC<SubTriggerProps> = ({ children, shortcut }) => {
   const context = useContext(DropdownMenuContext);
 
@@ -173,11 +138,6 @@ const SubTrigger: FC<SubTriggerProps> = ({ children, shortcut }) => {
     </div>
   );
 };
-interface SubContentProps {
-  children: ReactNode;
-  isSubOpen: boolean;
-}
-
 const SubContent: FC<SubContentProps> = ({ children, isSubOpen }) => {
   if (!isSubOpen) return null;
 

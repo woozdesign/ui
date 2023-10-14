@@ -1,24 +1,9 @@
-import { ColorProp, HighContrastProp, RadiusProp } from '@/utils';
 import { Icon } from '@woozdesign/icons';
 import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import Typography from '../Typography';
 import styles from './Toast.module.scss';
-
-interface ToastProps extends ColorProp, RadiusProp, HighContrastProp {
-  id: number; // Added id to identify each toast
-
-  variant?: 'solid' | 'ghost' | 'outlined' | 'translucent';
-  iconPrepend?: React.ReactNode;
-  message: string;
-  duration?: number;
-  placement: 'topLeft' | 'topRight' | 'bottomLeft' | 'bottomRight';
-}
-
-interface ToastDisplayProps {
-  toast: ToastProps;
-  handleClose: (id: number) => void;
-}
+import { ToastDisplayProps, ToastProps } from './Toast.props';
 
 const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -97,7 +82,7 @@ const ToastList: React.FC<{ toasts: ToastProps[]; handleClose: (id: number) => v
 };
 
 type ToastFunction = (props: Omit<ToastProps, 'id'>) => void;
-type ToastHookReturnType = [ToastFunction, JSX.Element];
+type ToastHookReturnType = [ToastFunction, React.ReactNode];
 export const useToast = (): ToastHookReturnType => {
   const [toasts, setToasts] = useState<ToastProps[]>([]);
 

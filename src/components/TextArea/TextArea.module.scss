@@ -11,7 +11,7 @@
 .textArea {
   font-family: 'Inter';
   width: calc(100% - var(--space-4) * 2);
-  padding: var(--space-2) var(--space-4);
+  padding: var(--space-3);
   border: 2px solid transparent;
   border-radius: max(var(--radius-3), var(--radius-full));
   outline: none;
@@ -34,7 +34,7 @@
     &:hover {
       outline: none;
       border-color: var(--color-accent-9);
-      box-shadow: 0 0 0 4px var(--color-accent-9a);
+      box-shadow: 0 0 0 4px var(--color-accent-a9);
     }
   }
 
@@ -44,7 +44,7 @@
       outline: none;
       border-color: var(--color-accent-9);
       background-color: var(--color-surface-accent);
-      box-shadow: 0 0 0 4px var(--color-accent-9a);
+      box-shadow: 0 0 0 4px var(--color-accent-a9);
     }
   }
 

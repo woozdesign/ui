@@ -11,7 +11,6 @@ export default {
 
 const Template: Story<DividerProps> = (args) => (
   <ThemeProvider>
-    {' '}
     <Divider {...args} />
   </ThemeProvider>
 );

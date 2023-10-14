@@ -1,20 +1,10 @@
 'use client';
-import { ColorProp, HighContrastProp, RadiusProp, SizeProp } from '@/utils';
 import classNames from 'classnames';
-import React, { FC, ReactNode, useContext, useState } from 'react';
+import React, { FC, useContext, useState } from 'react';
 import styles from './Tab.module.scss';
-
-interface TabContextProps {
-  activeTab: string;
-  setActiveTab: React.Dispatch<React.SetStateAction<string>>;
-}
+import { ContentProps, ListProps, RootProps, TabContextProps, TriggerProps } from './Tab.props';
 
 const TabContext = React.createContext<TabContextProps | undefined>(undefined);
-
-interface RootProps {
-  children: ReactNode;
-  defaultValue: string;
-}
 
 export const Root: FC<RootProps> = ({ children, defaultValue }) => {
   const [activeTab, setActiveTab] = useState<string>(defaultValue);
@@ -26,11 +16,6 @@ export const Root: FC<RootProps> = ({ children, defaultValue }) => {
   );
 };
 
-export interface ListProps {
-  justify?: 'center' | 'end' | 'space-between' | 'start';
-  children: ReactNode;
-}
-
 export const List: FC<ListProps> = ({ children, justify = 'center' }) => {
   return (
     <div className={styles.list} style={{ justifyContent: justify }}>
@@ -38,12 +23,6 @@ export const List: FC<ListProps> = ({ children, justify = 'center' }) => {
     </div>
   );
 };
-
-export interface TriggerProps extends ColorProp, SizeProp, RadiusProp, HighContrastProp {
-  value: string;
-  onClick?: () => void;
-  children: ReactNode;
-}
 
 export const Trigger: FC<TriggerProps> = ({ value, children, color, size = 'medium', radius, highContrast = false, onClick }) => {
   const context = useContext(TabContext);
@@ -68,12 +47,6 @@ export const Trigger: FC<TriggerProps> = ({ value, children, color, size = 'medi
     </a>
   );
 };
-
-interface ContentProps {
-  value: string;
-  children: ReactNode;
-}
-
 export const Content: FC<ContentProps> = ({ value, children }) => {
   const context = useContext(TabContext);
   if (!context) throw new Error('Content must be used within Root');

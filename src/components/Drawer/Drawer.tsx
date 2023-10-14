@@ -1,25 +1,16 @@
 'use client';
 import { Icon } from '@woozdesign/icons';
 import classNames from 'classnames';
-import React, { FC, ReactNode, useContext, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
 import ReactDom from 'react-dom';
 import IconButton from '../IconButton';
 import styles from './Drawer.module.scss';
+import { ContentProps, DrawerProps, FooterProps, HeaderProps, TriggerProps } from './Drawer.props';
 interface DrawerContextProps {
   onClose: () => void;
 }
 
 const DrawerContext = React.createContext<DrawerContextProps | undefined>(undefined);
-
-interface DrawerProps {
-  children: ReactNode;
-  width?: React.CSSProperties['width'];
-  placement?: 'left' | 'right';
-  variant?: 'default' | 'confirm';
-  outlined?: boolean;
-  overlayVariant?: 'transparent' | 'translucent';
-  onClose?: () => void;
-}
 
 const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -97,10 +88,6 @@ const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transp
   );
 };
 
-interface TriggerProps {
-  children: ReactNode;
-}
-
 const Trigger: FC<TriggerProps> = ({ children }) => {
   const context = useContext(DrawerContext);
 
@@ -112,10 +99,6 @@ const Trigger: FC<TriggerProps> = ({ children }) => {
     </div>
   );
 };
-
-interface ContentProps {
-  children: ReactNode;
-}
 
 const Content: FC<ContentProps> = ({ children }) => {
   const stopPropagation = (e: React.MouseEvent) => {
@@ -129,10 +112,6 @@ const Content: FC<ContentProps> = ({ children }) => {
   );
 };
 
-interface HeaderProps {
-  title?: ReactNode;
-  action?: ReactNode;
-}
 const Header: FC<HeaderProps> = ({ title, action }) => {
   const context = useContext(DrawerContext);
 
@@ -162,9 +141,6 @@ const Header: FC<HeaderProps> = ({ title, action }) => {
   );
 };
 
-interface FooterProps {
-  children: ReactNode;
-}
 const Footer: FC<FooterProps> = ({ children }) => {
   const stopPropagation = (e: React.MouseEvent) => {
     e.stopPropagation();

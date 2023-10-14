@@ -1,21 +1,5 @@
-import React, { ReactNode } from 'react';
-interface ModalProps {
-    children: ReactNode;
-    variant?: 'default' | 'confirm';
-    onCancel?: () => void;
-    onConfirm?: () => void;
-    onClose?: () => void;
-}
-interface TriggerProps {
-    children: ReactNode;
-}
-interface ContentProps {
-    title?: string;
-    subtitle?: string;
-    children: ReactNode;
-    confirmText?: string;
-    cancelText?: string;
-}
+import React from 'react';
+import { ContentProps, ModalProps, TriggerProps } from './Modal.props';
 declare const Modal: {
     Root: React.FC<ModalProps>;
     Trigger: React.FC<TriggerProps>;

@@ -3,18 +3,7 @@ import { ColorProp, HighContrastProp } from '@/utils';
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Breadcrumb.module.scss';
-
-export type BreadcrumbItem = {
-  key: string;
-  href: string;
-  title: string;
-  active: boolean;
-};
-
-interface BreadcrumbProps extends ColorProp, HighContrastProp {
-  items: BreadcrumbItem[];
-  divider?: React.ReactNode;
-}
+import { BreadcrumbProps } from './Breadcrumb.props';
 
 const Breadcrumb: FC<BreadcrumbProps> = ({ items, divider = '/', color = 'gray', highContrast = true }) => {
   const classes = classNames(styles.wrapper);

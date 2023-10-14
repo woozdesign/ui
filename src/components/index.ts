@@ -7,6 +7,7 @@ export { default as Button } from './Button';
 export { default as Card } from './Card';
 export { default as Checkbox } from './Checkbox';
 export { default as Divider } from './Divider';
+export { default as Drawer } from './Drawer';
 export { default as Flex } from './Flex';
 export { default as Form } from './Form';
 export { default as IconButton } from './IconButton';
@@ -23,7 +24,6 @@ export { default as Tab } from './Tab';
 export { default as Table } from './Table';
 export { default as TextArea } from './TextArea';
 export { default as TextField } from './TextField';
-export { default as Drawer } from './Drawer';
 
 export { default as Tooltip } from './Tooltip';
 export { default as Typography } from './Typography';

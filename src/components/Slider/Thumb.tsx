@@ -1,14 +1,7 @@
 'use client';
 import React, { FC, useMemo } from 'react';
 import styles from './Slider.module.scss';
-interface ThumbProps {
-  orientation: 'horizontal' | 'vertical';
-  reverse: boolean;
-  value: number;
-  thumbSize: number;
-  isMinThumb?: boolean;
-  onPointerDown: (e: React.PointerEvent<HTMLDivElement>, isMinThumb: boolean) => void;
-}
+import { ThumbProps } from './Slider.props';
 
 const Thumb: FC<ThumbProps> = ({ orientation, reverse, value, thumbSize, isMinThumb = false, onPointerDown }) => {
   const style: React.CSSProperties = useMemo(() => {

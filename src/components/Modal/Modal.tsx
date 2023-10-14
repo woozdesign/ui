@@ -1,25 +1,14 @@
 'use client';
 import classNames from 'classnames';
-import React, { FC, ReactNode, useContext, useEffect, useState } from 'react';
+import React, { FC, useContext, useEffect, useState } from 'react';
+import ReactDom from 'react-dom';
 import Button from '../Button';
 import Card from '../Card';
-import ReactDom from 'react-dom';
 import styles from './Modal.module.scss';
-
-interface ModalContextProps {
-  onClose: () => void;
-  onCancel?: () => void;
-  onConfirm?: () => void;
-}
+import { ContentProps, ModalContextProps, ModalProps, TriggerProps } from './Modal.props';
 
 const ModalContext = React.createContext<ModalContextProps | undefined>(undefined);
-interface ModalProps {
-  children: ReactNode;
-  variant?: 'default' | 'confirm';
-  onCancel?: () => void;
-  onConfirm?: () => void;
-  onClose?: () => void;
-}
+
 const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant = 'default' }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [isRendered, setIsRendered] = useState(false);
@@ -84,10 +73,6 @@ const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant 
   );
 };
 
-interface TriggerProps {
-  children: ReactNode;
-}
-
 const Trigger: FC<TriggerProps> = ({ children }) => {
   const context = useContext(ModalContext);
 
@@ -99,14 +84,6 @@ const Trigger: FC<TriggerProps> = ({ children }) => {
     </div>
   );
 };
-
-interface ContentProps {
-  title?: string;
-  subtitle?: string;
-  children: ReactNode;
-  confirmText?: string;
-  cancelText?: string;
-}
 
 const Content: FC<ContentProps> = ({ title, subtitle, confirmText = 'Confirm', cancelText = 'Cancel', children }) => {
   const context = useContext(ModalContext);

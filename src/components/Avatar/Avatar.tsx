@@ -1,12 +1,7 @@
 'use client';
 import React, { useState, FC } from 'react';
 import styles from './Avatar.module.scss';
-import { ColorProp, RadiusProp, SizeProp } from '@/utils';
-
-export interface AvatarProps extends SizeProp, ColorProp, RadiusProp {
-  src?: string;
-  fallback: string;
-}
+import { AvatarProps } from './Avatar.props';
 
 const Avatar: FC<AvatarProps> = ({ src, fallback, size = 'medium', radius, color }) => {
   const [imgError, setImgError] = useState(false);
