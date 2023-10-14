@@ -70,17 +70,6 @@
     display: none;
   }
 }
-@include --xs {
-  .wrapper {
-    padding: var(--space-2) var(--space-2);
-  }
-  .action {
-    display: none;
-    &--mobile {
-      display: flex;
-    }
-  }
-}
 
 @include --mdAndDown {
   .wrapper {
@@ -88,5 +77,26 @@
   }
   .body {
     content-visibility: hidden;
+  }
+  .action {
+    display: flex;
+    &--mobile {
+      display: none;
+    }
+  }
+}
+
+@include --xs {
+  .wrapper {
+    padding: var(--space-2) var(--space-2);
+  }
+  .body {
+    content-visibility: hidden;
+  }
+  .action {
+    display: none;
+    &--mobile {
+      display: flex;
+    }
   }
 }
