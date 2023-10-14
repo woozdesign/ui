@@ -1,4 +1,3 @@
-import '@woozdesign/icons/dist/styles.css';
 import React from 'react';
 import { ContentProps, DropdownMenuProps, ItemProps, SubContentProps, SubProps, SubTriggerProps, TriggerProps } from './DropdownMenu.props';
 declare const DropdownMenu: {

@@ -2,7 +2,6 @@
 import { ShortcutProvider } from '@/utils/contexts/Shortcut/ShortcutProvider';
 import { useShortcut } from '@/utils/hooks/useShortcut';
 import { Icon } from '@woozdesign/icons';
-import '@woozdesign/icons/dist/styles.css';
 import React, { FC, RefObject, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import Divider from '../Divider';
 import Kbd from '../Kbd';
