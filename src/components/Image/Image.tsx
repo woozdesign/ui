@@ -5,7 +5,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import styles from './Image.module.scss';
 import { ImageProps } from './Image.props';
 
-const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoad = true, radius = 'none', width, height, objectFit = 'cover' }) => {
+const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoad = true, radius = 'none', width, height, objectFit = 'cover', onError, onLoad }) => {
   const [loaded, setLoaded] = useState(false);
   const [placeHolderLoaded, setPlaceHolderLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -55,6 +55,7 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoa
 
   const handleImageLoadError = () => {
     setError(true);
+    onError && onError();
   };
 
   const style = {
@@ -78,6 +79,7 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoa
             style={style}
             onLoad={() => {
               setLoaded(true);
+              onLoad && onLoad();
             }}
             onError={handleImageLoadError}
             className={classNames(styles.mainImage, { [styles.loaded]: loaded, [styles.noPlaceholder]: !placeholder })}
