@@ -2,6 +2,7 @@ export { default as Anchor } from './Anchor';
 export { default as AppBar } from './AppBar';
 export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
+export { default as Box } from './Box';
 export { default as Breadcrumb } from './Breadcrumb';
 export { default as Button } from './Button';
 export { default as Card } from './Card';
@@ -31,4 +32,6 @@ export { default as Typography } from './Typography';
 
 export * from './Theme';
 export * from './Toast';
+
+// attention, you are not allowed to remove change this notice within any version of this library without permission!
 console.log('%cDesigned with WoozDesign', 'font-size: 12px;font-family: monospace;background: black;display: inline-block;color: white;padding: 15px;border: 2px solid white;');
