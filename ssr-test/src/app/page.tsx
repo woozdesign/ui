@@ -1,7 +1,7 @@
 'use client';
 
 import { Icon } from '@woozdesign/icons';
-import { AppBar, Button, Drawer, IconButton, Layout, Tab, Typography, updateThemeAppearanceClass, useThemeContext, useToast } from '@woozdesign/ui';
+import { AppBar, Button, Drawer, IconButton, Layout, ShortcutProvider, Tab, TestProvider, Typography, updateThemeAppearanceClass, useThemeContext, useToast } from '@woozdesign/ui';
 import { useEffect, useState } from 'react';
 import Test from './test';
 
@@ -83,6 +83,7 @@ export default function Home() {
           {NotificationProvider}
           <Layout.Row>
             <Test />
+
             <Typography.Link>Link</Typography.Link>
             <Typography.Code children={'Code'}></Typography.Code>
             <Typography.Text>Code</Typography.Text>
