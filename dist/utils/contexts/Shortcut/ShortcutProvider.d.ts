@@ -1,8 +1,14 @@
 import React, { FC } from 'react';
-import { Shortcut } from './ShortcutContext';
 import { WoozCommandCode } from './Shortcut.props';
-export declare const ShortcutProvider: FC<React.PropsWithChildren>;
-export declare const useShortcuts: () => {
+export type Shortcut = {
+    keys: WoozCommandCode[];
+    action: () => void;
+};
+type ShortcutContextType = {
+    shortcuts: Shortcut[];
     registerShortcut: (shortcut: Shortcut) => void;
     unregisterShortcut: (keys: WoozCommandCode[]) => void;
 };
+export declare const ShortcutContext: React.Context<ShortcutContextType | undefined>;
+export declare const ShortcutProvider: FC<React.PropsWithChildren>;
+export {};

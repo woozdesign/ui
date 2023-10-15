@@ -5,9 +5,9 @@ export type Shortcut = {
     action: () => void;
 };
 type ShortcutContextType = {
+    shortcuts: Shortcut[];
     registerShortcut: (shortcut: Shortcut) => void;
     unregisterShortcut: (keys: WoozCommandCode[]) => void;
 };
 export declare const ShortcutContext: React.Context<ShortcutContextType | undefined>;
-export declare const useShortcuts: () => ShortcutContextType;
 export {};

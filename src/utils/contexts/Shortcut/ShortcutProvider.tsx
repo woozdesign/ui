@@ -1,6 +1,18 @@
-import React, { useState, useCallback, useEffect, FC, createContext, useRef, useContext } from 'react';
-import { Shortcut, ShortcutContext } from './ShortcutContext';
+import React, { FC, createContext, useCallback, useEffect, useRef, useState } from 'react';
 import { KEY_CODES, WoozCommandCode } from './Shortcut.props';
+
+export type Shortcut = {
+  keys: WoozCommandCode[];
+  action: () => void;
+};
+
+type ShortcutContextType = {
+  shortcuts: Shortcut[];
+  registerShortcut: (shortcut: Shortcut) => void;
+  unregisterShortcut: (keys: WoozCommandCode[]) => void;
+};
+
+export const ShortcutContext = createContext<ShortcutContextType | undefined>(undefined);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isSetsEqual = (a: Set<any>, b: Set<any>) => {
@@ -12,21 +24,17 @@ const isSetsEqual = (a: Set<any>, b: Set<any>) => {
 export const ShortcutProvider: FC<React.PropsWithChildren> = ({ children }) => {
   const [shortcuts, setShortcuts] = useState<Shortcut[]>([]);
   const currentlyPressedKeysRef = useRef<Set<WoozCommandCode>>(new Set());
-
   const shortcutsRef = useRef<Shortcut[]>([]);
+
   useEffect(() => {
+    console.log('shortcuts: ', shortcuts);
     shortcutsRef.current = shortcuts;
   }, [shortcuts]);
 
-  const registerShortcut = useCallback(
-    (shortcut: Shortcut) => {
-      setShortcuts((prev) => {
-        const newShortcut = [...prev, shortcut];
-        return newShortcut;
-      });
-    },
-    [setShortcuts],
-  );
+  const registerShortcut = useCallback((shortcut: Shortcut) => {
+    console.log('registerShortcut: ', shortcut);
+    setShortcuts([...shortcuts, shortcut]);
+  }, []);
 
   const unregisterShortcut = useCallback(
     (keys: WoozCommandCode[]) => {
@@ -82,18 +90,10 @@ export const ShortcutProvider: FC<React.PropsWithChildren> = ({ children }) => {
     };
   }, [handleKeyDown, handleKeyUp]);
 
-  return <ShortcutContext.Provider value={{ registerShortcut, unregisterShortcut }}>{children}</ShortcutContext.Provider>;
+  return <ShortcutContext.Provider value={{ shortcuts, registerShortcut, unregisterShortcut }}>{children}</ShortcutContext.Provider>;
 };
 
 const keyboardEventToWoozCommand = (event: KeyboardEvent): WoozCommandCode | undefined => {
   const key = KEY_CODES[event.keyCode];
   if (key) return key as WoozCommandCode;
-};
-
-export const useShortcuts = () => {
-  const context = useContext(ShortcutContext);
-  if (!context) {
-    throw new Error('useShortcuts must be used within a ShortcutProvider');
-  }
-  return context;
 };

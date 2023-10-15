@@ -8,4 +8,6 @@ export interface ImageProps extends RadiusProp {
     height?: string | number;
     lazyLoad?: boolean;
     objectFit?: 'fill' | 'contain' | 'cover' | 'none' | 'scale-down';
+    onLoad?: () => void;
+    onError?: () => void;
 }

@@ -1,19 +1,17 @@
-import React from 'react';
-import { useShortcuts } from '../contexts/Shortcut/ShortcutContext';
+import React, { useContext } from 'react';
+import { ShortcutContext } from '../contexts';
 import { WoozCommandCode } from '../contexts/Shortcut/Shortcut.props';
 
 export const useShortcut = (keys: WoozCommandCode[], action: () => void) => {
-  const { registerShortcut, unregisterShortcut } = useShortcuts();
-
+  const context = useContext(ShortcutContext);
+  if (!context) {
+    throw new Error('useShortcuts must be used within a ShortcutProvider');
+  }
   // Use refs to track the previous values of keys and action
   const prevKeysRef = React.useRef<WoozCommandCode[]>();
   const prevActionRef = React.useRef<() => void>();
 
   React.useEffect(() => {
-    if (typeof window === 'undefined' || typeof document === 'undefined') {
-      return; // If not, just exit from the effect
-    }
-
     // Check if keys or action have changed
     const keysChanged = JSON.stringify(prevKeysRef.current) !== JSON.stringify(keys);
     const actionChanged = prevActionRef.current !== action;
@@ -21,13 +19,13 @@ export const useShortcut = (keys: WoozCommandCode[], action: () => void) => {
     if (keysChanged || actionChanged) {
       // If keys have changed, unregister the previous shortcut
       if (keysChanged && prevKeysRef.current) {
-        unregisterShortcut(prevKeysRef.current);
+        context.unregisterShortcut(prevKeysRef.current);
       }
 
       // Register the new shortcut
       if (keys && keys.length > 0) {
         const shortcut = { keys, action };
-        registerShortcut(shortcut);
+        context.registerShortcut(shortcut);
       }
 
       // Update the refs with the current values
@@ -38,7 +36,7 @@ export const useShortcut = (keys: WoozCommandCode[], action: () => void) => {
     // Cleanup: unregister the shortcut when the component unmounts
     return () => {
       if (keys && keys.length > 0) {
-        unregisterShortcut(keys);
+        context.unregisterShortcut(keys);
       }
     };
   }, []);
