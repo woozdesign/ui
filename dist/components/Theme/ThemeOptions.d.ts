@@ -5,11 +5,13 @@ export type ThemeRadius = 'none' | 'small' | 'medium' | 'large' | 'full';
 export type ThemeScaling = '90%' | '95%' | '100%' | '105%' | '110%';
 export type ThemeHighContrast = true | false;
 export type ThemeShadow = 'none' | 'small' | 'medium' | 'large' | 'full';
+export type ThemeTranslucent = '10%' | '20%' | '40%' | '60%' | '80%';
 export type ThemeOptions = {
     accentColor: ThemeAccentColor;
     appearance: ThemeAppearance;
     radius: ThemeRadius;
     scaling: ThemeScaling;
+    translucent: ThemeTranslucent;
 };
 declare function getMatchingGrayColor(accentColor: ThemeAccentColor): ThemeAccentColor;
 declare const themeDefaults: ThemeOptions;

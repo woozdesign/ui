@@ -60,7 +60,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
   React.useEffect(() => setScaling(scalingProp), [scalingProp]);
 
   const [translucent, setTranslucent] = React.useState(translucentProp);
-  React.useEffect(() => setScaling(translucentProp), [translucentProp]);
+  React.useEffect(() => setTranslucent(translucentProp), [translucentProp]);
 
   // Initial appearance on page load when `appearance` is explicitly set to `light` or `dark`
   const ExplicitRootAppearanceScript = React.memo(
@@ -93,7 +93,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
         radius={radius}
         accentColor={accentColor}
         scaling={scaling}
-        translucen={translucent}
+        translucent={translucent}
         //
         onAppearanceChange={setAppearance}
         onAccentColorChange={setAccentColor}
