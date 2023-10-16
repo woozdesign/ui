@@ -10,7 +10,7 @@
 | Badge           | ✅        |       |
 | Card            | ✅        |       |
 | Divider         | ✅        |       |
-| Expansion Panel | 🚧        |       |
+| Expansion Panel | ✅        |       |
 | Menu (List)     | ✅        |       |
 | Dropdown Menu   | ✅        |       |
 | Tooltip         | ✅        |       |

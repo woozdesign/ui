@@ -3,7 +3,8 @@ import { Meta, Story } from '@storybook/react';
 import Breadcrumb, { BreadcrumbProps } from './Breadcrumb';
 import { ThemeProvider } from '../Theme';
 import '@/styles/core.scss';
-import Layout from '../Layout/Layout';
+import Layout, { Container } from '../Layout/Layout';
+import { Col, Row } from '../Grid/Grid';
 
 export default {
   title: 'Components/Breadcrumb',
@@ -13,13 +14,13 @@ export default {
 const Template: Story<BreadcrumbProps> = (args) => {
   return (
     <ThemeProvider>
-      <Layout.Container>
-        <Layout.Row>
-          <Layout.Col xs={12}>
+      <Container>
+        <Row>
+          <Col xs={12}>
             <Breadcrumb {...args} />
-          </Layout.Col>
-        </Layout.Row>
-      </Layout.Container>
+          </Col>
+        </Row>
+      </Container>
     </ThemeProvider>
   );
 };

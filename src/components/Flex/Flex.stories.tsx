@@ -1,10 +1,12 @@
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import Flex, { FlexProps } from './Flex';
-import { ThemeProvider } from '../Theme';
 import '@/styles/core.scss';
-import Layout from '../Layout/Layout';
+import { Meta, Story } from '@storybook/react';
+import React from 'react';
 import Button from '../Button';
+import { ThemeProvider } from '../Theme';
+import Flex, { FlexProps } from './Flex';
+
+import { Col, Row } from '../Grid/Grid';
+import { Container } from '../Layout/Layout';
 
 export default {
   title: 'Components/Flex',
@@ -14,16 +16,16 @@ export default {
 const Template: Story<FlexProps> = (args) => {
   return (
     <ThemeProvider>
-      <Layout.Container>
-        <Layout.Row>
-          <Layout.Col xs={12}>
+      <Container>
+        <Row>
+          <Col xs={12}>
             <Flex {...args}>
               <Button>Test</Button>
               <Button>Test2</Button>
             </Flex>
-          </Layout.Col>
-        </Layout.Row>
-      </Layout.Container>
+          </Col>
+        </Row>
+      </Container>
     </ThemeProvider>
   );
 };

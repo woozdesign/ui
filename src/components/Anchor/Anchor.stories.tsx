@@ -1,9 +1,10 @@
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import Anchor, { AnchorProps } from './Anchor';
-import { ThemeProvider } from '../Theme';
 import '@/styles/core.scss';
-import Layout from '../Layout/Layout';
+import { Meta, Story } from '@storybook/react';
+import React from 'react';
+import { Col, Row } from '../Grid/Grid';
+import { Container } from '../Layout/Layout';
+import { ThemeProvider } from '../Theme';
+import Anchor, { AnchorProps } from './Anchor';
 
 export default {
   title: 'Components/Anchor',
@@ -13,9 +14,9 @@ export default {
 const Template: Story<AnchorProps> = (args) => {
   return (
     <ThemeProvider>
-      <Layout.Container>
-        <Layout.Row>
-          <Layout.Col xs={12}>
+      <Container>
+        <Row>
+          <Col xs={12}>
             <div style={{ height: '150vh', padding: '20px' }}>
               <section id="1components-anchor-demo-basic" style={{ height: '50vh' }}>
                 <h2>Basic demo</h2>
@@ -38,8 +39,8 @@ const Template: Story<AnchorProps> = (args) => {
                 </section>
               </section>
             </div>
-          </Layout.Col>
-          <Layout.Col xs={12}>
+          </Col>
+          <Col xs={12}>
             <div
               style={{
                 top: '128px',
@@ -51,9 +52,9 @@ const Template: Story<AnchorProps> = (args) => {
             >
               <Anchor {...args} />
             </div>
-          </Layout.Col>
-        </Layout.Row>
-      </Layout.Container>
+          </Col>
+        </Row>
+      </Container>
     </ThemeProvider>
   );
 };
