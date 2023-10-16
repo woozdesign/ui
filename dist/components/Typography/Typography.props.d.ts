@@ -1,5 +1,5 @@
-/// <reference types="react" />
 import { ColorProp, HighContrastProp, RadiusProp, TextSizeProp } from '../../utils/helper/props';
+import React from 'react';
 export interface TypographyProps extends TextSizeProp, HighContrastProp {
     className?: string;
     children?: React.ReactNode;
@@ -18,6 +18,8 @@ export interface StrongProps {
 }
 export interface LinkProps extends ColorProp, TypographyProps {
     href?: string;
+    onClick?: () => void;
+    target?: React.HTMLProps<HTMLAnchorElement>['target'];
     children?: React.ReactNode;
 }
 export interface CodeProps extends ColorProp, RadiusProp, TypographyProps {
