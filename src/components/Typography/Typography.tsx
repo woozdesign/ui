@@ -3,7 +3,7 @@
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Typography.module.scss';
-import { CodeProps, HeaderProps, LinkProps, StrongProps, TextProps } from './Typography.props';
+import { CodeProps, GradientProps, HeaderProps, LinkProps, StrongProps, TextProps } from './Typography.props';
 
 const Header: FC<HeaderProps> = ({ variant = 'h2', size = 8, align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other }) => {
   const Tag = variant as keyof JSX.IntrinsicElements;
@@ -57,12 +57,33 @@ const Code: FC<CodeProps> = ({ children, color, size = 4, radius, highContrast =
   );
 };
 
+const Gradient: FC<GradientProps> = ({ children, gradientColors = ['#915eff', '#9eb2ff'], style, size = 4, weight = 'normal', className, ...other }) => {
+  const classes = classNames(styles[`gradient--${size}`], styles[`gradient--${weight}`], className);
+
+  return (
+    <span
+      className={classes}
+      style={{
+        background: `linear-gradient(90deg, ${gradientColors[0]}, ${gradientColors[1]})`,
+        WebkitBackgroundClip: 'text',
+        backgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        ...style,
+      }}
+      {...other}
+    >
+      {children}
+    </span>
+  );
+};
+
 const Typography = {
   Header,
   Text,
   Strong,
   Code,
   Link,
+  Gradient,
 };
 
 export default Typography;

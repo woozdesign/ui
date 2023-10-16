@@ -5,6 +5,7 @@ interface ThemeChangeHandlers {
     onAccentColorChange: (accentColor: ThemeOptions['accentColor']) => void;
     onRadiusChange: (radius: ThemeOptions['radius']) => void;
     onScalingChange: (scaling: ThemeOptions['scaling']) => void;
+    onTranslucentChange: (translucent: ThemeOptions['translucent']) => void;
 }
 interface ThemeContextValue extends ThemeOptions, ThemeChangeHandlers {
 }

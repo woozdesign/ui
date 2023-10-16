@@ -2,8 +2,8 @@
 .button--translucent {
   color: var(--color-accent-12);
   background-color: opacity(var(--color-accent-12), 95%);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: var(--translucent);
+  -webkit-backdrop-filter: var(--translucent);
 
   &:hover {
     background-color: opacity(var(--color-accent-12), 90%);

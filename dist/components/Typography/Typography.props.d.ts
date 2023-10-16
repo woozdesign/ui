@@ -25,3 +25,7 @@ export interface LinkProps extends ColorProp, TypographyProps {
 export interface CodeProps extends ColorProp, RadiusProp, TypographyProps {
     children?: React.ReactNode;
 }
+export interface GradientProps extends Omit<TypographyProps, 'highContrast'> {
+    gradientColors: [string, string];
+    children?: React.ReactNode;
+}

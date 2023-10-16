@@ -37,8 +37,8 @@
   }
   &--translucent {
     background-color: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: var(--translucent);
+    -webkit-backdrop-filter: var(--translucent);
     border-bottom: 1px solid var(--color-gray-a6);
   }
   &--transparent {
