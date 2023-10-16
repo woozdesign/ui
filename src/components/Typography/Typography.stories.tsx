@@ -30,16 +30,29 @@ const TypographyTemplate: Story = (args) => (
     })}
     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((size) => {
       return (
-        <Typography.Code key={size} size={size}>
-          Code
-        </Typography.Code>
+        <div>
+          <Typography.Code key={size} size={size}>
+            Code
+          </Typography.Code>
+        </div>
       );
     })}
     {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((size) => {
       return (
-        <Typography.Link key={size} size={size}>
-          Link
-        </Typography.Link>
+        <div>
+          <Typography.Link key={size} size={size}>
+            Link
+          </Typography.Link>
+        </div>
+      );
+    })}
+    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((size) => {
+      return (
+        <div>
+          <Typography.Gradient key={size} size={size} weight={'bold'}>
+            Gradient
+          </Typography.Gradient>
+        </div>
       );
     })}
   </ThemeProvider>

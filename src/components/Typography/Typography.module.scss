@@ -149,6 +149,41 @@ $title-margin: 1rem 0;
   }
 }
 
+@mixin gradientStyles($fontSize) {
+  display: inline-block;
+  position: relative;
+  background: linear-gradient(90deg, #915eff, #9eb2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: $fontSize;
+
+  &.gradient--light {
+    font-weight: light;
+  }
+
+  &.gradient--normal {
+    font-weight: normal;
+  }
+
+  &.gradient--bold {
+    font-weight: bold;
+  }
+
+  &.gradient--bolder {
+    font-weight: bolder;
+  }
+  &.gradient--start {
+    text-align: start;
+  }
+  &.gradient--center {
+    text-align: center;
+  }
+  &.gradient--end {
+    text-align: end;
+  }
+}
+
 // Titles
 @for $i from 1 through 12 {
   .heading--#{$i} {
@@ -163,5 +198,8 @@ $title-margin: 1rem 0;
   }
   .link--#{$i} {
     @include linkStyles(var(--font-size-#{$i}));
+  }
+  .gradient--#{$i} {
+    @include gradientStyles(var(--font-size-#{$i}));
   }
 }
