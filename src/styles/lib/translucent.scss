@@ -1,0 +1,21 @@
+/* translucent */
+.woozdesign {
+  /* default: regular */
+  --translucent: blur(2px);
+
+  &:where([data-translucent='10%']) {
+    --translucent: blur(1px);
+  }
+  &:where([data-translucent='20%']) {
+    --translucent: blur(2px);
+  }
+  &:where([data-translucent='40%']) {
+    --translucent: blur(4px);
+  }
+  &:where([data-translucent='60%']) {
+    --translucent: blur(6px);
+  }
+  &:where([data-translucent='80%']) {
+    --translucent: blur(16px);
+  }
+}

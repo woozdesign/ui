@@ -30,8 +30,8 @@
 
   &--translucent {
     background-color: opacity(var(--color-panel), 90%);
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
+    backdrop-filter: var(--translucent);
+    -webkit-backdrop-filter: var(--translucent);
   }
   &--transparent {
     background-color: transparent;
