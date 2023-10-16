@@ -1,11 +1,10 @@
-import React from 'react';
-import { Meta, Story } from '@storybook/react';
-import Skeleton from './Skeleton';
 import '@/styles/core.scss';
+import { Meta, Story } from '@storybook/react';
+import React from 'react';
+import { Col, Row } from '../Grid/Grid';
+import { Container } from '../Layout/Layout';
 import { ThemeProvider } from '../Theme/Theme';
-import Flex from '../Flex';
-import Layout from '../Layout/Layout';
-import Typography from '../Typography';
+import Skeleton from './Skeleton';
 
 export default {
   title: 'Components/Skeleton',
@@ -15,13 +14,13 @@ export default {
 // Skeleton Story
 const SkeletonTemplate: Story = (args) => (
   <ThemeProvider appearance={'light'}>
-    <Layout.Container>
-      <Layout.Row gutter={[32, 32]}>
-        <Layout.Col xs={24} sm={12}>
+    <Container>
+      <Row gutter={[32, 32]}>
+        <Col xs={24} sm={12}>
           <Skeleton />
-        </Layout.Col>
-      </Layout.Row>
-    </Layout.Container>
+        </Col>
+      </Row>
+    </Container>
   </ThemeProvider>
 );
 export const Default = SkeletonTemplate.bind({});

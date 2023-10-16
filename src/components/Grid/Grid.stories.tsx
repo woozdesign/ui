@@ -1,72 +1,72 @@
-import React from 'react';
 import { Meta, Story } from '@storybook/react';
+import React from 'react';
 
-import Layout, { ContainerProps, RowProps, ColProps } from './Layout';
-import Card from '../Card';
 import '@/styles/core.scss';
+import Card from '../Card';
 import { ThemeProvider } from '../Theme/Theme';
+import { RowProps, ColProps, Row, Col } from './Grid';
 
 export default {
-  title: 'Layout/Layout',
-  component: Layout,
+  title: 'Layout/Grid',
+  component: Grid,
 } as Meta;
 
 // Combined Story with Container, Row, and Col
 export const GridSystemStory: Story<ContainerProps> = (args) => (
   <ThemeProvider>
-    <Layout.Row gutter={[32, 32]}>
-      <Layout.Col xs={24} sm={3} md={0}>
+    <Row gutter={[32, 32]}>
+      <Col xs={24} sm={3} md={0}>
         <Card outlined>
           <Card.Body title={'Column 1'}></Card.Body>
         </Card>
-      </Layout.Col>
-      <Layout.Col xs={0} sm={21} md={8}>
+      </Col>
+      <Col xs={0} sm={21} md={8}>
         <Card outlined>
           <Card.Body title={'Column 2'}></Card.Body>
         </Card>
-      </Layout.Col>
-      <Layout.Col xs={12} md={8}>
+      </Col>
+      <Col xs={12} md={8}>
         <Card outlined>
           <Card.Body title={'Column 3'}></Card.Body>
         </Card>
-      </Layout.Col>
-      <Layout.Col xs={12} md={8}>
+      </Col>
+      <Col xs={12} md={8}>
         <Card outlined>
           <Card.Body title={'Column 4'}></Card.Body>
         </Card>
-      </Layout.Col>
-      <Layout.Col xs={16} md={8}>
+      </Col>
+      <Col xs={16} md={8}>
         <Card outlined>
           <Card.Body title={'Column 5'}></Card.Body>
         </Card>
-      </Layout.Col>
-    </Layout.Row>
-    <Layout.Row gutter={[32, 32]} style={{ marginTop: '4rem' }} align="center" justify="center">
-      <Layout.Col xs={24} md={8}>
+      </Col>
+    </Row>
+    <Row gutter={[32, 32]} style={{ marginTop: '4rem' }} align="center" justify="center">
+      <Col xs={24} md={8}>
         <Card outlined>
           <Card.Body title={'Column 1'}></Card.Body>
         </Card>
-      </Layout.Col>
-      <Layout.Col xs={24} md={8}>
+      </Col>
+      <Col xs={24} md={8}>
         <Card outlined>
           <Card.Body title={'Column 2'}></Card.Body>
         </Card>
-      </Layout.Col>
-      <Layout.Col xs={12} md={8}>
+      </Col>
+      <Col xs={12} md={8}>
         <Card outlined>
           <Card.Body title={'Column 3'}></Card.Body>
         </Card>
-      </Layout.Col>
-      <Layout.Col xs={12} md={8}>
+      </Col>
+      <Col xs={12} md={8}>
         <Card outlined>
           <Card.Body title={'Column 4'}></Card.Body>
         </Card>
-      </Layout.Col>
-      <Layout.Col xs={16} md={8}>
+      </Col>
+      <Col xs={16} md={8}>
         <Card outlined>
           <Card.Body title={'Column 5'}></Card.Body>
         </Card>
-      </Layout.Col>
-    </Layout.Row>
+      </Col>
+    </Row>
   </ThemeProvider>
 );

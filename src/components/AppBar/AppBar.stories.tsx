@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import AppBar, { AppBarProps } from './AppBar';
 import { ThemeProvider } from '../Theme';
 import '@/styles/core.scss';
-import Layout from '../Layout/Layout';
+import Layout, { Container } from '../Layout/Layout';
 import Button from '../Button';
 import Image from '../Image';
 import Tab from '../Tab/Tab';
@@ -11,6 +11,7 @@ import { Icon } from '@woozdesign/icons';
 import IconButton from '../IconButton';
 import Drawer from '../Drawer/Drawer';
 import Card from '../Card';
+import { Col, Row } from '../Grid/Grid';
 
 export default {
   title: 'Components/AppBar',
@@ -68,15 +69,15 @@ const Template: Story<AppBarProps> = (args) => {
         </AppBar.Action>
       </AppBar>
       <main>
-        <Layout.Container>
-          <Layout.Row>
-            <Layout.Col xs={12}>
+        <Container>
+          <Row>
+            <Col xs={12}>
               <Card>
                 <Card.Header title={'Title'} />
               </Card>
-            </Layout.Col>
-          </Layout.Row>
-        </Layout.Container>
+            </Col>
+          </Row>
+        </Container>
       </main>
     </ThemeProvider>
   );

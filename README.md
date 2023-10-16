@@ -35,15 +35,15 @@ import '@woozdesign/ui/styles.css';
 import { Button, Layout } from '@woozdesign/ui';
 
 const App = () => (
-  <Layout.Container>
-    <Layout.Row>
-      <Layout.Col xs={24}>
+  <Container>
+    <Row>
+      <Col xs={24}>
         <Button variant="solid" color="purple">
           Button
         </Button>
-      </Layout.Col>
-    </Layout.Row>
-  </Layout.Container>
+      </Col>
+    </Row>
+  </Container>
 );
 ```
 

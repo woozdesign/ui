@@ -79,9 +79,9 @@ export default function Home() {
         </AppBar.Action>
       </AppBar>
       <main style={{ marginTop: '64px' }}>
-        <Layout.Container>
+        <Container>
           {NotificationProvider}
-          <Layout.Row>
+          <Row>
             <Test />
 
             <Typography.Link>Link</Typography.Link>
@@ -90,8 +90,8 @@ export default function Home() {
             <Button onClick={triggerNotification} color={'gray'} variant={'outlined'} highContrast>
               asdf
             </Button>
-          </Layout.Row>
-        </Layout.Container>
+          </Row>
+        </Container>
       </main>
     </>
   );

@@ -30,6 +30,7 @@ export { default as TextArea } from './TextArea';
 export { default as TextField } from './TextField';
 export { default as Tooltip } from './Tooltip';
 export { default as Typography } from './Typography';
+export { default as ExpansionPanel } from './ExpansionPanel';
 
 export * from './Theme';
 export * from './Toast';
