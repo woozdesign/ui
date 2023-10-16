@@ -8,6 +8,7 @@
   background-color: var(--color-accent-4);
   color: var(--color-accent-9);
   font-weight: bold;
+  overflow: hidden;
 
   img {
     border-radius: max(var(--radius-3), var(--radius-full));
