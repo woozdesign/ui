@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import React from 'react';
 import styles from './Layout.module.scss';
-import { ColProps, ContainerProps, RowProps } from './Layout.props';
+import { ContainerProps } from './Layout.props';
 
 export const Container: React.FC<ContainerProps> = ({ children, ...others }) => {
   const classes = classNames(styles.container, others.className);

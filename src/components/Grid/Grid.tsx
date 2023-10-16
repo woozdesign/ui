@@ -1,8 +1,8 @@
 'use client';
 import classNames from 'classnames';
 import React from 'react';
-import styles from './Layout.module.scss';
-import { ColProps, ContainerProps, RowProps } from './Grid.props';
+import { ColProps, RowProps } from './Grid.props';
+import styles from './Grid.module.scss';
 
 export const Row: React.FC<RowProps> = ({ gutter = [0, 0], align = 'start', justify = 'start', children, ...others }) => {
   const combinedStyle = {
