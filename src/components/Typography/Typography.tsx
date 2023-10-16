@@ -5,7 +5,7 @@ import React, { FC } from 'react';
 import styles from './Typography.module.scss';
 import { CodeProps, HeaderProps, LinkProps, StrongProps, TextProps } from './Typography.props';
 
-const Header: FC<HeaderProps> = ({ variant = 'h1', size = 8, align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other }) => {
+const Header: FC<HeaderProps> = ({ variant = 'h2', size = 8, align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other }) => {
   const Tag = variant as keyof JSX.IntrinsicElements;
 
   const headingStyle = classNames(
@@ -38,10 +38,10 @@ const Strong: FC<StrongProps> = ({ children, ...other }) => {
   return <strong>{children}</strong>;
 };
 
-const Link: FC<LinkProps> = ({ children, href, color, size = 4, highContrast = false, className, ...other }) => {
+const Link: FC<LinkProps> = ({ children, href, color, size = 4, highContrast = false, onClick, className, target, ...other }) => {
   const classes = classNames(styles[`link--${size}`], { [styles[`link--highContrast`]]: highContrast }, className);
   return (
-    <a href={href} data-accent-color={color} className={classes} {...other}>
+    <a href={href} target={target} onClick={onClick} data-accent-color={color} className={classes} {...other}>
       {children}
     </a>
   );
