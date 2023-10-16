@@ -20,7 +20,7 @@ export default {
 } as Meta;
 
 const Template: Story<CardProps> = (args) => (
-  <ThemeProvider scaling="100%">
+  <ThemeProvider scaling="110%">
     <Card {...args} />
   </ThemeProvider>
 );
@@ -82,5 +82,19 @@ OnlyContent.args = {
     </>
   ),
 };
-
+export const Test = Template.bind({});
+Test.args = {
+  children: (
+    <>
+      <Card.Header title="Card Title" subtitle="Subtitle here" />
+      <Card.Body content="This is the content of the card." />
+      <Card.Actions justify={'end'}>
+        <Button variant={'outlined'} color={'gray'}>
+          Action 1
+        </Button>
+        <Button>Action 2</Button>
+      </Card.Actions>
+    </>
+  ),
+};
 // ...add more stories as needed
