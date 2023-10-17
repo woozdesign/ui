@@ -24,8 +24,8 @@
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
+    "react": "^17.0 || ^18.0",
+    "react-dom":  "^17.0 || ^18.0",
     "sass": "^1.67.0"
   },
   "peerDependenciesMeta": {
