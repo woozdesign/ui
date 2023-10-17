@@ -6,14 +6,11 @@ export interface ModalContextProps {
 
 export interface ModalProps {
   children: React.ReactNode;
+  open?: boolean;
   variant?: 'default' | 'confirm';
   onCancel?: () => void;
   onConfirm?: () => void;
   onClose?: () => void;
-}
-
-export interface TriggerProps {
-  children: React.ReactNode;
 }
 
 export interface ContentProps {

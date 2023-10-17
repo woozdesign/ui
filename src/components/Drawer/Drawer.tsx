@@ -12,21 +12,21 @@ interface DrawerContextProps {
 
 const DrawerContext = React.createContext<DrawerContextProps | undefined>(undefined);
 
-const Root: FC<DrawerProps> = ({ children, isOpen = false, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' }) => {
+const Root: FC<DrawerProps> = ({ children, open = false, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' }) => {
   const [isRendered, setIsRendered] = useState(false);
-  const [openState, setOpenState] = useState(isOpen);
+  const [isOpen, setIsOpen] = useState(open);
   const [targetElement, setTargetElement] = useState<Element | null>(null);
 
   const hasHeader = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === Header);
   const hasFooter = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === Footer);
 
   const overlayClasses = classNames(styles.overlay, styles[`overlay--${placement}`], styles[`overlay--${overlayVariant}`], {
-    [styles.open]: openState,
+    [styles.open]: isOpen,
     [styles.outlined]: outlined,
   });
 
   const drawerClasses = classNames(styles.drawer, styles[`drawer--${placement}`], {
-    [styles.open]: openState,
+    [styles.open]: isOpen,
     [styles.outlined]: outlined,
     [styles['has-header']]: hasHeader,
     [styles['has-footer']]: hasFooter,
@@ -43,7 +43,7 @@ const Root: FC<DrawerProps> = ({ children, isOpen = false, width = 320, overlayV
   }, [setTargetElement]);
 
   const handleClose = () => {
-    if (isOpen) {
+    if (open) {
       onClose && onClose(); // Call the onClose prop when closing the drawer
     } else {
       setIsRendered(true);
@@ -51,8 +51,8 @@ const Root: FC<DrawerProps> = ({ children, isOpen = false, width = 320, overlayV
   };
 
   useEffect(() => {
-    if (!isOpen) {
-      setOpenState(false);
+    if (!open) {
+      setIsOpen(false);
       const timer = setTimeout(() => {
         setIsRendered(false);
       }, 200); // delay to allow the transition to complete before unmounting
@@ -60,10 +60,10 @@ const Root: FC<DrawerProps> = ({ children, isOpen = false, width = 320, overlayV
     } else {
       setIsRendered(true);
       const timer = setTimeout(() => {
-        setOpenState(true);
+        setIsOpen(true);
       }, 50);
     }
-  }, [isOpen]);
+  }, [open]);
 
   return (
     <DrawerContext.Provider value={{ onClose: handleClose }}>

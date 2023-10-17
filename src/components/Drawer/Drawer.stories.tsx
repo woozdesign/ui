@@ -20,7 +20,7 @@ const Template: Story<DrawerProps> = ({ children }) => {
   return (
     <ThemeProvider scaling="100%">
       <Button onClick={toggleOutside}>button</Button>
-      <Drawer.Root isOpen={isOpen} onClose={toggleOutside} placement="right" overlayVariant={'translucent'}>
+      <Drawer.Root open={isOpen} onClose={toggleOutside} placement="right" overlayVariant={'translucent'}>
         <Drawer.Header title="Drawer Header" />
         <Drawer.Footer>Test</Drawer.Footer>
         <Drawer.Content>

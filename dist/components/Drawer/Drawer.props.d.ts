@@ -1,7 +1,7 @@
 /// <reference types="react" />
 export interface DrawerProps {
     children: React.ReactNode;
-    isOpen?: boolean;
+    open?: boolean;
     width?: React.CSSProperties['width'];
     placement?: 'left' | 'right';
     variant?: 'default' | 'confirm';

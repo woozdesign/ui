@@ -5,13 +5,13 @@ import ReactDom from 'react-dom';
 import Button from '../Button';
 import Card from '../Card';
 import styles from './Modal.module.scss';
-import { ContentProps, ModalContextProps, ModalProps, TriggerProps } from './Modal.props';
+import { ContentProps, ModalContextProps, ModalProps } from './Modal.props';
 
 const ModalContext = React.createContext<ModalContextProps | undefined>(undefined);
 
-const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant = 'default' }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isRendered, setIsRendered] = useState(false);
+const Root: FC<ModalProps> = ({ children, open = false, onClose, onCancel, onConfirm, variant = 'default' }) => {
+  const [isOpen, setIsOpen] = useState(open);
+  const [isRendered, setIsRendered] = useState(open);
   const [targetElement, setTargetElement] = useState<Element | null>(null);
 
   const overlayClasses = classNames(styles.overlay, { [styles.open]: isOpen });
@@ -27,61 +27,47 @@ const Root: FC<ModalProps> = ({ children, onClose, onCancel, onConfirm, variant 
 
   const handleClose = () => {
     if (isOpen) {
-      setIsOpen(false);
       onClose && onClose(); // Call the onClose prop when closing the modal
     } else {
       setIsRendered(true);
-      setTimeout(() => {
-        setIsOpen(true);
-      }, 50); // delay to allow the modal to render before applying the transition
     }
   };
 
   useEffect(() => {
-    if (!isOpen) {
+    if (!open) {
+      setIsOpen(false);
       const timer = setTimeout(() => {
         setIsRendered(false);
       }, 200); // delay to allow the transition to complete before unmounting
       return () => clearTimeout(timer);
+    } else {
+      setIsRendered(true);
+      const timer = setTimeout(() => {
+        setIsOpen(true);
+      }, 50);
     }
-  }, [isOpen]);
+  }, [open]);
 
   return (
     <ModalContext.Provider value={{ onClose: handleClose, onCancel, onConfirm }}>
-      {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))}
+      {/* {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))} */}
 
       {isRendered &&
         (targetElement ? (
           ReactDom.createPortal(
             <>
               <div className={overlayClasses} onClick={handleOverlayClick}>
-                <div className={modalClasses}>
-                  {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
-                </div>
+                <div className={modalClasses}>{React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}</div>
               </div>
             </>,
             targetElement,
           )
         ) : (
           <div className={overlayClasses} onClick={handleOverlayClick}>
-            <div className={modalClasses}>
-              {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
-            </div>
+            <div className={modalClasses}>{React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}</div>
           </div>
         ))}
     </ModalContext.Provider>
-  );
-};
-
-const Trigger: FC<TriggerProps> = ({ children }) => {
-  const context = useContext(ModalContext);
-
-  if (!context) throw new Error('Trigger must be used within Root');
-
-  return (
-    <div className={styles.trigger} onClick={context.onClose}>
-      {children}
-    </div>
   );
 };
 
@@ -126,7 +112,6 @@ const Content: FC<ContentProps> = ({ title, subtitle, confirmText = 'Confirm', c
 
 const Modal = {
   Root: Root,
-  Trigger: Trigger,
   Content: Content,
 };
 
