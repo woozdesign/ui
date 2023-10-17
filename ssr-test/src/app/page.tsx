@@ -1,8 +1,8 @@
 'use client';
 
 import { Icon } from '@woozdesign/icons';
-import { AppBar, Button, Drawer, IconButton, Layout, ShortcutProvider, Tab, TestProvider, Typography, updateThemeAppearanceClass, useThemeContext, useToast } from '@woozdesign/ui';
-import { useEffect, useState } from 'react';
+import { AppBar, Button, Container, Drawer, IconButton, Row, Tab, Typography, updateThemeAppearanceClass, useThemeContext, useToast } from '@woozdesign/ui';
+import { useState } from 'react';
 import Test from './test';
 
 export default function Home() {
@@ -27,12 +27,11 @@ export default function Home() {
     }
   };
 
-  const [render, setRender] = useState(false);
-  useEffect(() => {
-    setRender(true);
-    console.log('render: ', render);
-  }, [render]);
-  if (!render) return null;
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOutside = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <>
@@ -66,23 +65,16 @@ export default function Home() {
             <Icon type={'Aperture'} />
           </IconButton>
         </AppBar.Action>
-
-        <AppBar.Action mobile>
-          <Drawer.Root overlayVariant={'translucent'}>
-            <Drawer.Trigger>
-              <IconButton variant={'outlined'}>
-                <Icon type={'Menu'} />
-              </IconButton>
-            </Drawer.Trigger>
-            <Drawer.Content title="Header">Content</Drawer.Content>
-          </Drawer.Root>
-        </AppBar.Action>
       </AppBar>
       <main style={{ marginTop: '64px' }}>
         <Container>
           {NotificationProvider}
           <Row>
             <Test />
+            <Button onClick={toggleOutside}>ToggleOutside</Button>
+            <Drawer.Root isOpen={isOpen} onClose={toggleOutside} overlayVariant={'translucent'}>
+              <Drawer.Content title="Header">Content</Drawer.Content>
+            </Drawer.Root>
 
             <Typography.Link>Link</Typography.Link>
             <Typography.Code children={'Code'}></Typography.Code>
