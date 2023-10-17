@@ -1,15 +1,13 @@
 /// <reference types="react" />
 export interface DrawerProps {
     children: React.ReactNode;
+    isOpen?: boolean;
     width?: React.CSSProperties['width'];
     placement?: 'left' | 'right';
     variant?: 'default' | 'confirm';
     outlined?: boolean;
     overlayVariant?: 'transparent' | 'translucent';
     onClose?: () => void;
-}
-export interface TriggerProps {
-    children: React.ReactNode;
 }
 export interface ContentProps {
     children: React.ReactNode;

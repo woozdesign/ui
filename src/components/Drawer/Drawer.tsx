@@ -5,33 +5,35 @@ import React, { FC, useContext, useEffect, useState } from 'react';
 import ReactDom from 'react-dom';
 import IconButton from '../IconButton';
 import styles from './Drawer.module.scss';
-import { ContentProps, DrawerProps, FooterProps, HeaderProps, TriggerProps } from './Drawer.props';
+import { ContentProps, DrawerProps, FooterProps, HeaderProps } from './Drawer.props';
 interface DrawerContextProps {
   onClose: () => void;
 }
 
 const DrawerContext = React.createContext<DrawerContextProps | undefined>(undefined);
 
-const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Root: FC<DrawerProps> = ({ children, isOpen = false, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' }) => {
   const [isRendered, setIsRendered] = useState(false);
+  const [openState, setOpenState] = useState(isOpen);
   const [targetElement, setTargetElement] = useState<Element | null>(null);
 
-  const overlayClasses = classNames(styles.overlay, styles[`overlay--${placement}`], styles[`overlay--${overlayVariant}`], { [styles.open]: isOpen, [styles.outlined]: outlined });
-
   const hasHeader = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === Header);
-
   const hasFooter = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === Footer);
 
+  const overlayClasses = classNames(styles.overlay, styles[`overlay--${placement}`], styles[`overlay--${overlayVariant}`], {
+    [styles.open]: openState,
+    [styles.outlined]: outlined,
+  });
+
   const drawerClasses = classNames(styles.drawer, styles[`drawer--${placement}`], {
-    [styles.open]: isOpen,
+    [styles.open]: openState,
     [styles.outlined]: outlined,
     [styles['has-header']]: hasHeader,
     [styles['has-footer']]: hasFooter,
   });
 
   const handleOverlayClick = () => {
-    if (variant === 'default') handleClose();
+    if (variant === 'default') onClose && onClose();
   };
 
   useEffect(() => {
@@ -42,28 +44,30 @@ const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transp
 
   const handleClose = () => {
     if (isOpen) {
-      setIsOpen(false);
       onClose && onClose(); // Call the onClose prop when closing the drawer
     } else {
       setIsRendered(true);
-      setTimeout(() => {
-        setIsOpen(true);
-      }, 50); // delay to allow the drawer to render before applying the transition
     }
   };
 
   useEffect(() => {
     if (!isOpen) {
+      setOpenState(false);
       const timer = setTimeout(() => {
         setIsRendered(false);
       }, 200); // delay to allow the transition to complete before unmounting
       return () => clearTimeout(timer);
+    } else {
+      setIsRendered(true);
+      const timer = setTimeout(() => {
+        setOpenState(true);
+      }, 50);
     }
   }, [isOpen]);
 
   return (
     <DrawerContext.Provider value={{ onClose: handleClose }}>
-      {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))}
+      {/* {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))} */}
 
       {isRendered &&
         (targetElement ? (
@@ -71,7 +75,8 @@ const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transp
             <>
               <div className={overlayClasses} onClick={handleOverlayClick}>
                 <div className={drawerClasses} style={{ width: width }}>
-                  {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
+                  {/* {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))} */}
+                  {React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}
                 </div>
               </div>
             </>,
@@ -80,23 +85,11 @@ const Root: FC<DrawerProps> = ({ children, width = 320, overlayVariant = 'transp
         ) : (
           <div className={overlayClasses} onClick={handleOverlayClick}>
             <div className={drawerClasses} style={{ width: width }}>
-              {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))}
+              {React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}
             </div>
           </div>
         ))}
     </DrawerContext.Provider>
-  );
-};
-
-const Trigger: FC<TriggerProps> = ({ children }) => {
-  const context = useContext(DrawerContext);
-
-  if (!context) throw new Error('Trigger must be used within Root');
-
-  return (
-    <div className={styles.trigger} onClick={context.onClose}>
-      {children}
-    </div>
   );
 };
 
@@ -154,7 +147,6 @@ const Footer: FC<FooterProps> = ({ children }) => {
 };
 const Drawer = {
   Root: Root,
-  Trigger: Trigger,
   Content: Content,
   Header: Header,
   Footer: Footer,
