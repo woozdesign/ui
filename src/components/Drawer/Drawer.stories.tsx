@@ -5,6 +5,8 @@ import Menu from '../Menu/Menu';
 import { ThemeProvider } from '../Theme/Theme';
 import Typography from '../Typography/Typography';
 import Drawer, { DrawerProps } from './Drawer';
+import { Container } from '../Layout/Layout';
+import { Col, Row } from '../Grid/Grid';
 
 export default {
   title: 'Components/Drawer',

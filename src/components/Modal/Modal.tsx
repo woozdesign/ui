@@ -48,6 +48,19 @@ const Root: FC<ModalProps> = ({ children, open = false, onClose, onCancel, onCon
     }
   }, [open]);
 
+  useEffect(() => {
+    if (isOpen) {
+      // Save the previous overflow style to revert back to it when the modal is closed
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      // Cleanup function: revert back to the original overflow style
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [isOpen]);
+
   return (
     <ModalContext.Provider value={{ onClose: handleClose, onCancel, onConfirm }}>
       {/* {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))} */}

@@ -18,8 +18,6 @@
 .header {
   background-color: var(--color-accent-a2);
   color: var(--color-accent-12);
-  font-size: var(--font-size-4);
-  padding: var(--space-2) var(--space-4);
   cursor: pointer;
   display: flex;
   justify-content: space-between;
@@ -27,6 +25,23 @@
 
   &:hover {
     background-color: var(--color-accent-a3);
+  }
+
+  &--small {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--font-size-3);
+  }
+  &--medium {
+    padding: var(--space-3) var(--space-4);
+    font-size: var(--font-size-4);
+  }
+  &--large {
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-size-5);
+  }
+  &--xlarge {
+    padding: var(--space-4) var(--space-5);
+    font-size: var(--font-size-6);
   }
 }
 
@@ -39,7 +54,7 @@
   color: var(--color-accent-12);
   font-size: var(--font-size-4);
   margin-top: -100%;
-  transition: margin-top 0.2s ease-in-out;
+  transition: margin-top 0.3s ease-in-out;
   padding: var(--space-4);
   &.expanded {
     margin-top: 0;

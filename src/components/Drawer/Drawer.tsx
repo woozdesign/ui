@@ -51,6 +51,19 @@ const Root: FC<DrawerProps> = ({ children, open = false, width = 320, overlayVar
   };
 
   useEffect(() => {
+    if (isOpen) {
+      // Save the previous overflow style to revert back to it when the modal is closed
+      const prevOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      // Cleanup function: revert back to the original overflow style
+      return () => {
+        document.body.style.overflow = prevOverflow;
+      };
+    }
+  }, [isOpen]);
+
+  useEffect(() => {
     if (!open) {
       setIsOpen(false);
       const timer = setTimeout(() => {

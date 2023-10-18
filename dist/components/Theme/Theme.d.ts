@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { ThemeOptions } from './ThemeOptions';
 interface ThemeChangeHandlers {
     onAppearanceChange: (appearance: ThemeOptions['appearance']) => void;

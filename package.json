@@ -1,6 +1,6 @@
 {
   "name": "@woozdesign/ui",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "An open-source UI component library for building high-quality, accessible design systems.",
   "main": "dist/index.js",
   "scripts": {
@@ -19,14 +19,15 @@
   "license": "MIT",
   "dependencies": {
     "@woozdesign/colors": "^1.0.31",
-    "@woozdesign/icons": "^1.0.2"
+    "@woozdesign/icons": "^1.0.2",
+    "sass": "^1.67.0",
+    "node-sass": "^9.0.0"
   },
   "peerDependencies": {
     "@types/react": "*",
     "@types/react-dom": "*",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "sass": "^1.67.0"
+    "react": "^17.0 || ^18.0",
+    "react-dom": "^17.0 || ^18.0"
   },
   "peerDependenciesMeta": {
     "@types/react": {
@@ -73,7 +74,6 @@
     "eslint-plugin-storybook": "^0.6.14",
     "install": "^0.13.0",
     "mini-css-extract-plugin": "^2.7.6",
-    "node-sass": "^9.0.0",
     "npm": "^10.1.0",
     "prettier": "^3.0.3",
     "sass-loader": "^13.3.2",
