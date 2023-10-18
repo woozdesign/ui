@@ -59,11 +59,6 @@ const Template: Story<AppBarProps> = (args) => {
         </AppBar.Action>
         <AppBar.Action mobile>
           <Drawer.Root overlayVariant={'translucent'}>
-            <Drawer.Trigger>
-              <IconButton variant={'outlined'}>
-                <Icon type={'Menu'} />
-              </IconButton>
-            </Drawer.Trigger>
             <Drawer.Content title="Header">Content</Drawer.Content>
           </Drawer.Root>
         </AppBar.Action>
