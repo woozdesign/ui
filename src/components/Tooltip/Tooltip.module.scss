@@ -14,9 +14,6 @@
   box-sizing: border-box;
   position: absolute;
   z-index: 1;
-  bottom: 120%;
-  left: 50%;
-  transform: translateX(-50%);
   font-size: var(--font-size-3);
 }
 
@@ -26,15 +23,80 @@
   text-overflow: ellipsis;
 }
 
-.tooltip .tooltiptext::after {
-  content: '';
-  position: absolute;
-  top: 100%;
+// Default (Top)
+.tooltip[data-position='top'] .tooltiptext {
+  bottom: 120%;
   left: 50%;
   transform: translateX(-50%);
-  border-width: 5px;
-  border-style: solid;
-  border-color: var(--color-gray-12) transparent transparent transparent;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: var(--color-gray-12) transparent transparent transparent;
+  }
+}
+
+// Bottom Tooltip
+.tooltip[data-position='bottom'] .tooltiptext {
+  top: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 100%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--color-gray-12) transparent;
+  }
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+// Left Tooltip
+.tooltip[data-position='left'] .tooltiptext {
+  top: 50%;
+  right: 120%;
+  transform: translateY(-50%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: rotateY(180deg) translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent var(--color-gray-12) transparent transparent;
+  }
+}
+
+// Right Tooltip
+.tooltip[data-position='right'] .tooltiptext {
+  top: 50%;
+  left: 120%;
+  transform: translateY(-50%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: rotateY(180deg) translateY(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent var(--color-gray-12);
+  }
 }
 
 .tooltip:hover .tooltiptext {

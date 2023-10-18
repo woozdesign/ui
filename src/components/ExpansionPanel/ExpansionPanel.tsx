@@ -5,7 +5,7 @@ import { Icon } from '@woozdesign/icons';
 import { ColorProp, RadiusProp } from '@/utils';
 import { ExpansionPanelProps } from './ExpansionPanel.props';
 
-const ExpansionPanel: React.FC<ExpansionPanelProps> = ({ color = 'gray', outlined = true, radius, items, multiple = false }) => {
+const ExpansionPanel: React.FC<ExpansionPanelProps> = ({ color = 'gray', outlined = true, containerOutlined = true, size = 'medium', radius, items, multiple = false }) => {
   const [expandedIndices, setExpandedIndices] = useState<number[]>([]);
 
   const toggleItem = (index: number) => {
@@ -21,16 +21,16 @@ const ExpansionPanel: React.FC<ExpansionPanelProps> = ({ color = 'gray', outline
   };
 
   return (
-    <div data-accent-color={color} data-radius={radius} className={classNames(styles.panelContainer, { [styles.outlined]: outlined })}>
+    <div data-accent-color={color} data-radius={radius} className={classNames(styles.panelContainer, { [styles.outlined]: containerOutlined })}>
       {items.map((item, index) => {
         const isExpanded = expandedIndices.includes(index);
-        const classes = classNames(styles.item, { [styles.expanded]: isExpanded, [styles.outlined]: outlined });
+        const classes = classNames(styles.item, styles[`item--${size}`], { [styles.expanded]: isExpanded, [styles.outlined]: outlined });
 
         const contentClasses = classNames(styles.content, { [styles.expanded]: isExpanded, [styles.outlined]: outlined });
 
         return (
           <div key={index} className={classes}>
-            <div className={styles.header} onClick={() => toggleItem(index)}>
+            <div className={classNames(styles.header, styles[`header--${size}`])} onClick={() => toggleItem(index)}>
               {item.header}
               {isExpanded ? <Icon color={color} type="ChevronUp" /> : <Icon color={color} type="ChevronDown" />}
             </div>

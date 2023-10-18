@@ -5,7 +5,7 @@ import { TooltipProps } from './Tooltip.props';
 
 const Tooltip: FC<TooltipProps> = ({ content, position: positionProp = 'top', children }) => {
   return (
-    <div className={styles.tooltip}>
+    <div className={`${styles.tooltip}`} data-position={positionProp}>
       {children}
       <div className={`${styles.tooltiptext}`}>
         <div className={styles.ellipsisContent}>{content}</div>

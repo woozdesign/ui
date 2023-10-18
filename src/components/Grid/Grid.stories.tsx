@@ -8,7 +8,7 @@ import { RowProps, ColProps, Row, Col } from './Grid';
 
 export default {
   title: 'Layout/Grid',
-  component: Grid,
+  component: Row,
 } as Meta;
 
 // Combined Story with Container, Row, and Col
