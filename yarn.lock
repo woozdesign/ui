@@ -3615,10 +3615,10 @@
   dependencies:
     sass "^1.67.0"
 
-"@woozdesign/icons@^1.0.2":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@woozdesign/icons/-/icons-1.0.6.tgz#c3d62bb50e7903b58e224445fa21e687b43a3893"
-  integrity sha512-U43lYjHNAHhsNYHzE88+xnEVKZ3ZT9q2AEkyfNGAJvG9uZf6BB2HEblc7Vu1FxxbOuh7/HH3CuaGWnNfosfHtw==
+"@woozdesign/icons@^1.0.7":
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/@woozdesign/icons/-/icons-1.0.7.tgz#aef9c70d4317b546d2caecd9a9cbda994d5f5c77"
+  integrity sha512-xR5z3T56yH8elxCHU97fahIS7YHgIAC73v5uvq9mHv4mzAwpC20kb4mAygQTrg1u9mEfTK8e/R7VmIf7iWa3mA==
   dependencies:
     "@types/react" "^18.2.25"
     "@woozdesign/colors" "^1.0.31"
