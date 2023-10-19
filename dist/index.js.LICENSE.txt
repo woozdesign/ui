@@ -3,3 +3,5 @@
 	Licensed under the MIT License (MIT), see
 	http://jedwatson.github.io/classnames
 */
+
+/*! For license information please see index.js.LICENSE.txt */
