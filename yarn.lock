@@ -3615,13 +3615,14 @@
   dependencies:
     sass "^1.67.0"
 
-"@woozdesign/icons@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@woozdesign/icons/-/icons-1.0.7.tgz#aef9c70d4317b546d2caecd9a9cbda994d5f5c77"
-  integrity sha512-xR5z3T56yH8elxCHU97fahIS7YHgIAC73v5uvq9mHv4mzAwpC20kb4mAygQTrg1u9mEfTK8e/R7VmIf7iWa3mA==
+"@woozdesign/icons@^1.0.10":
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/@woozdesign/icons/-/icons-1.0.10.tgz#82af1a8f106df6baffe4a2ac6e1895ac08fe7fe5"
+  integrity sha512-h0nMjIOXIJwdcZRAq2r9GnVNV+pWkYFdXfqg7C4N7Ul5PBz16sVitdpdv7JRcMkqjnwgR0X0Ijyadou9mN0P0A==
   dependencies:
     "@types/react" "^18.2.25"
     "@woozdesign/colors" "^1.0.31"
+    classnames "^2.3.2"
     react "^18.2.0"
     react-dom "^18.2.0"
     sass "^1.67.0"
