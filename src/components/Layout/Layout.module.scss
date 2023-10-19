@@ -4,3 +4,11 @@
   margin-right: auto;
   padding: var(--space-4);
 }
+
+// Titles
+@for $i from 1 through 9 {
+  .section--#{$i} {
+    padding-top: var(--space-#{$i});
+    padding-bottom: var(--space-#{$i});
+  }
+}
