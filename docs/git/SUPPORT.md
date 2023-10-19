@@ -65,6 +65,7 @@
 | Column    | ✅        |       |
 | Row       | ✅        |       |
 | Flex      | ✅        |       |
+| Section   | ✅        |       |
 
 ### Selections
 
