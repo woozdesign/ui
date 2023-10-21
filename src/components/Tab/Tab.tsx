@@ -29,7 +29,7 @@ export const Trigger: FC<TriggerProps> = ({ value, children, color, size = 'medi
   if (!context) throw new Error('Trigger must be used within Root');
   const { activeTab, setActiveTab } = context;
   const classes = classNames(styles.trigger, styles[`trigger--${size}`], {
-    [styles['trigger--high-contrast']]: highContrast,
+    [styles['highContrast']]: highContrast,
     [styles['active']]: value === activeTab,
   });
 

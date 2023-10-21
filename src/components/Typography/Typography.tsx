@@ -8,13 +8,7 @@ import { CodeProps, GradientProps, HeaderProps, LinkProps, StrongProps, TextProp
 const Header: FC<HeaderProps> = ({ variant = 'h2', size = 8, align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other }) => {
   const Tag = variant as keyof JSX.IntrinsicElements;
 
-  const headingStyle = classNames(
-    styles[`heading--${size}`],
-    styles[`heading--${weight}`],
-    styles[`heading--${align}`],
-    { [styles[`heading--highContrast`]]: highContrast },
-    className,
-  );
+  const headingStyle = classNames(styles[`heading--${size}`], styles[`heading--${weight}`], styles[`heading--${align}`], { [styles[`highContrast`]]: highContrast }, className);
 
   return (
     <Tag className={headingStyle} data-accent-color={color} {...other}>
@@ -24,7 +18,7 @@ const Header: FC<HeaderProps> = ({ variant = 'h2', size = 8, align = 'start', co
 };
 
 const Text: FC<TextProps> = ({ children, size = 4, color = 'gray', align = 'start', weight = 'normal', variant = 'span', highContrast = true, className, ...other }) => {
-  const textStyle = classNames(styles[`text--${size}`], styles[`text--${weight}`], styles[`text--${align}`], { [styles[`text--highContrast`]]: highContrast }, className);
+  const textStyle = classNames(styles[`text--${size}`], styles[`text--${weight}`], styles[`text--${align}`], { [styles[`highContrast`]]: highContrast }, className);
   const Tag = variant as keyof JSX.IntrinsicElements;
 
   return (
@@ -39,7 +33,7 @@ const Strong: FC<StrongProps> = ({ children, ...other }) => {
 };
 
 const Link: FC<LinkProps> = ({ children, href, color, size = 4, highContrast = false, onClick, className, target, ...other }) => {
-  const classes = classNames(styles[`link--${size}`], { [styles[`link--highContrast`]]: highContrast }, className);
+  const classes = classNames(styles[`link--${size}`], { [styles[`highContrast`]]: highContrast }, className);
   return (
     <a href={href} target={target} onClick={onClick} data-accent-color={color} className={classes} {...other}>
       {children}
@@ -48,7 +42,7 @@ const Link: FC<LinkProps> = ({ children, href, color, size = 4, highContrast = f
 };
 
 const Code: FC<CodeProps> = ({ children, color, size = 4, radius, highContrast = false, className, ...other }) => {
-  const classes = classNames(styles[`code--${size}`], { [styles[`code--highContrast`]]: highContrast }, className);
+  const classes = classNames(styles[`code--${size}`], { [styles[`highContrast`]]: highContrast }, className);
 
   return (
     <code data-accent-color={color} data-radius={radius} className={classes} {...other}>

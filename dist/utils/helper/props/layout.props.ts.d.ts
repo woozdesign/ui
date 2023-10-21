@@ -11,7 +11,7 @@ export interface LayoutProp {
     grow?: '0' | 1;
 }
 export declare const extractLayoutProps: <T extends LayoutProp>(props: T) => {
-    position: "absolute" | "fixed" | "relative" | "static" | "sticky" | undefined;
+    position: "fixed" | "absolute" | "relative" | "static" | "sticky" | undefined;
     width: "auto" | "max-content" | "min-content" | SpaceProp | "100%" | undefined;
     height: "auto" | "max-content" | "min-content" | SpaceProp | "100%" | undefined;
     top: "0" | "auto" | "100%" | "50%" | undefined;
@@ -19,7 +19,7 @@ export declare const extractLayoutProps: <T extends LayoutProp>(props: T) => {
     left: "0" | "auto" | "100%" | "50%" | undefined;
     right: "0" | "auto" | "100%" | "50%" | undefined;
     shrink: "0" | "1" | undefined;
-    grow: "0" | 1 | undefined;
-    others: Omit<T, "position" | "top" | "height" | "left" | "right" | "bottom" | "width" | "shrink" | "grow">;
+    grow: 1 | "0" | undefined;
+    others: Omit<T, "left" | "right" | "top" | "bottom" | "height" | "width" | "position" | "shrink" | "grow">;
 };
 export declare const withLayoutProps: (props: LayoutProp) => void;

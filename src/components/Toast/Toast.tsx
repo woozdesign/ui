@@ -36,7 +36,7 @@ const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
 
   const classes = classNames(styles.toast, styles[`toast--${toast.variant || 'ghost'}`], styles[toast.placement || 'bottomRight'], {
     [styles.open]: isOpen,
-    [styles[`toast--highContrast`]]: toast.highContrast,
+    [styles[`highContrast`]]: toast.highContrast,
   });
 
   return (

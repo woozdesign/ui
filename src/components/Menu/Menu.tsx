@@ -33,7 +33,7 @@ const MenuItemComponent: FC<MenuItemProps> = ({ value, label, onClick, href, ico
   const isActive = activeItem === value;
 
   // Maybe some special styles or classes for active state
-  const itemClasses = classNames(styles[`menu--item`], styles[`menu--item--${size}`], { [styles.active]: isActive }, { [styles[`high-contrast`]]: highContrast });
+  const itemClasses = classNames(styles[`menu--item`], styles[`menu--item--${size}`], { [styles.active]: isActive }, { [styles[`highContrast`]]: highContrast });
 
   if (value)
     return (
@@ -55,7 +55,7 @@ const MenuItemComponent: FC<MenuItemProps> = ({ value, label, onClick, href, ico
       </li>
     );
 
-  const labelClasses = classNames(styles[`menu--label`], styles[`menu--label--${size}`], { [styles[`high-contrast`]]: highContrast });
+  const labelClasses = classNames(styles[`menu--label`], styles[`menu--label--${size}`], { [styles[`highContrast`]]: highContrast });
 
   return <div className={labelClasses}>{label}</div>;
 };

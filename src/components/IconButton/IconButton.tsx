@@ -19,7 +19,7 @@ const IconButton: FC<IconButtonProps> = ({
 }) => {
   const classNameList = classNames(other.className, styles.button, styles[`button--${size}`], styles[`button--${variant}`], {
     [styles[`button--disabled`]]: disabled,
-    [styles['button--high-contrast']]: highContrast,
+    [styles['highContrast']]: highContrast,
   });
 
   const handleAnchorClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
