@@ -1,0 +1,25 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-as {
+  @include breakpoints {
+    &-start {
+      align-self: flex-start;
+    }
+    &-center {
+      align-self: center;
+    }
+
+    &-end {
+      align-self: flex-end;
+    }
+
+    &-baseline {
+      align-self: baseline;
+    }
+
+    &-stretch {
+      align-self: stretch;
+    }
+  }
+}

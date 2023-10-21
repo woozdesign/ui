@@ -1,0 +1,18 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-fw {
+  @include breakpoints {
+    &-nowrap {
+      flex-wrap: nowrap;
+    }
+
+    &-wrap {
+      flex-wrap: wrap;
+    }
+
+    &-wrap-reverse {
+      flex-wrap: wrap-reverse;
+    }
+  }
+}

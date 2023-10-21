@@ -1,7 +1,8 @@
+// @use
 @import './breakpoints.scss';
 
 .woozdesign {
-  font-family: 'Inter';
+  font-family: var(--default-font-family);
   --font-size-0: calc(6px * var(--scaling));
   --font-size-1: calc(8px * var(--scaling));
   --font-size-2: calc(10px * var(--scaling));
@@ -15,11 +16,17 @@
   --font-size-10: calc(32px * var(--scaling));
   --font-size-11: calc(36px * var(--scaling));
   --font-size-12: calc(48px * var(--scaling));
+
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
 }
 
 // Medium Devices
 @include --smAndUp {
   .woozdesign {
+    font-family: var(--default-font-family);
     --font-size-0: calc(8px * var(--scaling));
     --font-size-1: calc(10px * var(--scaling));
     --font-size-2: calc(12px * var(--scaling));

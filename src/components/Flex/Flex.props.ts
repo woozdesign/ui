@@ -1,6 +1,6 @@
-import { SpaceSizeProp } from '@/utils';
+import { SpaceProp } from '@/utils';
 
-export interface FlexProps extends SpaceSizeProp {
+export interface FlexProps extends SpaceProp {
   width?: React.CSSProperties['width'];
   height?: React.CSSProperties['height'];
   align?: React.CSSProperties['alignItems'];

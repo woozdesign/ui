@@ -1,7 +1,7 @@
 'use client';
 
 import { Icon } from '@woozdesign/icons';
-import { AppBar, Button, Container, Drawer, IconButton, Row, Tab, Typography, updateThemeAppearanceClass, useThemeContext, useToast } from '@woozdesign/ui';
+import { AppBar, Badge, Box, Button, Container, Drawer, IconButton, Row, Tab, Typography, updateThemeAppearanceClass, useThemeContext, useToast } from '@woozdesign/ui';
 import { useState } from 'react';
 import Test from './test';
 
@@ -69,6 +69,9 @@ export default function Home() {
       <main style={{ marginTop: '64px' }}>
         <Container>
           {NotificationProvider}
+          <Row>
+            <Badge mt={{ xs: '0', md: '6', lg: '12' }} label={'Badge Test'}></Badge>
+          </Row>
           <Row>
             <Test />
             <Button onClick={toggleOutside}>ToggleOutside</Button>

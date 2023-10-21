@@ -1,9 +1,8 @@
 @import 'lib/reset.scss';
 @import 'lib/fonts.scss';
-@import '~@woozdesign/icons/dist/styles.css';
-@import 'lib/breakpoints.scss';
-@import 'lib/typography.scss';
-@import 'lib/colors.scss';
-@import 'lib/common.scss';
 @import 'lib/functions.scss';
-@import 'lib/translucent.scss';
+
+@import '~@woozdesign/icons/dist/styles.css';
+
+@import 'lib/tokens/tokens.scss';
+@import 'lib/utils/utils.scss';

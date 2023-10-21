@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export type Breakpoints = {
+export type TBreakpoints = {
   xs: number;
   sm: number;
   md: number;
@@ -9,9 +9,9 @@ export type Breakpoints = {
   xxl: number;
 };
 
-export type BreakpointKeys = keyof Breakpoints;
+export type BreakpointKeys = keyof TBreakpoints;
 
-export const breakpoints: Breakpoints = {
+export const breakpoints: TBreakpoints = {
   xs: 0,
   sm: 576,
   md: 768,

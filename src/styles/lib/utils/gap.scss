@@ -1,0 +1,19 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-gap {
+  @include breakpoints {
+    @for $i from 0 through 12 {
+      &-#{$i} {
+        gap: var(--space-#{$i});
+      }
+
+      &-r-#{$i} {
+        row-gap: var(--space-#{$i});
+      }
+      &-c-#{$i} {
+        column-gap: var(--space-#{$i});
+      }
+    }
+  }
+}

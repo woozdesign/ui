@@ -99,3 +99,40 @@ $breakpoints: (
     @content;
   }
 }
+
+// // Mixin for generating styles for all breakpoints
+// @mixin breakpoints {
+//   // Apply styles for all devices
+//   @media all {
+//     @content;
+//   }
+
+//   // Loop through each breakpoint and apply styles
+//   @each $breakpoint, $query in $breakpoints {
+//     @media (min-width: $query) {
+//       @at-root {
+//         .#{$breakpoint}-#{&} {
+//           @content;
+//         }
+//       }
+//     }
+//   }
+// }
+
+@mixin breakpoints {
+  // Apply styles for all devices
+  @media all {
+    @content;
+  }
+
+  // Loop through each breakpoint and apply styles
+  @each $breakpoint, $query in $breakpoints {
+    @media (min-width: $query) {
+      @at-root {
+        .#{$breakpoint}-#{str-slice('#{&}',2)} {
+          @content;
+        }
+      }
+    }
+  }
+}

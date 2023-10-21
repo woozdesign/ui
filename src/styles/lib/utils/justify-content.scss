@@ -1,0 +1,22 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-jc {
+  @include breakpoints {
+    &-start {
+      justify-content: flex-start;
+    }
+
+    &-center {
+      justify-content: center;
+    }
+
+    &-end {
+      justify-content: flex-end;
+    }
+
+    &-space-between {
+      justify-content: space-between;
+    }
+  }
+}

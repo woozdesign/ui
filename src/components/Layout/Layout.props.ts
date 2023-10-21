@@ -1,4 +1,4 @@
-import { SpaceSizeProp } from '@/utils';
+import { SpaceProp } from '@/utils';
 import React from 'react';
 
 export interface ContainerProps extends React.HTMLProps<HTMLDivElement> {
@@ -8,7 +8,7 @@ export interface ContainerProps extends React.HTMLProps<HTMLDivElement> {
   maxWidth?: React.CSSProperties['maxWidth'];
 }
 
-export interface SectionProps extends SpaceSizeProp {
+export interface SectionProps extends SpaceProp {
   children: React.ReactNode;
   className?: string;
   padding?: React.CSSProperties['padding'];
