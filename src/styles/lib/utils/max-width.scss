@@ -1,0 +1,32 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-maxw {
+  @include breakpoints {
+    @for $i from 0 through 12 {
+      &-#{$i} {
+        max-width: var(--space-#{$i});
+      }
+    }
+
+    &-auto {
+      max-width: auto;
+    }
+
+    &-max-content {
+      max-width: max-content;
+    }
+
+    &-min-content {
+      max-width: min-content;
+    }
+
+    &-50\% {
+      max-width: 50%;
+    }
+
+    &-100\% {
+      max-width: 100%;
+    }
+  }
+}

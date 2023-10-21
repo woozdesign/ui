@@ -6,10 +6,22 @@ import React, { FC, useCallback, useState } from 'react';
 import Typography from '../Typography';
 import styles from './Checkbox.module.scss';
 import { CheckboxProps } from './Checkbox.props';
+import { extractMarginProps, withMarginProps } from '@/utils';
 
-const Checkbox: FC<CheckboxProps> = ({ color, radius, size = 'medium', onChange, label, hasSubmitted, ...props }) => {
-  const [isChecked, setIsChecked] = useState(props.checked || false);
-  const [isDisabled, setIsDisabled] = useState(props.disabled || false);
+const Checkbox: FC<CheckboxProps> = (props) => {
+  const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
+  const { color, radius, size = 'medium', onChange, label, hasSubmitted, ...otherProps } = marginOtherProps;
+
+  const [isChecked, setIsChecked] = useState(otherProps.checked || false);
+  const [isDisabled, setIsDisabled] = useState(otherProps.disabled || false);
+
+  const classes = classNames(
+    styles.checkbox,
+    styles[`checkbox--${size}`],
+    isChecked && styles['checkbox--checked'],
+    isDisabled && styles['checkbox--disabled'],
+    withMarginProps(marginProps),
+  );
 
   const [error, setError] = useState<string | null>(null);
 
@@ -17,14 +29,14 @@ const Checkbox: FC<CheckboxProps> = ({ color, radius, size = 'medium', onChange,
     if (!isDisabled) {
       const newState = !isChecked;
       setIsChecked(newState);
-      if (props.required && !newState) {
+      if (otherProps.required && !newState) {
         setError('It is required');
       } else {
         setError(null);
       }
       if (onChange) onChange();
     }
-  }, [isDisabled, isChecked, onChange, props.required]);
+  }, [isDisabled, isChecked, onChange, otherProps.required]);
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => {
     handleCheckboxClick();
@@ -42,16 +54,14 @@ const Checkbox: FC<CheckboxProps> = ({ color, radius, size = 'medium', onChange,
     }
   };
 
-  const classNameList = classNames(styles.checkbox, styles[`checkbox--${size}`], isChecked && styles['checkbox--checked'], isDisabled && styles['checkbox--disabled']);
-
   return (
     <div className={styles.wrapper}>
-      <div className={classNameList} data-accent-color={color} data-radius={radius} onClick={handleCheckboxClick}>
-        <input type="checkbox" {...props} className={styles.input} onChange={handleChange} onInvalid={handleInvalid} disabled={isDisabled} checked={isChecked} />
+      <div className={classes} data-accent-color={color} data-radius={radius} onClick={handleCheckboxClick}>
+        <input type="checkbox" {...otherProps} className={styles.input} onChange={handleChange} onInvalid={handleInvalid} disabled={isDisabled} checked={isChecked} />
         <span className={classNames(styles.checkmark, error && styles['error'])}>{isChecked && <Icon type={'Check'} size={size} />}</span>
         {label && (
           <Typography.Text className={styles.label}>
-            {props.required && <span style={{ color: 'var(--color-red-9)', marginRight: '4px' }}>*</span>}
+            {otherProps.required && <span style={{ color: 'var(--color-red-9)', marginRight: '4px' }}>*</span>}
             {label}
           </Typography.Text>
         )}

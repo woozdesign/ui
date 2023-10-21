@@ -110,14 +110,14 @@ const Content: FC<ContentProps> = ({ title, subtitle, confirmText = 'Confirm', c
       <Card size={'large'}>
         {(title || subtitle) && <Card.Header title={title} titleSize={5} subtitle={subtitle} outlined={false}></Card.Header>}
         <Card.Body content={children}></Card.Body>
-        <Card.Actions justify={'end'} outlined={false}>
+        <Card.Action justify={'end'} outlined={false}>
           <Button variant={'outlined'} color={'gray'} highContrast onClick={handleCancel}>
             {cancelText}
           </Button>
           <Button variant={'solid'} onClick={handleConfirm}>
             {confirmText}
           </Button>
-        </Card.Actions>
+        </Card.Action>
       </Card>
     </div>
   );

@@ -1,15 +1,15 @@
 import { withBreakpoints } from '../responsive';
 
-export type PaddingType = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
+export type PaddingValue = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12';
 
 export interface PaddingProp {
-  p?: PaddingType;
-  px?: PaddingType;
-  py?: PaddingType;
-  pl?: PaddingType;
-  pr?: PaddingType;
-  pt?: PaddingType;
-  pb?: PaddingType;
+  p?: PaddingValue;
+  px?: PaddingValue;
+  py?: PaddingValue;
+  pl?: PaddingValue;
+  pr?: PaddingValue;
+  pt?: PaddingValue;
+  pb?: PaddingValue;
 }
 
 export const extractPaddingProps = <T extends PaddingProp>(props: T) => {

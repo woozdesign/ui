@@ -3,36 +3,33 @@
 
 .wd-display {
   @include breakpoints {
+    &-none {
+      display: none;
+    }
     &-block {
       display: block;
+    }
+    &-flex {
+      display: flex;
+    }
+    &-grid {
+      display: grid;
     }
 
     &-inline {
       display: inline;
     }
 
-    &-inline-block {
-      display: inline-block;
-    }
-
-    &-flex {
-      display: flex;
-    }
-
     &-inline-flex {
       display: inline-flex;
     }
 
-    &-grid {
-      display: grid;
+    &-inline-block {
+      display: inline-block;
     }
 
     &-inline-grid {
       display: inline-grid;
-    }
-
-    &-none {
-      display: none;
     }
   }
 }

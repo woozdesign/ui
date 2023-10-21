@@ -12,7 +12,9 @@ interface DrawerContextProps {
 
 const DrawerContext = React.createContext<DrawerContextProps | undefined>(undefined);
 
-const Root: FC<DrawerProps> = ({ children, open = false, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' }) => {
+const Root: FC<DrawerProps> = (props) => {
+  const { children, className, style, open = false, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' } = props;
+
   const [isRendered, setIsRendered] = useState(false);
   const [isOpen, setIsOpen] = useState(open);
   const [targetElement, setTargetElement] = useState<Element | null>(null);
@@ -25,12 +27,17 @@ const Root: FC<DrawerProps> = ({ children, open = false, width = 320, overlayVar
     [styles.outlined]: outlined,
   });
 
-  const drawerClasses = classNames(styles.drawer, styles[`drawer--${placement}`], {
-    [styles.open]: isOpen,
-    [styles.outlined]: outlined,
-    [styles['has-header']]: hasHeader,
-    [styles['has-footer']]: hasFooter,
-  });
+  const drawerClasses = classNames(
+    styles.drawer,
+    styles[`drawer--${placement}`],
+    {
+      [styles.open]: isOpen,
+      [styles.outlined]: outlined,
+      [styles['has-header']]: hasHeader,
+      [styles['has-footer']]: hasFooter,
+    },
+    className,
+  );
 
   const handleOverlayClick = () => {
     if (variant === 'default') onClose && onClose();
@@ -80,8 +87,6 @@ const Root: FC<DrawerProps> = ({ children, open = false, width = 320, overlayVar
 
   return (
     <DrawerContext.Provider value={{ onClose: handleClose }}>
-      {/* {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))} */}
-
       {isRendered &&
         (targetElement ? (
           ReactDom.createPortal(
@@ -106,19 +111,25 @@ const Root: FC<DrawerProps> = ({ children, open = false, width = 320, overlayVar
   );
 };
 
-const Content: FC<ContentProps> = ({ children }) => {
+const Content: FC<ContentProps> = (props) => {
+  const { children, className, style } = props;
+
+  const classes = classNames(styles.content, className);
+
   const stopPropagation = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
 
   return (
-    <div className={styles.content} onClick={stopPropagation}>
+    <div className={classes} onClick={stopPropagation}>
       {children}
     </div>
   );
 };
 
-const Header: FC<HeaderProps> = ({ title, action }) => {
+const Header: FC<HeaderProps> = (props) => {
+  const { title, action } = props;
+
   const context = useContext(DrawerContext);
 
   if (!context) throw new Error('Content must be used within Root');
@@ -147,13 +158,17 @@ const Header: FC<HeaderProps> = ({ title, action }) => {
   );
 };
 
-const Footer: FC<FooterProps> = ({ children }) => {
+const Footer: FC<FooterProps> = (props) => {
+  const { children, className, style } = props;
+
+  const classes = classNames(styles.footer, className);
+
   const stopPropagation = (e: React.MouseEvent) => {
     e.stopPropagation();
   };
 
   return (
-    <div className={styles.footer} onClick={stopPropagation}>
+    <div className={classes} onClick={stopPropagation}>
       {children}
     </div>
   );

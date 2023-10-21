@@ -94,7 +94,7 @@ const Item: FC<ItemProps> = ({ children, shortcut, color, disabled, onClick }) =
 };
 
 const Separator: FC = () => {
-  return <Divider space={0}></Divider>;
+  return <Divider></Divider>;
 };
 
 const Sub: FC<SubProps> = ({ children }) => {

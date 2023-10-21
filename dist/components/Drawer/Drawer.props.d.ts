@@ -1,6 +1,6 @@
 /// <reference types="react" />
-export interface DrawerProps {
-    children: React.ReactNode;
+import { BaseProp, BasePropWithChildren } from '../../utils';
+export interface DrawerProps extends BasePropWithChildren {
     open?: boolean;
     width?: React.CSSProperties['width'];
     placement?: 'left' | 'right';
@@ -9,13 +9,11 @@ export interface DrawerProps {
     overlayVariant?: 'transparent' | 'translucent';
     onClose?: () => void;
 }
-export interface ContentProps {
-    children: React.ReactNode;
+export interface ContentProps extends BasePropWithChildren {
 }
-export interface HeaderProps {
+export interface HeaderProps extends BaseProp {
     title?: React.ReactNode;
     action?: React.ReactNode;
 }
-export interface FooterProps {
-    children: React.ReactNode;
+export interface FooterProps extends BasePropWithChildren {
 }

@@ -1,4 +1,6 @@
+export * from './base.props';
 export * from './color.props';
+export * from './display.props';
 export * from './high-contrast.props';
 export * from './layout.props.ts';
 export * from './margin.props';

@@ -82,8 +82,8 @@ const ToastList: React.FC<{ toasts: ToastProps[]; handleClose: (id: number) => v
 };
 
 type ToastFunction = (props: Omit<ToastProps, 'id'>) => void;
-type ToastHookReturnType = [ToastFunction, React.ReactNode];
-export const useToast = (): ToastHookReturnType => {
+type ToastHookReturnValue = [ToastFunction, React.ReactNode];
+export const useToast = (): ToastHookReturnValue => {
   const [toasts, setToasts] = useState<ToastProps[]>([]);
 
   const openToast: ToastFunction = (props) => {

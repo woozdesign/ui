@@ -16,25 +16,25 @@
     height: 100%;
   }
 
-  &.small {
+  &--small {
     width: 40px;
     height: 40px;
     font-size: var(--font-size-4);
   }
 
-  &.medium {
+  &--medium {
     width: 60px;
     height: 60px;
     font-size: var(--font-size-6);
   }
 
-  &.large {
+  &--large {
     width: 81px;
     height: 81px;
     font-size: var(--font-size-8);
   }
 
-  &.xlarge {
+  &--xlarge {
     width: 100px;
     height: 100px;
     font-size: var(--font-size-8);

@@ -1,4 +1,4 @@
-import { ColorProp, HighContrastProp } from '@/utils';
+import { ColorProp, HighContrastProp, MarginProp } from '@/utils';
 
 export type BreadcrumbItem = {
   key: string;
@@ -7,7 +7,7 @@ export type BreadcrumbItem = {
   active: boolean;
 };
 
-export interface BreadcrumbProps extends ColorProp, HighContrastProp {
+export interface BreadcrumbProps extends MarginProp, ColorProp, HighContrastProp {
   items: BreadcrumbItem[];
   variant?: 'normal' | 'inverse';
   divider?: React.ReactNode;

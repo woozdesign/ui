@@ -1,10 +1,17 @@
 'use client';
-import React, { useState, FC } from 'react';
+import { extractMarginProps, withMarginProps } from '@/utils';
+import classNames from 'classnames';
+import React, { FC, useState } from 'react';
+import Image from '../Image';
 import styles from './Avatar.module.scss';
 import { AvatarProps } from './Avatar.props';
-import Image from '../Image';
 
-const Avatar: FC<AvatarProps> = ({ src, fallback, size = 'medium', radius, color }) => {
+const Avatar: FC<AvatarProps> = (props) => {
+  const { others: marginOthers, ...marginProps } = extractMarginProps(props);
+  const { src, fallback, size = 'medium', radius, color } = marginOthers;
+
+  const classes = classNames(styles.avatar, styles[`avatar--${size}`], withMarginProps(marginProps));
+
   const [imgError, setImgError] = useState(false);
 
   const handleError = () => {
@@ -12,7 +19,7 @@ const Avatar: FC<AvatarProps> = ({ src, fallback, size = 'medium', radius, color
   };
 
   return (
-    <div className={`${styles.avatar} ${styles[size]}`} data-accent-color={color} data-radius={radius}>
+    <div className={classes} data-accent-color={color} data-radius={radius}>
       {src && !imgError ? <Image src={src} alt="avatar" onError={handleError} /> : <span>{fallback}</span>}
     </div>
   );

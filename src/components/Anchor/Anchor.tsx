@@ -4,7 +4,9 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import styles from './Anchor.module.scss';
 import { AnchorProps, LinkItem } from './Anchor.props';
 
-const Anchor: FC<AnchorProps> = ({ items, offset = 0, behavior = 'smooth', onChange }) => {
+const Anchor: FC<AnchorProps> = (props) => {
+  const { items, offset = 0, behavior = 'smooth', onChange } = props;
+
   const [activeKey, setActiveKey] = useState<string | null>(items[0]?.key);
 
   const firstLinkRef = useRef<HTMLAnchorElement | null>(null);
