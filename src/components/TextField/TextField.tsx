@@ -5,7 +5,7 @@ import React, { ChangeEvent, FC, useState } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './TextField.module.scss';
 import { TextFieldProps } from './TextField.props';
-import { extractMarginProps, withMarginProps } from '@/utils';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 
 const TextField: FC<TextFieldProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
@@ -28,8 +28,8 @@ const TextField: FC<TextFieldProps> = (props) => {
     ...others
   } = otherMarginProps;
 
-  const wrapperClasses = classNames(styles.wrapper, styles[`wrapper--${size}`], withMarginProps(marginProps));
-  const groupClasses = classNames(styles.group, styles[`group--${size}`], block && styles.block);
+  const wrapperClasses = classNames(styles.wrapper, withBreakpoints(size, 'wtd-textfield--wrapper', styles), withMarginProps(marginProps));
+  const groupClasses = classNames(styles.group, { [styles.block]: block }, withBreakpoints(size, 'wd-textfield--group', styles));
   const inputClasses = classNames(styles.input, iconPrepend && styles.hasPrependIcon);
 
   const [error, setError] = useState<string | null>(null);

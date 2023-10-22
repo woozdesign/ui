@@ -1,4 +1,5 @@
 // Avatar.module.scss
+@use '@/styles/lib/mixins.scss';
 
 .avatar {
   display: flex;
@@ -15,28 +16,32 @@
     width: 100%;
     height: 100%;
   }
+}
 
-  &--small {
-    width: 40px;
-    height: 40px;
-    font-size: var(--font-size-4);
-  }
+.wd-avatar {
+  @include mixins.breakpoints {
+    &-small {
+      width: 40px;
+      height: 40px;
+      font-size: var(--font-size-4);
+    }
 
-  &--medium {
-    width: 60px;
-    height: 60px;
-    font-size: var(--font-size-6);
-  }
+    &-medium {
+      width: 60px;
+      height: 60px;
+      font-size: var(--font-size-6);
+    }
 
-  &--large {
-    width: 81px;
-    height: 81px;
-    font-size: var(--font-size-8);
-  }
+    &-large {
+      width: 81px;
+      height: 81px;
+      font-size: var(--font-size-8);
+    }
 
-  &--xlarge {
-    width: 100px;
-    height: 100px;
-    font-size: var(--font-size-8);
+    &-xlarge {
+      width: 100px;
+      height: 100px;
+      font-size: var(--font-size-8);
+    }
   }
 }

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './ExpansionPanel.module.scss';
 import classNames from 'classnames';
 import { Icon } from '@woozdesign/icons';
-import { ColorProp, RadiusProp, extractMarginProps, withMarginProps } from '@/utils';
+import { ColorProp, RadiusProp, extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 import { ExpansionPanelProps } from './ExpansionPanel.props';
 
 const ExpansionPanel: React.FC<ExpansionPanelProps> = (props) => {
@@ -30,8 +30,8 @@ const ExpansionPanel: React.FC<ExpansionPanelProps> = (props) => {
       {items.map((item, index) => {
         const isExpanded = expandedIndices.includes(index);
 
-        const itemClasses = classNames(styles.item, styles[`item--${size}`], { [styles.expanded]: isExpanded, [styles.outlined]: outlined });
-        const headerClasses = classNames(styles.header, styles[`header--${size}`]);
+        const itemClasses = classNames(styles.item, withBreakpoints(size, 'wd-expansion-items', styles), { [styles.expanded]: isExpanded, [styles.outlined]: outlined });
+        const headerClasses = classNames(styles.header, withBreakpoints(size, 'wd-expansion-header', styles));
 
         const contentWrapperClasses = classNames(styles.contentWrapper, { [styles.expanded]: isExpanded });
         const contentClasses = classNames(styles.content, { [styles.expanded]: isExpanded, [styles.outlined]: outlined });

@@ -1,4 +1,5 @@
 'use client';
+import { extractMarginProps, isBreakpointsObject, withBreakpoints, withMarginProps } from '@/utils';
 import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
 import { Icon } from '@woozdesign/icons';
 import classNames from 'classnames';
@@ -6,7 +7,6 @@ import React, { FC, useCallback, useState } from 'react';
 import Typography from '../Typography';
 import styles from './Checkbox.module.scss';
 import { CheckboxProps } from './Checkbox.props';
-import { extractMarginProps, withMarginProps } from '@/utils';
 
 const Checkbox: FC<CheckboxProps> = (props) => {
   const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
@@ -17,9 +17,9 @@ const Checkbox: FC<CheckboxProps> = (props) => {
 
   const classes = classNames(
     styles.checkbox,
-    styles[`checkbox--${size}`],
     isChecked && styles['checkbox--checked'],
     isDisabled && styles['checkbox--disabled'],
+    withBreakpoints(size, 'wd-checkbox', styles),
     withMarginProps(marginProps),
   );
 
@@ -58,7 +58,7 @@ const Checkbox: FC<CheckboxProps> = (props) => {
     <div className={styles.wrapper}>
       <div className={classes} data-accent-color={color} data-radius={radius} onClick={handleCheckboxClick}>
         <input type="checkbox" {...otherProps} className={styles.input} onChange={handleChange} onInvalid={handleInvalid} disabled={isDisabled} checked={isChecked} />
-        <span className={classNames(styles.checkmark, error && styles['error'])}>{isChecked && <Icon type={'Check'} size={size} />}</span>
+        <span className={classNames(styles.checkmark, error && styles['error'])}>{isChecked && <Icon type={'Check'} size={'dynamic'} />}</span>
         {label && (
           <Typography.Text className={styles.label}>
             {otherProps.required && <span style={{ color: 'var(--color-red-9)', marginRight: '4px' }}>*</span>}

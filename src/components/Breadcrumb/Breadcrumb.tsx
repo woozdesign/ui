@@ -1,5 +1,5 @@
 'use client';
-import { ColorProp, HighContrastProp, extractMarginProps, withMarginProps } from '@/utils';
+import { extractMarginProps, withMarginProps } from '@/utils';
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Breadcrumb.module.scss';

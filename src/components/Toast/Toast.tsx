@@ -44,7 +44,7 @@ const ToastDisplay: React.FC<ToastDisplayProps> = (props) => {
   return (
     <div data-accent-color={toast.color} data-radius={toast.radius} className={classes} ref={toastRef}>
       {toast.iconPrepend && <span className={styles.icon}>{toast.iconPrepend}</span>}
-      <Typography.Text color={toast.color} className={styles.text} size={4}>
+      <Typography.Text color={toast.color} className={styles.text} size={'4'}>
         {toast.message}
       </Typography.Text>
       <div className={styles.action} onClick={handleSelfClose}>

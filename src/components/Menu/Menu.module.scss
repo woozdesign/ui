@@ -1,3 +1,5 @@
+@use '@/styles/lib/mixins';
+
 .menu {
   font-family: Arial, sans-serif;
   display: flex;
@@ -42,34 +44,6 @@
       }
     }
 
-    &--xlarge {
-      height: 48px;
-      border-radius: max(var(--radius-5), var(--radius-full));
-      font-size: var(--font-size-5);
-      padding: var(--space-2) var(--space-4);
-    }
-
-    &--large {
-      height: 40px;
-      font-size: var(--font-size-5);
-      padding: var(--space-1) var(--space-4);
-      border-radius: max(var(--radius-4), var(--radius-full));
-    }
-
-    &--medium {
-      font-size: var(--font-size-4);
-      padding: var(--space-1) var(--space-3);
-      border-radius: max(var(--radius-3), var(--radius-full));
-      height: 34px;
-    }
-
-    &--small {
-      height: 28px;
-      font-size: var(--font-size-3);
-      border-radius: max(var(--radius-3), var(--radius-full));
-      padding: var(--space-1) var(--space-2);
-    }
-
     &.highContrast {
       color: var(--color-accent-12);
 
@@ -92,24 +66,60 @@
     &.highContrast {
       color: var(--color-accent-12);
     }
+  }
+}
 
-    &--large {
-      font-size: var(--font-size-5);
-      padding: var(--space-0) var(--space-5);
+.wd-menu {
+  &--label {
+    @include mixins.breakpoints {
+      &-xlarge {
+        font-size: var(--font-size-5);
+        padding: var(--space-0) var(--space-5);
+      }
+      &-large {
+        font-size: var(--font-size-5);
+        padding: var(--space-0) var(--space-5);
+      }
+      &-medium {
+        font-size: var(--font-size-4);
+        padding: var(--space-0) var(--space-4);
+      }
+      &-small {
+        font-size: var(--font-size-3);
+        padding: var(--space-0) var(--space-3);
+      }
     }
+  }
 
-    &--xlarge {
-      font-size: var(--font-size-5);
-      padding: var(--space-0) var(--space-5);
-    }
-    &--medium {
-      font-size: var(--font-size-4);
-      padding: var(--space-0) var(--space-4);
-    }
+  &--item {
+    @include mixins.breakpoints {
+      &-xlarge {
+        height: 48px;
+        border-radius: max(var(--radius-5), var(--radius-full));
+        font-size: var(--font-size-5);
+        padding: var(--space-2) var(--space-4);
+      }
 
-    &--small {
-      font-size: var(--font-size-3);
-      padding: var(--space-0) var(--space-3);
+      &-large {
+        height: 40px;
+        font-size: var(--font-size-5);
+        padding: var(--space-1) var(--space-4);
+        border-radius: max(var(--radius-4), var(--radius-full));
+      }
+
+      &-medium {
+        font-size: var(--font-size-4);
+        padding: var(--space-1) var(--space-3);
+        border-radius: max(var(--radius-3), var(--radius-full));
+        height: 34px;
+      }
+
+      &-small {
+        height: 28px;
+        font-size: var(--font-size-3);
+        border-radius: max(var(--radius-3), var(--radius-full));
+        padding: var(--space-1) var(--space-2);
+      }
     }
   }
 }

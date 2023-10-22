@@ -1,5 +1,4 @@
-// @use
-@import '@/styles/lib/tokens/breakpoints.scss';
+@use '@/styles/lib/tokens/breakpoints.scss';
 
 .header {
   width: 100%;
@@ -71,7 +70,7 @@
   }
 }
 
-@include --mdAndDown {
+@include breakpoints.mdAndDown {
   .wrapper {
     padding: var(--space-2) var(--space-4);
   }
@@ -87,7 +86,7 @@
   }
 }
 
-@include --xs {
+@include breakpoints.xs {
   .wrapper {
     padding: var(--space-2) var(--space-4);
   }

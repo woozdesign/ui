@@ -4,7 +4,9 @@ import Button from '../Button';
 import styles from './Form.module.scss';
 import { FormChildProps, FormProps } from './Form.props';
 
-const Form: FC<FormProps> = ({ children, onSuccess, onError, ...others }) => {
+const Form: FC<FormProps> = (props) => {
+  const { children, onSuccess, onError, ...others } = props;
+
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {

@@ -1,3 +1,4 @@
+import { Responsive } from '../responsive';
 export interface SizeProp {
-    size?: 'xlarge' | 'large' | 'medium' | 'small';
+    size?: Responsive<'xlarge' | 'large' | 'medium' | 'small'>;
 }

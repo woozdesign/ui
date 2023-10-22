@@ -4,7 +4,7 @@ import React, { FC, useContext, useState } from 'react';
 import classNames from 'classnames';
 import styles from './Menu.module.scss';
 import { MenuContextProps, MenuItemProps, MenuProps } from './Menu.props';
-import { extractMarginProps, withMarginProps } from '@/utils';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 
 const MenuContext = React.createContext<MenuContextProps | undefined>(undefined);
 
@@ -39,7 +39,7 @@ const MenuItemComponent: FC<MenuItemProps> = (props) => {
   const isActive = activeItem === value;
 
   // Maybe some special styles or classes for active state
-  const itemClasses = classNames(styles[`menu--item`], styles[`menu--item--${size}`], { [styles.active]: isActive }, { [styles[`highContrast`]]: highContrast });
+  const itemClasses = classNames(styles[`menu--item`], withBreakpoints(size, 'wd-menu--item', styles), { [styles.active]: isActive }, { [styles[`highContrast`]]: highContrast });
 
   if (value)
     return (
@@ -61,7 +61,7 @@ const MenuItemComponent: FC<MenuItemProps> = (props) => {
       </li>
     );
 
-  const labelClasses = classNames(styles[`menu--label`], styles[`menu--label--${size}`], { [styles[`highContrast`]]: highContrast });
+  const labelClasses = classNames(styles[`menu--label`], withBreakpoints(size, 'wd-menu--lable', styles), { [styles[`highContrast`]]: highContrast });
 
   return <div className={labelClasses}>{label}</div>;
 };

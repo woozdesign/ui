@@ -1,9 +1,9 @@
 'use client';
-import React, { FC } from 'react';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 import classNames from 'classnames';
+import React, { FC } from 'react';
 import styles from './Button.module.scss';
 import { AnchorClickHandler, ButtonClickHandler, ButtonProps } from './Button.props';
-import { extractMarginProps, withMarginProps } from '@/utils';
 
 const Button: FC<ButtonProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
@@ -30,7 +30,6 @@ const Button: FC<ButtonProps> = (props) => {
   const classes = classNames(
     className,
     styles.button,
-    styles[`button--${size}`],
     styles[`button--${variant}`],
     styles[`button--${justify}`],
     {
@@ -38,6 +37,7 @@ const Button: FC<ButtonProps> = (props) => {
       [styles['button--block']]: block,
       [styles['highContrast']]: highContrast,
     },
+    withBreakpoints(size, 'wt-button', styles),
     withMarginProps(marginProps),
   );
 

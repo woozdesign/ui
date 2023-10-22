@@ -1,3 +1,5 @@
+@use '@/styles/lib/mixins.scss';
+
 // Base settings
 $title-margin: 1rem 0;
 
@@ -185,22 +187,26 @@ $title-margin: 1rem 0;
   }
 }
 
-// Titles
-@for $i from 1 through 12 {
-  .heading--#{$i} {
-    @include headingStyles(var(--font-size-#{$i}));
-    font-weight: bold;
-  }
-  .text--#{$i} {
-    @include textStyle(var(--font-size-#{$i}));
-  }
-  .code--#{$i} {
-    @include codeStyles(var(--font-size-#{$i}));
-  }
-  .link--#{$i} {
-    @include linkStyles(var(--font-size-#{$i}));
-  }
-  .gradient--#{$i} {
-    @include gradientStyles(var(--font-size-#{$i}));
+.wd-typography {
+  // Titles
+  @include mixins.breakpoints {
+    @for $i from 1 through 12 {
+      &--heading-#{$i} {
+        @include headingStyles(var(--font-size-#{$i}));
+        font-weight: bold;
+      }
+      &--text-#{$i} {
+        @include textStyle(var(--font-size-#{$i}));
+      }
+      &--code-#{$i} {
+        @include codeStyles(var(--font-size-#{$i}));
+      }
+      &--link-#{$i} {
+        @include linkStyles(var(--font-size-#{$i}));
+      }
+      &--gradient-#{$i} {
+        @include gradientStyles(var(--font-size-#{$i}));
+      }
+    }
   }
 }

@@ -1,3 +1,5 @@
+@use '@/styles/lib/mixins.scss';
+
 $padding: 4px;
 
 $slider-before-width-percentage: 62.5%; //Should be ratio of width base and height base
@@ -18,19 +20,6 @@ $slider-before-width-percentage: 62.5%; //Should be ratio of width base and heig
 .switch {
   position: relative;
   display: inline-block;
-
-  @include switch-size(48px, 30px);
-  &--small {
-    @include switch-size(32px, 20px);
-  }
-
-  &--large {
-    @include switch-size(64px, 40px);
-  }
-
-  &--xlarge {
-    @include switch-size(80px, 50px);
-  }
 }
 
 .input {
@@ -72,5 +61,25 @@ $slider-before-width-percentage: 62.5%; //Should be ratio of width base and heig
     border-radius: max(var(--radius-3), var(--radius-full));
     background-color: var(--color-accent-9-contrast);
     transition: 0.2s;
+  }
+}
+
+.wd-switch {
+  @include mixins.breakpoints {
+    &-small {
+      @include switch-size(32px, 20px);
+    }
+
+    &-medium {
+      @include switch-size(48px, 30px);
+    }
+
+    &-large {
+      @include switch-size(64px, 40px);
+    }
+
+    &-xlarge {
+      @include switch-size(80px, 50px);
+    }
   }
 }

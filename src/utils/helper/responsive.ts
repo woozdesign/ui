@@ -4,6 +4,7 @@ type Responsive<T> = T | Partial<Record<Breakpoints, T>>;
 const withBreakpoints = (
   value: Responsive<string | boolean> | undefined, // Value to check
   classPrefix = '', // CSS class prefix, e.g. "px" in "px-1" class
+  styles?: Record<string, string>, // Support Style Module
   valueMap?: Record<string, string>, // Optionally, an object to map prop values to a different CSS suffix
 ) => {
   const classes: string[] = [];
@@ -25,7 +26,7 @@ const withBreakpoints = (
 
         const className = bp === 'initial' ? `${prefix}${delimiter}${suffix}` : `${bp}-${prefix}${delimiter}${suffix}`;
 
-        classes.push(className);
+        classes.push(styles ? styles[className] : className);
       }
     }
   }
@@ -36,14 +37,18 @@ const withBreakpoints = (
     const prefix = isNegative ? `-${classPrefix}` : classPrefix;
     const matchedValue = isNegative ? value.substring(1) : value;
     const suffix = valueMap?.[matchedValue] ?? matchedValue;
-    classes.push(`${prefix}${delimiter}${suffix}`);
+
+    const className = `${prefix}${delimiter}${suffix}`;
+    classes.push(styles ? styles[className] : className);
   }
 
   if (typeof value === 'boolean') {
     const delimiter = classPrefix === '' ? '' : '-';
     const matchedValue = value.toString();
     const suffix = valueMap?.[matchedValue] ?? matchedValue;
-    classes.push(`${classPrefix}${delimiter}${suffix}`);
+    const className = `${classPrefix}${delimiter}${suffix}`;
+
+    classes.push(styles ? styles[className] : className);
   }
 
   return classes.join(' ');

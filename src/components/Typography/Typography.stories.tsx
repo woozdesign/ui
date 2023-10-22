@@ -13,7 +13,7 @@ export default {
 // Typography Story
 const TypographyTemplate: Story = (args) => (
   <ThemeProvider appearance={'light'}>
-    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((level) => {
+    {['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'].map((level) => {
       return (
         <Typography.Header key={level} size={level}>
           Header
@@ -21,35 +21,33 @@ const TypographyTemplate: Story = (args) => (
       );
     })}
 
-    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((size) => {
+    {['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'].map((size) => {
       return (
         <Typography.Text key={size} size={size} variant={'div'}>
           Text
         </Typography.Text>
       );
     })}
-    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((size) => {
+    {['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'].map((size) => {
       return (
-        <div>
+        <div key={size}>
           <Typography.Code key={size} size={size}>
             Code
           </Typography.Code>
         </div>
       );
     })}
-    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((size) => {
+    {['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'].map((size) => {
       return (
-        <div>
-          <Typography.Link key={size} size={size}>
-            Link
-          </Typography.Link>
+        <div key={size}>
+          <Typography.Link size={size}>Link</Typography.Link>
         </div>
       );
     })}
-    {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((size) => {
+    {['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'].map((size) => {
       return (
-        <div>
-          <Typography.Gradient key={size} size={size} weight={'bold'}>
+        <div key={size}>
+          <Typography.Gradient size={size} weight={'bold'}>
             Gradient
           </Typography.Gradient>
         </div>

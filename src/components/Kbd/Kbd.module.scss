@@ -1,3 +1,5 @@
+@use '@/styles/lib/mixins.scss';
+
 .kbd {
   box-sizing: border-box;
   display: inline-flex;
@@ -25,27 +27,31 @@
     color: var(--color-gray-12);
     background-color: var(--color-gray-3);
   }
-
-  &--small {
-    padding: var(--space-1) var(--space-1);
-    font-size: var(--font-size-1);
-  }
-  &--medium {
-    padding: var(--space-1) var(--space-2);
-    font-size: var(--font-size-2);
-  }
-  &--large {
-    padding: var(--space-1) var(--space-2);
-    font-size: var(--font-size-3);
-  }
-  &--xlarge {
-    padding: var(--space-1) var(--space-3);
-    font-size: var(--font-size-4);
-  }
 }
 
 .wrapper {
   display: flex;
   flex-direction: row;
   gap: var(--space-1);
+}
+
+.wd-kbd {
+  @include mixins.breakpoints {
+    &--small {
+      padding: var(--space-1) var(--space-1);
+      font-size: var(--font-size-1);
+    }
+    &--medium {
+      padding: var(--space-1) var(--space-2);
+      font-size: var(--font-size-2);
+    }
+    &--large {
+      padding: var(--space-1) var(--space-2);
+      font-size: var(--font-size-3);
+    }
+    &--xlarge {
+      padding: var(--space-1) var(--space-3);
+      font-size: var(--font-size-4);
+    }
+  }
 }

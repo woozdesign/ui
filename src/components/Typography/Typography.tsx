@@ -1,39 +1,60 @@
 'use client';
-/* eslint-disable @typescript-eslint/no-unused-vars */
+import { withBreakpoints } from '@/utils';
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Typography.module.scss';
 import { CodeProps, GradientProps, HeaderProps, LinkProps, StrongProps, TextProps } from './Typography.props';
 
-const Header: FC<HeaderProps> = ({ variant = 'h2', size = 8, align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other }) => {
+const Header: FC<HeaderProps> = (props) => {
+  const { variant = 'h2', size = '8', align = 'start', color = 'gray', weight = 'bold', highContrast = true, children, className = '', ...other } = props;
+
   const Tag = variant as keyof JSX.IntrinsicElements;
 
-  const headingStyle = classNames(styles[`heading--${size}`], styles[`heading--${weight}`], styles[`heading--${align}`], { [styles[`highContrast`]]: highContrast }, className);
+  const classes = classNames(
+    styles[`heading--${weight}`],
+    styles[`heading--${align}`],
+    { [styles[`highContrast`]]: highContrast },
+    className,
+    withBreakpoints(size, 'wd-typography--heading', styles),
+  );
 
   return (
-    <Tag className={headingStyle} data-accent-color={color} {...other}>
+    <Tag className={classes} data-accent-color={color} {...other}>
       {children}
     </Tag>
   );
 };
 
-const Text: FC<TextProps> = ({ children, size = 4, color = 'gray', align = 'start', weight = 'normal', variant = 'span', highContrast = true, className, ...other }) => {
-  const textStyle = classNames(styles[`text--${size}`], styles[`text--${weight}`], styles[`text--${align}`], { [styles[`highContrast`]]: highContrast }, className);
+const Text: FC<TextProps> = (props) => {
+  const { children, size = '4', color = 'gray', align = 'start', weight = 'normal', variant = 'span', highContrast = true, className, ...other } = props;
+
+  const classes = classNames(
+    styles[`text--${weight}`],
+    styles[`text--${align}`],
+    { [styles[`highContrast`]]: highContrast },
+    className,
+    withBreakpoints(size, 'wd-typography--text', styles),
+  );
   const Tag = variant as keyof JSX.IntrinsicElements;
 
   return (
-    <Tag className={textStyle} data-accent-color={color} {...other}>
+    <Tag className={classes} data-accent-color={color} {...other}>
       {children}
     </Tag>
   );
 };
 
-const Strong: FC<StrongProps> = ({ children, ...other }) => {
+const Strong: FC<StrongProps> = (props) => {
+  const { children, ...other } = props;
+
   return <strong>{children}</strong>;
 };
 
-const Link: FC<LinkProps> = ({ children, href, color, size = 4, highContrast = false, onClick, className, target, ...other }) => {
-  const classes = classNames(styles[`link--${size}`], { [styles[`highContrast`]]: highContrast }, className);
+const Link: FC<LinkProps> = (props) => {
+  const { children, href, color, size = '4', highContrast = false, onClick, className, target, ...other } = props;
+
+  const classes = classNames({ [styles[`highContrast`]]: highContrast }, className, withBreakpoints(size, 'wd-typography--link', styles));
+
   return (
     <a href={href} target={target} onClick={onClick} data-accent-color={color} className={classes} {...other}>
       {children}
@@ -41,8 +62,10 @@ const Link: FC<LinkProps> = ({ children, href, color, size = 4, highContrast = f
   );
 };
 
-const Code: FC<CodeProps> = ({ children, color, size = 4, radius, highContrast = false, className, ...other }) => {
-  const classes = classNames(styles[`code--${size}`], { [styles[`highContrast`]]: highContrast }, className);
+const Code: FC<CodeProps> = (props) => {
+  const { children, color, size = '4', radius, highContrast = false, className, ...other } = props;
+
+  const classes = classNames({ [styles[`highContrast`]]: highContrast }, className, withBreakpoints(size, 'wd-typography--code', styles));
 
   return (
     <code data-accent-color={color} data-radius={radius} className={classes} {...other}>
@@ -51,8 +74,10 @@ const Code: FC<CodeProps> = ({ children, color, size = 4, radius, highContrast =
   );
 };
 
-const Gradient: FC<GradientProps> = ({ children, gradientColors = ['#915eff', '#9eb2ff'], style, size = 4, weight = 'normal', className, ...other }) => {
-  const classes = classNames(styles[`gradient--${size}`], styles[`gradient--${weight}`], className);
+const Gradient: FC<GradientProps> = (props) => {
+  const { children, gradientColors = ['#915eff', '#9eb2ff'], style, size = '4', weight = 'normal', className, ...other } = props;
+
+  const classes = classNames(styles[`gradient--${weight}`], className, withBreakpoints(size, 'wd-typography--gradient', styles));
 
   return (
     <span

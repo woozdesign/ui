@@ -1,3 +1,5 @@
+@use '@/styles/lib/mixins.scss';
+
 @keyframes rotate {
   to {
     transform: rotate(1turn);
@@ -40,5 +42,18 @@
   }
   100% {
     transform: rotate(360deg);
+  }
+}
+
+.pc {
+  @include mixins.breakpoints {
+    &-small {
+    }
+    &-medium {
+    }
+    &-large {
+    }
+    &-xlarge {
+    }
   }
 }

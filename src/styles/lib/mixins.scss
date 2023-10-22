@@ -1,0 +1,19 @@
+@use './tokens/breakpoints.scss';
+
+@mixin breakpoints {
+  // Apply styles for all devices
+  @media all {
+    @content;
+  }
+
+  // Loop through each breakpoint and apply styles
+  @each $breakpoint, $query in breakpoints.$breakpoints {
+    @media (min-width: $query) {
+      @at-root {
+        .#{$breakpoint}-#{str-slice('#{&}',2)} {
+          @content;
+        }
+      }
+    }
+  }
+}
