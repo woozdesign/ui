@@ -68,7 +68,7 @@ For more in-depth information on the supported components, please refer to our d
 
 ## TypeScript
 
-`woozdesign` is written in TypeScript with complete definitions, check [Use in TypeScript] to get started.
+`woozdesign` is written in TypeScript with complete definitions.
 
 ## ⌨️ Development
 
