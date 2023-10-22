@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import React, { useEffect, useRef } from 'react';
 import styles from './ScrollArea.module.scss';
 import { ScrollAreaProps } from './ScrollArea.props';
-import { extractMarginProps, extractPaddingProps, withMarginProps, withPaddingProps } from '@/utils';
+import { extractMarginProps, extractPaddingProps, withBreakpoints, withMarginProps, withPaddingProps } from '@/utils';
 
 const ScrollArea: React.FC<ScrollAreaProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
@@ -12,11 +12,11 @@ const ScrollArea: React.FC<ScrollAreaProps> = (props) => {
 
   const classes = classNames(
     styles.scrollArea,
-    styles[`scrollArea--${size}`],
     {
       [styles.vertical]: scrollbars == 'vertical' && type == 'always',
       [styles.horizontal]: scrollbars == 'horizontal' && type == 'always',
     },
+    withBreakpoints(size, 'wd-scrollArea', styles),
     withMarginProps(marginProps),
     withPaddingProps(paddingProps),
   );

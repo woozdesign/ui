@@ -1,9 +1,9 @@
 'use client';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './IconButton.module.scss';
 import { AnchorClickHandler, ButtonClickHandler, IconButtonProps } from './IconButton.props';
-import { extractMarginProps, withMarginProps } from '@/utils';
 
 const IconButton: FC<IconButtonProps> = (props) => {
   const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
@@ -26,12 +26,12 @@ const IconButton: FC<IconButtonProps> = (props) => {
   const classes = classNames(
     className,
     styles.button,
-    styles[`button--${size}`],
     styles[`button--${variant}`],
     {
       [styles[`button--disabled`]]: disabled,
       [styles['highContrast']]: highContrast,
     },
+    withBreakpoints(size, 'wd-iconbutton', styles),
     withMarginProps(marginProps),
   );
 

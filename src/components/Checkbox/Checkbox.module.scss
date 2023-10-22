@@ -1,4 +1,5 @@
-// Checkbox.module.scss
+@use '@/styles/lib/mixins.scss';
+
 .wrapper {
   margin-bottom: var(--space-2);
 }
@@ -10,54 +11,6 @@
   align-items: center;
   cursor: pointer;
   vertical-align: middle;
-
-  &--small {
-    height: 16px;
-
-    .label {
-      font-size: var(--font-size-3);
-      padding-left: var(--space-2);
-      &--error {
-        color: var(--color-red-9);
-      }
-    }
-  }
-
-  &--medium {
-    height: 24px;
-
-    .label {
-      font-size: var(--font-size-4);
-      padding-left: var(--space-2);
-      &--error {
-        color: var(--color-red-9);
-      }
-    }
-  }
-
-  &--large {
-    height: 32px;
-
-    .label {
-      font-size: var(--font-size-5);
-      padding-left: var(--space-2);
-      &--error {
-        color: var(--color-red-9);
-      }
-    }
-  }
-
-  &--xlarge {
-    height: 36px;
-
-    .label {
-      font-size: var(--font-size-5);
-      padding-left: var(--space-2);
-      &--error {
-        color: var(--color-red-9);
-      }
-    }
-  }
 
   &--disabled {
     opacity: 0.7;
@@ -102,9 +55,63 @@
   justify-content: center;
   aspect-ratio: 1/ 1;
   height: 100%;
+  padding: var(--space-1);
+  box-sizing: border-box;
 
   background-color: transparent;
   box-shadow: inset 0 0 0 1px var(--color-gray-a7);
   border-radius: max(var(--radius-3), var(--radius-full));
   transition: background-color 0.2s;
+}
+
+.wd-checkbox {
+  @include mixins.breakpoints {
+    &-small {
+      height: 16px;
+
+      .label {
+        font-size: var(--font-size-3);
+        padding-left: var(--space-2);
+        &--error {
+          color: var(--color-red-9);
+        }
+      }
+    }
+
+    &-medium {
+      height: 24px;
+
+      .label {
+        font-size: var(--font-size-4);
+        padding-left: var(--space-2);
+        &--error {
+          color: var(--color-red-9);
+        }
+      }
+    }
+
+    &-large {
+      height: 32px;
+
+      .label {
+        font-size: var(--font-size-5);
+        padding-left: var(--space-2);
+        &--error {
+          color: var(--color-red-9);
+        }
+      }
+    }
+
+    &-xlarge {
+      height: 36px;
+
+      .label {
+        font-size: var(--font-size-5);
+        padding-left: var(--space-2);
+        &--error {
+          color: var(--color-red-9);
+        }
+      }
+    }
+  }
 }

@@ -1,3 +1,5 @@
+@use '@/styles/lib/mixins';
+
 .scrollArea {
   width: inherit;
   height: inherit;
@@ -55,5 +57,20 @@
   &::-webkit-scrollbar-thumb:hover {
     background-color: transparent;
     border-radius: max(var(--radius-3), var(--radius-full));
+  }
+}
+
+.wd-scrollArea {
+  @include mixins.breakpoints {
+    &-small {
+    }
+
+    &-medium {
+    }
+
+    &-large {
+    }
+    &-xlarge {
+    }
   }
 }

@@ -110,7 +110,7 @@ const Content: FC<ContentProps> = (props) => {
   return (
     <div className={styles.content} onClick={stopPropagation}>
       <Card size={'large'}>
-        {(title || subtitle) && <Card.Header title={title} titleSize={5} subtitle={subtitle} outlined={false}></Card.Header>}
+        {(title || subtitle) && <Card.Header title={title} titleSize={'5'} subtitle={subtitle} outlined={false}></Card.Header>}
         <Card.Body content={children}></Card.Body>
         <Card.Action justify={'end'} outlined={false}>
           <Button variant={'outlined'} color={'gray'} highContrast onClick={handleCancel}>

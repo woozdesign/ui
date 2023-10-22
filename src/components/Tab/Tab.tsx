@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import React, { FC, useContext, useState } from 'react';
 import styles from './Tab.module.scss';
 import { ContentProps, ListProps, RootProps, TabContextProps, TriggerProps } from './Tab.props';
-import { extractMarginProps, withMarginProps } from '@/utils';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 
 const TabContext = React.createContext<TabContextProps | undefined>(undefined);
 
@@ -41,12 +41,12 @@ export const Trigger: FC<TriggerProps> = (props) => {
 
   const classes = classNames(
     styles.trigger,
-    styles[`trigger--${size}`],
     {
       [styles['highContrast']]: highContrast,
       [styles['active']]: value === activeTab,
     },
     className,
+    withBreakpoints(size, 'wt-tab--trigger', styles),
     withMarginProps(marginProps),
   );
 

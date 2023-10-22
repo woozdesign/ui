@@ -1,5 +1,5 @@
 'use client';
-import { extractMarginProps, withMarginProps } from '@/utils';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './ProgressCircular.module.scss';
@@ -10,7 +10,7 @@ const ProgressCircular: FC<ProgressCircularProps> = (props) => {
   const { indeterminate, color, size = 'medium', rounded = false } = otherMarginProps;
   let { value = 0 } = otherMarginProps;
 
-  const classes = classNames(styles.progressCircular, { [styles.indeterminate]: indeterminate, [styles[size]]: size }, withMarginProps(marginProps));
+  const classes = classNames(styles.progressCircular, { [styles.indeterminate]: indeterminate }, withBreakpoints(size, 'wd-pc', styles), withMarginProps(marginProps));
 
   if (value > 100) value = 100;
   if (value < 0) value = 0;

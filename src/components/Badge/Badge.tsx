@@ -1,9 +1,9 @@
 'use client';
+import { extractMarginProps, withMarginProps } from '@/utils';
 import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Badge.module.scss';
 import { BadgeProps } from './Badge.props';
-import { extractMarginProps, withMarginProps } from '@/utils';
 
 const Badge: FC<BadgeProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);

@@ -1,3 +1,5 @@
+@use '@/styles/lib/mixins.scss';
+
 .button {
   // Layout
   border: none;
@@ -31,28 +33,6 @@
     box-shadow 0.15s ease-in-out;
   appearance: none;
 
-  &--large {
-    height: 40px;
-    font-size: var(--font-size-5);
-    border-radius: max(var(--radius-4), var(--radius-full));
-  }
-
-  &--xlarge {
-    height: 48px;
-    border-radius: max(var(--radius-5), var(--radius-full));
-    font-size: var(--font-size-5);
-  }
-  &--medium {
-    font-size: var(--font-size-4);
-    border-radius: max(var(--radius-3), var(--radius-full));
-    height: 34px;
-  }
-  &--small {
-    height: 28px;
-    font-size: var(--font-size-3);
-    border-radius: max(var(--radius-3), var(--radius-full));
-  }
-
   &--disabled {
     opacity: 0.4;
     cursor: not-allowed;
@@ -66,4 +46,30 @@
 
 a {
   box-sizing: border-box;
+}
+
+.wd-iconbutton {
+  @include mixins.breakpoints {
+    &-large {
+      height: 40px;
+      font-size: var(--font-size-5);
+      border-radius: max(var(--radius-4), var(--radius-full));
+    }
+
+    &-xlarge {
+      height: 48px;
+      border-radius: max(var(--radius-5), var(--radius-full));
+      font-size: var(--font-size-5);
+    }
+    &-medium {
+      font-size: var(--font-size-4);
+      border-radius: max(var(--radius-3), var(--radius-full));
+      height: 34px;
+    }
+    &-small {
+      height: 28px;
+      font-size: var(--font-size-3);
+      border-radius: max(var(--radius-3), var(--radius-full));
+    }
+  }
 }
