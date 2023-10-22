@@ -21,7 +21,11 @@ export const Container: React.FC<ContainerProps> = (props) => {
     withPaddingProps(paddingProps),
   );
 
-  return <div className={classes}>{children}</div>;
+  return (
+    <div className={classes} style={style}>
+      {children}
+    </div>
+  );
 };
 export const Section: React.FC<SectionProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
@@ -38,7 +42,11 @@ export const Section: React.FC<SectionProps> = (props) => {
     withMarginProps(marginProps),
     withPaddingProps(paddingProps),
   );
-  return <section className={classes}>{children}</section>;
+  return (
+    <section className={classes} style={style}>
+      {children}
+    </section>
+  );
 };
 
 const Layout = {
