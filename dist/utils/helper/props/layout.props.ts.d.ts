@@ -30,6 +30,6 @@ export declare const extractLayoutProps: <T extends LayoutProp>(props: T) => {
     right: Responsive<"0" | "auto" | "100%" | "50%"> | undefined;
     shrink: Responsive<"0" | "1"> | undefined;
     grow: Responsive<"0" | "1"> | undefined;
-    others: Omit<T, "height" | "width" | "position" | "maxWidth" | "minWidth" | "maxHeight" | "minHeight" | "top" | "bottom" | "left" | "right" | "shrink" | "grow">;
+    others: Omit<T, "position" | "width" | "maxWidth" | "minWidth" | "height" | "maxHeight" | "minHeight" | "top" | "bottom" | "left" | "right" | "shrink" | "grow">;
 };
 export declare const withLayoutProps: (props: LayoutProp) => string;
