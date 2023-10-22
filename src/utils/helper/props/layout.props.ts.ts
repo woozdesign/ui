@@ -9,6 +9,7 @@ export interface LayoutProp {
   height?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content'>;
   maxHeight?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content'>;
   minHeight?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content'>;
+  inset?: Responsive<'0' | 'auto' | '50%' | '100%'>;
   top?: Responsive<'0' | 'auto' | '50%' | '100%'>;
   bottom?: Responsive<'0' | 'auto' | '50%' | '100%'>;
   left?: Responsive<'0' | 'auto' | '50%' | '100%'>;
@@ -46,6 +47,7 @@ export const withLayoutProps = (props: LayoutProp) => {
     withBreakpoints(props.height, 'wd-h'),
     withBreakpoints(props.maxHeight, 'wd-maxh'),
     withBreakpoints(props.minHeight, 'wd-minh'),
+    withBreakpoints(props.inset, 'wd-inset'),
     withBreakpoints(props.top, 'wd-top'),
     withBreakpoints(props.bottom, 'wd-bottom'),
     withBreakpoints(props.left, 'wd-left'),
