@@ -1,5 +1,4 @@
-// @use
-@import '@/styles/lib/functions';
+@use '@/styles/lib/functions';
 
 .card {
   overflow: hidden;
@@ -30,7 +29,7 @@
   }
 
   &--translucent {
-    background-color: opacity(var(--color-panel), 90%);
+    background-color: functions.opacity(var(--color-panel), 90%);
     backdrop-filter: var(--translucent);
     -webkit-backdrop-filter: var(--translucent);
   }

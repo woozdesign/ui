@@ -1,5 +1,4 @@
-// @use
-@import '@/styles/lib/tokens/breakpoints.scss';
+@use '@/styles/lib/tokens/breakpoints.scss';
 
 .wd-position {
   @include breakpoints {

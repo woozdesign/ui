@@ -1,5 +1,5 @@
 // Avatar.module.scss
-@import '@/styles/lib/tokens/breakpoints.scss';
+@use '@/styles/lib/mixins.scss';
 
 .avatar {
   display: flex;
@@ -19,7 +19,7 @@
 }
 
 .wd-avatar {
-  @include breakpoints {
+  @include mixins.breakpoints {
     &-small {
       width: 40px;
       height: 40px;

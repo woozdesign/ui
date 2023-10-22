@@ -8,112 +8,94 @@ $breakpoints: (
 );
 
 // AndUp Mixins
-@mixin --xsAndUp {
+@mixin xsAndUp {
   @media (min-width: #{map-get($breakpoints, xs)}) {
     @content;
   }
 }
 
-@mixin --smAndUp {
+@mixin smAndUp {
   @media (min-width: #{map-get($breakpoints, sm)}) {
     @content;
   }
 }
 
-@mixin --mdAndUp {
+@mixin mdAndUp {
   @media (min-width: #{map-get($breakpoints, md)}) {
     @content;
   }
 }
 
-@mixin --lgAndUp {
+@mixin lgAndUp {
   @media (min-width: #{map-get($breakpoints, lg)}) {
     @content;
   }
 }
 
-@mixin --xlAndUp {
+@mixin xlAndUp {
   @media (min-width: #{map-get($breakpoints, xl)}) {
     @content;
   }
 }
 
 // AndDown Mixins
-@mixin --smAndDown {
+@mixin smAndDown {
   @media (max-width: #{map-get($breakpoints, md) - 1px}) {
     @content;
   }
 }
 
-@mixin --mdAndDown {
+@mixin mdAndDown {
   @media (max-width: #{map-get($breakpoints, lg) - 1px}) {
     @content;
   }
 }
 
-@mixin --lgAndDown {
+@mixin lgAndDown {
   @media (max-width: #{map-get($breakpoints, xl) - 1px}) {
     @content;
   }
 }
 
-@mixin --xlAndDown {
+@mixin xlAndDown {
   @media (max-width: #{map-get($breakpoints, xxl) - 1px}) {
     @content;
   }
 }
 
 // Specific Range Mixins
-@mixin --xs {
+@mixin xs {
   @media (min-width: #{map-get($breakpoints, xs)}) and (max-width: #{map-get($breakpoints, sm) - 1px}) {
     @content;
   }
 }
 
-@mixin --sm {
+@mixin sm {
   @media (min-width: #{map-get($breakpoints, sm)}) and (max-width: #{map-get($breakpoints, md) - 1px}) {
     @content;
   }
 }
 
-@mixin --md {
+@mixin md {
   @media (min-width: #{map-get($breakpoints, md)}) and (max-width: #{map-get($breakpoints, lg) - 1px}) {
     @content;
   }
 }
 
-@mixin --lg {
+@mixin lg {
   @media (min-width: #{map-get($breakpoints, lg)}) and (max-width: #{map-get($breakpoints, xl) - 1px}) {
     @content;
   }
 }
 
-@mixin --xl {
+@mixin xl {
   @media (min-width: #{map-get($breakpoints, xl)}) and (max-width: #{map-get($breakpoints, xxl) - 1px}) {
     @content;
   }
 }
 
-@mixin --xxl {
+@mixin xxl {
   @media (min-width: #{map-get($breakpoints, xxl)}) {
     @content;
-  }
-}
-
-@mixin breakpoints {
-  // Apply styles for all devices
-  @media all {
-    @content;
-  }
-
-  // Loop through each breakpoint and apply styles
-  @each $breakpoint, $query in $breakpoints {
-    @media (min-width: $query) {
-      @at-root {
-        .#{$breakpoint}-#{str-slice('#{&}',2)} {
-          @content;
-        }
-      }
-    }
   }
 }

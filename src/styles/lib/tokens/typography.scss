@@ -1,5 +1,4 @@
-// @use
-@import './breakpoints.scss';
+@use './breakpoints.scss';
 
 .woozdesign {
   font-family: var(--default-font-family);
@@ -24,7 +23,7 @@
 }
 
 // Medium Devices
-@include --smAndUp {
+@include breakpoints.smAndUp {
   .woozdesign {
     font-family: var(--default-font-family);
     --font-size-0: calc(8px * var(--scaling));

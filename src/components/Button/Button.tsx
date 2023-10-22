@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import classNames from 'classnames';
 import styles from './Button.module.scss';
 import { AnchorClickHandler, ButtonClickHandler, ButtonProps } from './Button.props';
-import { extractMarginProps, withMarginProps } from '@/utils';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 
 const Button: FC<ButtonProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
@@ -30,7 +30,7 @@ const Button: FC<ButtonProps> = (props) => {
   const classes = classNames(
     className,
     styles.button,
-    styles[`button--${size}`],
+    withBreakpoints(size, 'wt-button', styles),
     styles[`button--${variant}`],
     styles[`button--${justify}`],
     {
