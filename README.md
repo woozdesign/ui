@@ -85,6 +85,4 @@ $ npm start
 
 Read our [contributing guide] and let's build a better woozdesign together.
 
-We welcome all contributions. Please read our [CONTRIBUTING.md] first. You can submit any ideas as [pull requests] or as [GitHub issues]. If you'd like to improve code, check out the [Development Instructions] and have a good time! :)
-
-If you are a collaborator, please follow our [Pull Request principle] to create a Pull Request with [collaborator template].
+We welcome all contributions. Please read our [CONTRIBUTING.md](./docs/git/CONTRIBUTING.md) first. You can submit any ideas as [pull requests](https://github.com/woozlabs/woozdesign-ui/pulls) or as [GitHub issues](https://github.com/woozlabs/woozdesign-ui/issues). If you'd like to improve code, check out the [Development Instructions]() and have a good time! :)
