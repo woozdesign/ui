@@ -37,19 +37,19 @@
 
 .wd-kbd {
   @include mixins.breakpoints {
-    &--small {
+    &-small {
       padding: var(--space-1) var(--space-1);
       font-size: var(--font-size-1);
     }
-    &--medium {
+    &-medium {
       padding: var(--space-1) var(--space-2);
       font-size: var(--font-size-2);
     }
-    &--large {
+    &-large {
       padding: var(--space-1) var(--space-2);
       font-size: var(--font-size-3);
     }
-    &--xlarge {
+    &-xlarge {
       padding: var(--space-1) var(--space-3);
       font-size: var(--font-size-4);
     }

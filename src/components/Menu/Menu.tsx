@@ -61,7 +61,7 @@ const MenuItemComponent: FC<MenuItemProps> = (props) => {
       </li>
     );
 
-  const labelClasses = classNames(styles[`menu--label`], withBreakpoints(size, 'wd-menu--lable', styles), { [styles[`highContrast`]]: highContrast });
+  const labelClasses = classNames(styles[`menu--label`], withBreakpoints(size, 'wd-menu--label', styles), { [styles[`highContrast`]]: highContrast });
 
   return <div className={labelClasses}>{label}</div>;
 };
