@@ -15,7 +15,7 @@
 $gutter-horizontal: var(--horizontal-gutter);
 $gutter-vertical: var(--vertical-gutter);
 
-@each $break, $size in (xs: 0px, sm: 576px, md: 768px, lg: 992px, xl: 1200px) {
+@each $break, $size in (xs: 0px, sm: 576px, md: 768px, lg: 992px, xl: 1200px, xxl: 1600px) {
   @if $size != 0 {
     @media (min-width: $size) {
       @for $i from 0 through 24 {
