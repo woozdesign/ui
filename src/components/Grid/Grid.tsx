@@ -53,5 +53,9 @@ export const Col: React.FC<ColProps> = (props) => {
     withPaddingProps(paddingProps),
   );
 
-  return <div className={classes}>{children}</div>;
+  return (
+    <div className={classes} style={style}>
+      {children}
+    </div>
+  );
 };
