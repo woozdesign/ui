@@ -1,21 +1,19 @@
-/// <reference types="react" />
+import { BasePropWithChildren } from '../../utils';
 export interface ModalContextProps {
     onClose: () => void;
     onCancel?: () => void;
     onConfirm?: () => void;
 }
-export interface ModalProps {
-    children: React.ReactNode;
+export interface ModalProps extends BasePropWithChildren {
     open?: boolean;
     variant?: 'default' | 'confirm';
     onCancel?: () => void;
     onConfirm?: () => void;
     onClose?: () => void;
 }
-export interface ContentProps {
+export interface ContentProps extends BasePropWithChildren {
     title?: string;
     subtitle?: string;
-    children: React.ReactNode;
     confirmText?: string;
     cancelText?: string;
 }

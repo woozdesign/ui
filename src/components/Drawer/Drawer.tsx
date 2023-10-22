@@ -13,7 +13,7 @@ interface DrawerContextProps {
 const DrawerContext = React.createContext<DrawerContextProps | undefined>(undefined);
 
 const Root: FC<DrawerProps> = (props) => {
-  const { children, className, style, open = false, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' } = props;
+  const { className, style, children, open = false, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' } = props;
 
   const [isRendered, setIsRendered] = useState(false);
   const [isOpen, setIsOpen] = useState(open);
@@ -112,7 +112,7 @@ const Root: FC<DrawerProps> = (props) => {
 };
 
 const Content: FC<ContentProps> = (props) => {
-  const { children, className, style } = props;
+  const { className, style, children } = props;
 
   const classes = classNames(styles.content, className);
 
@@ -159,7 +159,7 @@ const Header: FC<HeaderProps> = (props) => {
 };
 
 const Footer: FC<FooterProps> = (props) => {
-  const { children, className, style } = props;
+  const { className, style, children } = props;
 
   const classes = classNames(styles.footer, className);
 

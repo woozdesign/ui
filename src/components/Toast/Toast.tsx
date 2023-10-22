@@ -5,7 +5,9 @@ import Typography from '../Typography';
 import styles from './Toast.module.scss';
 import { ToastDisplayProps, ToastProps } from './Toast.props';
 
-const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
+const ToastDisplay: React.FC<ToastDisplayProps> = (props) => {
+  const { toast, handleClose } = props;
+
   const [isOpen, setIsOpen] = useState(false);
   const toastRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +53,9 @@ const ToastDisplay: React.FC<ToastDisplayProps> = ({ toast, handleClose }) => {
     </div>
   );
 };
-const ToastList: React.FC<{ toasts: ToastProps[]; handleClose: (id: number) => void }> = ({ toasts, handleClose }) => {
+const ToastList: React.FC<{ toasts: ToastProps[]; handleClose: (id: number) => void }> = (props) => {
+  const { toasts, handleClose } = props;
+
   const groupedToasts = toasts.reduce<{ [key in ToastProps['placement']]: ToastProps[] }>(
     (acc, toast) => {
       const placement: ToastProps['placement'] = toast.placement || 'bottomRight';

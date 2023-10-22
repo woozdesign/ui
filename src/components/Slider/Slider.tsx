@@ -5,22 +5,17 @@ import Range from './Range';
 import styles from './Slider.module.scss';
 import { SliderProps } from './Slider.props';
 import Thumb from './Thumb';
+import { extractMarginProps, withMarginProps } from '@/utils';
 
-const Slider: FC<SliderProps> = ({
-  defaultValue,
-  radius,
-  color,
-  reverse = false,
-  orientation = 'horizontal',
-  trackSize = 4,
-  thumbSize = 16,
-  onPointerDown,
-  onChange,
-  onPointerUp,
-}) => {
+const Slider: FC<SliderProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { defaultValue, radius, color, reverse = false, orientation = 'horizontal', trackSize = 4, onPointerDown, onChange, onPointerUp } = otherMarginProps;
+  let { thumbSize = 16 } = otherMarginProps;
+
+  const classes = classNames(styles.slider, styles[`slider--${orientation}`], withMarginProps(marginProps));
+
   if (trackSize > thumbSize) thumbSize = trackSize * 1.2;
 
-  const classes = classNames(styles.slider, styles[`slider--${orientation}`]);
   const [minValue, setMinValue] = useState(defaultValue.length > 1 ? defaultValue[0] : 0);
   const [maxValue, setMaxValue] = useState(defaultValue.length > 1 ? defaultValue[1] : defaultValue[0]);
   const sliderRef = useRef<HTMLDivElement>(null);

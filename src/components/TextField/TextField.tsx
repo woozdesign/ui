@@ -5,26 +5,35 @@ import React, { ChangeEvent, FC, useState } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './TextField.module.scss';
 import { TextFieldProps } from './TextField.props';
+import { extractMarginProps, withMarginProps } from '@/utils';
 
-const TextField: FC<TextFieldProps> = ({
-  variant = 'solid',
-  size = 'medium',
-  label,
-  iconPrepend,
-  iconAppend,
-  block,
-  errorMessage,
-  onChange,
-  onSubmit,
-  color,
-  radius,
-  hasSubmitted = false,
-  ...others
-}) => {
-  const groupClasses = classNames(styles.group, styles[size], block && styles.block);
+const TextField: FC<TextFieldProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const {
+    className,
+    style,
+    children,
+    variant = 'solid',
+    size = 'medium',
+    label,
+    iconPrepend,
+    iconAppend,
+    block,
+    errorMessage,
+    onChange,
+    onSubmit,
+    color,
+    radius,
+    hasSubmitted = false,
+    ...others
+  } = otherMarginProps;
+
+  const wrapperClasses = classNames(styles.wrapper, styles[`wrapper--${size}`], withMarginProps(marginProps));
+  const groupClasses = classNames(styles.group, styles[`group--${size}`], block && styles.block);
   const inputClasses = classNames(styles.input, iconPrepend && styles.hasPrependIcon);
 
   const [error, setError] = useState<string | null>(null);
+  const errorClasses = classNames(inputClasses, error && styles.inputError, styles[`input--${variant}`]);
 
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     if (hasSubmitted || e.target.value) validateInput(e.target);
@@ -50,7 +59,7 @@ const TextField: FC<TextFieldProps> = ({
   };
 
   return (
-    <div data-accent-color={color} data-radius={radius} className={classNames(styles.wrapper, styles[size])}>
+    <div data-accent-color={color} data-radius={radius} className={wrapperClasses}>
       {label && (
         <div>
           <Typography.Text variant={'div'} className={styles.label}>
@@ -61,14 +70,7 @@ const TextField: FC<TextFieldProps> = ({
       )}
       <div className={groupClasses}>
         {iconPrepend && <span className={styles.iconPrepend}>{iconPrepend}</span>}
-        <input
-          {...others}
-          data-has-value={hasSubmitted}
-          onChange={handleInput}
-          onKeyPress={handleKeyPress}
-          onInvalid={handleInvalid}
-          className={classNames(inputClasses, error && styles.inputError, styles[`input--${variant}`])}
-        />
+        <input {...others} data-has-value={hasSubmitted} onChange={handleInput} onKeyPress={handleKeyPress} onInvalid={handleInvalid} className={errorClasses} />
         {iconAppend && <span className={styles.iconAppend}>{iconAppend}</span>}
       </div>
 

@@ -20,14 +20,20 @@
   color: var(--color-gray-12);
   transition: border 0.3s ease;
   margin-bottom: 20px;
-  min-height: 32px;
 
-  &.large {
+  &--xlarge {
+    min-height: 64px;
+  }
+  &--large {
     min-height: 48px;
   }
-  &.small {
+  &--medium {
+    min-height: 32px;
+  }
+  &--small {
     min-height: 28px;
   }
+
   resize: none;
   &--solid {
     &:focus,

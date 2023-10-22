@@ -9,7 +9,7 @@ import { Col, Row } from '../Grid/Grid';
 import { Container } from '../Layout/Layout';
 
 export default {
-  title: 'Components/Flex',
+  title: 'Layout/Flex',
   component: Flex,
 } as Meta;
 

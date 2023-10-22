@@ -42,6 +42,13 @@
       }
     }
 
+    &--xlarge {
+      height: 48px;
+      border-radius: max(var(--radius-5), var(--radius-full));
+      font-size: var(--font-size-5);
+      padding: var(--space-2) var(--space-4);
+    }
+
     &--large {
       height: 40px;
       font-size: var(--font-size-5);
@@ -54,13 +61,6 @@
       padding: var(--space-1) var(--space-3);
       border-radius: max(var(--radius-3), var(--radius-full));
       height: 34px;
-    }
-
-    &--xlarge {
-      height: 48px;
-      border-radius: max(var(--radius-5), var(--radius-full));
-      font-size: var(--font-size-5);
-      padding: var(--space-2) var(--space-4);
     }
 
     &--small {

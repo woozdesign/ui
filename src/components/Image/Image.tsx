@@ -1,11 +1,16 @@
 'use client';
-import { isElementInViewport } from '@/utils';
+import { extractMarginProps, isElementInViewport, withMarginProps } from '@/utils';
 import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Image.module.scss';
 import { ImageProps } from './Image.props';
 
-const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoad = true, radius = 'none', width, height, objectFit = 'cover', onError, onLoad }) => {
+const Image: React.FC<ImageProps> = (props) => {
+  const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
+  const { className, src, alt, placeholder, lazyLoad = true, radius = 'none', width, height, objectFit = 'cover', onError, onLoad } = marginOtherProps;
+
+  const classes = classNames(styles.imageContainer, className, withMarginProps(marginProps));
+
   const [loaded, setLoaded] = useState(false);
   const [placeHolderLoaded, setPlaceHolderLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -64,7 +69,6 @@ const Image: React.FC<ImageProps> = ({ src, alt, placeholder, className, lazyLoa
     objectFit,
   };
 
-  const classes = classNames(styles.imageContainer, className);
   return (
     <div className={classes} style={{ width, height }} data-radius={radius}>
       {!error && (

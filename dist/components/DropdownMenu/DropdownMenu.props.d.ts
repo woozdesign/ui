@@ -1,4 +1,4 @@
-/// <reference types="react" />
+import { BasePropWithChildren } from '../../utils';
 import { WoozCommandCode } from '../../utils/contexts/Shortcut/Shortcut.props';
 export interface DropdownMenuContextProps {
     onToggle: () => void;
@@ -6,30 +6,24 @@ export interface DropdownMenuContextProps {
 export interface ChildProps {
     isOpen?: boolean;
 }
-export interface DropdownMenuProps extends ChildProps {
-    children: React.ReactNode;
+export interface DropdownMenuProps extends ChildProps, BasePropWithChildren {
 }
-export interface TriggerProps {
+export interface TriggerProps extends BasePropWithChildren {
     shortcut?: WoozCommandCode[];
-    children: React.ReactNode;
 }
-export interface ContentProps {
-    children: React.ReactNode;
+export interface ContentProps extends BasePropWithChildren {
     isOpen: boolean;
 }
-export interface ItemProps {
-    children: React.ReactNode;
+export interface ItemProps extends BasePropWithChildren {
     shortcut?: WoozCommandCode[];
     color?: string;
     onClick?: () => void;
     disabled?: boolean;
 }
-export interface SubProps {
-    children: React.ReactNode;
+export interface SubProps extends BasePropWithChildren {
 }
 export interface SubTriggerProps extends TriggerProps {
 }
-export interface SubContentProps {
-    children: React.ReactNode;
+export interface SubContentProps extends BasePropWithChildren {
     isSubOpen: boolean;
 }

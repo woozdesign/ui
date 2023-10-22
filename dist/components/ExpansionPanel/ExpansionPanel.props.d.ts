@@ -1,10 +1,10 @@
 /// <reference types="react" />
-import { ColorProp, RadiusProp, SizeProp } from '../../utils';
+import { ColorProp, MarginProp, RadiusProp, SizeProp } from '../../utils';
 export interface ExpansionItem {
     header: React.ReactNode;
     children: React.ReactNode;
 }
-export interface ExpansionPanelProps extends ColorProp, RadiusProp, SizeProp {
+export interface ExpansionPanelProps extends MarginProp, ColorProp, RadiusProp, SizeProp {
     items: ExpansionItem[];
     outlined?: boolean;
     containerOutlined?: boolean;

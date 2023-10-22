@@ -4,13 +4,17 @@ import React, { FC, useContext, useState } from 'react';
 import classNames from 'classnames';
 import styles from './Menu.module.scss';
 import { MenuContextProps, MenuItemProps, MenuProps } from './Menu.props';
+import { extractMarginProps, withMarginProps } from '@/utils';
 
 const MenuContext = React.createContext<MenuContextProps | undefined>(undefined);
 
-const Menu: FC<MenuProps> = ({ items, defaultValue, highContrast = false, color, radius, size = 'medium', justify = 'start' }) => {
-  const [activeItem, setActiveItem] = useState<string>(defaultValue);
+const Menu: FC<MenuProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { items, defaultValue, highContrast = false, color, radius, size = 'medium', justify = 'start' } = otherMarginProps;
 
-  const classes = classNames(styles.menu, styles[`menu--vertical`], styles[`menu--${justify}`]);
+  const classes = classNames(styles.menu, styles[`menu--vertical`], styles[`menu--${justify}`], withMarginProps(marginProps));
+
+  const [activeItem, setActiveItem] = useState<string>(defaultValue);
 
   return (
     <MenuContext.Provider value={{ activeItem, setActiveItem }}>
@@ -23,7 +27,9 @@ const Menu: FC<MenuProps> = ({ items, defaultValue, highContrast = false, color,
   );
 };
 
-const MenuItemComponent: FC<MenuItemProps> = ({ value, label, onClick, href, iconPrepend, iconAppend, color, radius, size = 'medium', highContrast = false }) => {
+const MenuItemComponent: FC<MenuItemProps> = (props) => {
+  const { value, label, onClick, href, iconPrepend, iconAppend, color, radius, size = 'medium', highContrast = false } = props;
+
   const context = useContext(MenuContext);
   if (!context) throw new Error('MenuItem must be used within Menu');
 

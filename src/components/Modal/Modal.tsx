@@ -9,13 +9,16 @@ import { ContentProps, ModalContextProps, ModalProps } from './Modal.props';
 
 const ModalContext = React.createContext<ModalContextProps | undefined>(undefined);
 
-const Root: FC<ModalProps> = ({ children, open = false, onClose, onCancel, onConfirm, variant = 'default' }) => {
+const Root: FC<ModalProps> = (props) => {
+  const { className, style, children, open = false, onClose, onCancel, onConfirm, variant = 'default' } = props;
+
   const [isOpen, setIsOpen] = useState(open);
   const [isRendered, setIsRendered] = useState(open);
   const [targetElement, setTargetElement] = useState<Element | null>(null);
 
   const overlayClasses = classNames(styles.overlay, { [styles.open]: isOpen });
   const modalClasses = classNames(styles.modal, { [styles.open]: isOpen });
+
   const handleOverlayClick = () => {
     if (variant === 'default') handleClose();
   };
@@ -63,8 +66,6 @@ const Root: FC<ModalProps> = ({ children, open = false, onClose, onCancel, onCon
 
   return (
     <ModalContext.Provider value={{ onClose: handleClose, onCancel, onConfirm }}>
-      {/* {React.Children.map(children, (child) => (React.isValidElement(child) && child.type === Trigger ? child : null))} */}
-
       {isRendered &&
         (targetElement ? (
           ReactDom.createPortal(
@@ -84,9 +85,10 @@ const Root: FC<ModalProps> = ({ children, open = false, onClose, onCancel, onCon
   );
 };
 
-const Content: FC<ContentProps> = ({ title, subtitle, confirmText = 'Confirm', cancelText = 'Cancel', children }) => {
-  const context = useContext(ModalContext);
+const Content: FC<ContentProps> = (props) => {
+  const { className, style, children, title, subtitle, confirmText = 'Confirm', cancelText = 'Cancel' } = props;
 
+  const context = useContext(ModalContext);
   if (!context) throw new Error('Content must be used within Root');
 
   const { onClose, onCancel, onConfirm } = context;

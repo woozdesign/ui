@@ -1,5 +1,5 @@
-import { ColorProp, RadiusProp } from '../../utils';
-export interface ProgressLinearProps extends ColorProp, RadiusProp {
+import { ColorProp, MarginProp, RadiusProp } from '../../utils';
+export interface ProgressLinearProps extends MarginProp, ColorProp, RadiusProp {
     value?: number;
     indeterminate?: boolean;
     height?: number;

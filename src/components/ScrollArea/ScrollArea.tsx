@@ -3,8 +3,24 @@ import classNames from 'classnames';
 import React, { useEffect, useRef } from 'react';
 import styles from './ScrollArea.module.scss';
 import { ScrollAreaProps } from './ScrollArea.props';
+import { extractMarginProps, extractPaddingProps, withMarginProps, withPaddingProps } from '@/utils';
 
-const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistent = false, color, radius, type = 'always', scrollbars = 'vertical', style, children }) => {
+const ScrollArea: React.FC<ScrollAreaProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { others: otherPaddingProps, ...paddingProps } = extractPaddingProps(otherMarginProps);
+  const { className, style, children, id, persistent = false, color, radius, type = 'always', scrollbars = 'vertical', size } = otherPaddingProps;
+
+  const classes = classNames(
+    styles.scrollArea,
+    styles[`scrollArea--${size}`],
+    {
+      [styles.vertical]: scrollbars == 'vertical' && type == 'always',
+      [styles.horizontal]: scrollbars == 'horizontal' && type == 'always',
+    },
+    withMarginProps(marginProps),
+    withPaddingProps(paddingProps),
+  );
+
   const scrollRef = useRef<HTMLDivElement | null>(null);
   const key = 'scrollPosition' + '_' + id; // Combine path and id
   useEffect(() => {
@@ -44,11 +60,6 @@ const ScrollArea: React.FC<ScrollAreaProps> = ({ id, persistent = false, color, 
       };
     }
   }, [scrollRef.current, scrollbars, id, persistent]);
-
-  const classes = classNames(styles.scrollArea, {
-    [styles.vertical]: scrollbars == 'vertical' && type == 'always',
-    [styles.horizontal]: scrollbars == 'horizontal' && type == 'always',
-  });
 
   return (
     <div ref={scrollRef} data-accent-color={color} data-radius={radius} className={classes} style={style}>

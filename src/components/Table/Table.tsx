@@ -4,63 +4,85 @@ import classNames from 'classnames';
 import React from 'react';
 import styles from './Table.module.scss';
 import { BodyProps, CellProps, ColumnHeaderCellProps, HeaderProps, RootProps, RowHeaderCellProps, RowProps } from './Table.props';
+import { extractMarginProps, withMarginProps } from '@/utils';
 
-const Root: React.FC<RootProps> = ({ children, className, ...others }: RootProps) => {
-  const classes = classNames(styles.table, className);
+const Root: React.FC<RootProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { className, style, children } = otherMarginProps;
+
+  const classes = classNames(styles.table, className, withMarginProps(marginProps));
   return (
-    <table {...others} className={classes}>
+    <table className={classes} style={style}>
       {children}
     </table>
   );
 };
 
-const Header: React.FC<HeaderProps> = ({ className, children, ...others }: HeaderProps) => {
-  const classes = classNames(styles.header, className);
+const Header: React.FC<HeaderProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { className, style, children } = otherMarginProps;
+
+  const classes = classNames(styles.header, className, withMarginProps(marginProps));
   return (
-    <thead {...others} className={classes}>
+    <thead className={classes} style={style}>
       {children}
     </thead>
   );
 };
 
-const Body: React.FC<BodyProps> = ({ className, children, ...others }: BodyProps) => {
-  const classes = classNames(styles.body, className);
+const Body: React.FC<BodyProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { className, style, children } = otherMarginProps;
+
+  const classes = classNames(styles.body, className, withMarginProps(marginProps));
   return (
-    <tbody {...others} className={classes}>
+    <tbody className={classes} style={style}>
       {children}
     </tbody>
   );
 };
 
-const Row: React.FC<RowProps> = ({ className, children, ...others }: RowProps) => {
-  const classes = classNames(styles.row, className);
+const Row: React.FC<RowProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { className, style, children } = otherMarginProps;
+
+  const classes = classNames(styles.row, className, withMarginProps(marginProps));
   return (
-    <tr {...others} className={classes}>
+    <tr className={classes} style={style}>
       {children}
     </tr>
   );
 };
-const ColumnHeaderCell: React.FC<ColumnHeaderCellProps> = ({ className, children, ...others }: ColumnHeaderCellProps) => {
-  const classes = classNames(styles.columnHeaderCell, className);
+const ColumnHeaderCell: React.FC<ColumnHeaderCellProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { className, style, children } = otherMarginProps;
+
+  const classes = classNames(styles.columnHeaderCell, className, withMarginProps(marginProps));
   return (
-    <th {...others} className={classes}>
+    <th className={classes} style={style}>
       {children}
     </th>
   );
 };
 
-const RowHeaderCell: React.FC<RowHeaderCellProps> = ({ className, children, ...others }: RowHeaderCellProps) => {
-  const classes = classNames(styles.rowHeaderCell, className);
+const RowHeaderCell: React.FC<RowHeaderCellProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { className, style, children } = otherMarginProps;
+
+  const classes = classNames(styles.rowHeaderCell, className, withMarginProps(marginProps));
   return (
-    <th {...others} className={classes}>
+    <th className={classes} style={style}>
       {children}
     </th>
   );
 };
-const Cell: React.FC<CellProps> = ({ className, children, ...others }: CellProps) => {
-  const classes = classNames(styles.cell, className);
+const Cell: React.FC<CellProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { className, style, children } = otherMarginProps;
+
+  const classes = classNames(styles.cell, className, withMarginProps(marginProps));
   return (
-    <td {...others} className={classes}>
+    <td className={classes} style={style}>
       {children}
     </td>
   );
