@@ -32,7 +32,7 @@ export const Col: React.FC<ColProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
   const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
   const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
-  const { className, style, children, xs, sm, md, lg, xl } = layoutOthersProps;
+  const { className, style, children, xs, sm, md, lg, xl, xxl } = layoutOthersProps;
 
   const classes = classNames(
     styles.col,
@@ -43,6 +43,7 @@ export const Col: React.FC<ColProps> = (props) => {
       [styles[`md-${md}`]]: typeof md == 'number',
       [styles[`lg-${lg}`]]: typeof lg == 'number',
       [styles[`xl-${xl}`]]: typeof xl == 'number',
+      [styles[`xxl-${xxl}`]]: typeof xxl == 'number',
     },
     withLayoutProps(layoutProps),
     withMarginProps(marginProps),

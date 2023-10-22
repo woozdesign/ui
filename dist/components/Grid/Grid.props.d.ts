@@ -10,4 +10,5 @@ export interface ColProps extends BasePropWithChildren, LayoutProp, MarginProp, 
     md?: number;
     lg?: number;
     xl?: number;
+    xxl?: number;
 }
