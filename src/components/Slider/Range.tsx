@@ -4,7 +4,9 @@ import React, { FC, useMemo } from 'react';
 import styles from './Slider.module.scss';
 import { RangeProps } from './Slider.props';
 
-const Range: FC<RangeProps> = ({ orientation, reverse, minValue, maxValue }) => {
+const Range: FC<RangeProps> = (props) => {
+  const { orientation, reverse, minValue, maxValue } = props;
+
   const style: React.CSSProperties = useMemo(() => {
     const positionProp = orientation === 'vertical' ? (reverse ? 'top' : 'bottom') : reverse ? 'right' : 'left';
     const sizeProp = orientation === 'vertical' ? 'height' : 'width';

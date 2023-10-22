@@ -3,7 +3,9 @@ import React, { FC, useMemo } from 'react';
 import styles from './Slider.module.scss';
 import { ThumbProps } from './Slider.props';
 
-const Thumb: FC<ThumbProps> = ({ orientation, reverse, value, thumbSize, isMinThumb = false, onPointerDown }) => {
+const Thumb: FC<ThumbProps> = (props) => {
+  const { orientation, reverse, value, thumbSize, isMinThumb = false, onPointerDown } = props;
+
   const style: React.CSSProperties = useMemo(() => {
     const positionProp = orientation === 'vertical' ? (reverse ? 'top' : 'bottom') : reverse ? 'right' : 'left';
     const adjProp = orientation === 'vertical' ? 'left' : 'top';

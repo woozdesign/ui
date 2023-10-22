@@ -1,0 +1,22 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-weight {
+  @include breakpoints {
+    &-light {
+      font-weight: var(--font-weight-light);
+    }
+
+    &-regular {
+      font-weight: var(--font-weight-regular);
+    }
+
+    &-medium {
+      font-weight: var(--font-weight-medium);
+    }
+
+    &-bold {
+      font-weight: var(--font-weight-bold);
+    }
+  }
+}

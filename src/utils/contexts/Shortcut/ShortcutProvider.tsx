@@ -6,13 +6,13 @@ export type Shortcut = {
   action: () => void;
 };
 
-type ShortcutContextType = {
+type ShortcutContextValue = {
   shortcuts: Shortcut[];
   registerShortcut: (shortcut: Shortcut) => void;
   unregisterShortcut: (keys: WoozCommandCode[]) => void;
 };
 
-export const ShortcutContext = createContext<ShortcutContextType | undefined>(undefined);
+export const ShortcutContext = createContext<ShortcutContextValue | undefined>(undefined);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const isSetsEqual = (a: Set<any>, b: Set<any>) => {

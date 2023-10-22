@@ -61,12 +61,12 @@ FullContent.args = {
         }
       />
       <Card.Body title="Body Title" content="This is the main content of the card." />
-      <Card.Actions justify={'space-between'}>
+      <Card.Action justify={'space-between'}>
         <Button highContrast color={'gray'}>
           Action 1
         </Button>
         <Button color={'red'}>Action 2</Button>
-      </Card.Actions>
+      </Card.Action>
     </>
   ),
 };
@@ -75,10 +75,10 @@ OnlyContent.args = {
   children: (
     <>
       <Card.Body title="Body Title" content="This is the main content of the card." />
-      <Card.Actions outlined={true}>
+      <Card.Action outlined={true}>
         <Button href="/"> Action 1</Button>
         <Button color={'blue'}>Action 2</Button>
-      </Card.Actions>
+      </Card.Action>
     </>
   ),
 };
@@ -88,12 +88,12 @@ Test.args = {
     <>
       <Card.Header title="Card Title" subtitle="Subtitle here" />
       <Card.Body content="This is the content of the card." />
-      <Card.Actions justify={'end'}>
+      <Card.Action justify={'end'}>
         <Button variant={'outlined'} color={'gray'}>
           Action 1
         </Button>
         <Button>Action 2</Button>
-      </Card.Actions>
+      </Card.Action>
     </>
   ),
 };

@@ -1,4 +1,4 @@
-export type Breakpoints = {
+export type TBreakpoints = {
     xs: number;
     sm: number;
     md: number;
@@ -6,8 +6,8 @@ export type Breakpoints = {
     xl: number;
     xxl: number;
 };
-export type BreakpointKeys = keyof Breakpoints;
-export declare const breakpoints: Breakpoints;
+export type BreakpointKeys = keyof TBreakpoints;
+export declare const breakpoints: TBreakpoints;
 export type CurrentBreakpoint = {
     breakpoint: BreakpointKeys;
     xs: boolean;

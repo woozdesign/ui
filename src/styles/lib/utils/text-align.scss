@@ -1,0 +1,18 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-ta {
+  @include breakpoints {
+    &-left {
+      text-align: left;
+    }
+
+    &-center {
+      text-align: center;
+    }
+
+    &-right {
+      text-align: right;
+    }
+  }
+}

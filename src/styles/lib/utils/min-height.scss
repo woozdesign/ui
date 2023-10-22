@@ -1,0 +1,32 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-minh {
+  @include breakpoints {
+    @for $i from 0 through 12 {
+      &-#{$i} {
+        min-height: var(--space-#{$i});
+      }
+    }
+
+    &-auto {
+      min-height: auto;
+    }
+
+    &-max-content {
+      min-height: max-content;
+    }
+
+    &-min-content {
+      min-height: min-content;
+    }
+
+    &-50\% {
+      min-height: 50%;
+    }
+
+    &-100\% {
+      min-height: 100%;
+    }
+  }
+}

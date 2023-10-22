@@ -1,7 +1,7 @@
-import { ColorProp, RadiusProp, SizeProp } from '@/utils';
+import { ColorProp, MarginProp, RadiusProp, SizeProp } from '@/utils';
 import { FormChildProps } from '../Form/Form.props';
 
-export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size' | 'color'>, FormChildProps, RadiusProp, SizeProp, ColorProp {
+export interface TextFieldProps extends Omit<React.HTMLProps<HTMLInputElement>, 'size' | 'color'>, MarginProp, FormChildProps, RadiusProp, SizeProp, ColorProp {
   variant?: 'solid' | 'ghost';
   label?: string;
   iconPrepend?: React.ReactNode;

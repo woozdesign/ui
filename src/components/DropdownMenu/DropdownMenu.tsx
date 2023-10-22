@@ -2,6 +2,7 @@
 import { ShortcutProvider } from '@/utils/contexts/Shortcut/ShortcutProvider';
 import { useShortcut } from '@/utils/hooks/useShortcut';
 import { Icon } from '@woozdesign/icons';
+import classNames from 'classnames';
 import React, { FC, RefObject, useCallback, useContext, useEffect, useRef, useState } from 'react';
 import Divider from '../Divider';
 import Kbd from '../Kbd';
@@ -29,7 +30,10 @@ const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void) => {
 
 const DropdownMenuContext = React.createContext<DropdownMenuContextProps | undefined>(undefined);
 
-const Root: FC<DropdownMenuProps> = ({ children }) => {
+const Root: FC<DropdownMenuProps> = (props) => {
+  const { className, style, children } = props;
+  const classes = classNames(styles.root, className);
+
   const [isOpen, setIsOpen] = useState(false);
   const rootRef = useRef(null);
 
@@ -41,7 +45,7 @@ const Root: FC<DropdownMenuProps> = ({ children }) => {
 
   return (
     <ShortcutProvider>
-      <div ref={rootRef} className={styles.root}>
+      <div ref={rootRef} className={classes}>
         <DropdownMenuContext.Provider value={{ onToggle: handleToggle }}>
           {React.Children.map(children, (child) => {
             // Check if child is a valid React element
@@ -57,21 +61,25 @@ const Root: FC<DropdownMenuProps> = ({ children }) => {
   );
 };
 
-const Trigger: FC<TriggerProps> = ({ children, shortcut }) => {
-  const context = useContext(DropdownMenuContext);
+const Trigger: FC<TriggerProps> = (props) => {
+  const { className, style, children, shortcut } = props;
 
+  const classes = classNames(styles.trigger, className);
+
+  const context = useContext(DropdownMenuContext);
   if (!context) throw new Error('Trigger must be used within Root');
 
   useShortcut(shortcut ?? [], context.onToggle);
 
   return (
-    <div className={styles.trigger} onClick={context.onToggle}>
+    <div className={classes} onClick={context.onToggle}>
       {children}
     </div>
   );
 };
 
-const Content: FC<ContentProps> = ({ children, isOpen }) => {
+const Content: FC<ContentProps> = (props) => {
+  const { className, style, children, isOpen } = props;
   if (!isOpen) return null;
 
   return <div className={styles.content}>{children}</div>;
@@ -94,10 +102,14 @@ const Item: FC<ItemProps> = ({ children, shortcut, color, disabled, onClick }) =
 };
 
 const Separator: FC = () => {
-  return <Divider space={0}></Divider>;
+  return <Divider></Divider>;
 };
 
-const Sub: FC<SubProps> = ({ children }) => {
+const Sub: FC<SubProps> = (props) => {
+  const { className, style, children } = props;
+
+  const classes = classNames(styles.sub, className);
+
   const [isSubOpen, setIsSubOpen] = useState(false);
   const subRef = useRef(null);
   const closeTimeout = useRef<number | null>(null); // Store the timeout ID
@@ -120,32 +132,39 @@ const Sub: FC<SubProps> = ({ children }) => {
   }, []);
 
   return (
-    <div ref={subRef} className={styles.sub} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div ref={subRef} className={classes} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <DropdownMenuContext.Provider value={{ onToggle: handleToggle }}>
         {React.Children.map(children, (child) => React.cloneElement(child as React.ReactElement, { isSubOpen }))}
       </DropdownMenuContext.Provider>
     </div>
   );
 };
-const SubTrigger: FC<SubTriggerProps> = ({ children, shortcut }) => {
-  const context = useContext(DropdownMenuContext);
+const SubTrigger: FC<SubTriggerProps> = (props) => {
+  const { className, style, children, shortcut } = props;
 
+  const classes = classNames(styles.subTrigger, className);
+
+  const context = useContext(DropdownMenuContext);
   if (!context) throw new Error('SubTrigger must be used within Sub');
 
   useShortcut(shortcut ?? [], context.onToggle);
 
   return (
-    <div className={styles.subTrigger}>
+    <div className={classes}>
       {children}
 
       <Icon type={'ChevronRight'} />
     </div>
   );
 };
-const SubContent: FC<SubContentProps> = ({ children, isSubOpen }) => {
+const SubContent: FC<SubContentProps> = (props) => {
+  const { className, style, children, isSubOpen } = props;
+
+  const classes = classNames(styles.subContent, className);
+
   if (!isSubOpen) return null;
 
-  return <div className={styles.subContent}>{children}</div>;
+  return <div className={classes}>{children}</div>;
 };
 
 const DropdownMenu = {

@@ -1,10 +1,8 @@
-import { ColorProp, RadiusProp } from '@/utils';
+import { BasePropWithChildren, ColorProp, MarginProp, PaddingProp, RadiusProp, SizeProp } from '@/utils';
 
-export interface ScrollAreaProps extends RadiusProp, ColorProp {
+export interface ScrollAreaProps extends MarginProp, PaddingProp, BasePropWithChildren, RadiusProp, ColorProp, SizeProp {
   id: string; // Add this line
   type?: 'always' | 'auto';
   scrollbars?: 'vertical' | 'horizontal';
   persistent?: boolean;
-  style?: React.CSSProperties;
-  children?: React.ReactNode;
 }

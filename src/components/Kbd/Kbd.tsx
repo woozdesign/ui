@@ -3,14 +3,18 @@ import classNames from 'classnames';
 import React from 'react';
 import styles from './Kbd.module.scss';
 import { KbdProps } from './Kbd.props';
+import { extractMarginProps, withMarginProps } from '@/utils';
 
-const Kbd: React.FC<KbdProps> = ({ shortcut, variant = 'solid', size = 'medium', color }) => {
-  const classes = classNames(styles.kbd, styles[`kbd--${variant}`], styles[`kbd--${size}`]);
+const Kbd: React.FC<KbdProps> = (props) => {
+  const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
+  const { shortcut, variant = 'solid', size = 'medium', color } = marginOtherProps;
+  const wrapperClasses = classNames(styles.wrapper, withMarginProps(marginProps));
+  const kbdClasses = classNames(styles.kbd, styles[`kbd--${variant}`], styles[`kbd--${size}`]);
   return (
-    <div className={styles.wrapper}>
+    <div className={wrapperClasses}>
       {shortcut.map((code) => {
         return (
-          <kbd key={code} className={classes} data-accent-color={color}>
+          <kbd key={code} className={kbdClasses} data-accent-color={color}>
             {code}
           </kbd>
         );

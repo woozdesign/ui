@@ -5,21 +5,31 @@ import React, { ChangeEvent, FC, useState } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './TextArea.module.scss';
 import { TextAreaProps } from './TextArea.props';
+import { extractMarginProps, withMarginProps } from '@/utils';
 
-const TextArea: FC<TextAreaProps> = ({
-  variant = 'solid',
-  size = 2,
-  label,
-  color,
-  radius,
-  resizable = false,
-  errorMessage,
-  hasSubmitted = false,
-  onChange,
-  onSubmit,
-  ...others
-}) => {
+const TextArea: FC<TextAreaProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const {
+    className,
+    style,
+    children,
+    variant = 'solid',
+    size = 2,
+    label,
+    color,
+    radius,
+    resizable = false,
+    errorMessage,
+    hasSubmitted = false,
+    onChange,
+    onSubmit,
+    ...others
+  } = otherMarginProps;
+
   const [error, setError] = useState<string | null>(null);
+
+  const wrapperClasses = classNames(styles.wrapper, withMarginProps(marginProps));
+  const classes = classNames(styles.textArea, className, styles[`textArea--${variant}`], { [styles.textAreaError]: error, [styles.resizable]: resizable });
 
   const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (hasSubmitted || e.target.value) validateInput(e.target);
@@ -45,10 +55,8 @@ const TextArea: FC<TextAreaProps> = ({
     }
   };
 
-  const classes = classNames(styles.textArea, styles[`textArea--${variant}`], { [styles.textAreaError]: error, [styles.resizable]: resizable });
-
   return (
-    <div data-accent-color={color} data-radius={radius} className={classNames(styles.wrapper, styles[`size${size}`])}>
+    <div data-accent-color={color} data-radius={radius} className={wrapperClasses}>
       {label && (
         <div>
           <Typography.Text variant={'div'} className={styles.label}>

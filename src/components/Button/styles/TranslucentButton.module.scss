@@ -1,3 +1,4 @@
+// @use
 @import '@/styles/lib/functions';
 .button--translucent {
   color: var(--color-accent-12);
@@ -24,7 +25,7 @@
     color: var(--color-accent-9);
   }
 
-  &.button--high-contrast {
+  &.highContrast {
     color: var(--color-accent-12);
     background-color: transparent;
 

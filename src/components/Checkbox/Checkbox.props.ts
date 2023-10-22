@@ -1,7 +1,13 @@
-import { ColorProp, SizeProp, RadiusProp } from '@/utils';
+import { ColorProp, SizeProp, RadiusProp, MarginProp } from '@/utils';
 import { FormChildProps } from '../Form/Form.props';
 
-export interface CheckboxProps extends Omit<React.HTMLProps<HTMLInputElement>, 'type' | 'color' | 'size' | 'onChange'>, ColorProp, SizeProp, RadiusProp, FormChildProps {
+export interface CheckboxProps
+  extends Omit<React.HTMLProps<HTMLInputElement>, 'type' | 'color' | 'size' | 'onChange'>,
+    MarginProp,
+    ColorProp,
+    SizeProp,
+    RadiusProp,
+    FormChildProps {
   onChange?: () => void;
   label?: string;
 }

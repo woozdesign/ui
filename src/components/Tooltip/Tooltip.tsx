@@ -2,10 +2,15 @@
 import React, { FC } from 'react';
 import styles from './Tooltip.module.scss';
 import { TooltipProps } from './Tooltip.props';
+import classNames from 'classnames';
 
-const Tooltip: FC<TooltipProps> = ({ content, position: positionProp = 'top', children }) => {
+const Tooltip: FC<TooltipProps> = (props) => {
+  const { className, style, children, content, position: positionProp = 'top' } = props;
+
+  const classes = classNames(styles.tooltip, className);
+
   return (
-    <div className={`${styles.tooltip}`} data-position={positionProp}>
+    <div className={classes} data-position={positionProp}>
       {children}
       <div className={`${styles.tooltiptext}`}>
         <div className={styles.ellipsisContent}>{content}</div>

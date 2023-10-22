@@ -1,0 +1,32 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-p {
+  @include breakpoints {
+    @for $i from 0 through 12 {
+      &-#{$i} {
+        padding: var(--space-#{$i});
+      }
+      &x-#{$i} {
+        padding-left: var(--space-#{$i});
+        padding-right: var(--space-#{$i});
+      }
+      &y-#{$i} {
+        padding-top: var(--space-#{$i});
+        padding-bottom: var(--space-#{$i});
+      }
+      &l-#{$i} {
+        padding-left: var(--space-#{$i});
+      }
+      &r-#{$i} {
+        padding-right: var(--space-#{$i});
+      }
+      &t-#{$i} {
+        padding-top: var(--space-#{$i});
+      }
+      &b-#{$i} {
+        padding-bottom: var(--space-#{$i});
+      }
+    }
+  }
+}

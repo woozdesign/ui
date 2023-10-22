@@ -2,7 +2,6 @@ import { ColorProp, HighContrastProp, RadiusProp } from '@/utils';
 
 export interface ToastProps extends ColorProp, RadiusProp, HighContrastProp {
   id: number; // Added id to identify each toast
-
   variant?: 'solid' | 'ghost' | 'outlined' | 'translucent';
   iconPrepend?: React.ReactNode;
   message: string;

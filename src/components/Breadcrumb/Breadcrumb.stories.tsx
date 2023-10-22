@@ -16,7 +16,7 @@ const Template: Story<BreadcrumbProps> = (args) => {
     <ThemeProvider>
       <Container>
         <Row>
-          <Col xs={12}>
+          <Col xs={24}>
             <Breadcrumb {...args} />
           </Col>
         </Row>

@@ -9,7 +9,7 @@ $title-margin: 1rem 0;
   line-height: 1.5;
   color: var(--color-accent-9);
 
-  &.heading--highContrast {
+  &.highContrast {
     color: var(--color-accent-12);
   }
 
@@ -44,7 +44,7 @@ $title-margin: 1rem 0;
   font-weight: 400;
   font-size: $fontSize;
   color: var(--color-accent-9);
-  &.text--highContrast {
+  &.highContrast {
     color: var(--color-accent-12);
   }
 
@@ -81,7 +81,7 @@ $title-margin: 1rem 0;
   background-color: var(--color-accent-4);
   padding: var(--space-1) var(--space-2);
   border-radius: max(var(--radius-3), var(--radius-full));
-  &.code--highContrast {
+  &.highContrast {
     color: var(--color-accent-12);
     background-color: var(--color-accent-4);
   }
@@ -120,7 +120,7 @@ $title-margin: 1rem 0;
   cursor: pointer;
   &:hover {
   }
-  &.link--highContrast {
+  &.highContrast {
     color: var(--color-accent-12);
   }
 

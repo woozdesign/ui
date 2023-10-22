@@ -1,6 +1,5 @@
-import React from 'react';
-export interface TooltipProps {
+import { BasePropWithChildren } from '../../utils';
+export interface TooltipProps extends BasePropWithChildren {
     content: string;
     position?: 'top' | 'bottom' | 'left' | 'right';
-    children: React.ReactNode;
 }

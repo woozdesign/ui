@@ -1,0 +1,26 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-position {
+  @include breakpoints {
+    &-static {
+      position: static;
+    }
+
+    &-absolute {
+      position: absolute;
+    }
+
+    &-relative {
+      position: relative;
+    }
+
+    &-fixed {
+      position: fixed;
+    }
+
+    &-sticky {
+      position: sticky;
+    }
+  }
+}

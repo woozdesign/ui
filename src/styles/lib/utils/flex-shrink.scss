@@ -1,0 +1,14 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-fs {
+  @include breakpoints {
+    &-0 {
+      flex-shrink: 0;
+    }
+
+    &-1 {
+      flex-shrink: 1;
+    }
+  }
+}

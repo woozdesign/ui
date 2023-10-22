@@ -1,9 +1,17 @@
 'use client';
+import { extractMarginProps, withMarginProps } from '@/utils';
+import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './ProgressCircular.module.scss';
 import { ProgressCircularProps } from './ProgressCircular.props';
 
-const ProgressCircular: FC<ProgressCircularProps> = ({ value = 0, indeterminate, color, size, rounded = false }) => {
+const ProgressCircular: FC<ProgressCircularProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { indeterminate, color, size = 'medium', rounded = false } = otherMarginProps;
+  let { value = 0 } = otherMarginProps;
+
+  const classes = classNames(styles.progressCircular, { [styles.indeterminate]: indeterminate, [styles[size]]: size }, withMarginProps(marginProps));
+
   if (value > 100) value = 100;
   if (value < 0) value = 0;
 
@@ -19,12 +27,13 @@ const ProgressCircular: FC<ProgressCircularProps> = ({ value = 0, indeterminate,
       sizeMultiplier = 1.5;
       break;
   }
+
   const radius = 16 * sizeMultiplier;
   const circumference = 2 * Math.PI * radius;
   const progress = value && value > 0 ? ((100 - value) / 100) * circumference : 0;
 
   return (
-    <div data-accent-color={color} className={`${styles.progressCircular} ${indeterminate ? styles.indeterminate : ''} ${size ? styles[size] : ''}`}>
+    <div data-accent-color={color} className={classes}>
       <svg viewBox="0 0 64 64">
         <circle cx="32" cy="32" r={radius} strokeWidth={4 * sizeMultiplier} fill="none" className={styles.circularBackground} />
         {(value && value > 0) || indeterminate ? (

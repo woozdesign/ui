@@ -1,12 +1,8 @@
 /// <reference types="react" />
-import { SpaceSizeProp } from '../../utils';
-export interface FlexProps extends SpaceSizeProp {
-    width?: React.CSSProperties['width'];
-    height?: React.CSSProperties['height'];
+import { BasePropWithChildren, DisplayProp, LayoutProp, MarginProp, PaddingProp, SpaceValue } from '../../utils';
+export interface FlexProps extends BasePropWithChildren, LayoutProp, DisplayProp, MarginProp, PaddingProp {
     align?: React.CSSProperties['alignItems'];
     justify?: React.CSSProperties['justifyContent'];
     direction?: 'row' | 'column';
-    className?: string;
-    style?: React.CSSProperties;
-    children: React.ReactNode;
+    space?: SpaceValue;
 }

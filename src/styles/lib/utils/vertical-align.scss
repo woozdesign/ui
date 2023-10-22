@@ -1,0 +1,22 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-va {
+  @include breakpoints {
+    &-baseline {
+      vertical-align: baseline;
+    }
+
+    &-top {
+      vertical-align: top;
+    }
+
+    &-middle {
+      vertical-align: middle;
+    }
+
+    &-bottom {
+      vertical-align: bottom;
+    }
+  }
+}

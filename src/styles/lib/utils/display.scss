@@ -1,0 +1,35 @@
+// @use
+@import '@/styles/lib/tokens/breakpoints.scss';
+
+.wd-display {
+  @include breakpoints {
+    &-none {
+      display: none;
+    }
+    &-block {
+      display: block;
+    }
+    &-flex {
+      display: flex;
+    }
+    &-grid {
+      display: grid;
+    }
+
+    &-inline {
+      display: inline;
+    }
+
+    &-inline-flex {
+      display: inline-flex;
+    }
+
+    &-inline-block {
+      display: inline-block;
+    }
+
+    &-inline-grid {
+      display: inline-grid;
+    }
+  }
+}

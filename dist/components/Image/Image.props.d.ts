@@ -1,9 +1,8 @@
-import { RadiusProp } from '../../utils';
-export interface ImageProps extends RadiusProp {
+import { BaseProp, MarginProp, RadiusProp } from '../../utils';
+export interface ImageProps extends BaseProp, MarginProp, RadiusProp {
     src: string;
     alt: string;
     placeholder?: string;
-    className?: string;
     width?: string | number;
     height?: string | number;
     lazyLoad?: boolean;

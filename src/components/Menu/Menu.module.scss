@@ -42,6 +42,13 @@
       }
     }
 
+    &--xlarge {
+      height: 48px;
+      border-radius: max(var(--radius-5), var(--radius-full));
+      font-size: var(--font-size-5);
+      padding: var(--space-2) var(--space-4);
+    }
+
     &--large {
       height: 40px;
       font-size: var(--font-size-5);
@@ -56,13 +63,6 @@
       height: 34px;
     }
 
-    &--xlarge {
-      height: 48px;
-      border-radius: max(var(--radius-5), var(--radius-full));
-      font-size: var(--font-size-5);
-      padding: var(--space-2) var(--space-4);
-    }
-
     &--small {
       height: 28px;
       font-size: var(--font-size-3);
@@ -70,7 +70,7 @@
       padding: var(--space-1) var(--space-2);
     }
 
-    &.high-contrast {
+    &.highContrast {
       color: var(--color-accent-12);
 
       &:hover {
@@ -89,7 +89,7 @@
     color: var(--color-accent-12);
     font-weight: bold;
 
-    &.high-contrast {
+    &.highContrast {
       color: var(--color-accent-12);
     }
 

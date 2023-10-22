@@ -1,4 +1,4 @@
-import { SizeProp, ColorProp, RadiusProp, HighContrastProp } from '@/utils';
+import { SizeProp, ColorProp, RadiusProp, HighContrastProp, MarginProp } from '@/utils';
 
 export interface MenuContextProps {
   activeItem: string;
@@ -17,7 +17,7 @@ export interface MenuItemProps extends Omit<MenuItem, 'value'> {
   value?: string;
 }
 
-export interface MenuProps extends SizeProp, ColorProp, RadiusProp, HighContrastProp {
+export interface MenuProps extends MarginProp, SizeProp, ColorProp, RadiusProp, HighContrastProp {
   items: MenuItemProps[];
   defaultValue: string;
   justify?: 'start' | 'center' | 'end';

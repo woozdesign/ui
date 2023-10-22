@@ -1,4 +1,4 @@
-import { ColorProp, SpaceSizeProp } from '../../utils';
-export interface DividerProps extends ColorProp, SpaceSizeProp {
+import { ColorProp, MarginProp, PaddingProp } from '../../utils';
+export interface DividerProps extends MarginProp, PaddingProp, ColorProp {
     orientation?: 'horizontal' | 'vertical';
 }

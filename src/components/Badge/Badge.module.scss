@@ -14,7 +14,7 @@
   background-color: var(--color-accent-9);
   color: var(--color-accent-9-contrast);
 
-  &.badge--high-contrast {
+  &.highContrast {
     color: var(--color-gray-1);
     background-color: var(--color-accent-12);
   }
@@ -24,7 +24,7 @@
   color: var(--color-accent-11);
   background-color: var(--color-accent-4);
 
-  &.badge--high-contrast {
+  &.highContrast {
     color: var(--color-accent-12);
     background-color: var(--color-accent-3);
   }
@@ -35,7 +35,7 @@
   color: var(--color-accent-11);
   border: 1px solid var(--color-accent-a7);
 
-  &.badge--high-contrast {
+  &.highContrast {
     background-color: transparent;
     color: var(--color-accent-12);
     border: 1px solid var(--color-accent-a10);

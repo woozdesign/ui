@@ -1,15 +1,13 @@
-/// <reference types="react" />
-export interface RowProps extends React.HTMLProps<HTMLDivElement> {
+import { BasePropWithChildren, DisplayProp, LayoutProp, MarginProp, PaddingProp } from '../../utils';
+export interface RowProps extends BasePropWithChildren, DisplayProp, LayoutProp, MarginProp, PaddingProp {
     gutter?: [number, number];
     align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
     justify?: 'start' | 'center' | 'end' | 'space-between' | 'around' | 'space-evenly';
-    children?: React.ReactNode;
 }
-export interface ColProps extends React.HTMLProps<HTMLDivElement> {
+export interface ColProps extends BasePropWithChildren, DisplayProp, LayoutProp, MarginProp, PaddingProp {
     xs?: number;
     sm?: number;
     md?: number;
     lg?: number;
     xl?: number;
-    children?: React.ReactNode;
 }

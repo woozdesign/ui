@@ -4,19 +4,24 @@ import classNames from 'classnames';
 import React, { FC } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
-import { ActionsProps, BodyProps, CardProps, HeaderProps } from './Card.props';
+import { ActionProps, BodyProps, CardProps, HeaderProps } from './Card.props';
+import { extractMarginProps, withMarginProps } from '@/utils';
 
 const Card: FC<CardProps> & {
   Header: FC<HeaderProps>;
   Body: FC<BodyProps>;
-  Actions: FC<ActionsProps>;
-} = ({ variant = 'solid', outlined = true, size = 'medium', children, className, onClick, ...others }) => {
+  Action: FC<ActionProps>;
+} = (props) => {
+  const { others: marginOthers, ...marginProps } = extractMarginProps(props);
+  const { variant = 'solid', outlined = true, size = 'medium', children, className, onClick, ...others } = marginOthers;
+
   const cardClasses = classNames(
     styles.card,
     styles[`card--${variant}`],
     styles[`card--${size}`],
     { [styles['card--outlined']]: outlined, [styles['card--clickable']]: onClick },
     className,
+    withMarginProps(marginProps),
   );
 
   return (
@@ -26,7 +31,9 @@ const Card: FC<CardProps> & {
   );
 };
 
-Card.Header = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outlined = false }: HeaderProps) => {
+const Header: FC<HeaderProps> = (props) => {
+  const { title, titleSize = 4, subtitle, subtitleSize = 4, action, outlined = false } = props;
+
   const classes = classNames(styles.heading, { [styles[`heading--outlined`]]: outlined });
 
   return (
@@ -52,7 +59,9 @@ Card.Header = ({ title, titleSize = 4, subtitle, subtitleSize = 4, action, outli
   );
 };
 
-Card.Body = ({ title, content, titleSize = 4, textAlign = 'start' }: BodyProps) => {
+const Body: FC<BodyProps> = (props) => {
+  const { title, content, titleSize = 4, textAlign = 'start' } = props;
+
   return (
     <div className={styles.body}>
       {typeof title == 'string' ? (
@@ -73,7 +82,9 @@ Card.Body = ({ title, content, titleSize = 4, textAlign = 'start' }: BodyProps) 
   );
 };
 
-Card.Actions = ({ children, justify = 'start', outlined = false }: ActionsProps) => {
+const Action: FC<ActionProps> = (props) => {
+  const { children, justify = 'start', outlined = false } = props;
+
   const classes = classNames(styles.actions, { [styles[`actions--outlined`]]: outlined });
 
   return (
@@ -82,5 +93,9 @@ Card.Actions = ({ children, justify = 'start', outlined = false }: ActionsProps)
     </div>
   );
 };
+
+Card.Header = Header;
+Card.Body = Body;
+Card.Action = Action;
 
 export default Card;

@@ -1,6 +1,6 @@
 /// <reference types="react" />
-import { SizeProp, TextSizeProp } from '../../utils';
-export interface CardProps extends SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
+import { MarginProp, SizeProp, TextSizeProp } from '../../utils';
+export interface CardProps extends MarginProp, SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
     variant?: 'solid' | 'transparent' | 'translucent';
     outlined?: boolean;
     children: React.ReactNode;
@@ -19,7 +19,7 @@ export interface BodyProps extends Omit<React.HTMLProps<HTMLDivElement>, 'title'
     content: React.ReactNode;
     textAlign?: 'start' | 'center' | 'end';
 }
-export interface ActionsProps extends React.HTMLProps<HTMLDivElement> {
+export interface ActionProps extends React.HTMLProps<HTMLDivElement> {
     justify?: React.CSSProperties['justifyContent'];
     outlined?: boolean;
     children: React.ReactNode;
