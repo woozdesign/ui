@@ -8,10 +8,10 @@ export interface BaseProps extends BasePropWithChildren, MarginProp, ColorProp, 
     disabled?: boolean;
     href?: string;
 }
-export interface ButtonSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size' | 'type'> {
+export interface ButtonSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'className' | 'style' | 'children' | 'color' | 'shape' | 'size' | 'type'> {
     onClick?: ButtonClickHandler;
 }
-export interface AnchorSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size' | 'type'> {
+export interface AnchorSpecificProps extends BaseProps, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'className' | 'style' | 'children' | 'color' | 'shape' | 'size' | 'type'> {
     href?: string;
     onClick?: AnchorClickHandler;
 }

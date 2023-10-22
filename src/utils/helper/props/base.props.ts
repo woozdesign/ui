@@ -4,5 +4,5 @@ export interface BaseProp {
 }
 
 export interface BasePropWithChildren extends BaseProp {
-  children?: React.ReactNode;
+  children: React.ReactNode;
 }

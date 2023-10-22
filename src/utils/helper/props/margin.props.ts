@@ -1,4 +1,4 @@
-import { withBreakpoints } from '../responsive';
+import { Responsive, withBreakpoints } from '../responsive';
 
 export type MarginValue =
   | '-1'
@@ -28,13 +28,13 @@ export type MarginValue =
   | '12';
 
 export interface MarginProp {
-  m?: MarginValue;
-  mx?: MarginValue;
-  my?: MarginValue;
-  ml?: MarginValue;
-  mr?: MarginValue;
-  mt?: MarginValue;
-  mb?: MarginValue;
+  m?: Responsive<MarginValue>;
+  mx?: Responsive<MarginValue>;
+  my?: Responsive<MarginValue>;
+  ml?: Responsive<MarginValue>;
+  mr?: Responsive<MarginValue>;
+  mt?: Responsive<MarginValue>;
+  mb?: Responsive<MarginValue>;
 }
 
 export const extractMarginProps = <T extends MarginProp>(props: T) => {

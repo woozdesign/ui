@@ -14,11 +14,15 @@ export interface ButtonBaseProp extends BasePropWithChildren, MarginProp, ColorP
   href?: string;
 }
 
-export interface ButtonSpecificProps extends ButtonBaseProp, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size' | 'type'> {
+export interface ButtonSpecificProps
+  extends ButtonBaseProp,
+    Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'className' | 'style' | 'children' | 'color' | 'shape' | 'size' | 'type'> {
   onClick?: ButtonClickHandler;
 }
 
-export interface AnchorSpecificProps extends ButtonBaseProp, Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'color' | 'shape' | 'size' | 'type'> {
+export interface AnchorSpecificProps
+  extends ButtonBaseProp,
+    Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'className' | 'style' | 'children' | 'color' | 'shape' | 'size' | 'type'> {
   href?: string;
   onClick?: AnchorClickHandler;
 }
