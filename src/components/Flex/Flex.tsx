@@ -8,8 +8,7 @@ import { extractDisplayProps, extractLayoutProps, extractMarginProps, extractPad
 const Flex: FC<FlexProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
   const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
-  const { others: displayOthers, ...displayProps } = extractDisplayProps(paddingOthers);
-  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(displayOthers);
+  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
 
   const { className, style, children, direction = 'row', space = 2, align = 'start', justify = 'start' } = displayOthers;
 
@@ -18,7 +17,6 @@ const Flex: FC<FlexProps> = (props) => {
     styles[`box--${direction}`],
     styles[`box--${space}`],
     className,
-    withDisplayProps(displayProps),
     withMarginProps(marginProps),
     withPaddingProps(paddingProps),
     withLayoutProps(layoutProps),

@@ -8,11 +8,10 @@ import { extractDisplayProps, extractLayoutProps, extractMarginProps, extractPad
 export const Row: React.FC<RowProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
   const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
-  const { others: displayOthers, ...displayProps } = extractDisplayProps(paddingOthers);
-  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(displayOthers);
+  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
   const { className, style, children, gutter = [0, 0], align = 'start', justify = 'start' } = layoutOthersProps;
 
-  const classes = classNames(styles.row, className, withDisplayProps(displayProps), withLayoutProps(layoutProps), withMarginProps(marginProps), withPaddingProps(paddingProps));
+  const classes = classNames(styles.row, className, withLayoutProps(layoutProps), withMarginProps(marginProps), withPaddingProps(paddingProps));
 
   const combinedStyle = {
     alignItems: align,
@@ -32,8 +31,7 @@ export const Row: React.FC<RowProps> = (props) => {
 export const Col: React.FC<ColProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
   const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
-  const { others: displayOthers, ...displayProps } = extractDisplayProps(paddingOthers);
-  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(displayOthers);
+  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
   const { className, style, children, xs, sm, md, lg, xl } = layoutOthersProps;
 
   const classes = classNames(
@@ -43,11 +41,9 @@ export const Col: React.FC<ColProps> = (props) => {
       [styles[`xs-${xs}`]]: typeof xs == 'number',
       [styles[`sm-${sm}`]]: typeof sm == 'number',
       [styles[`md-${md}`]]: typeof md == 'number',
-
       [styles[`lg-${lg}`]]: typeof lg == 'number',
       [styles[`xl-${xl}`]]: typeof xl == 'number',
     },
-    withDisplayProps(displayProps),
     withLayoutProps(layoutProps),
     withMarginProps(marginProps),
     withPaddingProps(paddingProps),
