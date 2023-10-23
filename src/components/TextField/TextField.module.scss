@@ -1,6 +1,7 @@
 @use '@/styles/lib/mixins.scss';
 
 .wrapper {
+  width: 100%;
   margin-bottom: var(--space-2);
 }
 .group {
