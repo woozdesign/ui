@@ -31,22 +31,27 @@
   margin-bottom: 20px;
 
   &--solid {
+    border: 1px solid transparent;
+    background-color: var(--color-panel);
+    &:focus,
+    &:hover {
+      border-color: var(--color-gray-6);
+    }
+  }
+  &--outlined {
     &:focus,
     &:hover {
       outline: none;
       border-color: var(--color-accent-9);
       // background-color: var(--color-surface-accent);
-      // box-shadow: 0 0 0 4px var(--color-accent-9a9);
     }
   }
-
   &--ghost {
     &:focus,
     &:hover {
       outline: none;
       border-color: var(--color-accent-9);
       background-color: var(--color-surface-accent);
-      // box-shadow: 0 0 0 4px var(--color-accent-a9);
     }
   }
   &.hasPrependIcon {
