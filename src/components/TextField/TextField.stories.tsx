@@ -11,7 +11,7 @@ export default {
   component: TextField,
   args: {
     size: 'medium',
-    label: 'Default Label',
+    placeholder: 'Default placeholder',
     block: false,
   },
 } as Meta;
@@ -52,7 +52,7 @@ Block.args = {
 
 export const WithoutLabel = Template.bind({});
 WithoutLabel.args = {
-  label: undefined,
+  placeholder: undefined,
 };
 
 // ...add more stories as needed

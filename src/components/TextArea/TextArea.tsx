@@ -23,6 +23,7 @@ const TextArea: FC<TextAreaProps> = (props) => {
     hasSubmitted = false,
     onChange,
     onSubmit,
+    placeholder,
     ...others
   } = otherMarginProps;
 
@@ -57,17 +58,10 @@ const TextArea: FC<TextAreaProps> = (props) => {
 
   return (
     <div data-accent-color={color} data-radius={radius} className={wrapperClasses}>
-      {label && (
-        <div>
-          <Typography.Text variant={'div'} className={styles.label}>
-            {others.required && <span style={{ color: 'var(--color-red-9)', marginRight: '4px' }}>*</span>}
-            {label}
-          </Typography.Text>
-        </div>
-      )}
       <textarea
         {...others}
         rows={size}
+        placeholder={placeholder}
         data-has-value={hasSubmitted}
         onChange={handleInput}
         onInvalid={handleInvalid}

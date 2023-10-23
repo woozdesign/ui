@@ -9,7 +9,7 @@ export default {
   component: TextArea,
   args: {
     size: 'medium',
-    label: 'Default Label',
+    placeholder: 'Default Label',
   },
 } as Meta;
 
@@ -34,7 +34,7 @@ Large.args = {
 
 export const WithoutLabel = Template.bind({});
 WithoutLabel.args = {
-  label: undefined,
+  placeholder: undefined,
 };
 
 // ...add more stories as needed

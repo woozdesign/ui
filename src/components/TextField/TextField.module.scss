@@ -9,7 +9,7 @@
   align-items: center;
   position: relative;
   max-width: 190px;
-  border: 2px solid transparent;
+  border: 1px solid transparent;
   border-radius: var(--radius-4);
   &.block {
     width: 100%;
@@ -17,14 +17,11 @@
   }
 }
 
-.label {
-  padding-left: var(--space-1);
-}
-
 .input {
   width: 100%;
   line-height: 28px;
-  border: 2px solid transparent;
+  box-sizing: border-box;
+  border: 1px solid transparent;
   border-radius: max(var(--radius-3), var(--radius-full));
   outline: none;
   background-color: transparent;
@@ -74,7 +71,7 @@
 }
 
 .input[data-has-value='true']:invalid {
-  border: 2px solid var(--color-red-9);
+  border: 1px solid var(--color-red-9);
   background-color: var(--color-red-surface);
   margin-bottom: 0;
 }
@@ -111,45 +108,20 @@
   display: block;
 }
 
+.input::placeholder {
+  color: var(--color-gray-7);
+}
+
 .wd-textfield {
-  &--wrapper {
-    @include mixins.breakpoints {
-      &-xlarge {
-        .label {
-          font-size: var(--font-size-4);
-          margin-bottom: var(--space-1);
-        }
-      }
-
-      &-large {
-        .label {
-          font-size: var(--font-size-4);
-          margin-bottom: var(--space-1);
-        }
-      }
-
-      &-medium {
-        .label {
-          font-size: var(--font-size-3);
-          margin-bottom: var(--space-1);
-        }
-      }
-
-      &-small {
-        .label {
-          font-size: var(--font-size-2);
-          margin-bottom: var(--space-1);
-        }
-      }
-    }
-  }
-
   &--group {
     @include mixins.breakpoints {
       &-xlarge {
         .input {
           height: 48px;
           padding: var(--space-1) var(--space-4);
+
+          &::placeholder {
+          }
         }
       }
 
@@ -157,6 +129,8 @@
         .input {
           height: 40px;
           padding: var(--space-1) var(--space-4);
+          &::placeholder {
+          }
         }
       }
 
@@ -164,12 +138,16 @@
         .input {
           height: 32px;
           padding: var(--space-1) var(--space-3);
+          &::placeholder {
+          }
         }
       }
       &-small {
         .input {
-          height: 28px;
+          height: 24px;
           padding: var(--space-1) var(--space-3);
+          &::placeholder {
+          }
         }
       }
     }

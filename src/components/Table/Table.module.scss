@@ -1,6 +1,8 @@
+@use '@/styles/lib/mixins.scss';
+
 .table {
   width: 100%;
-  font-size: var(--font-size-3);
+  font-size: var(--font-size-4);
   color: var(--color-gray-12);
   border-collapse: collapse;
 }
@@ -43,4 +45,21 @@
 .columnHeaderCell {
   font-weight: 600;
   //   background-color: var(--color-gray-a3);
+}
+
+.wd-table {
+  @include mixins.breakpoints {
+    &-small {
+      font-size: var(--font-size-3);
+    }
+    &-medium {
+      font-size: var(--font-size-4);
+    }
+    &-large {
+      font-size: var(--font-size-5);
+    }
+    &-xlarge {
+      font-size: var(--font-size-6);
+    }
+  }
 }

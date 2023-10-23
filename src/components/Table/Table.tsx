@@ -4,13 +4,13 @@ import classNames from 'classnames';
 import React from 'react';
 import styles from './Table.module.scss';
 import { BodyProps, CellProps, ColumnHeaderCellProps, HeaderProps, RootProps, RowHeaderCellProps, RowProps } from './Table.props';
-import { extractMarginProps, withMarginProps } from '@/utils';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 
 const Root: React.FC<RootProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, children } = otherMarginProps;
+  const { className, style, children, size = 'medium' } = otherMarginProps;
 
-  const classes = classNames(styles.table, className, withMarginProps(marginProps));
+  const classes = classNames(styles.table, className, withMarginProps(marginProps), withBreakpoints(size, 'wd-table', styles));
   return (
     <table className={classes} style={style}>
       {children}
