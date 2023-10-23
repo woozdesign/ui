@@ -7,7 +7,6 @@ import styles from './Avatar.module.scss';
 import { AvatarProps } from './Avatar.props';
 
 const Avatar: FC<AvatarProps> = (props) => {
-  console.log('styles: ', styles);
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
   const { src, fallback, size = 'medium', radius, color } = marginOthers;
 
