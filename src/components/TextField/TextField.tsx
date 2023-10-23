@@ -15,7 +15,7 @@ const TextField: FC<TextFieldProps> = (props) => {
     children,
     variant = 'solid',
     size = 'medium',
-    label,
+    placeholder = '',
     iconPrepend,
     iconAppend,
     block,
@@ -60,17 +60,17 @@ const TextField: FC<TextFieldProps> = (props) => {
 
   return (
     <div data-accent-color={color} data-radius={radius} className={wrapperClasses}>
-      {label && (
-        <div>
-          <Typography.Text variant={'div'} className={styles.label}>
-            {others.required && <span style={{ color: 'var(--color-red-9)', marginRight: '4px' }}>*</span>}
-            {label}
-          </Typography.Text>
-        </div>
-      )}
       <div className={groupClasses}>
         {iconPrepend && <span className={styles.iconPrepend}>{iconPrepend}</span>}
-        <input {...others} data-has-value={hasSubmitted} onChange={handleInput} onKeyPress={handleKeyPress} onInvalid={handleInvalid} className={errorClasses} />
+        <input
+          {...others}
+          placeholder={placeholder}
+          data-has-value={hasSubmitted}
+          onChange={handleInput}
+          onKeyPress={handleKeyPress}
+          onInvalid={handleInvalid}
+          className={errorClasses}
+        />
         {iconAppend && <span className={styles.iconAppend}>{iconAppend}</span>}
       </div>
 
