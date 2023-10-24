@@ -13,7 +13,7 @@ const TextField: FC<TextFieldProps> = (props) => {
     className,
     style,
     children,
-    variant = 'solid',
+    variant = 'outlined',
     size = 'medium',
     placeholder = '',
     iconPrepend,

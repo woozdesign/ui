@@ -5,7 +5,7 @@ import ReactDom from 'react-dom';
 import Button from '../Button';
 import Card from '../Card';
 import styles from './Modal.module.scss';
-import { ContentProps, ModalContextProps, ModalProps } from './Modal.props';
+import { ActionProps, ContentProps, ModalContextProps, ModalProps } from './Modal.props';
 
 const ModalContext = React.createContext<ModalContextProps | undefined>(undefined);
 
@@ -86,12 +86,44 @@ const Root: FC<ModalProps> = (props) => {
 };
 
 const Content: FC<ContentProps> = (props) => {
-  const { className, style, children, title, subtitle, confirmText = 'Confirm', cancelText = 'Cancel' } = props;
+  const { className, style, children, title, subtitle } = props;
+
+  const context = useContext(ModalContext);
+  if (!context) throw new Error('Content must be used within Root');
+
+  const { onClose } = context;
+
+  const stopPropagation = (e: React.MouseEvent) => {
+    e.stopPropagation();
+  };
+
+  return (
+    <div className={styles.content} onClick={stopPropagation}>
+      <Card size={'large'}>
+        {(title || subtitle) && <Card.Header title={title} titleSize={'5'} subtitle={subtitle} outlined={false}></Card.Header>}
+        <Card.Body content={children}></Card.Body>
+      </Card>
+    </div>
+  );
+};
+const Action: FC<ActionProps> = (props) => {
+  const { className, style, children, variant = 'close' } = props;
 
   const context = useContext(ModalContext);
   if (!context) throw new Error('Content must be used within Root');
 
   const { onClose, onCancel, onConfirm } = context;
+
+  const handleActionClick = () => {
+    switch (variant) {
+      case 'close':
+        handleCancel();
+        break;
+      case 'confirm':
+        handleConfirm();
+        break;
+    }
+  };
 
   const handleCancel = () => {
     onCancel && onCancel();
@@ -103,24 +135,9 @@ const Content: FC<ContentProps> = (props) => {
     onClose();
   };
 
-  const stopPropagation = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
   return (
-    <div className={styles.content} onClick={stopPropagation}>
-      <Card size={'large'}>
-        {(title || subtitle) && <Card.Header title={title} titleSize={'5'} subtitle={subtitle} outlined={false}></Card.Header>}
-        <Card.Body content={children}></Card.Body>
-        <Card.Action justify={'end'} outlined={false}>
-          <Button variant={'outlined'} color={'gray'} highContrast onClick={handleCancel}>
-            {cancelText}
-          </Button>
-          <Button variant={'solid'} onClick={handleConfirm}>
-            {confirmText}
-          </Button>
-        </Card.Action>
-      </Card>
+    <div className={styles.action} onClick={handleActionClick}>
+      {children}
     </div>
   );
 };
@@ -128,6 +145,7 @@ const Content: FC<ContentProps> = (props) => {
 const Modal = {
   Root: Root,
   Content: Content,
+  Action: Action,
 };
 
 export default Modal;
