@@ -17,7 +17,7 @@ export interface LayoutProp {
     grow?: Responsive<'0' | '1'>;
 }
 export declare const extractLayoutProps: <T extends LayoutProp>(props: T) => {
-    position: Responsive<"fixed" | "static" | "relative" | "absolute" | "sticky"> | undefined;
+    position: Responsive<"static" | "relative" | "absolute" | "fixed" | "sticky"> | undefined;
     width: Responsive<SpaceValue | "auto" | "100%" | "min-content" | "max-content"> | undefined;
     maxWidth: Responsive<SpaceValue | "auto" | "100%" | "min-content" | "max-content"> | undefined;
     minWidth: Responsive<SpaceValue | "auto" | "100%" | "min-content" | "max-content"> | undefined;

@@ -31,7 +31,7 @@ const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void) => {
 const DropdownMenuContext = React.createContext<DropdownMenuContextProps | undefined>(undefined);
 
 const Root: FC<DropdownMenuProps> = (props) => {
-  const { className, style, children, shadow = 1 } = props;
+  const { className, style, children, shadow = 4 } = props;
   const classes = classNames(styles.root, className);
 
   const [isOpen, setIsOpen] = useState(false);

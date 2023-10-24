@@ -92,7 +92,7 @@
   }
 
   &--outlined {
-    box-shadow: var(--shadow-1);
+    border: 1px solid var(--color-gray-a6);
     // border: 1px solid var(--color-gray-4);
   }
 }

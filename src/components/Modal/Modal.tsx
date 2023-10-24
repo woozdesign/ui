@@ -10,7 +10,7 @@ import { ActionProps, ContentProps, ModalContextProps, ModalProps } from './Moda
 const ModalContext = React.createContext<ModalContextProps | undefined>(undefined);
 
 const Root: FC<ModalProps> = (props) => {
-  const { className, style, children, open = false, onClose, onCancel, onConfirm, variant = 'default', shadow, radius } = props;
+  const { className, style, children, open = false, onClose, onCancel, onConfirm, variant = 'default', shadow = 4, radius } = props;
 
   const [isOpen, setIsOpen] = useState(open);
   const [isRendered, setIsRendered] = useState(open);
