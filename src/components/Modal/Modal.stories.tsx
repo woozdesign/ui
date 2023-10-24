@@ -18,7 +18,14 @@ const Template: Story = () => {
   return (
     <ThemeProvider>
       <Button onClick={toggleOutside}>Trigger</Button>
-      <Modal.Root open={isOpen} onClose={toggleOutside} onConfirm={() => console.log('Modal Confirmed')} onCancel={() => console.log('Modal Cancled')}>
+      <Modal.Root
+        radius={'medium'}
+        shadow={'4'}
+        open={isOpen}
+        onClose={toggleOutside}
+        onConfirm={() => console.log('Modal Confirmed')}
+        onCancel={() => console.log('Modal Cancled')}
+      >
         <Modal.Content title={'title'} subtitle={'subtitle'}>
           <Typography.Text>This is the content</Typography.Text>
         </Modal.Content>

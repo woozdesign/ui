@@ -1,4 +1,4 @@
-import { BasePropWithChildren } from '@/utils';
+import { BasePropWithChildren, ShadowProp } from '@/utils';
 import { WoozCommandCode } from '@/utils/contexts/Shortcut/Shortcut.props';
 
 export interface DropdownMenuContextProps {
@@ -8,7 +8,7 @@ export interface ChildProps {
   isOpen?: boolean;
 }
 
-export interface DropdownMenuProps extends ChildProps, BasePropWithChildren {}
+export interface DropdownMenuProps extends ChildProps, BasePropWithChildren, ShadowProp {}
 
 export interface TriggerProps extends BasePropWithChildren {
   shortcut?: WoozCommandCode[];

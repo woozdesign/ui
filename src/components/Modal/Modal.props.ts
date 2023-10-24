@@ -1,4 +1,4 @@
-import { BasePropWithChildren } from '@/utils';
+import { BasePropWithChildren, RadiusProp, ShadowProp } from '@/utils';
 
 export interface ModalContextProps {
   onClose: () => void;
@@ -6,7 +6,7 @@ export interface ModalContextProps {
   onConfirm?: () => void;
 }
 
-export interface ModalProps extends BasePropWithChildren {
+export interface ModalProps extends BasePropWithChildren, RadiusProp, ShadowProp {
   open?: boolean;
   variant?: 'default' | 'confirm';
   onCancel?: () => void;

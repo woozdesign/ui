@@ -13,6 +13,7 @@
   justify-content: flex-end; // Place the drawer on the right side
   opacity: 0;
   transition: opacity 0.3s ease;
+
   &--transparent {
     background-color: transparent;
   }

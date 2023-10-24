@@ -13,7 +13,7 @@ const Card: FC<CardProps> & {
   Action: FC<ActionProps>;
 } = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
-  const { variant = 'solid', outlined = true, size = 'medium', children, className, onClick, ...others } = marginOthers;
+  const { variant = 'solid', outlined = true, size = 'medium', children, className, onClick, shadow, radius, ...others } = marginOthers;
 
   const cardClasses = classNames(
     styles.card,
@@ -25,7 +25,7 @@ const Card: FC<CardProps> & {
   );
 
   return (
-    <div className={cardClasses} onClick={onClick} {...others}>
+    <div className={cardClasses} data-radius={radius} data-shadow={shadow} onClick={onClick} {...others}>
       {children}
     </div>
   );

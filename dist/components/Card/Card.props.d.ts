@@ -1,6 +1,6 @@
 /// <reference types="react" />
-import { MarginProp, SizeProp, TextSizeProp } from '../../utils';
-export interface CardProps extends MarginProp, SizeProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
+import { MarginProp, RadiusProp, ShadowProp, SizeProp, TextSizeProp } from '../../utils';
+export interface CardProps extends MarginProp, RadiusProp, SizeProp, ShadowProp, Omit<React.HTMLProps<HTMLDivElement>, 'size'> {
     variant?: 'solid' | 'transparent' | 'translucent';
     outlined?: boolean;
     children: React.ReactNode;

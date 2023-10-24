@@ -31,7 +31,7 @@ const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void) => {
 const DropdownMenuContext = React.createContext<DropdownMenuContextProps | undefined>(undefined);
 
 const Root: FC<DropdownMenuProps> = (props) => {
-  const { className, style, children } = props;
+  const { className, style, children, shadow = 1 } = props;
   const classes = classNames(styles.root, className);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +45,7 @@ const Root: FC<DropdownMenuProps> = (props) => {
 
   return (
     <ShortcutProvider>
-      <div ref={rootRef} className={classes}>
+      <div data-shadow={shadow} ref={rootRef} className={classes}>
         <DropdownMenuContext.Provider value={{ onToggle: handleToggle }}>
           {React.Children.map(children, (child) => {
             // Check if child is a valid React element
@@ -96,7 +96,7 @@ const Item: FC<ItemProps> = ({ children, shortcut, color, disabled, onClick }) =
   return (
     <div className={`${styles.item} ${disabled ? styles.disabled : ''}`} data-accent-color={color} onClick={handleClick}>
       {children}
-      {shortcut && <Kbd shortcut={shortcut}></Kbd>}
+      {shortcut && <Kbd variant={'solid'} size={'small'} shortcut={shortcut}></Kbd>}
     </div>
   );
 };

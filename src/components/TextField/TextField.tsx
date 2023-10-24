@@ -25,6 +25,7 @@ const TextField: FC<TextFieldProps> = (props) => {
     color,
     radius,
     hasSubmitted = false,
+    shadow,
     ...others
   } = otherMarginProps;
 
@@ -66,6 +67,7 @@ const TextField: FC<TextFieldProps> = (props) => {
           {...others}
           placeholder={placeholder}
           data-has-value={hasSubmitted}
+          data-shadow={shadow}
           onChange={handleInput}
           onKeyPress={handleKeyPress}
           onInvalid={handleInvalid}

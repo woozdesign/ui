@@ -24,6 +24,7 @@ const TextArea: FC<TextAreaProps> = (props) => {
     onChange,
     onSubmit,
     placeholder,
+    shadow,
     ...others
   } = otherMarginProps;
 
@@ -63,6 +64,7 @@ const TextArea: FC<TextAreaProps> = (props) => {
         rows={size}
         placeholder={placeholder}
         data-has-value={hasSubmitted}
+        data-shadow={shadow}
         onChange={handleInput}
         onInvalid={handleInvalid}
         onKeyPress={handleKeyPress} // Add the handleKeyPress method here

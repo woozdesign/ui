@@ -4,13 +4,14 @@ type ThemeAppearance = 'inherit' | 'light' | 'dark';
 export type ThemeRadius = 'none' | 'small' | 'medium' | 'large' | 'full';
 export type ThemeScaling = '90%' | '95%' | '100%' | '105%' | '110%';
 export type ThemeHighContrast = true | false;
-export type ThemeShadow = 'none' | 'small' | 'medium' | 'large' | 'full';
+export type ThemeShadow = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 export type ThemeTranslucent = '10%' | '20%' | '40%' | '60%' | '80%';
 export type ThemeOptions = {
     accentColor: ThemeAccentColor;
     appearance: ThemeAppearance;
     radius: ThemeRadius;
     scaling: ThemeScaling;
+    shadow: ThemeShadow;
     translucent: ThemeTranslucent;
 };
 declare function getMatchingGrayColor(accentColor: ThemeAccentColor): ThemeAccentColor;
