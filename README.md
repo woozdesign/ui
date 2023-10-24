@@ -64,7 +64,7 @@ export const RootStyleRegistry = ({ children }: React.PropsWithChildren) => {
 ## Supported Components
 
 Wooz Design offers a robust and diverse set of components to aid in creating interactive and dynamic user interfaces. Our library is continuously evolving, and we are committed to enhancing and expanding our component offerings.
-For more in-depth information on the supported components, please refer to our detailed [documentation](./docs/git/SUPPORT.md).
+For more in-depth information on the supported components, please refer to our detailed [documentation](https://woozdesign.com).
 
 ## TypeScript
 
