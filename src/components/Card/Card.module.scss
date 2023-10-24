@@ -7,7 +7,10 @@
   text-align: left;
   color: var(--color-accent-9-contrast);
   height: 100%;
-  border-radius: var(--radius-4);
+
+  box-shadow: var(--shadow-theme);
+
+  border-radius: max(var(--radius-4), var(--radius-full));
 
   &--start {
     text-align: start;
@@ -89,7 +92,7 @@
   }
 
   &--outlined {
-    box-shadow: 0 0 0 1px var(--color-gray-a6);
+    box-shadow: var(--shadow-1);
     // border: 1px solid var(--color-gray-4);
   }
 }

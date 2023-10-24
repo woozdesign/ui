@@ -9,3 +9,4 @@ export * from './radius.props';
 export * from './size.props';
 export * from './space.props';
 export * from './text-size.props';
+export * from './shadow.props';

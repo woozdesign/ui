@@ -1,0 +1,122 @@
+/* prettier-ignore */
+
+.woozdesign {
+
+    --shadow-0: none;
+    --shadow-1: inset 0 0 0 1px var(--color-gray-a5);
+
+    --shadow-2:
+      inset 0 0 0 1px var(--color-gray-a5),
+      inset 0 1.5px 2px 0 var(--color-gray-a2),
+      inset 0 1.5px 2px 0 var(--color-black-a2);
+  
+    --shadow-3:
+      0 0 0 1px var(--color-gray-a3),
+      0 0 0 0.5px var(--color-black-a1),
+      0 1px 1px 0 var(--color-gray-a4),
+      0 2px 1px -1px var(--color-black-a1),
+      0 1px 3px 0 var(--color-black-a1);
+  
+    --shadow-4:
+      0 0 0 1px var(--color-gray-a3),
+      0 2px 3px -2px var(--color-gray-a3),
+      0 3px 12px -4px var(--color-black-a2),
+      0 4px 16px -8px var(--color-black-a2);
+  
+    --shadow-5:
+      0 0 0 1px var(--color-gray-a3),
+      0 8px 40px var(--color-black-a1),
+      0 12px 32px -16px var(--color-gray-a3);
+  
+    --shadow-6:
+      0 0 0 1px var(--color-gray-a3),
+      0 12px 60px var(--color-black-a3),
+      0 12px 32px -16px var(--color-gray-a5);
+  
+    --shadow-7:
+      0 0 0 1px var(--color-gray-a3),
+      0 12px 60px var(--color-black-a3),
+      0 16px 64px var(--color-gray-a2),
+      0 16px 36px -20px var(--color-gray-a7);
+
+/* prettier-ignore */
+:is(.dark, .dark-theme),
+  :is(.dark, .dark-theme) :where(.woozdesign:not(.light, .light-theme)) {
+
+    --shadow-0: none;
+    --shadow-1: inset 0 0 0 1px var(--color-gray-a3);
+    
+    --shadow-2:
+      inset 0 -1px 1px 0 var(--color-gray-a3),
+      inset 0 0 0 1px var(--color-gray-a3),
+      inset 0 3px 4px 0 var(--color-black-a5),
+      inset 0 0 0 1px var(--color-gray-a4);
+  
+    --shadow-3:
+      0 0 0 1px var(--color-gray-a6),
+      0 0 0 0.5px var(--color-black-a3),
+      0 1px 1px 0 var(--color-black-a6),
+      0 2px 1px -1px var(--color-black-a6),
+      0 1px 3px 0 var(--color-black-a8);
+  
+    --shadow-4:
+      0 0 0 1px var(--color-gray-a6),
+      0 2px 3px -2px var(--color-black-a3),
+      0 3px 8px -2px var(--color-black-a6),
+      0 4px 12px -4px var(--color-black-a7);
+  
+    --shadow-5:
+      0 0 0 1px var(--color-gray-a6),
+      0 8px 40px var(--color-black-a3),
+      0 12px 32px -16px var(--color-black-a5);
+  
+    --shadow-6:
+      0 0 0 1px var(--color-gray-a6),
+      0 12px 60px var(--color-black-a5),
+      0 12px 32px -16px var(--color-black-a7);
+  
+    --shadow-7:
+      0 0 0 1px var(--color-gray-a6),
+      0 12px 60px var(--color-black-a4),
+      0 16px 64px var(--color-black-a6),
+      0 16px 36px -20px var(--color-black-a11);
+
+  }
+
+}
+
+[data-shadow] {
+  --shadow-theme: var(--shadow-0);
+}
+
+[data-shadow='0'] {
+  --shadow-theme: var(--shadow-0);
+}
+
+[data-shadow='1'] {
+  --shadow-theme: var(--shadow-1);
+}
+
+[data-shadow='2'] {
+  --shadow-theme: var(--shadow-2);
+}
+
+[data-shadow='3'] {
+  --shadow-theme: var(--shadow-3);
+}
+
+[data-shadow='4'] {
+  --shadow-theme: var(--shadow-4);
+}
+
+[data-shadow='5'] {
+  --shadow-theme: var(--shadow-5);
+}
+
+[data-shadow='6'] {
+  --shadow-theme: var(--shadow-6);
+}
+
+[data-shadow='7'] {
+  --shadow-theme: var(--shadow-6);
+}

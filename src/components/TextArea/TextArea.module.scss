@@ -16,6 +16,8 @@
   transition: border 0.3s ease;
   margin-bottom: 20px;
 
+  box-shadow: var(--shadow-theme);
+
   &--xlarge {
     min-height: 64px;
   }

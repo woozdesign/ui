@@ -10,7 +10,7 @@ import { ActionProps, ContentProps, ModalContextProps, ModalProps } from './Moda
 const ModalContext = React.createContext<ModalContextProps | undefined>(undefined);
 
 const Root: FC<ModalProps> = (props) => {
-  const { className, style, children, open = false, onClose, onCancel, onConfirm, variant = 'default' } = props;
+  const { className, style, children, open = false, onClose, onCancel, onConfirm, variant = 'default', shadow, radius } = props;
 
   const [isOpen, setIsOpen] = useState(open);
   const [isRendered, setIsRendered] = useState(open);
@@ -71,14 +71,18 @@ const Root: FC<ModalProps> = (props) => {
           ReactDom.createPortal(
             <>
               <div className={overlayClasses} onClick={handleOverlayClick}>
-                <div className={modalClasses}>{React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}</div>
+                <div data-radius={radius} data-shadow={shadow} className={modalClasses}>
+                  {React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}
+                </div>
               </div>
             </>,
             targetElement,
           )
         ) : (
           <div className={overlayClasses} onClick={handleOverlayClick}>
-            <div className={modalClasses}>{React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}</div>
+            <div data-radius={radius} data-shadow={shadow} className={modalClasses}>
+              {React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}
+            </div>
           </div>
         ))}
     </ModalContext.Provider>

@@ -6,8 +6,8 @@
   color: var(--color-gray-12);
   z-index: 1;
   border-radius: var(--radius-4);
-  box-shadow: 0 0 0 1px var(--color-gray-a6);
-  // 0 12px 32px -16px var(--color-black-a12);
+
+  box-shadow: var(--shadow-theme);
   margin-top: 5px;
   min-width: 200px;
 }
@@ -60,9 +60,9 @@
   position: absolute;
   left: calc(100% + var(--space-2));
   top: calc(var(--space-1) * -1);
+  box-shadow: var(--shadow-theme);
   background-color: var(--color-gray-1);
   z-index: 1;
   border-radius: var(--radius-4);
-  box-shadow: 0 0 0 1px var(--color-gray-a6);
   min-width: 200px;
 }

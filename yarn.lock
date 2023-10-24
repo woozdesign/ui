@@ -3686,6 +3686,13 @@
   dependencies:
     sass "^1.67.0"
 
+"@woozdesign/colors@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@woozdesign/colors/-/colors-1.1.0.tgz#535992509e599df8939f785497cacf39199cbc19"
+  integrity sha512-CQqR3vq/s5pJ5v2qRTVyKPi3VL2IG2mNM7LTA/xF3+W5ehIGsEkvHNnOf1c/SwnYIQ769zg9G6HL1jC7N3B/ig==
+  dependencies:
+    sass "^1.67.0"
+
 "@woozdesign/icons@^1.0.10":
   version "1.0.10"
   resolved "https://registry.yarnpkg.com/@woozdesign/icons/-/icons-1.0.10.tgz#82af1a8f106df6baffe4a2ac6e1895ac08fe7fe5"

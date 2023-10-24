@@ -9,7 +9,7 @@ import { extractMarginProps, withMarginProps } from '@/utils';
 
 const Slider: FC<SliderProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { defaultValue, radius, color, reverse = false, orientation = 'horizontal', trackSize = 4, onPointerDown, onChange, onPointerUp } = otherMarginProps;
+  const { defaultValue, radius, shadow, color, reverse = false, orientation = 'horizontal', trackSize = 4, onPointerDown, onChange, onPointerUp } = otherMarginProps;
   let { thumbSize = 16 } = otherMarginProps;
 
   const classes = classNames(styles.slider, styles[`slider--${orientation}`], withMarginProps(marginProps));
@@ -77,6 +77,7 @@ const Slider: FC<SliderProps> = (props) => {
       className={classes}
       style={orientation === 'vertical' ? { width: `${trackSize}px`, height: '100%' } : { height: `${trackSize}px`, width: '100%' }}
       data-accent-color={color}
+      data-shadow={shadow}
       data-radius={radius}
       ref={sliderRef}
     >

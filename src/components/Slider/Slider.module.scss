@@ -34,7 +34,7 @@
     background-color: var(--color-accent-9-contrast);
 
     border-radius: max(var(--radius-3), var(--radius-full));
-    box-shadow: 0 0 0 1px var(--color-gray-a5);
+    box-shadow: var(--shadow-theme);
     transform: translate(-50%, -50%);
     cursor: grab;
   }
