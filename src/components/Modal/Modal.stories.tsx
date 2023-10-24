@@ -53,8 +53,14 @@ const NestedTemplate: Story = () => {
           <Modal.Root variant={'confirm'} open={isOpen2} onClose={toggleOutside2} onConfirm={() => console.log('Modal 2 Confirmed')}>
             <Modal.Content title={'Nested Modal'} subtitle={'This is a nested modal'}>
               <Typography.Text>This is the content of the nested modal</Typography.Text>
+              <Modal.Action variant={'confirm'}>
+                <Button>close</Button>
+              </Modal.Action>
             </Modal.Content>
           </Modal.Root>
+          <Modal.Action>
+            <Button>close</Button>
+          </Modal.Action>
         </Modal.Content>
       </Modal.Root>
     </ThemeProvider>

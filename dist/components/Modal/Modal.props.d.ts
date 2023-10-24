@@ -17,3 +17,6 @@ export interface ContentProps extends BasePropWithChildren {
     confirmText?: string;
     cancelText?: string;
 }
+export interface ActionProps extends BasePropWithChildren {
+    variant?: 'confirm' | 'close';
+}

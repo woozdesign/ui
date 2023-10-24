@@ -13,7 +13,7 @@ const TextArea: FC<TextAreaProps> = (props) => {
     className,
     style,
     children,
-    variant = 'solid',
+    variant = 'outlined',
     size = 2,
     label,
     color,
