@@ -83,6 +83,6 @@ $ npm start
 
 ## 🤝 Contributing [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Read our [contributing guide] and let's build a better woozdesign together.
+Read our [contributing guide](./docs/git/CONTRIBUTING.md) and let's build a better woozdesign together.
 
 We welcome all contributions. Please read our [CONTRIBUTING.md](./docs/git/CONTRIBUTING.md) first. You can submit any ideas as [pull requests](https://github.com/woozlabs/woozdesign-ui/pulls) or as [GitHub issues](https://github.com/woozlabs/woozdesign-ui/issues). If you'd like to improve code, check out the [Development Instructions]() and have a good time! :)
