@@ -1,7 +1,7 @@
-import { ColorProp, HighContrastProp, RadiusProp, SizeProp, TextSizeProp } from '@/utils/helper/props';
+import { ColorProp, HighContrastProp, MarginProp, RadiusProp, SizeProp, TextSizeProp } from '@/utils/helper/props';
 import React from 'react';
 
-export interface TypographyProps extends TextSizeProp, HighContrastProp {
+export interface TypographyProps extends TextSizeProp, HighContrastProp, MarginProp {
   className?: string;
   children?: React.ReactNode;
   style?: React.CSSProperties;
