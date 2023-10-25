@@ -34,8 +34,6 @@
 }
 
 .drawer {
-  --drawer-header-height: calc(64px * var(--scaling));
-  --drawer-footer-height: calc(64px * var(--scaling));
   position: relative;
   max-width: 100%;
   height: 100%;
