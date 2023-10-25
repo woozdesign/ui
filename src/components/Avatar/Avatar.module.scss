@@ -21,27 +21,27 @@
 .wd-avatar {
   @include mixins.breakpoints {
     &-small {
-      width: var(--component-height-small);
-      height: var(--component-height-small);
-      font-size: var(--font-size-2);
-    }
-
-    &-medium {
       width: var(--component-height-medium);
       height: var(--component-height-medium);
       font-size: var(--font-size-3);
     }
 
-    &-large {
+    &-medium {
       width: var(--component-height-large);
       height: var(--component-height-large);
       font-size: var(--font-size-4);
     }
 
-    &-xlarge {
+    &-large {
       width: var(--component-height-xlarge);
       height: var(--component-height-xlarge);
-      font-size: var(--font-size-4);
+      font-size: var(--font-size-5);
+    }
+
+    &-xlarge {
+      width: var(--component-height-xxlarge);
+      height: var(--component-height-xxlarge);
+      font-size: var(--font-size-5);
     }
   }
 }
