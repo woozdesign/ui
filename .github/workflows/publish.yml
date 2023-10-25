@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: '20.x'
           registry-url: 'https://registry.npmjs.org/'
-          scope: '@woozlabs'
+          scope: '@woozdesign'
 
       - name: Install dependencies 🔧
         run: yarn install --frozen-lockfile
