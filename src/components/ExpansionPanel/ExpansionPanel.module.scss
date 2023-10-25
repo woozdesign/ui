@@ -52,53 +52,53 @@
     @include mixins.breakpoints {
       &-small {
         padding: var(--space-2) var(--space-4);
-        font-size: var(--font-size-3);
+        font-size: var(--font-size-2);
       }
       &-medium {
         padding: var(--space-3) var(--space-4);
-        font-size: var(--font-size-4);
+        font-size: var(--font-size-3);
       }
       &-large {
         padding: var(--space-4) var(--space-5);
-        font-size: var(--font-size-5);
+        font-size: var(--font-size-4);
       }
       &-xlarge {
         padding: var(--space-4) var(--space-5);
-        font-size: var(--font-size-5);
+        font-size: var(--font-size-4);
       }
     }
   }
   &-content {
     &-small {
       padding: var(--space-2) var(--space-4);
-      font-size: var(--font-size-3);
+      font-size: var(--font-size-2);
     }
     &-medium {
       padding: var(--space-3) var(--space-4);
-      font-size: var(--font-size-4);
+      font-size: var(--font-size-3);
     }
     &-large {
       padding: var(--space-4) var(--space-5);
-      font-size: var(--font-size-5);
+      font-size: var(--font-size-4);
     }
     &-xlarge {
       padding: var(--space-4) var(--space-5);
-      font-size: var(--font-size-5);
+      font-size: var(--font-size-4);
     }
   }
   &-item {
     @include mixins.breakpoints {
       &-small {
         padding: var(--space-2) var(--space-4);
-        font-size: var(--font-size-3);
+        font-size: var(--font-size-2);
       }
       &-medium {
         padding: var(--space-3) var(--space-4);
-        font-size: var(--font-size-4);
+        font-size: var(--font-size-3);
       }
       &-large {
         padding: var(--space-4) var(--space-5);
-        font-size: var(--font-size-5);
+        font-size: var(--font-size-4);
       }
       &-xlarge {
         padding: var(--space-4) var(--space-5);

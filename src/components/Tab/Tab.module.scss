@@ -50,24 +50,24 @@
       &-xlarge {
         height: var(--component-height-xlarge);
         border-radius: max(var(--radius-5), var(--radius-full));
-        font-size: var(--font-size-5);
+        font-size: var(--font-size-4);
         padding: var(--space-2) var(--space-4);
       }
       &-large {
         height: var(--component-height-large);
-        font-size: var(--font-size-5);
+        font-size: var(--font-size-4);
         padding: var(--space-1) var(--space-4);
         border-radius: max(var(--radius-4), var(--radius-full));
       }
       &-medium {
         height: var(--component-height-medium);
-        font-size: var(--font-size-4);
+        font-size: var(--font-size-3);
         padding: var(--space-1) var(--space-3);
         border-radius: max(var(--radius-3), var(--radius-full));
       }
       &-small {
         height: var(--component-height-small);
-        font-size: var(--font-size-3);
+        font-size: var(--font-size-2);
         border-radius: max(var(--radius-3), var(--radius-full));
         padding: var(--space-1) var(--space-2);
       }

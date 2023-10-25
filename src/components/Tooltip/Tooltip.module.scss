@@ -25,7 +25,7 @@
 
 // Default (Top)
 .tooltip[data-position='top'] .tooltiptext {
-  bottom: 120%;
+  bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
 
@@ -43,7 +43,7 @@
 
 // Bottom Tooltip
 .tooltip[data-position='bottom'] .tooltiptext {
-  top: 120%;
+  top: 125%;
   left: 50%;
   transform: translateX(-50%);
 
@@ -66,7 +66,7 @@
 // Left Tooltip
 .tooltip[data-position='left'] .tooltiptext {
   top: 50%;
-  right: 120%;
+  right: 125%;
   transform: translateY(-50%);
 
   &::after {
@@ -84,7 +84,7 @@
 // Right Tooltip
 .tooltip[data-position='right'] .tooltiptext {
   top: 50%;
-  left: 120%;
+  left: 125%;
   transform: translateY(-50%);
 
   &::after {

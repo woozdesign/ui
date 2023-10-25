@@ -73,20 +73,20 @@
   &--label {
     @include mixins.breakpoints {
       &-xlarge {
-        font-size: var(--font-size-5);
-        padding: var(--space-0) var(--space-5);
-      }
-      &-large {
-        font-size: var(--font-size-5);
-        padding: var(--space-0) var(--space-5);
-      }
-      &-medium {
         font-size: var(--font-size-4);
         padding: var(--space-0) var(--space-4);
       }
-      &-small {
+      &-large {
+        font-size: var(--font-size-4);
+        padding: var(--space-0) var(--space-4);
+      }
+      &-medium {
         font-size: var(--font-size-3);
         padding: var(--space-0) var(--space-3);
+      }
+      &-small {
+        font-size: var(--font-size-2);
+        padding: var(--space-0) var(--space-2);
       }
     }
   }
