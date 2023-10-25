@@ -22,7 +22,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: var(--font-size-3);
-  height: 18px;
+  box-sizing: border-box;
+  height: var(--component-height-medium);
   justify-content: space-between;
   align-items: center;
   gap: var(--space-4);
@@ -41,7 +42,8 @@
   margin: var(--space-1);
   border-radius: var(--radius-4);
   padding: var(--space-2);
-  height: 18px;
+  box-sizing: border-box;
+  height: var(--component-height-medium);
   cursor: pointer;
   display: flex;
   justify-content: space-between;

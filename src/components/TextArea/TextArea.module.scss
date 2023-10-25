@@ -17,16 +17,16 @@
   box-shadow: var(--shadow-theme);
 
   &--xlarge {
-    min-height: 64px;
+    min-height: var(--component-height-xlarge);
   }
   &--large {
-    min-height: 48px;
+    min-height: var(--component-height-large);
   }
   &--medium {
-    min-height: 32px;
+    min-height: var(--component-height-medium);
   }
   &--small {
-    min-height: 28px;
+    min-height: var(--component-height-small);
   }
 
   resize: none;

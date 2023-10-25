@@ -24,6 +24,7 @@ const Button: FC<ButtonProps> = (props) => {
     href,
     className,
     style,
+    shadow,
     ...other
   } = marginOthers;
 
@@ -51,7 +52,7 @@ const Button: FC<ButtonProps> = (props) => {
 
   if (href) {
     return (
-      <a className={classes} data-radius={radius} data-accent-color={color} href={href} onClick={handleAnchorClick} {...other}>
+      <a className={classes} data-shadow={shadow} data-radius={radius} data-accent-color={color} href={href} onClick={handleAnchorClick} {...other}>
         {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
         {children}
         {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}
@@ -60,7 +61,7 @@ const Button: FC<ButtonProps> = (props) => {
   }
 
   return (
-    <button className={classes} data-radius={radius} data-accent-color={color} disabled={disabled} onClick={handleButtonClick} type={buttonType} {...other}>
+    <button className={classes} data-shadow={shadow} data-radius={radius} data-accent-color={color} disabled={disabled} onClick={handleButtonClick} type={buttonType} {...other}>
       {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
       {children}
       {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}

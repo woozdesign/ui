@@ -7,8 +7,8 @@
 }
 
 .progressCircular {
-  width: 64px;
-  height: 64px;
+  width: var(--component-height-xlarge);
+  height: var(--component-height-xlarge);
   position: relative;
   stroke: var(--color-accent-9);
   border-radius: 50%;

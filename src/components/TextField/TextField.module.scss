@@ -1,15 +1,17 @@
 @use '@/styles/lib/mixins.scss';
 
 .wrapper {
-  width: 100%;
   margin-bottom: var(--space-2);
+  &.block {
+    width: 100%;
+    max-width: 100%;
+  }
 }
 .group {
   display: flex;
   align-items: center;
   position: relative;
   max-width: 190px;
-  border: 1px solid transparent;
   border-radius: var(--radius-4);
   &.block {
     width: 100%;
@@ -43,6 +45,7 @@
     &:hover {
       outline: none;
       border-color: var(--color-accent-9);
+
       // background-color: var(--color-surface-accent);
     }
   }
@@ -52,6 +55,9 @@
       outline: none;
       border-color: var(--color-accent-9);
       background-color: var(--color-surface-accent);
+      &::placeholder {
+        color: var(--color-accent-6);
+      }
     }
   }
   &.hasPrependIcon {
@@ -60,7 +66,7 @@
   }
 
   &::placeholder {
-    color: var(--color-gray-8);
+    color: var(--color-gray-6);
   }
 
   &:valid {
@@ -83,7 +89,7 @@
 
 .iconPrepend {
   position: absolute;
-  left: var(--space-4);
+  left: var(--space-3);
   color: var(--color-accent-9);
   display: flex;
   align-items: center;
@@ -93,7 +99,7 @@
 
 .iconAppend {
   position: absolute;
-  right: var(--space-4);
+  right: var(--space-3);
   color: var(--color-accent-9);
   display: flex;
   align-items: center;
@@ -122,7 +128,7 @@
     @include mixins.breakpoints {
       &-xlarge {
         .input {
-          height: 48px;
+          height: var(--component-height-xlarge);
           padding: var(--space-1) var(--space-4);
 
           &::placeholder {
@@ -132,7 +138,7 @@
 
       &-large {
         .input {
-          height: 40px;
+          height: var(--component-height-large);
           padding: var(--space-1) var(--space-4);
           &::placeholder {
           }
@@ -141,7 +147,7 @@
 
       &-medium {
         .input {
-          height: 32px;
+          height: var(--component-height-medium);
           padding: var(--space-1) var(--space-3);
           &::placeholder {
           }
@@ -149,8 +155,8 @@
       }
       &-small {
         .input {
-          height: 24px;
-          padding: var(--space-1) var(--space-3);
+          height: var(--component-height-small);
+          padding: var(--space-1) var(--space-2);
           &::placeholder {
           }
         }

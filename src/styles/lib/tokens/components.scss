@@ -1,3 +1,8 @@
 .woozdesign {
   --appbar-height: calc(64px * var(--scaling));
+
+  --component-height-small: calc(28px * var(--scaling));
+  --component-height-medium: calc(32px * var(--scaling));
+  --component-height-large: calc(40px * var(--scaling));
+  --component-height-xlarge: calc(48px * var(--scaling));
 }

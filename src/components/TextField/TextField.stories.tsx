@@ -5,6 +5,8 @@ import '@/styles/core.scss';
 
 import { ThemeProvider } from '../Theme/Theme';
 import { Icon } from '@woozdesign/icons';
+import Button from '../Button';
+import Flex from '../Flex';
 
 export default {
   title: 'Components/TextField',
@@ -18,7 +20,10 @@ export default {
 
 const Template: Story<TextFieldProps> = (args) => (
   <ThemeProvider>
-    <TextField {...args} />
+    <Flex>
+      <TextField {...args} />
+      <Button>Button</Button>
+    </Flex>
   </ThemeProvider>
 );
 
