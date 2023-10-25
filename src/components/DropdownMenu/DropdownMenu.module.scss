@@ -21,7 +21,7 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: var(--font-size-4);
+  font-size: var(--font-size-3);
   box-sizing: border-box;
   height: var(--component-height-medium);
   justify-content: space-between;
@@ -47,7 +47,7 @@
   cursor: pointer;
   display: flex;
   justify-content: space-between;
-  font-size: var(--font-size-4);
+  font-size: var(--font-size-3);
   align-items: center;
   transition: background-color 0.3s ease;
   color: var(--color-gray-12);

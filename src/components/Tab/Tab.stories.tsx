@@ -18,13 +18,13 @@ const Template: Story<StoryProps> = (args) => (
   <ThemeProvider>
     <Tab.Root defaultValue="account" {...args}>
       <Tab.List>
-        <Tab.Trigger color={'gray'} highContrast={args.triggerHighContrast} size={'small'} value="account">
+        <Tab.Trigger color={'gray'} highContrast={args.triggerHighContrast} size={'medium'} value="account">
           Account
         </Tab.Trigger>
-        <Tab.Trigger highContrast={args.triggerHighContrast} size={'small'} value="documents">
+        <Tab.Trigger highContrast={args.triggerHighContrast} size={'medium'} value="documents">
           Documents
         </Tab.Trigger>
-        <Tab.Trigger highContrast={args.triggerHighContrast} size={'small'} value="settings">
+        <Tab.Trigger highContrast={args.triggerHighContrast} size={'medium'} value="settings">
           Settings
         </Tab.Trigger>
       </Tab.List>
