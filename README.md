@@ -1,4 +1,4 @@
-![header](https://capsule-render.vercel.app/api?type=rect&color=000&fontColor=fff&height=148&section=header&text=Wooz%20Design&fontSize=52)
+[![WoozDesign UI](UI.png)](https://woozdesign.com)
 
 ## 🖥 Environment Support
 
