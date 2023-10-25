@@ -34,7 +34,7 @@ const ExpansionPanel: React.FC<ExpansionPanelProps> = (props) => {
         const headerClasses = classNames(styles.header, withBreakpoints(size, 'wd-expansion-header', styles));
 
         const contentWrapperClasses = classNames(styles.contentWrapper, { [styles.expanded]: isExpanded });
-        const contentClasses = classNames(styles.content, { [styles.expanded]: isExpanded, [styles.outlined]: outlined });
+        const contentClasses = classNames(styles.content, { [styles.expanded]: isExpanded, [styles.outlined]: outlined }, withBreakpoints(size, 'wd-expansion-content', styles));
 
         return (
           <div key={index} className={itemClasses}>
