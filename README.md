@@ -1,4 +1,4 @@
-[![Logo](UI.png)](https://woozdesign.com)
+[![WoozDesign UI](UI.png)](https://woozdesign.com)
 
 ## 🖥 Environment Support
 
