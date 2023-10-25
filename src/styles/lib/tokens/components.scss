@@ -1,5 +1,7 @@
 .woozdesign {
   --appbar-height: calc(48px * var(--scaling));
+  --drawer-header-height: calc(48px * var(--scaling));
+  --drawer-footer-height: calc(48px * var(--scaling));
 
   --component-height-small: calc(28px * var(--scaling));
   --component-height-medium: calc(32px * var(--scaling));
