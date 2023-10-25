@@ -100,8 +100,6 @@
 .wd-card {
   @include mixins.breakpoints {
     &-small {
-      // font-size: var(--font-size-5); // Adjust as necessary
-
       .heading {
         padding: var(--space-2);
       }

@@ -37,10 +37,8 @@
   background-color: var(--color-accent-a2);
   overflow: hidden;
   color: var(--color-accent-12);
-  font-size: var(--font-size-4);
   margin-top: -100%;
   transition: margin-top 0.3s ease-in-out;
-  padding: var(--space-4);
   &.expanded {
     margin-top: 0;
     &.outlined {
@@ -66,8 +64,26 @@
       }
       &-xlarge {
         padding: var(--space-4) var(--space-5);
-        font-size: var(--font-size-6);
+        font-size: var(--font-size-5);
       }
+    }
+  }
+  &-content {
+    &-small {
+      padding: var(--space-2) var(--space-4);
+      font-size: var(--font-size-3);
+    }
+    &-medium {
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--font-size-4);
+    }
+    &-large {
+      padding: var(--space-4) var(--space-5);
+      font-size: var(--font-size-5);
+    }
+    &-xlarge {
+      padding: var(--space-4) var(--space-5);
+      font-size: var(--font-size-5);
     }
   }
   &-item {
@@ -86,7 +102,7 @@
       }
       &-xlarge {
         padding: var(--space-4) var(--space-5);
-        font-size: var(--font-size-6);
+        font-size: var(--font-size-5);
       }
     }
   }

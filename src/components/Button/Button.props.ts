@@ -1,8 +1,8 @@
-import { BasePropWithChildren, ColorProp, HighContrastProp, MarginProp, RadiusProp, SizeProp } from '@/utils';
+import { BasePropWithChildren, ColorProp, HighContrastProp, MarginProp, RadiusProp, ShadowProp, SizeProp } from '@/utils';
 
 export type ButtonClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => void;
 export type AnchorClickHandler = (event: React.MouseEvent<HTMLAnchorElement>) => void;
-export interface ButtonBaseProp extends BasePropWithChildren, MarginProp, ColorProp, SizeProp, RadiusProp, HighContrastProp {
+export interface ButtonBaseProp extends BasePropWithChildren, MarginProp, ColorProp, SizeProp, RadiusProp, HighContrastProp, ShadowProp {
   variant?: 'solid' | 'outlined' | 'ghost' | 'transparent' | 'translucent';
   buttonType?: 'button' | 'reset' | 'submit';
   justify?: 'start' | 'center' | 'end';

@@ -29,7 +29,7 @@ const TextField: FC<TextFieldProps> = (props) => {
     ...others
   } = otherMarginProps;
 
-  const wrapperClasses = classNames(styles.wrapper, withBreakpoints(size, 'wtd-textfield--wrapper', styles), withMarginProps(marginProps));
+  const wrapperClasses = classNames(styles.wrapper, { [styles.block]: block }, withBreakpoints(size, 'wtd-textfield--wrapper', styles), withMarginProps(marginProps));
   const groupClasses = classNames(styles.group, { [styles.block]: block }, withBreakpoints(size, 'wd-textfield--group', styles));
   const inputClasses = classNames(styles.input, iconPrepend && styles.hasPrependIcon);
 
