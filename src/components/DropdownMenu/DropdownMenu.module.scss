@@ -15,20 +15,20 @@
 }
 
 .content[data-placement='bottom'] {
-  top: 120%;
+  top: calc(100% + 8px);
 }
 
 .content[data-placement='top'] {
-  bottom: 120%;
+  bottom: calc(100% + 8px);
 }
 
 .content[data-placement='left'] {
-  right: 120%;
+  right: calc(100% + 8px);
   top: 0;
 }
 .content[data-placement='right'] {
   top: 0;
-  left: 120%;
+  left: calc(100% + 8px);
 }
 
 .item {
