@@ -55,7 +55,7 @@ const MenuItemComponent: FC<MenuItemProps> = (props) => {
           className={itemClasses}
         >
           <span className={styles.iconPrepend}>{iconPrepend}</span>
-          {label}
+          <span className={styles.label}>{label}</span>
           <span className={styles.iconAppend}>{iconAppend}</span>
         </a>
       </li>

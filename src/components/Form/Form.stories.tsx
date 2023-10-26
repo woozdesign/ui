@@ -9,6 +9,7 @@ import { ThemeProvider } from '../Theme/Theme';
 import TextArea from '../TextArea/TextArea';
 import Checkbox from '../Checkbox/Checkbox';
 import Switch from '../Switch';
+import Typography from '../Typography';
 
 export default {
   title: 'Components/Form',

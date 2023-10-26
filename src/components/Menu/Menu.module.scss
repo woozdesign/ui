@@ -33,6 +33,12 @@
       align-items: center;
       justify-content: center;
     }
+
+    > .label {
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
     &:hover {
       background-color: var(--color-accent-5);
     }
