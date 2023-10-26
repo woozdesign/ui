@@ -18,7 +18,7 @@ const Template: Story = (args) => (
         <DropdownMenu.Trigger shortcut={['Ctrl', 'O']}>
           <Button>Trigger</Button>
         </DropdownMenu.Trigger>
-        <DropdownMenu.Content placement="right">
+        <DropdownMenu.Content placement="top">
           <DropdownMenu.Sub>
             <DropdownMenu.SubTrigger>Trigger</DropdownMenu.SubTrigger>
             <DropdownMenu.SubContent>
