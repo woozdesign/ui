@@ -79,11 +79,11 @@ const Trigger: FC<TriggerProps> = (props) => {
 };
 
 const Content: FC<ContentProps> = (props) => {
-  const { className, style, children, isOpen, shadow = '4', position = 'bottom' } = props;
+  const { className, style, children, isOpen, shadow = '4', placement = 'bottom' } = props;
   if (!isOpen) return null;
 
   return (
-    <div data-position={position} data-shadow={shadow} className={styles.content}>
+    <div data-placement={placement} data-shadow={shadow} className={styles.content}>
       {children}
     </div>
   );

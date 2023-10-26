@@ -14,19 +14,19 @@
   min-width: 200px;
 }
 
-.content[data-position='bottom'] {
+.content[data-placement='bottom'] {
   top: 120%;
 }
 
-.content[data-position='top'] {
+.content[data-placement='top'] {
   bottom: 120%;
 }
 
-.content[data-position='left'] {
+.content[data-placement='left'] {
   right: 120%;
   top: 0;
 }
-.content[data-position='right'] {
+.content[data-placement='right'] {
   top: 0;
   left: 120%;
 }

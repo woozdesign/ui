@@ -3,5 +3,5 @@ import React from 'react';
 
 export interface TooltipProps extends BasePropWithChildren {
   content: string;
-  position?: 'top' | 'bottom' | 'left' | 'right';
+  placement?: 'top' | 'bottom' | 'left' | 'right';
 }

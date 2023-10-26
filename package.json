@@ -19,7 +19,7 @@
   "license": "MIT",
   "dependencies": {
     "@woozdesign/colors": "^1.1.0",
-    "@woozdesign/icons": "^1.0.10",
+    "@woozdesign/icons": "^1.1.0",
     "node-sass": "^9.0.0",
     "sass": "^1.67.0"
   },

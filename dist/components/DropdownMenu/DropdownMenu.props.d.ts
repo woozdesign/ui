@@ -13,7 +13,7 @@ export interface TriggerProps extends BasePropWithChildren {
 }
 export interface ContentProps extends BasePropWithChildren, ShadowProp {
     isOpen: boolean;
-    position?: 'top' | 'bottom' | 'left' | 'right';
+    placement?: 'top' | 'bottom' | 'left' | 'right';
 }
 export interface ItemProps extends BasePropWithChildren {
     shortcut?: WoozCommandCode[];
