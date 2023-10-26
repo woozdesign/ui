@@ -20,7 +20,7 @@ export const Default = Template.bind({});
 Default.args = {
   items: [
     { label: 'Only Label' },
-    { label: 'Item 1', value: 'item1', onClick: () => console.log('Item 1 clicked') },
+    { label: 'Item 1Item 1Item 1Item 1Item 1Item 1', value: 'item1', onClick: () => console.log('Item 1 clicked') },
     { label: 'Item 2', value: 'item2', onClick: () => console.log('Item 2 clicked') },
     { label: 'Item 3', value: 'item3', onClick: () => console.log('Clicked') },
     { label: 'Only Label2' },
