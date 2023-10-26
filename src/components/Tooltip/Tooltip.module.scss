@@ -24,7 +24,7 @@
 }
 
 // Default (Top)
-.tooltip[data-position='top'] .tooltiptext {
+.tooltip[data-placement='top'] .tooltiptext {
   bottom: 125%;
   left: 50%;
   transform: translateX(-50%);
@@ -42,7 +42,7 @@
 }
 
 // Bottom Tooltip
-.tooltip[data-position='bottom'] .tooltiptext {
+.tooltip[data-placement='bottom'] .tooltiptext {
   top: 125%;
   left: 50%;
   transform: translateX(-50%);
@@ -64,7 +64,7 @@
 }
 
 // Left Tooltip
-.tooltip[data-position='left'] .tooltiptext {
+.tooltip[data-placement='left'] .tooltiptext {
   top: 50%;
   right: 125%;
   transform: translateY(-50%);
@@ -82,7 +82,7 @@
 }
 
 // Right Tooltip
-.tooltip[data-position='right'] .tooltiptext {
+.tooltip[data-placement='right'] .tooltiptext {
   top: 50%;
   left: 125%;
   transform: translateY(-50%);

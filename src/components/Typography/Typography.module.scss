@@ -76,13 +76,22 @@ $title-margin: 1rem 0;
   }
 }
 
-@mixin codeStyles($fontSize) {
+@mixin codeStyles($fontSize, $index) {
   font-weight: bold;
   font-size: $fontSize;
   color: var(--color-accent-11);
   background-color: var(--color-accent-4);
-  padding: var(--space-1) var(--space-2);
+
+  @if ($index < 4) {
+    padding: var(--space-1);
+  } @else if ($index >= 4 and $index < 8) {
+    padding: var(--space-1) var(--space-2);
+  } @else {
+    padding: var(--space-1) var(--space-4);
+  }
+
   border-radius: max(var(--radius-3), var(--radius-full));
+
   &.highContrast {
     color: var(--color-accent-12);
     background-color: var(--color-accent-4);
@@ -199,7 +208,7 @@ $title-margin: 1rem 0;
         @include textStyle(var(--font-size-#{$i}));
       }
       &--code-#{$i} {
-        @include codeStyles(var(--font-size-#{$i}));
+        @include codeStyles(var(--font-size-#{$i}), $i);
       }
       &--link-#{$i} {
         @include linkStyles(var(--font-size-#{$i}));
