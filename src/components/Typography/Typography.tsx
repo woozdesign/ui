@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React, { FC } from 'react';
 import styles from './Typography.module.scss';
 import { CodeProps, GradientProps, HeaderProps, LinkProps, StrongProps, TextProps } from './Typography.props';
+import { DEFAULT_FONT_SIZE } from '@/utils/helper/defaultValues';
 
 const Header: FC<HeaderProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
@@ -29,7 +30,7 @@ const Header: FC<HeaderProps> = (props) => {
 
 const Text: FC<TextProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { children, size = '4', color = 'gray', align = 'start', weight = 'normal', variant = 'span', highContrast = true, className, ...other } = otherMarginProps;
+  const { children, size = DEFAULT_FONT_SIZE, color = 'gray', align = 'start', weight = 'normal', variant = 'span', highContrast = true, className, ...other } = otherMarginProps;
 
   const classes = classNames(
     styles[`text--${weight}`],
@@ -56,7 +57,7 @@ const Strong: FC<StrongProps> = (props) => {
 
 const Link: FC<LinkProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { children, href, color, size = '4', highContrast = false, onClick, className, target, ...other } = otherMarginProps;
+  const { children, href, color, size = DEFAULT_FONT_SIZE, highContrast = false, onClick, className, target, ...other } = otherMarginProps;
 
   const classes = classNames({ [styles[`highContrast`]]: highContrast }, className, withMarginProps(marginProps), withBreakpoints(size, 'wd-typography--link', styles));
 
@@ -69,7 +70,7 @@ const Link: FC<LinkProps> = (props) => {
 
 const Code: FC<CodeProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { children, color, size = '4', radius, highContrast = false, className, ...other } = otherMarginProps;
+  const { children, color, size = DEFAULT_FONT_SIZE, radius, highContrast = false, className, ...other } = otherMarginProps;
 
   const classes = classNames({ [styles[`highContrast`]]: highContrast }, className, withMarginProps(marginProps), withBreakpoints(size, 'wd-typography--code', styles));
 
@@ -82,7 +83,7 @@ const Code: FC<CodeProps> = (props) => {
 
 const Gradient: FC<GradientProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { children, gradientColors = ['#915eff', '#9eb2ff'], style, size = '4', weight = 'normal', className, ...other } = otherMarginProps;
+  const { children, gradientColors = ['#915eff', '#9eb2ff'], style, size = DEFAULT_FONT_SIZE, weight = 'normal', className, ...other } = otherMarginProps;
 
   const classes = classNames(styles[`gradient--${weight}`], className, withMarginProps(marginProps), withBreakpoints(size, 'wd-typography--gradient', styles));
 

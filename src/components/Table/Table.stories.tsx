@@ -48,5 +48,5 @@ const Template: Story = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  size: 'small',
+  size: 'medium',
 };

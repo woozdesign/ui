@@ -31,7 +31,7 @@ const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void) => {
 const DropdownMenuContext = React.createContext<DropdownMenuContextProps | undefined>(undefined);
 
 const Root: FC<DropdownMenuProps> = (props) => {
-  const { className, style, children, shadow = 4 } = props;
+  const { className, style, children } = props;
   const classes = classNames(styles.root, className);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -45,7 +45,7 @@ const Root: FC<DropdownMenuProps> = (props) => {
 
   return (
     <ShortcutProvider>
-      <div data-shadow={shadow} ref={rootRef} className={classes}>
+      <div ref={rootRef} className={classes}>
         <DropdownMenuContext.Provider value={{ onToggle: handleToggle }}>
           {React.Children.map(children, (child) => {
             // Check if child is a valid React element
@@ -79,10 +79,14 @@ const Trigger: FC<TriggerProps> = (props) => {
 };
 
 const Content: FC<ContentProps> = (props) => {
-  const { className, style, children, isOpen } = props;
+  const { className, style, children, isOpen, shadow = '4', position = 'bottom' } = props;
   if (!isOpen) return null;
 
-  return <div className={styles.content}>{children}</div>;
+  return (
+    <div data-position={position} data-shadow={shadow} className={styles.content}>
+      {children}
+    </div>
+  );
 };
 
 const Item: FC<ItemProps> = ({ children, shortcut, color, disabled, onClick }) => {
@@ -152,7 +156,6 @@ const SubTrigger: FC<SubTriggerProps> = (props) => {
   return (
     <div className={classes}>
       {children}
-
       <Icon type={'ChevronRight'} />
     </div>
   );
@@ -160,7 +163,7 @@ const SubTrigger: FC<SubTriggerProps> = (props) => {
 const SubContent: FC<SubContentProps> = (props) => {
   const { className, style, children, isSubOpen } = props;
 
-  const classes = classNames(styles.subContent, className);
+  const classes = classNames(styles.subContent, className, { [styles['open']]: isSubOpen });
 
   if (!isSubOpen) return null;
 

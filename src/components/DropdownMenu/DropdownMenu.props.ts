@@ -8,14 +8,15 @@ export interface ChildProps {
   isOpen?: boolean;
 }
 
-export interface DropdownMenuProps extends ChildProps, BasePropWithChildren, ShadowProp {}
+export interface DropdownMenuProps extends ChildProps, BasePropWithChildren {}
 
 export interface TriggerProps extends BasePropWithChildren {
   shortcut?: WoozCommandCode[];
 }
 
-export interface ContentProps extends BasePropWithChildren {
+export interface ContentProps extends BasePropWithChildren, ShadowProp {
   isOpen: boolean;
+  position?: 'top' | 'bottom' | 'left' | 'right';
 }
 
 export interface ItemProps extends BasePropWithChildren {

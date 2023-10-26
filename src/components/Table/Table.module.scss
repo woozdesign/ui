@@ -50,13 +50,13 @@
 .wd-table {
   @include mixins.breakpoints {
     &-small {
-      font-size: var(--font-size-3);
+      font-size: var(--font-size-2);
     }
     &-medium {
-      font-size: var(--font-size-4);
+      font-size: var(--font-size-3);
     }
     &-large {
-      font-size: var(--font-size-5);
+      font-size: var(--font-size-4);
     }
     &-xlarge {
       font-size: var(--font-size-5);

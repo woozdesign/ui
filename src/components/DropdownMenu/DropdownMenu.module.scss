@@ -1,5 +1,8 @@
 // Styling for the dropdown content
 
+.root {
+  position: relative;
+}
 .content {
   position: absolute;
   background-color: var(--color-gray-1);
@@ -8,8 +11,24 @@
   border-radius: var(--radius-4);
   border: 1px solid var(--color-gray-a6);
   box-shadow: var(--shadow-theme);
-  margin-top: 5px;
   min-width: 200px;
+}
+
+.content[data-position='bottom'] {
+  top: 120%;
+}
+
+.content[data-position='top'] {
+  bottom: 120%;
+}
+
+.content[data-position='left'] {
+  right: 120%;
+  top: 0;
+}
+.content[data-position='right'] {
+  top: 0;
+  left: 120%;
 }
 
 .item {
@@ -68,4 +87,9 @@
   z-index: 1;
   border-radius: var(--radius-4);
   min-width: 200px;
+
+  opacity: 0;
+  &.open {
+    opacity: 1;
+  }
 }
