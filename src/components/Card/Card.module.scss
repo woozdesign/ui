@@ -10,7 +10,7 @@
 
   box-shadow: var(--shadow-theme);
 
-  border-radius: max(var(--radius-4), var(--radius-full));
+  border-radius: max(var(--radius-4), var(--radius-4));
 
   &--start {
     text-align: start;
