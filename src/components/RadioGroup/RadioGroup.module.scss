@@ -1,0 +1,15 @@
+.radioGroup {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .radioLabel {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem 0;
+  
+    input[type="radio"] {
+      margin-right: 0.5rem;
+    }
+  }
+  

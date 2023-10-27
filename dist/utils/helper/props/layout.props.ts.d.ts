@@ -17,7 +17,7 @@ export interface LayoutProp {
     grow?: Responsive<'0' | '1'>;
 }
 export declare const extractLayoutProps: <T extends LayoutProp>(props: T) => {
-    position: Responsive<"fixed" | "absolute" | "static" | "relative" | "sticky"> | undefined;
+    position: Responsive<"fixed" | "static" | "relative" | "absolute" | "sticky"> | undefined;
     width: Responsive<"auto" | "max-content" | "min-content" | SpaceValue | "100%"> | undefined;
     maxWidth: Responsive<"auto" | "max-content" | "min-content" | SpaceValue | "100%"> | undefined;
     minWidth: Responsive<"auto" | "max-content" | "min-content" | SpaceValue | "100%"> | undefined;
@@ -30,6 +30,6 @@ export declare const extractLayoutProps: <T extends LayoutProp>(props: T) => {
     right: Responsive<"auto" | "0" | "100%" | "50%"> | undefined;
     shrink: Responsive<"0" | "1"> | undefined;
     grow: Responsive<"0" | "1"> | undefined;
-    others: Omit<T, "top" | "height" | "left" | "right" | "bottom" | "width" | "position" | "maxWidth" | "minWidth" | "maxHeight" | "minHeight" | "shrink" | "grow">;
+    others: Omit<T, "top" | "height" | "left" | "right" | "bottom" | "position" | "width" | "maxWidth" | "minWidth" | "maxHeight" | "minHeight" | "shrink" | "grow">;
 };
 export declare const withLayoutProps: (props: LayoutProp) => string;

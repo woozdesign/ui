@@ -112,7 +112,7 @@ Nov 2023
 | Component         | Supported | Notes |
 | ----------------- | --------- | ----- |
 | Alert             | 🚧        |       |
-| Callout           | 🚧        |       |
+| Callout           | ✅        |       |
 | Banner            | 🚧        |       |
 | Hover             | 🚧        |       |
 | Modal             | ✅        |       |
