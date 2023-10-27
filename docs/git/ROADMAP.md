@@ -61,13 +61,12 @@ Nov 2023
 
 | Component    | Supported | Notes |
 | ------------ | --------- | ----- |
-| Autocomplete | 🚧        |       |
 | Checkbox     | ✅        |       |
 | Combobox     | 🚧        |       |
 | File Input   | 🚧        |       |
 | Form         | ✅        |       |
 | Custom Input | 🚧        |       |
-| Radio Button | 🚧        |       |
+| Radio Button | ✅        |       |
 | Select       | 🚧        |       |
 | Slider       | ✅        |       |
 | Switch       | ✅        |       |
