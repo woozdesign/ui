@@ -67,8 +67,7 @@
 .wd-checkbox {
   @include mixins.breakpoints {
     &-small {
-      height: 16px;
-
+      height: var(--component-input-height-small);
       .label {
         font-size: var(--font-size-2);
         padding-left: var(--space-2);
@@ -79,8 +78,7 @@
     }
 
     &-medium {
-      height: 24px;
-
+      height: var(--component-input-height-medium);
       .label {
         font-size: var(--font-size-3);
         padding-left: var(--space-2);
@@ -91,8 +89,7 @@
     }
 
     &-large {
-      height: 32px;
-
+      height: var(--component-input-height-large);
       .label {
         font-size: var(--font-size-4);
         padding-left: var(--space-2);
@@ -103,7 +100,7 @@
     }
 
     &-xlarge {
-      height: 36px;
+      height: var(--component-input-height-xlarge);
 
       .label {
         font-size: var(--font-size-4);
