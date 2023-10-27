@@ -1,19 +1,22 @@
 import React from 'react';
 import styles from './RadioGroup.module.scss';
+import { RadioGroupProps } from './RadioGroup.props';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
+import classNames from 'classnames';
 
-interface RadioOption {
-  value: string;
-  label: string;
-}
+const RadioGroup: React.FC<RadioGroupProps> = (props) => {
+  const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
+  const { className, style, name, options, defaultValue, onChange, variant = 'solid', color, radius, highContrast, size = 'medium' } = marginOtherProps;
 
-interface RadioGroupProps {
-  name: string;
-  options: RadioOption[];
-  defaultValue?: string;
-  onChange?: (value: string) => void;
-}
+  const classes = classNames(styles.radioGroup, className, withBreakpoints(size, 'wd-radioGroup', styles), withMarginProps(marginProps));
 
-const RadioGroup: React.FC<RadioGroupProps> = ({ name, options, defaultValue, onChange }) => {
+  const radioClasses = classNames(
+    styles.customRadio,
+    styles[`customRadio--${variant}`],
+    { [styles['highContrast']]: highContrast },
+    withBreakpoints(size, 'wd-radioGroup', styles),
+  );
+
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (onChange) {
       onChange(e.target.value);
@@ -21,10 +24,11 @@ const RadioGroup: React.FC<RadioGroupProps> = ({ name, options, defaultValue, on
   };
 
   return (
-    <div className={styles.radioGroup}>
+    <div className={classes} data-accent-color={color} data-radius={radius}>
       {options.map((option, index) => (
         <label key={index} className={styles.radioLabel}>
-          <input type="radio" name={name} value={option.value} defaultChecked={defaultValue === option.value} onChange={handleOnChange} />
+          <input className={styles.hidden} type="radio" name={name} value={option.value} defaultChecked={defaultValue === option.value} onChange={handleOnChange} />
+          <button role={'radio'} className={radioClasses}></button>
           {option.label}
         </label>
       ))}

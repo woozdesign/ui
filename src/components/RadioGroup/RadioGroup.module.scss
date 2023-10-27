@@ -1,15 +1,126 @@
+@use '@/styles/lib/functions';
+@use '@/styles/lib/mixins.scss';
+
 .radioGroup {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.radioLabel {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: var(--space-2);
+  border-radius: max(var(--radius-4), var(--radius-full));
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+.hidden {
+  display: none;
+}
+
+.hidden:checked + .customRadio::after {
+  display: block;
+}
+
+.customRadio {
+  display: inline-block;
+  margin-right: var(--space-2);
+  border-radius: max(var(--radius-4), var(--radius-full));
+  position: relative;
+  border: none;
+  aspect-ratio: 1/ 1;
+
+  &::after {
+    content: '';
+    display: none;
+    width: 45%;
+    height: 45%;
+    border-radius: max(var(--radius-2), var(--radius-full));
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
-  
-  .radioLabel {
-    display: flex;
-    align-items: center;
-    margin: 0.5rem 0;
-  
-    input[type="radio"] {
-      margin-right: 0.5rem;
+
+  &--solid {
+    background-color: var(--color-accent-9);
+
+    &.highContrast {
+      background-color: var(--color-accent-12);
+      &::after {
+        background-color: var(--color-gray-1);
+      }
+    }
+    &::after {
+      background-color: var(--color-accent-9-contrast);
     }
   }
-  
+
+  &--ghost {
+    // border: 1px solid var(--color-accent-a7);
+    background-color: var(--color-accent-4);
+
+    &.highContrast {
+      background-color: var(--color-accent-3);
+      &::after {
+        background-color: var(--color-accent-12);
+      }
+    }
+    &::after {
+      background-color: var(--color-accent-9);
+    }
+  }
+
+  &--outlined {
+    background-color: transparent;
+    border: 1px solid var(--color-accent-a7);
+    &.highContrast {
+      background-color: transparent;
+      border: 1px solid var(--color-accent-a10);
+      &::after {
+        background-color: var(--color-accent-12);
+      }
+    }
+
+    &::after {
+      background-color: var(--color-accent-11);
+    }
+  }
+}
+
+.wd-radioGroup {
+  @include mixins.breakpoints {
+    &-small {
+      font-size: var(--font-size-2);
+
+      .customRadio {
+        height: var(--component-input-height-small);
+      }
+    }
+
+    &-medium {
+      font-size: var(--font-size-3);
+      .customRadio {
+        height: var(--component-input-height-medium);
+      }
+    }
+
+    &-large {
+      font-size: var(--font-size-4);
+      .customRadio {
+        height: var(--component-input-height-large);
+      }
+    }
+
+    &-xlarge {
+      font-size: var(--font-size-4);
+      .customRadio {
+        height: var(--component-input-height-xlarge);
+      }
+    }
+  }
+}
