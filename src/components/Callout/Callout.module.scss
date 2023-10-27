@@ -1,0 +1,72 @@
+@use '@/styles/lib/functions';
+@use '@/styles/lib/mixins.scss';
+
+.callout {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  word-break: break-all;
+  overflow: hidden;
+  border-radius: max(var(--radius-4), var(--radius-full));
+
+  &--solid {
+    background-color: var(--color-accent-9);
+    color: var(--color-accent-9-contrast);
+    &.highContrast {
+      color: var(--color-gray-1);
+      background-color: var(--color-accent-12);
+    }
+  }
+
+  &--ghost {
+    color: var(--color-accent-11);
+    border: 1px solid var(--color-accent-a7);
+    background-color: var(--color-accent-4);
+
+    &.highContrast {
+      color: var(--color-accent-12);
+      background-color: var(--color-accent-3);
+    }
+  }
+
+  &--outlined {
+    background-color: transparent;
+    color: var(--color-accent-11);
+    border: 1px solid var(--color-accent-a7);
+    &.highContrast {
+      background-color: transparent;
+      color: var(--color-accent-12);
+      border: 1px solid var(--color-accent-a10);
+    }
+  }
+  &--translucent {
+    color: var(--color-accent-12);
+    background-color: functions.opacity(var(--color-accent-12), 95%);
+    backdrop-filter: var(--translucent);
+    -webkit-backdrop-filter: var(--translucent);
+  }
+}
+
+.wd-callout {
+  @include mixins.breakpoints {
+    &-small {
+      font-size: var(--font-size-3);
+      padding: var(--space-2);
+    }
+
+    &-medium {
+      font-size: var(--font-size-4);
+      padding: var(--space-3);
+    }
+
+    &-large {
+      font-size: var(--font-size-5);
+      padding: var(--space-4);
+    }
+
+    &-xlarge {
+      font-size: var(--font-size-6);
+      padding: var(--space-5);
+    }
+  }
+}
