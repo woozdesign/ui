@@ -1,6 +1,36 @@
 > [!WARNING]  
 > This project is very early-stage. Please be aware that the code structure changes frequently.
 
+# Roadmap
+
+## Versions
+
+Following are the plans for future releases. Plans may change
+
+### v1.2.0
+
+Dec 2023
+
+- Data Display components
+
+### v1.1.0
+
+Nov 2023
+
+- Animation handler
+- Component State handler (hover, active, etc)
+- Data entry components
+- Layout Components
+
+### v1.0.0
+
+Nov 2023
+
+- Stabilize repository
+- LTS release
+
+## Components
+
 ### Containments
 
 | Component       | Supported | Notes |
