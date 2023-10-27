@@ -9,15 +9,11 @@ Following are the plans for future releases. Plans may change
 
 ### v1.2.0
 
----
-
 Dec 2023
 
 - Data Display components
 
 ### v1.1.0
-
----
 
 Nov 2023
 
@@ -27,8 +23,6 @@ Nov 2023
 - Layout
 
 ### v1.0.0
-
----
 
 Nov 2023
 
