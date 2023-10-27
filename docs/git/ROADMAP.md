@@ -20,7 +20,7 @@ Nov 2023
 - Animation handler
 - Component State handler (hover, active, etc)
 - Data entry components
-- Layout
+- Layout Components
 
 ### v1.0.0
 
