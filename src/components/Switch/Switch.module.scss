@@ -1,19 +1,13 @@
 @use '@/styles/lib/mixins.scss';
 
-$padding: 4px;
+$padding: 1px;
 
-$slider-before-width-percentage: 62.5%; //Should be ratio of width base and height base
-
-@mixin switch-size($width, $height) {
-  width: $width;
+@mixin switch-size($height) {
   height: $height;
+  width: calc(($height * 1.8));
 
   .input:checked + .slider::before {
-    transform: translateX(calc(#{$slider-before-width-percentage} + $padding));
-  }
-
-  .slider::before {
-    width: calc(#{$slider-before-width-percentage} - #{$padding * 2});
+    transform: translateX(calc(($height * 1.8) - calc(#{$height})));
   }
 }
 
@@ -53,7 +47,7 @@ $slider-before-width-percentage: 62.5%; //Should be ratio of width base and heig
     position: absolute;
     content: '';
     height: calc(100% - #{$padding * 2});
-    width: calc(#{$slider-before-width-percentage} - #{$padding * 2});
+    aspect-ratio: 1/1;
     left: $padding;
     bottom: $padding;
     border-radius: max(var(--radius-3), var(--radius-full));
@@ -65,19 +59,19 @@ $slider-before-width-percentage: 62.5%; //Should be ratio of width base and heig
 .wd-switch {
   @include mixins.breakpoints {
     &-small {
-      @include switch-size(32px, 20px);
+      @include switch-size(var(--component-input-height-small));
     }
 
     &-medium {
-      @include switch-size(48px, 30px);
+      @include switch-size(var(--component-input-height-medium));
     }
 
     &-large {
-      @include switch-size(64px, 40px);
+      @include switch-size(var(--component-input-height-large));
     }
 
     &-xlarge {
-      @include switch-size(80px, 50px);
+      @include switch-size(var(--component-input-height-xlarge));
     }
   }
 }
