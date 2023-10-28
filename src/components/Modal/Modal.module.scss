@@ -28,7 +28,7 @@
   z-index: 999;
   height: 100%;
   transition: opacity 0.2s ease-in-out;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--color-overlay);
   opacity: 0;
   &.open {
     opacity: 1;
