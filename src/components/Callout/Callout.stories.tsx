@@ -4,7 +4,7 @@ import React from 'react';
 import { Meta, Story } from '@storybook/react';
 import Callout, { CalloutProps } from './Callout';
 import { ThemeProvider } from '../Theme';
-import { Icon } from '@woozdesign/icons';
+import { Icon, IconNames } from '@woozdesign/icons';
 
 export default {
   title: 'Components/Callout',
@@ -20,4 +20,7 @@ const Template: Story<CalloutProps> = (args) => (
 export const DefaultWithImage = Template.bind({});
 DefaultWithImage.args = {
   children: 'Test',
+
+  iconPrepend: <Icon type="Zap" />,
+  iconAppend: <Icon type="Zap" />,
 };

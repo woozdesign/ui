@@ -12,6 +12,7 @@
   align-items: center;
   cursor: pointer;
   padding: var(--space-2);
+  color: var(--color-gray-12);
   border-radius: max(var(--radius-4), var(--radius-full));
   transition:
     background-color 0.3s,
