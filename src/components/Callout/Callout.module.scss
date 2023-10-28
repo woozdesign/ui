@@ -2,6 +2,7 @@
 @use '@/styles/lib/mixins.scss';
 
 .callout {
+  width: 100%;
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -20,7 +21,7 @@
 
   &--ghost {
     color: var(--color-accent-11);
-    border: 1px solid var(--color-accent-a7);
+    // border: 1px solid var(--color-accent-a7);
     background-color: var(--color-accent-4);
 
     &.highContrast {
@@ -50,23 +51,37 @@
 .wd-callout {
   @include mixins.breakpoints {
     &-small {
-      font-size: var(--font-size-3);
+      font-size: var(--font-size-2);
       padding: var(--space-2);
     }
 
     &-medium {
-      font-size: var(--font-size-4);
+      font-size: var(--font-size-3);
       padding: var(--space-3);
     }
 
     &-large {
-      font-size: var(--font-size-5);
+      font-size: var(--font-size-4);
       padding: var(--space-4);
     }
 
     &-xlarge {
-      font-size: var(--font-size-6);
+      font-size: var(--font-size-4);
       padding: var(--space-5);
     }
   }
+}
+
+.iconPrepend {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-2);
+}
+
+.iconAppend {
+  display: flex;
+  justify-content: center;
+  margin-left: var(--space-2);
+  align-items: center;
 }

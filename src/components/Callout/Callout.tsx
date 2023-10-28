@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 const Callout: React.FC<CalloutProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, children, variant = 'ghost', color, radius, size = 'medium', highContrast } = otherMarginProps;
+  const { className, style, children, variant = 'ghost', color, radius, size = 'medium', highContrast, iconAppend, iconPrepend } = otherMarginProps;
 
   const classes = classNames(
     styles.callout,
@@ -18,7 +18,9 @@ const Callout: React.FC<CalloutProps> = (props) => {
   );
   return (
     <div data-radius={radius} data-accent-color={color} className={classes}>
+      <span className={styles.iconPrepend}>{iconPrepend}</span>
       {children}
+      <span className={styles.iconAppend}>{iconAppend}</span>
     </div>
   );
 };
