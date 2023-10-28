@@ -7,7 +7,7 @@ export interface RadioOption {
 
 export interface RadioGroupProps extends BaseProp, MarginProp, ColorProp, SizeProp, RadiusProp, HighContrastProp {
   variant?: 'solid' | 'ghost' | 'outlined';
-  name?: string;
+  id: string;
   options: RadioOption[];
   defaultValue?: string;
   onChange?: (value: string) => void;
