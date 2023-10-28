@@ -10,5 +10,6 @@ export interface RadioGroupProps extends BaseProp, MarginProp, ColorProp, SizePr
   id: string;
   options: RadioOption[];
   defaultValue?: string;
+  disabled?: boolean;
   onChange?: (value: string) => void;
 }
