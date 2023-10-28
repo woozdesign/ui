@@ -21,6 +21,7 @@ Nov 2023
 - Component State handler (hover, active, etc)
 - Data entry components
 - Layout Components
+- Custom Theme Colors
 
 ### v1.0.0
 
