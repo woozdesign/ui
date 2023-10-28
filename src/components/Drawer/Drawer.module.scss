@@ -6,7 +6,7 @@
   right: 0;
   bottom: 0;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--color-overlay);
   z-index: 1000;
   display: flex;
   align-items: center;
@@ -18,7 +18,7 @@
     background-color: transparent;
   }
   &--translucent {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: var(--color-overlay);
   }
 
   &--right {
@@ -39,6 +39,7 @@
   height: 100%;
   display: flex;
   background-color: var(--color-panel);
+  box-shadow: var(--shadow-4);
 
   transition: transform 0.3s ease;
   transform: translateX(100%); // Start offscreen to the right
