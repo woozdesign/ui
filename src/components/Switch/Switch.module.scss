@@ -2,6 +2,8 @@
 
 $padding: 1px;
 
+$border-radius: max(var(--radius-3), var(--radius-full));
+
 @mixin switch-size($height) {
   height: $height;
   width: calc(($height * 1.8));
@@ -39,18 +41,20 @@ $padding: 1px;
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: max(var(--radius-4), var(--radius-full));
+  border-radius: max(var(--radius-3), var(--radius-full));
   background-color: var(--color-gray-7);
   transition: 0.2s;
+  // overflow: hidden;
 
   &::before {
     position: absolute;
     content: '';
     height: calc(100% - #{$padding * 2});
+    box-shadow: var(--shadow-2);
     aspect-ratio: 1/1;
     left: $padding;
     bottom: $padding;
-    border-radius: max(var(--radius-3), var(--radius-full));
+    border-radius: calc($border-radius - $padding);
     background-color: var(--color-accent-9-contrast);
     transition: 0.2s;
   }
