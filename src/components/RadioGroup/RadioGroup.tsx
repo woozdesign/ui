@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 const RadioGroup: React.FC<RadioGroupProps> = (props) => {
   const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, name, options, defaultValue, onChange, variant = 'solid', color, radius, highContrast, size = 'medium' } = marginOtherProps;
+  const { className, style, id, options, defaultValue, onChange, variant = 'solid', color, radius, highContrast, size = 'medium' } = marginOtherProps;
 
   const classes = classNames(styles.radioGroup, className, withBreakpoints(size, 'wd-radioGroup', styles), withMarginProps(marginProps));
 
@@ -27,8 +27,8 @@ const RadioGroup: React.FC<RadioGroupProps> = (props) => {
     <div className={classes} data-accent-color={color} data-radius={radius}>
       {options.map((option, index) => (
         <label key={index} className={styles.radioLabel}>
-          <input className={styles.hidden} type="radio" name={name} value={option.value} defaultChecked={defaultValue === option.value} onChange={handleOnChange} />
-          <button role={'radio'} className={radioClasses}></button>
+          <input className={styles.hidden} type="radio" name={id} value={option.value} defaultChecked={defaultValue === option.value} onChange={handleOnChange} />
+          <span className={radioClasses}></span>
           {option.label}
         </label>
       ))}
