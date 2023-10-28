@@ -125,12 +125,13 @@ Nov 2023
 
 ### Images & Icons
 
-| Component | Supported | Notes |
-| --------- | --------- | ----- |
-| Avatar    | ✅        |       |
-| Video     | 🚧        |       |
-| Icon      | ✅        |       |
-| Image     | ✅        |       |
+| Component    | Supported | Notes |
+| ------------ | --------- | ----- |
+| Avatar       | ✅        |       |
+| Aspect Ratio | ✅        |       |
+| Video        | 🚧        |       |
+| Icon         | ✅        |       |
+| Image        | ✅        |       |
 
 ### Pickers
 

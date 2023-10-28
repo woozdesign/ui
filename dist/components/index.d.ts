@@ -1,5 +1,6 @@
 export { default as Anchor } from './Anchor';
 export { default as AppBar } from './AppBar';
+export { default as AspectRatio } from './AspectRatio';
 export { default as Avatar } from './Avatar';
 export { default as Badge } from './Badge';
 export { default as Box } from './Box';
