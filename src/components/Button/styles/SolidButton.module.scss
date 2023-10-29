@@ -7,7 +7,6 @@
 
   &:active {
     background-color: var(--color-accent-8);
-    // box-shadow: boxShadowAlpha(var(--color-accent-9));
   }
 
   &:focus {
@@ -34,7 +33,6 @@
       background-color: var(--color-accent-12);
       filter: brightness(0.95) saturate(1.2);
       -webkit-filter: brightness(0.95) saturate(1.2);
-      // box-shadow: boxShadowAlpha(var(--color-accent-11));
     }
 
     > .icon-prepend,

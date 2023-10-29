@@ -17,13 +17,13 @@ export interface LayoutProp {
     grow?: Responsive<'0' | '1'>;
 }
 export declare const extractLayoutProps: <T extends LayoutProp>(props: T) => {
-    position: Responsive<"fixed" | "static" | "relative" | "absolute" | "sticky"> | undefined;
-    width: Responsive<"auto" | SpaceValue | "100%" | "min-content" | "max-content"> | undefined;
-    maxWidth: Responsive<"auto" | SpaceValue | "100%" | "min-content" | "max-content"> | undefined;
-    minWidth: Responsive<"auto" | SpaceValue | "100%" | "min-content" | "max-content"> | undefined;
-    height: Responsive<"auto" | SpaceValue | "100%" | "min-content" | "max-content"> | undefined;
-    maxHeight: Responsive<"auto" | SpaceValue | "100%" | "min-content" | "max-content"> | undefined;
-    minHeight: Responsive<"auto" | SpaceValue | "100%" | "min-content" | "max-content"> | undefined;
+    position: Responsive<"fixed" | "absolute" | "static" | "relative" | "sticky"> | undefined;
+    width: Responsive<SpaceValue | "auto" | "100%" | "min-content" | "max-content"> | undefined;
+    maxWidth: Responsive<SpaceValue | "auto" | "100%" | "min-content" | "max-content"> | undefined;
+    minWidth: Responsive<SpaceValue | "auto" | "100%" | "min-content" | "max-content"> | undefined;
+    height: Responsive<SpaceValue | "auto" | "100%" | "min-content" | "max-content"> | undefined;
+    maxHeight: Responsive<SpaceValue | "auto" | "100%" | "min-content" | "max-content"> | undefined;
+    minHeight: Responsive<SpaceValue | "auto" | "100%" | "min-content" | "max-content"> | undefined;
     top: Responsive<"0" | "auto" | "100%" | "50%"> | undefined;
     bottom: Responsive<"0" | "auto" | "100%" | "50%"> | undefined;
     left: Responsive<"0" | "auto" | "100%" | "50%"> | undefined;
