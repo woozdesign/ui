@@ -95,7 +95,6 @@
 @mixin accentScales($colorName) {
   [data-accent-color='#{$colorName}'] {
     --color-surface-accent: var(--color-#{$colorName}-surface);
-
     --color-accent-1: var(--color-#{$colorName}-1);
     --color-accent-2: var(--color-#{$colorName}-2);
     --color-accent-3: var(--color-#{$colorName}-3);
