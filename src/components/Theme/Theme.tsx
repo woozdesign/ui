@@ -2,7 +2,7 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import { getMatchingGrayColor, ThemeOptions, themeDefaults } from './ThemeOptions';
+import { getMatchingGrayColor, ThemeOptions, themeDefaults, ColorToken, ThemeAppearance } from './ThemeOptions';
 
 interface ThemeChangeHandlers {
   onAppearanceChange: (appearance: ThemeOptions['appearance']) => void;
@@ -46,6 +46,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     scaling: scalingProp = themeDefaults.scaling,
     shadow: shadowProp = themeDefaults.shadow,
     translucent: translucentProp = themeDefaults.translucent,
+    colorToken: colorTokenProp,
     ...rootProps
   } = props;
 
@@ -82,6 +83,37 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
 
   // Client-side only changes when `appearance` prop is changed while developing
   React.useEffect(() => updateThemeAppearanceClass(appearanceProp), [appearanceProp]);
+
+  React.useEffect(() => {
+    if (colorTokenProp && appearance) {
+      const css = generateThemeCSS(appearance, colorTokenProp);
+
+      const styleElement = document.createElement('style');
+      styleElement.innerText = css;
+      document.head.appendChild(styleElement);
+
+      // Cleanup: Remove the injected style when the component is unmounted or when appearance changes
+      return () => {
+        document.head.removeChild(styleElement);
+      };
+    }
+  }, [colorTokenProp, appearance]);
+
+  // const setCSSVars = (theme, colorToken) => {
+  //   Object.entries(colorToken[theme]).forEach(([colorName, shades]) => {
+  //     Object.entries(shades).forEach(([shade, value]) => {
+  //       const cssVarName = `--color-${colorName}-${shade}`;
+  //       document.documentElement.style.setProperty(cssVarName, value);
+  //     });
+  //   });
+  // };
+
+  // React.useEffect(() => {
+  //   if (colorTokenProp && appearance) {
+  //     setCSSVars(appearance, colorTokenProp);
+  //   }
+  //   // No cleanup function needed as we're modifying the :root directly.
+  // }, [colorTokenProp, appearance]);
 
   // const resolvedGrayColor = grayColor === 'auto' ? getMatchingGrayColor(accentColorColor) : grayColor;
 
@@ -225,6 +257,28 @@ const updateThemeAppearanceClass = (appearance: ThemeOptions['appearance']) => {
   root.classList.add(appearance);
   return;
 };
+
+function generateThemeCSS(theme: ThemeAppearance, colorTokens: ColorToken) {
+  let css = `:root, .${theme} .${theme}-theme {`;
+
+  Object.keys(colorTokens[theme]).forEach((colorName) => {
+    Object.entries(colorTokens[theme][colorName]).forEach(([shade, value]) => {
+      css += `--color-${colorName}-${shade}: ${value};`;
+    });
+  });
+
+  css += `}`;
+
+  Object.keys(colorTokens[theme]).forEach((colorName) => {
+    css += `[data-accent-color=${colorName}] {`;
+    Object.entries(colorTokens[theme][colorName]).forEach(([shade, value]) => {
+      css += `--color-accent-${shade}: var(--color-${colorName}-${shade});`;
+    });
+    css += '}';
+  });
+
+  return css;
+}
 
 export { ThemeProvider, useThemeContext, updateThemeAppearanceClass };
 export type { ThemeProviderProps, ThemeOptions };

@@ -8,25 +8,7 @@ import Divider from '../Divider';
 import Kbd from '../Kbd';
 import styles from './DropdownMenu.module.scss';
 import { ContentProps, DropdownMenuContextProps, DropdownMenuProps, ItemProps, SubContentProps, SubProps, SubTriggerProps, TriggerProps } from './DropdownMenu.props';
-
-const isBrowser = typeof window !== 'undefined';
-
-const useOutsideClick = (ref: RefObject<HTMLElement>, callback: () => void) => {
-  useEffect(() => {
-    if (!isBrowser) return;
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (ref.current && !ref.current.contains(event.target as Node)) {
-        callback();
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, [ref, callback]);
-};
+import { useOutsideClick } from '@/utils/hooks/useOutsideClick';
 
 const DropdownMenuContext = React.createContext<DropdownMenuContextProps | undefined>(undefined);
 
@@ -46,16 +28,7 @@ const Root: FC<DropdownMenuProps> = (props) => {
   return (
     <ShortcutProvider>
       <div ref={rootRef} className={classes}>
-        <DropdownMenuContext.Provider value={{ onToggle: handleToggle }}>
-          {React.Children.map(children, (child) => {
-            // Check if child is a valid React element
-            if (React.isValidElement<DropdownMenuProps>(child)) {
-              // Spread the isOpen prop onto the child element
-              return React.cloneElement(child, { isOpen });
-            }
-            return child;
-          })}
-        </DropdownMenuContext.Provider>
+        <DropdownMenuContext.Provider value={{ onToggle: handleToggle, isOpen }}>{children}</DropdownMenuContext.Provider>
       </div>
     </ShortcutProvider>
   );
@@ -79,8 +52,11 @@ const Trigger: FC<TriggerProps> = (props) => {
 };
 
 const Content: FC<ContentProps> = (props) => {
-  const { className, style, children, isOpen, shadow = '4', placement = 'bottom' } = props;
-  if (!isOpen) return null;
+  const { className, style, children, shadow = '4', placement = 'bottom' } = props;
+  const context = useContext(DropdownMenuContext);
+  if (!context) throw new Error('Content must be used within Root');
+
+  if (!context.isOpen) return null;
 
   return (
     <div data-placement={placement} data-shadow={shadow} className={styles.content}>
@@ -137,9 +113,7 @@ const Sub: FC<SubProps> = (props) => {
 
   return (
     <div ref={subRef} className={classes} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
-      <DropdownMenuContext.Provider value={{ onToggle: handleToggle }}>
-        {React.Children.map(children, (child) => React.cloneElement(child as React.ReactElement, { isSubOpen }))}
-      </DropdownMenuContext.Provider>
+      <DropdownMenuContext.Provider value={{ onToggle: handleToggle, isOpen: isSubOpen }}>{children}</DropdownMenuContext.Provider>
     </div>
   );
 };
@@ -161,11 +135,11 @@ const SubTrigger: FC<SubTriggerProps> = (props) => {
   );
 };
 const SubContent: FC<SubContentProps> = (props) => {
-  const { className, style, children, isSubOpen } = props;
+  const { className, style, children } = props;
+  const context = useContext(DropdownMenuContext);
+  if (!context) return null;
 
-  const classes = classNames(styles.subContent, className, { [styles['open']]: isSubOpen });
-
-  if (!isSubOpen) return null;
+  const classes = classNames(styles.subContent, className, { [styles['open']]: context.isOpen });
 
   return <div className={classes}>{children}</div>;
 };

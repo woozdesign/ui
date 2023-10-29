@@ -2,11 +2,10 @@ import { BasePropWithChildren, ShadowProp } from '@/utils';
 import { WoozCommandCode } from '@/utils/contexts/Shortcut/Shortcut.props';
 
 export interface DropdownMenuContextProps {
+  isOpen: boolean;
   onToggle: () => void;
 }
-export interface ChildProps {
-  isOpen?: boolean;
-}
+export interface ChildProps {}
 
 export interface DropdownMenuProps extends ChildProps, BasePropWithChildren {}
 
@@ -15,7 +14,6 @@ export interface TriggerProps extends BasePropWithChildren {
 }
 
 export interface ContentProps extends BasePropWithChildren, ShadowProp {
-  isOpen: boolean;
   placement?: 'top' | 'bottom' | 'left' | 'right';
 }
 
@@ -30,6 +28,4 @@ export interface SubProps extends BasePropWithChildren {}
 
 export interface SubTriggerProps extends TriggerProps {}
 
-export interface SubContentProps extends BasePropWithChildren {
-  isSubOpen: boolean;
-}
+export interface SubContentProps extends BasePropWithChildren {}

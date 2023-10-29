@@ -14,7 +14,6 @@
   &:active {
     background-color: var(--color-accent-a3);
     border-color: var(--color-accent-a6);
-    // box-shadow: boxShadowAlpha(var(--color-accent-11));
   }
 
   &:focus {
@@ -46,7 +45,6 @@
       border-color: var(--color-accent-a9);
       // filter: brightness(0.95) saturate(1.2);
       // -webkit-filter: brightness(0.95) saturate(1.2);
-      // box-shadow: boxShadowAlpha(var(--color-accent-12));
     }
 
     &:focus {
