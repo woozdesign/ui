@@ -4,6 +4,7 @@
   display: flex;
   gap: var(--space-4);
   justify-content: space-between;
+  position: relative;
 }
 .content {
 }
@@ -20,9 +21,9 @@
 
   // background-color: rgba(var(--color-accent-90), 0.2);
 
-  &:hover {
-    background-color: var(--color-accent-4);
-  }
+  // &:hover {
+  //   background-color: var(--color-accent-4);
+  // }
 
   &.active {
     // background-color: rgba(var(--color-accent-80), 0.2);
@@ -73,4 +74,42 @@
       }
     }
   }
+
+  &-backdrop {
+    @include mixins.breakpoints {
+      &-xlarge {
+        font-size: var(--font-size-4);
+        padding: var(--space-2) var(--space-4);
+      }
+      &-large {
+        padding: var(--space-1) var(--space-4);
+        border-radius: max(var(--radius-4), var(--radius-full));
+      }
+      &-medium {
+        padding: var(--space-1) var(--space-3);
+        border-radius: max(var(--radius-3), var(--radius-full));
+      }
+      &-small {
+        border-radius: max(var(--radius-3), var(--radius-full));
+        padding: var(--space-1) var(--space-2);
+      }
+    }
+  }
+}
+
+.menuBackdrop {
+  z-index: -1;
+  position: absolute;
+  top: var(--block-top);
+  left: var(--block-left);
+  height: var(--block-height);
+  width: var(--block-width);
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.05);
+  backdrop-filter: var(--translucent);
+  -webkit-backdrop-filter: var(--translucent);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.5s cubic-bezier(0.75, 0, 0, 1);
 }

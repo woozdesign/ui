@@ -41,6 +41,31 @@ const Template: Story<StoryProps> = (args) => (
         </Tab.Content>
       </div>
     </Tab.Root>
+    <Tab.Root defaultValue="account" {...args}>
+      <Tab.List>
+        <Tab.Trigger color={'gray'} highContrast={args.triggerHighContrast} size={'medium'} value="account">
+          Account
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} size={'medium'} value="documents">
+          Documents
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} size={'medium'} value="settings">
+          Settings
+        </Tab.Trigger>
+      </Tab.List>
+
+      <div style={{ padding: '10px 15px' }}>
+        <Tab.Content value="account">
+          <p>Make changes to your account.</p>
+        </Tab.Content>
+        <Tab.Content value="documents">
+          <p>Access and update your documents.</p>
+        </Tab.Content>
+        <Tab.Content value="settings">
+          <p>Edit your profile or update contact information.</p>
+        </Tab.Content>
+      </div>
+    </Tab.Root>
   </ThemeProvider>
 );
 

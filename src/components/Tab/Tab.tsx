@@ -1,6 +1,6 @@
 'use client';
 import classNames from 'classnames';
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, useContext, useEffect, useRef, useState } from 'react';
 import styles from './Tab.module.scss';
 import { ContentProps, ListProps, RootProps, TabContextProps, TriggerProps } from './Tab.props';
 import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
@@ -22,10 +22,15 @@ export const Root: FC<RootProps> = (props) => {
   );
 };
 
-export const List: FC<ListProps> = ({ children, justify = 'center' }) => {
+export const List: FC<ListProps> = (props) => {
+  const { children, justify = 'center' } = props;
+  const context = useContext(TabContext);
+  if (!context) throw new Error('Trigger must be used within Root');
+
   return (
     <div className={styles.list} style={{ justifyContent: justify }}>
       {children}
+      <div className={styles.menuBackdrop} id={`${context.id}-backdrop`}></div>
     </div>
   );
 };
@@ -49,9 +54,40 @@ export const Trigger: FC<TriggerProps> = (props) => {
     withBreakpoints(size, 'wt-tab--trigger', styles),
     withMarginProps(marginProps),
   );
+  const triggerRef = useRef(null);
+  const backdropRef = useRef(null);
+  useEffect(() => {
+    const triggerEl = triggerRef.current;
+    const backdropEl = document.querySelector(`${context.id}-backdrop`);
+
+    if (triggerEl && backdropEl) {
+      triggerEl.addEventListener('mouseenter', function () {
+        backdropEl.style.setProperty('--block-top', ''.concat(triggerEl.getBoundingClientRect().top, 'px'));
+        backdropEl.style.setProperty('--block-left', ''.concat(`calc(${triggerEl.getBoundingClientRect().left}px - var(--space-4))`));
+        backdropEl.style.setProperty('--block-height', ''.concat(triggerEl.clientHeight, 'px'));
+        backdropEl.style.setProperty('--block-width', ''.concat(triggerEl.clientWidth, 'px'));
+        backdropEl.style.setProperty('opacity', '1');
+        backdropEl.style.setProperty('visibility', 'visible');
+      });
+
+      triggerEl.addEventListener('mouseleave', function () {
+        backdropEl.style.setProperty('opacity', '0');
+        backdropEl.style.setProperty('visibility', 'hidden');
+      });
+    }
+
+    // Cleanup listeners on component unmount
+    return () => {
+      if (triggerEl) {
+        triggerEl.removeEventListener('mouseenter');
+        triggerEl.removeEventListener('mouseleave');
+      }
+    };
+  }, []);
 
   return (
     <a
+      ref={triggerRef}
       data-accent-color={color}
       data-radius={radius}
       className={classes}

@@ -2,6 +2,7 @@ import { BasePropWithChildren, ColorProp, HighContrastProp, MarginProp, RadiusPr
 import React from 'react';
 
 export interface TabContextProps {
+  id: string;
   activeTab: string;
   setActiveTab: React.Dispatch<React.SetStateAction<string>>;
 }
