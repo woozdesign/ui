@@ -6,7 +6,7 @@
 }
 .content {
   position: absolute;
-  background-color: var(--color-gray-1);
+  background-color: var(--color-panel);
   color: var(--color-gray-12);
   z-index: 1;
   border-radius: var(--radius-4);
@@ -84,7 +84,7 @@
   left: calc(100% + var(--space-2));
   top: calc(var(--space-1) * -1);
   box-shadow: var(--shadow-theme);
-  background-color: var(--color-gray-1);
+  background-color: var(--color-panel);
   z-index: 1;
   border-radius: var(--radius-4);
   min-width: 200px;

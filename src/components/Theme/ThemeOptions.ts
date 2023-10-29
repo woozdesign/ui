@@ -64,21 +64,34 @@ export type ThemeAccentColor =
   | 'lime'
   | 'mint'
   | 'sky';
-type ThemeAppearance = 'inherit' | 'light' | 'dark';
+
+type ColorShades = '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' | '10' | '11' | '12' | 'a1' | 'a2' | 'a3' | 'a4' | 'a5' | 'a6' | 'a7' | 'a8' | 'a9' | 'a10' | 'a11' | 'a12';
+
+export type ThemeAppearance = 'inherit' | 'light' | 'dark';
 export type ThemeRadius = 'none' | 'small' | 'medium' | 'large' | 'full';
 export type ThemeScaling = '90%' | '95%' | '100%' | '105%' | '110%';
 export type ThemeHighContrast = true | false;
 export type ThemeShadow = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 export type ThemeTranslucent = '10%' | '20%' | '40%' | '60%' | '80%';
 
+export type ColorToken = {
+  [theme in ThemeAppearance]: {
+    [colorName in string]: {
+      [shade in ColorShades]: string;
+    };
+  };
+};
+
 export type ThemeOptions = {
-  accentColor: ThemeAccentColor;
+  accentColor: ThemeAccentColor & string;
   appearance: ThemeAppearance;
   radius: ThemeRadius;
   scaling: ThemeScaling;
   shadow: ThemeShadow;
   translucent: ThemeTranslucent;
+  colorToken?: ColorToken;
 };
+
 function getMatchingGrayColor(accentColor: ThemeAccentColor): ThemeAccentColor {
   // if (accentColor === 'gray') return 'gray';
   switch (accentColor) {
@@ -119,7 +132,7 @@ function getMatchingGrayColor(accentColor: ThemeAccentColor): ThemeAccentColor {
 const themeDefaults: ThemeOptions = {
   appearance: 'light',
   radius: 'medium',
-  accentColor: 'violet',
+  accentColor: 'gray',
   scaling: '100%',
   translucent: '40%',
   shadow: '0',

@@ -13,7 +13,21 @@ export default {
 } as Meta;
 
 const Template: Story<ButtonProps> = (args) => (
-  <ThemeProvider appearance="dark">
+  <ThemeProvider
+    appearance="dark"
+    colorToken={{
+      light: {
+        custom: {
+          '9': '#ff0000',
+        },
+      },
+      dark: {
+        custom: {
+          '9': '#00ff00',
+        },
+      },
+    }}
+  >
     <Button {...args} />
   </ThemeProvider>
 );

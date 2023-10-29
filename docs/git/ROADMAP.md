@@ -68,7 +68,7 @@ Nov 2023
 | Form         | ✅        |       |
 | Custom Input | 🚧        |       |
 | Radio Button | ✅        |       |
-| Select       | 🚧        |       |
+| Select       | ✅        |       |
 | Slider       | ✅        |       |
 | Switch       | ✅        |       |
 | Text Field   | ✅        |       |
