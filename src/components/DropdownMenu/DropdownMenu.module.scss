@@ -16,20 +16,20 @@
 }
 
 .content[data-placement='bottom'] {
-  top: calc(100% + 8px);
+  top: calc(100% + var(--space-1));
 }
 
 .content[data-placement='top'] {
-  bottom: calc(100% + 8px);
+  bottom: calc(100% + var(--space-1));
 }
 
 .content[data-placement='left'] {
-  right: calc(100% + 8px);
+  right: calc(100% + var(--space-1));
   top: 0;
 }
 .content[data-placement='right'] {
   top: 0;
-  left: calc(100% + 8px);
+  left: calc(100% + var(--space-1));
 }
 
 .item {

@@ -2,6 +2,7 @@ import { BasePropWithChildren, ColorProp, MarginProp, PaddingProp, RadiusProp, S
 export interface ScrollAreaProps extends MarginProp, PaddingProp, BasePropWithChildren, RadiusProp, ColorProp, SizeProp {
     id: string;
     type?: 'always' | 'auto';
-    scrollbars?: 'vertical' | 'horizontal';
+    direction?: 'vertical' | 'horizontal';
     persistent?: boolean;
+    invisible?: boolean;
 }
