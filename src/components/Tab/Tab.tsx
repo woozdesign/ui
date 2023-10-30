@@ -42,7 +42,7 @@ export const List: FC<ListProps> = (props) => {
 
 export const Trigger: FC<TriggerProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, children, value, color, size = 'medium', radius, highContrast = false, onClick } = otherMarginProps;
+  const { className, style, children, variant = 'outlined', value, color, size = 'medium', radius, highContrast = false, onClick } = otherMarginProps;
 
   const context = useContext(TabContext);
   if (!context) throw new Error('Trigger must be used within Root');
@@ -51,6 +51,7 @@ export const Trigger: FC<TriggerProps> = (props) => {
 
   const classes = classNames(
     styles.trigger,
+    styles[`trigger--${variant}`],
     {
       [styles['highContrast']]: highContrast,
       [styles['active']]: value === activeTab,
@@ -70,8 +71,10 @@ export const Trigger: FC<TriggerProps> = (props) => {
 
     const handleMouseEnter = () => {
       if (backdropEl) {
+        const triggerLeftRelativeToScrollArea = triggerEl.getBoundingClientRect().left - scrollArea.getBoundingClientRect().left;
+
         backdropEl.style.setProperty('--block-top', `var(--space-1)`);
-        backdropEl.style.setProperty('--block-left', `calc(${triggerEl.getBoundingClientRect().left}px - var(--space-4) + ${scrollArea.scrollLeft}px )`);
+        backdropEl.style.setProperty('--block-left', `calc(${triggerLeftRelativeToScrollArea}px + ${scrollArea.scrollLeft}px )`);
         backdropEl.style.setProperty('--block-height', `calc(${triggerEl.clientHeight}px - var(--space-2)`);
         backdropEl.style.setProperty('--block-width', `${triggerEl.clientWidth}px`);
         backdropEl.style.setProperty('opacity', '1');
@@ -110,7 +113,7 @@ export const Trigger: FC<TriggerProps> = (props) => {
         onClick && onClick();
       }}
     >
-      {children}
+      <div className={styles.content}>{children}</div>
     </a>
   );
 };
