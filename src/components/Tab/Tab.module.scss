@@ -8,10 +8,12 @@
 }
 .list {
   display: flex;
+  gap: var(--space-2);
   position: relative;
 }
 
-.content {
+.tabContent {
+  color: var(--color-gray-12);
 }
 
 .trigger {
@@ -34,11 +36,11 @@
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
+
     justify-content: center;
   }
 
   &--outlined {
-    border-bottom: 1px solid var(--color-accent-a6);
     transition:
       color 0.3s ease-in-out,
       box-shadow 0.1s ease-in-out;
