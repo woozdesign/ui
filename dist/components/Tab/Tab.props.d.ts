@@ -8,6 +8,7 @@ export interface RootProps extends BasePropWithChildren, MarginProp {
     defaultValue: string;
 }
 export interface TriggerProps extends BasePropWithChildren, MarginProp, ColorProp, SizeProp, RadiusProp, HighContrastProp {
+    variant?: 'outlined' | 'solid';
     value: string;
     onClick?: () => void;
 }
