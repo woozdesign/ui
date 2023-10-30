@@ -121,7 +121,7 @@ export const Trigger: FC<TriggerProps> = (props) => {
 export const Content: FC<ContentProps> = (props) => {
   const { className, style, children, value } = props;
 
-  const classes = classNames(styles.content, className);
+  const classes = classNames(styles.tabContent, className);
 
   const context = useContext(TabContext);
   if (!context) throw new Error('Content must be used within Root');

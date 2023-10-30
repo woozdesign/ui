@@ -9,7 +9,7 @@ import { Col, Row } from '../Grid';
 
 export default {
   title: 'Components/Tab',
-  component: Tab.Root,
+  component: Tab.Trigger,
   args: {},
 } as Meta;
 
@@ -24,34 +24,34 @@ const Template: Story<StoryProps> = (args) => (
         <Card variant={'transparent'}>
           <Tab.Root id="test-1" defaultValue="settings" {...args}>
             <Tab.List>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="account">
+              <Tab.Trigger {...args} value="account">
                 Account
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="documents">
+              <Tab.Trigger {...args} value="documents">
                 Documents
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settings">
+              <Tab.Trigger {...args} value="settings">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settings1">
+              <Tab.Trigger {...args} value="settings1">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="setting2s">
+              <Tab.Trigger {...args} value="setting2s">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin3gs">
+              <Tab.Trigger {...args} value="settin3gs">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin4gs">
+              <Tab.Trigger {...args} value="settin4gs">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin5gs">
+              <Tab.Trigger {...args} value="settin5gs">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin6gs">
+              <Tab.Trigger {...args} value="settin6gs">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="setti7ngs">
+              <Tab.Trigger {...args} value="setti7ngs">
                 Settings
               </Tab.Trigger>
             </Tab.List>
@@ -70,13 +70,13 @@ const Template: Story<StoryProps> = (args) => (
           </Tab.Root>
           <Tab.Root id="test-2" defaultValue="account" {...args}>
             <Tab.List>
-              <Tab.Trigger color={'gray'} highContrast={args.triggerHighContrast} size={args.size} value="account">
+              <Tab.Trigger color={'gray'} {...args} value="account">
                 Account
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} size={args.size} value="documents">
+              <Tab.Trigger {...args} value="documents">
                 Documents
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} size={args.size} value="settings">
+              <Tab.Trigger {...args} value="settings">
                 Settings
               </Tab.Trigger>
             </Tab.List>
@@ -99,34 +99,34 @@ const Template: Story<StoryProps> = (args) => (
         <Card>
           <Tab.Root id="test-1" defaultValue="settings" {...args}>
             <Tab.List>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="account">
+              <Tab.Trigger {...args} value="account">
                 Account
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="documents">
+              <Tab.Trigger {...args} value="documents">
                 Documents
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settings">
+              <Tab.Trigger {...args} value="settings">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settings1">
+              <Tab.Trigger {...args} value="settings1">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="setting2s">
+              <Tab.Trigger {...args} value="setting2s">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin3gs">
+              <Tab.Trigger {...args} value="settin3gs">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin4gs">
+              <Tab.Trigger {...args} value="settin4gs">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin5gs">
+              <Tab.Trigger {...args} value="settin5gs">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin6gs">
+              <Tab.Trigger {...args} value="settin6gs">
                 Settings
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="setti7ngs">
+              <Tab.Trigger {...args} value="setti7ngs">
                 Settings
               </Tab.Trigger>
             </Tab.List>
@@ -145,28 +145,16 @@ const Template: Story<StoryProps> = (args) => (
           </Tab.Root>
           <Tab.Root id="test-2" defaultValue="account" {...args}>
             <Tab.List>
-              <Tab.Trigger color={'gray'} highContrast={args.triggerHighContrast} size={args.size} value="account">
+              <Tab.Trigger {...args} value="account">
                 Account
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} size={args.size} value="documents">
+              <Tab.Trigger {...args} value="documents">
                 Documents
               </Tab.Trigger>
-              <Tab.Trigger highContrast={args.triggerHighContrast} size={args.size} value="settings">
+              <Tab.Trigger {...args} value="settings">
                 Settings
               </Tab.Trigger>
             </Tab.List>
-
-            <div style={{ padding: '10px 15px' }}>
-              <Tab.Content value="account">
-                <p>Make changes to your account.</p>
-              </Tab.Content>
-              <Tab.Content value="documents">
-                <p>Access and update your documents.</p>
-              </Tab.Content>
-              <Tab.Content value="settings">
-                <p>Edit your profile or update contact information.</p>
-              </Tab.Content>
-            </div>
           </Tab.Root>
         </Card>
       </Col>
@@ -179,4 +167,5 @@ Default.args = {
   triggerHighContrast: false,
   size: 'small',
   color: 'gray',
+  variant: 'outlined',
 };

@@ -8,7 +8,7 @@
     overflow-x: hidden;
     overflow-y: scroll;
     padding-right: 3px;
-    margin-right: -3px; // Compensate with negative margin
+    margin-right: -4px; // Compensate with negative margin
   }
 
   &.horizontal {
@@ -16,7 +16,7 @@
     overflow-x: scroll;
 
     padding-bottom: 3px; // Reserve space for horizontal scrollbar (if needed)
-    margin-bottom: -3px; // Compensate with negative margin
+    margin-bottom: -4px; // Compensate with negative margin
   }
   /* Initially hide the scrollbar */
   &::-webkit-scrollbar {
