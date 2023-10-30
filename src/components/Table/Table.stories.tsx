@@ -14,7 +14,7 @@ export default {
 const Template: Story = (args) => (
   <ThemeProvider>
     <Card>
-      <ScrollArea type="always" scrollbars={'horizontal'}>
+      <ScrollArea type="always" direction={'horizontal'}>
         <Table.Root {...args}>
           <Table.Header>
             <Table.Row>
