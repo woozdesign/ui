@@ -16,9 +16,9 @@ jobs:
           scope: '@woozdesign'
 
       - name: Install dependencies 🔧
-        run: pnpm i --frozen-lockfile
+        run: yarn install --frozen-lockfile
 
       - name: Publish package on NPM 📦
-        run: pnpm publish --access public
+        run: yarn publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
