@@ -24,7 +24,7 @@
   border: none;
   cursor: pointer;
   text-decoration: none;
-  color: var(--color-gray-a6);
+  color: var(--color-gray-a8);
   background-color: transparent;
 
   padding-bottom: var(--space-1);
@@ -36,7 +36,6 @@
     box-sizing: border-box;
     display: inline-flex;
     align-items: center;
-
     justify-content: center;
   }
 
@@ -74,6 +73,9 @@
     }
 
     &.highContrast {
+      .content {
+        color: var(--color-accent-12);
+      }
       &.active {
         .content {
           background-color: var(--color-accent-12);
