@@ -16,15 +16,61 @@ interface StoryProps extends TabProps {
 
 const Template: Story<StoryProps> = (args) => (
   <ThemeProvider>
-    <Tab.Root defaultValue="account" {...args}>
+    <Tab.Root id="test-1" defaultValue="settings" {...args}>
       <Tab.List>
-        <Tab.Trigger color={'gray'} highContrast={args.triggerHighContrast} size={'medium'} value="account">
+        <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="account">
           Account
         </Tab.Trigger>
-        <Tab.Trigger highContrast={args.triggerHighContrast} size={'medium'} value="documents">
+        <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="documents">
           Documents
         </Tab.Trigger>
-        <Tab.Trigger highContrast={args.triggerHighContrast} size={'medium'} value="settings">
+        <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settings">
+          Settings
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settings1">
+          Settings
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="setting2s">
+          Settings
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin3gs">
+          Settings
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin4gs">
+          Settings
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin5gs">
+          Settings
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="settin6gs">
+          Settings
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} color={args.color} size={args.size} value="setti7ngs">
+          Settings
+        </Tab.Trigger>
+      </Tab.List>
+
+      <div style={{ padding: '10px 15px' }}>
+        <Tab.Content value="account">
+          <p>Make changes to your account.</p>
+        </Tab.Content>
+        <Tab.Content value="documents">
+          <p>Access and update your documents.</p>
+        </Tab.Content>
+        <Tab.Content value="settings">
+          <p>Edit your profile or update contact information.</p>
+        </Tab.Content>
+      </div>
+    </Tab.Root>
+    <Tab.Root id="test-2" defaultValue="account" {...args}>
+      <Tab.List>
+        <Tab.Trigger color={'gray'} highContrast={args.triggerHighContrast} size={args.size} value="account">
+          Account
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} size={args.size} value="documents">
+          Documents
+        </Tab.Trigger>
+        <Tab.Trigger highContrast={args.triggerHighContrast} size={args.size} value="settings">
           Settings
         </Tab.Trigger>
       </Tab.List>
@@ -47,4 +93,6 @@ const Template: Story<StoryProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   triggerHighContrast: false,
+  size: 'small',
+  color: 'gray',
 };

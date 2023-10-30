@@ -7,7 +7,7 @@ import { extractMarginProps, extractPaddingProps, withBreakpoints, withMarginPro
 const ScrollArea: React.FC<ScrollAreaProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
   const { others: otherPaddingProps, ...paddingProps } = extractPaddingProps(otherMarginProps);
-  const { className, style, children, id, persistent = false, color, radius, type = 'always', scrollbars = 'vertical', size } = otherPaddingProps;
+  const { className, style, children, id, persistent = false, invisible = false, color, radius, type = 'always', direction = 'vertical', size } = otherPaddingProps;
 
   const [scrollKey, setScrollKey] = useState('scrollPosition' + '_' + id);
 
@@ -17,15 +17,15 @@ const ScrollArea: React.FC<ScrollAreaProps> = (props) => {
       if (savedScroll) {
         const scrollElement = document.querySelector(`[data-scroll-key="${scrollKey}"]`);
         if (scrollElement) {
-          if (scrollbars === 'vertical') {
+          if (direction === 'vertical') {
             scrollElement.scrollTop = Number(savedScroll);
-          } else if (scrollbars === 'horizontal') {
+          } else if (direction === 'horizontal') {
             scrollElement.scrollLeft = Number(savedScroll);
           }
         }
       }
     }
-  }, [id, persistent, scrollbars]);
+  }, [id, persistent, direction]);
 
   const saveScrollState = (e: React.UIEvent<HTMLDivElement>) => {
     const key = e.currentTarget.getAttribute('data-scroll-key');
@@ -42,8 +42,9 @@ const ScrollArea: React.FC<ScrollAreaProps> = (props) => {
   const classes = classNames(
     styles.scrollArea,
     {
-      [styles.vertical]: scrollbars == 'vertical' && type == 'always',
-      [styles.horizontal]: scrollbars == 'horizontal' && type == 'always',
+      [styles.vertical]: direction == 'vertical' && type == 'always',
+      [styles.horizontal]: direction == 'horizontal' && type == 'always',
+      [styles.invisible]: invisible,
     },
     withBreakpoints(size, 'wd-scrollArea', styles),
     withMarginProps(marginProps),
@@ -51,7 +52,16 @@ const ScrollArea: React.FC<ScrollAreaProps> = (props) => {
   );
 
   return (
-    <div onScroll={saveScrollState} data-scroll-key={scrollKey} data-scroll-direction={scrollbars} data-accent-color={color} data-radius={radius} className={classes} style={style}>
+    <div
+      id={id}
+      onScroll={saveScrollState}
+      data-scroll-key={scrollKey}
+      data-scroll-direction={direction}
+      data-accent-color={color}
+      data-radius={radius}
+      className={classes}
+      style={style}
+    >
       {children}
     </div>
   );

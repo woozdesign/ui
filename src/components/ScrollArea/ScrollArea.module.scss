@@ -3,6 +3,7 @@
 .scrollArea {
   width: inherit;
   height: inherit;
+
   &.vertical {
     overflow-x: hidden;
     overflow-y: scroll;
@@ -57,6 +58,15 @@
   &::-webkit-scrollbar-thumb:hover {
     background-color: transparent;
     border-radius: max(var(--radius-3), var(--radius-full));
+  }
+
+  &.invisible {
+    &::-webkit-scrollbar-track {
+      display: none;
+    }
+    &::-webkit-scrollbar-thumb {
+      display: none;
+    }
   }
 }
 
