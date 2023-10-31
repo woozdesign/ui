@@ -16,6 +16,7 @@
   cursor: pointer;
   margin: 0 var(--space-0);
   color: var(--color-gray-12);
+  box-shadow: var(--shadow-theme);
 
   &--solid {
     &:hover {
@@ -37,8 +38,7 @@
   }
   &--outlined {
     &:hover {
-      background-color: var(--color-accent-a2);
-      border-color: var(--color-accent-a8);
+      background-color: var(--color-accent-5);
     }
 
     &:active {
@@ -48,17 +48,30 @@
 
     &.active {
       background-color: transparent;
-      color: var(--color-accent-12);
-      border: 1px solid var(--color-accent-a10);
+      color: var(--color-accent-11);
+      border: 1px solid var(--color-accent-a7);
 
+      &.highContrast {
+        color: var(--color-accent-12);
+        border: 1px solid var(--color-accent-a10);
+        &:hover {
+          background-color: var(--color-accent-a3);
+          border-color: var(--color-accent-a11);
+        }
+
+        &:active {
+          background-color: var(--color-accent-a4);
+          border-color: var(--color-accent-a9);
+        }
+      }
       &:hover {
-        background-color: var(--color-accent-a3);
-        border-color: var(--color-accent-a11);
+        background-color: var(--color-accent-a2);
+        border-color: var(--color-accent-a8);
       }
 
       &:active {
-        background-color: var(--color-accent-a4);
-        border-color: var(--color-accent-a9);
+        background-color: var(--color-accent-a3);
+        border-color: var(--color-accent-a6);
       }
     }
   }
