@@ -1,0 +1,92 @@
+@use '@/styles/lib/mixins.scss';
+
+.pagination {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  user-select: none;
+  padding: 10px 0;
+}
+
+.pageItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  margin: 0 var(--space-0);
+
+  &--solid {
+    &:hover {
+      background-color: var(--color-accent-5);
+    }
+
+    &:active {
+      background-color: var(--color-accent-6);
+    }
+
+    &.active {
+      background-color: var(--color-accent-9);
+      color: var(--color-accent-9-contrast);
+      &.highContrast {
+        background-color: var(--color-accent-12);
+        color: var(--color-accent-1);
+      }
+    }
+  }
+  &--outlined {
+    &:hover {
+      background-color: var(--color-accent-a2);
+      border-color: var(--color-accent-a8);
+    }
+
+    &:active {
+      background-color: var(--color-accent-a3);
+      border-color: var(--color-accent-a6);
+    }
+
+    &.active {
+      background-color: transparent;
+      color: var(--color-accent-12);
+      border: 1px solid var(--color-accent-a10);
+
+      &:hover {
+        background-color: var(--color-accent-a3);
+        border-color: var(--color-accent-a11);
+      }
+
+      &:active {
+        background-color: var(--color-accent-a4);
+        border-color: var(--color-accent-a9);
+      }
+    }
+  }
+}
+
+.wd-pagination {
+  &-item {
+    @include mixins.breakpoints {
+      &-xlarge {
+        height: var(--component-height-xlarge);
+        border-radius: max(var(--radius-5), var(--radius-full));
+        font-size: var(--font-size-4);
+      }
+      &-large {
+        height: var(--component-height-large);
+        font-size: var(--font-size-4);
+        border-radius: max(var(--radius-4), var(--radius-full));
+      }
+
+      &-medium {
+        height: var(--component-height-medium);
+        font-size: var(--font-size-3);
+        border-radius: max(var(--radius-3), var(--radius-full));
+      }
+      &-small {
+        height: var(--component-height-small);
+        font-size: var(--font-size-2);
+        border-radius: max(var(--radius-3), var(--radius-full));
+      }
+    }
+  }
+}
