@@ -1,14 +1,26 @@
-import React from 'react';
-import styles from './Pagination.module.scss';
-import IconButton from '../IconButton';
+import { extractMarginProps, withBreakpoints } from '@/utils';
 import { Icon } from '@woozdesign/icons';
 import classNames from 'classnames';
+import React, { useState } from 'react';
+import styles from './Pagination.module.scss';
 import { PaginationProps } from './Pagination.props';
-import { extractMarginProps, withBreakpoints } from '@/utils';
 
 const Pagination: React.FC<PaginationProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { totalRecords, recordsPerPage, onPageChanged, showPageCount = 5, variant = 'solid', currentPage, color, radius, size = 'medium', highContrast } = otherMarginProps;
+  const {
+    totalRecords,
+    recordsPerPage,
+    onPageChanged,
+    showPageCount = 5,
+    variant = 'solid',
+    currentPage: currentPageProp,
+    color,
+    radius,
+    size = 'medium',
+    highContrast,
+  } = otherMarginProps;
+
+  const [currentPage, setCurrentPage] = useState(currentPageProp ?? 1);
 
   const totalPages = Math.ceil(totalRecords / recordsPerPage);
 
@@ -48,12 +60,19 @@ const Pagination: React.FC<PaginationProps> = (props) => {
 
   const handlePreviousClick = () => {
     if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
       onPageChanged(currentPage - 1);
     }
   };
 
+  const handlePageClick = (page: number) => {
+    setCurrentPage(page);
+    onPageChanged(page);
+  };
+
   const handleNextClick = () => {
     if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
       onPageChanged(currentPage + 1);
     }
   };
@@ -74,7 +93,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
         return (
           <React.Fragment key={page}>
             {index > 0 && pagesToShow[index - 1] !== page - 1 && <span>...</span>}
-            <a className={pageClasses} onClick={() => onPageChanged(page)}>
+            <a className={pageClasses} onClick={() => handlePageClick(page)}>
               {page}
             </a>
           </React.Fragment>
