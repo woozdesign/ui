@@ -1,5 +1,5 @@
-import { ColorProp, HighContrastProp, MarginProp, RadiusProp, SizeProp } from '../../utils';
-export interface PaginationProps extends ColorProp, HighContrastProp, RadiusProp, SizeProp, MarginProp {
+import { ColorProp, HighContrastProp, MarginProp, RadiusProp, ShadowProp, SizeProp } from '../../utils';
+export interface PaginationProps extends ColorProp, HighContrastProp, RadiusProp, SizeProp, MarginProp, ShadowProp {
     totalRecords: number;
     recordsPerPage: number;
     onPageChanged: (pageNumber: number) => void;
