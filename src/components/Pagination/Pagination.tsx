@@ -92,7 +92,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
         );
         return (
           <React.Fragment key={page}>
-            {index > 0 && pagesToShow[index - 1] !== page - 1 && <span>...</span>}
+            {index > 0 && pagesToShow[index - 1] !== page - 1 && <Icon type={'MoreHorizontal'} />}
             <a className={pageClasses} onClick={() => handlePageClick(page)}>
               {page}
             </a>
