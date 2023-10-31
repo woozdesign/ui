@@ -81,7 +81,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
   return (
     <div data-shadow={shadow} data-accent-color={color} data-radius={radius} className={styles.pagination}>
       <a className={classNames(styles.pageItem, styles[`pageItem--${variant}`], withBreakpoints(size, 'wd-pagination-item', styles))} onClick={handlePreviousClick}>
-        <Icon type={'ChevronLeft'} />
+        <span>...</span>
       </a>
 
       {pagesToShow.map((page, index) => {
