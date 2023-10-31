@@ -81,7 +81,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
   return (
     <div data-shadow={shadow} data-accent-color={color} data-radius={radius} className={styles.pagination}>
       <a className={classNames(styles.pageItem, styles[`pageItem--${variant}`], withBreakpoints(size, 'wd-pagination-item', styles))} onClick={handlePreviousClick}>
-        <span>...</span>
+        <Icon type={'ChevronLeft'} />
       </a>
 
       {pagesToShow.map((page, index) => {
@@ -93,7 +93,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
         );
         return (
           <React.Fragment key={page}>
-            {index > 0 && pagesToShow[index - 1] !== page - 1 && <Icon type={'MoreHorizontal'} />}
+            {index > 0 && pagesToShow[index - 1] !== page - 1 && <span>...</span>}
             <a className={pageClasses} onClick={() => handlePageClick(page)}>
               {page}
             </a>
