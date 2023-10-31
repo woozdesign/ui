@@ -5,7 +5,7 @@
   justify-content: start;
   align-items: center;
   user-select: none;
-  padding: 10px 0;
+  gap: var(--space-2);
 }
 
 .pageItem {
@@ -15,6 +15,7 @@
   aspect-ratio: 1 / 1;
   cursor: pointer;
   margin: 0 var(--space-0);
+  color: var(--color-gray-12);
 
   &--solid {
     &:hover {
