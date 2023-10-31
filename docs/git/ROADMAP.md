@@ -55,7 +55,7 @@ Nov 2023
 | App Bar           | ✅        |       |
 | Breadcrumb        | ✅        |       |
 | Navigation Drawer | ✅        |       |
-| Pagination        | 🚧        |       |
+| Pagination        | ✅        |       |
 | Tab               | ✅        |       |
 
 ### Form Inputs & Control
