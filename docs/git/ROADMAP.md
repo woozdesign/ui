@@ -11,14 +11,14 @@ Following are the plans for future releases. Plans may change
 
 Dec 2023
 
+- Animation handler
+- Component State handler (hover, active, etc)
 - Data Display components
 
 ### v1.1.0
 
 Nov 2023
 
-- Animation handler
-- Component State handler (hover, active, etc)
 - Data entry components
 - Layout Components
 - Custom Theme Colors

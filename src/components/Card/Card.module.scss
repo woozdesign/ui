@@ -108,6 +108,13 @@
       .actions {
         padding: var(--space-2);
       }
+
+      .heading:not(.heading--outlined) + .body {
+        padding-top: 0;
+      }
+      .body + .actions:not(.actions--outlined) {
+        padding-top: 0;
+      }
     }
 
     &-medium {
@@ -119,6 +126,13 @@
       }
       .actions {
         padding: var(--space-4);
+      }
+
+      .heading:not(.heading--outlined) + .body {
+        padding-top: 0;
+      }
+      .body + .actions:not(.actions--outlined) {
+        padding-top: 0;
       }
     }
 
@@ -132,6 +146,13 @@
       .actions {
         padding: var(--space-5);
       }
+
+      .heading:not(.heading--outlined) + .body {
+        padding-top: 0;
+      }
+      .body + .actions:not(.actions--outlined) {
+        padding-top: 0;
+      }
     }
     &-xlarge {
       .heading {
@@ -142,6 +163,13 @@
       }
       .actions {
         padding: var(--space-6);
+      }
+
+      .heading:not(.heading--outlined) + .body {
+        padding-top: 0;
+      }
+      .body + .actions:not(.actions--outlined) {
+        padding-top: 0;
       }
     }
   }
