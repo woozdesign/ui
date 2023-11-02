@@ -1,17 +1,22 @@
 /* eslint-disable react/display-name */
 import React, { FC } from 'react';
 import styles from './Layout.module.scss';
-import { LayoutProps } from './Layout.props';
+import { LayoutComponentProps } from './Layout.props';
 import classNames from 'classnames';
+import { extractDisplayProps, extractLayoutProps, extractMarginProps, extractPaddingProps, withDisplayProps, withLayoutProps, withMarginProps, withPaddingProps } from '@/utils';
 
-const Layout: FC<LayoutProps> & {
-  Header: FC<LayoutProps>;
-  Sider: FC<LayoutProps>;
-  Content: FC<LayoutProps>;
-  Footer: FC<LayoutProps>;
+const Layout: FC<LayoutComponentProps> & {
+  Header: FC<LayoutComponentProps>;
+  Sider: FC<LayoutComponentProps>;
+  Content: FC<LayoutComponentProps>;
+  Footer: FC<LayoutComponentProps>;
 } = (props) => {
-  const { className, style, children } = props;
-  const classes = classNames(styles.layout, className);
+  const { others: marginOthers, ...marginProps } = extractMarginProps(props);
+  const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
+  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
+  const { className, style, children } = layoutOthersProps;
+
+  const classes = classNames(styles.layout, className, withMarginProps(marginProps), withPaddingProps(paddingProps), withLayoutProps(layoutProps));
 
   return (
     <div style={style} className={classes}>
@@ -20,9 +25,13 @@ const Layout: FC<LayoutProps> & {
   );
 };
 
-Layout.Header = (props: LayoutProps) => {
-  const { className, style, children } = props;
-  const classes = classNames(styles.layout__header, className);
+Layout.Header = (props: LayoutComponentProps) => {
+  const { others: marginOthers, ...marginProps } = extractMarginProps(props);
+  const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
+  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
+  const { className, style, children } = layoutOthersProps;
+
+  const classes = classNames(styles.layout__header, className, withMarginProps(marginProps), withPaddingProps(paddingProps), withLayoutProps(layoutProps));
 
   return (
     <header style={style} className={classes}>
@@ -31,9 +40,13 @@ Layout.Header = (props: LayoutProps) => {
   );
 };
 
-Layout.Sider = (props: LayoutProps) => {
-  const { className, style, children } = props;
-  const classes = classNames(styles.layout__sider, className);
+Layout.Sider = (props: LayoutComponentProps) => {
+  const { others: marginOthers, ...marginProps } = extractMarginProps(props);
+  const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
+  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
+  const { className, style, children } = layoutOthersProps;
+
+  const classes = classNames(styles.layout__sider, className, withMarginProps(marginProps), withPaddingProps(paddingProps), withLayoutProps(layoutProps));
   return (
     <aside style={style} className={classes}>
       {children}
@@ -41,9 +54,13 @@ Layout.Sider = (props: LayoutProps) => {
   );
 };
 
-Layout.Content = (props: LayoutProps) => {
-  const { className, style, children } = props;
-  const classes = classNames(styles.layout__content, className);
+Layout.Content = (props: LayoutComponentProps) => {
+  const { others: marginOthers, ...marginProps } = extractMarginProps(props);
+  const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
+  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
+  const { className, style, children } = layoutOthersProps;
+
+  const classes = classNames(styles.layout__content, className, withMarginProps(marginProps), withPaddingProps(paddingProps), withLayoutProps(layoutProps));
 
   return (
     <main style={style} className={classes}>
@@ -52,9 +69,13 @@ Layout.Content = (props: LayoutProps) => {
   );
 };
 
-Layout.Footer = (props: LayoutProps) => {
-  const { className, style, children } = props;
-  const classes = classNames(styles.layout__footer, className);
+Layout.Footer = (props: LayoutComponentProps) => {
+  const { others: marginOthers, ...marginProps } = extractMarginProps(props);
+  const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
+  const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
+  const { className, style, children } = layoutOthersProps;
+
+  const classes = classNames(styles.layout__footer, className, withMarginProps(marginProps), withPaddingProps(paddingProps), withLayoutProps(layoutProps));
   return (
     <footer style={style} className={classes}>
       {children}
