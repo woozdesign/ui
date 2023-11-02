@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { LayoutProps } from './Layout.props';
-declare const Layout: FC<LayoutProps> & {
-    Header: FC<LayoutProps>;
-    Sider: FC<LayoutProps>;
-    Content: FC<LayoutProps>;
-    Footer: FC<LayoutProps>;
+import { LayoutComponentProps } from './Layout.props';
+declare const Layout: FC<LayoutComponentProps> & {
+    Header: FC<LayoutComponentProps>;
+    Sider: FC<LayoutComponentProps>;
+    Content: FC<LayoutComponentProps>;
+    Footer: FC<LayoutComponentProps>;
 };
 export default Layout;

@@ -9,7 +9,6 @@ const Flex: FC<FlexProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
   const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
   const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
-
   const { className, style, children, direction = 'row', space = 2, align = 'start', justify = 'start' } = layoutOthersProps;
 
   const classes = classNames(

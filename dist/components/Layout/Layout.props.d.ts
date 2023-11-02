@@ -1,3 +1,3 @@
-import { BasePropWithChildren } from '../../utils';
-export interface LayoutProps extends BasePropWithChildren {
+import { BasePropWithChildren, DisplayProp, LayoutProp, MarginProp, PaddingProp } from '../../utils';
+export interface LayoutComponentProps extends BasePropWithChildren, LayoutProp, DisplayProp, MarginProp, PaddingProp {
 }
