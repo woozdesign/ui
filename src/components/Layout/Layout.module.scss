@@ -1,14 +1,24 @@
-.container {
-  max-width: 1200px;
-  margin-left: auto;
-  margin-right: auto;
-  padding: var(--space-4);
-}
+.layout {
+  display: flex;
+  flex-direction: column;
+  &:has(> .layout__sider) {
+    flex-direction: row;
+  }
 
-// Titles
-@for $i from 1 through 9 {
-  .section--#{$i} {
-    padding-top: var(--space-#{$i});
-    padding-bottom: var(--space-#{$i});
+  &__header,
+  &__footer {
+    flex-shrink: 0;
+    box-sizing: 'border-box';
+    height: var(--appbar-height);
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+  }
+
+  &__sider {
+    flex-shrink: 0;
+    width: 200px;
   }
 }
