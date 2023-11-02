@@ -1,9 +1,9 @@
-import React from 'react';
-import { ContainerProps, SectionProps } from './Layout.props';
-export declare const Container: React.FC<ContainerProps>;
-export declare const Section: React.FC<SectionProps>;
-declare const Layout: {
-    Container: React.FC<ContainerProps>;
-    Section: React.FC<SectionProps>;
+import { FC } from 'react';
+import { LayoutProps } from './Layout.props';
+declare const Layout: FC<LayoutProps> & {
+    Header: FC<LayoutProps>;
+    Sider: FC<LayoutProps>;
+    Content: FC<LayoutProps>;
+    Footer: FC<LayoutProps>;
 };
 export default Layout;

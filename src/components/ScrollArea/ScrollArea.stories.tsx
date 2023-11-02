@@ -3,7 +3,7 @@ import { Meta, Story } from '@storybook/react';
 import React from 'react';
 import Flex from '../Flex';
 import { Col, Row } from '../Grid/Grid';
-import { Container } from '../Layout/Layout';
+import Container from '../Container';
 import { ThemeProvider } from '../Theme/Theme';
 import Typography from '../Typography';
 import ScrollArea from './ScrollArea';
