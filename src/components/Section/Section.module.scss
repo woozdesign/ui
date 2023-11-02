@@ -1,0 +1,7 @@
+// Titles
+@for $i from 1 through 9 {
+  .section--#{$i} {
+    padding-top: var(--space-#{$i});
+    padding-bottom: var(--space-#{$i});
+  }
+}

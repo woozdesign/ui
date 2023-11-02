@@ -2,10 +2,10 @@ import { Meta, Story } from '@storybook/react';
 import React from 'react';
 
 import '@/styles/core.scss';
-import Card from '../Card';
-import { Col, Row } from '../Grid/Grid';
 import { ThemeProvider } from '../Theme/Theme';
-import Layout, { Container, ContainerProps, Section } from './Layout';
+import Layout from './Layout';
+import Card from '../Card';
+import Typography from '../Typography/Typography';
 
 export default {
   title: 'Layout/Layout',
@@ -13,65 +13,91 @@ export default {
 } as Meta;
 
 // Combined Story with Container, Row, and Col
-export const GridSystemStory: Story<ContainerProps> = (args) => (
-  <ThemeProvider>
-    <Section space={9}>
-      <Container padding={'0'} {...args}>
-        <Row gutter={[32, 32]}>
-          <Col xs={24} sm={3} md={0}>
-            <Card outlined>
-              <Card.Body title={'Column 1'}></Card.Body>
-            </Card>
-          </Col>
-          <Col xs={0} sm={21} md={8}>
-            <Card outlined>
-              <Card.Body title={'Column 2'}></Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} md={8}>
-            <Card outlined>
-              <Card.Body title={'Column 3'}></Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} md={8}>
-            <Card outlined>
-              <Card.Body title={'Column 4'}></Card.Body>
-            </Card>
-          </Col>
-          <Col xs={16} md={8}>
-            <Card outlined>
-              <Card.Body title={'Column 5'}></Card.Body>
-            </Card>
-          </Col>
-        </Row>
-        <Row gutter={[32, 32]} style={{ marginTop: '4rem' }} align="center" justify="center">
-          <Col xs={24} md={8}>
-            <Card outlined>
-              <Card.Body title={'Column 1'}></Card.Body>
-            </Card>
-          </Col>
-          <Col xs={24} md={8}>
-            <Card outlined>
-              <Card.Body title={'Column 2'}></Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} md={8}>
-            <Card outlined>
-              <Card.Body title={'Column 3'}></Card.Body>
-            </Card>
-          </Col>
-          <Col xs={12} md={8}>
-            <Card outlined>
-              <Card.Body title={'Column 4'}></Card.Body>
-            </Card>
-          </Col>
-          <Col xs={16} md={8}>
-            <Card outlined>
-              <Card.Body title={'Column 5'}></Card.Body>
-            </Card>
-          </Col>
-        </Row>
-      </Container>
-    </Section>
-  </ThemeProvider>
-);
+const Template: Story = (args) => <ThemeProvider>{args.children}</ThemeProvider>;
+
+export const Default = Template.bind({});
+Default.args = {
+  children: (
+    <Layout>
+      <Layout.Header>
+        <Card>
+          <Card.Header title={'header'} />
+        </Card>
+      </Layout.Header>
+      <Layout>
+        <Layout.Sider>
+          <Card>
+            <Card.Header title={'Layout.sider'} />
+          </Card>
+        </Layout.Sider>
+        <Layout.Content>
+          <Card>
+            <Card.Header title={'main'} />
+          </Card>
+        </Layout.Content>
+        <Layout.Sider>
+          <Card>
+            <Card.Header title={'Layout.sider'} />
+          </Card>
+        </Layout.Sider>
+      </Layout>
+      <Layout.Footer>
+        <Card>
+          <Card.Header title={'footer'} />
+        </Card>
+      </Layout.Footer>
+    </Layout>
+  ),
+};
+
+export const LongContent = Template.bind({});
+LongContent.args = {
+  children: (
+    <Layout>
+      <Layout.Sider
+        style={{
+          overflow: 'auto',
+          height: '100vh',
+          position: 'fixed',
+          boxSizing: 'border-box',
+          left: 0,
+          top: 0,
+          bottom: 0,
+        }}
+      >
+        <Card>
+          <Card.Header title={'Layout.sider'} />
+        </Card>
+      </Layout.Sider>
+
+      <Layout style={{ marginLeft: 200, width: '100%' }}>
+        <Layout.Header>
+          <Card>
+            <Card.Header title={'header'} />
+          </Card>
+        </Layout.Header>
+
+        <Layout.Content>
+          <Card>
+            <div style={{ padding: 24, textAlign: 'center' }}>
+              {
+                // indicates very long content
+                Array.from({ length: 100 }, (_, index) => (
+                  <React.Fragment key={index}>
+                    <Typography.Text variant="div">{index % 20 === 0 && index ? 'more' : '...'}</Typography.Text>
+                  </React.Fragment>
+                ))
+              }
+            </div>
+          </Card>
+        </Layout.Content>
+
+        <Layout.Footer>
+          <Card>
+            <Card.Header title={'footer'} />
+          </Card>
+        </Layout.Footer>
+      </Layout>
+    </Layout>
+  ),
+};

@@ -2,7 +2,7 @@ import '@/styles/core.scss';
 import { Meta, Story } from '@storybook/react';
 import React from 'react';
 import { Col, Row } from '../Grid/Grid';
-import { Container } from '../Layout/Layout';
+import { Container } from '../Container/Container';
 import { ThemeProvider } from '../Theme';
 import Anchor, { AnchorProps } from './Anchor';
 

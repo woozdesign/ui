@@ -6,7 +6,7 @@ import { ThemeProvider } from '../Theme';
 import Flex, { FlexProps } from './Flex';
 
 import { Col, Row } from '../Grid/Grid';
-import { Container } from '../Layout/Layout';
+import Container from '../Container';
 
 export default {
   title: 'Layout/Flex',
