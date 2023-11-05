@@ -1,0 +1,48 @@
+.tree {
+  list-style: none;
+  line-height: 1.5;
+}
+
+.treeLabel {
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--component-height-medium);
+  &:hover {
+    background-color: var(--color-gray-4);
+  }
+
+  &:active {
+    background-color: var(--color-gray-4);
+  }
+}
+
+.indent {
+  display: inline-block;
+  width: var(--space-5);
+  // You can set a default width here or just leave it to be set inline
+}
+
+.toggleButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: var(--space-2);
+}
+
+.treeItem {
+  // Ensure full width hover effect
+  display: block;
+  width: 100%;
+  &.hovered {
+    background-color: var(--color-gray-4);
+  }
+}
+
+.treeNested {
+  padding-left: 0; // Remove padding since indentation will be handled by the IndentSpan
+  overflow: hidden;
+  transition: all 0.3s;
+}
