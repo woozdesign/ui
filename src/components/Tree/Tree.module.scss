@@ -1,3 +1,5 @@
+@use '@/styles/lib/mixins.scss';
+
 .tree {
   list-style: none;
   line-height: 1.5;
@@ -9,13 +11,12 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: var(--component-height-medium);
   &:hover {
-    background-color: var(--color-gray-4);
+    background-color: var(--color-accent-4);
   }
 
   &:active {
-    background-color: var(--color-gray-4);
+    background-color: var(--color-accent-4);
   }
 }
 
@@ -28,16 +29,17 @@
 .toggleButton {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-treelabel: center;
   margin-right: var(--space-2);
 }
 
 .treeItem {
+  color: var(--gray-1);
   // Ensure full width hover effect
   display: block;
   width: 100%;
   &.hovered {
-    background-color: var(--color-gray-4);
+    background-color: var(--color-accent-4);
   }
 }
 
@@ -45,4 +47,33 @@
   padding-left: 0; // Remove padding since indentation will be handled by the IndentSpan
   overflow: hidden;
   transition: all 0.3s;
+}
+
+.wd-tree {
+  @include mixins.breakpoints {
+    &-xlarge {
+      .treeLabel {
+        height: var(--component-height-xlarge);
+        font-size: var(--font-size-4);
+      }
+    }
+    &-large {
+      .treeLabel {
+        height: var(--component-height-large);
+        font-size: var(--font-size-4);
+      }
+    }
+    &-medium {
+      .treeLabel {
+        height: var(--component-height-medium);
+        font-size: var(--font-size-3);
+      }
+    }
+    &-small {
+      .treeLabel {
+        height: var(--component-height-small);
+        font-size: var(--font-size-2);
+      }
+    }
+  }
 }

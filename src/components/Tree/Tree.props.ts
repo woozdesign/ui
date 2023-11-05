@@ -1,3 +1,5 @@
+import { ColorProp, MarginProp, SizeProp } from '@/utils';
+
 // Extend TreeItemProps to accept an optional level prop
 export type TreeItemProps = {
   id: string;
@@ -6,6 +8,6 @@ export type TreeItemProps = {
   level?: number;
 };
 // Define the type for the tree component props
-export type TreeProps = {
+export interface TreeProps extends MarginProp, SizeProp, ColorProp {
   data: TreeItemProps[];
-};
+}
