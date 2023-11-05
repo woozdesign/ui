@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import styles from './Tree.module.scss';
 import { TreeItemProps, TreeProps } from './Tree.props';
+import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 
 // TreeItem component for individual items
 const TreeItem: React.FC<
@@ -100,7 +101,12 @@ const TreeItem: React.FC<
 };
 
 // Tree component
-const Tree: React.FC<TreeProps> = ({ data: dataProp }) => {
+const Tree: React.FC<TreeProps> = (props) => {
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { data: dataProp, size = 'medium', color } = otherMarginProps;
+
+  const classes = classNames(styles.tree, withBreakpoints(size, 'wd-tree', styles), withMarginProps(marginProps));
+
   const [data, setData] = useState(dataProp);
   const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
   const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
@@ -137,6 +143,40 @@ const Tree: React.FC<TreeProps> = ({ data: dataProp }) => {
   const reorderItems = (items: TreeItemProps[], fromId: string, toId: string, toParentId?: string): TreeItemProps[] => {
     let draggedItem: TreeItemProps | null = null;
 
+    // Check if the targetId is a descendant of the draggedItem
+    const isDescendant = (parentId: string, childId: string) => {
+      const queue = [...items];
+      while (queue.length) {
+        const node = queue.shift();
+        if (node) {
+          if (node.id === parentId) {
+            // Search all children for the childId
+            const stack = [...(node.children || [])];
+            while (stack.length) {
+              const childNode = stack.pop();
+              if (childNode) {
+                if (childNode.id === childId) {
+                  return true;
+                }
+                if (childNode.children) {
+                  stack.push(...childNode.children);
+                }
+              }
+            }
+            break; // Once the parent is found and children are checked, exit the loop
+          }
+          if (node.children) {
+            queue.push(...node.children);
+          }
+        }
+      }
+      return false;
+    };
+
+    // Prevent dropping an item onto one of its descendants
+    if (isDescendant(fromId, toId)) {
+      return items; // Return the items unmodified if the move is invalid
+    }
     // Find and remove the dragged item from its original location
     const findAndRemoveItem = (items: TreeItemProps[], itemId: string): TreeItemProps[] => {
       return items.reduce((acc: TreeItemProps[], item) => {
@@ -202,7 +242,7 @@ const Tree: React.FC<TreeProps> = ({ data: dataProp }) => {
   };
 
   return (
-    <ul className={styles.tree}>
+    <ul data-accent-color={color} className={classes}>
       {data.map((item) => (
         <TreeItem
           key={item.id}
