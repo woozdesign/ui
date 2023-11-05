@@ -37,6 +37,7 @@ export { default as Table } from './Table';
 export { default as TextArea } from './TextArea';
 export { default as TextField } from './TextField';
 export { default as Tooltip } from './Tooltip';
+export { default as Tree } from './Tree';
 export { default as Typography } from './Typography';
 
 export * from './Theme';

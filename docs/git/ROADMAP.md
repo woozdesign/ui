@@ -85,6 +85,7 @@ Nov 2023
 | Code          | ✅        |       |
 | Cover         | 🚧        |       |
 | Equation      | 🚧        |       |
+| Tree          | ✅        |       |
 
 ### Layouts
 
