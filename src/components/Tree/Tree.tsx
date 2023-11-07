@@ -13,30 +13,35 @@ const TreeItem: React.FC<
     onDrop: (e: React.DragEvent<HTMLLIElement>, id: string) => void;
     onDragEnter: (e: React.DragEvent<HTMLLIElement>, id: string) => void;
     onDragLeave: (e: React.DragEvent<HTMLLIElement>) => void;
-    hoveredItemId: string | null;
+    onDragEnd: (e: React.DragEvent<HTMLLIElement>) => void;
+    hoveredItemId?: string;
+    isFirstChild?: boolean;
+    dragOverItemId?: string;
+    dragOverPosition?: 'above' | 'below';
   }
-> = ({ id, label, children, level = 0, onDragStart, onDragOver, onDrop, onDragEnter, onDragLeave, hoveredItemId }) => {
+> = (props) => {
+  const {
+    id,
+    label,
+    children,
+    level = 0,
+    onDragStart,
+    onDragOver,
+    onDragEnd,
+    onDrop,
+    onDragEnter,
+    onDragLeave,
+    hoveredItemId,
+    dragOverItemId,
+    dragOverPosition,
+    isFirstChild = false,
+  } = props;
+
   const [isOpen, setIsOpen] = useState(false);
   const toggleOpen = () => setIsOpen(!isOpen);
 
   // Use isHovered prop to conditionally add a class for hover effect
   const itemClasses = classNames(styles.treeItem, { [styles[`hovered`]]: id === hoveredItemId });
-
-  // Create a React Fragment to avoid adding extra nodes to the DOM
-  const Indent = () => {
-    return (
-      <>
-        {Array.from({ length: level + 1 }, (_, index) => (
-          <span key={index} className={styles.indent}>
-            {/* Place children only in the last indent */}
-            {index === level && children && children.length > 0 && (
-              <span className={styles.toggleButton}>{isOpen ? <Icon type={'ChevronDown'} /> : <Icon type={'ChevronRight'} />}</span>
-            )}
-          </span>
-        ))}
-      </>
-    );
-  };
 
   // Modified event handlers that stop propagation
   const handleStart = (e: React.DragEvent<HTMLLIElement>) => {
@@ -44,8 +49,8 @@ const TreeItem: React.FC<
     e.stopPropagation();
   };
 
-  const handleOver = (e: React.DragEvent<HTMLLIElement>) => {
-    onDragOver(e);
+  const handleOver = (e: React.DragEvent<HTMLLIElement>, id: string) => {
+    onDragOver(e, id);
     e.stopPropagation();
   };
 
@@ -64,39 +69,79 @@ const TreeItem: React.FC<
     e.stopPropagation();
   };
 
+  const handleDragEnd = (e: React.DragEvent<HTMLLIElement>) => {
+    onDragEnd(e);
+    e.stopPropagation();
+  };
+
+  // Create a React Fragment to avoid adding extra nodes to the DOM
+  const Indent = () => {
+    return (
+      <>
+        {Array.from({ length: level + 1 }, (_, index) => (
+          <span key={index} className={styles.indent}>
+            {/* Place children only in the last indent */}
+            {index === level && children && children.length > 0 && (
+              <span className={styles.toggleButton}>{isOpen ? <Icon type={'ChevronDown'} /> : <Icon type={'ChevronRight'} />}</span>
+            )}
+          </span>
+        ))}
+      </>
+    );
+  };
+  const renderDragLine = dragOverItemId === id && (
+    <div
+      className={classNames(styles.dragLine, {
+        [styles.dragLineAbove]: dragOverPosition === 'above',
+        [styles.dragLineBelow]: dragOverPosition === 'below',
+      })}
+    />
+  );
+
   return (
-    <li
-      key={id}
-      className={itemClasses}
-      draggable
-      onDragStart={handleStart}
-      onDragOver={handleOver}
-      onDrop={handleDropEvent}
-      onDragEnter={(e) => handleDragEnter(e, id)} // Call with the item's id
-      onDragLeave={handleDragLeave}
-    >
-      <div className={styles.treeLabel} onClick={toggleOpen}>
-        <Indent /> {/* Now Indent contains the toggle button logic within itself */}
-        {label}
-      </div>
-      {isOpen && children && (
-        <ul className={styles.treeNested}>
-          {children.map((child) => (
-            <TreeItem
-              key={child.id}
-              {...child}
-              level={level + 1}
-              onDragStart={onDragStart}
-              onDragOver={onDragOver}
-              onDrop={onDrop}
-              onDragEnter={onDragEnter}
-              onDragLeave={onDragLeave}
-              hoveredItemId={hoveredItemId}
-            />
-          ))}
-        </ul>
-      )}
-    </li>
+    <>
+      <li
+        key={id}
+        className={itemClasses}
+        draggable
+        onDragStart={handleStart}
+        onDragOver={(e) => handleOver(e, id)}
+        onDrop={handleDropEvent}
+        onDragEnd={handleDragEnd}
+        onDragEnter={(e) => handleDragEnter(e, id)} // Call with the item's id
+        onDragLeave={handleDragLeave}
+      >
+        <div className={styles.treeLabelWrapper} onClick={toggleOpen}>
+          <Indent /> {/* Now Indent contains the toggle button logic within itself */}
+          <div className={styles.treeLabel} onClick={toggleOpen}>
+            {renderDragLine && dragOverPosition === 'above' && renderDragLine}
+            {label}
+            {renderDragLine && dragOverPosition === 'below' && renderDragLine}
+          </div>
+        </div>
+        {isOpen && children && (
+          <ul className={styles.treeNested}>
+            {children.map((child, index) => (
+              <TreeItem
+                key={child.id}
+                {...child}
+                level={level + 1}
+                onDragStart={onDragStart}
+                onDragOver={onDragOver}
+                onDrop={onDrop}
+                onDragEnter={onDragEnter}
+                onDragLeave={onDragLeave}
+                onDragEnd={onDragEnd}
+                hoveredItemId={hoveredItemId}
+                dragOverItemId={dragOverItemId}
+                dragOverPosition={dragOverPosition}
+                isFirstChild={index === 0}
+              />
+            ))}
+          </ul>
+        )}
+      </li>
+    </>
   );
 };
 
@@ -110,13 +155,16 @@ const Tree: React.FC<TreeProps> = (props) => {
   const [data, setData] = useState(dataProp);
   const [draggedItemId, setDraggedItemId] = useState<string | null>(null);
   const [hoveredItemId, setHoveredItemId] = useState<string | null>(null);
+  const [dragOverItemId, setDragOverItemId] = useState<string | null>(null);
+  const [dragOverPosition, setDragOverPosition] = useState<'above' | 'below' | null>(null);
 
-  const handleDragEnter = (e: React.DragEvent<HTMLLIElement>, targetId: string) => {
+  const handleDragEnter = (e: React.DragEvent<HTMLLIElement>, id: string) => {
     e.preventDefault();
-    setHoveredItemId(targetId);
   };
 
   const handleDragLeave = (e: React.DragEvent<HTMLLIElement>) => {
+    setDragOverItemId(null);
+    setDragOverPosition(null);
     e.preventDefault();
   };
 
@@ -124,23 +172,54 @@ const Tree: React.FC<TreeProps> = (props) => {
     setDraggedItemId(id);
   };
 
-  const handleDragOver = (e: React.DragEvent<HTMLLIElement>) => {
-    e.preventDefault(); // Necessary for the onDrop event to trigger
+  const handleDragOver = (e: React.DragEvent<HTMLLIElement>, id: string) => {
+    e.preventDefault();
+
+    if (draggedItemId == id) return;
+    const targetRect = e.currentTarget.getBoundingClientRect();
+    const hoverTopThreshold = (targetRect.bottom - targetRect.top) * 0.3; // 20% from the top
+    const hoverBottomThreshold = (targetRect.bottom - targetRect.top) * 0.7; // 80% from the top which is 20% from the bottom
+    const hoverClientY = e.clientY - targetRect.top;
+
+    let position;
+    if (hoverClientY < hoverTopThreshold) {
+      position = 'above';
+      setHoveredItemId(null);
+    } else if (hoverClientY > hoverBottomThreshold) {
+      position = 'below';
+      setHoveredItemId(null);
+    } else {
+      setHoveredItemId(id);
+      setDragOverItemId(null);
+      setDragOverPosition(null);
+      position = 'middle';
+    }
+
+    setDragOverItemId(id);
+    setDragOverPosition(position); // make sure you have setDragOverPosition defined in your component's state
   };
 
-  const handleDrop = (e: React.DragEvent<HTMLLIElement>, targetId: string) => {
+  const handleDragEnd = (e: React.DragEvent<HTMLLIElement>) => {
+    setHoveredItemId(null);
+    setDragOverItemId(null);
+    setDragOverPosition(null);
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLLIElement>, id: string) => {
     e.preventDefault();
-    if (draggedItemId && draggedItemId !== targetId) {
+    if (draggedItemId && draggedItemId !== id) {
       // Here you would calculate the new order and update the state accordingly
       // This is a complex process and is heavily dependent on how you manage the tree state
       // For example:
-      const newOrder = reorderItems(data, draggedItemId, targetId);
-
-      setData(newOrder); // setData would be your state updater function for the tree data
+      const newOrder = reorderItems(data, draggedItemId, id, dragOverPosition);
+      setData(newOrder);
     }
     setHoveredItemId(null);
+    setDragOverItemId(null);
+    setDragOverPosition(null);
   };
-  const reorderItems = (items: TreeItemProps[], fromId: string, toId: string, toParentId?: string): TreeItemProps[] => {
+
+  const reorderItems = (items: TreeItemProps[], fromId: string, toId: string, position?: 'above' | 'below' | 'middle'): TreeItemProps[] => {
     let draggedItem: TreeItemProps | null = null;
 
     // Check if the targetId is a descendant of the draggedItem
@@ -177,6 +256,7 @@ const Tree: React.FC<TreeProps> = (props) => {
     if (isDescendant(fromId, toId)) {
       return items; // Return the items unmodified if the move is invalid
     }
+
     // Find and remove the dragged item from its original location
     const findAndRemoveItem = (items: TreeItemProps[], itemId: string): TreeItemProps[] => {
       return items.reduce((acc: TreeItemProps[], item) => {
@@ -197,38 +277,41 @@ const Tree: React.FC<TreeProps> = (props) => {
 
     if (!draggedItem) return items; // If the item wasn't found, return the original items
 
-    const insertItem = (items: TreeItemProps[], itemToInsert: TreeItemProps, targetId: string | null): TreeItemProps[] => {
+    const insertItem = (items: TreeItemProps[], itemToInsert: TreeItemProps, targetId: string | null, position?: 'above' | 'below' | 'middle'): TreeItemProps[] => {
       // Helper function to insert the item
-      const inserter = (list: TreeItemProps[], item: TreeItemProps, targetId: string) => {
+      const insertAtIndex = (list: TreeItemProps[], item: TreeItemProps, index: number) => {
         const newList = [...list];
-        const targetIndex = newList.findIndex((i) => i.id === targetId);
-
-        if (targetIndex !== -1) {
-          if (newList[targetIndex].children) {
-            // Spread children if it's an array
-            newList[targetIndex].children = [...(newList[targetIndex].children || []), item];
-          } else {
-            // If the target has no children, create a new children array with the item
-            const targetItem = newList[targetIndex];
-            newList[targetIndex] = { ...targetItem, children: [item] };
-          }
-        }
+        newList.splice(index, 0, item); // Insert the item at the index
         return newList;
       };
 
       // Recursively search for the target and insert the item
       const recursiveInsert = (list: TreeItemProps[], item: TreeItemProps, targetId: string): TreeItemProps[] => {
-        return list.map((subItem) => {
+        for (let i = 0; i < list.length; i++) {
+          const subItem = list[i];
           if (subItem.id === targetId) {
-            return { ...subItem, children: subItem.children ? [...subItem.children, item] : [item] };
+            switch (position) {
+              case 'above':
+                return insertAtIndex(list, item, i);
+              case 'below':
+                return insertAtIndex(list, item, i + 1);
+              case 'middle':
+                return [...list.slice(0, i), { ...subItem, children: [...(subItem.children || []), item] }, ...list.slice(i + 1)];
+              default:
+                return list;
+            }
           }
-          if (subItem.children) {
-            return { ...subItem, children: subItem.children ? recursiveInsert(subItem.children, item, targetId) : [item] };
-          }
-          return subItem;
-        });
-      };
 
+          if (subItem.children) {
+            const newChildren = recursiveInsert(subItem.children, item, targetId);
+            if (newChildren !== subItem.children) {
+              // If children have been modified, return updated list with new children
+              return [...list.slice(0, i), { ...subItem, children: newChildren }, ...list.slice(i + 1)];
+            }
+          }
+        }
+        return list;
+      };
       if (targetId === null) {
         // If targetId is null, just add the item at the root level
         return [...items, itemToInsert];
@@ -238,12 +321,12 @@ const Tree: React.FC<TreeProps> = (props) => {
     };
 
     // Insert the dragged item into the new location
-    return insertItem(newItemsWithoutDragged, draggedItem, toId);
+    return insertItem(newItemsWithoutDragged, draggedItem, toId, position);
   };
 
   return (
     <ul data-accent-color={color} className={classes}>
-      {data.map((item) => (
+      {data.map((item, index) => (
         <TreeItem
           key={item.id}
           {...item}
@@ -252,7 +335,11 @@ const Tree: React.FC<TreeProps> = (props) => {
           onDrop={handleDrop}
           onDragEnter={handleDragEnter}
           onDragLeave={handleDragLeave}
+          onDragEnd={handleDragEnd}
           hoveredItemId={hoveredItemId}
+          dragOverItemId={dragOverItemId}
+          dragOverPosition={dragOverPosition}
+          isFirstChild={index === 0}
         />
       ))}
     </ul>

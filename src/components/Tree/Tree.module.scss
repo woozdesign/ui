@@ -5,7 +5,7 @@
   line-height: 1.5;
 }
 
-.treeLabel {
+.treeLabelWrapper {
   cursor: pointer;
   user-select: none;
   display: flex;
@@ -20,6 +20,14 @@
   }
 }
 
+.treeLabel {
+  position: relative;
+  height: 100%;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
 .indent {
   display: inline-block;
   width: var(--space-5);
@@ -29,7 +37,7 @@
 .toggleButton {
   display: flex;
   align-items: center;
-  justify-treelabel: center;
+  justify-content: center;
   margin-right: var(--space-2);
 }
 
@@ -44,36 +52,57 @@
 }
 
 .treeNested {
-  padding-left: 0; // Remove padding since indentation will be handled by the IndentSpan
-  overflow: hidden;
+  padding-left: 0;
   transition: all 0.3s;
 }
 
 .wd-tree {
   @include mixins.breakpoints {
     &-xlarge {
-      .treeLabel {
+      .treeLabelWrapper {
         height: var(--component-height-xlarge);
         font-size: var(--font-size-4);
+        padding-left: var(--space-3);
       }
     }
     &-large {
-      .treeLabel {
+      .treeLabelWrapper {
         height: var(--component-height-large);
         font-size: var(--font-size-4);
+        padding-left: var(--space-3);
       }
     }
     &-medium {
-      .treeLabel {
+      .treeLabelWrapper {
         height: var(--component-height-medium);
         font-size: var(--font-size-3);
+        padding-left: var(--space-2);
       }
     }
     &-small {
-      .treeLabel {
+      .treeLabelWrapper {
         height: var(--component-height-small);
         font-size: var(--font-size-2);
+        padding-left: var(--space-1);
       }
     }
   }
+}
+
+.dragLine {
+  height: 2px;
+  background-color: var(--color-accent-12); // Or any indicator color
+  position: absolute;
+  width: 100%;
+  z-index: 9999; // Use a high number to ensure it's on top
+}
+
+.dragLineAbove {
+  top: 0;
+  margin-top: -1px;
+}
+
+.dragLineBelow {
+  bottom: 0;
+  margin-bottom: -1px;
 }
