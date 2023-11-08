@@ -11,7 +11,7 @@ const IndentToggle = ({ level, item, isOpen, toggleOpen }: { level: number; isOp
     <>
       {Array.from({ length: level + 1 }, (_, index) => (
         <span key={index} className={styles.indent}>
-          {index === level && item.children && (
+          {index === level && item.children && item.children.length > 0 && (
             <span className={styles.toggleButton} onClick={toggleOpen}>
               <Icon type={isOpen ? 'ChevronDown' : 'ChevronRight'} />
             </span>
@@ -89,7 +89,12 @@ const TreeItem: React.FC<TreeItemComponentProps> = (props) => {
           <IndentToggle item={item} level={level} isOpen={isOpen} toggleOpen={() => setIsOpen(!isOpen)} />
           <div className={styles.treeLabel} onClick={toggleOpen}>
             {renderDragLine && dragOverPosition === 'above' && renderDragLine}
-            {item.label}
+
+            <span className={styles.label}>
+              {item.iconPrepend && item.iconPrepend}
+              {item.label}
+              {item.iconAppend && item.iconAppend}
+            </span>
             {renderDragLine && dragOverPosition === 'below' && renderDragLine}
           </div>
         </div>

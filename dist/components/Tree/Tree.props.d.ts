@@ -3,6 +3,8 @@ import { ColorProp, MarginProp, SizeProp } from '../../utils';
 export type TreeItemProps = {
     id: string;
     label: string;
+    iconPrepend?: React.ReactNode;
+    iconAppend?: React.ReactNode;
     children?: TreeItemProps[];
 };
 export interface TreeProps extends MarginProp, SizeProp, ColorProp {

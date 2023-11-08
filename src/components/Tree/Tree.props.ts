@@ -4,6 +4,8 @@ import { ColorProp, MarginProp, SizeProp } from '@/utils';
 export type TreeItemProps = {
   id: string;
   label: string;
+  iconPrepend?: React.ReactNode;
+  iconAppend?: React.ReactNode;
   children?: TreeItemProps[];
 };
 // Define the type for the tree component props
