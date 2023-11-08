@@ -89,7 +89,12 @@ const TreeItem: React.FC<TreeItemComponentProps> = (props) => {
           <IndentToggle item={item} level={level} isOpen={isOpen} toggleOpen={() => setIsOpen(!isOpen)} />
           <div className={styles.treeLabel} onClick={toggleOpen}>
             {renderDragLine && dragOverPosition === 'above' && renderDragLine}
-            {item.label}
+
+            <span className={styles.label}>
+              {item.iconPrepend && item.iconPrepend}
+              {item.label}
+              {item.iconAppend && item.iconAppend}
+            </span>
             {renderDragLine && dragOverPosition === 'below' && renderDragLine}
           </div>
         </div>

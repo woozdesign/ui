@@ -7,6 +7,7 @@ import { Col, Row } from '../Grid/Grid';
 import { ThemeProvider } from '../Theme/Theme';
 import Tree from './Tree';
 import { TreeProps } from './Tree.props';
+import { Icon } from '@woozdesign/icons';
 
 export default {
   title: 'Components/Tree',
@@ -29,10 +30,13 @@ Default.args = {
         {
           id: '3',
           label: 'Child 1',
+          iconAppend: <Icon type={'Activity'} />,
         },
         {
           id: '4',
           label: 'Child 2',
+          iconAppend: <Icon type={'Activity'} />,
+          iconPrepend: <Icon type={'Activity'} />,
           children: [
             {
               id: '5',
