@@ -15,6 +15,14 @@
   position: absolute;
   z-index: 1;
   font-size: var(--font-size-3);
+
+  opacity: 0;
+  transition: all 0.1s ease-in-out;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
 }
 
 .tooltip .ellipsisContent {
@@ -59,10 +67,6 @@
   }
 }
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
-}
-
 // Left Tooltip
 .tooltip[data-placement='left'] .tooltiptext {
   top: 50%;
@@ -99,6 +103,10 @@
   }
 }
 
-.tooltip:hover .tooltiptext {
-  visibility: visible;
+.fade-in {
+  animation: fadeIn 300ms ease forwards;
+}
+
+.fade-out {
+  animation: fadeOut 300ms ease forwards;
 }
