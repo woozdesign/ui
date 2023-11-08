@@ -6,6 +6,7 @@ import ReactDom from 'react-dom';
 import IconButton from '../IconButton';
 import styles from './Drawer.module.scss';
 import { ContentProps, DrawerProps, FooterProps, HeaderProps } from './Drawer.props';
+import { useTransitionState } from '@/utils';
 interface DrawerContextProps {
   onClose: () => void;
 }
@@ -15,8 +16,8 @@ const DrawerContext = React.createContext<DrawerContextProps | undefined>(undefi
 const Root: FC<DrawerProps> = (props) => {
   const { className, style, children, open = false, width = 320, overlayVariant = 'transparent', outlined = true, placement = 'right', onClose, variant = 'default' } = props;
 
-  const [isRendered, setIsRendered] = useState(false);
-  const [isOpen, setIsOpen] = useState(open);
+  const [isOpen, isRendered] = useTransitionState(open, 200);
+
   const [targetElement, setTargetElement] = useState<Element | null>(null);
 
   const hasHeader = React.Children.toArray(children).some((child) => React.isValidElement(child) && child.type === Header);
@@ -52,8 +53,6 @@ const Root: FC<DrawerProps> = (props) => {
   const handleClose = () => {
     if (open) {
       onClose && onClose(); // Call the onClose prop when closing the drawer
-    } else {
-      setIsRendered(true);
     }
   };
 
@@ -69,21 +68,6 @@ const Root: FC<DrawerProps> = (props) => {
       };
     }
   }, [isOpen]);
-
-  useEffect(() => {
-    if (!open) {
-      setIsOpen(false);
-      const timer = setTimeout(() => {
-        setIsRendered(false);
-      }, 200); // delay to allow the transition to complete before unmounting
-      return () => clearTimeout(timer);
-    } else {
-      setIsRendered(true);
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 50);
-    }
-  }, [open]);
 
   return (
     <DrawerContext.Provider value={{ onClose: handleClose }}>

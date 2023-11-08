@@ -30,9 +30,9 @@ const Root: FC<RootProps> = (props) => {
     if (defaultValue) {
       React.Children.forEach(children, (contentChild) => {
         if (React.isValidElement<ContentProps>(contentChild) && contentChild.type === Content) {
-          React.Children.forEach(contentChild.props.children, (itemChild) => {
-            if (React.isValidElement<ItemProps>(itemChild) && itemChild.props.value === defaultValue) {
-              setSelectedLabel(itemChild.props.children as string);
+          contentChild.props.data.map((item) => {
+            if (item.value === defaultValue) {
+              setSelectedLabel(item.label);
             }
           });
         }
@@ -69,20 +69,22 @@ const Trigger: FC<TriggerProps> = () => {
 };
 
 const Content: FC<ContentProps> = (props) => {
-  const { children, placement = 'bottom' } = props;
+  const { placement = 'bottom', data } = props;
   const context = useContext(SelectContext);
   if (!context) throw new Error('Content must be used within Root');
   if (!context.isOpen) return null;
 
   return (
     <div data-placement={placement} className={styles.content}>
-      {children}
+      {data.map((item, index) => {
+        return <Item key={item.value + index} {...item} />;
+      })}
     </div>
   );
 };
 
 const Item: FC<ItemProps> = (props) => {
-  const { value, children } = props;
+  const { value, label } = props;
   const context = useContext(SelectContext);
   if (!context) throw new Error('Item must be used within Root');
 
@@ -90,13 +92,13 @@ const Item: FC<ItemProps> = (props) => {
 
   const handleClick = () => {
     context.setSelectedValue(value);
-    context.setSelectedLabel(children as string); // Assuming children is always a string for simplicity
+    context.setSelectedLabel(label as string); // Assuming children is always a string for simplicity
     context.onToggle();
   };
 
   return (
     <div onClick={handleClick} className={classes}>
-      {children}
+      {label}
       {value == context.selectedValue && <Icon type={'Check'} size={'small'} />}
     </div>
   );
@@ -106,7 +108,6 @@ const Select = {
   Root: Root,
   Trigger: Trigger,
   Content: Content,
-  Item: Item,
 };
 
 export default Select;

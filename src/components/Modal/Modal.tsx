@@ -1,8 +1,8 @@
 'use client';
+import { useTransitionState } from '@/utils';
 import classNames from 'classnames';
 import React, { FC, useContext, useEffect, useState } from 'react';
 import ReactDom from 'react-dom';
-import Button from '../Button';
 import Card from '../Card';
 import styles from './Modal.module.scss';
 import { ActionProps, ContentProps, ModalContextProps, ModalProps } from './Modal.props';
@@ -12,8 +12,8 @@ const ModalContext = React.createContext<ModalContextProps | undefined>(undefine
 const Root: FC<ModalProps> = (props) => {
   const { className, style, children, open = false, onClose, onCancel, onConfirm, variant = 'default', shadow = 4, radius } = props;
 
-  const [isOpen, setIsOpen] = useState(open);
-  const [isRendered, setIsRendered] = useState(open);
+  const [isOpen, isRendered] = useTransitionState(open, 200);
+
   const [targetElement, setTargetElement] = useState<Element | null>(null);
 
   const overlayClasses = classNames(styles.overlay, { [styles.open]: isOpen });
@@ -31,25 +31,8 @@ const Root: FC<ModalProps> = (props) => {
   const handleClose = () => {
     if (isOpen) {
       onClose && onClose(); // Call the onClose prop when closing the modal
-    } else {
-      setIsRendered(true);
     }
   };
-
-  useEffect(() => {
-    if (!open) {
-      setIsOpen(false);
-      const timer = setTimeout(() => {
-        setIsRendered(false);
-      }, 200); // delay to allow the transition to complete before unmounting
-      return () => clearTimeout(timer);
-    } else {
-      setIsRendered(true);
-      const timer = setTimeout(() => {
-        setIsOpen(true);
-      }, 50);
-    }
-  }, [open]);
 
   useEffect(() => {
     if (isOpen) {

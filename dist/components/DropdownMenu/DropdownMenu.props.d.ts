@@ -13,12 +13,15 @@ export interface TriggerProps extends BasePropWithChildren {
 }
 export interface ContentProps extends BasePropWithChildren, ShadowProp {
     placement?: 'top' | 'bottom' | 'left' | 'right';
+    data: ItemProps[];
 }
-export interface ItemProps extends BasePropWithChildren {
+export interface ItemProps {
     shortcut?: WoozCommandCode[];
     color?: string;
     onClick?: () => void;
     disabled?: boolean;
+    label: string;
+    children?: ItemProps[];
 }
 export interface SubProps extends BasePropWithChildren {
 }

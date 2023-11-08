@@ -14,10 +14,18 @@ const Template: Story<SelectProps> = (args) => (
   <ThemeProvider appearance={'light'}>
     <Select.Root {...args}>
       <Select.Trigger />
-      <Select.Content>
-        <Select.Item value="apple">Apple</Select.Item>
-        <Select.Item value="orange">Orange</Select.Item>
-      </Select.Content>
+      <Select.Content
+        data={[
+          {
+            value: 'apple',
+            label: 'Apple',
+          },
+          {
+            value: 'orange',
+            label: 'Orange',
+          },
+        ]}
+      />
     </Select.Root>
   </ThemeProvider>
 );
