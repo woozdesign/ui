@@ -1,14 +1,14 @@
 'use client';
 import { ShortcutProvider } from '@/utils/contexts/Shortcut/ShortcutProvider';
+import { useOutsideClick } from '@/utils/hooks/useOutsideClick';
 import { useShortcut } from '@/utils/hooks/useShortcut';
 import { Icon } from '@woozdesign/icons';
 import classNames from 'classnames';
-import React, { FC, RefObject, useCallback, useContext, useEffect, useRef, useState } from 'react';
+import React, { FC, useCallback, useContext, useRef, useState } from 'react';
 import Divider from '../Divider';
 import Kbd from '../Kbd';
 import styles from './DropdownMenu.module.scss';
 import { ContentProps, DropdownMenuContextProps, DropdownMenuProps, ItemProps, SubContentProps, SubProps, SubTriggerProps, TriggerProps } from './DropdownMenu.props';
-import { useOutsideClick } from '@/utils/hooks/useOutsideClick';
 
 const DropdownMenuContext = React.createContext<DropdownMenuContextProps | undefined>(undefined);
 
@@ -52,7 +52,7 @@ const Trigger: FC<TriggerProps> = (props) => {
 };
 
 const Content: FC<ContentProps> = (props) => {
-  const { className, style, children, shadow = '4', placement = 'bottom' } = props;
+  const { className, data, style, children, shadow = '4', placement = 'bottom' } = props;
   const context = useContext(DropdownMenuContext);
   if (!context) throw new Error('Content must be used within Root');
 
@@ -60,12 +60,27 @@ const Content: FC<ContentProps> = (props) => {
 
   return (
     <div data-placement={placement} data-shadow={shadow} className={styles.content}>
-      {children}
+      {data.map((item, index) => {
+        if (item.children && item.children.length > 0) {
+          return (
+            <Sub key={item.label + index}>
+              <SubTrigger shortcut={item.shortcut}>{item.label}</SubTrigger>
+              <SubContent>
+                {item.children.map((childrenItem, index) => {
+                  return <Item key={childrenItem.label + index} {...childrenItem} />;
+                })}
+              </SubContent>
+            </Sub>
+          );
+        } else {
+          return <Item key={item.label + index} {...item} />;
+        }
+      })}
     </div>
   );
 };
 
-const Item: FC<ItemProps> = ({ children, shortcut, color, disabled, onClick }) => {
+const Item: FC<ItemProps> = ({ label, children, shortcut, color, disabled, onClick }) => {
   const handleClick = () => {
     if (!disabled && onClick) {
       onClick();
@@ -75,7 +90,7 @@ const Item: FC<ItemProps> = ({ children, shortcut, color, disabled, onClick }) =
 
   return (
     <div className={`${styles.item} ${disabled ? styles.disabled : ''}`} data-accent-color={color} onClick={handleClick}>
-      {children}
+      {label}
       {shortcut && <Kbd variant={'solid'} size={'small'} shortcut={shortcut}></Kbd>}
     </div>
   );
@@ -148,11 +163,6 @@ const DropdownMenu = {
   Root: Root,
   Trigger: Trigger,
   Content: Content,
-  Item: Item,
-  Separator: Separator,
-  Sub: Sub,
-  SubTrigger: SubTrigger,
-  SubContent: SubContent,
 };
 
 export default DropdownMenu;

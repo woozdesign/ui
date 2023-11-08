@@ -1,4 +1,4 @@
-import { BasePropWithChildren, ColorProp, HighContrastProp, MarginProp, RadiusProp, ShadowProp, SizeProp } from '@/utils';
+import { BaseProp, BasePropWithChildren, ColorProp, HighContrastProp, MarginProp, RadiusProp, ShadowProp, SizeProp } from '@/utils';
 
 export interface SelectContextProps {
   selectedValue: string;
@@ -17,9 +17,11 @@ export interface RootProps extends BasePropWithChildren, HighContrastProp, Margi
 
 export interface TriggerProps {}
 
-export interface ContentProps extends BasePropWithChildren {
+export interface ContentProps extends BaseProp {
   placement?: 'top' | 'bottom' | 'left' | 'right';
+  data: ItemProps[];
 }
-export interface ItemProps extends BasePropWithChildren {
+export interface ItemProps {
   value: string;
+  label: string;
 }
