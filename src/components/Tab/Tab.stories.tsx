@@ -13,47 +13,25 @@ export default {
   args: {},
 } as Meta;
 
-interface StoryProps extends TabProps {
-  triggerHighContrast?: boolean;
-}
+interface StoryProps extends TabProps {}
 
 const Template: Story<StoryProps> = (args) => (
   <ThemeProvider>
     <Row>
       <Col xs="8">
         <Card variant={'transparent'}>
-          <Tab.Root id="test-1" defaultValue="settings" {...args}>
-            <Tab.List>
-              <Tab.Trigger {...args} value="account">
-                Account
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="documents">
-                Documents
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settings">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settings1">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="setting2s">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settin3gs">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settin4gs">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settin5gs">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settin6gs">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="setti7ngs">
-                Settings
-              </Tab.Trigger>
+          <Tab.Root id="test-1" defaultValue="settings">
+            <Tab.List {...args}>
+              <Tab.Trigger value="account">Account</Tab.Trigger>
+              <Tab.Trigger value="documents">Documents</Tab.Trigger>
+              <Tab.Trigger value="settings">Settings</Tab.Trigger>
+              <Tab.Trigger value="settings1">Settings</Tab.Trigger>
+              <Tab.Trigger value="setting2s">Settings</Tab.Trigger>
+              <Tab.Trigger value="settin3gs">Settings</Tab.Trigger>
+              <Tab.Trigger value="settin4gs">Settings</Tab.Trigger>
+              <Tab.Trigger value="settin5gs">Settings</Tab.Trigger>
+              <Tab.Trigger value="settin6gs">Settings</Tab.Trigger>
+              <Tab.Trigger value="setti7ngs">Settings</Tab.Trigger>
             </Tab.List>
 
             <div style={{ padding: '10px 15px' }}>
@@ -68,17 +46,13 @@ const Template: Story<StoryProps> = (args) => (
               </Tab.Content>
             </div>
           </Tab.Root>
-          <Tab.Root id="test-2" defaultValue="account" {...args}>
-            <Tab.List>
-              <Tab.Trigger color={'gray'} {...args} value="account">
+          <Tab.Root id="test-2" defaultValue="account">
+            <Tab.List {...args}>
+              <Tab.Trigger color={'gray'} value="account">
                 Account
               </Tab.Trigger>
-              <Tab.Trigger {...args} value="documents">
-                Documents
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settings">
-                Settings
-              </Tab.Trigger>
+              <Tab.Trigger value="documents">Documents</Tab.Trigger>
+              <Tab.Trigger value="settings">Settings</Tab.Trigger>
             </Tab.List>
 
             <div style={{ padding: '10px 15px' }}>
@@ -97,38 +71,18 @@ const Template: Story<StoryProps> = (args) => (
       </Col>
       <Col xs="12">
         <Card>
-          <Tab.Root id="test-1" defaultValue="settings" {...args}>
-            <Tab.List>
-              <Tab.Trigger {...args} value="account">
-                Account
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="documents">
-                Documents
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settings">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settings1">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="setting2s">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settin3gs">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settin4gs">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settin5gs">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settin6gs">
-                Settings
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="setti7ngs">
-                Settings
-              </Tab.Trigger>
+          <Tab.Root id="test-1" defaultValue="settings">
+            <Tab.List {...args}>
+              <Tab.Trigger value="account">Account</Tab.Trigger>
+              <Tab.Trigger value="documents">Documents</Tab.Trigger>
+              <Tab.Trigger value="settings">Settings</Tab.Trigger>
+              <Tab.Trigger value="settings1">Settings</Tab.Trigger>
+              <Tab.Trigger value="setting2s">Settings</Tab.Trigger>
+              <Tab.Trigger value="settin3gs">Settings</Tab.Trigger>
+              <Tab.Trigger value="settin4gs">Settings</Tab.Trigger>
+              <Tab.Trigger value="settin5gs">Settings</Tab.Trigger>
+              <Tab.Trigger value="settin6gs">Settings</Tab.Trigger>
+              <Tab.Trigger value="setti7ngs">Settings</Tab.Trigger>
             </Tab.List>
 
             <div style={{ padding: '10px 15px' }}>
@@ -143,17 +97,11 @@ const Template: Story<StoryProps> = (args) => (
               </Tab.Content>
             </div>
           </Tab.Root>
-          <Tab.Root id="test-2" defaultValue="account" {...args}>
-            <Tab.List>
-              <Tab.Trigger {...args} value="account">
-                Account
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="documents">
-                Documents
-              </Tab.Trigger>
-              <Tab.Trigger {...args} value="settings">
-                Settings
-              </Tab.Trigger>
+          <Tab.Root id="test-2" defaultValue="account">
+            <Tab.List {...args}>
+              <Tab.Trigger value="account">Account</Tab.Trigger>
+              <Tab.Trigger value="documents">Documents</Tab.Trigger>
+              <Tab.Trigger value="settings">Settings</Tab.Trigger>
             </Tab.List>
           </Tab.Root>
         </Card>
@@ -164,8 +112,9 @@ const Template: Story<StoryProps> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  triggerHighContrast: false,
   size: 'small',
   color: 'gray',
+  radius: 'medium',
+  highContrast: false,
   variant: 'outlined',
 };
