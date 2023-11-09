@@ -1,5 +1,8 @@
 @use '@/styles/lib/mixins.scss';
 
+$padding: var(--space-1);
+$border-radius: max(var(--radius-3), var(--radius-full));
+
 .listWrapper {
   display: flex;
   position: relative;
@@ -8,8 +11,10 @@
 }
 .list {
   display: flex;
-  gap: var(--space-2);
+  gap: $padding;
+  border-radius: calc($border-radius + $padding);
   position: relative;
+  padding: 0 $padding;
 }
 
 .tabContent {
@@ -35,11 +40,31 @@
     height: 100%;
     box-sizing: border-box;
     display: inline-flex;
+
+    border-radius: $border-radius;
     align-items: center;
     justify-content: center;
   }
+}
 
-  &--outlined {
+[data-variant='outlined'] {
+  .list {
+    &.highContrast {
+      .trigger {
+        .content {
+        }
+        &.active {
+          box-shadow: 0 3px 0px -1px var(--color-accent-12);
+          color: var(--color-gray-12);
+        }
+      }
+    }
+  }
+
+  .trigger {
+    .content {
+      background-color: transparent;
+    }
     transition:
       color 0.3s ease-in-out,
       box-shadow 0.1s ease-in-out;
@@ -51,16 +76,27 @@
       box-shadow: 0 3px 0 -1px var(--color-accent-9);
       color: var(--color-gray-12);
     }
+  }
+}
 
+[data-variant='solid'] {
+  .list {
     &.highContrast {
-      &.active {
-        box-shadow: 0 3px 0px -1px var(--color-accent-12);
-        color: var(--color-gray-12);
+      .trigger {
+        .content {
+          color: var(--color-accent-12);
+        }
+        &.active {
+          .content {
+            background-color: var(--color-accent-12);
+            color: var(--color-accent-1);
+          }
+        }
       }
     }
   }
 
-  &--solid {
+  .trigger {
     transition: background-color 0.1s ease-in-out;
     &:hover {
       color: var(--color-accent-9);
@@ -71,28 +107,49 @@
         color: var(--color-accent-9-contrast);
       }
     }
+  }
+}
+
+[data-variant='ios'] {
+  .list {
+    background-color: var(--color-accent-3);
 
     &.highContrast {
-      .content {
-        color: var(--color-accent-12);
-      }
-      &.active {
+      .trigger {
         .content {
-          background-color: var(--color-accent-12);
-          color: var(--color-accent-1);
+          color: var(--color-accent-12);
         }
+        &.active {
+          .content {
+            background-color: var(--color-accent-12);
+            color: var(--color-accent-1);
+          }
+        }
+      }
+    }
+  }
+
+  .trigger {
+    transition: background-color 0.1s ease-in-out;
+    &:hover {
+      color: var(--color-accent-9);
+    }
+    &.active {
+      .content {
+        box-shadow: var(--shadow-theme);
+        background-color: var(--color-accent-9);
+        color: var(--color-accent-9-contrast);
       }
     }
   }
 }
 
-.wt-tab {
-  &--trigger {
+.wd-tab {
+  &--list {
     @include mixins.breakpoints {
       &-xlarge {
         .content {
           height: var(--component-height-xlarge);
-          border-radius: max(var(--radius-2), var(--radius-full));
           font-size: var(--font-size-4);
           padding: var(--space-2) var(--space-4);
         }
@@ -100,7 +157,6 @@
       &-large {
         .content {
           height: var(--component-height-large);
-          border-radius: max(var(--radius-2), var(--radius-full));
           font-size: var(--font-size-4);
           padding: var(--space-1) var(--space-4);
         }
@@ -108,7 +164,6 @@
       &-medium {
         .content {
           height: var(--component-height-medium);
-          border-radius: max(var(--radius-3), var(--radius-full));
           font-size: var(--font-size-3);
           padding: var(--space-1) var(--space-3);
         }
@@ -116,7 +171,6 @@
       &-small {
         .content {
           height: var(--component-height-small);
-          border-radius: max(var(--radius-3), var(--radius-full));
           font-size: var(--font-size-2);
           padding: var(--space-1) var(--space-2);
         }
@@ -132,8 +186,8 @@
   height: var(--block-height);
   width: var(--block-width);
   // transform: translateY(-50%);
-  background-color: var(--color-accent-4);
-  border-radius: max(var(--radius-3), var(--radius-full));
+  background-color: var(--color-accent-a4);
+  border-radius: calc($border-radius);
   backdrop-filter: var(--translucent);
   -webkit-backdrop-filter: var(--translucent);
   opacity: 0;

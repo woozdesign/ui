@@ -24,14 +24,23 @@ export const Root: FC<RootProps> = (props) => {
 };
 
 export const List: FC<ListProps> = (props) => {
-  const { children, justify = 'start' } = props;
+  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
+  const { children, justify = 'start', variant = 'outlined', color, shadow, size = 'medium', radius, highContrast = false } = otherMarginProps;
   const context = useContext(TabContext);
   if (!context) throw new Error('Trigger must be used within Root');
 
+  const classes = classNames(
+    styles.list,
+    {
+      [styles['highContrast']]: highContrast,
+    },
+    withBreakpoints(size, 'wd-tab--list', styles),
+  );
+
   return (
-    <div className={styles.listWrapper}>
+    <div data-variant={variant} data-shadow={shadow} data-radius={radius} data-accent-color={color} className={styles.listWrapper}>
       <ScrollArea id="tab-scroll" direction={'horizontal'} invisible>
-        <div className={styles.list} style={{ justifyContent: justify }}>
+        <div className={classes} style={{ justifyContent: justify }}>
           {children}
           <div id={'tab-backdrop'} className={styles.menuBackdrop}></div>
         </div>
@@ -41,8 +50,7 @@ export const List: FC<ListProps> = (props) => {
 };
 
 export const Trigger: FC<TriggerProps> = (props) => {
-  const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, children, variant = 'outlined', value, color, size = 'medium', radius, highContrast = false, onClick } = otherMarginProps;
+  const { className, style, children, value, onClick } = props;
 
   const context = useContext(TabContext);
   if (!context) throw new Error('Trigger must be used within Root');
@@ -51,14 +59,10 @@ export const Trigger: FC<TriggerProps> = (props) => {
 
   const classes = classNames(
     styles.trigger,
-    styles[`trigger--${variant}`],
     {
-      [styles['highContrast']]: highContrast,
       [styles['active']]: value === activeTab,
     },
     className,
-    withBreakpoints(size, 'wt-tab--trigger', styles),
-    withMarginProps(marginProps),
   );
   const triggerRef = useRef<HTMLAnchorElement>(null);
   const backdropRef = useRef(null);
@@ -105,8 +109,6 @@ export const Trigger: FC<TriggerProps> = (props) => {
   return (
     <a
       ref={triggerRef}
-      data-accent-color={color}
-      data-radius={radius}
       className={classes}
       onClick={() => {
         setActiveTab(value);
