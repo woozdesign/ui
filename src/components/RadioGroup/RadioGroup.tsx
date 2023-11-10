@@ -27,7 +27,7 @@ const RadioGroup: React.FC<RadioGroupProps> = (props) => {
   };
 
   return (
-    <div className={classes} data-accent-color={color} data-radius={radius}>
+    <div className={classes} data-accent-color={color} data-radius={radius} style={style}>
       {options.map((option, index) => (
         <label key={index} className={labelClasses}>
           <input

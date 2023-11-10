@@ -17,7 +17,7 @@ const Root: FC<ModalProps> = (props) => {
   const [targetElement, setTargetElement] = useState<Element | null>(null);
 
   const overlayClasses = classNames(styles.overlay, { [styles.open]: isOpen });
-  const modalClasses = classNames(styles.modal, { [styles.open]: isOpen });
+  const modalClasses = classNames(styles.modal, { [styles.open]: isOpen }, className);
 
   const handleOverlayClick = () => {
     if (variant === 'default') handleClose();
@@ -54,7 +54,7 @@ const Root: FC<ModalProps> = (props) => {
           ReactDom.createPortal(
             <>
               <div className={overlayClasses} onClick={handleOverlayClick}>
-                <div data-radius={radius} data-shadow={shadow} className={modalClasses}>
+                <div data-radius={radius} data-shadow={shadow} className={modalClasses} style={style}>
                   {React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}
                 </div>
               </div>
@@ -63,7 +63,7 @@ const Root: FC<ModalProps> = (props) => {
           )
         ) : (
           <div className={overlayClasses} onClick={handleOverlayClick}>
-            <div data-radius={radius} data-shadow={shadow} className={modalClasses}>
+            <div data-radius={radius} data-shadow={shadow} className={modalClasses} style={style}>
               {React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}
             </div>
           </div>
@@ -85,7 +85,7 @@ const Content: FC<ContentProps> = (props) => {
   };
 
   return (
-    <div className={styles.content} onClick={stopPropagation}>
+    <div className={classNames(styles.content, className)} onClick={stopPropagation} style={style}>
       <Card size={'large'}>
         {(title || subtitle) && <Card.Header title={title} titleSize={'5'} subtitle={subtitle} outlined={false}></Card.Header>}
         <Card.Body content={children}></Card.Body>
@@ -123,7 +123,7 @@ const Action: FC<ActionProps> = (props) => {
   };
 
   return (
-    <div className={styles.action} onClick={handleActionClick}>
+    <div className={classNames(styles.action, className)} onClick={handleActionClick} style={style}>
       {children}
     </div>
   );

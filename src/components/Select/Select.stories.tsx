@@ -15,7 +15,7 @@ const Template: Story<SelectProps> = (args) => (
     <Select.Root {...args}>
       <Select.Trigger />
       <Select.Content
-        data={[
+        items={[
           {
             value: 'apple',
             label: 'Apple',

@@ -10,7 +10,7 @@ const Tooltip: FC<TooltipProps> = (props) => {
   const classes = classNames(styles.tooltip, className);
 
   return (
-    <div className={classes} data-placement={placement}>
+    <div className={classes} data-placement={placement} style={style}>
       {children}
       <div className={`${styles.tooltiptext}`}>
         <div className={styles.ellipsisContent}>{content}</div>

@@ -3,10 +3,10 @@ import { Icon } from '@woozdesign/icons';
 import classNames from 'classnames';
 import React, { useState } from 'react';
 import styles from './Tree.module.scss';
-import { TreeItemComponentProps, TreeItemProps, TreeProps } from './Tree.props';
+import { TreeItemComponentProps, ItemProps, TreeProps } from './Tree.props';
 
 // Helper component for indentation and toggle
-const IndentToggle = ({ level, item, isOpen, toggleOpen }: { level: number; isOpen: boolean; item: TreeItemProps; toggleOpen: () => void }) => {
+const IndentToggle = ({ level, item, isOpen, toggleOpen }: { level: number; isOpen: boolean; item: ItemProps; toggleOpen: () => void }) => {
   return (
     <>
       {Array.from({ length: level + 1 }, (_, index) => (
@@ -127,7 +127,7 @@ const TreeItem: React.FC<TreeItemComponentProps> = (props) => {
 // Tree component
 const Tree: React.FC<TreeProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { data: dataProp, size = 'medium', color } = otherMarginProps;
+  const { items: dataProp, size = 'medium', color } = otherMarginProps;
 
   const classes = classNames(styles.tree, withBreakpoints(size, 'wd-tree', styles), withMarginProps(marginProps));
 
@@ -198,8 +198,8 @@ const Tree: React.FC<TreeProps> = (props) => {
     setDragOverPosition(undefined);
   };
 
-  const reorderItems = (items: TreeItemProps[], fromId: string, toId: string, position?: 'above' | 'below' | 'middle'): TreeItemProps[] => {
-    let draggedItem: TreeItemProps | undefined = undefined;
+  const reorderItems = (items: ItemProps[], fromId: string, toId: string, position?: 'above' | 'below' | 'middle'): ItemProps[] => {
+    let draggedItem: ItemProps | undefined = undefined;
 
     // Check if the targetId is a descendant of the draggedItem
     const isDescendant = (parentId: string, childId: string) => {
@@ -237,8 +237,8 @@ const Tree: React.FC<TreeProps> = (props) => {
     }
 
     // Find and remove the dragged item from its original location
-    const findAndRemoveItem = (items: TreeItemProps[], itemId: string): TreeItemProps[] => {
-      return items.reduce((acc: TreeItemProps[], item) => {
+    const findAndRemoveItem = (items: ItemProps[], itemId: string): ItemProps[] => {
+      return items.reduce((acc: ItemProps[], item) => {
         if (item.id === itemId) {
           draggedItem = item;
           return acc;
@@ -256,16 +256,16 @@ const Tree: React.FC<TreeProps> = (props) => {
 
     if (!draggedItem) return items; // If the item wasn't found, return the original items
 
-    const insertItem = (items: TreeItemProps[], itemToInsert: TreeItemProps, targetId: string | undefined, position?: 'above' | 'below' | 'middle'): TreeItemProps[] => {
+    const insertItem = (items: ItemProps[], itemToInsert: ItemProps, targetId: string | undefined, position?: 'above' | 'below' | 'middle'): ItemProps[] => {
       // Helper function to insert the item
-      const insertAtIndex = (list: TreeItemProps[], item: TreeItemProps, index: number) => {
+      const insertAtIndex = (list: ItemProps[], item: ItemProps, index: number) => {
         const newList = [...list];
         newList.splice(index, 0, item); // Insert the item at the index
         return newList;
       };
 
       // Recursively search for the target and insert the item
-      const recursiveInsert = (list: TreeItemProps[], item: TreeItemProps, targetId: string): TreeItemProps[] => {
+      const recursiveInsert = (list: ItemProps[], item: ItemProps, targetId: string): ItemProps[] => {
         for (let i = 0; i < list.length; i++) {
           const subItem = list[i];
           if (subItem.id === targetId) {

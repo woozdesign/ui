@@ -27,7 +27,7 @@ const Root: FC<DropdownMenuProps> = (props) => {
 
   return (
     <ShortcutProvider>
-      <div ref={rootRef} className={classes}>
+      <div ref={rootRef} className={classes} style={style}>
         <DropdownMenuContext.Provider value={{ onToggle: handleToggle, isOpen }}>{children}</DropdownMenuContext.Provider>
       </div>
     </ShortcutProvider>
@@ -45,42 +45,56 @@ const Trigger: FC<TriggerProps> = (props) => {
   useShortcut(shortcut ?? [], context.onToggle);
 
   return (
-    <div className={classes} onClick={context.onToggle}>
+    <div className={classes} onClick={context.onToggle} style={style}>
       {children}
     </div>
   );
 };
 
 const Content: FC<ContentProps> = (props) => {
-  const { className, data, style, children, shadow = '4', placement = 'bottom' } = props;
+  const { className, items, style, children, shadow = '4', placement = 'bottom' } = props;
   const context = useContext(DropdownMenuContext);
   if (!context) throw new Error('Content must be used within Root');
 
   if (!context.isOpen) return null;
 
   return (
-    <div data-placement={placement} data-shadow={shadow} className={styles.content}>
-      {data.map((item, index) => {
-        if (item.children && item.children.length > 0) {
-          return (
-            <Sub key={item.label + index}>
-              <SubTrigger shortcut={item.shortcut}>{item.label}</SubTrigger>
-              <SubContent>
-                {item.children.map((childrenItem, index) => {
-                  return <Item key={childrenItem.label + index} {...childrenItem} />;
-                })}
-              </SubContent>
-            </Sub>
-          );
-        } else {
-          return <Item key={item.label + index} {...item} />;
+    <div data-placement={placement} data-shadow={shadow} className={classNames(styles.content, className)} style={style}>
+      {items.map((item, index) => {
+        switch (item.variant) {
+          case 'separator':
+            return <Separator />;
+
+          default:
+            if (item.children && item.children.length > 0) {
+              return (
+                <Sub key={item.label + index}>
+                  <SubTrigger shortcut={item.shortcut}>{item.label}</SubTrigger>
+                  <SubContent>
+                    {item.children.map((childrenItem, index) => {
+                      switch (childrenItem.variant) {
+                        case 'separator':
+                          return <Separator />;
+
+                        default:
+                          return <Item key={childrenItem.label + index} {...childrenItem} />;
+                      }
+                    })}
+                  </SubContent>
+                </Sub>
+              );
+            } else {
+              return <Item key={item.label + index} {...item} />;
+            }
         }
       })}
     </div>
   );
 };
 
-const Item: FC<ItemProps> = ({ label, children, shortcut, color, disabled, onClick }) => {
+const Item: FC<ItemProps> = (props) => {
+  const { label, children, shortcut, color, disabled, onClick } = props as Extract<ItemProps, { variant: 'item' }>;
+
   const handleClick = () => {
     if (!disabled && onClick) {
       onClick();
@@ -127,7 +141,7 @@ const Sub: FC<SubProps> = (props) => {
   }, []);
 
   return (
-    <div ref={subRef} className={classes} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
+    <div ref={subRef} className={classes} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} style={style}>
       <DropdownMenuContext.Provider value={{ onToggle: handleToggle, isOpen: isSubOpen }}>{children}</DropdownMenuContext.Provider>
     </div>
   );
@@ -143,7 +157,7 @@ const SubTrigger: FC<SubTriggerProps> = (props) => {
   useShortcut(shortcut ?? [], context.onToggle);
 
   return (
-    <div className={classes}>
+    <div className={classes} style={style}>
       {children}
       <Icon type={'ChevronRight'} />
     </div>
@@ -156,7 +170,11 @@ const SubContent: FC<SubContentProps> = (props) => {
 
   const classes = classNames(styles.subContent, className, { [styles['open']]: context.isOpen });
 
-  return <div className={classes}>{children}</div>;
+  return (
+    <div className={classes} style={style}>
+      {children}
+    </div>
+  );
 };
 
 const DropdownMenu = {

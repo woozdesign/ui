@@ -76,7 +76,7 @@ const Root: FC<DrawerProps> = (props) => {
           ReactDom.createPortal(
             <>
               <div className={overlayClasses} onClick={handleOverlayClick}>
-                <div className={drawerClasses} style={{ width: width }}>
+                <div className={drawerClasses} style={{ width: width, ...style }}>
                   {/* {React.Children.map(children, (child) => (React.isValidElement(child) && child.type !== Trigger ? React.cloneElement(child) : null))} */}
                   {React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}
                 </div>
@@ -86,7 +86,7 @@ const Root: FC<DrawerProps> = (props) => {
           )
         ) : (
           <div className={overlayClasses} onClick={handleOverlayClick}>
-            <div className={drawerClasses} style={{ width: width }}>
+            <div className={drawerClasses} style={{ width: width, ...style }}>
               {React.Children.map(children, (child) => (React.isValidElement(child) ? React.cloneElement(child) : null))}
             </div>
           </div>
@@ -105,14 +105,14 @@ const Content: FC<ContentProps> = (props) => {
   };
 
   return (
-    <div className={classes} onClick={stopPropagation}>
+    <div className={classes} onClick={stopPropagation} style={style}>
       {children}
     </div>
   );
 };
 
 const Header: FC<HeaderProps> = (props) => {
-  const { title, action } = props;
+  const { className, style, title, action } = props;
 
   const context = useContext(DrawerContext);
 
@@ -129,7 +129,7 @@ const Header: FC<HeaderProps> = (props) => {
   };
 
   return (
-    <div className={styles.header} onClick={stopPropagation}>
+    <div className={classNames(styles.header, className)} onClick={stopPropagation} style={style}>
       <div className={styles[`header-title`]}>{title}</div>
       <div className={styles[`header-action`]}>
         {action ?? (
@@ -152,7 +152,7 @@ const Footer: FC<FooterProps> = (props) => {
   };
 
   return (
-    <div className={classes} onClick={stopPropagation}>
+    <div className={classes} onClick={stopPropagation} style={style}>
       {children}
     </div>
   );

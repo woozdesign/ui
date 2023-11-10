@@ -45,14 +45,14 @@ const IconButton: FC<IconButtonProps> = (props) => {
 
   if (href) {
     return (
-      <a className={classes} data-radius={radius} data-accent-color={color} href={href} onClick={handleAnchorClick} {...other}>
+      <a className={classes} data-radius={radius} data-accent-color={color} href={href} onClick={handleAnchorClick} {...other} style={style}>
         {children}
       </a>
     );
   }
 
   return (
-    <button className={classes} data-radius={radius} data-accent-color={color} disabled={disabled} onClick={handleButtonClick} type={buttonType} {...other}>
+    <button className={classes} data-radius={radius} data-accent-color={color} disabled={disabled} onClick={handleButtonClick} type={buttonType} {...other} style={style}>
       {children}
     </button>
   );

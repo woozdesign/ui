@@ -22,7 +22,7 @@ export const Default: Story<TreeProps> = (args) => (
 );
 
 Default.args = {
-  data: [
+  items: [
     {
       id: '1',
       label: 'Parent 1',
