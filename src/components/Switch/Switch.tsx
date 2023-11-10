@@ -12,7 +12,7 @@ const Switch: FC<SwitchProps> = (props) => {
   const classes = classNames(styles.switch, className, withBreakpoints(size, 'wd-switch', styles), withMarginProps(marginProps));
 
   return (
-    <label className={classes} data-accent-color={color} data-radius={radius}>
+    <label className={classes} data-accent-color={color} data-radius={radius} style={style}>
       <input type="checkbox" {...others} className={styles.input} onChange={onChange} />
       <span className={styles.slider}></span>
     </label>

@@ -14,7 +14,7 @@ const Card: FC<CardProps> & {
   Action: FC<ActionProps>;
 } = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
-  const { variant = 'solid', outlined = true, size = 'medium', children, className, onClick, shadow, radius, ...others } = marginOthers;
+  const { variant = 'solid', outlined = true, size = 'medium', style, children, className, onClick, shadow, radius, ...others } = marginOthers;
 
   const cardClasses = classNames(
     styles.card,
@@ -26,19 +26,19 @@ const Card: FC<CardProps> & {
   );
 
   return (
-    <div className={cardClasses} data-radius={radius} data-shadow={shadow} onClick={onClick} {...others}>
+    <div className={cardClasses} data-radius={radius} data-shadow={shadow} onClick={onClick} {...others} style={style}>
       {children}
     </div>
   );
 };
 
 const Header: FC<HeaderProps> = (props) => {
-  const { title, titleSize = DEFAULT_FONT_SIZE, subtitle, subtitleSize = DEFAULT_FONT_SIZE, action, outlined = false } = props;
+  const { title, style, titleSize = DEFAULT_FONT_SIZE, subtitle, subtitleSize = DEFAULT_FONT_SIZE, action, outlined = false } = props;
 
   const classes = classNames(styles.heading, { [styles[`heading--outlined`]]: outlined });
 
   return (
-    <div className={classes}>
+    <div className={classes} style={style}>
       <div className={styles[`heading-title-wrapper`]}>
         {typeof title == 'string' ? (
           <Typography.Header className={styles.title} variant={'h3'} size={titleSize}>
@@ -61,10 +61,10 @@ const Header: FC<HeaderProps> = (props) => {
 };
 
 const Body: FC<BodyProps> = (props) => {
-  const { title, content, titleSize = DEFAULT_FONT_SIZE, textAlign = 'start' } = props;
+  const { className, style, title, content, titleSize = DEFAULT_FONT_SIZE, textAlign = 'start' } = props;
 
   return (
-    <div className={styles.body}>
+    <div className={classNames(className, styles.body)} style={style}>
       {typeof title == 'string' ? (
         <Typography.Text align={textAlign} variant="div" size={titleSize} className={styles.title} weight={'bold'}>
           {title}
@@ -84,12 +84,12 @@ const Body: FC<BodyProps> = (props) => {
 };
 
 const Action: FC<ActionProps> = (props) => {
-  const { children, justify = 'start', outlined = false } = props;
+  const { className, style, children, justify = 'start', outlined = false } = props;
 
-  const classes = classNames(styles.actions, { [styles[`actions--outlined`]]: outlined });
+  const classes = classNames(styles.actions, { [styles[`actions--outlined`]]: outlined }, className);
 
   return (
-    <div className={classes} style={{ justifyContent: justify }}>
+    <div className={classes} style={{ justifyContent: justify, ...style }}>
       {children}
     </div>
   );

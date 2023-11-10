@@ -1,20 +1,20 @@
 import { ColorProp, MarginProp, SizeProp } from '@/utils';
 
-// Extend TreeItemProps to accept an optional level prop
-export type TreeItemProps = {
+// Extend ItemProps to accept an optional level prop
+export type ItemProps = {
   id: string;
   label: string;
   iconPrepend?: React.ReactNode;
   iconAppend?: React.ReactNode;
-  children?: TreeItemProps[];
+  children?: ItemProps[];
 };
 // Define the type for the tree component props
 export interface TreeProps extends MarginProp, SizeProp, ColorProp {
-  data: TreeItemProps[];
+  items: ItemProps[];
 }
 
 export interface TreeItemComponentProps {
-  item: TreeItemProps;
+  item: ItemProps;
   level?: number;
   onDragStart: (e: React.DragEvent<HTMLLIElement>, id: string) => void;
   onDragOver: (e: React.DragEvent<HTMLLIElement>, id: string) => void;

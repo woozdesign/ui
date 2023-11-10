@@ -18,19 +18,22 @@ export const Root: FC<RootProps> = (props) => {
 
   return (
     <TabContext.Provider value={{ activeTab, setActiveTab }}>
-      <div className={classes}>{children}</div>
+      <div className={classes} style={style}>
+        {children}
+      </div>
     </TabContext.Provider>
   );
 };
 
 export const List: FC<ListProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { children, justify = 'start', variant = 'outlined', color, shadow, size = 'medium', radius, highContrast = false } = otherMarginProps;
+  const { className, style, children, justify = 'start', variant = 'outlined', color, shadow, size = 'medium', radius, highContrast = false } = otherMarginProps;
   const context = useContext(TabContext);
   if (!context) throw new Error('Trigger must be used within Root');
 
   const classes = classNames(
     styles.list,
+    className,
     {
       [styles['highContrast']]: highContrast,
     },
@@ -40,7 +43,7 @@ export const List: FC<ListProps> = (props) => {
   return (
     <div data-variant={variant} data-shadow={shadow} data-radius={radius} data-accent-color={color} className={styles.listWrapper}>
       <ScrollArea id="tab-scroll" direction={'horizontal'} invisible>
-        <div className={classes} style={{ justifyContent: justify }}>
+        <div className={classes} style={{ justifyContent: justify, ...style }}>
           {children}
           <div id={'tab-backdrop'} className={styles.menuBackdrop}></div>
         </div>
@@ -110,6 +113,7 @@ export const Trigger: FC<TriggerProps> = (props) => {
     <a
       ref={triggerRef}
       className={classes}
+      style={style}
       onClick={() => {
         setActiveTab(value);
         onClick && onClick();
@@ -129,7 +133,11 @@ export const Content: FC<ContentProps> = (props) => {
   if (!context) throw new Error('Content must be used within Root');
   const { activeTab } = context;
 
-  return activeTab === value ? <div className={classes}>{children}</div> : null;
+  return activeTab === value ? (
+    <div className={classes} style={style}>
+      {children}
+    </div>
+  ) : null;
 };
 
 export const Tab = {

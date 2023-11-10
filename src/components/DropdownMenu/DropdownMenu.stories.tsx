@@ -20,7 +20,7 @@ const Template: Story = (args) => (
         </DropdownMenu.Trigger>
         <DropdownMenu.Content
           placement="top"
-          data={[
+          items={[
             {
               label: 'Trigger',
               children: [
@@ -32,12 +32,18 @@ const Template: Story = (args) => (
                   },
                 },
                 {
+                  variant: 'separator',
+                },
+                {
                   label: 'Move to folder…',
                 },
                 {
                   label: 'Advanced options…',
                 },
               ],
+            },
+            {
+              variant: 'separator',
             },
             {
               label: 'Edit',

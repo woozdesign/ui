@@ -69,6 +69,7 @@ const TextArea: FC<TextAreaProps> = (props) => {
         onInvalid={handleInvalid}
         onKeyPress={handleKeyPress} // Add the handleKeyPress method here
         className={classes}
+        style={style}
       />
       {error && <div className={styles.error}>{error}</div>}
     </div>

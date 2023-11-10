@@ -19,7 +19,7 @@ export interface TriggerProps {}
 
 export interface ContentProps extends BaseProp {
   placement?: 'top' | 'bottom' | 'left' | 'right';
-  data: ItemProps[];
+  items: ItemProps[];
 }
 export interface ItemProps {
   value: string;

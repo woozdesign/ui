@@ -1,17 +1,17 @@
 /// <reference types="react" />
 import { ColorProp, MarginProp, SizeProp } from '../../utils';
-export type TreeItemProps = {
+export type ItemProps = {
     id: string;
     label: string;
     iconPrepend?: React.ReactNode;
     iconAppend?: React.ReactNode;
-    children?: TreeItemProps[];
+    children?: ItemProps[];
 };
 export interface TreeProps extends MarginProp, SizeProp, ColorProp {
-    data: TreeItemProps[];
+    items: ItemProps[];
 }
 export interface TreeItemComponentProps {
-    item: TreeItemProps;
+    item: ItemProps;
     level?: number;
     onDragStart: (e: React.DragEvent<HTMLLIElement>, id: string) => void;
     onDragOver: (e: React.DragEvent<HTMLLIElement>, id: string) => void;

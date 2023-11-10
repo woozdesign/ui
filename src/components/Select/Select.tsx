@@ -24,13 +24,14 @@ const Root: FC<RootProps> = (props) => {
     { [styles['highContrast']]: highContrast },
     withMarginProps(marginProps),
     withBreakpoints(size, 'wd-select', styles),
+    className,
   );
 
   useEffect(() => {
     if (defaultValue) {
       React.Children.forEach(children, (contentChild) => {
         if (React.isValidElement<ContentProps>(contentChild) && contentChild.type === Content) {
-          contentChild.props.data.map((item) => {
+          contentChild.props.items.map((item) => {
             if (item.value === defaultValue) {
               setSelectedLabel(item.label);
             }
@@ -48,7 +49,7 @@ const Root: FC<RootProps> = (props) => {
 
   return (
     <SelectContext.Provider value={{ selectedValue, setSelectedValue, selectedLabel, setSelectedLabel, isOpen, onToggle: handleToggle }}>
-      <div data-radius={radius} data-shadow={shadow} data-accent-color={color} ref={rootRef} className={classes}>
+      <div data-radius={radius} data-shadow={shadow} data-accent-color={color} ref={rootRef} className={classes} style={style}>
         {children}
       </div>
     </SelectContext.Provider>
@@ -69,14 +70,14 @@ const Trigger: FC<TriggerProps> = () => {
 };
 
 const Content: FC<ContentProps> = (props) => {
-  const { placement = 'bottom', data } = props;
+  const { placement = 'bottom', items } = props;
   const context = useContext(SelectContext);
   if (!context) throw new Error('Content must be used within Root');
   if (!context.isOpen) return null;
 
   return (
     <div data-placement={placement} className={styles.content}>
-      {data.map((item, index) => {
+      {items.map((item, index) => {
         return <Item key={item.value + index} {...item} />;
       })}
     </div>

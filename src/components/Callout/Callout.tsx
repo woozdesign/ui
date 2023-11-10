@@ -17,7 +17,7 @@ const Callout: React.FC<CalloutProps> = (props) => {
     withBreakpoints(size, 'wd-callout', styles),
   );
   return (
-    <div data-radius={radius} data-accent-color={color} className={classes}>
+    <div data-radius={radius} data-accent-color={color} className={classes} style={style}>
       <span className={styles.iconPrepend}>{iconPrepend}</span>
       {children}
       <span className={styles.iconAppend}>{iconAppend}</span>

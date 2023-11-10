@@ -10,7 +10,7 @@ import { CheckboxProps } from './Checkbox.props';
 
 const Checkbox: FC<CheckboxProps> = (props) => {
   const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
-  const { color, radius, size = 'medium', onChange, label, hasSubmitted, ...otherProps } = marginOtherProps;
+  const { className, style, color, radius, size = 'medium', onChange, label, hasSubmitted, ...otherProps } = marginOtherProps;
 
   const [isChecked, setIsChecked] = useState(otherProps.checked || false);
   const [isDisabled, setIsDisabled] = useState(otherProps.disabled || false);
@@ -21,6 +21,7 @@ const Checkbox: FC<CheckboxProps> = (props) => {
     isDisabled && styles['checkbox--disabled'],
     withBreakpoints(size, 'wd-checkbox', styles),
     withMarginProps(marginProps),
+    className,
   );
 
   const [error, setError] = useState<string | null>(null);
@@ -56,7 +57,7 @@ const Checkbox: FC<CheckboxProps> = (props) => {
 
   return (
     <div className={styles.wrapper}>
-      <div className={classes} data-accent-color={color} data-radius={radius} onClick={handleCheckboxClick}>
+      <div className={classes} data-accent-color={color} data-radius={radius} onClick={handleCheckboxClick} style={style}>
         <input type="checkbox" {...otherProps} className={styles.input} onChange={handleChange} onInvalid={handleInvalid} disabled={isDisabled} checked={isChecked} />
         <span className={classNames(styles.checkmark, error && styles['error'])}>{isChecked && <Icon type={'Check'} size={'dynamic'} />}</span>
         {label && (

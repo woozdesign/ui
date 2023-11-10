@@ -8,7 +8,9 @@ const AspectRatio: React.FC<AspectRatioProps> = (props) => {
 
   return (
     <div className={styles.aspectRatioContainer} style={{ paddingBottom }}>
-      <div className={styles.content}>{children}</div>
+      <div className={styles.content} style={style}>
+        {children}
+      </div>
     </div>
   );
 };

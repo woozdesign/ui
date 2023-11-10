@@ -49,6 +49,7 @@ const ScrollArea: React.FC<ScrollAreaProps> = (props) => {
     withBreakpoints(size, 'wd-scrollArea', styles),
     withMarginProps(marginProps),
     withPaddingProps(paddingProps),
+    className,
   );
 
   return (
