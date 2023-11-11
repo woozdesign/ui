@@ -1,7 +1,7 @@
 @use '@/styles/lib/mixins.scss';
 
 .wrapper {
-  margin-bottom: var(--space-2);
+  margin: var(--space-1) 0;
   &.block {
     width: 100%;
     max-width: 100%;
@@ -30,7 +30,7 @@
   color: var(--color-gray-12);
   box-shadow: var(--shadow-theme);
   transition: border 0.3s ease;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 
   &--solid {
     border: 1px solid transparent;
@@ -94,7 +94,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 }
 
 .iconAppend {
@@ -104,7 +104,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
 }
 
 .error {

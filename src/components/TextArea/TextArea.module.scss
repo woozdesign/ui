@@ -1,5 +1,5 @@
 .wrapper {
-  margin-bottom: var(--space-2);
+  // margin-bottom: var(--space-2);
   width: 100%;
 }
 
@@ -13,7 +13,7 @@
   background-color: transparent;
   color: var(--color-gray-12);
   transition: border 0.3s ease;
-  margin-bottom: 20px;
+  // margin-bottom: 20px;
   box-shadow: var(--shadow-theme);
 
   &--xlarge {

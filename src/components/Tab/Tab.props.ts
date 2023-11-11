@@ -15,6 +15,7 @@ export interface TriggerProps extends BasePropWithChildren {
 }
 
 export interface ListProps extends MarginProp, BasePropWithChildren, RadiusProp, ColorProp, SizeProp, RadiusProp, HighContrastProp, ShadowProp {
+  block?: boolean;
   variant?: 'outlined' | 'solid' | 'ios';
   justify?: 'center' | 'end' | 'space-between' | 'start';
 }

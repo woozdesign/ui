@@ -32,7 +32,7 @@ export const Col: React.FC<ColProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
   const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
   const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
-  const { className, style, children, xs, sm, md, lg, xl, xxl } = layoutOthersProps;
+  const { className, style, children, align, justify, xs, sm, md, lg, xl, xxl } = layoutOthersProps;
 
   const classes = classNames(
     styles.col,
@@ -50,8 +50,13 @@ export const Col: React.FC<ColProps> = (props) => {
     withPaddingProps(paddingProps),
   );
 
+  const combinedStyle = {
+    alignItems: align,
+    justifyContent: justify,
+    ...style,
+  };
   return (
-    <div className={classes} style={style}>
+    <div className={classes} style={combinedStyle}>
       {children}
     </div>
   );
