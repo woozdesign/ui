@@ -7,9 +7,9 @@ import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 
 const Switch: FC<SwitchProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, children, color, radius, size = 'medium', onChange, ...others } = otherMarginProps;
+  const { className, style, children, color, radius, highContrast, size = 'medium', onChange, ...others } = otherMarginProps;
 
-  const classes = classNames(styles.switch, className, withBreakpoints(size, 'wd-switch', styles), withMarginProps(marginProps));
+  const classes = classNames(styles.switch, className, { [styles['highContrast']]: highContrast }, withBreakpoints(size, 'wd-switch', styles), withMarginProps(marginProps));
 
   return (
     <label className={classes} data-accent-color={color} data-radius={radius} style={style}>

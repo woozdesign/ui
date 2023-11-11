@@ -6,7 +6,7 @@ import React, { FC } from 'react';
 import Typography from '../Typography/Typography';
 import styles from './Card.module.scss';
 import { ActionProps, BodyProps, CardProps, HeaderProps } from './Card.props';
-import { DEFAULT_FONT_SIZE } from '@/utils/helper/defaultValues';
+import { DEFAULT_BODY_FONT_SIZE } from '@/utils/helper/defaultValues';
 
 const Card: FC<CardProps> & {
   Header: FC<HeaderProps>;
@@ -33,7 +33,7 @@ const Card: FC<CardProps> & {
 };
 
 const Header: FC<HeaderProps> = (props) => {
-  const { title, style, titleSize = DEFAULT_FONT_SIZE, subtitle, subtitleSize = DEFAULT_FONT_SIZE, action, outlined = false } = props;
+  const { title, style, titleSize = DEFAULT_BODY_FONT_SIZE, subtitle, subtitleSize = DEFAULT_BODY_FONT_SIZE, action, outlined = false } = props;
 
   const classes = classNames(styles.heading, { [styles[`heading--outlined`]]: outlined });
 
@@ -61,7 +61,7 @@ const Header: FC<HeaderProps> = (props) => {
 };
 
 const Body: FC<BodyProps> = (props) => {
-  const { className, style, title, content, titleSize = DEFAULT_FONT_SIZE, textAlign = 'start' } = props;
+  const { className, style, title, content, titleSize = DEFAULT_BODY_FONT_SIZE, textAlign = 'start' } = props;
 
   return (
     <div className={classNames(className, styles.body)} style={style}>

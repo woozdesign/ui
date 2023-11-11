@@ -7,6 +7,8 @@ export interface RowProps extends BasePropWithChildren, LayoutProp, MarginProp, 
 }
 
 export interface ColProps extends BasePropWithChildren, LayoutProp, MarginProp, PaddingProp {
+  align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
+  justify?: 'start' | 'center' | 'end' | 'space-between' | 'around' | 'space-evenly';
   xs?: number;
   sm?: number;
   md?: number;

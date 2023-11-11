@@ -117,4 +117,5 @@ Default.args = {
   radius: 'medium',
   highContrast: false,
   variant: 'outlined',
+  block: false,
 };

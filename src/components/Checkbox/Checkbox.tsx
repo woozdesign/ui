@@ -10,15 +10,16 @@ import { CheckboxProps } from './Checkbox.props';
 
 const Checkbox: FC<CheckboxProps> = (props) => {
   const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, color, radius, size = 'medium', onChange, label, hasSubmitted, ...otherProps } = marginOtherProps;
+  const { className, style, color, radius, size = 'medium', highContrast, onChange, label, hasSubmitted, ...otherProps } = marginOtherProps;
 
-  const [isChecked, setIsChecked] = useState(otherProps.checked || false);
+  const [isChecked, setIsChecked] = useState(otherProps.defaultChecked || false);
   const [isDisabled, setIsDisabled] = useState(otherProps.disabled || false);
 
   const classes = classNames(
     styles.checkbox,
     isChecked && styles['checkbox--checked'],
     isDisabled && styles['checkbox--disabled'],
+    { [styles['highContrast']]: highContrast },
     withBreakpoints(size, 'wd-checkbox', styles),
     withMarginProps(marginProps),
     className,

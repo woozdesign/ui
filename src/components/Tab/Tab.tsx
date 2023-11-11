@@ -27,10 +27,13 @@ export const Root: FC<RootProps> = (props) => {
 
 export const List: FC<ListProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, children, justify = 'start', variant = 'outlined', color, shadow, size = 'medium', radius, highContrast = false } = otherMarginProps;
+  const { className, style, children, block, justify = 'start', variant = 'outlined', color, shadow, size = 'medium', radius, highContrast = false } = otherMarginProps;
   const context = useContext(TabContext);
   if (!context) throw new Error('Trigger must be used within Root');
 
+  const wrapperClasses = classNames(styles.listWrapper, {
+    [styles['block']]: block,
+  });
   const classes = classNames(
     styles.list,
     className,
@@ -41,7 +44,7 @@ export const List: FC<ListProps> = (props) => {
   );
 
   return (
-    <div data-variant={variant} data-shadow={shadow} data-radius={radius} data-accent-color={color} className={styles.listWrapper}>
+    <div data-variant={variant} data-shadow={shadow} data-radius={radius} data-accent-color={color} className={wrapperClasses}>
       <ScrollArea id="tab-scroll" direction={'horizontal'} invisible>
         <div className={classes} style={{ justifyContent: justify, ...style }}>
           {children}

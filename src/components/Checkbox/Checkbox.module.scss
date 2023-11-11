@@ -12,6 +12,24 @@
   cursor: pointer;
   vertical-align: middle;
 
+  &.highContrast {
+    .input {
+      position: absolute;
+      opacity: 0;
+      height: 0;
+      width: 0;
+
+      &:checked + .checkmark {
+        color: var(--color-accent-1);
+        background-color: var(--color-accent-12); // fallback to #2196F3 if no accent color set
+
+        &::after {
+          display: block;
+        }
+      }
+    }
+  }
+
   &--disabled {
     opacity: 0.7;
     cursor: not-allowed;
@@ -22,6 +40,14 @@
       transition: background-color 0.2s;
       box-shadow: inset 0 0 0 1px var(--color-accent-9);
       // ... and any other styles you want when the custom checkbox is checked
+    }
+
+    &.highContrast {
+      .checkmark {
+        transition: background-color 0.2s;
+        box-shadow: inset 0 0 0 1px var(--color-accent-12);
+        // ... and any other styles you want when the custom checkbox is checked
+      }
     }
   }
 }
@@ -49,13 +75,19 @@
   }
 }
 
+.label {
+  &--error {
+    color: var(--color-red-9);
+  }
+}
+
 .checkmark {
   display: flex;
   align-items: center;
   justify-content: center;
   aspect-ratio: 1/ 1;
   height: 100%;
-  padding: var(--space-1);
+  padding: calc(var(--space-1) * 0.5);
   box-sizing: border-box;
 
   background-color: transparent;
@@ -71,9 +103,6 @@
       .label {
         font-size: var(--font-size-2);
         padding-left: var(--space-2);
-        &--error {
-          color: var(--color-red-9);
-        }
       }
     }
 
@@ -82,9 +111,6 @@
       .label {
         font-size: var(--font-size-3);
         padding-left: var(--space-2);
-        &--error {
-          color: var(--color-red-9);
-        }
       }
     }
 
@@ -93,9 +119,6 @@
       .label {
         font-size: var(--font-size-4);
         padding-left: var(--space-2);
-        &--error {
-          color: var(--color-red-9);
-        }
       }
     }
 
@@ -105,9 +128,6 @@
       .label {
         font-size: var(--font-size-4);
         padding-left: var(--space-2);
-        &--error {
-          color: var(--color-red-9);
-        }
       }
     }
   }

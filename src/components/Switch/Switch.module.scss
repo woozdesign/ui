@@ -16,6 +16,14 @@ $border-radius: max(var(--radius-3), var(--radius-full));
 .switch {
   position: relative;
   display: inline-block;
+
+  &.highContrast {
+    .input {
+      &:checked + .slider {
+        background-color: var(--color-accent-12);
+      }
+    }
+  }
 }
 
 .input {
@@ -42,7 +50,7 @@ $border-radius: max(var(--radius-3), var(--radius-full));
   right: 0;
   bottom: 0;
   border-radius: max(var(--radius-3), var(--radius-full));
-  background-color: var(--color-gray-7);
+  background-color: var(--color-gray-6);
   transition: 0.2s;
   // overflow: hidden;
 
@@ -57,6 +65,10 @@ $border-radius: max(var(--radius-3), var(--radius-full));
     border-radius: calc($border-radius - $padding);
     background-color: var(--color-accent-9-contrast);
     transition: 0.2s;
+
+    &.highContrast {
+      background-color: var(--color-accent-1);
+    }
   }
 }
 
