@@ -19,10 +19,10 @@ const Template: Story = (args) => (
           <Button>Trigger</Button>
         </DropdownMenu.Trigger>
         <DropdownMenu.Content
-          placement="top"
+          placement={'right'}
           items={[
             {
-              label: 'Trigger',
+              label: 'Test',
               children: [
                 {
                   label: 'Item with Shortcut',
