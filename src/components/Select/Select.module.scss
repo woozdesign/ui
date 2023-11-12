@@ -60,8 +60,10 @@
       &:active {
         background-color: var(--color-accent-8);
       }
+    }
 
-      &.highContrast {
+    &.highContrast {
+      .trigger {
         color: var(--color-gray-1);
         background-color: var(--color-accent-12);
         &:hover {
@@ -89,8 +91,10 @@
       &:active {
         background-color: var(--color-accent-6);
       }
+    }
 
-      &.highContrast {
+    &.highContrast {
+      .trigger {
         color: var(--color-accent-12);
         background-color: var(--color-accent-3);
         &:hover {
@@ -106,7 +110,7 @@
   &--outlined {
     .trigger {
       background-color: transparent;
-      color: var(--color-accent-11);
+      color: var(--color-accent-12);
       border: 1px solid var(--color-accent-a7);
       &:hover {
         background-color: var(--color-accent-a2);
@@ -117,6 +121,7 @@
         background-color: var(--color-accent-a3);
         border-color: var(--color-accent-a6);
       }
+
       &.highContrast {
         background-color: transparent;
         color: var(--color-accent-12);
@@ -145,8 +150,10 @@
       &:active {
         background-color: var(--color-accent-a5);
       }
+    }
 
-      &.highContrast {
+    &.highContrast {
+      .trigger {
         color: var(--color-accent-12);
         background-color: transparent;
         &:hover {

@@ -11,8 +11,7 @@ import { CheckboxProps } from './Checkbox.props';
 const Checkbox: FC<CheckboxProps> = (props) => {
   const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
   const { className, style, color, radius, size = 'medium', highContrast, onChange, label, hasSubmitted, ...otherProps } = marginOtherProps;
-
-  const [isChecked, setIsChecked] = useState(otherProps.defaultChecked || false);
+  const [isChecked, setIsChecked] = useState(otherProps.checked || false);
   const [isDisabled, setIsDisabled] = useState(otherProps.disabled || false);
 
   const classes = classNames(
@@ -59,7 +58,16 @@ const Checkbox: FC<CheckboxProps> = (props) => {
   return (
     <div className={styles.wrapper}>
       <div className={classes} data-accent-color={color} data-radius={radius} onClick={handleCheckboxClick} style={style}>
-        <input type="checkbox" {...otherProps} className={styles.input} onChange={handleChange} onInvalid={handleInvalid} disabled={isDisabled} checked={isChecked} />
+        <input
+          type="checkbox"
+          {...otherProps}
+          className={styles.input}
+          onChange={handleChange}
+          onInvalid={handleInvalid}
+          disabled={isDisabled}
+          defaultChecked={otherProps.defaultChecked}
+          checked={isChecked}
+        />
         <span className={classNames(styles.checkmark, error && styles['error'])}>{isChecked && <Icon type={'Check'} size={'dynamic'} />}</span>
         {label && (
           <Typography.Text className={styles.label}>

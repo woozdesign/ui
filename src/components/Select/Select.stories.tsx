@@ -13,7 +13,7 @@ export default {
 const Template: Story<SelectProps> = (args) => (
   <ThemeProvider appearance={'light'}>
     <Select.Root {...args}>
-      <Select.Trigger />
+      <Select.Trigger highContrast={true} />
       <Select.Content
         items={[
           {
@@ -35,4 +35,5 @@ Default.args = {
   defaultValue: 'Apple',
   variant: 'outlined',
   size: 'medium',
+  highContrast: true,
 };

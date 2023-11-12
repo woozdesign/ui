@@ -20,7 +20,7 @@ export default {
 
 const Template: Story<TextFieldProps> = (args) => (
   <ThemeProvider>
-    <Flex>
+    <Flex align="center">
       <TextField {...args} />
       <Button>Button</Button>
     </Flex>
