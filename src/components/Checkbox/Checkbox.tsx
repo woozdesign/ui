@@ -10,9 +10,8 @@ import { CheckboxProps } from './Checkbox.props';
 
 const Checkbox: FC<CheckboxProps> = (props) => {
   const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, color, radius, size = 'medium', highContrast, onChange, label, hasSubmitted, ...otherProps } = marginOtherProps;
-
-  const [isChecked, setIsChecked] = useState(otherProps.defaultChecked || false);
+  const { className, style, color, radius, size = 'medium', highContrast, onChange, label, hasSubmitted, checked, defaultChecked, ...otherProps } = marginOtherProps;
+  const [isChecked, setIsChecked] = useState(defaultChecked || false);
   const [isDisabled, setIsDisabled] = useState(otherProps.disabled || false);
 
   const classes = classNames(

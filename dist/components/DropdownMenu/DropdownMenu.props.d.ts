@@ -1,7 +1,9 @@
 import { BasePropWithChildren, ShadowProp } from '../../utils';
 import { WoozCommandCode } from '../../utils/contexts/Shortcut/Shortcut.props';
 export interface DropdownMenuContextProps {
+    open: boolean;
     isOpen: boolean;
+    isRendered: boolean;
     onToggle: () => void;
 }
 export interface ChildProps {

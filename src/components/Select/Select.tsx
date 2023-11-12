@@ -1,4 +1,4 @@
-import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
+import { extractMarginProps, useTransitionState, withBreakpoints, withMarginProps } from '@/utils';
 import { useOutsideClick } from '@/utils/hooks/useOutsideClick';
 import { Icon } from '@woozdesign/icons';
 import classNames from 'classnames';
@@ -15,7 +15,9 @@ const Root: FC<RootProps> = (props) => {
   const [selectedValue, setSelectedValue] = useState<string>(defaultValue ?? placeholder);
   const [selectedLabel, setSelectedLabel] = useState<string>(placeholder);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+  const [isOpen, isRendered] = useTransitionState(open, 200);
+
   const rootRef = useRef(null);
 
   const classes = classNames(
@@ -42,13 +44,13 @@ const Root: FC<RootProps> = (props) => {
   }, [defaultValue, children]);
 
   const handleToggle = useCallback(() => {
-    setIsOpen((prevIsOpen) => !prevIsOpen);
+    setOpen((prevIsOpen) => !prevIsOpen);
   }, []);
 
-  useOutsideClick(rootRef, () => setIsOpen(false));
+  useOutsideClick(rootRef, () => setOpen(false));
 
   return (
-    <SelectContext.Provider value={{ selectedValue, setSelectedValue, selectedLabel, setSelectedLabel, isOpen, onToggle: handleToggle }}>
+    <SelectContext.Provider value={{ selectedValue, setSelectedValue, selectedLabel, setSelectedLabel, open, isOpen, isRendered, onToggle: handleToggle }}>
       <div data-radius={radius} data-shadow={shadow} data-accent-color={color} ref={rootRef} className={classes} style={style}>
         {children}
       </div>
@@ -73,14 +75,17 @@ const Content: FC<ContentProps> = (props) => {
   const { placement = 'bottom', items } = props;
   const context = useContext(SelectContext);
   if (!context) throw new Error('Content must be used within Root');
-  if (!context.isOpen) return null;
+
+  const classes = classNames(styles.content, { [styles.open]: context.isOpen });
 
   return (
-    <div data-placement={placement} className={styles.content}>
-      {items.map((item, index) => {
-        return <Item key={item.value + index} {...item} />;
-      })}
-    </div>
+    context.isRendered && (
+      <div data-placement={placement} className={classes}>
+        {items.map((item, index) => {
+          return <Item key={item.value + index} {...item} />;
+        })}
+      </div>
+    )
   );
 };
 

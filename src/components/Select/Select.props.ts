@@ -1,6 +1,9 @@
 import { BaseProp, BasePropWithChildren, ColorProp, HighContrastProp, MarginProp, RadiusProp, ShadowProp, SizeProp } from '@/utils';
 
 export interface SelectContextProps {
+  open: boolean;
+  isRendered: boolean;
+
   selectedValue: string;
   selectedLabel: string; // Add this line
   setSelectedValue: (value: string) => void;

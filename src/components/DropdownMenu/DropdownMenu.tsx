@@ -9,6 +9,7 @@ import Divider from '../Divider';
 import Kbd from '../Kbd';
 import styles from './DropdownMenu.module.scss';
 import { ContentProps, DropdownMenuContextProps, DropdownMenuProps, ItemProps, SubContentProps, SubProps, SubTriggerProps, TriggerProps } from './DropdownMenu.props';
+import { useTransitionState } from '@/utils';
 
 const DropdownMenuContext = React.createContext<DropdownMenuContextProps | undefined>(undefined);
 
@@ -16,19 +17,21 @@ const Root: FC<DropdownMenuProps> = (props) => {
   const { className, style, children } = props;
   const classes = classNames(styles.root, className);
 
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const [isOpen, isRendered] = useTransitionState(open, 200);
   const rootRef = useRef(null);
 
   const handleToggle = useCallback(() => {
-    setIsOpen((prevIsOpen) => !prevIsOpen);
+    setOpen((prevIsOpen) => !prevIsOpen);
   }, []);
 
-  useOutsideClick(rootRef, () => setIsOpen(false));
+  useOutsideClick(rootRef, () => setOpen(false));
 
   return (
     <ShortcutProvider>
       <div ref={rootRef} className={classes} style={style}>
-        <DropdownMenuContext.Provider value={{ onToggle: handleToggle, isOpen }}>{children}</DropdownMenuContext.Provider>
+        <DropdownMenuContext.Provider value={{ onToggle: handleToggle, open: open, isOpen: isOpen, isRendered }}>{children}</DropdownMenuContext.Provider>
       </div>
     </ShortcutProvider>
   );
@@ -56,39 +59,45 @@ const Content: FC<ContentProps> = (props) => {
   const context = useContext(DropdownMenuContext);
   if (!context) throw new Error('Content must be used within Root');
 
-  if (!context.isOpen) return null;
+  if (!context) return null;
+
+  const classes = classNames(styles.content, className, { [styles.open]: context.isOpen });
 
   return (
-    <div data-placement={placement} data-shadow={shadow} className={classNames(styles.content, className)} style={style}>
-      {items.map((item, index) => {
-        switch (item.variant) {
-          case 'separator':
-            return <Separator />;
+    context.isRendered && (
+      <div data-placement={placement} data-shadow={shadow} className={classes} style={style}>
+        {items.map((item, index) => {
+          switch (item.variant) {
+            case 'separator':
+              return <Separator key={'separator' + index} />;
 
-          default:
-            if (item.children && item.children.length > 0) {
-              return (
-                <Sub key={item.label + index}>
-                  <SubTrigger shortcut={item.shortcut}>{item.label}</SubTrigger>
-                  <SubContent>
-                    {item.children.map((childrenItem, index) => {
-                      switch (childrenItem.variant) {
-                        case 'separator':
-                          return <Separator />;
+            default:
+              if (item.children && item.children.length > 0) {
+                return (
+                  <Sub key={`${item.variant}_${item.label}_${index}`}>
+                    <SubTrigger key={`sub_trigger_${item.label}_${index}`} shortcut={item.shortcut}>
+                      {item.label}
+                    </SubTrigger>
+                    <SubContent key={`sub_${item.variant}_${item.label}_${index}`}>
+                      {item.children.map((childrenItem, index) => {
+                        switch (childrenItem.variant) {
+                          case 'separator':
+                            return <Separator key={'sub_separator' + index} />;
 
-                        default:
-                          return <Item key={childrenItem.label + index} {...childrenItem} />;
-                      }
-                    })}
-                  </SubContent>
-                </Sub>
-              );
-            } else {
-              return <Item key={item.label + index} {...item} />;
-            }
-        }
-      })}
-    </div>
+                          default:
+                            return <Item key={`sub_${childrenItem.variant}_${childrenItem.label}_${index}`} {...childrenItem} />;
+                        }
+                      })}
+                    </SubContent>
+                  </Sub>
+                );
+              } else {
+                return <Item key={`${item.variant}_${item.label}_${index}`} {...item} />;
+              }
+          }
+        })}
+      </div>
+    )
   );
 };
 
@@ -120,6 +129,9 @@ const Sub: FC<SubProps> = (props) => {
   const classes = classNames(styles.sub, className);
 
   const [isSubOpen, setIsSubOpen] = useState(false);
+
+  const [isOpen, isRendered] = useTransitionState(isSubOpen, 200);
+
   const subRef = useRef(null);
   const closeTimeout = useRef<number | null>(null); // Store the timeout ID
 
@@ -133,7 +145,7 @@ const Sub: FC<SubProps> = (props) => {
   const handleMouseLeave = () => {
     closeTimeout.current = window.setTimeout(() => {
       setIsSubOpen(false);
-    }, 300); // 300ms delay before closing
+    }, 200); // 300ms delay before closing
   };
 
   const handleToggle = useCallback(() => {
@@ -142,7 +154,7 @@ const Sub: FC<SubProps> = (props) => {
 
   return (
     <div ref={subRef} className={classes} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} style={style}>
-      <DropdownMenuContext.Provider value={{ onToggle: handleToggle, isOpen: isSubOpen }}>{children}</DropdownMenuContext.Provider>
+      <DropdownMenuContext.Provider value={{ onToggle: handleToggle, open: isSubOpen, isOpen: isOpen, isRendered: isRendered }}>{children}</DropdownMenuContext.Provider>
     </div>
   );
 };
@@ -171,9 +183,11 @@ const SubContent: FC<SubContentProps> = (props) => {
   const classes = classNames(styles.subContent, className, { [styles['open']]: context.isOpen });
 
   return (
-    <div className={classes} style={style}>
-      {children}
-    </div>
+    context.isRendered && (
+      <div className={classes} style={style}>
+        {children}
+      </div>
+    )
   );
 };
 
