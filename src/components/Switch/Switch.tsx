@@ -14,7 +14,7 @@ const Switch: FC<SwitchProps> = (props) => {
   return (
     <label className={classes} data-accent-color={color} data-radius={radius} style={style}>
       <input type="checkbox" {...others} className={styles.input} onChange={onChange} />
-      <span className={styles.slider}></span>
+      <span className={classNames(styles.slider, { [styles['highContrast']]: highContrast })}></span>
     </label>
   );
 };

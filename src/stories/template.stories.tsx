@@ -17,7 +17,7 @@ export default {
 
 const Template: Story = (args) => {
   return (
-    <ThemeProvider scaling={'100%'} accentColor={'grass'} appearance={'dark'} radius={'medium'} shadow="5">
+    <ThemeProvider scaling={'100%'} accentColor={'blue'} appearance={'light'} radius={'medium'} shadow="5">
       <Container>
         <Row gutter={[32, 32]}>
           <Col xs={24} sm={12}>

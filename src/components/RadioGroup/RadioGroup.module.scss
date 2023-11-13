@@ -73,7 +73,7 @@
   }
 
   &--ghost {
-    // border: 1px solid var(--color-accent-a7);
+    // border: 1px solid var(--color-accent-a6);
     background-color: var(--color-accent-4);
 
     &.highContrast {
@@ -89,7 +89,7 @@
 
   &--outlined {
     background-color: transparent;
-    border: 1px solid var(--color-accent-a7);
+    border: 1px solid var(--color-accent-a6);
     &.highContrast {
       background-color: transparent;
       border: 1px solid var(--color-accent-a10);
