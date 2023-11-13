@@ -15,12 +15,10 @@ const StockCard: FC<StockCardProps> = ({}) => {
                 <Flex direction="column" width={'100%'} mb="1" justify={'space-between'}>
                   <Row gutter={[0, 8]} width={'100%'} align="center">
                     <Col xs={24}>
-                      <Typography.Header mb="2" size={'3'}>
-                        <Tab.List block size={'small'} highContrast variant={'ios'}>
-                          <Tab.Trigger value="summary">Summary</Tab.Trigger>
-                          <Tab.Trigger value="financials">Financials</Tab.Trigger>
-                        </Tab.List>
-                      </Typography.Header>
+                      <Tab.List block size={'small'} highContrast variant={'ios'}>
+                        <Tab.Trigger value="summary">Summary</Tab.Trigger>
+                        <Tab.Trigger value="financials">Financials</Tab.Trigger>
+                      </Tab.List>
                     </Col>
                   </Row>
                 </Flex>

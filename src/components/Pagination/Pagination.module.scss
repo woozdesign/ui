@@ -50,7 +50,7 @@
     &.active {
       background-color: transparent;
       color: var(--color-accent-11);
-      border: 1px solid var(--color-accent-a7);
+      border: 1px solid var(--color-accent-a6);
 
       &.highContrast {
         color: var(--color-accent-12);
@@ -67,7 +67,7 @@
       }
       &:hover {
         background-color: var(--color-accent-a2);
-        border-color: var(--color-accent-a8);
+        border-color: var(--color-accent-a7);
       }
 
       &:active {

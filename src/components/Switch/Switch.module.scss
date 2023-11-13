@@ -65,8 +65,9 @@ $border-radius: max(var(--radius-3), var(--radius-full));
     border-radius: calc($border-radius - $padding);
     background-color: var(--color-accent-9-contrast);
     transition: 0.2s;
-
-    &.highContrast {
+  }
+  &.highContrast {
+    &::before {
       background-color: var(--color-accent-1);
     }
   }
