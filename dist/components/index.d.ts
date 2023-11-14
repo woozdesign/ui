@@ -8,6 +8,7 @@ export { default as Breadcrumb } from './Breadcrumb';
 export { default as Button } from './Button';
 export { default as Callout } from './Callout';
 export { default as Card } from './Card';
+export { default as Carousel } from './Carousel ';
 export { default as Checkbox } from './Checkbox';
 export { default as Container } from './Container';
 export { default as Divider } from './Divider';
