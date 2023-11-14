@@ -56,7 +56,7 @@ const Image: React.FC<ImageProps> = (props) => {
         imgRef.current.src = imgRef.current.getAttribute('data-src') || '';
       }
     }
-  }, [lazyLoad]);
+  }, [lazyLoad, src]);
 
   const handleImageLoadError = () => {
     setError(true);

@@ -103,7 +103,7 @@ Nov 2023
 | Component     | Supported | Notes |
 | ------------- | --------- | ----- |
 | Button Toggle | 🚧        |       |
-| Carousel      | 🚧        |       |
+| Carousel      | ✅        |       |
 | Chip Group    | 🚧        |       |
 | Item Group    | 🚧        |       |
 | Slide Group   | 🚧        |       |
