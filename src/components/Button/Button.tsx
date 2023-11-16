@@ -1,11 +1,11 @@
 'use client';
 import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 import classNames from 'classnames';
-import React, { FC } from 'react';
+import React, { FC, forwardRef } from 'react';
 import styles from './Button.module.scss';
 import { AnchorClickHandler, ButtonClickHandler, ButtonProps } from './Button.props';
 
-const Button: FC<ButtonProps> = (props) => {
+const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
   const {
     variant = 'solid',
@@ -52,7 +52,17 @@ const Button: FC<ButtonProps> = (props) => {
 
   if (href) {
     return (
-      <a className={classes} data-shadow={shadow} data-radius={radius} data-accent-color={color} href={href} onClick={handleAnchorClick} {...other} style={style}>
+      <a
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        className={classes}
+        data-shadow={shadow}
+        data-radius={radius}
+        data-accent-color={color}
+        href={href}
+        onClick={handleAnchorClick}
+        {...other}
+        style={style}
+      >
         {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
         {children}
         {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}
@@ -62,6 +72,7 @@ const Button: FC<ButtonProps> = (props) => {
 
   return (
     <button
+      ref={ref as React.Ref<HTMLButtonElement>}
       className={classes}
       data-shadow={shadow}
       data-radius={radius}
@@ -77,6 +88,7 @@ const Button: FC<ButtonProps> = (props) => {
       {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}
     </button>
   );
-};
+});
+Button.displayName = 'Button';
 
 export default Button;

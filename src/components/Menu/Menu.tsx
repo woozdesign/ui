@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useContext, useState } from 'react';
+import React, { FC, forwardRef, useContext, useState } from 'react';
 
 import classNames from 'classnames';
 import styles from './Menu.module.scss';
@@ -27,7 +27,7 @@ const Menu: FC<MenuProps> = (props) => {
   );
 };
 
-const MenuItemComponent: FC<MenuItemProps> = (props) => {
+const MenuItemComponent = forwardRef<HTMLAnchorElement, MenuItemProps>((props, ref) => {
   const { value, label, onClick, href, iconPrepend, iconAppend, color, radius, size = 'medium', highContrast = false } = props;
 
   const context = useContext(MenuContext);
@@ -45,9 +45,9 @@ const MenuItemComponent: FC<MenuItemProps> = (props) => {
     return (
       <li>
         <a
+          ref={ref}
           data-accent-color={color}
           data-radius={radius}
-          href={href}
           onClick={() => {
             if (onClick) onClick();
             setActiveItem(value);
@@ -64,6 +64,8 @@ const MenuItemComponent: FC<MenuItemProps> = (props) => {
   const labelClasses = classNames(styles[`menu--label`], withBreakpoints(size, 'wd-menu--label', styles), { [styles[`highContrast`]]: highContrast });
 
   return <div className={labelClasses}>{label}</div>;
-};
+});
+
+MenuItemComponent.displayName = 'MenuItemComponent';
 
 export default Menu;

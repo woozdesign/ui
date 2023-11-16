@@ -1,11 +1,11 @@
 'use client';
 import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 import classNames from 'classnames';
-import React, { FC } from 'react';
+import React, { FC, forwardRef } from 'react';
 import styles from './IconButton.module.scss';
 import { AnchorClickHandler, ButtonClickHandler, IconButtonProps } from './IconButton.props';
 
-const IconButton: FC<IconButtonProps> = (props) => {
+const IconButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, IconButtonProps>((props, ref) => {
   const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
   const {
     className,
@@ -45,17 +45,38 @@ const IconButton: FC<IconButtonProps> = (props) => {
 
   if (href) {
     return (
-      <a className={classes} data-radius={radius} data-accent-color={color} href={href} onClick={handleAnchorClick} {...other} style={style}>
+      <a
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        className={classes}
+        data-radius={radius}
+        data-accent-color={color}
+        href={href}
+        onClick={handleAnchorClick}
+        {...other}
+        style={style}
+      >
         {children}
       </a>
     );
   }
 
   return (
-    <button className={classes} data-radius={radius} data-accent-color={color} disabled={disabled} onClick={handleButtonClick} type={buttonType} {...other} style={style}>
+    <button
+      ref={ref as React.Ref<HTMLButtonElement>}
+      className={classes}
+      data-radius={radius}
+      data-accent-color={color}
+      disabled={disabled}
+      onClick={handleButtonClick}
+      type={buttonType}
+      {...other}
+      style={style}
+    >
       {children}
     </button>
   );
-};
+});
+
+IconButton.displayName = 'IconButton';
 
 export default IconButton;

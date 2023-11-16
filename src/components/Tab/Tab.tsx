@@ -1,6 +1,6 @@
 'use client';
 import classNames from 'classnames';
-import React, { FC, useContext, useEffect, useRef, useState } from 'react';
+import React, { FC, forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import styles from './Tab.module.scss';
 import { ContentProps, ListProps, RootProps, TabContextProps, TriggerProps } from './Tab.props';
 import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
@@ -55,7 +55,7 @@ export const List: FC<ListProps> = (props) => {
   );
 };
 
-export const Trigger: FC<TriggerProps> = (props) => {
+export const Trigger = forwardRef<HTMLAnchorElement, TriggerProps>((props, ref) => {
   const { className, style, children, value, onClick } = props;
 
   const context = useContext(TabContext);
@@ -70,7 +70,7 @@ export const Trigger: FC<TriggerProps> = (props) => {
     },
     className,
   );
-  const triggerRef = useRef<HTMLAnchorElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef(null);
 
   useEffect(() => {
@@ -114,7 +114,7 @@ export const Trigger: FC<TriggerProps> = (props) => {
 
   return (
     <a
-      ref={triggerRef}
+      ref={ref}
       className={classes}
       style={style}
       onClick={() => {
@@ -122,10 +122,13 @@ export const Trigger: FC<TriggerProps> = (props) => {
         onClick && onClick();
       }}
     >
-      <div className={styles.content}>{children}</div>
+      <div ref={triggerRef} className={styles.content}>
+        {children}
+      </div>
     </a>
   );
-};
+});
+Trigger.displayName = 'Trigger';
 
 export const Content: FC<ContentProps> = (props) => {
   const { className, style, children, value } = props;
