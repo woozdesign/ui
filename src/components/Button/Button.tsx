@@ -54,6 +54,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
   if (href) {
     return (
       <a
+        {...other}
         ref={ref as React.Ref<HTMLAnchorElement>}
         className={classes}
         data-shadow={shadow}
@@ -61,7 +62,6 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
         data-accent-color={color}
         href={href}
         onClick={handleAnchorClick}
-        {...other}
         style={style}
       >
         {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
@@ -73,6 +73,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
 
   return (
     <button
+      {...other}
       ref={ref as React.Ref<HTMLButtonElement>}
       className={classes}
       data-shadow={shadow}
@@ -81,7 +82,6 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
       disabled={disabled}
       onClick={handleButtonClick}
       type={buttonType}
-      {...other}
       style={style}
     >
       {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}

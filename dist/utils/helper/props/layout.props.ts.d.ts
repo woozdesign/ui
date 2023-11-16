@@ -24,10 +24,10 @@ export declare const extractLayoutProps: <T extends LayoutProp>(props: T) => {
     height: Responsive<"auto" | "max-content" | "min-content" | SpaceValue | "100%"> | undefined;
     maxHeight: Responsive<"auto" | "max-content" | "min-content" | SpaceValue | "100%"> | undefined;
     minHeight: Responsive<"auto" | "max-content" | "min-content" | SpaceValue | "100%"> | undefined;
-    top: Responsive<"auto" | "0" | "100%" | "50%"> | undefined;
-    bottom: Responsive<"auto" | "0" | "100%" | "50%"> | undefined;
-    left: Responsive<"auto" | "0" | "100%" | "50%"> | undefined;
-    right: Responsive<"auto" | "0" | "100%" | "50%"> | undefined;
+    top: Responsive<"0" | "auto" | "100%" | "50%"> | undefined;
+    bottom: Responsive<"0" | "auto" | "100%" | "50%"> | undefined;
+    left: Responsive<"0" | "auto" | "100%" | "50%"> | undefined;
+    right: Responsive<"0" | "auto" | "100%" | "50%"> | undefined;
     shrink: Responsive<"0" | "1"> | undefined;
     grow: Responsive<"0" | "1"> | undefined;
     others: Omit<T, "top" | "height" | "left" | "right" | "bottom" | "position" | "width" | "maxWidth" | "minWidth" | "maxHeight" | "minHeight" | "shrink" | "grow">;
