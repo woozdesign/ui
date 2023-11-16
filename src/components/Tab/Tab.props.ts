@@ -11,6 +11,7 @@ export interface RootProps extends BasePropWithChildren, MarginProp {
 
 export interface TriggerProps extends BasePropWithChildren {
   value: string;
+  href?: string;
   onClick?: () => void;
 }
 

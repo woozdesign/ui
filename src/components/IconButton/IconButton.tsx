@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+
 'use client';
 import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 import classNames from 'classnames';
@@ -76,7 +78,5 @@ const IconButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, IconButtonP
     </button>
   );
 });
-
-IconButton.displayName = 'IconButton';
 
 export default IconButton;

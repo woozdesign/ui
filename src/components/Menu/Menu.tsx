@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+
 'use client';
 import React, { FC, forwardRef, useContext, useState } from 'react';
 
@@ -65,7 +67,5 @@ const MenuItemComponent = forwardRef<HTMLAnchorElement, MenuItemProps>((props, r
 
   return <div className={labelClasses}>{label}</div>;
 });
-
-MenuItemComponent.displayName = 'MenuItemComponent';
 
 export default Menu;

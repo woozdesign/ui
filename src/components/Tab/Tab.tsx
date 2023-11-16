@@ -1,3 +1,4 @@
+/* eslint-disable react/display-name */
 'use client';
 import classNames from 'classnames';
 import React, { FC, forwardRef, useContext, useEffect, useRef, useState } from 'react';
@@ -56,7 +57,7 @@ export const List: FC<ListProps> = (props) => {
 };
 
 export const Trigger = forwardRef<HTMLAnchorElement, TriggerProps>((props, ref) => {
-  const { className, style, children, value, onClick } = props;
+  const { className, style, children, value, onClick, href } = props;
 
   const context = useContext(TabContext);
   if (!context) throw new Error('Trigger must be used within Root');
@@ -115,6 +116,7 @@ export const Trigger = forwardRef<HTMLAnchorElement, TriggerProps>((props, ref) 
   return (
     <a
       ref={ref}
+      href={href}
       className={classes}
       style={style}
       onClick={() => {
@@ -128,7 +130,6 @@ export const Trigger = forwardRef<HTMLAnchorElement, TriggerProps>((props, ref) 
     </a>
   );
 });
-Trigger.displayName = 'Trigger';
 
 export const Content: FC<ContentProps> = (props) => {
   const { className, style, children, value } = props;
