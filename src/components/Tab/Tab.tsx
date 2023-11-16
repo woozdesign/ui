@@ -120,9 +120,9 @@ export const Trigger = forwardRef<HTMLAnchorElement, TriggerProps>((props, ref) 
 
   return (
     <a className={classes} ref={ref} href={href} style={style} onClick={handleOnClick}>
-      <div ref={triggerRef} className={styles.content}>
+      <span ref={triggerRef} className={styles.content}>
         {children}
-      </div>
+      </span>
     </a>
   );
 });
