@@ -115,9 +115,9 @@ export const Trigger = forwardRef<HTMLAnchorElement, TriggerProps>((props, ref) 
 
   return (
     <a
+      className={classes}
       ref={ref}
       href={href}
-      className={classes}
       style={style}
       onClick={() => {
         setActiveTab(value);
@@ -125,6 +125,7 @@ export const Trigger = forwardRef<HTMLAnchorElement, TriggerProps>((props, ref) 
       }}
     >
       <div ref={triggerRef} className={styles.content}>
+        {href}
         {children}
       </div>
     </a>

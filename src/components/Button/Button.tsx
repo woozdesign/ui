@@ -39,7 +39,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
       [styles['button--block']]: block,
       [styles['highContrast']]: highContrast,
     },
-    withBreakpoints(size, 'wt-button', styles),
+    withBreakpoints(size, 'wd-button', styles),
     withMarginProps(marginProps),
   );
 

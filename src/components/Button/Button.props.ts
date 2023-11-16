@@ -10,21 +10,18 @@ export interface ButtonBaseProp extends BasePropWithChildren, MarginProp, ColorP
   disabled?: boolean;
   iconPrepend?: React.ReactNode;
   iconAppend?: React.ReactNode;
-
   href?: string;
 }
 
-export interface ButtonSpecificProps
-  extends ButtonBaseProp,
-    Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'className' | 'style' | 'children' | 'color' | 'shape' | 'size' | 'type'> {
+export type ButtonSpecificProps = {
   onClick?: ButtonClickHandler;
-}
+} & ButtonBaseProp &
+  Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'className' | 'style' | 'children' | 'color' | 'shape' | 'size' | 'type'>;
 
-export interface AnchorSpecificProps
-  extends ButtonBaseProp,
-    Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'className' | 'style' | 'children' | 'color' | 'shape' | 'size' | 'type'> {
+export type AnchorSpecificProps = {
   href?: string;
   onClick?: AnchorClickHandler;
-}
+} & ButtonBaseProp &
+  Omit<React.HTMLProps<HTMLButtonElement & HTMLAnchorElement>, 'className' | 'style' | 'children' | 'color' | 'shape' | 'size' | 'type'>;
 
 export type ButtonProps = ButtonSpecificProps | AnchorSpecificProps;
