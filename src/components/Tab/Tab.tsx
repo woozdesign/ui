@@ -125,7 +125,6 @@ export const Trigger = forwardRef<HTMLAnchorElement, TriggerProps>((props, ref) 
       }}
     >
       <div ref={triggerRef} className={styles.content}>
-        {href}
         {children}
       </div>
     </a>
