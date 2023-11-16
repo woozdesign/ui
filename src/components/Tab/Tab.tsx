@@ -113,17 +113,13 @@ export const Trigger = forwardRef<HTMLAnchorElement, TriggerProps>((props, ref) 
     };
   }, []);
 
+  const handleOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setActiveTab(value);
+    onClick && onClick(e);
+  };
+
   return (
-    <a
-      className={classes}
-      ref={ref}
-      href={href}
-      style={style}
-      onClick={() => {
-        setActiveTab(value);
-        onClick && onClick();
-      }}
-    >
+    <a className={classes} ref={ref} href={href} style={style} onClick={handleOnClick}>
       <div ref={triggerRef} className={styles.content}>
         {children}
       </div>
