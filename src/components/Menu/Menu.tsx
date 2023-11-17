@@ -50,6 +50,7 @@ const MenuItemComponent = forwardRef<HTMLAnchorElement, MenuItemProps>((props, r
           ref={ref}
           data-accent-color={color}
           data-radius={radius}
+          href={href}
           onClick={() => {
             if (onClick) onClick();
             setActiveItem(value);
