@@ -189,8 +189,8 @@ $border-radius: max(var(--radius-3), var(--radius-full));
 .menuBackdrop {
   position: absolute;
   top: var(--block-top);
+  bottom: var(--block-top);
   left: var(--block-left);
-  height: var(--block-height);
   width: var(--block-width);
   // transform: translateY(-50%);
   background-color: var(--color-accent-a4);

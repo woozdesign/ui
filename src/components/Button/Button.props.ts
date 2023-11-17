@@ -10,8 +10,6 @@ export interface ButtonBaseProp extends BasePropWithChildren, MarginProp, ColorP
   disabled?: boolean;
   iconPrepend?: React.ReactNode;
   iconAppend?: React.ReactNode;
-
-  href?: string;
 }
 
 export interface ButtonSpecificProps

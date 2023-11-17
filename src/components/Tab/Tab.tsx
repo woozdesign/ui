@@ -1,6 +1,7 @@
+/* eslint-disable react/display-name */
 'use client';
 import classNames from 'classnames';
-import React, { FC, useContext, useEffect, useRef, useState } from 'react';
+import React, { FC, forwardRef, useContext, useEffect, useRef, useState } from 'react';
 import styles from './Tab.module.scss';
 import { ContentProps, ListProps, RootProps, TabContextProps, TriggerProps } from './Tab.props';
 import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
@@ -55,8 +56,8 @@ export const List: FC<ListProps> = (props) => {
   );
 };
 
-export const Trigger: FC<TriggerProps> = (props) => {
-  const { className, style, children, value, onClick } = props;
+export const Trigger = forwardRef<HTMLAnchorElement, TriggerProps>((props, ref) => {
+  const { className, style, children, value, onClick, href } = props;
 
   const context = useContext(TabContext);
   if (!context) throw new Error('Trigger must be used within Root');
@@ -70,7 +71,7 @@ export const Trigger: FC<TriggerProps> = (props) => {
     },
     className,
   );
-  const triggerRef = useRef<HTMLAnchorElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
   const backdropRef = useRef(null);
 
   useEffect(() => {
@@ -112,20 +113,19 @@ export const Trigger: FC<TriggerProps> = (props) => {
     };
   }, []);
 
+  const handleOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    setActiveTab(value);
+    onClick && onClick(e);
+  };
+
   return (
-    <a
-      ref={triggerRef}
-      className={classes}
-      style={style}
-      onClick={() => {
-        setActiveTab(value);
-        onClick && onClick();
-      }}
-    >
-      <div className={styles.content}>{children}</div>
+    <a className={classes} ref={ref} href={href} style={style} onClick={handleOnClick}>
+      <span ref={triggerRef} className={styles.content}>
+        {children}
+      </span>
     </a>
   );
-};
+});
 
 export const Content: FC<ContentProps> = (props) => {
   const { className, style, children, value } = props;

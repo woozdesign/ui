@@ -11,7 +11,8 @@ export interface RootProps extends BasePropWithChildren, MarginProp {
 
 export interface TriggerProps extends BasePropWithChildren {
   value: string;
-  onClick?: () => void;
+  href?: string;
+  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 export interface ListProps extends MarginProp, BasePropWithChildren, RadiusProp, ColorProp, SizeProp, RadiusProp, HighContrastProp, ShadowProp {

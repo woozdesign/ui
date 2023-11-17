@@ -13,6 +13,7 @@
   -o-user-drag: none;
   user-drag: none;
   user-select: none;
+  letter-spacing: normal;
   justify-content: center;
 
   &--start {
@@ -68,7 +69,7 @@ a {
   box-sizing: border-box;
 }
 
-.wt-button {
+.wd-button {
   @include mixins.breakpoints {
     &-xlarge {
       height: var(--component-height-xlarge);

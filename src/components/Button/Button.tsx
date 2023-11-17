@@ -1,11 +1,12 @@
+/* eslint-disable react/display-name */
 'use client';
 import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 import classNames from 'classnames';
-import React, { FC } from 'react';
+import React, { FC, forwardRef } from 'react';
 import styles from './Button.module.scss';
 import { AnchorClickHandler, ButtonClickHandler, ButtonProps } from './Button.props';
 
-const Button: FC<ButtonProps> = (props) => {
+const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((props, ref) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
   const {
     variant = 'solid',
@@ -38,7 +39,7 @@ const Button: FC<ButtonProps> = (props) => {
       [styles['button--block']]: block,
       [styles['highContrast']]: highContrast,
     },
-    withBreakpoints(size, 'wt-button', styles),
+    withBreakpoints(size, 'wd-button', styles),
     withMarginProps(marginProps),
   );
 
@@ -52,7 +53,17 @@ const Button: FC<ButtonProps> = (props) => {
 
   if (href) {
     return (
-      <a className={classes} data-shadow={shadow} data-radius={radius} data-accent-color={color} href={href} onClick={handleAnchorClick} {...other} style={style}>
+      <a
+        {...other}
+        ref={ref as React.Ref<HTMLAnchorElement>}
+        className={classes}
+        data-shadow={shadow}
+        data-radius={radius}
+        data-accent-color={color}
+        href={href}
+        onClick={handleAnchorClick}
+        style={style}
+      >
         {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
         {children}
         {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}
@@ -62,6 +73,8 @@ const Button: FC<ButtonProps> = (props) => {
 
   return (
     <button
+      {...other}
+      ref={ref as React.Ref<HTMLButtonElement>}
       className={classes}
       data-shadow={shadow}
       data-radius={radius}
@@ -69,7 +82,6 @@ const Button: FC<ButtonProps> = (props) => {
       disabled={disabled}
       onClick={handleButtonClick}
       type={buttonType}
-      {...other}
       style={style}
     >
       {iconPrepend && <span className={styles['icon-prepend']}>{iconPrepend}</span>}
@@ -77,6 +89,6 @@ const Button: FC<ButtonProps> = (props) => {
       {iconAppend && <span className={styles['icon-append']}>{iconAppend}</span>}
     </button>
   );
-};
+});
 
 export default Button;

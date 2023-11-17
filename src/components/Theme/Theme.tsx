@@ -1,3 +1,5 @@
+/* eslint-disable react/display-name */
+
 'use client';
 
 import React from 'react';
@@ -35,7 +37,6 @@ const ThemeProvider = React.forwardRef<ThemeImplElement, ThemeProviderProps>((pr
   }
   return <ThemeImpl {...props} ref={forwardedRef} />;
 });
-ThemeProvider.displayName = 'ThemeProvider';
 
 interface ThemeRootProps extends ThemeImplPublicProps {}
 const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, forwardedRef) => {
@@ -143,7 +144,6 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     </>
   );
 });
-ThemeRoot.displayName = 'ThemeRoot';
 
 type ThemeImplElement = React.ElementRef<'div'>;
 
@@ -234,7 +234,6 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     </ThemeContext.Provider>
   );
 });
-ThemeImpl.displayName = 'ThemeImpl';
 
 const updateThemeAppearanceClass = (appearance: ThemeOptions['appearance']) => {
   const root = document.documentElement;
