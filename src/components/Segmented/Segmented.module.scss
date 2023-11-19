@@ -114,21 +114,21 @@ $border-radius: max(var(--radius-3), var(--radius-full));
         .content {
           height: var(--component-height-xlarge);
           font-size: var(--font-size-4);
-          padding: var(--space-2) var(--space-4);
+          padding: var(--space-3) var(--space-4);
         }
       }
       &-large {
         .content {
           height: var(--component-height-large);
-          font-size: var(--font-size-4);
-          padding: var(--space-1) var(--space-4);
+          font-size: var(--font-size-3);
+          padding: var(--space-2) var(--space-4);
         }
       }
       &-medium {
         .content {
           height: var(--component-height-medium);
           font-size: var(--font-size-3);
-          padding: var(--space-1) var(--space-3);
+          padding: var(--space-2) var(--space-3);
         }
       }
       &-small {

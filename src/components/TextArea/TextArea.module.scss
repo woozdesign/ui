@@ -7,7 +7,7 @@
   font-family: 'Inter';
   width: calc(100% - var(--space-4) * 2);
   padding: var(--space-3);
-  border: 1px solid var(--color-gray-a6);
+  border: 1px solid var(--color-accent-a6);
   border-radius: max(var(--radius-3), var(--radius-full));
   outline: none;
   background-color: transparent;
@@ -32,14 +32,16 @@
   resize: none;
   &--solid {
     border: 1px solid transparent;
-    background-color: var(--color-panel);
+    background-color: var(--color-surface-accent);
     &:focus,
     &:hover {
-      border-color: var(--color-gray-6);
+      border-color: var(--color-accent-9);
     }
   }
 
   &--ghost {
+    border: 1px solid var(--color-accent-a6);
+    background-color: var(--color-surface-accent);
     &:focus,
     &:hover {
       outline: none;
