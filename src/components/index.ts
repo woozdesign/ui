@@ -30,6 +30,7 @@ export { default as ProgressLinear } from './ProgressLinear';
 export { default as RadioGroup } from './RadioGroup';
 export { default as ScrollArea } from './ScrollArea';
 export { default as Section } from './Section';
+export { default as Segmented } from './Segmented';
 export { default as Select } from './Select';
 export { default as Slider } from './Slider';
 export { default as Switch } from './Switch';

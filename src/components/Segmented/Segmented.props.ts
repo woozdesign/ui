@@ -1,7 +1,7 @@
 import { BasePropWithChildren, ColorProp, HighContrastProp, MarginProp, RadiusProp, ShadowProp, SizeProp } from '@/utils';
 import React from 'react';
 
-export interface TabContextProps {
+export interface SegmentedContextProps {
   activeTab: string;
   setActiveTab: React.Dispatch<React.SetStateAction<string>>;
 }
@@ -17,7 +17,6 @@ export interface TriggerProps extends BasePropWithChildren {
 
 export interface ListProps extends MarginProp, BasePropWithChildren, RadiusProp, ColorProp, SizeProp, RadiusProp, HighContrastProp, ShadowProp {
   block?: boolean;
-  variant?: 'outlined' | 'solid';
   justify?: 'center' | 'end' | 'space-between' | 'start';
 }
 
