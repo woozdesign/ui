@@ -151,6 +151,7 @@ $border-radius: max(var(--radius-3), var(--radius-full));
     }
   }
 }
+
 .wd-tab {
   &--list {
     @include mixins.breakpoints {
