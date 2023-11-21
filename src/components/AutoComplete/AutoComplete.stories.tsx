@@ -1,6 +1,7 @@
 import React from 'react';
 import { Meta, Story } from '@storybook/react';
-import AutoComplete, { TextFieldProps } from './AutoComplete';
+import AutoComplete from './AutoComplete';
+import { AutoCompleteProps } from './AutoComplete.props';
 import '@/styles/core.scss';
 
 import { ThemeProvider } from '../Theme/Theme';
@@ -12,16 +13,11 @@ import Card from '../Card';
 export default {
   title: 'Components/AutoComplete',
   component: AutoComplete,
-  args: {},
 } as Meta;
 
-const Template: Story<TextFieldProps> = (args) => (
+const Template: Story<AutoCompleteProps> = (args) => (
   <ThemeProvider>
-    <Flex align="center">
-      <Card>
-        <AutoComplete {...args} />
-      </Card>
-    </Flex>
+    <AutoComplete {...args} />
   </ThemeProvider>
 );
 
