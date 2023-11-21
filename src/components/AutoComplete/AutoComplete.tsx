@@ -4,6 +4,8 @@ import React, { FC, useState, useEffect } from 'react';
 import TextField from '../TextField';
 import styles from './AutoComplete.module.scss'; // You'll create this SCSS module next
 import { AutoCompleteProps } from './AutoComplete.props';
+import classNames from 'classnames';
+import { withBreakpoints } from '@/utils';
 
 const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const { suggestions = [], ...textFieldProps } = props;
@@ -33,13 +35,17 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
     // Trigger any other action on suggestion click
   };
 
+  const itemClasses = classNames(styles.item);
+
+  const classes = classNames(styles.autoCompleteContainer, withBreakpoints(textFieldProps.size ?? 'medium', 'wd-autocomplete', styles));
+
   return (
-    <div data-radius={textFieldProps.radius} data-accent-color={textFieldProps.color} className={styles.autoCompleteContainer}>
+    <div className={classes} data-radius={textFieldProps.radius} data-accent-color={textFieldProps.color}>
       <TextField {...textFieldProps} value={inputValue} onChange={handleInputChange} />
       {showSuggestions && filteredSuggestions.length > 0 && (
         <ul data-shadow={textFieldProps.shadow ?? '4'} className={styles.suggestionsList}>
           {filteredSuggestions.map((suggestion) => (
-            <li className={styles.item} key={suggestion} onClick={() => handleSuggestionClick(suggestion)}>
+            <li className={itemClasses} key={suggestion} onClick={() => handleSuggestionClick(suggestion)}>
               {suggestion}
             </li>
           ))}

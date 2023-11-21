@@ -1,3 +1,5 @@
+@use '@/styles/lib/mixins.scss';
+
 // AutoComplete.module.scss
 .autoCompleteContainer {
   position: relative;
@@ -24,16 +26,13 @@
 
   .item {
     margin: var(--space-1);
-    border-radius: var(--radius-4);
     padding: var(--space-2);
     cursor: pointer;
     display: flex;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    font-size: var(--font-size-3);
     box-sizing: border-box;
-    height: var(--component-height-medium);
     justify-content: space-between;
     align-items: center;
     gap: var(--space-4);
@@ -42,6 +41,43 @@
 
     &:hover {
       background-color: var(--color-accent-a5);
+    }
+  }
+}
+
+.wd-autocomplete {
+  @include mixins.breakpoints {
+    &-small {
+      .item {
+        height: var(--component-height-small);
+        border-radius: max(var(--radius-3), var(--radius-full));
+        font-size: var(--font-size-2);
+        padding: var(--space-1);
+      }
+    }
+    &-medium {
+      .item {
+        height: var(--component-height-medium);
+        border-radius: max(var(--radius-3), var(--radius-full));
+        font-size: var(--font-size-3);
+        padding: var(--space-2);
+      }
+    }
+    &-large {
+      .item {
+        height: var(--component-height-large);
+        border-radius: max(var(--radius-4), var(--radius-full));
+        font-size: var(--font-size-4);
+        padding: var(--space-2);
+      }
+    }
+    &-xlarge {
+      .item {
+        height: var(--component-height-xlarge);
+        border-radius: max(var(--radius-5), var(--radius-full));
+        font-size: var(--font-size-4);
+        padding: var(--space-3);
+      }
     }
   }
 }
