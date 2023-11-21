@@ -3,7 +3,6 @@
 // AutoComplete.module.scss
 .autoCompleteContainer {
   position: relative;
-  width: inherit;
   // Add other styles as needed
 }
 
@@ -17,6 +16,7 @@
   border: 1px solid var(--color-gray-a6);
   box-shadow: var(--shadow-theme);
 
+  text-overflow: ellipsis;
   height: fit-content;
 
   width: 100%;

@@ -1,6 +1,6 @@
 // AutoComplete.tsx
 'use client';
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import TextField from '../TextField';
 import styles from './AutoComplete.module.scss'; // You'll create this SCSS module next
 import { AutoCompleteProps } from './AutoComplete.props';
@@ -12,6 +12,9 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const [inputValue, setInputValue] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const itemClasses = classNames(styles.item);
+  const classes = classNames(styles.autoCompleteContainer, withBreakpoints(textFieldProps.size ?? 'medium', 'wd-autocomplete', styles));
 
   useEffect(() => {
     if (!suggestions) return;
@@ -34,10 +37,6 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
     setShowSuggestions(false);
     // Trigger any other action on suggestion click
   };
-
-  const itemClasses = classNames(styles.item);
-
-  const classes = classNames(styles.autoCompleteContainer, withBreakpoints(textFieldProps.size ?? 'medium', 'wd-autocomplete', styles));
 
   return (
     <div className={classes} data-radius={textFieldProps.radius} data-accent-color={textFieldProps.color}>

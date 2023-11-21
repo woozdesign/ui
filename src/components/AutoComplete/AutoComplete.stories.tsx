@@ -22,4 +22,4 @@ const Template: Story<AutoCompleteProps> = (args) => (
 );
 
 export const Default = Template.bind({});
-Default.args = { suggestions: ['abc', 'abs'] };
+Default.args = { suggestions: ['abcabcabcabcabcabcabc', 'abs'] };
