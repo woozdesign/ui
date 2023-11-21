@@ -1,0 +1,19 @@
+// AutoComplete.module.scss
+.autoCompleteContainer {
+  position: relative;
+  // Add other styles as needed
+}
+
+.suggestionsList {
+  list-style-type: none;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
+  // Add other styles like borders, padding, etc.
+}
+
+.suggestionsList li {
+  padding: 10px;
+  cursor: pointer;
+  // Add styles for hover, active, etc.
+}
