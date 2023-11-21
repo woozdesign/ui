@@ -12,7 +12,7 @@ export default {
 
 const Template: Story<MenuProps> = (args) => (
   <ThemeProvider appearance={'light'}>
-    <Menu {...args} />
+    <Menu.Root {...args} />
   </ThemeProvider>
 );
 
@@ -28,6 +28,7 @@ Default.args = {
     { label: 'Item 5', value: 'item5', onClick: () => console.log('Item 2 clicked') },
     { label: 'Item 6', value: 'item6', onClick: () => console.log('Clicked') },
   ],
+  size: 'medium',
   defaultValue: 'item2', // Setting Item 2 as active for demonstration
 };
 
@@ -38,5 +39,6 @@ WithIcons.args = {
     { label: 'Item 1', value: 'item1', iconPrepend: <Icon type={'Feather'} />, onClick: () => console.log('Item 1 with icon clicked') },
     { label: 'Item 2', value: 'item2', iconAppend: <Icon type={'Zap'} />, onClick: () => console.log('Item 2 with icon clicked') },
   ],
+  size: 'medium',
   defaultValue: 'item1', // Setting Item 1 as active for demonstration
 };
