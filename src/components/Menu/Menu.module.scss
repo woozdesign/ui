@@ -86,19 +86,19 @@
     @include mixins.breakpoints {
       &-xlarge {
         font-size: var(--font-size-4);
-        margin: var(--space-0) var(--space-4);
+        margin: var(--space-0) var(--space-3);
       }
       &-large {
         font-size: var(--font-size-4);
-        margin: var(--space-0) var(--space-4);
+        margin: var(--space-0) var(--space-3);
       }
       &-medium {
         font-size: var(--font-size-3);
-        margin: var(--space-0) var(--space-3);
+        margin: var(--space-0) var(--space-2);
       }
       &-small {
         font-size: var(--font-size-2);
-        margin: var(--space-0) var(--space-2);
+        margin: var(--space-0) var(--space-1);
       }
     }
   }

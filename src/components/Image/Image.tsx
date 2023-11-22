@@ -4,6 +4,9 @@ import classNames from 'classnames';
 import React, { useEffect, useRef, useState } from 'react';
 import styles from './Image.module.scss';
 import { ImageProps } from './Image.props';
+import Typography from '../Typography';
+import Flex from '../Flex';
+import { Icon } from '@woozdesign/icons';
 
 const Image: React.FC<ImageProps> = (props) => {
   const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
@@ -104,7 +107,12 @@ const Image: React.FC<ImageProps> = (props) => {
           )}
         </>
       )}
-      {error && <div className={styles.error}>Image failed to load</div>}
+      {error && (
+        <Flex direction={'column'} align="center">
+          <Icon type={'AlertTriangle'} />
+          <Typography.Text>Image failed to load</Typography.Text>
+        </Flex>
+      )}
     </div>
   );
 };
