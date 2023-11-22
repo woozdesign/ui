@@ -48,13 +48,11 @@ const Item = forwardRef<HTMLAnchorElement, MenuItemProps>((props, ref) => {
 
   if (value)
     return (
-      <li>
-        <a ref={ref} data-accent-color={color} data-radius={radius} href={href} onClick={handleClick} className={itemClasses}>
-          {iconPrepend && <span className={styles.iconPrepend}>{iconPrepend}</span>}
-          <span className={styles.label}>{label}</span>
-          {iconAppend && <span className={styles.iconAppend}>{iconAppend}</span>}
-        </a>
-      </li>
+      <a ref={ref} data-accent-color={color} data-radius={radius} href={href} onClick={handleClick} className={itemClasses}>
+        {iconPrepend && <span className={styles.iconPrepend}>{iconPrepend}</span>}
+        <span className={styles.label}>{label}</span>
+        {iconAppend && <span className={styles.iconAppend}>{iconAppend}</span>}
+      </a>
     );
 
   const labelClasses = classNames(styles[`menu--label`], withBreakpoints(size, 'wd-menu--label', styles), { [styles[`highContrast`]]: highContrast });
