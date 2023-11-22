@@ -7,7 +7,7 @@ export interface MenuContextProps {
 
 export interface MenuItem extends SizeProp, ColorProp, RadiusProp, HighContrastProp {
   label: React.ReactNode;
-  onClick?: () => void;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
   href?: string;
   iconPrepend?: React.ReactNode;
   iconAppend?: React.ReactNode;

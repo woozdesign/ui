@@ -41,20 +41,15 @@ const Item = forwardRef<HTMLAnchorElement, MenuItemProps>((props, ref) => {
   // Maybe some special styles or classes for active state
   const itemClasses = classNames(styles[`menu--item`], withBreakpoints(size, 'wd-menu--item', styles), { [styles.active]: isActive }, { [styles[`highContrast`]]: highContrast });
 
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (onClick) onClick(e);
+    value && setActiveItem(value);
+  };
+
   if (value)
     return (
       <li>
-        <a
-          ref={ref}
-          data-accent-color={color}
-          data-radius={radius}
-          href={href}
-          onClick={() => {
-            if (onClick) onClick();
-            setActiveItem(value);
-          }}
-          className={itemClasses}
-        >
+        <a ref={ref} data-accent-color={color} data-radius={radius} href={href} onClick={handleClick} className={itemClasses}>
           {iconPrepend && <span className={styles.iconPrepend}>{iconPrepend}</span>}
           <span className={styles.label}>{label}</span>
           {iconAppend && <span className={styles.iconAppend}>{iconAppend}</span>}
