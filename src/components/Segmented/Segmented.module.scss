@@ -62,9 +62,7 @@ $border-radius: max(var(--radius-3), var(--radius-full));
     -webkit-backdrop-filter: var(--translucent);
     opacity: 1;
     // visibility: hidden;
-    transition:
-      all 0.2s cubic-bezier(0.75, 0, 0, 1),
-      background-color 0.2s ease-in-out;
+    transition: all 0.2s cubic-bezier(0.75, 0, 0, 1);
   }
 
   &.highContrast {
