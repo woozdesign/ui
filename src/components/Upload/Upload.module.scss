@@ -1,0 +1,167 @@
+@use '@/styles/lib/mixins.scss';
+
+.wrapper {
+  margin: var(--space-1) 0;
+  &.block {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+.group {
+  display: flex;
+  align-items: center;
+  position: relative;
+  max-width: 190px;
+  border-radius: var(--radius-4);
+  &.block {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+.input {
+  width: 100%;
+  line-height: 28px;
+  box-sizing: border-box;
+  border: 1px solid var(--color-accent-a6);
+  border-radius: max(var(--radius-3), var(--radius-full));
+  outline: none;
+  background-color: transparent;
+  color: var(--color-gray-12);
+  box-shadow: var(--shadow-theme);
+  transition: border 0.3s ease;
+  // margin-bottom: 20px;
+
+  &--solid {
+    border: 1px solid transparent;
+    background-color: var(--color-surface-accent);
+    &:focus,
+    &:hover {
+      border-color: var(--color-accent-9);
+    }
+  }
+
+  &--ghost {
+    border: 1px solid var(--color-accent-a6);
+    background-color: var(--color-surface-accent);
+    &:focus,
+    &:hover {
+      outline: none;
+      border-color: var(--color-accent-9);
+      background-color: var(--color-surface-accent);
+    }
+  }
+
+  &--outlined {
+    &:focus,
+    &:hover {
+      outline: none;
+      background-color: transparent;
+      border-color: var(--color-accent-9);
+    }
+  }
+
+  &.hasPrependIcon {
+    padding-left: 2.5rem !important;
+    padding-right: 2.5rem !important;
+  }
+
+  &::placeholder {
+    color: var(--color-gray-6);
+  }
+
+  &:valid {
+    // border: 2px solid var(--color-solid);
+  }
+  &:disabled {
+    background-color: var(--color-surface-accent); // lightens the dark background slightly
+    color: darken(black, 10%); // darkens the text color slightly
+    pointer-events: none;
+    cursor: not-allowed; // shows a not-allowed cursor when hovered
+    opacity: 0.7; // reduces the opacity
+  }
+}
+
+.input[data-has-value='true']:invalid {
+  border: 1px solid var(--color-red-9);
+  background-color: var(--color-red-surface);
+  margin-bottom: 0;
+}
+
+.iconPrepend {
+  position: absolute;
+  left: var(--space-3);
+  color: var(--color-accent-9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // margin-bottom: 20px;
+}
+
+.iconAppend {
+  position: absolute;
+  right: var(--space-3);
+  color: var(--color-accent-9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // margin-bottom: 20px;
+}
+
+.error {
+  color: var(--color-red-9);
+  height: 16px;
+  margin-top: 4px;
+  margin-left: 4px;
+  font-size: 0.8rem;
+}
+
+.error.active {
+  display: block;
+}
+
+.input::placeholder {
+  color: var(--color-gray-7);
+}
+
+.wd-textfield {
+  &--group {
+    @include mixins.breakpoints {
+      &-xlarge {
+        .input {
+          height: var(--component-height-xlarge);
+          padding: var(--space-1) var(--space-4);
+
+          &::placeholder {
+          }
+        }
+      }
+
+      &-large {
+        .input {
+          height: var(--component-height-large);
+          padding: var(--space-1) var(--space-4);
+          &::placeholder {
+          }
+        }
+      }
+
+      &-medium {
+        .input {
+          height: var(--component-height-medium);
+          padding: var(--space-1) var(--space-3);
+          &::placeholder {
+          }
+        }
+      }
+      &-small {
+        .input {
+          height: var(--component-height-small);
+          padding: var(--space-1) var(--space-2);
+          &::placeholder {
+          }
+        }
+      }
+    }
+  }
+}

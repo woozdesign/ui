@@ -9,7 +9,7 @@ const preview: Preview = {
         date: /Date$/,
       },
     },
-    layout: 'fullscreen',
+    // layout: 'fullscreen',
     backgrounds: {
       values: [
         {

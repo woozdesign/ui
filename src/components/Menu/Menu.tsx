@@ -10,9 +10,9 @@ import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 
 const MenuContext = React.createContext<MenuContextProps | undefined>(undefined);
 
-const Menu: FC<MenuProps> = (props) => {
+const Root: FC<MenuProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { items, defaultValue, highContrast = false, color, radius, size = 'medium', justify = 'start' } = otherMarginProps;
+  const { items, children, defaultValue, highContrast = false, color, radius, size = 'medium', justify = 'start' } = otherMarginProps;
 
   const classes = classNames(styles.menu, styles[`menu--vertical`], styles[`menu--${justify}`], withMarginProps(marginProps));
 
@@ -21,15 +21,13 @@ const Menu: FC<MenuProps> = (props) => {
   return (
     <MenuContext.Provider value={{ activeItem, setActiveItem }}>
       <ul data-accent-color={color} data-radius={radius} className={classes}>
-        {items.map((item, index) => (
-          <MenuItemComponent key={index} {...item} highContrast={highContrast} size={size} />
-        ))}
+        {items ? items.map((item, index) => <Item key={index} {...item} highContrast={highContrast} size={size} />) : children}
       </ul>
     </MenuContext.Provider>
   );
 };
 
-const MenuItemComponent = forwardRef<HTMLAnchorElement, MenuItemProps>((props, ref) => {
+const Item = forwardRef<HTMLAnchorElement, MenuItemProps>((props, ref) => {
   const { value, label, onClick, href, iconPrepend, iconAppend, color, radius, size = 'medium', highContrast = false } = props;
 
   const context = useContext(MenuContext);
@@ -57,9 +55,9 @@ const MenuItemComponent = forwardRef<HTMLAnchorElement, MenuItemProps>((props, r
           }}
           className={itemClasses}
         >
-          <span className={styles.iconPrepend}>{iconPrepend}</span>
+          {iconPrepend && <span className={styles.iconPrepend}>{iconPrepend}</span>}
           <span className={styles.label}>{label}</span>
-          <span className={styles.iconAppend}>{iconAppend}</span>
+          {iconAppend && <span className={styles.iconAppend}>{iconAppend}</span>}
         </a>
       </li>
     );
@@ -68,5 +66,10 @@ const MenuItemComponent = forwardRef<HTMLAnchorElement, MenuItemProps>((props, r
 
   return <div className={labelClasses}>{label}</div>;
 });
+
+const Menu = {
+  Root: Root,
+  Item: Item,
+};
 
 export default Menu;

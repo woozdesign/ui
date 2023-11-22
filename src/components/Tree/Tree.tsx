@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React, { useState } from 'react';
 import styles from './Tree.module.scss';
 import { TreeItemComponentProps, ItemProps, TreeProps } from './Tree.props';
+import Divider from '../Divider';
 
 // Helper component for indentation and toggle
 const IndentToggle = ({ level, item, isOpen, toggleOpen }: { level: number; isOpen: boolean; item: ItemProps; toggleOpen: () => void }) => {
@@ -14,6 +15,11 @@ const IndentToggle = ({ level, item, isOpen, toggleOpen }: { level: number; isOp
           {index === level && item.children && item.children.length > 0 && (
             <span className={styles.toggleButton} onClick={toggleOpen}>
               <Icon type={isOpen ? 'ChevronDown' : 'ChevronRight'} />
+            </span>
+          )}
+          {index <= level - 1 && (
+            <span className={styles.verticalLine} onClick={toggleOpen}>
+              <Divider orientation="vertical" color="gray" />
             </span>
           )}
         </span>
