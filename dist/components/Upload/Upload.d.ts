@@ -1,5 +1,4 @@
 import { FC } from 'react';
-interface UploadProps {
-}
-declare const Upload: FC<UploadProps>;
+import { TextFieldProps } from './Upload.props';
+declare const Upload: FC<TextFieldProps>;
 export default Upload;
