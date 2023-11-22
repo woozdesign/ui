@@ -40,16 +40,17 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
 
   return (
     <div className={classes} data-radius={textFieldProps.radius} data-accent-color={textFieldProps.color}>
-      <TextField {...textFieldProps} value={inputValue} onChange={handleInputChange} />
-      {showSuggestions && filteredSuggestions.length > 0 && (
-        <ul data-shadow={textFieldProps.shadow ?? '4'} className={styles.suggestionsList}>
-          {filteredSuggestions.map((suggestion) => (
-            <li className={itemClasses} key={suggestion} onClick={() => handleSuggestionClick(suggestion)}>
-              {suggestion}
-            </li>
-          ))}
-        </ul>
-      )}
+      <TextField {...textFieldProps} className={styles.textField} value={inputValue} onChange={handleInputChange}>
+        {showSuggestions && filteredSuggestions.length > 0 && (
+          <ul data-shadow={textFieldProps.shadow ?? '4'} className={styles.suggestionsList}>
+            {filteredSuggestions.map((suggestion) => (
+              <li className={itemClasses} key={suggestion} onClick={() => handleSuggestionClick(suggestion)}>
+                {suggestion}
+              </li>
+            ))}
+          </ul>
+        )}
+      </TextField>
     </div>
   );
 };

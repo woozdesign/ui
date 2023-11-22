@@ -74,6 +74,8 @@ const TextField: FC<TextFieldProps> = (props) => {
           className={errorClasses}
         />
         {iconAppend && <span className={styles.iconAppend}>{iconAppend}</span>}
+
+        {children}
       </div>
 
       {error && <div className={styles.error}>{error}</div>}
