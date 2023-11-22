@@ -11,6 +11,7 @@
   display: flex;
   align-items: center;
   width: 100%;
+  gap: var(--space-2);
   &:hover {
     background-color: var(--color-accent-4);
   }
@@ -29,22 +30,28 @@
 
   > .label {
     display: flex;
-    align-items: center;
     gap: var(--space-2);
+    align-items: center;
   }
 }
 
 .indent {
-  display: inline-block;
-  width: var(--space-5);
-  // You can set a default width here or just leave it to be set inline
+  display: inline-flex;
+  align-self: stretch;
+  justify-content: center;
+}
+
+.verticalLine {
+  width: var(--space-4);
+  display: flex;
+  align-self: stretch;
+  justify-content: center;
 }
 
 .toggleButton {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-right: var(--space-2);
 }
 
 .treeItem {

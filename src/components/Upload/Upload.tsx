@@ -3,11 +3,11 @@ import { getErrorBasedOnValidity } from '@/utils/helper/validateInput';
 import classNames from 'classnames';
 import React, { ChangeEvent, FC, useState } from 'react';
 import Typography from '../Typography/Typography';
-import styles from './TextField.module.scss';
-import { TextFieldProps } from './TextField.props';
+import styles from './Upload.module.scss';
+import { TextFieldProps } from './Upload.props';
 import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
 
-const TextField: FC<TextFieldProps> = (props) => {
+const Upload: FC<TextFieldProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
   const {
     className,
@@ -29,8 +29,8 @@ const TextField: FC<TextFieldProps> = (props) => {
     ...others
   } = otherMarginProps;
 
-  const wrapperClasses = classNames(styles.wrapper, { [styles.block]: block }, withBreakpoints(size, 'wtd-textfield--wrapper', styles), withMarginProps(marginProps), className);
-  const groupClasses = classNames(styles.group, { [styles.block]: block }, withBreakpoints(size, 'wd-textfield--group', styles));
+  const wrapperClasses = classNames(styles.wrapper, { [styles.block]: block }, withBreakpoints(size, 'wtd-Upload--wrapper', styles), withMarginProps(marginProps), className);
+  const groupClasses = classNames(styles.group, { [styles.block]: block }, withBreakpoints(size, 'wd-Upload--group', styles));
   const inputClasses = classNames(styles.input, iconPrepend && styles.hasPrependIcon);
 
   const [error, setError] = useState<string | null>(null);
@@ -74,8 +74,6 @@ const TextField: FC<TextFieldProps> = (props) => {
           className={errorClasses}
         />
         {iconAppend && <span className={styles.iconAppend}>{iconAppend}</span>}
-
-        {children}
       </div>
 
       {error && <div className={styles.error}>{error}</div>}
@@ -83,4 +81,4 @@ const TextField: FC<TextFieldProps> = (props) => {
   );
 };
 
-export default TextField;
+export default Upload;

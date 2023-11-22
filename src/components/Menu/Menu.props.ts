@@ -17,8 +17,13 @@ export interface MenuItemProps extends Omit<MenuItem, 'value'> {
   value?: string;
 }
 
-export interface MenuProps extends MarginProp, SizeProp, ColorProp, RadiusProp, HighContrastProp {
-  items: MenuItemProps[];
+export type MenuProps = {
+  items?: MenuItemProps[];
   defaultValue: string;
   justify?: 'start' | 'center' | 'end';
-}
+  children: React.ReactNode;
+} & MarginProp &
+  SizeProp &
+  ColorProp &
+  RadiusProp &
+  HighContrastProp;

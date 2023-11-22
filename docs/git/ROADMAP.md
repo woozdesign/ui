@@ -60,19 +60,19 @@ Nov 2023
 
 ### Form Inputs & Control
 
-| Component    | Supported | Notes |
-| ------------ | --------- | ----- |
-| Checkbox     | ✅        |       |
-| Combobox     | 🚧        |       |
-| File Input   | 🚧        |       |
-| Form         | ✅        |       |
-| Custom Input | 🚧        |       |
-| Radio Button | ✅        |       |
-| Select       | ✅        |       |
-| Slider       | ✅        |       |
-| Switch       | ✅        |       |
-| Text Field   | ✅        |       |
-| Textarea     | ✅        |       |
+| Component     | Supported | Notes |
+| ------------- | --------- | ----- |
+| Auto Complete | 🚧        |       |
+| Checkbox      | ✅        |       |
+| DragNDrop     | 🚧        |       |
+| File Input    | 🚧        |       |
+| Form          | ✅        |       |
+| Radio Button  | ✅        |       |
+| Select        | ✅        |       |
+| Slider        | ✅        |       |
+| Switch        | ✅        |       |
+| Text Field    | ✅        |       |
+| Textarea      | ✅        |       |
 
 ### Data & Displays
 
