@@ -41,4 +41,5 @@ WithIcons.args = {
   ],
   size: 'medium',
   defaultValue: 'item1', // Setting Item 1 as active for demonstration
+  expandOnHover: true,
 };

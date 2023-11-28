@@ -5,7 +5,10 @@ import '@/styles/core.scss';
 import { ThemeProvider } from '../Theme/Theme';
 import Layout from './Layout';
 import Card from '../Card';
+import Flex from '../Flex';
 import Typography from '../Typography/Typography';
+import IconButton from '../IconButton';
+import { Icon } from '@woozdesign/icons';
 
 export default {
   title: 'Layout/Layout',
@@ -25,21 +28,27 @@ Default.args = {
         </Card>
       </Layout.Header>
       <Layout>
-        <Layout.Sider>
-          <Card>
-            <Card.Header title={'Layout.sider'} />
-          </Card>
+        <Layout.Sider width={'12'} p={'4'}>
+          <Flex direction={'column'} align="center" justify="center">
+            <IconButton>
+              <Icon type={'Zap'}></Icon>
+            </IconButton>
+            <IconButton>
+              <Icon type={'Zap'}></Icon>
+            </IconButton>
+            <IconButton>
+              <Icon type={'Zap'}></Icon>
+            </IconButton>
+            <IconButton>
+              <Icon type={'Zap'}></Icon>
+            </IconButton>
+          </Flex>
         </Layout.Sider>
         <Layout.Content>
           <Card>
             <Card.Header title={'main'} />
           </Card>
         </Layout.Content>
-        <Layout.Sider>
-          <Card>
-            <Card.Header title={'Layout.sider'} />
-          </Card>
-        </Layout.Sider>
       </Layout>
       <Layout.Footer>
         <Card>

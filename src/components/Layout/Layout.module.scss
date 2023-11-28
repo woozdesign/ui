@@ -7,18 +7,20 @@
 
   &__header,
   &__footer {
+    box-sizing: border-box;
     flex-shrink: 0;
     box-sizing: 'border-box';
     height: var(--appbar-height);
   }
 
   &__content {
+    box-sizing: border-box;
     display: flex;
     flex: 1;
   }
 
   &__sider {
+    box-sizing: border-box;
     flex-shrink: 0;
-    width: 200px;
   }
 }
