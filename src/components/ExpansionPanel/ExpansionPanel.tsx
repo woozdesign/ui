@@ -40,7 +40,7 @@ const ExpansionPanel: React.FC<ExpansionPanelProps> = (props) => {
           <div key={index} className={itemClasses}>
             <div className={headerClasses} onClick={() => toggleItem(index)}>
               {item.header}
-              {isExpanded ? <Icon color={color} type="ChevronUp" /> : <Icon color={color} type="ChevronDown" />}
+              {isExpanded ? <Icon color={color} highContrast type="ChevronUp" /> : <Icon color={color} highContrast type="ChevronDown" />}
             </div>
             <div className={contentWrapperClasses}>
               <div className={contentClasses}>{item.children}</div>

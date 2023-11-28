@@ -1,8 +1,10 @@
 @use '@/styles/lib/mixins';
 
-.menu {
+.icon-menu {
   font-family: Arial, sans-serif;
   display: flex;
+  aspect-ratio: 1 / 1;
+  width: fit-content;
   gap: var(--space-4); // Adjust the gap between buttons as needed
 
   &--vertical {
@@ -19,26 +21,11 @@
     appearance: none;
     border: none;
     cursor: pointer;
-    width: 100%;
     text-decoration: none;
     box-sizing: border-box;
-    color: var(--color-accent-12);
-    font-weight: 400;
-    gap: var(--space-0);
+    aspect-ratio: 1 / 1;
     background-color: transparent;
-
-    /* Apply gap only if iconPrepend or iconAppend is a child */
-    &:has(> .iconPrepend),
-    &:has(> .iconAppend) {
-      gap: var(--space-2);
-    }
-
-    > .iconPrepend,
-    > .iconAppend {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    justify-content: center;
 
     > .label {
       white-space: nowrap;
@@ -83,7 +70,7 @@
   }
 }
 
-.wd-menu {
+.wd-icon-menu {
   &--label {
     @include mixins.breakpoints {
       &-xlarge {
@@ -111,27 +98,23 @@
         height: var(--component-height-xlarge);
         border-radius: max(var(--radius-5), var(--radius-full));
         font-size: var(--font-size-4);
-        padding: var(--space-2) var(--space-4);
       }
 
       &-large {
         height: var(--component-height-large);
         font-size: var(--font-size-4);
-        padding: var(--space-1) var(--space-4);
         border-radius: max(var(--radius-4), var(--radius-full));
       }
 
       &-medium {
         height: var(--component-height-medium);
         font-size: var(--font-size-3);
-        padding: var(--space-1) var(--space-3);
         border-radius: max(var(--radius-3), var(--radius-full));
       }
 
       &-small {
         height: var(--component-height-small);
         font-size: var(--font-size-2);
-        padding: var(--space-1) var(--space-2);
         border-radius: max(var(--radius-3), var(--radius-full));
       }
     }
