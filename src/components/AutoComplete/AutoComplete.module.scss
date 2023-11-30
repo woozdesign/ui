@@ -47,6 +47,17 @@
       background-color: var(--color-accent-a5);
     }
   }
+
+  transform: translateY(-8px);
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    transform 0.1s ease,
+    height 0.2s ease;
+  &.open {
+    transform: translate(0);
+    opacity: 1;
+  }
 }
 
 .wd-autocomplete {

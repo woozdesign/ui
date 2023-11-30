@@ -1,17 +1,26 @@
 // AutoComplete.tsx
 'use client';
-import React, { FC, useState, useEffect, useRef } from 'react';
+import React, { FC, useState, useEffect, useRef, useCallback } from 'react';
 import TextField from '../TextField';
 import styles from './AutoComplete.module.scss'; // You'll create this SCSS module next
 import { AutoCompleteProps } from './AutoComplete.props';
 import classNames from 'classnames';
-import { withBreakpoints } from '@/utils';
+import { useOutsideClick, useTransitionState, withBreakpoints } from '@/utils';
 
 const AutoComplete: FC<AutoCompleteProps> = (props) => {
   const { suggestions = [], ...textFieldProps } = props;
   const [inputValue, setInputValue] = useState('');
   const [filteredSuggestions, setFilteredSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+
+  const [isOpen, isRendered] = useTransitionState(showSuggestions, 200);
+  const rootRef = useRef(null);
+
+  const handleToggle = useCallback(() => {
+    setShowSuggestions((prevIsOpen) => !prevIsOpen);
+  }, []);
+
+  useOutsideClick(rootRef, () => setShowSuggestions(false));
 
   const itemClasses = classNames(styles.item);
   const classes = classNames(styles.autoCompleteContainer, withBreakpoints(textFieldProps.size ?? 'medium', 'wd-autocomplete', styles));
@@ -27,9 +36,14 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
   }, [inputValue, suggestions]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
     textFieldProps.onChange && textFieldProps.onChange(e);
-    setShowSuggestions(true);
+    setInputValue(e.target.value);
+
+    if (e.target.value.length == 0) {
+      setShowSuggestions(false);
+    } else {
+      setShowSuggestions(true);
+    }
   };
 
   const handleSuggestionClick = (suggestion: string) => {
@@ -39,10 +53,10 @@ const AutoComplete: FC<AutoCompleteProps> = (props) => {
   };
 
   return (
-    <div className={classes} data-radius={textFieldProps.radius} data-accent-color={textFieldProps.color}>
+    <div ref={rootRef} className={classes} data-radius={textFieldProps.radius} data-accent-color={textFieldProps.color}>
       <TextField {...textFieldProps} className={styles.textField} value={inputValue} onChange={handleInputChange}>
-        {showSuggestions && filteredSuggestions.length > 0 && (
-          <ul data-shadow={textFieldProps.shadow ?? '4'} className={styles.suggestionsList}>
+        {isRendered && filteredSuggestions.length > 0 && (
+          <ul data-shadow={textFieldProps.shadow ?? '4'} className={classNames(styles.suggestionsList, { [styles[`open`]]: isOpen })}>
             {filteredSuggestions.map((suggestion) => (
               <li className={itemClasses} key={suggestion} onClick={() => handleSuggestionClick(suggestion)}>
                 {suggestion}
