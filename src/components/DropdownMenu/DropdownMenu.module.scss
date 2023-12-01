@@ -1,29 +1,28 @@
-// Styling for the dropdown content
+@use '@/styles/lib/tokens/animations.scss';
 
+// Styling for the dropdown content
 .root {
   position: relative;
   width: fit-content;
 }
 
 .content[data-placement='bottom'] {
-  transform: translateY(-8px);
+  @include animations.slide-animation('bottom');
   top: calc(100% + var(--space-1));
 }
 
 .content[data-placement='top'] {
-  transform: translateY(8px);
+  @include animations.slide-animation('top');
   bottom: calc(100% + var(--space-1));
 }
-
 .content[data-placement='left'] {
-  transform: translateX(8px);
+  @include animations.slide-animation('right');
   right: calc(100% + var(--space-1));
   top: 0;
 }
 .content[data-placement='right'] {
+  @include animations.slide-animation('left');
   top: 0;
-
-  transform: translateX(-8px);
   left: calc(100% + var(--space-1));
 }
 
@@ -36,17 +35,6 @@
   border: 1px solid var(--color-gray-a6);
   box-shadow: var(--shadow-theme);
   min-width: 200px;
-
-  opacity: 0;
-  transition:
-    opacity 0.2s ease,
-    transform 0.1s ease;
-
-  &.open {
-    z-index: 1;
-    transform: translate(0);
-    opacity: 1;
-  }
 }
 
 .item {
@@ -105,14 +93,6 @@
   z-index: 1;
   border-radius: var(--radius-4);
   min-width: 200px;
-  transform: translateY(8px);
-  opacity: 0;
-  transition:
-    opacity 0.2s ease,
-    transform 0.1s ease;
 
-  &.open {
-    transform: translate(0);
-    opacity: 1;
-  }
+  @include animations.slide-animation('bottom');
 }

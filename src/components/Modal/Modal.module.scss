@@ -1,3 +1,5 @@
+@use '@/styles/lib/tokens/animations.scss';
+
 .modal {
   position: fixed;
   top: 0;
@@ -10,14 +12,8 @@
   z-index: 1000;
   cursor: pointer;
   opacity: 0;
-  transform: translateY(8px);
-  transition:
-    opacity 0.2s ease-in-out,
-    transform 0.2s ease-in-out;
-  &.open {
-    opacity: 1;
-    transform: translateY(0);
-  }
+
+  @include animations.slide-animation('bottom');
 }
 
 .overlay {
