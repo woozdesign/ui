@@ -26,7 +26,7 @@ const Template: Story<DrawerProps> = ({ children }) => {
         <Drawer.Header title="Drawer Header" />
         <Drawer.Footer>Test</Drawer.Footer>
         <Drawer.Content>
-          <Menu
+          <Menu.Root
             items={[
               { label: 'Only Label' },
               { label: 'Item 1', value: 'item1', onClick: () => console.log('Item 1 clicked') },
