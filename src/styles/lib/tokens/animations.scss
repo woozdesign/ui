@@ -1,0 +1,23 @@
+@mixin slide-animation($direction: 'top') {
+  $distance: var(--space-2);
+
+  @if $direction == 'top' {
+    transform: translateY(calc(-1 * $distance));
+  } @else if $direction == 'bottom' {
+    transform: translateY($distance);
+  } @else if $direction == 'left' {
+    transform: translateX(calc(-1 * $distance));
+  } @else if $direction == 'right' {
+    transform: translateX($distance);
+  }
+
+  opacity: 0;
+  transition:
+    opacity 0.2s ease,
+    transform 0.1s ease;
+
+  &.open {
+    transform: translate(0);
+    opacity: 1;
+  }
+}

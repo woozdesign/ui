@@ -1,4 +1,5 @@
 @use '@/styles/lib/mixins.scss';
+@use '@/styles/lib/tokens/animations.scss';
 
 // AutoComplete.module.scss
 .autoCompleteContainer {
@@ -47,6 +48,8 @@
       background-color: var(--color-accent-a5);
     }
   }
+
+  @include animations.slide-animation('top');
 }
 
 .wd-autocomplete {
