@@ -8,6 +8,8 @@ export interface MenuItem extends SizeProp, ColorProp, RadiusProp, HighContrastP
     label: React.ReactNode;
     onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
     href?: string;
+    tooltipLabel?: string;
+    tooltipPlacement?: 'top' | 'bottom' | 'left' | 'right';
 }
 export interface MenuItemProps extends Omit<MenuItem, 'value'> {
     value: string;

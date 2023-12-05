@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import styles from './IconMenu.module.scss';
 import { IconMenuContextProps, MenuItemProps, MenuProps } from './IconMenu.props';
 import { extractMarginProps, withBreakpoints, withMarginProps } from '@/utils';
+import Tooltip from '../Tooltip';
 
 const IconMenuContext = React.createContext<IconMenuContextProps | undefined>(undefined);
 
@@ -28,7 +29,7 @@ const Root: FC<MenuProps> = (props) => {
 };
 
 const Item = forwardRef<HTMLAnchorElement, MenuItemProps>((props, ref) => {
-  const { value, label, onClick, href, color, radius, size = 'medium', highContrast = false } = props;
+  const { value, label, onClick, href, color, radius, size = 'medium', highContrast = false, tooltipLabel, tooltipPlacement = 'right' } = props;
 
   const context = useContext(IconMenuContext);
   if (!context) throw new Error('MenuItem must be used within Menu');
@@ -53,9 +54,17 @@ const Item = forwardRef<HTMLAnchorElement, MenuItemProps>((props, ref) => {
 
   return (
     <li>
-      <a ref={ref} data-accent-color={color} data-radius={radius} href={href} onClick={handleClick} className={itemClasses}>
-        <span className={styles.label}>{label}</span>
-      </a>
+      {tooltipLabel ? (
+        <Tooltip label={tooltipLabel} placement={tooltipPlacement}>
+          <a ref={ref} data-accent-color={color} data-radius={radius} href={href} onClick={handleClick} className={itemClasses}>
+            <span className={styles.label}>{label}</span>
+          </a>
+        </Tooltip>
+      ) : (
+        <a ref={ref} data-accent-color={color} data-radius={radius} href={href} onClick={handleClick} className={itemClasses}>
+          <span className={styles.label}>{label}</span>
+        </a>
+      )}
     </li>
   );
 });
