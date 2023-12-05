@@ -19,7 +19,7 @@ const Template: Story<IconMenuProps> = (args) => (
 export const Default = Template.bind({});
 Default.args = {
   items: [
-    { label: <Icon type="Zap" />, value: 'item1', onClick: () => console.log('Item 1 clicked') },
+    { label: <Icon type="Zap" />, value: 'item1', tooltipLabel: 'Label', onClick: () => console.log('Item 1 clicked') },
     { label: <Icon type="Zap" />, value: 'item2', onClick: () => console.log('Item 2 clicked') },
     { label: <Icon type="Zap" />, value: 'item3', onClick: () => console.log('Clicked') },
     { label: <Icon type="Zap" />, value: 'item4', onClick: () => console.log('Item 1 clicked') },
