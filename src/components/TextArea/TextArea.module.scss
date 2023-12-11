@@ -7,8 +7,8 @@
   font-family: 'Inter';
   width: calc(100% - var(--space-4) * 2);
   padding: var(--space-3);
-  border: 1px solid var(--color-accent-a6);
-  border-radius: max(var(--radius-3), var(--radius-full));
+  border: 1px solid var(--color-border-accent);
+  border-radius: max(var(--radius-4), var(--radius-4));
   outline: none;
   background-color: transparent;
   color: var(--color-gray-12);
@@ -40,7 +40,7 @@
   }
 
   &--ghost {
-    border: 1px solid var(--color-accent-a6);
+    border: 1px solid var(--color-border-accent);
     background-color: var(--color-surface-accent);
     &:focus,
     &:hover {
@@ -60,7 +60,7 @@
   }
 
   &.textAreaError {
-    border: 1px solid var(--color-red-9);
+    border: 1px solid var(--color-border-error);
     background-color: var(--color-red-surface);
   }
 
@@ -74,7 +74,7 @@
 }
 
 .textArea[data-has-value='true']:invalid {
-  border: 1px solid var(--color-red-9);
+  border: 1px solid var(--color-border-error);
   background-color: var(--color-red-surface);
   margin-bottom: 0;
 }

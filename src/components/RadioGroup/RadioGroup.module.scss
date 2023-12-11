@@ -73,7 +73,7 @@
   }
 
   &--ghost {
-    // border: 1px solid var(--color-accent-a6);
+    // border: 1px solid var(--color-border-accent);
     background-color: var(--color-accent-4);
 
     &.highContrast {
@@ -89,10 +89,10 @@
 
   &--outlined {
     background-color: transparent;
-    border: 1px solid var(--color-accent-a6);
+    border: 1px solid var(--color-border-accent);
     &.highContrast {
       background-color: transparent;
-      border: 1px solid var(--color-accent-a10);
+      border: 1px solid var(--color-border-accent-highContrast);
       &::after {
         background-color: var(--color-accent-12);
       }

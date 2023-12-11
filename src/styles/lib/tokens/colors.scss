@@ -166,4 +166,9 @@ $colors: 'tomato', 'red', 'ruby', 'crimson', 'pink', 'plum', 'purple', 'violet',
 
 .woozdesign {
   --color-panel: var(--color-panel-solid);
+  --color-border: var(--color-gray-a6);
+  --color-border-highContrast: var(--color-gray-a10);
+  --color-border-error: var(--color-red-9);
+  --color-border-accent: var(--color-accent-a6);
+  --color-border-accent-highContrast: var(--color-accent-a10);
 }
