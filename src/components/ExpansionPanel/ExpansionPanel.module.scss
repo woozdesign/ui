@@ -1,11 +1,11 @@
 @use '@/styles/lib/mixins.scss';
 
 .panelContainer {
-  border-radius: max(var(--radius-3), var(--radius-full));
+  border-radius: max(var(--radius-3), var(--radius-3));
   overflow: hidden;
 
   &.outlined {
-    border: 1px solid var(--color-accent-a6);
+    border: 1px solid var(--color-border-accent);
   }
 }
 

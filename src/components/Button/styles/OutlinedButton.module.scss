@@ -4,7 +4,7 @@
 
   background-color: transparent;
   color: var(--color-accent-11);
-  border: 1px solid var(--color-accent-a6);
+  border: 1px solid var(--color-border-accent);
 
   &:hover {
     background-color: var(--color-accent-a2);
@@ -31,7 +31,7 @@
     background-color: transparent;
     transition: box-shadow 0.08s ease-in;
     color: var(--color-accent-12);
-    border: 1px solid var(--color-accent-a10);
+    border: 1px solid var(--color-border-accent-highContrast);
 
     &:hover {
       background-color: var(--color-accent-a3);

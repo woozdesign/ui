@@ -30,9 +30,9 @@
   position: absolute;
   background-color: var(--color-panel);
   color: var(--color-gray-12);
-  z-index: 0;
+  z-index: 99;
   border-radius: var(--radius-4);
-  border: 1px solid var(--color-gray-a6);
+  border: 1px solid var(--color-border);
   box-shadow: var(--shadow-theme);
   min-width: 200px;
 }
@@ -85,7 +85,7 @@
 
 .subContent {
   position: absolute;
-  border: 1px solid var(--color-gray-a6);
+  border: 1px solid var(--color-border);
   left: calc(100% + var(--space-2));
   top: calc(var(--space-1) * -1);
   box-shadow: var(--shadow-theme);
