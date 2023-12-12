@@ -4,11 +4,12 @@
 $title-margin: 1rem 0;
 
 // Mixins
-@mixin headingStyles($fontSize) {
+@mixin headerStyle($fontSize) {
   font-weight: 400;
   margin: 0;
   font-size: $fontSize;
-  line-height: 1.5;
+  line-height: 1.25;
+  font-family: var(--default-header-font-family);
   color: var(--color-accent-9);
 
   &.highContrast {
@@ -45,6 +46,7 @@ $title-margin: 1rem 0;
 @mixin textStyle($fontSize) {
   font-weight: 400;
   font-size: $fontSize;
+  font-family: var(--default-font-family);
   color: var(--color-accent-9);
   &.highContrast {
     color: var(--color-accent-12);
@@ -81,6 +83,7 @@ $title-margin: 1rem 0;
   font-size: $fontSize;
   color: var(--color-accent-11);
   background-color: var(--color-accent-4);
+  font-family: var(--default-code-font-family);
 
   @if ($index < 4) {
     padding: var(--space-1);
@@ -127,6 +130,7 @@ $title-margin: 1rem 0;
   font-weight: bold;
   font-size: $fontSize;
   color: var(--color-accent-12);
+  font-family: var(--default-font-family);
   text-decoration: underline;
   cursor: pointer;
   &:hover {
@@ -167,6 +171,7 @@ $title-margin: 1rem 0;
   background: linear-gradient(90deg, #915eff, #9eb2ff);
   -webkit-background-clip: text;
   background-clip: text;
+  font-family: var(--default-font-family);
   -webkit-text-fill-color: transparent;
   font-size: $fontSize;
 
@@ -201,7 +206,7 @@ $title-margin: 1rem 0;
   @include mixins.breakpoints {
     @for $i from 1 through 12 {
       &--heading-#{$i} {
-        @include headingStyles(var(--font-size-#{$i}));
+        @include headerStyle(var(--font-size-#{$i}));
         font-weight: bold;
       }
       &--text-#{$i} {
