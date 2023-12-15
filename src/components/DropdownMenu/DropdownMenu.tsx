@@ -55,7 +55,7 @@ const Trigger: FC<TriggerProps> = (props) => {
 };
 
 const Content: FC<ContentProps> = (props) => {
-  const { className, items, style, children, shadow = '4', placement = 'bottom' } = props;
+  const { className, items, style, children, shadow = '4', borderWidth, placement = 'bottom' } = props;
   const context = useContext(DropdownMenuContext);
   if (!context) throw new Error('Content must be used within Root');
 
@@ -65,7 +65,7 @@ const Content: FC<ContentProps> = (props) => {
 
   return (
     context.isRendered && (
-      <div data-placement={placement} data-shadow={shadow} className={classes} style={style}>
+      <div data-placement={placement} data-shadow={shadow} data-border-width={borderWidth} className={classes} style={style}>
         {items.map((item, index) => {
           switch (item.variant) {
             case 'separator':

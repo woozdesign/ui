@@ -1,5 +1,5 @@
 /// <reference types="react" />
-import { ColorProp, MarginProp, SizeProp } from '../../utils';
+import { BorderWidthProp, ColorProp, MarginProp, SizeProp } from '../../utils';
 export type ItemProps = {
     id: string;
     label: string;
@@ -7,7 +7,7 @@ export type ItemProps = {
     iconAppend?: React.ReactNode;
     children?: ItemProps[];
 };
-export interface TreeProps extends MarginProp, SizeProp, ColorProp {
+export interface TreeProps extends MarginProp, SizeProp, ColorProp, BorderWidthProp {
     items: ItemProps[];
 }
 export interface TreeItemComponentProps {

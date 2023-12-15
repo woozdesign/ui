@@ -26,6 +26,7 @@ const TextField: FC<TextFieldProps> = (props) => {
     radius,
     hasSubmitted = false,
     shadow,
+    borderWidth,
     ...others
   } = otherMarginProps;
 
@@ -60,7 +61,7 @@ const TextField: FC<TextFieldProps> = (props) => {
   };
 
   return (
-    <div data-accent-color={color} data-radius={radius} className={wrapperClasses} style={style}>
+    <div data-accent-color={color} data-radius={radius} data-border-width={borderWidth} className={wrapperClasses} style={style}>
       <div className={groupClasses}>
         {iconPrepend && <span className={styles.iconPrepend}>{iconPrepend}</span>}
         <input

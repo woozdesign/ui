@@ -10,13 +10,13 @@ const AppBar: FC<AppBarProps> & {
   Body: FC<BodyProps>;
   Action: FC<ActionProps>;
 } = (props) => {
-  const { children, variant = 'solid', position = 'fixed' } = props;
+  const { children, variant = 'solid', position = 'fixed', borderWidth, shadow } = props;
 
   const headerClasses = classNames(styles[`header`], styles[`header--${position}`]);
   const wrapperClasses = classNames(styles[`wrapper`], styles[`wrapper--${variant}`]);
 
   return (
-    <header className={headerClasses}>
+    <header data-shadow={shadow} data-border-width={borderWidth} className={headerClasses}>
       <div className={wrapperClasses}>{children}</div>
     </header>
   );

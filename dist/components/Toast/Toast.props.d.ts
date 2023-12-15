@@ -1,6 +1,6 @@
 /// <reference types="react" />
-import { ColorProp, HighContrastProp, RadiusProp } from '../../utils';
-export interface ToastProps extends ColorProp, RadiusProp, HighContrastProp {
+import { BorderWidthProp, ColorProp, HighContrastProp, RadiusProp } from '../../utils';
+export interface ToastProps extends ColorProp, RadiusProp, HighContrastProp, BorderWidthProp {
     id: number;
     variant?: 'solid' | 'ghost' | 'outlined' | 'translucent';
     iconPrepend?: React.ReactNode;

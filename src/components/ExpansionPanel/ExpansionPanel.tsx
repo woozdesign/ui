@@ -7,7 +7,7 @@ import { ExpansionPanelProps } from './ExpansionPanel.props';
 
 const ExpansionPanel: React.FC<ExpansionPanelProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
-  const { color = 'gray', outlined = true, containerOutlined = true, size = 'medium', radius, items, multiple = false } = props;
+  const { color = 'gray', outlined = true, containerOutlined = true, size = 'medium', radius, items, borderWidth, multiple = false } = props;
 
   const panelClasses = classNames(styles.panelContainer, { [styles.outlined]: containerOutlined }, withMarginProps(marginProps));
 
@@ -26,7 +26,7 @@ const ExpansionPanel: React.FC<ExpansionPanelProps> = (props) => {
   };
 
   return (
-    <div data-accent-color={color} data-radius={radius} className={panelClasses}>
+    <div data-accent-color={color} data-radius={radius} data-border-width={borderWidth} className={panelClasses}>
       {items.map((item, index) => {
         const isExpanded = expandedIndices.includes(index);
 

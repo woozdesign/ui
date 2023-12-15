@@ -133,7 +133,7 @@ const TreeItem: React.FC<TreeItemComponentProps> = (props) => {
 // Tree component
 const Tree: React.FC<TreeProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { items: dataProp, size = 'medium', color } = otherMarginProps;
+  const { items: dataProp, size = 'medium', color, borderWidth } = otherMarginProps;
 
   const classes = classNames(styles.tree, withBreakpoints(size, 'wd-tree', styles), withMarginProps(marginProps));
 
@@ -310,7 +310,7 @@ const Tree: React.FC<TreeProps> = (props) => {
   };
 
   return (
-    <ul data-accent-color={color} className={classes}>
+    <ul data-accent-color={color} data-border-width={borderWidth} className={classes}>
       {data.map((item, index) => (
         <TreeItem
           key={item.id}

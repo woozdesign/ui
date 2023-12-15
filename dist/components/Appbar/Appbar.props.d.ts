@@ -1,5 +1,5 @@
-import { BasePropWithChildren } from '../../utils';
-export interface AppBarProps extends BasePropWithChildren {
+import { BasePropWithChildren, BorderWidthProp, ShadowProp } from '../../utils';
+export interface AppBarProps extends BasePropWithChildren, BorderWidthProp, ShadowProp {
     variant?: 'solid' | 'transparent' | 'translucent';
     position?: 'block' | 'absolute' | 'fixed';
 }

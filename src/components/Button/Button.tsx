@@ -26,6 +26,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
     className,
     style,
     shadow,
+    borderWidth,
     ...other
   } = marginOthers;
 
@@ -60,6 +61,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
         data-shadow={shadow}
         data-radius={radius}
         data-accent-color={color}
+        data-border-width={borderWidth}
         href={href}
         onClick={handleAnchorClick}
         style={style}
@@ -79,6 +81,7 @@ const Button = forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>((p
       data-shadow={shadow}
       data-radius={radius}
       data-accent-color={color}
+      data-border-width={borderWidth}
       disabled={disabled}
       onClick={handleButtonClick}
       type={buttonType}

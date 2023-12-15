@@ -1,7 +1,7 @@
-import { ColorProp, MarginProp, RadiusProp, ShadowProp } from '../../utils';
+import { BorderWidthProp, ColorProp, MarginProp, RadiusProp, ShadowProp } from '../../utils';
 import React from 'react';
 import { FormChildProps } from '../Form/Form.props';
-export interface TextAreaProps extends FormChildProps, Omit<React.HTMLProps<HTMLTextAreaElement>, 'size' | 'color'>, MarginProp, RadiusProp, ColorProp, ShadowProp {
+export interface TextAreaProps extends FormChildProps, Omit<React.HTMLProps<HTMLTextAreaElement>, 'size' | 'color'>, MarginProp, RadiusProp, ColorProp, ShadowProp, BorderWidthProp {
     variant?: 'solid' | 'ghost' | 'outlined';
     size?: 1 | 2 | 3 | 4 | 5;
     resizable?: boolean;

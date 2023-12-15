@@ -1,7 +1,7 @@
-import { BasePropWithChildren, MarginProp, SizeProp } from '@/utils';
+import { BasePropWithChildren, BorderWidthProp, MarginProp, SizeProp } from '@/utils';
 import React from 'react';
 
-export interface RootProps extends Omit<React.HTMLProps<HTMLTableElement>, 'children' | 'size'>, BasePropWithChildren, SizeProp, MarginProp {}
+export interface RootProps extends Omit<React.HTMLProps<HTMLTableElement>, 'children' | 'size'>, BasePropWithChildren, SizeProp, MarginProp, BorderWidthProp {}
 export interface HeaderProps extends Omit<React.HTMLProps<HTMLTableSectionElement>, 'children' | 'size'>, BasePropWithChildren, MarginProp {}
 
 export interface BodyProps extends Omit<React.HTMLProps<HTMLTableSectionElement>, 'children' | 'size'>, BasePropWithChildren, MarginProp {}

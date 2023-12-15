@@ -1,4 +1,4 @@
-import { ColorProp, SizeProp, RadiusProp, MarginProp, HighContrastProp } from '@/utils';
+import { ColorProp, SizeProp, RadiusProp, MarginProp, HighContrastProp, BorderWidthProp } from '@/utils';
 import { FormChildProps } from '../Form/Form.props';
 
 export interface CheckboxProps
@@ -8,6 +8,7 @@ export interface CheckboxProps
     SizeProp,
     RadiusProp,
     HighContrastProp,
+    BorderWidthProp,
     FormChildProps {
   onChange?: () => void;
   label?: React.ReactNode;

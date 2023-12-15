@@ -1,6 +1,6 @@
-import { ColorProp, MarginProp, RadiusProp, ShadowProp } from '../../utils';
+import { BorderWidthProp, ColorProp, MarginProp, RadiusProp, ShadowProp } from '../../utils';
 import React from 'react';
-export interface SliderProps extends MarginProp, ColorProp, RadiusProp, ShadowProp {
+export interface SliderProps extends MarginProp, ColorProp, RadiusProp, ShadowProp, BorderWidthProp {
     defaultValue: number[];
     trackSize?: number;
     thumbSize?: number;

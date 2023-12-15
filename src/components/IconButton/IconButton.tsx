@@ -19,6 +19,7 @@ const IconButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, IconButtonP
     disabled = false,
     highContrast = false,
     radius,
+    borderWidth,
     buttonType = 'button',
     onClick,
     href,
@@ -52,6 +53,7 @@ const IconButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, IconButtonP
         className={classes}
         data-radius={radius}
         data-accent-color={color}
+        data-border-width={borderWidth}
         href={href}
         onClick={handleAnchorClick}
         {...other}
@@ -68,6 +70,7 @@ const IconButton = forwardRef<HTMLButtonElement | HTMLAnchorElement, IconButtonP
       className={classes}
       data-radius={radius}
       data-accent-color={color}
+      data-border-width={borderWidth}
       disabled={disabled}
       onClick={handleButtonClick}
       type={buttonType}
