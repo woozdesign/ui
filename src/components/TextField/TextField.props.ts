@@ -1,4 +1,4 @@
-import { BorderWidthProp, ColorProp, MarginProp, RadiusProp, ShadowProp, SizeProp } from '@/utils';
+import { BorderWidthProp, ColorProp, HighContrastProp, MarginProp, RadiusProp, ShadowProp, SizeProp } from '@/utils';
 import { FormChildProps } from '../Form/Form.props';
 
 export interface TextFieldProps
@@ -9,6 +9,7 @@ export interface TextFieldProps
     SizeProp,
     ColorProp,
     ShadowProp,
+    HighContrastProp,
     BorderWidthProp {
   variant?: 'solid' | 'ghost' | 'outlined';
   iconPrepend?: React.ReactNode;

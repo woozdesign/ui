@@ -26,13 +26,18 @@ const TextArea: FC<TextAreaProps> = (props) => {
     placeholder,
     shadow,
     borderWidth,
+    highContrast,
     ...others
   } = otherMarginProps;
 
   const [error, setError] = useState<string | null>(null);
 
   const wrapperClasses = classNames(styles.wrapper, withMarginProps(marginProps));
-  const classes = classNames(styles.textArea, className, styles[`textArea--${variant}`], { [styles.textAreaError]: error, [styles.resizable]: resizable });
+  const classes = classNames(styles.textArea, className, styles[`textArea--${variant}`], {
+    [styles.textAreaError]: error,
+    [styles.resizable]: resizable,
+    [styles.highContrast]: highContrast,
+  });
 
   const handleInput = (e: ChangeEvent<HTMLTextAreaElement>) => {
     if (hasSubmitted || e.target.value) validateInput(e.target);

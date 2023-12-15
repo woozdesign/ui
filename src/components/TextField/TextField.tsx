@@ -26,13 +26,20 @@ const TextField: FC<TextFieldProps> = (props) => {
     radius,
     hasSubmitted = false,
     shadow,
+    highContrast,
     borderWidth,
     ...others
   } = otherMarginProps;
 
-  const wrapperClasses = classNames(styles.wrapper, { [styles.block]: block }, withBreakpoints(size, 'wtd-textfield--wrapper', styles), withMarginProps(marginProps), className);
-  const groupClasses = classNames(styles.group, { [styles.block]: block }, withBreakpoints(size, 'wd-textfield--group', styles));
-  const inputClasses = classNames(styles.input, iconPrepend && styles.hasPrependIcon);
+  const wrapperClasses = classNames(
+    styles.wrapper,
+    { [styles.block]: block, [styles.highContrast]: highContrast },
+    withBreakpoints(size, 'wtd-textfield--wrapper', styles),
+    withMarginProps(marginProps),
+    className,
+  );
+  const groupClasses = classNames(styles.group, { [styles.block]: block, [styles.highContrast]: highContrast }, withBreakpoints(size, 'wd-textfield--group', styles));
+  const inputClasses = classNames(styles.input, { [styles.highContrast]: highContrast }, iconPrepend && styles.hasPrependIcon);
 
   const [error, setError] = useState<string | null>(null);
   const errorClasses = classNames(inputClasses, error && styles.inputError, styles[`input--${variant}`]);
