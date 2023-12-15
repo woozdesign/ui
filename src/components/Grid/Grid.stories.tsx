@@ -14,7 +14,7 @@ export default {
 // Combined Story with Container, Row, and Col
 export const GridSystemStory: Story<ContainerProps> = (args) => (
   <ThemeProvider>
-    <Row gutter={[32, 32]}>
+    <Row gutter={['4', '4']}>
       <Col xs={24} sm={3} md={0}>
         <Card outlined>
           <Card.Body title={'Column 1'}></Card.Body>
@@ -41,7 +41,7 @@ export const GridSystemStory: Story<ContainerProps> = (args) => (
         </Card>
       </Col>
     </Row>
-    <Row gutter={[32, 32]} style={{ marginTop: '4rem' }} align="center" justify="center">
+    <Row gutter={['4', '4']} style={{ marginTop: '4rem' }} align="center" justify="center">
       <Col xs={24} md={8}>
         <Card outlined>
           <Card.Body title={'Column 1'}></Card.Body>

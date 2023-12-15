@@ -1,7 +1,7 @@
-import { BasePropWithChildren, DisplayProp, LayoutProp, MarginProp, PaddingProp } from '@/utils';
+import { BasePropWithChildren, DisplayProp, LayoutProp, MarginProp, PaddingProp, SpaceValue } from '@/utils';
 
 export interface RowProps extends BasePropWithChildren, LayoutProp, MarginProp, PaddingProp {
-  gutter?: [number, number]; // [horizontal, vertical]
+  gutter?: [SpaceValue, SpaceValue]; // [horizontal, vertical]
   align?: 'start' | 'center' | 'end' | 'stretch' | 'baseline';
   justify?: 'start' | 'center' | 'end' | 'space-between' | 'around' | 'space-evenly';
 }
