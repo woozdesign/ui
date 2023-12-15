@@ -4,6 +4,7 @@
   border-radius: max(var(--radius-2), var(--radius-full));
   box-sizing: border-box;
   font-size: 0.75rem;
+  box-shadow: var(--shadow-theme);
   text-align: center;
   white-space: nowrap;
   background-color: var(--color-accent-9);

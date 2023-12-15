@@ -10,7 +10,20 @@ const SelectContext = React.createContext<SelectContextProps | undefined>(undefi
 
 const Root: FC<RootProps> = (props) => {
   const { others: otherMarginProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, children, defaultValue, placeholder = '-', variant = 'outlined', highContrast, color, shadow = '4', radius, size = 'medium' } = otherMarginProps;
+  const {
+    className,
+    style,
+    children,
+    defaultValue,
+    placeholder = '-',
+    variant = 'outlined',
+    highContrast,
+    color,
+    shadow = '4',
+    borderWidth,
+    radius,
+    size = 'medium',
+  } = otherMarginProps;
 
   const [selectedValue, setSelectedValue] = useState<string>(defaultValue ?? placeholder);
   const [selectedLabel, setSelectedLabel] = useState<string>(placeholder);
@@ -51,7 +64,7 @@ const Root: FC<RootProps> = (props) => {
 
   return (
     <SelectContext.Provider value={{ selectedValue, setSelectedValue, selectedLabel, setSelectedLabel, open, isOpen, isRendered, onToggle: handleToggle }}>
-      <div data-radius={radius} data-shadow={shadow} data-accent-color={color} ref={rootRef} className={classes} style={style}>
+      <div data-radius={radius} data-border-width={borderWidth} data-shadow={shadow} data-accent-color={color} ref={rootRef} className={classes} style={style}>
         {children}
       </div>
     </SelectContext.Provider>

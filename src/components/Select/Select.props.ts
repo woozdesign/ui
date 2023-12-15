@@ -1,4 +1,4 @@
-import { BaseProp, BasePropWithChildren, ColorProp, HighContrastProp, MarginProp, RadiusProp, ShadowProp, SizeProp } from '@/utils';
+import { BaseProp, BasePropWithChildren, BorderWidthProp, ColorProp, HighContrastProp, MarginProp, RadiusProp, ShadowProp, SizeProp } from '@/utils';
 
 export interface SelectContextProps {
   open: boolean;
@@ -12,7 +12,7 @@ export interface SelectContextProps {
   onToggle: () => void;
 }
 
-export interface RootProps extends BasePropWithChildren, HighContrastProp, MarginProp, SizeProp, ShadowProp, RadiusProp, ColorProp {
+export interface RootProps extends BasePropWithChildren, HighContrastProp, MarginProp, SizeProp, ShadowProp, RadiusProp, ColorProp, BorderWidthProp {
   variant?: 'solid' | 'ghost' | 'outlined' | 'transparent';
   defaultValue?: string;
   placeholder?: string;

@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 const RadioGroup: React.FC<RadioGroupProps> = (props) => {
   const { others: marginOtherProps, ...marginProps } = extractMarginProps(props);
-  const { className, style, id, options, defaultValue, disabled, onChange, variant = 'solid', color, radius, highContrast, size = 'medium' } = marginOtherProps;
+  const { className, style, id, options, defaultValue, disabled, onChange, variant = 'solid', color, radius, highContrast, borderWidth, size = 'medium' } = marginOtherProps;
 
   const [isDisabled, setIsDisabled] = useState(disabled || false);
 
@@ -27,7 +27,7 @@ const RadioGroup: React.FC<RadioGroupProps> = (props) => {
   };
 
   return (
-    <div className={classes} data-accent-color={color} data-radius={radius} style={style}>
+    <div className={classes} data-accent-color={color} data-radius={radius} data-border-width={borderWidth} style={style}>
       {options.map((option, index) => (
         <label key={index} className={labelClasses}>
           <input
