@@ -1,6 +1,6 @@
 .progressLinear {
   width: 100%;
-  height: 1px; // Default height
+  height: var(--border-width); // Default height
   position: relative;
   overflow: hidden; // Ensure child divs don't overflow
 

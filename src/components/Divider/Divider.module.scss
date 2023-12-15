@@ -1,11 +1,11 @@
 .horizontal {
-  height: 1px;
+  height: var(--border-width);
   background-color: var(--color-accent-a6);
   width: 100%;
 }
 
 .vertical {
-  width: 1px;
+  width: var(--border-width);
   background-color: var(--color-accent-a6);
   height: 100%;
 }

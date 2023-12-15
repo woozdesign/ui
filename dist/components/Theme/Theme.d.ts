@@ -7,6 +7,7 @@ interface ThemeChangeHandlers {
     onScalingChange: (scaling: ThemeOptions['scaling']) => void;
     onTranslucentChange: (translucent: ThemeOptions['translucent']) => void;
     onShadowChange: (shadow: ThemeOptions['shadow']) => void;
+    onBorderWidthChange: (shadow: ThemeOptions['borderWidth']) => void;
 }
 interface ThemeContextValue extends ThemeOptions, ThemeChangeHandlers {
 }

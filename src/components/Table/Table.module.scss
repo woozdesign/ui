@@ -14,7 +14,7 @@
 
 .header,
 .body {
-  border-bottom: 1px solid var(--color-gray-a6);
+  border-bottom: var(--border-width) solid var(--color-gray-a6);
 }
 
 .row {
@@ -35,7 +35,7 @@
   padding: 8px;
   font-weight: normal;
   text-align: left;
-  border-bottom: 1px solid var(--color-gray-a5);
+  border-bottom: var(--border-width) solid var(--color-gray-a5);
 
   &:hover::after {
     background-color: var(--color-gray-a5);

@@ -15,7 +15,7 @@ $border-radius: max(var(--radius-3), var(--radius-full));
       width: 100%;
     }
   }
-  // border-bottom: 1px solid var(--color-accent-a6);
+  // border-bottom: var(--border-width) solid var(--color-accent-a6);
 }
 .list {
   display: flex;

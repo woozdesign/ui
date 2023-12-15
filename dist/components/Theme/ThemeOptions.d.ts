@@ -7,6 +7,7 @@ export type ThemeScaling = '90%' | '95%' | '100%' | '105%' | '110%';
 export type ThemeHighContrast = true | false;
 export type ThemeShadow = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7';
 export type ThemeTranslucent = '10%' | '20%' | '40%' | '60%' | '80%';
+export type ThemeBorderWidth = '1px' | '2px' | '3px' | '4px';
 export type ColorToken = {
     [theme in ThemeAppearance]: {
         [colorName in string]: {
@@ -21,6 +22,7 @@ export type ThemeOptions = {
     scaling: ThemeScaling;
     shadow: ThemeShadow;
     translucent: ThemeTranslucent;
+    borderWidth: ThemeBorderWidth;
     colorToken?: ColorToken;
 };
 declare function getMatchingGrayColor(accentColor: ThemeAccentColor): ThemeAccentColor;
