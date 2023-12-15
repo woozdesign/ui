@@ -36,6 +36,10 @@
     &:focus,
     &:hover {
       border-color: var(--color-accent-9);
+
+      &.highContrast {
+        border-color: var(--color-accent-12);
+      }
     }
   }
 
@@ -47,6 +51,10 @@
       outline: none;
       border-color: var(--color-accent-9);
       background-color: var(--color-surface-accent);
+
+      &.highContrast {
+        border-color: var(--color-accent-12);
+      }
     }
   }
 
@@ -56,6 +64,10 @@
       outline: none;
       background-color: transparent;
       border-color: var(--color-accent-9);
+
+      &.highContrast {
+        border-color: var(--color-accent-12);
+      }
     }
   }
 

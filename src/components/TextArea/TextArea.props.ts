@@ -1,4 +1,4 @@
-import { BorderWidthProp, ColorProp, MarginProp, RadiusProp, ShadowProp } from '@/utils';
+import { BorderWidthProp, ColorProp, HighContrastProp, MarginProp, RadiusProp, ShadowProp } from '@/utils';
 import React from 'react';
 import { FormChildProps } from '../Form/Form.props';
 
@@ -9,6 +9,7 @@ export interface TextAreaProps
     RadiusProp,
     ColorProp,
     ShadowProp,
+    HighContrastProp,
     BorderWidthProp {
   variant?: 'solid' | 'ghost' | 'outlined';
   size?: 1 | 2 | 3 | 4 | 5; // Number of visible lines

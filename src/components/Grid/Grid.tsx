@@ -9,15 +9,15 @@ export const Row: React.FC<RowProps> = (props) => {
   const { others: marginOthers, ...marginProps } = extractMarginProps(props);
   const { others: paddingOthers, ...paddingProps } = extractPaddingProps(marginOthers);
   const { others: layoutOthersProps, ...layoutProps } = extractLayoutProps(paddingOthers);
-  const { className, style, children, gutter = [0, 0], align = 'start', justify = 'start' } = layoutOthersProps;
+  const { className, style, children, gutter = ['0', '0'], align = 'start', justify = 'start' } = layoutOthersProps;
 
   const classes = classNames(styles.row, className, withLayoutProps(layoutProps), withMarginProps(marginProps), withPaddingProps(paddingProps));
 
   const combinedStyle = {
     alignItems: align,
     justifyContent: justify,
-    '--horizontal-gutter': `${gutter[0]}px`,
-    '--vertical-gutter': `${gutter[1]}px`,
+    '--horizontal-gutter': `var(--space-${gutter[0]})`,
+    '--vertical-gutter': `var(--space-${gutter[1]})`,
     ...style,
   };
 
