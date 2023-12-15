@@ -13,6 +13,7 @@ interface ThemeChangeHandlers {
   onScalingChange: (scaling: ThemeOptions['scaling']) => void;
   onTranslucentChange: (translucent: ThemeOptions['translucent']) => void;
   onShadowChange: (shadow: ThemeOptions['shadow']) => void;
+  onBorderWidthChange: (shadow: ThemeOptions['borderWidth']) => void;
 }
 interface ThemeContextValue extends ThemeOptions, ThemeChangeHandlers {}
 
@@ -46,6 +47,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
     accentColor: accentColorProp = themeDefaults.accentColor,
     scaling: scalingProp = themeDefaults.scaling,
     shadow: shadowProp = themeDefaults.shadow,
+    borderWidth: borderWidthProp = themeDefaults.borderWidth,
     translucent: translucentProp = themeDefaults.translucent,
     colorToken: colorTokenProp,
     ...rootProps
@@ -68,6 +70,9 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
 
   const [shadow, setShadow] = React.useState(shadowProp);
   React.useEffect(() => setShadow(shadowProp), [shadowProp]);
+
+  const [borderWidth, setBorderWidth] = React.useState(borderWidthProp);
+  React.useEffect(() => setBorderWidth(borderWidthProp), [borderWidthProp]);
 
   // Initial appearance on page load when `appearance` is explicitly set to `light` or `dark`
   const ExplicitRootAppearanceScript = React.memo(
@@ -133,6 +138,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
         scaling={scaling}
         translucent={translucent}
         shadow={shadow}
+        borderWidth={borderWidth}
         //
         onAppearanceChange={setAppearance}
         onAccentColorChange={setAccentColor}
@@ -140,6 +146,7 @@ const ThemeRoot = React.forwardRef<ThemeImplElement, ThemeRootProps>((props, for
         onScalingChange={setScaling}
         onTranslucentChange={setTranslucent}
         onShadowChange={setShadow}
+        onBorderWidthChange={setBorderWidth}
       />
     </>
   );
@@ -164,6 +171,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     scaling = context?.scaling ?? themeDefaults.scaling,
     translucent = context?.translucent ?? themeDefaults.translucent,
     shadow = context?.shadow ?? themeDefaults.shadow,
+    borderWidth = context?.borderWidth ?? themeDefaults.borderWidth,
     //
     onAppearanceChange = () => {},
     onRadiusChange = () => {},
@@ -171,7 +179,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
     onScalingChange = () => {},
     onTranslucentChange = () => {},
     onShadowChange = () => {},
-
+    onBorderWidthChange = () => {},
     //
     ...themeProps
   } = props;
@@ -195,6 +203,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           scaling,
           translucent,
           shadow,
+          borderWidth,
           //
           onAppearanceChange,
           onAccentColorChange,
@@ -202,6 +211,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onScalingChange,
           onTranslucentChange,
           onShadowChange,
+          onBorderWidthChange,
         }),
         [
           appearance,
@@ -210,6 +220,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           scaling,
           translucent,
           shadow,
+          borderWidth,
           //
           onAppearanceChange,
           onAccentColorChange,
@@ -217,6 +228,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
           onScalingChange,
           onTranslucentChange,
           onShadowChange,
+          onBorderWidthChange,
         ],
       )}
     >
@@ -226,6 +238,7 @@ const ThemeImpl = React.forwardRef<ThemeImplElement, ThemeImplProps>((props, for
         data-scaling={scaling}
         data-translucent={translucent}
         data-shadow={shadow}
+        data-border-width={borderWidth}
         data-accent-color={accentColor}
         ref={forwardedRef}
         {...themeProps}
