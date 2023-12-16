@@ -27,5 +27,12 @@
     &-100\% {
       min-width: 100%;
     }
+
+    &-50vw {
+      min-width: 50vw;
+    }
+    &-100vw {
+      min-width: 100vw;
+    }
   }
 }
