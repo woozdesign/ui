@@ -5,6 +5,7 @@
   overflow: hidden;
   border-radius: max(var(--radius-3), var(--radius-full));
   display: flex;
+  height: 100%;
   align-items: center;
   justify-content: center;
 
@@ -29,6 +30,8 @@
     position: absolute;
     top: 0;
     left: 0;
+
+    height: 100%;
     opacity: 0;
     transition: opacity 0.3s;
 
