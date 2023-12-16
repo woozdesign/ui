@@ -25,7 +25,7 @@
     border: var(--border-width) solid var(--color-border);
     box-shadow: var(--shadow-theme);
 
-    @include animations.slide-animation('bottom');
+    @include animations.slide-animation('top');
   }
 
   .item {
