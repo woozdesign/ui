@@ -3,17 +3,17 @@ import { SpaceValue } from './space.props';
 
 export interface LayoutProp {
   position?: Responsive<'static' | 'relative' | 'absolute' | 'fixed' | 'sticky'>;
-  width?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content'>;
-  maxWidth?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content'>;
-  minWidth?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content'>;
-  height?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content'>;
-  maxHeight?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content'>;
-  minHeight?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content'>;
+  width?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content' | '50vw' | '100vw'>;
+  maxWidth?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content' | '50vw' | '100vw'>;
+  minWidth?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content' | '50vw' | '100vw'>;
+  height?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content' | '50vh' | '100vh'>;
+  maxHeight?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content' | '50vh' | '100vh'>;
+  minHeight?: Responsive<SpaceValue | 'auto' | '100%' | 'min-content' | 'max-content' | '50vh' | '100vh'>;
   inset?: Responsive<'0' | 'auto' | '50%' | '100%'>;
-  top?: Responsive<'0' | 'auto' | '50%' | '100%'>;
-  bottom?: Responsive<'0' | 'auto' | '50%' | '100%'>;
-  left?: Responsive<'0' | 'auto' | '50%' | '100%'>;
-  right?: Responsive<'0' | 'auto' | '50%' | '100%'>;
+  top?: Responsive<'0' | 'auto' | '50%' | '100%' | SpaceValue>;
+  bottom?: Responsive<'0' | 'auto' | '50%' | '100%' | SpaceValue>;
+  left?: Responsive<'0' | 'auto' | '50%' | '100%' | SpaceValue>;
+  right?: Responsive<'0' | 'auto' | '50%' | '100%' | SpaceValue>;
   shrink?: Responsive<'0' | '1'>;
   grow?: Responsive<'0' | '1'>;
 }

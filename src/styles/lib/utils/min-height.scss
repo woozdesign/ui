@@ -27,5 +27,12 @@
     &-100\% {
       min-height: 100%;
     }
+
+    &-50vh {
+      min-height: 50vh;
+    }
+    &-100vh {
+      min-height: 100vh;
+    }
   }
 }

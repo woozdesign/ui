@@ -81,5 +81,26 @@
     &-left-100\% {
       left: 100%;
     }
+
+    @for $i from 0 through 12 {
+      &-left-#{$i} {
+        left: var(--space-#{$i});
+      }
+    }
+    @for $i from 0 through 12 {
+      &-right-#{$i} {
+        right: var(--space-#{$i});
+      }
+    }
+    @for $i from 0 through 12 {
+      &-top-#{$i} {
+        top: var(--space-#{$i});
+      }
+    }
+    @for $i from 0 through 12 {
+      &-bottom-#{$i} {
+        bottom: var(--space-#{$i});
+      }
+    }
   }
 }
