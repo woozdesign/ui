@@ -18,7 +18,7 @@ export default {
 const Template: Story<SplitPaneProps> = (args) => (
   <ThemeProvider appearance={'light'} accentColor={'yellow'}>
     <Layout width={'100vw'} height={'100vh'}>
-      <SplitPane split="vertical">
+      <SplitPane split="vertical" minSize={50} allowResize={false}>
         <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
           Content
         </Flex>

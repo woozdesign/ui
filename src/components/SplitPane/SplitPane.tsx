@@ -1,15 +1,16 @@
 import React, { FC, useState, useEffect, useRef } from 'react';
 import styles from './SplitPanel.module.scss';
 import { SplitPaneProps } from './SplitPane.props';
+import classNames from 'classnames';
 
 const SplitPanel: FC<SplitPaneProps> = (props) => {
-  const { children, split = 'vertical', allowResize = true, minSize = 50, maxSize } = props;
+  const { children, split = 'vertical', allowResize = true, minSize = 50, color } = props;
 
-  const [paneSizes, setPaneSizes] = useState([]);
-  const [initialSizes, setInitialSizes] = useState([]);
+  const [paneSizes, setPaneSizes] = useState<Array<number>>([]);
+  const [initialSizes, setInitialSizes] = useState<Array<number>>([]);
   const [isResizing, setIsResizing] = useState<number>(-1);
 
-  const containerRef = useRef(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const numChildren = React.Children.count(children);
 
   useEffect(() => {
@@ -20,7 +21,7 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
       setPaneSizes(initialSizes);
       setInitialSizes(initialSizes);
     }
-  }, [containerRef.current, numChildren, split]);
+  }, [containerRef, numChildren, split]);
 
   useEffect(() => {
     if (isResizing >= 0) {
@@ -28,7 +29,8 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
     }
   }, [isResizing, paneSizes]);
 
-  const handleResize = (index, delta) => {
+  const handleResize = (index: number, delta: number) => {
+    if (!allowResize) return;
     setPaneSizes((currentSizes) => {
       const updatedSizes = [...initialSizes];
       const newSize = initialSizes[index] + delta;
@@ -67,13 +69,12 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
       return currentSizes;
     });
   };
-
-  const onMouseDown = (index) => (e) => {
+  const onMouseDown = (index: number) => (e: React.MouseEvent<HTMLDivElement>) => {
     setIsResizing(index);
 
     const startPosition = split === 'vertical' ? e.clientX : e.clientY;
 
-    const onMouseMove = (moveEvent) => {
+    const onMouseMove = (moveEvent: MouseEvent) => {
       const currentPosition = split === 'vertical' ? moveEvent.clientX : moveEvent.clientY;
       const delta = currentPosition - startPosition;
       handleResize(index, delta);
@@ -91,7 +92,7 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
 
   const renderPanes = () => {
     let accumulatedSize = 0;
-    const containerSize = split === 'vertical' ? containerRef?.current?.offsetWidth : containerRef?.current?.offsetHeight;
+    const containerSize = (split === 'vertical' ? containerRef?.current?.offsetWidth : containerRef?.current?.offsetHeight) ?? 0;
 
     return React.Children.map(children, (child, index) => {
       let size;
@@ -132,14 +133,16 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
           <div className={styles.pane} style={paneStyle}>
             {child}
           </div>
-          {index < numChildren - 1 && allowResize && <div className={styles.resizer} data-split={split} onMouseDown={onMouseDown(index)} style={resizerStyle} />}
+          {index < numChildren - 1 && (
+            <div className={classNames(styles.resizer, { [styles['disabled']]: !allowResize })} data-split={split} onMouseDown={onMouseDown(index)} style={resizerStyle} />
+          )}
         </React.Fragment>
       );
     });
   };
 
   return (
-    <div className={styles.container} ref={containerRef}>
+    <div data-accent-color={color} className={styles.container} ref={containerRef}>
       {renderPanes()}
     </div>
   );
