@@ -35,6 +35,7 @@ export { default as Section } from './Section';
 export { default as Segmented } from './Segmented';
 export { default as Select } from './Select';
 export { default as Slider } from './Slider';
+export { default as SplitPane } from './SplitPane';
 export { default as Switch } from './Switch';
 export { default as Tab } from './Tab';
 export { default as Table } from './Table';

@@ -1,0 +1,98 @@
+@use '@/styles/lib/functions';
+
+// Define SCSS variables for repeated values
+$border-width: 5px;
+$resize-handle-size: 11px;
+$resize-handle-margin: -5px;
+$transition-duration: 0.2s;
+$transition-effect: ease;
+
+// Mixin for box sizing
+@mixin box-sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+// Mixin for background clip
+@mixin background-clip {
+  -moz-background-clip: padding;
+  -webkit-background-clip: padding;
+  background-clip: padding-box;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.pane {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+.resizer {
+  position: absolute;
+  background: var(--color-border);
+  z-index: 1;
+  user-select: none;
+  @include box-sizing;
+  @include background-clip;
+
+  &:hover {
+    transition: all $transition-duration $transition-effect;
+  }
+
+  &[data-split='horizontal'] {
+    height: $resize-handle-size;
+    width: 100%;
+    margin: $resize-handle-margin 0;
+    border-top: $border-width solid functions.opacity(var(--color-accent-9), 100%);
+    border-bottom: $border-width solid functions.opacity(var(--color-accent-9), 100%);
+
+    &:not(.disabled) {
+      cursor: row-resize;
+      &:hover,
+      &:active {
+        border-top: $border-width solid functions.opacity(var(--color-border), 50%);
+        border-bottom: $border-width solid functions.opacity(var(--color-border), 50%);
+      }
+
+      &:active {
+        background: var(--color-accent-9);
+        border-top: $border-width solid functions.opacity(var(--color-accent-9), 70%);
+        border-bottom: $border-width solid functions.opacity(var(--color-accent-9), 70%);
+        @include box-sizing;
+        @include background-clip;
+      }
+    }
+  }
+
+  &[data-split='vertical'] {
+    width: $resize-handle-size;
+    height: 100%;
+    margin: 0 $resize-handle-margin;
+    border-left: $border-width solid functions.opacity(var(--color-accent-9), 100%);
+    border-right: $border-width solid functions.opacity(var(--color-accent-9), 100%);
+
+    &:not(.disabled) {
+      &:hover,
+      &:active {
+        cursor: col-resize;
+        border-left: $border-width solid functions.opacity(var(--color-border), 50%);
+        border-right: $border-width solid functions.opacity(var(--color-border), 50%);
+      }
+
+      &:active {
+        background: var(--color-accent-9);
+        border-left: $border-width solid functions.opacity(var(--color-accent-9), 70%);
+        border-right: $border-width solid functions.opacity(var(--color-accent-9), 70%);
+        @include box-sizing;
+        @include background-clip;
+      }
+    }
+  }
+}
