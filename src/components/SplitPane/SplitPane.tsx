@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useRef, useLayoutEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import styles from './SplitPanel.module.scss';
 import { SplitPaneProps } from './SplitPane.props';
 import classNames from 'classnames';
@@ -8,16 +8,14 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
 
   const [paneSizes, setPaneSizes] = useState<Array<number>>([]);
   const [initialSizes, setInitialSizes] = useState<Array<number>>([]);
-  const [containerSize, setContainerSize] = useState(0);
   const [isResizing, setIsResizing] = useState<number>(-1);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const numChildren = React.Children.count(children);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (containerRef.current) {
-      const { width, height } = containerRef.current.getBoundingClientRect();
-      const totalSize = split === 'vertical' ? width : height;
+      const totalSize = split === 'vertical' ? containerRef.current.offsetWidth : containerRef.current.offsetHeight;
       const initialSize = totalSize / numChildren;
       const initialSizes = Array(numChildren).fill(initialSize);
       setPaneSizes(initialSizes);
