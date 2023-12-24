@@ -18,7 +18,19 @@ export default {
 const Template: Story<SplitPaneProps> = (args) => (
   <ThemeProvider appearance={'light'} accentColor={'yellow'}>
     <Layout width={'100vw'} height={'100vh'}>
-      <SplitPane split="vertical" minSize={50} allowResize={false}>
+      {args.children}
+    </Layout>
+  </ThemeProvider>
+);
+
+export const Default = Template.bind({});
+Default.args = {
+  children: (
+    <SplitPane size={100}>
+      <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+        Content
+      </Flex>
+      <SplitPane minSize={50}>
         <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
           Content
         </Flex>
@@ -32,12 +44,14 @@ const Template: Story<SplitPaneProps> = (args) => (
           <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
             Content
           </Flex>
-          <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
-            Content
-          </Flex>
-          <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
-            Content
-          </Flex>
+          <SplitPane split={'horizontal'}>
+            <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+              Content
+            </Flex>
+            <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+              Content
+            </Flex>
+          </SplitPane>
         </SplitPane>
         <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
           Content
@@ -46,9 +60,39 @@ const Template: Story<SplitPaneProps> = (args) => (
           Content
         </Flex>
       </SplitPane>
-    </Layout>
-  </ThemeProvider>
-);
-
-export const Default = Template.bind({});
-Default.args = {};
+    </SplitPane>
+  ),
+};
+export const TestCase_1 = Template.bind({});
+TestCase_1.args = {
+  children: (
+    <SplitPane>
+      <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+        Content
+      </Flex>
+      <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+        Content
+      </Flex>
+      <SplitPane split={'horizontal'}>
+        <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+          Content
+        </Flex>
+        <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+          Content
+        </Flex>
+        <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+          Content
+        </Flex>
+        <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+          Content
+        </Flex>
+      </SplitPane>
+      <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+        Content
+      </Flex>
+      <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+        Content
+      </Flex>
+    </SplitPane>
+  ),
+};
