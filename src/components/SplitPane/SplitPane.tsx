@@ -8,6 +8,7 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
 
   const [paneSizes, setPaneSizes] = useState<Array<number>>([]);
   const [initialSizes, setInitialSizes] = useState<Array<number>>([]);
+
   const [isResizing, setIsResizing] = useState<number>(-1);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -28,6 +29,41 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
       setInitialSizes([...paneSizes]);
     }
   }, [isResizing, paneSizes]);
+
+  const calculateMinSize = (child, split: SplitPaneProps['split']) => {
+    // Check if the child is a SplitPane
+    const childSplit = child.props.split ? child.props.split : 'vertical';
+    if (child.type && child.type.name === 'SplitPanel' && childSplit == split) {
+      const childMinSize = child.props.minSize || 50; // Default minSize if not specified
+      const childCount = React.Children.count(child.props.children);
+
+      // Recursively calculate the minSize for each child of the SplitPane
+      return React.Children.toArray(child.props.children).reduce((total, child) => {
+        const newMinSize = total + calculateMinSize(child, split);
+        return newMinSize;
+      }, 0);
+    }
+    return minSize; // Default minSize for non-SplitPane or different direction
+  };
+
+  // New state to track each child's minSize
+  const [childMinSizes, setChildMinSizes] = useState<Array<number>>([]);
+
+  // useEffect to initialize pane sizes and child minSizes
+  useEffect(() => {
+    if (containerRef.current) {
+      const totalSize = split === 'vertical' ? containerRef.current.offsetWidth : containerRef.current.offsetHeight;
+      const initialSize = totalSize / numChildren;
+
+      // Calculate initial sizes and child minSizes
+      const initialSizes = Array(numChildren).fill(initialSize);
+      const minSizes = React.Children.map(children, (child) => calculateMinSize(child, split));
+
+      setPaneSizes(initialSizes);
+      setInitialSizes(initialSizes);
+      setChildMinSizes(minSizes);
+    }
+  }, [containerRef, numChildren, split, children]); // Added 'children' to dependencies
 
   const handleResize = (index: number, delta: number) => {
     if (!allowResize) return;
@@ -68,6 +104,33 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
       return currentSizes;
     });
   };
+
+  useEffect(() => {
+    if (containerRef.current) {
+      // Define a function to handle resize events
+      const handleResize = (entries) => {
+        const entry = entries[0];
+        if (entry) {
+          const newContainerSize = split === 'vertical' ? entry.contentRect.width : entry.contentRect.height;
+          const oldContainerSize = split === 'vertical' ? containerRef.current.offsetWidth : containerRef.current.offsetHeight;
+          const resizeRatio = newContainerSize / oldContainerSize;
+
+          // Adjust paneSizes based on the resize ratio
+          setPaneSizes((currentSizes) => currentSizes.map((size) => Math.max(size * resizeRatio, minSize)));
+        }
+      };
+
+      // Create a new ResizeObserver
+      const resizeObserver = new ResizeObserver(handleResize);
+      resizeObserver.observe(containerRef.current);
+
+      // Cleanup function
+      return () => {
+        resizeObserver.disconnect();
+      };
+    }
+  }, [split, minSize]);
+
   const onMouseDown = (index: number) => (e: React.MouseEvent<HTMLDivElement>) => {
     setIsResizing(index);
 
@@ -95,12 +158,17 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
 
     return React.Children.map(children, (child, index) => {
       let size;
+      const minSize = childMinSizes[index] || 50; // Use the calculated minSize for each child
+      // console.log('minSize: ', minSize);
       if (index === numChildren - 1) {
         // For the last pane, calculate size to fill remaining space but not less than minSize
         size = Math.max(containerSize - accumulatedSize, minSize);
       } else {
+        // Calculate the total minimum size required for subsequent panes
+        const totalMinSizeForSubsequentPanes = childMinSizes.slice(index + 1).reduce((total, size) => total + size, 0);
+
         // Calculate the maximum size for the current pane
-        const maxPaneSize = containerSize - accumulatedSize - (numChildren - index - 1) * minSize;
+        const maxPaneSize = containerSize - accumulatedSize - totalMinSizeForSubsequentPanes;
         // Determine the size of the current pane
         size = paneSizes[index] || 0;
         size = Math.min(size, maxPaneSize);
