@@ -119,7 +119,7 @@ TestCase_3.args = {
 export const TestCase_4 = Template.bind({});
 TestCase_4.args = {
   children: (
-    <SplitPane size={100}>
+    <SplitPane minSize={100}>
       <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
         Content
       </Flex>
@@ -130,7 +130,7 @@ TestCase_4.args = {
         <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
           Content
         </Flex>
-        <SplitPane minSize={50}>
+        <SplitPane minSize={80}>
           <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
             Content
           </Flex>
