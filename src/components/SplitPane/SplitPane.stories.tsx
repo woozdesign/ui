@@ -116,3 +116,29 @@ TestCase_3.args = {
     </SplitPane>
   ),
 };
+export const TestCase_4 = Template.bind({});
+TestCase_4.args = {
+  children: (
+    <SplitPane size={100}>
+      <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+        Content
+      </Flex>
+      <SplitPane split={'horizontal'} minSize={50}>
+        <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+          Content
+        </Flex>
+        <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+          Content
+        </Flex>
+        <SplitPane minSize={50}>
+          <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+            Content
+          </Flex>
+          <Flex direction={'column'} p={'4'} align="center" justify="center" height={'100%'}>
+            Content
+          </Flex>
+        </SplitPane>
+      </SplitPane>
+    </SplitPane>
+  ),
+};
