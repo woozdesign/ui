@@ -36,12 +36,11 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
       setInitialSizes([...paneSizes]);
     }
   }, [isResizing, paneSizes]);
-
   const calculateMinSize = (children, splitDirection) => {
     return React.Children.map(children, (child) => {
       // Default minimum sizes
-      let minHorizontal = child.props.minSize || minSize;
-      let minVertical = child.props.minSize || minSize;
+      let minHorizontal = 50;
+      let minVertical = 50;
 
       // Check if the child is a SplitPanel
       if (child.type && child.type.name === 'SplitPanel') {
@@ -50,25 +49,19 @@ const SplitPanel: FC<SplitPaneProps> = (props) => {
         const childMinSizes = calculateMinSize(child.props.children, splitDirection);
 
         if (childSplitDirection === splitDirection) {
-          console.log('childSplitDirection: ', childSplitDirection);
           // Accumulate sizes in the same direction
-          if (childSplitDirection === 'vertical') {
+          if (childSplitDirection == 'vertical') {
             minVertical = childMinSizes.reduce((total, size) => total + size.vertical, 0);
           } else {
             minHorizontal = childMinSizes.reduce((total, size) => total + size.horizontal, 0);
           }
         } else {
           // Take the max size in the same direction, accumulate in the different direction
+
           if (childSplitDirection == 'vertical') {
-            minHorizontal = Math.max(
-              minHorizontal,
-              childMinSizes.reduce((total, size) => Math.max(total, size.horizontal), 0),
-            );
+            minHorizontal = childMinSizes.reduce((total, size) => Math.max(total, size.horizontal), 0);
           } else {
-            minVertical = Math.max(
-              minVertical,
-              childMinSizes.reduce((total, size) => Math.max(total, size.vertical), 0),
-            );
+            minVertical = childMinSizes.reduce((total, size) => Math.max(total, size.vertical), 0);
           }
         }
       } else {
