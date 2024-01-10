@@ -3,6 +3,10 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*
 
 # Build output
 # dist/
