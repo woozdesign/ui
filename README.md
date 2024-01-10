@@ -12,9 +12,6 @@
 
 ## 📦 Install
 
-> [!WARNING]  
-> This project is very early-stage. Please be aware that the code structure changes frequently.
-
 ```bash
 npm install @woozdesign/ui
 ```
