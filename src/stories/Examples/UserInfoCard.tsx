@@ -33,7 +33,7 @@ const UserInfoCard: FC<UserInfoCardProps> = ({}) => {
                   </Col>
                   <Col xs={12}>
                     <Flex align="center" justify="end">
-                      <Typography.Text>annie@woozdesign.com</Typography.Text>
+                      <Typography.Text>annie@design.woozlabs.com</Typography.Text>
                       <IconButton size={'small'} variant={'transparent'}>
                         <Icon size={'small'} type={'Copy'} />
                       </IconButton>

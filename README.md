@@ -1,4 +1,4 @@
-[![WoozDesign UI](UI.png)](https://woozdesign.com)
+[![WoozDesign UI](UI.png)](https://design.woozlabs.com)
 
 ## 🖥 Environment Support
 
@@ -61,7 +61,7 @@ export const RootStyleRegistry = ({ children }: React.PropsWithChildren) => {
 ## Supported Components
 
 Wooz Design offers a robust and diverse set of components to aid in creating interactive and dynamic user interfaces. Our library is continuously evolving, and we are committed to enhancing and expanding our component offerings.
-For more in-depth information on the supported components, please refer to our detailed [documentation](https://woozdesign.com).
+For more in-depth information on the supported components, please refer to our detailed [documentation](https://design.woozlabs.com).
 
 ## TypeScript
 
